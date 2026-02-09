@@ -1,0 +1,83 @@
+{
+  "people": [
+    {
+      "id": "P001",
+      "full_name": "Nguyen Van An",
+      "gender": "M",
+      "birth_year": 1958,
+      "death_year": null
+    },
+    {
+      "id": "P002",
+      "full_name": "Tran Thi Binh",
+      "gender": "F",
+      "birth_year": 1962,
+      "death_year": null
+    },
+    {
+      "id": "P003",
+      "full_name": "Nguyen Van Cuong",
+      "gender": "M",
+      "birth_year": 1985,
+      "death_year": null
+    },
+    {
+      "id": "P004",
+      "full_name": "Le Thi Dung",
+      "gender": "F",
+      "birth_year": 1987,
+      "death_year": null
+    },
+    {
+      "id": "P005",
+      "full_name": "Nguyen Minh Em",
+      "gender": "F",
+      "birth_year": 2012,
+      "death_year": null
+    }
+  ],
+  "relationships": [
+    {
+      "from_id": "P001",
+      "to_id": "P003",
+      "type": "parent_of",
+      "source": "manual",
+      "confidence": 1.0
+    },
+    {
+      "from_id": "P002",
+      "to_id": "P003",
+      "type": "parent_of",
+      "source": "manual",
+      "confidence": 1.0
+    },
+    {
+      "from_id": "P003",
+      "to_id": "P005",
+      "type": "parent_of",
+      "source": "manual",
+      "confidence": 1.0
+    },
+    {
+      "from_id": "P004",
+      "to_id": "P005",
+      "type": "parent_of",
+      "source": "manual",
+      "confidence": 1.0
+    },
+    {
+      "from_id": "P001",
+      "to_id": "P002",
+      "type": "spouse_of",
+      "source": "manual",
+      "confidence": 1.0
+    },
+    {
+      "from_id": "P003",
+      "to_id": "P004",
+      "type": "spouse_of",
+      "source": "manual",
+      "confidence": 1.0
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/.venv/
+/lib/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtualenvs (common names)
+env/
+venv/
+.env/
+.venv*/
+
+# MacOS
+.DS_Store
