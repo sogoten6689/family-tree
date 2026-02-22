@@ -1,0 +1,12 @@
+{
+  "full_name": "Nguyễn Văn A",
+  "gender": "Nam",
+  "birth_year": 1920,
+  "death_year": 1985,
+  "birth_place": "Nam Định",
+  "occupation": "Giáo viên",
+  "father": "Nguyễn Văn B",
+  "mother": "Trần Thị C",
+  "spouse": ["Phạm Thị D"],
+  "children": ["Nguyễn Văn E", "Nguyễn Văn F"]
+}
