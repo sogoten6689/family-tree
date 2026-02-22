@@ -21,7 +21,7 @@ def main():
         return
 
     G = build_family_graph(people, relationships)
-    draw_static_png(G, "output/family_tree.png")
+    # draw_static_png(G, "output/family_tree.png")
     draw_interactive_html(G, "output/family_tree.html")
 
     print("Done")
