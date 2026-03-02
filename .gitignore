@@ -1,1 +1,4 @@
 generate-family-tree/.env
+
+.venv/
+lib/
