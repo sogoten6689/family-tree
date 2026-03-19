@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lora:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 39 50% 96%;
+    --foreground: 20 30% 15%;
+
+    --card: 39 40% 93%;
+    --card-foreground: 20 30% 15%;
+
+    --popover: 39 50% 96%;
+    --popover-foreground: 20 30% 15%;
+
+    --primary: 36 70% 42%;
+    --primary-foreground: 39 50% 96%;
+
+    --secondary: 0 45% 35%;
+    --secondary-foreground: 39 50% 96%;
+
+    --muted: 36 30% 88%;
+    --muted-foreground: 20 15% 45%;
+
+    --accent: 36 50% 50%;
+    --accent-foreground: 20 30% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 30% 80%;
+    --input: 36 30% 80%;
+    --ring: 36 70% 42%;
+
+    --radius: 0.5rem;
+
+    --gold: 36 70% 42%;
+    --gold-light: 39 60% 70%;
+    --crimson: 0 45% 35%;
+    --parchment: 39 50% 96%;
+    --wood: 20 40% 25%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lora', serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(20 40% 25% / 0.7) 0%,
+      hsl(20 40% 25% / 0.5) 50%,
+      hsl(20 40% 25% / 0.8) 100%
+    );
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(36 70% 42%), hsl(39 60% 70%));
+  }
+
+  .section-divider {
+    background: linear-gradient(90deg, transparent, hsl(36 70% 42%), transparent);
+    height: 1px;
+  }
+
+  .tree-connector-v {
+    border-left: 2px solid hsl(36 70% 42%);
+  }
+
+  .tree-connector-h {
+    border-top: 2px solid hsl(36 70% 42%);
+  }
+
+  .tree-node-card {
+    @apply bg-card border-2 rounded-lg shadow-md transition-all duration-300;
+    border-color: hsl(var(--gold));
+  }
+
+  .tree-node-card:hover {
+    box-shadow: 0 8px 24px hsl(36 70% 42% / 0.3);
+    transform: translateY(-2px);
+  }
+}

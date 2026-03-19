@@ -1,0 +1,178 @@
+export interface FamilyMember {
+  id: string;
+  name: string;
+  birthYear: number;
+  deathYear?: number;
+  gender: 'male' | 'female';
+  generation: number;
+  spouseName?: string;
+  title?: string;
+  bio?: string;
+  children?: string[];
+  parentId?: string;
+  avatar?: string;
+}
+
+export const familyData: FamilyMember[] = [
+  {
+    id: '1',
+    name: 'Nguyễn Văn Tổ',
+    birthYear: 1880,
+    deathYear: 1960,
+    gender: 'male',
+    generation: 1,
+    spouseName: 'Trần Thị Hoa',
+    title: 'Thủy tổ',
+    bio: 'Người sáng lập dòng họ, quê gốc tại làng Phú Thọ, tỉnh Hà Nam.',
+    children: ['2', '3', '4'],
+  },
+  {
+    id: '2',
+    name: 'Nguyễn Văn Trưởng',
+    birthYear: 1910,
+    deathYear: 1985,
+    gender: 'male',
+    generation: 2,
+    spouseName: 'Lê Thị Lan',
+    title: 'Trưởng nam',
+    bio: 'Con trưởng, kế thừa nghề nông của gia đình.',
+    children: ['5', '6'],
+    parentId: '1',
+  },
+  {
+    id: '3',
+    name: 'Nguyễn Văn Thứ',
+    birthYear: 1913,
+    deathYear: 1990,
+    gender: 'male',
+    generation: 2,
+    spouseName: 'Phạm Thị Mai',
+    title: 'Thứ nam',
+    bio: 'Theo nghề dạy học tại trường làng.',
+    children: ['7'],
+    parentId: '1',
+  },
+  {
+    id: '4',
+    name: 'Nguyễn Thị Hiền',
+    birthYear: 1916,
+    deathYear: 2000,
+    gender: 'female',
+    generation: 2,
+    spouseName: 'Đỗ Văn Minh',
+    bio: 'Lập gia đình tại Hà Nội.',
+    children: ['8'],
+    parentId: '1',
+  },
+  {
+    id: '5',
+    name: 'Nguyễn Văn Hùng',
+    birthYear: 1940,
+    gender: 'male',
+    generation: 3,
+    spouseName: 'Hoàng Thị Ngọc',
+    title: 'Trưởng tộc đời 3',
+    bio: 'Cán bộ nhà nước, sống tại Hà Nội.',
+    children: ['9', '10'],
+    parentId: '2',
+  },
+  {
+    id: '6',
+    name: 'Nguyễn Thị Hương',
+    birthYear: 1943,
+    gender: 'female',
+    generation: 3,
+    spouseName: 'Vũ Đình Nam',
+    bio: 'Giáo viên trường cấp 2.',
+    children: ['11'],
+    parentId: '2',
+  },
+  {
+    id: '7',
+    name: 'Nguyễn Văn Đức',
+    birthYear: 1945,
+    gender: 'male',
+    generation: 3,
+    spouseName: 'Bùi Thị Thu',
+    bio: 'Bác sĩ tại bệnh viện tỉnh.',
+    children: ['12'],
+    parentId: '3',
+  },
+  {
+    id: '8',
+    name: 'Đỗ Thị Thanh',
+    birthYear: 1948,
+    gender: 'female',
+    generation: 3,
+    spouseName: 'Trương Văn Bình',
+    bio: 'Kinh doanh buôn bán tại Sài Gòn.',
+    parentId: '4',
+  },
+  {
+    id: '9',
+    name: 'Nguyễn Văn Minh',
+    birthYear: 1970,
+    gender: 'male',
+    generation: 4,
+    spouseName: 'Đặng Thị Hà',
+    bio: 'Kỹ sư công nghệ thông tin.',
+    children: ['13', '14'],
+    parentId: '5',
+  },
+  {
+    id: '10',
+    name: 'Nguyễn Thị Mai',
+    birthYear: 1973,
+    gender: 'female',
+    generation: 4,
+    spouseName: 'Lý Văn Quang',
+    bio: 'Dược sĩ tại nhà thuốc gia đình.',
+    parentId: '5',
+  },
+  {
+    id: '11',
+    name: 'Vũ Đình Tuấn',
+    birthYear: 1972,
+    gender: 'male',
+    generation: 4,
+    bio: 'Kiến trúc sư.',
+    parentId: '6',
+  },
+  {
+    id: '12',
+    name: 'Nguyễn Văn Phúc',
+    birthYear: 1975,
+    gender: 'male',
+    generation: 4,
+    spouseName: 'Ngô Thị Vân',
+    bio: 'Giảng viên đại học.',
+    parentId: '7',
+  },
+  {
+    id: '13',
+    name: 'Nguyễn Văn An',
+    birthYear: 2000,
+    gender: 'male',
+    generation: 5,
+    bio: 'Sinh viên ngành Y khoa.',
+    parentId: '9',
+  },
+  {
+    id: '14',
+    name: 'Nguyễn Thị Bình',
+    birthYear: 2003,
+    gender: 'female',
+    generation: 5,
+    bio: 'Sinh viên ngành Luật.',
+    parentId: '9',
+  },
+];
+
+export const familyInfo = {
+  surname: 'Nguyễn',
+  origin: 'Làng Phú Thọ, Hà Nam',
+  motto: 'Uống nước nhớ nguồn, ăn quả nhớ kẻ trồng cây',
+  totalGenerations: 5,
+  totalMembers: 14,
+  established: 1880,
+};
