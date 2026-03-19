@@ -1,5 +1,5 @@
 import { Button, Card } from 'antd';
-import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined } from '@ant-design/icons';
+import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import heroBg from '@/assets/hero-bg.jpg';
 
@@ -18,6 +18,11 @@ const features = [
     icon: <BookOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
     title: 'Lưu trữ lịch sử',
     desc: 'Ghi chép và bảo tồn những câu chuyện, sự kiện quan trọng của dòng họ.',
+  },
+  {
+    icon: <InboxOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
+    title: 'Đọc tư liệu gốc',
+    desc: 'Kéo thả file Word hoặc ảnh scan để xem nhanh nội dung gia phả trước khi xử lý.',
   },
   {
     icon: <SafetyOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
@@ -60,17 +65,18 @@ const HomePage = () => {
             </Button>
             <Button
               size="large"
-              ghost
+              onClick={() => navigate('/document-reader')}
               style={{
-                borderColor: 'hsl(39, 60%, 70%)',
-                color: 'hsl(39, 60%, 70%)',
+                background: 'hsl(39, 50%, 96%)',
+                borderColor: 'hsl(39, 50%, 96%)',
+                color: 'hsl(20, 40%, 25%)',
                 height: 48,
                 fontSize: 16,
                 fontFamily: 'var(--font-body)',
                 paddingInline: 32,
               }}
             >
-              Tìm Hiểu Thêm
+              Mở Tài Liệu Gốc
             </Button>
           </div>
         </div>
@@ -88,7 +94,7 @@ const HomePage = () => {
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto text-lg">
             Công cụ hiện đại giúp bạn xây dựng và lưu giữ gia phả dòng họ một cách dễ dàng
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {features.map((f, i) => (
               <Card
                 key={i}
@@ -137,7 +143,7 @@ const HomePage = () => {
         <Button
           type="primary"
           size="large"
-          onClick={() => navigate('/family-tree')}
+          onClick={() => navigate('/document-reader')}
           style={{
             background: 'hsl(0, 45%, 35%)',
             borderColor: 'hsl(0, 45%, 35%)',
@@ -147,7 +153,7 @@ const HomePage = () => {
             paddingInline: 40,
           }}
         >
-          Tạo Gia Phả Ngay
+          Tải Tư Liệu Để Đọc
         </Button>
       </section>
 

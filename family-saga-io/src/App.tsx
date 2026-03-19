@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import HomePage from "./pages/HomePage";
+import DocumentReaderPage from "./pages/DocumentReaderPage";
 import FamilyTreePage from "./pages/FamilyTreePage";
 import NotFound from "./pages/NotFound";
 
@@ -17,6 +18,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/document-reader" element={<DocumentReaderPage />} />
           <Route path="/family-tree" element={<FamilyTreePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
