@@ -1,0 +1,97 @@
+{
+  "people": [
+    {
+      "id": "P001",
+      "full_name": "Nguyễn Văn",
+      "birth_year": null,
+      "death_year": null,
+      "gender": "M"
+    },
+    {
+      "id": "P002",
+      "full_name": "Phạm Thị",
+      "birth_year": null,
+      "death_year": null,
+      "gender": "F"
+    },
+    {
+      "id": "P003",
+      "full_name": "Trần Thị D. Ông",
+      "birth_year": null,
+      "death_year": null,
+      "gender": null
+    },
+    {
+      "id": "P004",
+      "full_name": "Lê Thị",
+      "birth_year": null,
+      "death_year": null,
+      "gender": null
+    },
+    {
+      "id": "P005",
+      "full_name": "Trần Văn K. Bà",
+      "birth_year": null,
+      "death_year": 2001,
+      "gender": null
+    },
+    {
+      "id": "P006",
+      "full_name": "Nguyễn Văn",
+      "birth_year": 1950,
+      "death_year": null,
+      "gender": "M"
+    },
+    {
+      "id": "P007",
+      "full_name": "Phạm Thị",
+      "birth_year": 1930,
+      "death_year": 1930,
+      "gender": "F"
+    },
+    {
+      "id": "P008",
+      "full_name": "Trần Thị D. Ông",
+      "birth_year": 1955,
+      "death_year": null,
+      "gender": null
+    },
+    {
+      "id": "P009",
+      "full_name": "Lê Thị",
+      "birth_year": 1955,
+      "death_year": null,
+      "gender": null
+    }
+  ],
+  "relationships": [
+    {
+      "from_id": "P008",
+      "to_id": "P005",
+      "type": "spouse_of",
+      "confidence": 0.9,
+      "source": "nlp"
+    },
+    {
+      "from_id": "P008",
+      "to_id": "P005",
+      "type": "spouse_of",
+      "confidence": 0.9,
+      "source": "nlp"
+    },
+    {
+      "from_id": "P008",
+      "to_id": "P006",
+      "type": "parent_of",
+      "confidence": 0.85,
+      "source": "nlp"
+    },
+    {
+      "from_id": "P005",
+      "to_id": "P006",
+      "type": "parent_of",
+      "confidence": 0.85,
+      "source": "nlp"
+    }
+  ]
+}
