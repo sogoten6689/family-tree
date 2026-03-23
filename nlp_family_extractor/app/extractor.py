@@ -9,7 +9,10 @@ from .normalizer import normalize_text, normalize_name, infer_gender_from_title,
 from .patterns import (
     NAME_CAPS, NAME_WITH_TITLE,
     RE_BIRTH, RE_DEATH,
-    RE_CHILD_OF, RE_SPOUSE
+    RE_CHILD_OF, RE_SPOUSE,
+    RE_IS_SPOUSE, RE_HAVE_CHILD,
+    RE_FATHER_LABEL, RE_MOTHER_LABEL,
+    RE_SIBLING, RE_SENTENCE_SPLIT,
 )
 
 def _pick_longest_match(candidates: List[str], chunk: str) -> Optional[str]:
@@ -32,6 +35,7 @@ class FamilyExtractor:
         self._people_by_key: Dict[Tuple[str, Optional[int]], Person] = {}
         self._name_index: Dict[str, List[Tuple[Tuple[str, Optional[int]], Person]]] = {}
         self._relationships: List[Relationship] = []
+        self._relationship_keys = set()
 
     def _new_id(self) -> str:
         pid = f"{self.id_prefix}{self._next_id:03d}"
@@ -50,6 +54,98 @@ class FamilyExtractor:
         self._people_by_key[key] = p
         self._name_index.setdefault(full_name, []).append((key, p))
         return p
+
+    def _add_relationship(self, from_id: str, to_id: str, rel_type: str, confidence: float = 0.8) -> None:
+        if not from_id or not to_id or from_id == to_id:
+            return
+
+        key = (from_id, to_id, rel_type)
+        if key in self._relationship_keys:
+            return
+
+        self._relationship_keys.add(key)
+        self._relationships.append(
+            Relationship(
+                from_id=from_id,
+                to_id=to_id,
+                type=rel_type,
+                confidence=confidence,
+            )
+        )
+
+    def _names_with_positions(self, sentence: str, candidates: List[str]) -> List[Tuple[str, int]]:
+        hits: List[Tuple[str, int]] = []
+        for name in candidates:
+            idx = sentence.find(name)
+            if idx != -1:
+                hits.append((name, idx))
+        hits.sort(key=lambda x: x[1])
+        return hits
+
+    def _extract_sentence_relations(self, text: str, candidates: List[str], name_to_person: Dict[str, Person]) -> None:
+        sentences = [s.strip() for s in RE_SENTENCE_SPLIT.split(text) if s.strip()]
+
+        for sentence in sentences:
+            names_pos = self._names_with_positions(sentence, candidates)
+            names_in_order = [n for n, _ in names_pos]
+
+            # Spouse patterns: "A kết hôn với B", "A là vợ/chồng của B"
+            if (RE_SPOUSE.search(sentence) or RE_IS_SPOUSE.search(sentence)) and len(names_in_order) >= 2:
+                a, b = names_in_order[0], names_in_order[1]
+                self._add_relationship(name_to_person[a].id, name_to_person[b].id, "spouse_of", 0.92)
+                self._add_relationship(name_to_person[b].id, name_to_person[a].id, "spouse_of", 0.92)
+
+            # Child-of patterns: "X là con của Y [và Z]"
+            for m in RE_CHILD_OF.finditer(sentence):
+                idx = m.start()
+                left = [n for n, p in names_pos if p < idx]
+                right = [n for n, p in names_pos if p > idx]
+                if not left or not right:
+                    continue
+
+                child = left[-1]
+                for parent in right[:2]:
+                    self._add_relationship(name_to_person[parent].id, name_to_person[child].id, "parent_of", 0.9)
+
+            # Have-child patterns: "A và B có con là C, D"
+            for m in RE_HAVE_CHILD.finditer(sentence):
+                idx = m.start()
+                left = [n for n, p in names_pos if p < idx]
+                right = [n for n, p in names_pos if p > idx]
+                if not left or not right:
+                    continue
+
+                parents = left[-2:] if len(left) >= 2 else left[-1:]
+                children = right[:4]
+                for parent in parents:
+                    for child in children:
+                        if parent != child:
+                            self._add_relationship(name_to_person[parent].id, name_to_person[child].id, "parent_of", 0.88)
+
+            # Father/mother label patterns: "X, cha là Y", "X, mẹ là Z"
+            if len(names_in_order) >= 2:
+                child = names_in_order[0]
+                for m in RE_FATHER_LABEL.finditer(sentence):
+                    idx = m.start()
+                    right_names = [n for n, p in names_pos if p > idx]
+                    if right_names:
+                        parent = right_names[0]
+                        self._add_relationship(name_to_person[parent].id, name_to_person[child].id, "parent_of", 0.87)
+
+                for m in RE_MOTHER_LABEL.finditer(sentence):
+                    idx = m.start()
+                    right_names = [n for n, p in names_pos if p > idx]
+                    if right_names:
+                        parent = right_names[0]
+                        self._add_relationship(name_to_person[parent].id, name_to_person[child].id, "parent_of", 0.87)
+
+            # Sibling patterns
+            if RE_SIBLING.search(sentence) and len(names_in_order) >= 2:
+                for i in range(len(names_in_order) - 1):
+                    a = names_in_order[i]
+                    b = names_in_order[i + 1]
+                    self._add_relationship(name_to_person[a].id, name_to_person[b].id, "sibling_of", 0.75)
+                    self._add_relationship(name_to_person[b].id, name_to_person[a].id, "sibling_of", 0.75)
 
     def _all_candidate_names(self, text: str) -> List[Tuple[str, Optional[str]]]:
         """
@@ -91,7 +187,6 @@ class FamilyExtractor:
             normalized_candidates.append((name, g))
 
         # create initial persons without birth_year
-        candidates_names = sorted({n for n, _ in normalized_candidates}, key=len, reverse=True)
         name_to_person: Dict[str, Person] = {}
         for name, g in normalized_candidates:
             p = self._get_or_create(name, None, g)
@@ -135,12 +230,8 @@ class FamilyExtractor:
             b = _pick_longest_match(candidates, right)
 
             if a and b and a != b:
-                self._relationships.append(Relationship(
-                    from_id=name_to_person[a].id,
-                    to_id=name_to_person[b].id,
-                    type="spouse_of",
-                    confidence=0.90
-                ))
+                self._add_relationship(name_to_person[a].id, name_to_person[b].id, "spouse_of", 0.9)
+                self._add_relationship(name_to_person[b].id, name_to_person[a].id, "spouse_of", 0.9)
 
         # 4) parent relations
         # patterns like: "A là con của B và C"
@@ -162,12 +253,10 @@ class FamilyExtractor:
                     break
 
             for par in parents:
-                self._relationships.append(Relationship(
-                    from_id=name_to_person[par].id,
-                    to_id=name_to_person[child].id,
-                    type="parent_of",
-                    confidence=0.85
-                ))
+                self._add_relationship(name_to_person[par].id, name_to_person[child].id, "parent_of", 0.85)
+
+        # 4.5) richer sentence-level extraction for family relations
+        self._extract_sentence_relations(text, candidates, name_to_person)
 
         # 5) build final JSON
         people = list(self._people_by_key.values())

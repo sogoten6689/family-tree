@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 
-type PreviewType = 'image' | 'docx' | 'unsupported' | null;
+type PreviewType = 'image' | 'docx' | 'text' | 'unsupported' | null;
 
 type MammothModule = typeof import('mammoth/mammoth.browser');
 type DetectedLanguageCode = 'vi' | 'en' | 'unknown';
@@ -44,7 +44,7 @@ type LanguageDetection = {
   method: DetectionMethod;
 };
 
-const supportedFormats = ['.docx', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
+const supportedFormats = ['.docx', '.txt', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
 const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:8000';
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
 const viKeywords = ['gia', 'pha', 'phả', 'dong', 'dòng', 'ho', 'họ', 'ong', 'ông', 'ba', 'bà', 'con', 'chau', 'cháu', 'nam', 'năm', 'sinh', 'mat', 'mất'];
@@ -177,6 +177,25 @@ const DocumentReaderPage = () => {
       return;
     }
 
+    if (/\.txt$/i.test(lowerName)) {
+      setPreviewType('text');
+      setIsParsing(true);
+
+      try {
+        const rawText = await file.text();
+        const normalizedText = rawText.replace(/\n{3,}/g, '\n\n').trim();
+        setDocumentText(normalizedText || t('docReader.msgEmptyDocx'));
+        setLanguageDetection(detectLanguage(normalizedText, file.name));
+        setStatusMessage(t('docReader.msgTxtSuccess'));
+      } catch (error) {
+        setErrorMessage(t('docReader.errTxtRead'));
+      } finally {
+        setIsParsing(false);
+      }
+
+      return;
+    }
+
     if (/\.docx$/i.test(lowerName)) {
       setPreviewType('docx');
       setIsParsing(true);
@@ -227,7 +246,7 @@ const DocumentReaderPage = () => {
   };
 
   const handleAnalyzeFamilyTree = async () => {
-    if (previewType !== 'docx' || !documentText.trim()) {
+    if ((previewType !== 'docx' && previewType !== 'text') || !documentText.trim()) {
       setAnalysisError(t('docReader.errNeedDocxToAnalyze'));
       return;
     }
@@ -277,8 +296,8 @@ const DocumentReaderPage = () => {
 
     return (
       <div key={node.id} className="flex flex-col items-center">
-        <Card size="small" className="min-w-[190px] max-w-[220px]" style={{ background: 'hsl(39, 50%, 96%)' }}>
-          <div className="font-semibold text-foreground text-sm truncate">{node.full_name || node.id}</div>
+        <Card size="small" className="w-[150px] sm:w-[170px] md:w-[190px]" style={{ background: 'hsl(39, 50%, 96%)' }}>
+          <div className="font-semibold text-foreground text-sm leading-5 break-words">{node.full_name || node.id}</div>
           <div className="text-xs text-muted-foreground mt-1">
             {node.birth_year ?? '?'} - {node.death_year ?? t('docReader.present')}
           </div>
@@ -307,10 +326,10 @@ const DocumentReaderPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <header
-        className="px-6 py-4 flex items-center justify-between border-b"
+        className="px-4 md:px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between border-b"
         style={{ borderColor: 'hsl(36, 30%, 80%)' }}
       >
-        <div className="flex items-center gap-4">
+        <div className="w-full md:w-auto flex items-start md:items-center gap-3 md:gap-4">
           <Button
             icon={<ArrowLeftOutlined />}
             type="text"
@@ -327,7 +346,7 @@ const DocumentReaderPage = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="w-full md:w-auto flex flex-wrap items-center gap-2 md:gap-3 md:justify-end">
           <Tag color="gold">{t('docReader.tagFormats')}</Tag>
           <Tag color="red">{t('docReader.tagDragDrop')}</Tag>
           <LanguageSwitcher />
@@ -335,7 +354,7 @@ const DocumentReaderPage = () => {
         </div>
       </header>
 
-      <section className="gold-gradient px-6 py-5">
+      <section className="gold-gradient px-4 md:px-6 py-5">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-parchment">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-parchment/80">{t('docReader.bannerLabel')}</p>
@@ -347,8 +366,8 @@ const DocumentReaderPage = () => {
         </div>
       </section>
 
-      <main className="px-6 py-8">
-        <div className="max-w-7xl mx-auto grid gap-6 lg:grid-cols-[380px_minmax(0,1fr)]">
+      <main className="px-4 md:px-6 py-8">
+        <div className="max-w-7xl mx-auto grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)] xl:grid-cols-[380px_minmax(0,1fr)]">
           <div className="space-y-6">
             <Card
               bordered={false}
@@ -410,7 +429,7 @@ const DocumentReaderPage = () => {
                   <Button
                     size="large"
                     loading={isAnalyzing}
-                    disabled={previewType !== 'docx' || !documentText.trim()}
+                    disabled={(previewType !== 'docx' && previewType !== 'text') || !documentText.trim()}
                     onClick={handleAnalyzeFamilyTree}
                   >
                     {t('docReader.btnAnalyzeTree')}
@@ -425,7 +444,7 @@ const DocumentReaderPage = () => {
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept=".doc,.docx,image/png,image/jpeg,image/webp"
+                  accept=".txt,text/plain,.doc,.docx,image/png,image/jpeg,image/webp"
                   className="hidden"
                   onChange={async (event) => {
                     if (event.target.files) {
@@ -561,7 +580,7 @@ const DocumentReaderPage = () => {
                 >
                   {(analysisResult.tree as AnalyzedTreeNode[]).length > 0 ? (
                     <div className="overflow-x-auto py-2">
-                      <div className="min-w-[900px] flex items-start justify-center gap-6">
+                      <div className="min-w-max flex items-start justify-center gap-4 sm:gap-6 px-2">
                         {(analysisResult.tree as AnalyzedTreeNode[]).map((rootNode) => renderAnalyzedTreeNode(rootNode))}
                       </div>
                     </div>
@@ -609,7 +628,7 @@ const DocumentReaderPage = () => {
                               className="mx-auto max-w-full rounded-xl shadow-lg"
                             />
                           </div>
-                        ) : previewType === 'docx' ? (
+                        ) : previewType === 'docx' || previewType === 'text' ? (
                           <div className="h-[620px] overflow-auto bg-[hsl(39,50%,96%)] px-8 py-6">
                             <article className="mx-auto max-w-4xl whitespace-pre-wrap text-[15px] leading-8 text-foreground">
                               {documentText}
@@ -643,6 +662,8 @@ const DocumentReaderPage = () => {
                               ? t('docReader.modeImage')
                               : previewType === 'docx'
                                 ? t('docReader.modeDocx')
+                                : previewType === 'text'
+                                  ? t('docReader.modeText')
                                 : t('docReader.modeUnsupported')}
                           </Descriptions.Item>
                           <Descriptions.Item label={t('docReader.fileInfoLanguage')}>
