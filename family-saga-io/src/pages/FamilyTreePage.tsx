@@ -1,18 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
+  Alert,
   Button,
   Card,
   Descriptions,
   Tag,
   Modal,
-  Breadcrumb,
   Form,
   Input,
   Select,
   InputNumber,
   Radio,
 } from 'antd';
-import { HomeOutlined, TeamOutlined, UserOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { UserOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { familyData, familyInfo, type FamilyMember } from '@/data/familyMockData';
 import FamilyTreeNode from '@/components/FamilyTreeNode';
@@ -21,16 +21,173 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
 
+type BackendPerson = {
+  id: string;
+  full_name: string;
+  gender?: string | null;
+  birth_year?: number | null;
+  death_year?: number | null;
+};
+
+type BackendRelationship = {
+  from_id: string;
+  to_id: string;
+  type: string;
+};
+
+type BackendAnalysisPayload = {
+  extraction?: {
+    people?: BackendPerson[];
+    relationships?: BackendRelationship[];
+  };
+};
+
+const inferGenderFromName = (name: string): 'male' | 'female' => {
+  return /\bThị\b/i.test(name) ? 'female' : 'male';
+};
+
+const normalizeGender = (gender: string | null | undefined, name: string): 'male' | 'female' => {
+  const raw = (gender ?? '').toLowerCase();
+  if (raw === 'f' || raw === 'female' || raw === 'nu' || raw === 'nữ') {
+    return 'female';
+  }
+  if (raw === 'm' || raw === 'male' || raw === 'nam') {
+    return 'male';
+  }
+  return inferGenderFromName(name);
+};
+
+const buildMembersFromBackend = (payload: BackendAnalysisPayload): { members: FamilyMember[]; info: typeof familyInfo } | null => {
+  const people = payload.extraction?.people ?? [];
+  const relationships = payload.extraction?.relationships ?? [];
+  if (people.length === 0) {
+    return null;
+  }
+
+  const personMap = new Map<string, BackendPerson>(people.map((p) => [p.id, p]));
+  const childrenMap = new Map<string, string[]>();
+  const parentMap = new Map<string, string>();
+  const spouseMap = new Map<string, string>();
+
+  relationships.forEach((r) => {
+    if (r.type === 'parent_of') {
+      if (!childrenMap.has(r.from_id)) {
+        childrenMap.set(r.from_id, []);
+      }
+      const siblings = childrenMap.get(r.from_id)!;
+      if (!siblings.includes(r.to_id)) {
+        siblings.push(r.to_id);
+      }
+      if (!parentMap.has(r.to_id)) {
+        parentMap.set(r.to_id, r.from_id);
+      }
+    }
+
+    if (r.type === 'spouse_of') {
+      if (!spouseMap.has(r.from_id)) {
+        spouseMap.set(r.from_id, r.to_id);
+      }
+      if (!spouseMap.has(r.to_id)) {
+        spouseMap.set(r.to_id, r.from_id);
+      }
+    }
+  });
+
+  const roots = people
+    .map((p) => p.id)
+    .filter((id) => !parentMap.has(id));
+
+  const generationMap = new Map<string, number>();
+  const queue: Array<{ id: string; gen: number }> = [];
+
+  roots.forEach((id) => {
+    generationMap.set(id, 1);
+    queue.push({ id, gen: 1 });
+  });
+
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    (childrenMap.get(current.id) ?? []).forEach((childId) => {
+      const nextGen = current.gen + 1;
+      if (!generationMap.has(childId) || nextGen < generationMap.get(childId)!) {
+        generationMap.set(childId, nextGen);
+        queue.push({ id: childId, gen: nextGen });
+      }
+    });
+  }
+
+  const members: FamilyMember[] = people.map((p) => {
+    const spouseId = spouseMap.get(p.id);
+    const spouseName = spouseId ? personMap.get(spouseId)?.full_name : undefined;
+    const birthYear = typeof p.birth_year === 'number' ? p.birth_year : 0;
+    const deathYear = typeof p.death_year === 'number' ? p.death_year : undefined;
+
+    return {
+      id: p.id,
+      name: p.full_name,
+      birthYear,
+      deathYear,
+      gender: normalizeGender(p.gender, p.full_name),
+      generation: generationMap.get(p.id) ?? 1,
+      spouseName,
+      children: childrenMap.get(p.id) ?? [],
+      parentId: parentMap.get(p.id),
+    };
+  });
+
+  const maxGeneration = Math.max(...members.map((m) => m.generation));
+  const knownBirthYears = members
+    .map((m) => m.birthYear)
+    .filter((y) => Number.isFinite(y) && y > 0);
+
+  const rootName = members.find((m) => !m.parentId)?.name ?? members[0].name;
+  const inferredSurname = rootName.split(' ')[0] || familyInfo.surname;
+
+  const info: typeof familyInfo = {
+    surname: inferredSurname,
+    origin: 'Từ dữ liệu phân tích tài liệu',
+    motto: 'Tự động dựng từ backend JSON',
+    totalGenerations: maxGeneration,
+    totalMembers: members.length,
+    established: knownBirthYears.length > 0 ? Math.min(...knownBirthYears) : familyInfo.established,
+  };
+
+  return { members, info };
+};
+
 const FamilyTreePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [members, setMembers] = useState<FamilyMember[]>(familyData);
+  const [runtimeInfo, setRuntimeInfo] = useState(familyInfo);
+  const [isUsingBackendData, setIsUsingBackendData] = useState(false);
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [editingMember, setEditingMember] = useState<FamilyMember | null>(null);
 
-  const root = members.find((m) => !m.parentId)!;
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('family-tree.analysis');
+      if (!raw) {
+        return;
+      }
+
+      const parsed = JSON.parse(raw) as BackendAnalysisPayload;
+      const built = buildMembersFromBackend(parsed);
+      if (!built) {
+        return;
+      }
+
+      setMembers(built.members);
+      setRuntimeInfo(built.info);
+      setIsUsingBackendData(true);
+    } catch {
+      // Keep mock data as fallback
+    }
+  }, []);
+
+  const root = members.find((m) => !m.parentId) ?? members[0];
 
   const getChildren = (parentId: string) =>
     members.filter((m) => m.parentId === parentId);
@@ -170,12 +327,12 @@ const FamilyTreePage = () => {
           </Button>
           <div className="section-divider w-px h-6 mx-2" style={{ width: 1, background: 'hsl(36, 30%, 80%)' }} />
           <h1 className="text-xl font-display font-bold text-foreground">
-            {t('familyTree.pageTitle', { surname: familyInfo.surname })}
+            {t('familyTree.pageTitle', { surname: runtimeInfo.surname })}
           </h1>
         </div>
         <div className="flex items-center gap-3">
           <Tag color="gold" style={{ fontFamily: 'var(--font-body)' }}>
-            {t('familyTree.generations', { count: familyInfo.totalGenerations })}
+            {t('familyTree.generations', { count: runtimeInfo.totalGenerations })}
           </Tag>
           <Tag
             style={{
@@ -184,7 +341,7 @@ const FamilyTreePage = () => {
               borderColor: 'hsl(0, 45%, 35%)',
             }}
           >
-            {t('familyTree.members', { count: familyInfo.totalMembers })}
+            {t('familyTree.members', { count: runtimeInfo.totalMembers })}
           </Tag>
           <LanguageSwitcher />
           <ThemeToggle />
@@ -198,19 +355,28 @@ const FamilyTreePage = () => {
       <div className="gold-gradient px-6 py-4">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-parchment text-sm font-body">{t('familyTree.origin', { origin: familyInfo.origin })}</p>
-            <p className="text-parchment/80 text-sm italic mt-1">"{familyInfo.motto}"</p>
+            <p className="text-parchment text-sm font-body">{t('familyTree.origin', { origin: runtimeInfo.origin })}</p>
+            <p className="text-parchment/80 text-sm italic mt-1">"{runtimeInfo.motto}"</p>
           </div>
           <div className="text-parchment text-sm">
-            {t('familyTree.established', { year: familyInfo.established })}
+            {t('familyTree.established', { year: runtimeInfo.established })}
           </div>
         </div>
       </div>
 
       {/* Tree View */}
       <div className="p-6 overflow-x-auto">
+        {isUsingBackendData && (
+          <Alert
+            type="success"
+            showIcon
+            message="Đang hiển thị dữ liệu từ backend JSON"
+            description="Dữ liệu được nạp từ kết quả phân tích ở trang Document Reader."
+            className="mb-6"
+          />
+        )}
         <div className="min-w-[800px] flex justify-center py-8">
-          {renderTree(root)}
+          {root ? renderTree(root) : null}
         </div>
       </div>
 

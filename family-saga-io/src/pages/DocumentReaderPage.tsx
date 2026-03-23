@@ -7,7 +7,7 @@ import {
   InboxOutlined,
   ReloadOutlined,
 } from '@ant-design/icons';
-import { Alert, Button, Card, Descriptions, Empty, Spin, Tabs, Tag, Typography } from 'antd';
+import { Alert, Button, Card, Descriptions, Empty, Modal, Spin, Tabs, Tag, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -19,6 +19,25 @@ type MammothModule = typeof import('mammoth/mammoth.browser');
 type DetectedLanguageCode = 'vi' | 'en' | 'unknown';
 type DetectionMethod = 'text-heuristic' | 'filename-heuristic' | 'unavailable';
 
+type FamilyAnalyzeResponse = {
+  source: string;
+  metadata: Record<string, unknown>;
+  people_count: number;
+  relationship_count: number;
+  warnings: string[];
+  extraction: Record<string, unknown>;
+  tree_architecture: Record<string, unknown>;
+  tree: Array<Record<string, unknown>>;
+};
+
+type AnalyzedTreeNode = {
+  id: string;
+  full_name?: string;
+  birth_year?: number | null;
+  death_year?: number | null;
+  children?: AnalyzedTreeNode[];
+};
+
 type LanguageDetection = {
   code: DetectedLanguageCode;
   confidence: number;
@@ -26,6 +45,7 @@ type LanguageDetection = {
 };
 
 const supportedFormats = ['.docx', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
+const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:8000';
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
 const viKeywords = ['gia', 'pha', 'phả', 'dong', 'dòng', 'ho', 'họ', 'ong', 'ông', 'ba', 'bà', 'con', 'chau', 'cháu', 'nam', 'năm', 'sinh', 'mat', 'mất'];
 const enKeywords = ['family', 'tree', 'lineage', 'ancestor', 'generation', 'born', 'died', 'child', 'children', 'name', 'year', 'father', 'mother'];
@@ -98,6 +118,10 @@ const DocumentReaderPage = () => {
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [languageDetection, setLanguageDetection] = useState<LanguageDetection | null>(null);
+  const [analysisResult, setAnalysisResult] = useState<FamilyAnalyzeResponse | null>(null);
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isResultModalOpen, setIsResultModalOpen] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -120,6 +144,10 @@ const DocumentReaderPage = () => {
     setErrorMessage(null);
     setIsParsing(false);
     setLanguageDetection(null);
+    setAnalysisResult(null);
+    setAnalysisError(null);
+    setIsAnalyzing(false);
+    setIsResultModalOpen(false);
   };
 
   const loadFile = async (file: File) => {
@@ -134,6 +162,10 @@ const DocumentReaderPage = () => {
     setImageUrl(null);
     setIsParsing(false);
     setLanguageDetection(null);
+    setAnalysisResult(null);
+    setAnalysisError(null);
+    setIsAnalyzing(false);
+    setIsResultModalOpen(false);
 
     const lowerName = file.name.toLowerCase();
 
@@ -192,6 +224,84 @@ const DocumentReaderPage = () => {
     event.preventDefault();
     setIsDragging(false);
     await handleSelectedFiles(event.dataTransfer.files);
+  };
+
+  const handleAnalyzeFamilyTree = async () => {
+    if (previewType !== 'docx' || !documentText.trim()) {
+      setAnalysisError(t('docReader.errNeedDocxToAnalyze'));
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setAnalysisError(null);
+
+    try {
+      const response = await fetch(`${backendBaseUrl}/api/family-tree/analyze`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: documentText,
+          source: 'document-reader',
+          metadata: {
+            fileName: activeFile?.name,
+            language: languageDetection?.code ?? 'unknown',
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const payload = (await response.json()) as FamilyAnalyzeResponse;
+      setAnalysisResult(payload);
+      setIsResultModalOpen(true);
+      localStorage.setItem('family-tree.analysis', JSON.stringify(payload));
+      setStatusMessage(
+        t('docReader.msgAnalyzeSuccess', {
+          members: payload.people_count,
+          relations: payload.relationship_count,
+        }),
+      );
+    } catch (error) {
+      setAnalysisError(t('docReader.errBackendUnavailable'));
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  const renderAnalyzedTreeNode = (node: AnalyzedTreeNode): React.ReactNode => {
+    const children = node.children ?? [];
+
+    return (
+      <div key={node.id} className="flex flex-col items-center">
+        <Card size="small" className="min-w-[190px] max-w-[220px]" style={{ background: 'hsl(39, 50%, 96%)' }}>
+          <div className="font-semibold text-foreground text-sm truncate">{node.full_name || node.id}</div>
+          <div className="text-xs text-muted-foreground mt-1">
+            {node.birth_year ?? '?'} - {node.death_year ?? t('docReader.present')}
+          </div>
+        </Card>
+
+        {children.length > 0 && (
+          <>
+            <div className="tree-connector-v h-5" />
+            <div className="flex items-start gap-3 relative mt-1">
+              {children.length > 1 && (
+                <div className="tree-connector-h absolute top-0 left-10 right-10" />
+              )}
+              {children.map((child) => (
+                <div key={child.id} className="flex flex-col items-center">
+                  <div className="tree-connector-v h-5" />
+                  {renderAnalyzedTreeNode(child)}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -297,6 +407,19 @@ const DocumentReaderPage = () => {
                   <Button icon={<ReloadOutlined />} size="large" onClick={resetPreview}>
                     {t('docReader.btnReset')}
                   </Button>
+                  <Button
+                    size="large"
+                    loading={isAnalyzing}
+                    disabled={previewType !== 'docx' || !documentText.trim()}
+                    onClick={handleAnalyzeFamilyTree}
+                  >
+                    {t('docReader.btnAnalyzeTree')}
+                  </Button>
+                  {analysisResult && (
+                    <Button size="large" onClick={() => setIsResultModalOpen(true)}>
+                      {t('docReader.btnOpenAnalysisPopup')}
+                    </Button>
+                  )}
                 </div>
 
                 <input
@@ -380,6 +503,73 @@ const DocumentReaderPage = () => {
                 description={errorMessage}
                 style={{ marginBottom: 16 }}
               />
+            )}
+
+            {analysisError && (
+              <Alert
+                showIcon
+                type="error"
+                message={t('docReader.analysisFailedTitle')}
+                description={analysisError}
+                style={{ marginBottom: 16 }}
+              />
+            )}
+
+            {analysisResult && (
+              <Card
+                bordered={false}
+                className="mb-4"
+                title={t('docReader.analysisInlineTitle')}
+                style={{ background: 'hsl(39, 40%, 93%)' }}
+              >
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <Tag color="processing">{t('docReader.analysisPeople', { count: analysisResult.people_count })}</Tag>
+                  <Tag color="magenta">{t('docReader.analysisRelationships', { count: analysisResult.relationship_count })}</Tag>
+                  <Tag>
+                    {t('docReader.analysisRoots', {
+                      count: Array.isArray((analysisResult.tree_architecture as { roots?: unknown[] }).roots)
+                        ? ((analysisResult.tree_architecture as { roots?: unknown[] }).roots?.length ?? 0)
+                        : 0,
+                    })}
+                  </Tag>
+                </div>
+
+                {analysisResult.warnings.length > 0 && (
+                  <Alert
+                    type="warning"
+                    showIcon
+                    message={t('docReader.analysisWarnings')}
+                    description={analysisResult.warnings.join(' | ')}
+                    style={{ marginBottom: 12 }}
+                  />
+                )}
+
+                <div className="flex flex-wrap gap-2">
+                  <Button onClick={() => setIsResultModalOpen(true)}>
+                    {t('docReader.btnOpenAnalysisPopup')}
+                  </Button>
+                  <Button type="primary" onClick={() => navigate('/family-tree')}>
+                    {t('docReader.btnOpenTreePage')}
+                  </Button>
+                </div>
+
+                <Card
+                  size="small"
+                  className="mt-4"
+                  title={t('docReader.inlineTreeTitle')}
+                  style={{ background: 'hsl(39, 50%, 96%)' }}
+                >
+                  {(analysisResult.tree as AnalyzedTreeNode[]).length > 0 ? (
+                    <div className="overflow-x-auto py-2">
+                      <div className="min-w-[900px] flex items-start justify-center gap-6">
+                        {(analysisResult.tree as AnalyzedTreeNode[]).map((rootNode) => renderAnalyzedTreeNode(rootNode))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Empty description={t('docReader.inlineTreeEmpty')} />
+                  )}
+                </Card>
+              </Card>
             )}
 
             {isParsing ? (
@@ -487,6 +677,45 @@ const DocumentReaderPage = () => {
                             </p>
                           </Card>
                         </div>
+
+                        {analysisResult && (
+                          <Card
+                            size="small"
+                            className="mt-6"
+                            title={t('docReader.analysisTitle')}
+                            style={{ background: 'hsl(39, 40%, 93%)' }}
+                          >
+                            <div className="flex flex-wrap gap-2 mb-3">
+                              <Tag color="processing">
+                                {t('docReader.analysisPeople', { count: analysisResult.people_count })}
+                              </Tag>
+                              <Tag color="magenta">
+                                {t('docReader.analysisRelationships', { count: analysisResult.relationship_count })}
+                              </Tag>
+                              <Tag>
+                                {t('docReader.analysisRoots', {
+                                  count: Array.isArray((analysisResult.tree_architecture as { roots?: unknown[] }).roots)
+                                    ? ((analysisResult.tree_architecture as { roots?: unknown[] }).roots?.length ?? 0)
+                                    : 0,
+                                })}
+                              </Tag>
+                            </div>
+
+                            {analysisResult.warnings.length > 0 && (
+                              <Alert
+                                type="warning"
+                                showIcon
+                                message={t('docReader.analysisWarnings')}
+                                description={analysisResult.warnings.join(' | ')}
+                                style={{ marginBottom: 12 }}
+                              />
+                            )}
+
+                            <pre className="max-h-64 overflow-auto rounded bg-black/5 p-3 text-xs leading-5 text-foreground">
+                              {JSON.stringify(analysisResult.tree_architecture, null, 2)}
+                            </pre>
+                          </Card>
+                        )}
                       </Card>
                     ) : null,
                   },
@@ -496,6 +725,41 @@ const DocumentReaderPage = () => {
           </Card>
         </div>
       </main>
+
+      <Modal
+        open={isResultModalOpen}
+        onCancel={() => setIsResultModalOpen(false)}
+        footer={[
+          <Button key="close" onClick={() => setIsResultModalOpen(false)}>
+            {t('familyTree.close')}
+          </Button>,
+          <Button key="open-tree" type="primary" onClick={() => navigate('/family-tree')}>
+            {t('docReader.btnOpenTreePage')}
+          </Button>,
+        ]}
+        title={t('docReader.analysisPopupTitle')}
+        width={860}
+      >
+        {analysisResult && (
+          <>
+            <div className="flex flex-wrap gap-2 mb-3">
+              <Tag color="processing">{t('docReader.analysisPeople', { count: analysisResult.people_count })}</Tag>
+              <Tag color="magenta">{t('docReader.analysisRelationships', { count: analysisResult.relationship_count })}</Tag>
+              <Tag>
+                {t('docReader.analysisRoots', {
+                  count: Array.isArray((analysisResult.tree_architecture as { roots?: unknown[] }).roots)
+                    ? ((analysisResult.tree_architecture as { roots?: unknown[] }).roots?.length ?? 0)
+                    : 0,
+                })}
+              </Tag>
+            </div>
+
+            <pre className="max-h-[420px] overflow-auto rounded bg-black/5 p-3 text-xs leading-5 text-foreground">
+              {JSON.stringify(analysisResult.tree_architecture, null, 2)}
+            </pre>
+          </>
+        )}
+      </Modal>
     </div>
   );
 };
