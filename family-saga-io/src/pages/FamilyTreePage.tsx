@@ -17,9 +17,12 @@ import { useNavigate } from 'react-router-dom';
 import { familyData, familyInfo, type FamilyMember } from '@/data/familyMockData';
 import FamilyTreeNode from '@/components/FamilyTreeNode';
 import * as XLSX from 'xlsx';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const FamilyTreePage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [members, setMembers] = useState<FamilyMember[]>(familyData);
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
@@ -162,16 +165,16 @@ const FamilyTreePage = () => {
             onClick={() => navigate('/')}
             style={{ color: 'hsl(36, 70%, 42%)' }}
           >
-            Trang chủ
+            {t('common.backHome')}
           </Button>
           <div className="section-divider w-px h-6 mx-2" style={{ width: 1, background: 'hsl(36, 30%, 80%)' }} />
           <h1 className="text-xl font-display font-bold text-foreground">
-            Gia Phả Họ {familyInfo.surname}
+            {t('familyTree.pageTitle', { surname: familyInfo.surname })}
           </h1>
         </div>
         <div className="flex items-center gap-3">
           <Tag color="gold" style={{ fontFamily: 'var(--font-body)' }}>
-            {familyInfo.totalGenerations} đời
+            {t('familyTree.generations', { count: familyInfo.totalGenerations })}
           </Tag>
           <Tag
             style={{
@@ -180,10 +183,11 @@ const FamilyTreePage = () => {
               borderColor: 'hsl(0, 45%, 35%)',
             }}
           >
-            {familyInfo.totalMembers} thành viên
+            {t('familyTree.members', { count: familyInfo.totalMembers })}
           </Tag>
+          <LanguageSwitcher />
           <Button type="primary" onClick={handleExportExcel}>
-            Xuất Excel
+            {t('familyTree.exportExcel')}
           </Button>
         </div>
       </header>
@@ -192,11 +196,11 @@ const FamilyTreePage = () => {
       <div className="gold-gradient px-6 py-4">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-parchment text-sm font-body">Quê quán: {familyInfo.origin}</p>
+            <p className="text-parchment text-sm font-body">{t('familyTree.origin', { origin: familyInfo.origin })}</p>
             <p className="text-parchment/80 text-sm italic mt-1">"{familyInfo.motto}"</p>
           </div>
           <div className="text-parchment text-sm">
-            Thành lập: {familyInfo.established}
+            {t('familyTree.established', { year: familyInfo.established })}
           </div>
         </div>
       </div>
@@ -214,7 +218,7 @@ const FamilyTreePage = () => {
         onCancel={() => setDetailOpen(false)}
         footer={[
           <Button key="close" onClick={() => setDetailOpen(false)}>
-            Đóng
+            {t('familyTree.close')}
           </Button>,
           selectedMember && (
             <Button
@@ -225,14 +229,14 @@ const FamilyTreePage = () => {
                 setEditOpen(true);
               }}
             >
-              Sửa thông tin / quan hệ
+              {t('familyTree.editMember')}
             </Button>
           ),
         ]}
         title={
           <span className="font-display text-lg">
             <UserOutlined className="mr-2" />
-            Thông tin thành viên
+            {t('familyTree.modalDetailTitle')}
           </span>
         }
         width={500}
@@ -258,19 +262,19 @@ const FamilyTreePage = () => {
             </div>
 
             <Descriptions column={1} bordered size="small">
-              <Descriptions.Item label="Năm sinh">{selectedMember.birthYear}</Descriptions.Item>
+              <Descriptions.Item label={t('familyTree.birthYear')}>{selectedMember.birthYear}</Descriptions.Item>
               {selectedMember.deathYear && (
-                <Descriptions.Item label="Năm mất">{selectedMember.deathYear}</Descriptions.Item>
+                <Descriptions.Item label={t('familyTree.deathYear')}>{selectedMember.deathYear}</Descriptions.Item>
               )}
-              <Descriptions.Item label="Giới tính">
-                {selectedMember.gender === 'male' ? 'Nam' : 'Nữ'}
+              <Descriptions.Item label={t('familyTree.gender')}>
+                {selectedMember.gender === 'male' ? t('familyTree.male') : t('familyTree.female')}
               </Descriptions.Item>
-              <Descriptions.Item label="Đời thứ">{selectedMember.generation}</Descriptions.Item>
+              <Descriptions.Item label={t('familyTree.generation')}>{selectedMember.generation}</Descriptions.Item>
               {selectedMember.spouseName && (
-                <Descriptions.Item label="Vợ/Chồng">{selectedMember.spouseName}</Descriptions.Item>
+                <Descriptions.Item label={t('familyTree.spouse')}>{selectedMember.spouseName}</Descriptions.Item>
               )}
               {selectedMember.children && (
-                <Descriptions.Item label="Số con">{selectedMember.children.length}</Descriptions.Item>
+                <Descriptions.Item label={t('familyTree.numChildren')}>{selectedMember.children.length}</Descriptions.Item>
               )}
             </Descriptions>
 
@@ -294,7 +298,7 @@ const FamilyTreePage = () => {
         title={
           <span className="font-display text-lg">
             <UserOutlined className="mr-2" />
-            Sửa thông tin / quan hệ
+            {t('familyTree.modalEditTitle')}
           </span>
         }
         width={600}
@@ -317,63 +321,63 @@ const FamilyTreePage = () => {
             onFinish={handleEditSubmit}
           >
             <Form.Item
-              label="Họ và tên"
+              label={t('familyTree.fullName')}
               name="name"
-              rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}
+              rules={[{ required: true, message: t('familyTree.validationName') }]}
             >
               <Input />
             </Form.Item>
 
             <div className="grid grid-cols-2 gap-4">
               <Form.Item
-                label="Năm sinh"
+                label={t('familyTree.birthYear')}
                 name="birthYear"
-                rules={[{ required: true, message: 'Vui lòng nhập năm sinh' }]}
+                rules={[{ required: true, message: t('familyTree.validationBirthYear') }]}
               >
                 <InputNumber className="w-full" />
               </Form.Item>
 
-              <Form.Item label="Năm mất" name="deathYear">
+              <Form.Item label={t('familyTree.deathYear')} name="deathYear">
                 <InputNumber className="w-full" />
               </Form.Item>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <Form.Item
-                label="Giới tính"
+                label={t('familyTree.gender')}
                 name="gender"
-                rules={[{ required: true, message: 'Vui lòng chọn giới tính' }]}
+                rules={[{ required: true, message: t('familyTree.validationGender') }]}
               >
                 <Radio.Group>
-                  <Radio value="male">Nam</Radio>
-                  <Radio value="female">Nữ</Radio>
+                  <Radio value="male">{t('familyTree.male')}</Radio>
+                  <Radio value="female">{t('familyTree.female')}</Radio>
                 </Radio.Group>
               </Form.Item>
 
-              <Form.Item label="Đời thứ" name="generation">
+              <Form.Item label={t('familyTree.generation')} name="generation">
                 <InputNumber className="w-full" />
               </Form.Item>
             </div>
 
-            <Form.Item label="Vợ / Chồng" name="spouseName">
+            <Form.Item label={t('familyTree.spouseLabel')} name="spouseName">
               <Input />
             </Form.Item>
 
-            <Form.Item label="Danh xưng / chức vụ" name="title">
+            <Form.Item label={t('familyTree.titleField')} name="title">
               <Input />
             </Form.Item>
 
-            <Form.Item label="Tiểu sử" name="bio">
+            <Form.Item label={t('familyTree.bio')} name="bio">
               <Input.TextArea rows={3} />
             </Form.Item>
 
-            <Form.Item label="Cha / mẹ" name="parentId">
-              <Select allowClear placeholder="Chọn cha / mẹ">
+            <Form.Item label={t('familyTree.parent')} name="parentId">
+              <Select allowClear placeholder={t('familyTree.selectParent')}>
                 {members
                   .filter((m) => m.id !== editingMember.id)
                   .map((m) => (
                     <Select.Option key={m.id} value={m.id}>
-                      {m.name} (đời {m.generation})
+                      {t('familyTree.parentLabel', { name: m.name, gen: m.generation })}
                     </Select.Option>
                   ))}
               </Select>
@@ -386,10 +390,10 @@ const FamilyTreePage = () => {
                   setEditingMember(null);
                 }}
               >
-                Hủy
+                {t('familyTree.cancel')}
               </Button>
               <Button type="primary" htmlType="submit">
-                Lưu thay đổi
+                {t('familyTree.save')}
               </Button>
             </div>
           </Form>

@@ -2,37 +2,40 @@ import { Button, Card } from 'antd';
 import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import heroBg from '@/assets/hero-bg.jpg';
-
-const features = [
-  {
-    icon: <BranchesOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
-    title: 'Cây gia phả trực quan',
-    desc: 'Hiển thị mối quan hệ huyết thống qua nhiều thế hệ với giao diện đẹp mắt, dễ hiểu.',
-  },
-  {
-    icon: <TeamOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
-    title: 'Quản lý thành viên',
-    desc: 'Thêm, sửa thông tin từng thành viên trong gia đình với đầy đủ tiểu sử.',
-  },
-  {
-    icon: <BookOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
-    title: 'Lưu trữ lịch sử',
-    desc: 'Ghi chép và bảo tồn những câu chuyện, sự kiện quan trọng của dòng họ.',
-  },
-  {
-    icon: <InboxOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
-    title: 'Đọc tư liệu gốc',
-    desc: 'Kéo thả file Word hoặc ảnh scan để xem nhanh nội dung gia phả trước khi xử lý.',
-  },
-  {
-    icon: <SafetyOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
-    title: 'Bảo mật & Chia sẻ',
-    desc: 'Dữ liệu được bảo mật an toàn, dễ dàng chia sẻ với các thành viên trong gia đình.',
-  },
-];
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: <BranchesOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
+      title: t('home.f1Title'),
+      desc: t('home.f1Desc'),
+    },
+    {
+      icon: <TeamOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
+      title: t('home.f2Title'),
+      desc: t('home.f2Desc'),
+    },
+    {
+      icon: <BookOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
+      title: t('home.f3Title'),
+      desc: t('home.f3Desc'),
+    },
+    {
+      icon: <InboxOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
+      title: t('home.f4Title'),
+      desc: t('home.f4Desc'),
+    },
+    {
+      icon: <SafetyOutlined className="text-3xl" style={{ color: 'hsl(36, 70%, 42%)' }} />,
+      title: t('home.f5Title'),
+      desc: t('home.f5Desc'),
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -42,10 +45,10 @@ const HomePage = () => {
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center max-w-3xl px-6">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-parchment mb-6 leading-tight">
-            Gia Phả Việt
+            {t('home.heroTitle')}
           </h1>
           <p className="text-xl md:text-2xl text-gold-light font-body mb-8">
-            Gìn giữ và tôn vinh truyền thống dòng họ — Kết nối quá khứ, hiện tại và tương lai
+            {t('home.heroSubtitle')}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button
@@ -61,7 +64,7 @@ const HomePage = () => {
                 paddingInline: 32,
               }}
             >
-              Xem Gia Phả Mẫu
+                {t('home.btnViewSample')}
             </Button>
             <Button
               size="large"
@@ -76,7 +79,7 @@ const HomePage = () => {
                 paddingInline: 32,
               }}
             >
-              Mở Tài Liệu Gốc
+                {t('home.btnOpenDoc')}
             </Button>
           </div>
         </div>
@@ -89,10 +92,10 @@ const HomePage = () => {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-foreground mb-4">
-            Tính Năng Nổi Bật
+            {t('home.featuresTitle')}
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto text-lg">
-            Công cụ hiện đại giúp bạn xây dựng và lưu giữ gia phả dòng họ một cách dễ dàng
+            {t('home.featuresSubtitle')}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {features.map((f, i) => (
@@ -119,10 +122,10 @@ const HomePage = () => {
       <section className="gold-gradient py-16 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { num: '10,000+', label: 'Gia phả đã tạo' },
-            { num: '150,000+', label: 'Thành viên' },
-            { num: '500+', label: 'Dòng họ' },
-            { num: '99.9%', label: 'Uptime' },
+            { num: '10,000+', label: t('home.stat1') },
+            { num: '150,000+', label: t('home.stat2') },
+            { num: '500+', label: t('home.stat3') },
+            { num: '99.9%', label: t('home.stat4') },
           ].map((s, i) => (
             <div key={i}>
               <div className="text-3xl md:text-4xl font-display font-bold text-parchment">{s.num}</div>
@@ -135,10 +138,10 @@ const HomePage = () => {
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-          Bắt Đầu Xây Dựng Gia Phả
+          {t('home.ctaTitle')}
         </h2>
         <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-          Chỉ vài bước đơn giản, bạn đã có thể tạo cây gia phả hoàn chỉnh cho dòng họ mình.
+          {t('home.ctaSubtitle')}
         </p>
         <Button
           type="primary"
@@ -153,15 +156,16 @@ const HomePage = () => {
             paddingInline: 40,
           }}
         >
-          Tải Tư Liệu Để Đọc
+          {t('home.ctaBtn')}
         </Button>
       </section>
 
       {/* Footer */}
       <footer className="bg-wood py-8 px-6 text-center">
-        <p className="text-parchment/70 text-sm">
-          © 2026 Gia Phả Việt — Gìn giữ truyền thống, kết nối thế hệ
-        </p>
+        <div className="flex items-center justify-center gap-4">
+          <p className="text-parchment/70 text-sm">{t('home.footer')}</p>
+          <LanguageSwitcher />
+        </div>
       </footer>
     </div>
   );

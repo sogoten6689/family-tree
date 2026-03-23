@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Lora:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -42,8 +42,8 @@
     --parchment: 39 50% 96%;
     --wood: 20 40% 25%;
 
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Lora', serif;
+    --font-display: 'Roboto', sans-serif;
+    --font-body: 'Roboto', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -63,11 +63,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-body);
+    font-family: 'Roboto', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
   }
 }
 

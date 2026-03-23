@@ -9,6 +9,8 @@ import {
 } from '@ant-design/icons';
 import { Alert, Button, Card, Descriptions, Empty, Spin, Tabs, Tag, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 type PreviewType = 'image' | 'docx' | 'unsupported' | null;
 
@@ -18,6 +20,7 @@ const supportedFormats = ['.docx', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
 
 const DocumentReaderPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [isDragging, setIsDragging] = useState(false);
@@ -68,7 +71,7 @@ const DocumentReaderPage = () => {
     if (file.type.startsWith('image/') || /\.(png|jpe?g|webp)$/i.test(lowerName)) {
       setPreviewType('image');
       setImageUrl(URL.createObjectURL(file));
-      setStatusMessage('Da tai anh len thanh cong. Ban co the phong to va doi chieu noi dung gia pha truc tiep.');
+      setStatusMessage(t('docReader.msgImageSuccess'));
       return;
     }
 
@@ -82,10 +85,10 @@ const DocumentReaderPage = () => {
         const result = await mammothModule.extractRawText({ arrayBuffer });
         const normalizedText = result.value.replace(/\n{3,}/g, '\n\n').trim();
 
-        setDocumentText(normalizedText || 'Khong trich xuat duoc noi dung van ban tu tep nay.');
-        setStatusMessage('Da doc noi dung Word va chuyen sang che do doc van ban thuan de ban ra soat thong tin.');
+        setDocumentText(normalizedText || t('docReader.msgEmptyDocx'));
+        setStatusMessage(t('docReader.msgDocxSuccess'));
       } catch (error) {
-        setErrorMessage('Khong the doc tep Word nay. Hay thu tep .docx khac hoac chuyen sang anh scan.');
+        setErrorMessage(t('docReader.errDocxParse'));
       } finally {
         setIsParsing(false);
       }
@@ -95,12 +98,12 @@ const DocumentReaderPage = () => {
 
     if (/\.doc$/i.test(lowerName)) {
       setPreviewType('unsupported');
-      setErrorMessage('Tep .doc cu chua duoc trich xuat truc tiep tren trinh duyet. Hay chuyen sang .docx de doc noi dung.');
+      setErrorMessage(t('docReader.errDocOld'));
       return;
     }
 
     setPreviewType('unsupported');
-    setErrorMessage('Dinh dang chua duoc ho tro. Hay dung tep Word .docx hoac anh scan.');
+    setErrorMessage(t('docReader.errUnsupported'));
   };
 
   const handleSelectedFiles = async (files: FileList | File[]) => {
@@ -131,30 +134,31 @@ const DocumentReaderPage = () => {
             onClick={() => navigate('/')}
             style={{ color: 'hsl(36, 70%, 42%)' }}
           >
-            Trang chu
+            {t('common.backHome')}
           </Button>
           <div className="section-divider w-px h-6 mx-2" style={{ width: 1, background: 'hsl(36, 30%, 80%)' }} />
           <div>
-            <h1 className="text-2xl font-display font-bold text-foreground">Phong doc tu lieu gia pha</h1>
+            <h1 className="text-2xl font-display font-bold text-foreground">{t('docReader.pageTitle')}</h1>
             <p className="text-sm text-muted-foreground mt-1">
-              Keo tha tep Word hoac anh scan de doc tu lieu goc truoc khi trich xuat cay gia pha.
+              {t('docReader.pageSubtitle')}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <Tag color="gold">Word va anh</Tag>
-          <Tag color="red">Ho tro keo tha</Tag>
+          <Tag color="gold">{t('docReader.tagFormats')}</Tag>
+          <Tag color="red">{t('docReader.tagDragDrop')}</Tag>
+          <LanguageSwitcher />
         </div>
       </header>
 
       <section className="gold-gradient px-6 py-5">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-parchment">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-parchment/80">Khoi tiep nhan tai lieu</p>
-            <h2 className="text-3xl font-display font-bold mt-2">Doc nhanh van ban phien am va anh scan gia pha</h2>
+            <p className="text-sm uppercase tracking-[0.3em] text-parchment/80">{t('docReader.bannerLabel')}</p>
+            <h2 className="text-3xl font-display font-bold mt-2">{t('docReader.bannerTitle')}</h2>
           </div>
           <div className="max-w-xl text-sm text-parchment/90 leading-6">
-            Giao dien nay phu hop cho giai doan soat tai lieu: xem anh, doc noi dung Word, doi chieu du lieu truoc khi dua vao quy trinh phan tich.
+            {t('docReader.bannerDesc')}
           </div>
         </div>
       </section>
@@ -198,10 +202,10 @@ const DocumentReaderPage = () => {
                 </div>
 
                 <Typography.Title level={4} style={{ marginBottom: 8, fontFamily: 'var(--font-display)' }}>
-                  Tha tep vao day
+                  {t('docReader.dropTitle')}
                 </Typography.Title>
                 <Typography.Paragraph style={{ color: 'hsl(20, 15%, 45%)', marginBottom: 20 }}>
-                  Ho tro xem anh scan va doc noi dung Word phuc vu nghien cuu gia pha Hán Nôm.
+                  {t('docReader.dropDesc')}
                 </Typography.Paragraph>
 
                 <div className="flex flex-wrap justify-center gap-2 mb-6">
@@ -214,10 +218,10 @@ const DocumentReaderPage = () => {
 
                 <div className="flex justify-center gap-3 flex-wrap">
                   <Button type="primary" size="large" onClick={() => fileInputRef.current?.click()}>
-                    Chon tep de doc
+                    {t('docReader.btnChooseFile')}
                   </Button>
                   <Button icon={<ReloadOutlined />} size="large" onClick={resetPreview}>
-                    Lam moi
+                    {t('docReader.btnReset')}
                   </Button>
                 </div>
 
@@ -238,12 +242,12 @@ const DocumentReaderPage = () => {
 
             <Card bordered={false} style={{ background: 'hsl(39, 40%, 93%)' }}>
               <Typography.Title level={4} style={{ fontFamily: 'var(--font-display)', marginBottom: 16 }}>
-                Luong su dung de xuat
+                {t('docReader.workflowTitle')}
               </Typography.Title>
               <div className="space-y-3 text-sm text-muted-foreground leading-6">
-                <p>1. Tha anh scan gia pha neu ban muon doi chieu truc tiep voi ban goc.</p>
-                <p>2. Tha tep .docx neu ban da co ban phien am hoac da danh may.</p>
-                <p>3. Ra soat noi dung, sau do chuyen sang buoc trich xuat thong tin thanh vien va quan he.</p>
+                <p>{t('docReader.step1')}</p>
+                <p>{t('docReader.step2')}</p>
+                <p>{t('docReader.step3')}</p>
               </div>
             </Card>
           </div>
@@ -256,10 +260,10 @@ const DocumentReaderPage = () => {
             <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
               <div>
                 <Typography.Title level={3} style={{ marginBottom: 4, fontFamily: 'var(--font-display)' }}>
-                  Khu vuc doc tai lieu
+                  {t('docReader.previewAreaTitle')}
                 </Typography.Title>
                 <Typography.Text type="secondary">
-                  Xem truoc tep goc va lay noi dung de phan tich gia pha.
+                  {t('docReader.previewAreaSubtitle')}
                 </Typography.Text>
               </div>
 
@@ -274,7 +278,7 @@ const DocumentReaderPage = () => {
               <Alert
                 showIcon
                 type="success"
-                message="Tai lieu da duoc nap"
+                message={t('docReader.successTitle')}
                 description={statusMessage}
                 style={{ marginBottom: 16 }}
               />
@@ -284,7 +288,7 @@ const DocumentReaderPage = () => {
               <Alert
                 showIcon
                 type="warning"
-                message="Can luu y"
+                message={t('docReader.warningTitle')}
                 description={errorMessage}
                 style={{ marginBottom: 16 }}
               />
@@ -295,7 +299,7 @@ const DocumentReaderPage = () => {
                 <div className="text-center">
                   <Spin size="large" />
                   <Typography.Paragraph style={{ marginTop: 16, marginBottom: 0, color: 'hsl(20, 15%, 45%)' }}>
-                    Dang doc va trich xuat noi dung Word...
+                    {t('docReader.parsing')}
                   </Typography.Paragraph>
                 </div>
               </div>
@@ -303,7 +307,7 @@ const DocumentReaderPage = () => {
               <div className="h-[520px] flex items-center justify-center rounded-2xl border border-dashed" style={{ borderColor: 'hsl(36, 30%, 80%)', background: 'hsl(39, 50%, 96%)' }}>
                 <Empty
                   image={Empty.PRESENTED_IMAGE_SIMPLE}
-                  description="Chua co tai lieu nao duoc mo"
+                  description={t('docReader.noDocument')}
                 />
               </div>
             ) : (
@@ -314,7 +318,7 @@ const DocumentReaderPage = () => {
                     key: 'preview',
                     label: (
                       <span>
-                        <EyeOutlined /> Xem truoc
+                        <EyeOutlined /> {t('docReader.tabPreview')}
                       </span>
                     ),
                     children: (
@@ -335,7 +339,7 @@ const DocumentReaderPage = () => {
                           </div>
                         ) : (
                           <div className="h-[520px] flex items-center justify-center bg-[hsl(39,50%,96%)]">
-                            <Empty description="Khong co xem truoc cho dinh dang nay" />
+                            <Empty description={t('docReader.noPreview')} />
                           </div>
                         )}
                       </div>
@@ -345,23 +349,23 @@ const DocumentReaderPage = () => {
                     key: 'info',
                     label: (
                       <span>
-                        <FileTextOutlined /> Thong tin tep
+                        <FileTextOutlined /> {t('docReader.tabInfo')}
                       </span>
                     ),
                     children: activeFile ? (
                       <Card bordered={false} style={{ background: 'hsl(39, 50%, 96%)' }}>
                         <Descriptions column={1} bordered size="middle">
-                          <Descriptions.Item label="Ten tep">{activeFile.name}</Descriptions.Item>
-                          <Descriptions.Item label="Loai tep">{activeFile.type || 'Khong xac dinh'}</Descriptions.Item>
-                          <Descriptions.Item label="Dung luong">
+                          <Descriptions.Item label={t('docReader.fileInfoName')}>{activeFile.name}</Descriptions.Item>
+                          <Descriptions.Item label={t('docReader.fileInfoType')}>{activeFile.type || t('docReader.unknownType')}</Descriptions.Item>
+                          <Descriptions.Item label={t('docReader.fileInfoSize')}>
                             {(activeFile.size / 1024 / 1024).toFixed(2)} MB
                           </Descriptions.Item>
-                          <Descriptions.Item label="Che do doc">
+                          <Descriptions.Item label={t('docReader.fileInfoMode')}>
                             {previewType === 'image'
-                              ? 'Xem anh scan'
+                              ? t('docReader.modeImage')
                               : previewType === 'docx'
-                                ? 'Doc van ban Word'
-                                : 'Chi luu tep, chua phan tich'}
+                                ? t('docReader.modeDocx')
+                                : t('docReader.modeUnsupported')}
                           </Descriptions.Item>
                         </Descriptions>
 
@@ -369,20 +373,20 @@ const DocumentReaderPage = () => {
                           <Card size="small" style={{ background: 'hsl(39, 40%, 93%)' }}>
                             <div className="flex items-center gap-3 mb-2">
                               <FileImageOutlined style={{ color: 'hsl(36, 70%, 42%)' }} />
-                              <span className="font-medium">Anh scan</span>
+                              <span className="font-medium">{t('docReader.cardImageTitle')}</span>
                             </div>
                             <p className="mb-0 text-sm text-muted-foreground leading-6">
-                              Phu hop voi tu lieu chup, scan trang gia pha, can doi chieu bo cuc va ky tu goc.
+                              {t('docReader.cardImageDesc')}
                             </p>
                           </Card>
 
                           <Card size="small" style={{ background: 'hsl(39, 40%, 93%)' }}>
                             <div className="flex items-center gap-3 mb-2">
                               <FileTextOutlined style={{ color: 'hsl(0, 45%, 35%)' }} />
-                              <span className="font-medium">Van ban Word</span>
+                              <span className="font-medium">{t('docReader.cardDocxTitle')}</span>
                             </div>
                             <p className="mb-0 text-sm text-muted-foreground leading-6">
-                              Phu hop voi ban phien am hoac danh may, giup lay text nhanh de dua vao pipeline trich xuat.
+                              {t('docReader.cardDocxDesc')}
                             </p>
                           </Card>
                         </div>
