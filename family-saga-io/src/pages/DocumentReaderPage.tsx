@@ -11,6 +11,7 @@ import { Alert, Button, Card, Descriptions, Empty, Spin, Tabs, Tag, Typography }
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ThemeToggle from '@/components/ThemeToggle';
 
 type PreviewType = 'image' | 'docx' | 'unsupported' | null;
 
@@ -148,6 +149,7 @@ const DocumentReaderPage = () => {
           <Tag color="gold">{t('docReader.tagFormats')}</Tag>
           <Tag color="red">{t('docReader.tagDragDrop')}</Tag>
           <LanguageSwitcher />
+          <ThemeToggle />
         </div>
       </header>
 

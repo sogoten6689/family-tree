@@ -54,6 +54,51 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .dark {
+    --background: 222 24% 11%;
+    --foreground: 39 40% 92%;
+
+    --card: 222 22% 14%;
+    --card-foreground: 39 40% 92%;
+
+    --popover: 222 22% 14%;
+    --popover-foreground: 39 40% 92%;
+
+    --primary: 36 70% 50%;
+    --primary-foreground: 222 24% 11%;
+
+    --secondary: 0 45% 45%;
+    --secondary-foreground: 39 40% 92%;
+
+    --muted: 222 18% 20%;
+    --muted-foreground: 39 18% 70%;
+
+    --accent: 36 60% 45%;
+    --accent-foreground: 39 40% 92%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 39 40% 92%;
+
+    --border: 222 16% 26%;
+    --input: 222 16% 26%;
+    --ring: 36 70% 50%;
+
+    --gold: 36 70% 50%;
+    --gold-light: 39 60% 72%;
+    --crimson: 0 45% 45%;
+    --parchment: 222 24% 11%;
+    --wood: 39 40% 92%;
+
+    --sidebar-background: 222 24% 11%;
+    --sidebar-foreground: 39 40% 92%;
+    --sidebar-primary: 36 70% 50%;
+    --sidebar-primary-foreground: 222 24% 11%;
+    --sidebar-accent: 222 18% 20%;
+    --sidebar-accent-foreground: 39 40% 92%;
+    --sidebar-border: 222 16% 26%;
+    --sidebar-ring: 36 70% 50%;
+  }
 }
 
 @layer base {
@@ -64,6 +109,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Roboto', sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -79,6 +125,15 @@
       hsl(20 40% 25% / 0.7) 0%,
       hsl(20 40% 25% / 0.5) 50%,
       hsl(20 40% 25% / 0.8) 100%
+    );
+  }
+
+  .dark .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(222 24% 11% / 0.72) 0%,
+      hsl(222 24% 11% / 0.56) 50%,
+      hsl(222 24% 11% / 0.84) 100%
     );
   }
 

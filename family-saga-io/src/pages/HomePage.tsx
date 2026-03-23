@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import heroBg from '@/assets/hero-bg.jpg';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -165,6 +166,7 @@ const HomePage = () => {
         <div className="flex items-center justify-center gap-4">
           <p className="text-parchment/70 text-sm">{t('home.footer')}</p>
           <LanguageSwitcher />
+          <ThemeToggle />
         </div>
       </footer>
     </div>

@@ -11,13 +11,16 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="flex items-center gap-1 rounded-lg border px-1 py-1" style={{ borderColor: 'hsl(36, 30%, 80%)' }}>
+    <div
+      className="flex items-center gap-1 rounded-lg border px-1 py-1"
+      style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}
+    >
       <button
         onClick={() => toggle('vi')}
         className="rounded px-2 py-0.5 text-sm font-medium transition-all"
         style={{
-          background: currentLang === 'vi' ? 'hsl(36, 70%, 42%)' : 'transparent',
-          color: currentLang === 'vi' ? 'hsl(39, 50%, 96%)' : 'hsl(20, 30%, 15%)',
+          background: currentLang === 'vi' ? 'hsl(var(--primary))' : 'transparent',
+          color: currentLang === 'vi' ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
         }}
       >
         VI
@@ -26,8 +29,8 @@ const LanguageSwitcher = () => {
         onClick={() => toggle('en')}
         className="rounded px-2 py-0.5 text-sm font-medium transition-all"
         style={{
-          background: currentLang === 'en' ? 'hsl(36, 70%, 42%)' : 'transparent',
-          color: currentLang === 'en' ? 'hsl(39, 50%, 96%)' : 'hsl(20, 30%, 15%)',
+          background: currentLang === 'en' ? 'hsl(var(--primary))' : 'transparent',
+          color: currentLang === 'en' ? 'hsl(var(--primary-foreground))' : 'hsl(var(--foreground))',
         }}
       >
         EN

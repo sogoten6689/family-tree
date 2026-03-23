@@ -19,6 +19,7 @@ import FamilyTreeNode from '@/components/FamilyTreeNode';
 import * as XLSX from 'xlsx';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const FamilyTreePage = () => {
   const navigate = useNavigate();
@@ -186,6 +187,7 @@ const FamilyTreePage = () => {
             {t('familyTree.members', { count: familyInfo.totalMembers })}
           </Tag>
           <LanguageSwitcher />
+          <ThemeToggle />
           <Button type="primary" onClick={handleExportExcel}>
             {t('familyTree.exportExcel')}
           </Button>
