@@ -20,6 +20,32 @@ pip install -r requirements.txt
 uvicorn api:app --reload --host 0.0.0.0 --port 8000
 ```
 
+## Chạy bằng Docker Compose (backend + MySQL)
+
+Từ thư mục gốc dự án `family-tree`:
+
+```bash
+docker compose up --build -d
+```
+
+Kiểm tra backend:
+
+```bash
+curl http://localhost:8000/health
+```
+
+Dừng toàn bộ service:
+
+```bash
+docker compose down
+```
+
+Xóa luôn dữ liệu MySQL volume:
+
+```bash
+docker compose down -v
+```
+
 ### Endpoint phân tích
 
 - `POST /api/family-tree/analyze`
