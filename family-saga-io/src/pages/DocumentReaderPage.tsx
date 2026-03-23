@@ -16,8 +16,73 @@ import ThemeToggle from '@/components/ThemeToggle';
 type PreviewType = 'image' | 'docx' | 'unsupported' | null;
 
 type MammothModule = typeof import('mammoth/mammoth.browser');
+type DetectedLanguageCode = 'vi' | 'en' | 'unknown';
+type DetectionMethod = 'text-heuristic' | 'filename-heuristic' | 'unavailable';
+
+type LanguageDetection = {
+  code: DetectedLanguageCode;
+  confidence: number;
+  method: DetectionMethod;
+};
 
 const supportedFormats = ['.docx', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
+const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
+const viKeywords = ['gia', 'pha', 'phả', 'dong', 'dòng', 'ho', 'họ', 'ong', 'ông', 'ba', 'bà', 'con', 'chau', 'cháu', 'nam', 'năm', 'sinh', 'mat', 'mất'];
+const enKeywords = ['family', 'tree', 'lineage', 'ancestor', 'generation', 'born', 'died', 'child', 'children', 'name', 'year', 'father', 'mother'];
+
+const countKeywordHits = (text: string, keywords: string[]) => {
+  const tokens = text
+    .toLowerCase()
+    .replace(/[^\p{L}\s]/gu, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  return tokens.reduce((sum, token) => sum + (keywords.includes(token) ? 1 : 0), 0);
+};
+
+const detectLanguageFromFilename = (name: string): LanguageDetection => {
+  const lowerName = name.toLowerCase();
+
+  if (/([._-]vi[._-])|vietnamese|tieng-viet|tiếng-việt/.test(lowerName)) {
+    return { code: 'vi', confidence: 0.62, method: 'filename-heuristic' };
+  }
+
+  if (/([._-]en[._-])|english/.test(lowerName)) {
+    return { code: 'en', confidence: 0.62, method: 'filename-heuristic' };
+  }
+
+  return { code: 'unknown', confidence: 0.2, method: 'unavailable' };
+};
+
+const detectLanguage = (text: string, fileName: string): LanguageDetection => {
+  const normalized = text.trim();
+  if (normalized.length < 40) {
+    return detectLanguageFromFilename(fileName);
+  }
+
+  const viMarks = (normalized.match(viMarkRegex) ?? []).length;
+  const viHits = countKeywordHits(normalized, viKeywords);
+  const enHits = countKeywordHits(normalized, enKeywords);
+  const viScore = viMarks * 2 + viHits;
+  const enScore = enHits;
+
+  if (viScore >= enScore + 2) {
+    const confidence = Math.min(0.96, 0.55 + (viScore - enScore) * 0.05);
+    return { code: 'vi', confidence, method: 'text-heuristic' };
+  }
+
+  if (enScore >= viScore + 2) {
+    const confidence = Math.min(0.94, 0.55 + (enScore - viScore) * 0.05);
+    return { code: 'en', confidence, method: 'text-heuristic' };
+  }
+
+  const fallback = detectLanguageFromFilename(fileName);
+  if (fallback.code !== 'unknown') {
+    return fallback;
+  }
+
+  return { code: 'unknown', confidence: 0.3, method: 'text-heuristic' };
+};
 
 const DocumentReaderPage = () => {
   const navigate = useNavigate();
@@ -32,6 +97,7 @@ const DocumentReaderPage = () => {
   const [documentText, setDocumentText] = useState('');
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [languageDetection, setLanguageDetection] = useState<LanguageDetection | null>(null);
 
   useEffect(() => {
     return () => {
@@ -53,6 +119,7 @@ const DocumentReaderPage = () => {
     setStatusMessage(null);
     setErrorMessage(null);
     setIsParsing(false);
+    setLanguageDetection(null);
   };
 
   const loadFile = async (file: File) => {
@@ -66,12 +133,14 @@ const DocumentReaderPage = () => {
     setDocumentText('');
     setImageUrl(null);
     setIsParsing(false);
+    setLanguageDetection(null);
 
     const lowerName = file.name.toLowerCase();
 
     if (file.type.startsWith('image/') || /\.(png|jpe?g|webp)$/i.test(lowerName)) {
       setPreviewType('image');
       setImageUrl(URL.createObjectURL(file));
+      setLanguageDetection(detectLanguageFromFilename(file.name));
       setStatusMessage(t('docReader.msgImageSuccess'));
       return;
     }
@@ -87,6 +156,7 @@ const DocumentReaderPage = () => {
         const normalizedText = result.value.replace(/\n{3,}/g, '\n\n').trim();
 
         setDocumentText(normalizedText || t('docReader.msgEmptyDocx'));
+        setLanguageDetection(detectLanguage(normalizedText, file.name));
         setStatusMessage(t('docReader.msgDocxSuccess'));
       } catch (error) {
         setErrorMessage(t('docReader.errDocxParse'));
@@ -99,11 +169,13 @@ const DocumentReaderPage = () => {
 
     if (/\.doc$/i.test(lowerName)) {
       setPreviewType('unsupported');
+      setLanguageDetection(detectLanguageFromFilename(file.name));
       setErrorMessage(t('docReader.errDocOld'));
       return;
     }
 
     setPreviewType('unsupported');
+    setLanguageDetection(detectLanguageFromFilename(file.name));
     setErrorMessage(t('docReader.errUnsupported'));
   };
 
@@ -281,7 +353,21 @@ const DocumentReaderPage = () => {
                 showIcon
                 type="success"
                 message={t('docReader.successTitle')}
-                description={statusMessage}
+                description={
+                  <div>
+                    <div>{statusMessage}</div>
+                    {languageDetection && (
+                      <div className="mt-2 flex flex-wrap items-center gap-2">
+                        <Tag color="processing">
+                          {t('docReader.detectedLanguage', { lang: t(`docReader.lang.${languageDetection.code}`) })}
+                        </Tag>
+                        <Tag>
+                          {t('docReader.detectedBy', { method: t(`docReader.method.${languageDetection.method}`) })}
+                        </Tag>
+                      </div>
+                    )}
+                  </div>
+                }
                 style={{ marginBottom: 16 }}
               />
             )}
@@ -368,6 +454,15 @@ const DocumentReaderPage = () => {
                               : previewType === 'docx'
                                 ? t('docReader.modeDocx')
                                 : t('docReader.modeUnsupported')}
+                          </Descriptions.Item>
+                          <Descriptions.Item label={t('docReader.fileInfoLanguage')}>
+                            {languageDetection ? t(`docReader.lang.${languageDetection.code}`) : t('docReader.lang.unknown')}
+                          </Descriptions.Item>
+                          <Descriptions.Item label={t('docReader.fileInfoDetectionMethod')}>
+                            {languageDetection ? t(`docReader.method.${languageDetection.method}`) : t('docReader.method.unavailable')}
+                          </Descriptions.Item>
+                          <Descriptions.Item label={t('docReader.fileInfoDetectionConfidence')}>
+                            {languageDetection ? `${Math.round(languageDetection.confidence * 100)}%` : '-'}
                           </Descriptions.Item>
                         </Descriptions>
 

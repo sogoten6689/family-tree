@@ -89,6 +89,9 @@
     "fileInfoType": "Loại tệp",
     "fileInfoSize": "Dung lượng",
     "fileInfoMode": "Chế độ đọc",
+    "fileInfoLanguage": "Ngôn ngữ phát hiện",
+    "fileInfoDetectionMethod": "Phương pháp phát hiện",
+    "fileInfoDetectionConfidence": "Độ tin cậy",
     "modeImage": "Xem ảnh scan",
     "modeDocx": "Đọc văn bản Word",
     "modeUnsupported": "Chỉ lưu tệp, chưa phân tích",
@@ -100,6 +103,18 @@
     "cardDocxDesc": "Phù hợp với bản phiên âm hoặc đánh máy, giúp lấy text nhanh để đưa vào pipeline trích xuất.",
     "msgImageSuccess": "Đã tải ảnh lên thành công. Bạn có thể phóng to và đối chiếu nội dung gia phả trực tiếp.",
     "msgDocxSuccess": "Đã đọc nội dung Word và chuyển sang chế độ đọc văn bản thuần để bạn rà soát thông tin.",
+    "detectedLanguage": "Ngôn ngữ: {{lang}}",
+    "detectedBy": "Nhận diện bởi: {{method}}",
+    "lang": {
+      "vi": "Tiếng Việt",
+      "en": "Tiếng Anh",
+      "unknown": "Chưa xác định"
+    },
+    "method": {
+      "text-heuristic": "Heuristic từ nội dung văn bản",
+      "filename-heuristic": "Heuristic từ tên tệp",
+      "unavailable": "Không đủ tín hiệu"
+    },
     "msgEmptyDocx": "Không trích xuất được nội dung văn bản từ tệp này.",
     "errDocxParse": "Không thể đọc tệp Word này. Hãy thử tệp .docx khác hoặc chuyển sang ảnh scan.",
     "errDocOld": "Tệp .doc cũ chưa được trích xuất trực tiếp trên trình duyệt. Hãy chuyển sang .docx để đọc nội dung.",

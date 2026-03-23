@@ -89,6 +89,9 @@
     "fileInfoType": "File type",
     "fileInfoSize": "Size",
     "fileInfoMode": "Read mode",
+    "fileInfoLanguage": "Detected language",
+    "fileInfoDetectionMethod": "Detection method",
+    "fileInfoDetectionConfidence": "Confidence",
     "modeImage": "View scanned image",
     "modeDocx": "Read Word text",
     "modeUnsupported": "File stored only, not analyzed",
@@ -100,6 +103,18 @@
     "cardDocxDesc": "Suitable for transliterations or typed content, quickly extracts text for the extraction pipeline.",
     "msgImageSuccess": "Image loaded successfully. You can zoom in and cross-reference genealogy content directly.",
     "msgDocxSuccess": "Word content read and converted to plain text mode for your review.",
+    "detectedLanguage": "Language: {{lang}}",
+    "detectedBy": "Detected by: {{method}}",
+    "lang": {
+      "vi": "Vietnamese",
+      "en": "English",
+      "unknown": "Unknown"
+    },
+    "method": {
+      "text-heuristic": "Text-content heuristic",
+      "filename-heuristic": "Filename heuristic",
+      "unavailable": "Not enough signal"
+    },
     "msgEmptyDocx": "Could not extract text content from this file.",
     "errDocxParse": "Could not read this Word file. Try a different .docx or switch to a scanned image.",
     "errDocOld": "Old .doc files cannot be extracted directly in the browser. Convert to .docx to read.",
