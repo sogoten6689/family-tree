@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowLeftOutlined,
+  DeleteOutlined,
   EyeOutlined,
   FileImageOutlined,
   FileTextOutlined,
+  HistoryOutlined,
   InboxOutlined,
   ReloadOutlined,
+  SyncOutlined,
 } from '@ant-design/icons';
 import { Alert, Button, Card, Descriptions, Empty, Modal, Spin, Tabs, Tag, Typography } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +23,8 @@ type DetectedLanguageCode = 'vi' | 'en' | 'unknown';
 type DetectionMethod = 'text-heuristic' | 'filename-heuristic' | 'unavailable';
 
 type FamilyAnalyzeResponse = {
+  request_id?: string;
+  created_at?: string;
   source: string;
   metadata: Record<string, unknown>;
   people_count: number;
@@ -42,6 +47,21 @@ type LanguageDetection = {
   code: DetectedLanguageCode;
   confidence: number;
   method: DetectionMethod;
+};
+
+type HistoryItem = {
+  request_id: string;
+  created_at: string;
+  source: string;
+  metadata: Record<string, unknown>;
+  people_count: number;
+  relationship_count: number;
+  warning_count: number;
+};
+
+type HistoryResponse = {
+  total: number;
+  items: HistoryItem[];
 };
 
 const supportedFormats = ['.docx', '.txt', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
@@ -122,6 +142,11 @@ const DocumentReaderPage = () => {
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isResultModalOpen, setIsResultModalOpen] = useState(false);
+  const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
+  const [historyTotal, setHistoryTotal] = useState(0);
+  const [isHistoryLoading, setIsHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState<string | null>(null);
+  const [selectedHistoryRequestId, setSelectedHistoryRequestId] = useState<string | null>(null);
 
   useEffect(() => {
     return () => {
@@ -130,6 +155,82 @@ const DocumentReaderPage = () => {
       }
     };
   }, [imageUrl]);
+
+  const fetchHistory = async () => {
+    setIsHistoryLoading(true);
+    setHistoryError(null);
+
+    try {
+      const response = await fetch(`${backendBaseUrl}/api/family-tree/history?limit=10`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const payload = (await response.json()) as HistoryResponse;
+      setHistoryItems(payload.items ?? []);
+      setHistoryTotal(payload.total ?? 0);
+    } catch {
+      setHistoryError(t('docReader.historyLoadFailed'));
+    } finally {
+      setIsHistoryLoading(false);
+    }
+  };
+
+  const handleClearHistory = async () => {
+    setIsHistoryLoading(true);
+    setHistoryError(null);
+
+    try {
+      const response = await fetch(`${backendBaseUrl}/api/family-tree/history`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      setHistoryItems([]);
+      setHistoryTotal(0);
+      setSelectedHistoryRequestId(null);
+      setStatusMessage(t('docReader.historyCleared'));
+    } catch {
+      setHistoryError(t('docReader.historyClearFailed'));
+    } finally {
+      setIsHistoryLoading(false);
+    }
+  };
+
+  const handleLoadHistoryDetail = async (requestId: string) => {
+    setIsHistoryLoading(true);
+    setHistoryError(null);
+    setSelectedHistoryRequestId(requestId);
+
+    try {
+      const response = await fetch(`${backendBaseUrl}/api/family-tree/history/${requestId}`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const payload = (await response.json()) as FamilyAnalyzeResponse;
+      setAnalysisResult(payload);
+      setIsResultModalOpen(true);
+      localStorage.setItem('family-tree.analysis', JSON.stringify(payload));
+      setStatusMessage(
+        t('docReader.historyLoaded', {
+          requestId,
+          members: payload.people_count,
+          relations: payload.relationship_count,
+        }),
+      );
+    } catch {
+      setHistoryError(t('docReader.historyDetailLoadFailed'));
+    } finally {
+      setIsHistoryLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchHistory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const resetPreview = () => {
     if (imageUrl) {
@@ -278,6 +379,7 @@ const DocumentReaderPage = () => {
       setAnalysisResult(payload);
       setIsResultModalOpen(true);
       localStorage.setItem('family-tree.analysis', JSON.stringify(payload));
+      fetchHistory();
       setStatusMessage(
         t('docReader.msgAnalyzeSuccess', {
           members: payload.people_count,
@@ -465,6 +567,70 @@ const DocumentReaderPage = () => {
                 <p>{t('docReader.step2')}</p>
                 <p>{t('docReader.step3')}</p>
               </div>
+            </Card>
+
+            <Card bordered={false} style={{ background: 'hsl(39, 40%, 93%)' }}>
+              <div className="flex items-center justify-between gap-2 mb-3">
+                <Typography.Title level={5} style={{ margin: 0, fontFamily: 'var(--font-display)' }}>
+                  <HistoryOutlined className="mr-2" />
+                  {t('docReader.historyTitle')}
+                </Typography.Title>
+                <div className="flex items-center gap-2">
+                  <Button size="small" icon={<SyncOutlined />} loading={isHistoryLoading} onClick={fetchHistory}>
+                    {t('docReader.historyRefresh')}
+                  </Button>
+                  <Button size="small" danger icon={<DeleteOutlined />} loading={isHistoryLoading} onClick={handleClearHistory}>
+                    {t('docReader.historyClear')}
+                  </Button>
+                </div>
+              </div>
+
+              <p className="text-xs text-muted-foreground mb-3">
+                {t('docReader.historyTotal', { count: historyTotal })}
+              </p>
+
+              {historyError && (
+                <Alert
+                  showIcon
+                  type="error"
+                  message={t('docReader.analysisFailedTitle')}
+                  description={historyError}
+                  style={{ marginBottom: 12 }}
+                />
+              )}
+
+              {historyItems.length === 0 ? (
+                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={t('docReader.historyEmpty')} />
+              ) : (
+                <div className="space-y-2 max-h-56 overflow-auto pr-1">
+                  {historyItems.map((item) => (
+                    <div
+                      key={item.request_id}
+                      className={`rounded-lg border px-3 py-2 bg-background/70 ${selectedHistoryRequestId === item.request_id ? 'ring-2 ring-gold' : ''}`}
+                    >
+                      <div className="text-xs text-muted-foreground">{new Date(item.created_at).toLocaleString()}</div>
+                      <div className="text-sm font-medium mt-1 break-all">{item.request_id}</div>
+                      <div className="mt-1 flex flex-wrap gap-2">
+                        <Tag>{t('docReader.analysisPeople', { count: item.people_count })}</Tag>
+                        <Tag>{t('docReader.analysisRelationships', { count: item.relationship_count })}</Tag>
+                        {item.warning_count > 0 && (
+                          <Tag color="warning">{t('docReader.historyWarnings', { count: item.warning_count })}</Tag>
+                        )}
+                      </div>
+                      <div className="mt-2">
+                        <Button
+                          size="small"
+                          icon={<EyeOutlined />}
+                          onClick={() => handleLoadHistoryDetail(item.request_id)}
+                          loading={isHistoryLoading && selectedHistoryRequestId === item.request_id}
+                        >
+                          {t('docReader.historyViewDetail')}
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </Card>
           </div>
 

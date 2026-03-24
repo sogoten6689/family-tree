@@ -76,14 +76,23 @@ Ngoài ra response `analyze` có thêm:
 
 ## Lịch sử request
 
-Backend có lưu lịch sử request trong memory của tiến trình API.
+Backend hỗ trợ 2 tầng lưu lịch sử request:
+
+- MySQL (ưu tiên, bền vững qua restart container)
+- Memory fallback (khi chưa cấu hình được MySQL)
+
+Khi chạy bằng `docker compose`, API tự động dùng MySQL theo biến môi trường `MYSQL_*`.
 
 - `GET /api/family-tree/history?limit=20`
 	- Trả về danh sách request gần nhất (mặc định 20, tối đa 100)
 - `DELETE /api/family-tree/history`
-	- Xóa toàn bộ lịch sử request đang lưu trong memory
+	- Xóa toàn bộ lịch sử request
 
-Lưu ý: history memory sẽ mất khi restart server.
+`GET /health` trả thêm:
+
+- `history_storage`: `mysql` hoặc `memory`
+
+Nếu đang ở `memory`, dữ liệu sẽ mất khi restart API.
 
 ## Cách viết tài liệu để sinh quan hệ tốt
 
