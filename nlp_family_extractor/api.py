@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import deque
 from datetime import datetime, timezone
 from threading import Lock
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Literal, Optional
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException, Query
@@ -20,8 +20,73 @@ from app.validate import (
 )
 
 
+GenderType = Literal["M", "F"]
+RelationshipType = Literal["parent_of", "spouse_of", "sibling_of"]
+
+
+class RequestMetadata(BaseModel):
+    file_name: Optional[str] = Field(
+        default=None,
+        alias="fileName",
+        description="Tên file nguồn do frontend gửi lên.",
+    )
+    language: Optional[str] = Field(
+        default=None,
+        description="Ngôn ngữ của văn bản, ví dụ `vi` hoặc `en`.",
+    )
+    document_type: Optional[str] = Field(
+        default=None,
+        alias="documentType",
+        description="Loại tài liệu, ví dụ `gia-pha`, `ho-so`, `ghi-chu`.",
+    )
+
+    model_config = {
+        "populate_by_name": True,
+        "extra": "forbid",
+    }
+
+
+class PersonData(BaseModel):
+    id: str = Field(description="Mã định danh người, ví dụ `P001`.")
+    full_name: str = Field(description="Họ và tên đầy đủ.")
+    birth_year: Optional[int] = Field(default=None, description="Năm sinh nếu trích xuất được.")
+    death_year: Optional[int] = Field(default=None, description="Năm mất nếu trích xuất được.")
+    gender: Optional[GenderType] = Field(default=None, description="Giới tính suy luận được: `M` hoặc `F`.")
+
+
+class RelationshipData(BaseModel):
+    from_id: str = Field(description="ID của người nguồn trong quan hệ.")
+    to_id: str = Field(description="ID của người đích trong quan hệ.")
+    type: RelationshipType = Field(description="Loại quan hệ: `parent_of`, `spouse_of`, `sibling_of`.")
+    confidence: float = Field(description="Độ tin cậy của quan hệ được trích xuất.")
+    source: str = Field(description="Nguồn sinh quan hệ, mặc định là `nlp`.")
+
+
+class ExtractionData(BaseModel):
+    people: List[PersonData] = Field(description="Danh sách người được trích xuất từ văn bản.")
+    relationships: List[RelationshipData] = Field(description="Danh sách quan hệ giữa các người trong dữ liệu.")
+
+
+class TreeArchitectureData(BaseModel):
+    roots: List[str] = Field(description="Danh sách ID node gốc của cây.")
+    children_map: Dict[str, List[str]] = Field(description="Ánh xạ ID cha sang danh sách ID con.")
+    nodes: Dict[str, PersonData] = Field(description="Ánh xạ ID sang thông tin người tương ứng.")
+
+
+class TreeNodeData(BaseModel):
+    id: str = Field(description="ID node trong cây.")
+    full_name: str = Field(description="Tên hiển thị của node.")
+    birth_year: Optional[int] = Field(default=None, description="Năm sinh nếu có.")
+    death_year: Optional[int] = Field(default=None, description="Năm mất nếu có.")
+    gender: Optional[GenderType] = Field(default=None, description="Giới tính nếu có.")
+    cycle: bool = Field(default=False, description="Đánh dấu vòng lặp khi phát hiện cycle trong cây.")
+    children: List["TreeNodeData"] = Field(default_factory=list, description="Danh sách node con.")
+
+
 class AnalyzeRequest(BaseModel):
     model_config = {
+        "populate_by_name": True,
+        "extra": "forbid",
         "json_schema_extra": {
             "examples": [
                 {
@@ -41,8 +106,8 @@ class AnalyzeRequest(BaseModel):
         default="frontend",
         description="Định danh caller (ví dụ: `document-reader`, `frontend`).",
     )
-    metadata: Dict[str, Any] = Field(
-        default_factory=dict,
+    metadata: RequestMetadata = Field(
+        default_factory=RequestMetadata,
         description="Metadata tuỳ ý đính kèm request (tên file, ngôn ngữ, …).",
     )
 
@@ -51,7 +116,7 @@ class AnalyzeResponse(BaseModel):
     request_id: str = Field(description="UUID duy nhất cho mỗi request.")
     created_at: str = Field(description="Thời điểm xử lý (UTC ISO-8601).")
     source: str = Field(description="Caller source được echo lại.")
-    metadata: Dict[str, Any] = Field(description="Metadata được echo lại từ request.")
+    metadata: RequestMetadata = Field(description="Metadata được echo lại từ request.")
     people_count: int = Field(description="Số lượng người được trích xuất.")
     relationship_count: int = Field(description="Số lượng quan hệ được trích xuất.")
     warnings: List[str] = Field(
@@ -60,20 +125,20 @@ class AnalyzeResponse(BaseModel):
             "cạnh trùng lặp, hoặc khoảng cách tuổi cha-con bất thường."
         )
     )
-    extraction: Dict[str, Any] = Field(
+    extraction: ExtractionData = Field(
         description=(
             "Kết quả trích xuất thô gồm hai key: "
             "`people` (danh sách người) và `relationships` (danh sách quan hệ)."
         )
     )
-    tree_architecture: Dict[str, Any] = Field(
+    tree_architecture: TreeArchitectureData = Field(
         description=(
             "Cấu trúc cây phẳng gồm: `roots` (danh sách node gốc), "
             "`children_map` (ánh xạ id → danh sách id con), "
             "`nodes` (ánh xạ id → thông tin node)."
         )
     )
-    tree: List[Dict[str, Any]] = Field(
+    tree: List[TreeNodeData] = Field(
         description="Cây lồng nhau sẵn sàng để frontend render trực tiếp."
     )
 
@@ -82,7 +147,7 @@ class HistoryItem(BaseModel):
     request_id: str = Field(description="UUID của request.")
     created_at: str = Field(description="Thời điểm xử lý (UTC ISO-8601).")
     source: str = Field(description="Caller source.")
-    metadata: Dict[str, Any] = Field(description="Metadata đính kèm.")
+    metadata: RequestMetadata = Field(description="Metadata đính kèm.")
     people_count: int = Field(description="Số người trích xuất được.")
     relationship_count: int = Field(description="Số quan hệ trích xuất được.")
     warning_count: int = Field(description="Số lượng cảnh báo validation.")
@@ -91,6 +156,24 @@ class HistoryItem(BaseModel):
 class HistoryResponse(BaseModel):
     total: int = Field(description="Tổng số request đang lưu trong store.")
     items: List[HistoryItem] = Field(description="Danh sách request gần nhất (mới nhất trước).")
+
+
+class HealthResponse(BaseModel):
+    status: str = Field(description="Trạng thái sống của service, hiện tại là `ok`.")
+    history_storage: Literal["mysql", "memory"] = Field(
+        description="Backend đang lưu lịch sử bằng MySQL hay in-memory."
+    )
+    history_init_error: Optional[str] = Field(
+        default=None,
+        description="Lý do fallback sang in-memory nếu MySQL khởi tạo thất bại.",
+    )
+
+
+class ClearHistoryResponse(BaseModel):
+    cleared: int = Field(description="Số lượng bản ghi lịch sử đã bị xoá.")
+
+
+TreeNodeData.model_rebuild()
 
 
 _TAGS_METADATA = [
@@ -147,6 +230,9 @@ app = FastAPI(
     openapi_tags=_TAGS_METADATA,
     contact={"name": "Family Tree Project"},
     license_info={"name": "MIT"},
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
 )
 
 app.add_middleware(
@@ -168,11 +254,25 @@ _history_repo = HistoryRepository()
 
 @app.get(
     "/health",
+    response_model=HealthResponse,
     tags=["System"],
     summary="Health check",
     response_description="Trạng thái hệ thống và chế độ lưu lịch sử.",
+    responses={
+        200: {
+            "content": {
+                "application/json": {
+                    "example": {
+                        "status": "ok",
+                        "history_storage": "mysql",
+                        "history_init_error": None,
+                    }
+                }
+            }
+        }
+    },
 )
-def health() -> Dict[str, str]:
+def health() -> HealthResponse:
     """
     Kiểm tra trạng thái API.
 
@@ -186,7 +286,7 @@ def health() -> Dict[str, str]:
     }
     if _history_repo.init_error:
         payload["history_init_error"] = _history_repo.init_error
-    return payload
+    return HealthResponse(**payload)
 
 
 @app.get(
@@ -195,6 +295,28 @@ def health() -> Dict[str, str]:
     tags=["History"],
     summary="Danh sách request gần nhất",
     response_description="Danh sách HistoryItem mới nhất trước.",
+    responses={
+        200: {
+            "content": {
+                "application/json": {
+                    "example": {
+                        "total": 2,
+                        "items": [
+                            {
+                                "request_id": "0f8fad5b-d9cb-469f-a165-70867728950e",
+                                "created_at": "2026-03-28T09:00:00+00:00",
+                                "source": "document-reader",
+                                "metadata": {"fileName": "gia-pha.docx", "language": "vi"},
+                                "people_count": 5,
+                                "relationship_count": 4,
+                                "warning_count": 0,
+                            }
+                        ],
+                    }
+                }
+            }
+        }
+    },
 )
 def get_history(
     limit: int = Query(default=20, ge=1, le=100, description="Số lượng item trả về (1–100).")
@@ -226,7 +348,106 @@ def get_history(
     tags=["History"],
     summary="Chi tiết một request theo ID",
     response_description="Kết quả phân tích đầy đủ của request.",
-    responses={404: {"description": "request_id không tồn tại trong store."}},
+    responses={
+        200: {
+            "content": {
+                "application/json": {
+                    "example": {
+                        "request_id": "0f8fad5b-d9cb-469f-a165-70867728950e",
+                        "created_at": "2026-03-28T09:00:00+00:00",
+                        "source": "document-reader",
+                        "metadata": {"fileName": "gia-pha.docx", "language": "vi"},
+                        "people_count": 3,
+                        "relationship_count": 2,
+                        "warnings": [],
+                        "extraction": {
+                            "people": [
+                                {
+                                    "id": "P001",
+                                    "full_name": "Nguyen Van A",
+                                    "birth_year": 1940,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                                {
+                                    "id": "P002",
+                                    "full_name": "Tran Thi B",
+                                    "birth_year": 1942,
+                                    "death_year": None,
+                                    "gender": "F",
+                                },
+                                {
+                                    "id": "P003",
+                                    "full_name": "Nguyen Van C",
+                                    "birth_year": 1965,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                            ],
+                            "relationships": [
+                                {
+                                    "from_id": "P001",
+                                    "to_id": "P002",
+                                    "type": "spouse_of",
+                                    "confidence": 0.92,
+                                    "source": "nlp",
+                                },
+                                {
+                                    "from_id": "P001",
+                                    "to_id": "P003",
+                                    "type": "parent_of",
+                                    "confidence": 0.90,
+                                    "source": "nlp",
+                                },
+                            ],
+                        },
+                        "tree_architecture": {
+                            "roots": ["P001", "P002"],
+                            "children_map": {"P001": ["P003"]},
+                            "nodes": {
+                                "P001": {
+                                    "id": "P001",
+                                    "full_name": "Nguyen Van A",
+                                    "birth_year": 1940,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                                "P003": {
+                                    "id": "P003",
+                                    "full_name": "Nguyen Van C",
+                                    "birth_year": 1965,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                            },
+                        },
+                        "tree": [
+                            {
+                                "id": "P001",
+                                "full_name": "Nguyen Van A",
+                                "birth_year": 1940,
+                                "death_year": None,
+                                "gender": "M",
+                                "cycle": False,
+                                "children": [
+                                    {
+                                        "id": "P003",
+                                        "full_name": "Nguyen Van C",
+                                        "birth_year": 1965,
+                                        "death_year": None,
+                                        "gender": "M",
+                                        "cycle": False,
+                                        "children": [],
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                }
+            }
+        },
+        404: {"description": "request_id không tồn tại trong store."},
+    },
 )
 def get_history_detail(request_id: str) -> AnalyzeResponse:
     """
@@ -250,11 +471,21 @@ def get_history_detail(request_id: str) -> AnalyzeResponse:
 
 @app.delete(
     "/api/family-tree/history",
+    response_model=ClearHistoryResponse,
     tags=["History"],
     summary="Xoá toàn bộ lịch sử",
     response_description="Số lượng item đã xoá.",
+    responses={
+        200: {
+            "content": {
+                "application/json": {
+                    "example": {"cleared": 12}
+                }
+            }
+        }
+    },
 )
-def clear_history() -> Dict[str, int]:
+def clear_history() -> ClearHistoryResponse:
     """
     Xoá toàn bộ lịch sử request khỏi store (MySQL hoặc in-memory).
 
@@ -267,14 +498,14 @@ def clear_history() -> Dict[str, int]:
                 _history_store.clear()
                 _detail_store.clear()
                 _detail_order.clear()
-            return {"cleared": removed}
+            return ClearHistoryResponse(cleared=removed)
 
     with _history_lock:
         removed = len(_history_store)
         _history_store.clear()
         _detail_store.clear()
         _detail_order.clear()
-    return {"cleared": removed}
+    return ClearHistoryResponse(cleared=removed)
 
 
 @app.post(
@@ -284,6 +515,105 @@ def clear_history() -> Dict[str, int]:
     summary="Phân tích văn bản gia phả",
     response_description="Kết quả trích xuất người, quan hệ và cây gia đình.",
     status_code=200,
+    responses={
+        200: {
+            "content": {
+                "application/json": {
+                    "example": {
+                        "request_id": "0f8fad5b-d9cb-469f-a165-70867728950e",
+                        "created_at": "2026-03-28T09:00:00+00:00",
+                        "source": "document-reader",
+                        "metadata": {"fileName": "gia-pha.docx", "language": "vi"},
+                        "people_count": 3,
+                        "relationship_count": 2,
+                        "warnings": [],
+                        "extraction": {
+                            "people": [
+                                {
+                                    "id": "P001",
+                                    "full_name": "Nguyen Van A",
+                                    "birth_year": 1940,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                                {
+                                    "id": "P002",
+                                    "full_name": "Tran Thi B",
+                                    "birth_year": 1942,
+                                    "death_year": None,
+                                    "gender": "F",
+                                },
+                                {
+                                    "id": "P003",
+                                    "full_name": "Nguyen Van C",
+                                    "birth_year": 1965,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                            ],
+                            "relationships": [
+                                {
+                                    "from_id": "P001",
+                                    "to_id": "P002",
+                                    "type": "spouse_of",
+                                    "confidence": 0.92,
+                                    "source": "nlp",
+                                },
+                                {
+                                    "from_id": "P001",
+                                    "to_id": "P003",
+                                    "type": "parent_of",
+                                    "confidence": 0.90,
+                                    "source": "nlp",
+                                },
+                            ],
+                        },
+                        "tree_architecture": {
+                            "roots": ["P001", "P002"],
+                            "children_map": {"P001": ["P003"]},
+                            "nodes": {
+                                "P001": {
+                                    "id": "P001",
+                                    "full_name": "Nguyen Van A",
+                                    "birth_year": 1940,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                                "P003": {
+                                    "id": "P003",
+                                    "full_name": "Nguyen Van C",
+                                    "birth_year": 1965,
+                                    "death_year": None,
+                                    "gender": "M",
+                                },
+                            },
+                        },
+                        "tree": [
+                            {
+                                "id": "P001",
+                                "full_name": "Nguyen Van A",
+                                "birth_year": 1940,
+                                "death_year": None,
+                                "gender": "M",
+                                "cycle": False,
+                                "children": [
+                                    {
+                                        "id": "P003",
+                                        "full_name": "Nguyen Van C",
+                                        "birth_year": 1965,
+                                        "death_year": None,
+                                        "gender": "M",
+                                        "cycle": False,
+                                        "children": [],
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                }
+            }
+        }
+    },
 )
 def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
     """
