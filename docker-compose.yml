@@ -1,6 +1,29 @@
 version: "3.9"
 
 services:
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: family-tree-nginx
+    ports:
+      - "88:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./family-saga-io
+      dockerfile: Dockerfile
+    container_name: family-tree-frontend
+    ports:
+      - "5174:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
   backend:
     build:
       context: ./nlp_family_extractor
@@ -23,7 +46,7 @@ services:
     image: mysql:8.4
     container_name: family-tree-mysql
     ports:
-      - "3307:3306"
+      - "3309:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: family_tree
