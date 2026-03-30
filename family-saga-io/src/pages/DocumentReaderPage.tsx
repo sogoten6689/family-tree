@@ -65,7 +65,7 @@ type HistoryResponse = {
 };
 
 const supportedFormats = ['.docx', '.txt', '.doc', '.png', '.jpg', '.jpeg', '.webp'];
-const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:8000';
+const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? '';
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
 const viKeywords = ['gia', 'pha', 'phả', 'dong', 'dòng', 'ho', 'họ', 'ong', 'ông', 'ba', 'bà', 'con', 'chau', 'cháu', 'nam', 'năm', 'sinh', 'mat', 'mất'];
 const enKeywords = ['family', 'tree', 'lineage', 'ancestor', 'generation', 'born', 'died', 'child', 'children', 'name', 'year', 'father', 'mother'];
