@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile
     container_name: family-tree-backend
     ports:
-      - "8000:8000"
+      - "8002:8000"
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
