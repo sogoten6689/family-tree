@@ -3,25 +3,21 @@ from __future__ import annotations
 from collections import deque
 from datetime import datetime, timezone
 from threading import Lock
-from typing import Dict, List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from app.extractor import FamilyExtractor
+from app.gemini_service import normalize_balkan_nodes
 from app.history_repository import HistoryRepository
-from app.tree_builder import build_nested_tree, build_tree_architecture
 from app.validate import (
     validate_no_duplicate_edges,
     validate_no_self_relationship,
     validate_parent_age_gap,
 )
-
-
-GenderType = Literal["M", "F"]
-RelationshipType = Literal["parent_of", "spouse_of", "sibling_of"]
 
 
 class RequestMetadata(BaseModel):
@@ -44,43 +40,6 @@ class RequestMetadata(BaseModel):
         "populate_by_name": True,
         "extra": "forbid",
     }
-
-
-class PersonData(BaseModel):
-    id: str = Field(description="Mã định danh người, ví dụ `P001`.")
-    full_name: str = Field(description="Họ và tên đầy đủ.")
-    birth_year: Optional[int] = Field(default=None, description="Năm sinh nếu trích xuất được.")
-    death_year: Optional[int] = Field(default=None, description="Năm mất nếu trích xuất được.")
-    gender: Optional[GenderType] = Field(default=None, description="Giới tính suy luận được: `M` hoặc `F`.")
-
-
-class RelationshipData(BaseModel):
-    from_id: str = Field(description="ID của người nguồn trong quan hệ.")
-    to_id: str = Field(description="ID của người đích trong quan hệ.")
-    type: RelationshipType = Field(description="Loại quan hệ: `parent_of`, `spouse_of`, `sibling_of`.")
-    confidence: float = Field(description="Độ tin cậy của quan hệ được trích xuất.")
-    source: str = Field(description="Nguồn sinh quan hệ, mặc định là `nlp`.")
-
-
-class ExtractionData(BaseModel):
-    people: List[PersonData] = Field(description="Danh sách người được trích xuất từ văn bản.")
-    relationships: List[RelationshipData] = Field(description="Danh sách quan hệ giữa các người trong dữ liệu.")
-
-
-class TreeArchitectureData(BaseModel):
-    roots: List[str] = Field(description="Danh sách ID node gốc của cây.")
-    children_map: Dict[str, List[str]] = Field(description="Ánh xạ ID cha sang danh sách ID con.")
-    nodes: Dict[str, PersonData] = Field(description="Ánh xạ ID sang thông tin người tương ứng.")
-
-
-class TreeNodeData(BaseModel):
-    id: str = Field(description="ID node trong cây.")
-    full_name: str = Field(description="Tên hiển thị của node.")
-    birth_year: Optional[int] = Field(default=None, description="Năm sinh nếu có.")
-    death_year: Optional[int] = Field(default=None, description="Năm mất nếu có.")
-    gender: Optional[GenderType] = Field(default=None, description="Giới tính nếu có.")
-    cycle: bool = Field(default=False, description="Đánh dấu vòng lặp khi phát hiện cycle trong cây.")
-    children: List["TreeNodeData"] = Field(default_factory=list, description="Danh sách node con.")
 
 
 class AnalyzeRequest(BaseModel):
@@ -113,33 +72,17 @@ class AnalyzeRequest(BaseModel):
 
 
 class AnalyzeResponse(BaseModel):
-    request_id: str = Field(description="UUID duy nhất cho mỗi request.")
-    created_at: str = Field(description="Thời điểm xử lý (UTC ISO-8601).")
-    source: str = Field(description="Caller source được echo lại.")
-    metadata: RequestMetadata = Field(description="Metadata được echo lại từ request.")
-    people_count: int = Field(description="Số lượng người được trích xuất.")
-    relationship_count: int = Field(description="Số lượng quan hệ được trích xuất.")
-    warnings: List[str] = Field(
+    model_config = ConfigDict(extra="ignore")
+
+    balkan_nodes: List[Dict[str, Any]] = Field(
+        default_factory=list,
         description=(
-            "Danh sách cảnh báo validation: tự quan hệ với bản thân, "
-            "cạnh trùng lặp, hoặc khoảng cách tuổi cha-con bất thường."
-        )
+            "Mảng node BALKAN (Gemini): id số, name, gender, birthYear, pids, fid, mid."
+        ),
     )
-    extraction: ExtractionData = Field(
-        description=(
-            "Kết quả trích xuất thô gồm hai key: "
-            "`people` (danh sách người) và `relationships` (danh sách quan hệ)."
-        )
-    )
-    tree_architecture: TreeArchitectureData = Field(
-        description=(
-            "Cấu trúc cây phẳng gồm: `roots` (danh sách node gốc), "
-            "`children_map` (ánh xạ id → danh sách id con), "
-            "`nodes` (ánh xạ id → thông tin node)."
-        )
-    )
-    tree: List[TreeNodeData] = Field(
-        description="Cây lồng nhau sẵn sàng để frontend render trực tiếp."
+    gemini_error: Optional[str] = Field(
+        default=None,
+        description="Lỗi khi thiếu API key, lỗi API hoặc không parse được JSON.",
     )
 
 
@@ -173,9 +116,6 @@ class ClearHistoryResponse(BaseModel):
     cleared: int = Field(description="Số lượng bản ghi lịch sử đã bị xoá.")
 
 
-TreeNodeData.model_rebuild()
-
-
 _TAGS_METADATA = [
     {
         "name": "Analysis",
@@ -198,8 +138,8 @@ _TAGS_METADATA = [
 _DESCRIPTION = """
 ## Family Tree Analyzer API
 
-Phân tích văn bản gia phả (tiếng Việt) theo quy tắc NLP rule-based,
-trả về danh sách người, quan hệ và cấu trúc cây JSON để frontend render.
+Phân tích văn bản gia phả (tiếng Việt): NLP rule-based trích xuất thô, sau đó **Gemini**
+chuẩn hoá. **`POST /api/family-tree/analyze`** chỉ trả **`balkan_nodes`** và **`gemini_error`**.
 
 ### Luồng sử dụng cơ bản
 
@@ -347,101 +287,37 @@ def get_history(
     response_model=AnalyzeResponse,
     tags=["History"],
     summary="Chi tiết một request theo ID",
-    response_description="Kết quả phân tích đầy đủ của request.",
+    response_description="balkan_nodes + gemini_error.",
     responses={
         200: {
             "content": {
                 "application/json": {
                     "example": {
-                        "request_id": "0f8fad5b-d9cb-469f-a165-70867728950e",
-                        "created_at": "2026-03-28T09:00:00+00:00",
-                        "source": "document-reader",
-                        "metadata": {"fileName": "gia-pha.docx", "language": "vi"},
-                        "people_count": 3,
-                        "relationship_count": 2,
-                        "warnings": [],
-                        "extraction": {
-                            "people": [
-                                {
-                                    "id": "P001",
-                                    "full_name": "Nguyen Van A",
-                                    "birth_year": 1940,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                                {
-                                    "id": "P002",
-                                    "full_name": "Tran Thi B",
-                                    "birth_year": 1942,
-                                    "death_year": None,
-                                    "gender": "F",
-                                },
-                                {
-                                    "id": "P003",
-                                    "full_name": "Nguyen Van C",
-                                    "birth_year": 1965,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                            ],
-                            "relationships": [
-                                {
-                                    "from_id": "P001",
-                                    "to_id": "P002",
-                                    "type": "spouse_of",
-                                    "confidence": 0.92,
-                                    "source": "nlp",
-                                },
-                                {
-                                    "from_id": "P001",
-                                    "to_id": "P003",
-                                    "type": "parent_of",
-                                    "confidence": 0.90,
-                                    "source": "nlp",
-                                },
-                            ],
-                        },
-                        "tree_architecture": {
-                            "roots": ["P001", "P002"],
-                            "children_map": {"P001": ["P003"]},
-                            "nodes": {
-                                "P001": {
-                                    "id": "P001",
-                                    "full_name": "Nguyen Van A",
-                                    "birth_year": 1940,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                                "P003": {
-                                    "id": "P003",
-                                    "full_name": "Nguyen Van C",
-                                    "birth_year": 1965,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                            },
-                        },
-                        "tree": [
+                        "balkan_nodes": [
                             {
-                                "id": "P001",
-                                "full_name": "Nguyen Van A",
-                                "birth_year": 1940,
-                                "death_year": None,
-                                "gender": "M",
-                                "cycle": False,
-                                "children": [
-                                    {
-                                        "id": "P003",
-                                        "full_name": "Nguyen Van C",
-                                        "birth_year": 1965,
-                                        "death_year": None,
-                                        "gender": "M",
-                                        "cycle": False,
-                                        "children": [],
-                                    }
-                                ],
-                            }
+                                "id": 1,
+                                "name": "Nguyễn Văn A",
+                                "gender": "male",
+                                "birthYear": 1940,
+                                "pids": [2],
+                            },
+                            {
+                                "id": 2,
+                                "name": "Trần Thị B",
+                                "gender": "female",
+                                "birthYear": 1942,
+                                "pids": [1],
+                            },
+                            {
+                                "id": 3,
+                                "name": "Nguyễn Văn C",
+                                "gender": "male",
+                                "birthYear": 1965,
+                                "fid": 1,
+                                "mid": 2,
+                            },
                         ],
+                        "gemini_error": None,
                     }
                 }
             }
@@ -458,7 +334,13 @@ def get_history_detail(request_id: str) -> AnalyzeResponse:
     """
     detail = _history_repo.get_detail(request_id) if _history_repo.enabled else None
     if detail:
-        return AnalyzeResponse(**detail)
+        nodes = detail.get("balkan_nodes")
+        if not isinstance(nodes, list):
+            nodes = []
+        return AnalyzeResponse(
+            balkan_nodes=[x for x in nodes if isinstance(x, dict)],
+            gemini_error=detail.get("gemini_error"),
+        )
 
     with _history_lock:
         cached = _detail_store.get(request_id)
@@ -513,102 +395,38 @@ def clear_history() -> ClearHistoryResponse:
     response_model=AnalyzeResponse,
     tags=["Analysis"],
     summary="Phân tích văn bản gia phả",
-    response_description="Kết quả trích xuất người, quan hệ và cây gia đình.",
+    response_description="balkan_nodes + gemini_error.",
     status_code=200,
     responses={
         200: {
             "content": {
                 "application/json": {
                     "example": {
-                        "request_id": "0f8fad5b-d9cb-469f-a165-70867728950e",
-                        "created_at": "2026-03-28T09:00:00+00:00",
-                        "source": "document-reader",
-                        "metadata": {"fileName": "gia-pha.docx", "language": "vi"},
-                        "people_count": 3,
-                        "relationship_count": 2,
-                        "warnings": [],
-                        "extraction": {
-                            "people": [
-                                {
-                                    "id": "P001",
-                                    "full_name": "Nguyen Van A",
-                                    "birth_year": 1940,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                                {
-                                    "id": "P002",
-                                    "full_name": "Tran Thi B",
-                                    "birth_year": 1942,
-                                    "death_year": None,
-                                    "gender": "F",
-                                },
-                                {
-                                    "id": "P003",
-                                    "full_name": "Nguyen Van C",
-                                    "birth_year": 1965,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                            ],
-                            "relationships": [
-                                {
-                                    "from_id": "P001",
-                                    "to_id": "P002",
-                                    "type": "spouse_of",
-                                    "confidence": 0.92,
-                                    "source": "nlp",
-                                },
-                                {
-                                    "from_id": "P001",
-                                    "to_id": "P003",
-                                    "type": "parent_of",
-                                    "confidence": 0.90,
-                                    "source": "nlp",
-                                },
-                            ],
-                        },
-                        "tree_architecture": {
-                            "roots": ["P001", "P002"],
-                            "children_map": {"P001": ["P003"]},
-                            "nodes": {
-                                "P001": {
-                                    "id": "P001",
-                                    "full_name": "Nguyen Van A",
-                                    "birth_year": 1940,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                                "P003": {
-                                    "id": "P003",
-                                    "full_name": "Nguyen Van C",
-                                    "birth_year": 1965,
-                                    "death_year": None,
-                                    "gender": "M",
-                                },
-                            },
-                        },
-                        "tree": [
+                        "balkan_nodes": [
                             {
-                                "id": "P001",
-                                "full_name": "Nguyen Van A",
-                                "birth_year": 1940,
-                                "death_year": None,
-                                "gender": "M",
-                                "cycle": False,
-                                "children": [
-                                    {
-                                        "id": "P003",
-                                        "full_name": "Nguyen Van C",
-                                        "birth_year": 1965,
-                                        "death_year": None,
-                                        "gender": "M",
-                                        "cycle": False,
-                                        "children": [],
-                                    }
-                                ],
-                            }
+                                "id": 1,
+                                "name": "Nguyễn Văn A",
+                                "gender": "male",
+                                "birthYear": 1940,
+                                "pids": [2],
+                            },
+                            {
+                                "id": 2,
+                                "name": "Trần Thị B",
+                                "gender": "female",
+                                "birthYear": 1942,
+                                "pids": [1],
+                            },
+                            {
+                                "id": 3,
+                                "name": "Nguyễn Văn C",
+                                "gender": "male",
+                                "birthYear": 1965,
+                                "fid": 1,
+                                "mid": 2,
+                            },
                         ],
+                        "gemini_error": None,
                     }
                 }
             }
@@ -617,14 +435,7 @@ def clear_history() -> ClearHistoryResponse:
 )
 def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
     """
-    Phân tích văn bản gia phả và trả về:
-
-    - **extraction.people** — danh sách người (`id`, `full_name`, `birth_year`, `death_year`, `gender`).
-    - **extraction.relationships** — danh sách quan hệ (`from_id`, `to_id`, `type`, `confidence`).
-      - `type` nhận một trong: `parent_of`, `spouse_of`.
-    - **tree_architecture** — cấu trúc cây phẳng (`roots`, `children_map`, `nodes`).
-    - **tree** — cây lồng nhau để frontend render trực tiếp.
-    - **warnings** — cảnh báo validation (tự quan hệ, trùng cạnh, khoảng tuổi bất thường).
+    Trả về **balkan_nodes** (Gemini) và **gemini_error** nếu có.
     """
     request_id = str(uuid4())
     created_at = datetime.now(timezone.utc).isoformat()
@@ -637,20 +448,15 @@ def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
     warnings.extend(validate_no_duplicate_edges(extraction))
     warnings.extend(validate_parent_age_gap(extraction))
 
-    arch = build_tree_architecture(extraction)
-    tree = build_nested_tree(arch)
+    balkan_nodes, gemini_err = normalize_balkan_nodes(req.text, extraction)
+    if gemini_err:
+        warnings.append(gemini_err)
+
+    people_count = len(balkan_nodes) if gemini_err is None else len(extraction.get("people", []))
 
     response_payload = AnalyzeResponse(
-        request_id=request_id,
-        created_at=created_at,
-        source=req.source or "frontend",
-        metadata=req.metadata,
-        people_count=len(extraction.get("people", [])),
-        relationship_count=len(extraction.get("relationships", [])),
-        warnings=warnings,
-        extraction=extraction,
-        tree_architecture=arch,
-        tree=tree,
+        balkan_nodes=balkan_nodes,
+        gemini_error=gemini_err,
     )
 
     history_item = HistoryItem(
@@ -658,7 +464,7 @@ def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
         created_at=created_at,
         source=req.source or "frontend",
         metadata=req.metadata,
-        people_count=len(extraction.get("people", [])),
+        people_count=people_count,
         relationship_count=len(extraction.get("relationships", [])),
         warning_count=len(warnings),
     )

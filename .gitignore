@@ -1,4 +1,5 @@
 generate-family-tree/.env
+nlp_family_extractor/.env
 
 .venv/
 lib/

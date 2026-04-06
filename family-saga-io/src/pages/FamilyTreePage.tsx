@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Descriptions,
+  Empty,
   Tag,
   Modal,
   Form,
@@ -15,6 +16,7 @@ import {
 import { UserOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { familyData, familyInfo, type FamilyMember } from '@/data/familyMockData';
+import { BalkanFamilyTreeView, type BalkanNode } from '@/components/BalkanFamilyTreeView';
 import FamilyTreeNode from '@/components/FamilyTreeNode';
 import * as XLSX from 'xlsx';
 import { useTranslation } from 'react-i18next';
@@ -36,6 +38,8 @@ type BackendRelationship = {
 };
 
 type BackendAnalysisPayload = {
+  balkan_nodes?: BalkanNode[];
+  gemini_error?: string | null;
   extraction?: {
     people?: BackendPerson[];
     relationships?: BackendRelationship[];
@@ -161,6 +165,9 @@ const FamilyTreePage = () => {
   const [members, setMembers] = useState<FamilyMember[]>(familyData);
   const [runtimeInfo, setRuntimeInfo] = useState(familyInfo);
   const [isUsingBackendData, setIsUsingBackendData] = useState(false);
+  const [balkanNodes, setBalkanNodes] = useState<BalkanNode[]>([]);
+  const [balkanGeminiError, setBalkanGeminiError] = useState<string | null>(null);
+  const [isBalkanPayload, setIsBalkanPayload] = useState(false);
   const [selectedMember, setSelectedMember] = useState<FamilyMember | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -174,6 +181,23 @@ const FamilyTreePage = () => {
       }
 
       const parsed = JSON.parse(raw) as BackendAnalysisPayload;
+
+      if ('balkan_nodes' in parsed && Array.isArray(parsed.balkan_nodes)) {
+        const nodes = parsed.balkan_nodes;
+        setBalkanNodes(nodes);
+        setBalkanGeminiError(parsed.gemini_error ?? null);
+        setIsBalkanPayload(true);
+        setIsUsingBackendData(true);
+        setRuntimeInfo((prev) => ({
+          ...prev,
+          totalMembers: nodes.length,
+          totalGenerations: Math.max(1, prev.totalGenerations),
+          origin: 'Từ phân tích tài liệu (BALKAN)',
+          motto: 'Dữ liệu Gemini chuẩn hoá',
+        }));
+        return;
+      }
+
       const built = buildMembersFromBackend(parsed);
       if (!built) {
         return;
@@ -345,9 +369,11 @@ const FamilyTreePage = () => {
           </Tag>
           <LanguageSwitcher />
           <ThemeToggle />
-          <Button type="primary" onClick={handleExportExcel}>
-            {t('familyTree.exportExcel')}
-          </Button>
+          {balkanNodes.length === 0 && (
+            <Button type="primary" onClick={handleExportExcel}>
+              {t('familyTree.exportExcel')}
+            </Button>
+          )}
         </div>
       </header>
 
@@ -366,18 +392,40 @@ const FamilyTreePage = () => {
 
       {/* Tree View */}
       <div className="p-6 overflow-x-auto">
-        {isUsingBackendData && (
+        {isUsingBackendData && isBalkanPayload && (
           <Alert
             type="success"
             showIcon
-            message="Đang hiển thị dữ liệu từ backend JSON"
-            description="Dữ liệu được nạp từ kết quả phân tích ở trang Document Reader."
+            message="Đang hiển thị cây BALKAN (Gemini)"
+            description="Dữ liệu từ phân tích ở trang Document Reader."
             className="mb-6"
           />
         )}
-        <div className="min-w-[800px] flex justify-center py-8">
-          {root ? renderTree(root) : null}
-        </div>
+        {balkanGeminiError && (
+          <Alert
+            type="warning"
+            showIcon
+            message="Cảnh báo chuẩn hoá"
+            description={balkanGeminiError}
+            className="mb-6"
+          />
+        )}
+        {isBalkanPayload ? (
+          balkanNodes.length > 0 ? (
+            <div className="max-w-[1400px] mx-auto">
+              <BalkanFamilyTreeView nodes={balkanNodes} height={640} />
+            </div>
+          ) : (
+            <Empty
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              description="Chưa có node BALKAN — kiểm tra Gemini / GOOGLE_API_KEY."
+            />
+          )
+        ) : (
+          <div className="min-w-[800px] flex justify-center py-8">
+            {root ? renderTree(root) : null}
+          </div>
+        )}
       </div>
 
       {/* Member Detail Modal */}
