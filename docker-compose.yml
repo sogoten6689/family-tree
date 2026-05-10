@@ -31,6 +31,8 @@ services:
     container_name: family-tree-backend
     ports:
       - "8002:8000"
+    volumes:
+      - ./nlp_family_extractor/data:/app/data
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306

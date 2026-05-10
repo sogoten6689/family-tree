@@ -14,8 +14,10 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
+    FamilyTreeStoreError,
     FamilyTreeValidationError,
     JsonFamilyTreeStore,
+    MirroredFamilyTreeStore,
 )
 from app.family_tree_store import MySqlFamilyTreeStore
 from app.gemini_service import normalize_balkan_nodes
@@ -117,8 +119,8 @@ class HealthResponse(BaseModel):
         default=None,
         description="Lý do fallback sang in-memory nếu MySQL khởi tạo thất bại.",
     )
-    tree_storage: Literal["mysql", "json"] = Field(
-        description="Backend đang lưu cây gia phả: MySQL hoặc JSON file."
+    tree_storage: Literal["mysql+json", "json"] = Field(
+        description="Backend đang lưu cây gia phả: đồng bộ MySQL+JSON hoặc chỉ JSON file."
     )
 
 
@@ -287,13 +289,17 @@ _detail_order: deque[str] = deque()
 _history_repo = HistoryRepository()
 
 def _create_family_tree_store():
+    source_store = JsonFamilyTreeStore(
+        Path(__file__).resolve().parent / "data" / "family_trees"
+    )
     try:
-        store = MySqlFamilyTreeStore.from_env()
-        return store, "mysql"
+        mysql_store = MySqlFamilyTreeStore.from_env()
+        return MirroredFamilyTreeStore(
+            primary_store=mysql_store,
+            source_store=source_store,
+        ), "mysql+json"
     except Exception:
-        return JsonFamilyTreeStore(
-            Path(__file__).resolve().parent / "data" / "family_trees"
-        ), "json"
+        return source_store, "json"
 
 _family_tree_store, _family_tree_storage = _create_family_tree_store()
 
@@ -303,6 +309,8 @@ def _raise_store_error(error: Exception) -> None:
         raise HTTPException(status_code=404, detail=str(error)) from error
     if isinstance(error, FamilyTreeValidationError):
         raise HTTPException(status_code=400, detail=str(error)) from error
+    if isinstance(error, FamilyTreeStoreError):
+        raise HTTPException(status_code=500, detail=str(error)) from error
     raise HTTPException(status_code=500, detail="Unexpected family tree storage error") from error
 
 

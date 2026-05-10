@@ -861,3 +861,141 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "updated_at": doc["updated_at"],
                 },
             )
+
+
+class MirroredFamilyTreeStore:
+    """Store wrapper that reads from primary store and mirrors writes to source JSON files."""
+
+    def __init__(self, *, primary_store: _FamilyTreeStoreBase, source_store: JsonFamilyTreeStore) -> None:
+        self._primary = primary_store
+        self._source = source_store
+
+    def list_trees(self) -> List[Dict[str, Any]]:
+        return self._primary.list_trees()
+
+    def create_tree(
+        self,
+        *,
+        name: str,
+        description: Optional[str] = None,
+        nodes: Optional[List[Dict[str, Any]]] = None,
+    ) -> Dict[str, Any]:
+        doc = self._primary.create_tree(name=name, description=description, nodes=nodes)
+        self._sync_source_document(doc)
+        return doc
+
+    def get_tree(self, tree_id: str) -> Dict[str, Any]:
+        return self._primary.get_tree(tree_id)
+
+    def update_tree(self, tree_id: str, *, name: Optional[str], description: Optional[str]) -> Dict[str, Any]:
+        doc = self._primary.update_tree(tree_id, name=name, description=description)
+        self._sync_source_document(doc)
+        return doc
+
+    def replace_tree_document(
+        self,
+        tree_id: str,
+        *,
+        name: str,
+        description: Optional[str],
+        nodes: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        doc = self._primary.replace_tree_document(
+            tree_id,
+            name=name,
+            description=description,
+            nodes=nodes,
+        )
+        self._sync_source_document(doc)
+        return doc
+
+    def delete_tree(self, tree_id: str) -> None:
+        self._primary.delete_tree(tree_id)
+        self._delete_source_document(tree_id)
+
+    def add_node(self, tree_id: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+        doc = self._primary.add_node(tree_id, payload)
+        self._sync_source_document(doc)
+        return doc
+
+    def update_node(self, tree_id: str, node_id: int, payload: Dict[str, Any]) -> Dict[str, Any]:
+        doc = self._primary.update_node(tree_id, node_id, payload)
+        self._sync_source_document(doc)
+        return doc
+
+    def delete_node(self, tree_id: str, node_id: int) -> Dict[str, Any]:
+        doc = self._primary.delete_node(tree_id, node_id)
+        self._sync_source_document(doc)
+        return doc
+
+    def add_spouse_link(self, tree_id: str, from_id: int, to_id: int) -> Dict[str, Any]:
+        doc = self._primary.add_spouse_link(tree_id, from_id, to_id)
+        self._sync_source_document(doc)
+        return doc
+
+    def delete_spouse_link(self, tree_id: str, from_id: int, to_id: int) -> Dict[str, Any]:
+        doc = self._primary.delete_spouse_link(tree_id, from_id, to_id)
+        self._sync_source_document(doc)
+        return doc
+
+    def add_parent_link(
+        self,
+        tree_id: str,
+        *,
+        parent_id: int,
+        child_id: int,
+        side: Literal["fid", "mid"],
+    ) -> Dict[str, Any]:
+        doc = self._primary.add_parent_link(
+            tree_id,
+            parent_id=parent_id,
+            child_id=child_id,
+            side=side,
+        )
+        self._sync_source_document(doc)
+        return doc
+
+    def delete_parent_link(
+        self,
+        tree_id: str,
+        *,
+        parent_id: int,
+        child_id: int,
+        side: Optional[Literal["fid", "mid"]],
+    ) -> Dict[str, Any]:
+        doc = self._primary.delete_parent_link(
+            tree_id,
+            parent_id=parent_id,
+            child_id=child_id,
+            side=side,
+        )
+        self._sync_source_document(doc)
+        return doc
+
+    def _sync_source_document(self, doc: Dict[str, Any]) -> None:
+        try:
+            tree_id = str(doc.get("id") or "")
+            if not tree_id:
+                raise FamilyTreeValidationError("tree.id is required for source sync")
+
+            source_doc: Dict[str, Any] = {
+                "id": tree_id,
+                "name": doc.get("name"),
+                "description": doc.get("description"),
+                "created_at": doc.get("created_at"),
+                "updated_at": doc.get("updated_at"),
+                "nodes": self._source._normalize_nodes(doc.get("nodes", [])),
+            }
+            with self._source._lock:
+                self._source._write_json(self._source._file_path(tree_id), source_doc)
+        except Exception as exc:  # pragma: no cover - sync safety
+            raise FamilyTreeStoreError(f"Failed to sync source JSON for tree '{doc.get('id')}'") from exc
+
+    def _delete_source_document(self, tree_id: str) -> None:
+        try:
+            with self._source._lock:
+                path = self._source._file_path(tree_id)
+                if path.exists():
+                    path.unlink()
+        except Exception as exc:  # pragma: no cover - sync safety
+            raise FamilyTreeStoreError(f"Failed to delete source JSON for tree '{tree_id}'") from exc
