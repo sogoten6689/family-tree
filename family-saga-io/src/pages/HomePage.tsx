@@ -82,6 +82,21 @@ const HomePage = () => {
             >
                 {t('home.btnOpenDoc')}
             </Button>
+            <Button
+              size="large"
+              onClick={() => navigate('/family-tree-manager')}
+              style={{
+                background: 'hsl(36, 60%, 90%)',
+                borderColor: 'hsl(36, 60%, 75%)',
+                color: 'hsl(20, 40%, 25%)',
+                height: 48,
+                fontSize: 16,
+                fontFamily: 'var(--font-body)',
+                paddingInline: 24,
+              }}
+            >
+              {t('home.btnManageTree', { defaultValue: 'Quản lý gia phả' })}
+            </Button>
           </div>
         </div>
       </section>

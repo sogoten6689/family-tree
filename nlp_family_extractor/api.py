@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import deque
 from datetime import datetime, timezone
+from pathlib import Path
 from threading import Lock
 from typing import Any, Dict, List, Literal, Optional
 from uuid import uuid4
@@ -11,6 +12,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.extractor import FamilyExtractor
+from app.family_tree_store import (
+    FamilyTreeNotFoundError,
+    FamilyTreeValidationError,
+    JsonFamilyTreeStore,
+)
+from app.family_tree_store import MySqlFamilyTreeStore
 from app.gemini_service import normalize_balkan_nodes
 from app.history_repository import HistoryRepository
 from app.validate import (
@@ -110,10 +117,94 @@ class HealthResponse(BaseModel):
         default=None,
         description="Lý do fallback sang in-memory nếu MySQL khởi tạo thất bại.",
     )
+    tree_storage: Literal["mysql", "json"] = Field(
+        description="Backend đang lưu cây gia phả: MySQL hoặc JSON file."
+    )
 
 
 class ClearHistoryResponse(BaseModel):
     cleared: int = Field(description="Số lượng bản ghi lịch sử đã bị xoá.")
+
+
+class FamilyTreeSummary(BaseModel):
+    id: str
+    name: str
+    description: Optional[str] = None
+    created_at: str
+    updated_at: str
+    node_count: int
+
+
+class FamilyTreeListResponse(BaseModel):
+    total: int
+    items: List[FamilyTreeSummary]
+
+
+class FamilyTreeDocument(BaseModel):
+    id: str
+    name: str
+    description: Optional[str] = None
+    created_at: str
+    updated_at: str
+    nodes: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+class FamilyTreeCreateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = Field(min_length=1, description="Tên cây gia phả.")
+    description: Optional[str] = Field(default=None, description="Mô tả ngắn.")
+    nodes: List[Dict[str, Any]] = Field(
+        default_factory=list,
+        description="Danh sách node BALKAN khởi tạo ban đầu.",
+    )
+
+
+class FamilyTreeUpdateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: Optional[str] = Field(default=None, min_length=1)
+    description: Optional[str] = Field(default=None)
+
+
+class FamilyTreeReplaceRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = Field(min_length=1)
+    description: Optional[str] = Field(default=None)
+    nodes: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+class FamilyTreeNodeRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: Optional[str] = None
+    gender: Optional[Literal["male", "female"]] = None
+    birthYear: Optional[int] = None
+    deathYear: Optional[int] = None
+    fid: Optional[int] = None
+    mid: Optional[int] = None
+    pids: Optional[List[int]] = None
+    title: Optional[str] = None
+    avatar: Optional[str] = None
+    bio: Optional[str] = None
+
+
+class FamilyTreeLinkRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    type: Literal["spouse_of", "parent_of"]
+    from_id: int = Field(ge=1)
+    to_id: int = Field(ge=1)
+    side: Optional[Literal["fid", "mid"]] = Field(
+        default=None,
+        description="Bắt buộc khi type=parent_of để xác định cha (fid) hoặc mẹ (mid).",
+    )
+
+
+class FamilyTreeDeleteResponse(BaseModel):
+    deleted: bool
+    id: str
 
 
 _TAGS_METADATA = [
@@ -132,6 +223,10 @@ _TAGS_METADATA = [
     {
         "name": "System",
         "description": "Health check và trạng thái hệ thống.",
+    },
+    {
+        "name": "FamilyTrees",
+        "description": "CRUD cây gia phả dạng JSON file (BALKAN nodes).",
     },
 ]
 
@@ -191,6 +286,25 @@ _detail_store: Dict[str, AnalyzeResponse] = {}
 _detail_order: deque[str] = deque()
 _history_repo = HistoryRepository()
 
+def _create_family_tree_store():
+    try:
+        store = MySqlFamilyTreeStore.from_env()
+        return store, "mysql"
+    except Exception:
+        return JsonFamilyTreeStore(
+            Path(__file__).resolve().parent / "data" / "family_trees"
+        ), "json"
+
+_family_tree_store, _family_tree_storage = _create_family_tree_store()
+
+
+def _raise_store_error(error: Exception) -> None:
+    if isinstance(error, FamilyTreeNotFoundError):
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    if isinstance(error, FamilyTreeValidationError):
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    raise HTTPException(status_code=500, detail="Unexpected family tree storage error") from error
+
 
 @app.get(
     "/health",
@@ -224,6 +338,7 @@ def health() -> HealthResponse:
         "status": "ok",
         "history_storage": "mysql" if _history_repo.enabled else "memory",
     }
+    payload["tree_storage"] = _family_tree_storage
     if _history_repo.init_error:
         payload["history_init_error"] = _history_repo.init_error
     return HealthResponse(**payload)
@@ -388,6 +503,218 @@ def clear_history() -> ClearHistoryResponse:
         _detail_store.clear()
         _detail_order.clear()
     return ClearHistoryResponse(cleared=removed)
+
+
+@app.get(
+    "/api/family-trees",
+    response_model=FamilyTreeListResponse,
+    tags=["FamilyTrees"],
+    summary="Danh sách cây gia phả",
+)
+def list_family_trees() -> FamilyTreeListResponse:
+    try:
+        items = _family_tree_store.list_trees()
+    except Exception as error:  # pragma: no cover - defensive
+        _raise_store_error(error)
+    return FamilyTreeListResponse(total=len(items), items=[FamilyTreeSummary(**x) for x in items])
+
+
+@app.post(
+    "/api/family-trees",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Tạo cây gia phả mới",
+)
+def create_family_tree(req: FamilyTreeCreateRequest) -> FamilyTreeDocument:
+    try:
+        created = _family_tree_store.create_tree(
+            name=req.name,
+            description=req.description,
+            nodes=req.nodes,
+        )
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**created)
+
+
+@app.get(
+    "/api/family-trees/{tree_id}",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Chi tiết cây gia phả",
+)
+def get_family_tree(tree_id: str) -> FamilyTreeDocument:
+    try:
+        item = _family_tree_store.get_tree(tree_id)
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.put(
+    "/api/family-trees/{tree_id}",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Cập nhật metadata cây gia phả",
+)
+def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest) -> FamilyTreeDocument:
+    if req.name is None and req.description is None:
+        raise HTTPException(status_code=400, detail="No fields to update")
+
+    try:
+        item = _family_tree_store.update_tree(
+            tree_id,
+            name=req.name,
+            description=req.description,
+        )
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.put(
+    "/api/family-trees/{tree_id}/document",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Thay thế toàn bộ document cây gia phả",
+)
+def replace_family_tree_document(tree_id: str, req: FamilyTreeReplaceRequest) -> FamilyTreeDocument:
+    try:
+        item = _family_tree_store.replace_tree_document(
+            tree_id,
+            name=req.name,
+            description=req.description,
+            nodes=req.nodes,
+        )
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.delete(
+    "/api/family-trees/{tree_id}",
+    response_model=FamilyTreeDeleteResponse,
+    tags=["FamilyTrees"],
+    summary="Xóa một cây gia phả",
+)
+def delete_family_tree(tree_id: str) -> FamilyTreeDeleteResponse:
+    try:
+        _family_tree_store.delete_tree(tree_id)
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDeleteResponse(deleted=True, id=tree_id)
+
+
+@app.post(
+    "/api/family-trees/{tree_id}/nodes",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Thêm node vào cây gia phả",
+)
+def add_family_tree_node(tree_id: str, req: FamilyTreeNodeRequest) -> FamilyTreeDocument:
+    if req.name is None or req.gender is None:
+        raise HTTPException(status_code=400, detail="name and gender are required")
+
+    try:
+        item = _family_tree_store.add_node(tree_id, req.model_dump(exclude_none=True))
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.put(
+    "/api/family-trees/{tree_id}/nodes/{node_id}",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Cập nhật node",
+)
+def update_family_tree_node(
+    tree_id: str,
+    node_id: int,
+    req: FamilyTreeNodeRequest,
+) -> FamilyTreeDocument:
+    payload = req.model_dump(exclude_none=True)
+    if not payload:
+        raise HTTPException(status_code=400, detail="No fields to update")
+
+    try:
+        item = _family_tree_store.update_node(tree_id, node_id=node_id, payload=payload)
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.delete(
+    "/api/family-trees/{tree_id}/nodes/{node_id}",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Xóa node",
+)
+def delete_family_tree_node(tree_id: str, node_id: int) -> FamilyTreeDocument:
+    try:
+        item = _family_tree_store.delete_node(tree_id, node_id=node_id)
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.post(
+    "/api/family-trees/{tree_id}/links",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Tạo liên kết quan hệ",
+)
+def create_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyTreeDocument:
+    try:
+        if req.type == "spouse_of":
+            item = _family_tree_store.add_spouse_link(
+                tree_id,
+                from_id=req.from_id,
+                to_id=req.to_id,
+            )
+        else:
+            if req.side is None:
+                raise HTTPException(
+                    status_code=400,
+                    detail="side is required for parent_of (fid or mid)",
+                )
+            item = _family_tree_store.add_parent_link(
+                tree_id,
+                parent_id=req.from_id,
+                child_id=req.to_id,
+                side=req.side,
+            )
+    except HTTPException:
+        raise
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
+
+
+@app.delete(
+    "/api/family-trees/{tree_id}/links",
+    response_model=FamilyTreeDocument,
+    tags=["FamilyTrees"],
+    summary="Xóa liên kết quan hệ",
+)
+def delete_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyTreeDocument:
+    try:
+        if req.type == "spouse_of":
+            item = _family_tree_store.delete_spouse_link(
+                tree_id,
+                from_id=req.from_id,
+                to_id=req.to_id,
+            )
+        else:
+            item = _family_tree_store.delete_parent_link(
+                tree_id,
+                parent_id=req.from_id,
+                child_id=req.to_id,
+                side=req.side,
+            )
+    except Exception as error:
+        _raise_store_error(error)
+    return FamilyTreeDocument(**item)
 
 
 @app.post(

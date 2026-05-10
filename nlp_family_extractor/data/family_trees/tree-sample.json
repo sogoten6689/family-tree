@@ -1,0 +1,63 @@
+{
+  "id": "tree-sample",
+  "name": "Gia phả họ Nguyễn",
+  "description": "Cây mẫu dùng cho giao diện quản trị.",
+  "created_at": "2026-05-10T00:00:00+00:00",
+  "updated_at": "2026-05-10T00:00:00+00:00",
+  "nodes": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn Tổ",
+      "gender": "male",
+      "birthYear": 1880,
+      "deathYear": 1960,
+      "pids": [2],
+      "title": "Thủy tổ",
+      "bio": "Người sáng lập dòng họ."
+    },
+    {
+      "id": 2,
+      "name": "Trần Thị Hoa",
+      "gender": "female",
+      "birthYear": 1884,
+      "deathYear": 1968,
+      "pids": [1],
+      "bio": "Phu nhân của thủy tổ."
+    },
+    {
+      "id": 3,
+      "name": "Nguyễn Văn Trưởng",
+      "gender": "male",
+      "birthYear": 1910,
+      "deathYear": 1985,
+      "fid": 1,
+      "mid": 2,
+      "pids": [4],
+      "title": "Trưởng nam"
+    },
+    {
+      "id": 4,
+      "name": "Lê Thị Lan",
+      "gender": "female",
+      "birthYear": 1912,
+      "deathYear": 1998,
+      "pids": [3]
+    },
+    {
+      "id": 5,
+      "name": "Nguyễn Văn Minh",
+      "gender": "male",
+      "birthYear": 1940,
+      "fid": 3,
+      "mid": 4,
+      "pids": [6]
+    },
+    {
+      "id": 6,
+      "name": "Hoàng Thị Ngọc",
+      "gender": "female",
+      "birthYear": 1942,
+      "pids": [5]
+    }
+  ]
+}

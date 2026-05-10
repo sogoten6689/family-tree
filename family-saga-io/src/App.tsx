@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import HomePage from "./pages/HomePage";
 import DocumentReaderPage from "./pages/DocumentReaderPage";
 import FamilyTreePage from "./pages/FamilyTreePage";
+import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const AppContent = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/document-reader" element={<DocumentReaderPage />} />
             <Route path="/family-tree" element={<FamilyTreePage />} />
+            <Route path="/family-tree-manager" element={<FamilyTreeManagerPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
