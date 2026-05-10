@@ -1,0 +1,14 @@
+{
+  "start_id": 10679,
+  "end_id": 10679,
+  "fetched_at": "2026-05-10T23:48:15.615085+00:00",
+  "success": [
+    {
+      "tree_id": 10679,
+      "url": "https://vietnamgiapha.com/XemPhaHe/10679/cay_pha_he.html",
+      "node_count": 219,
+      "output": "/app/data/vietnamgiapha/json/10679.json"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,2559 @@
+{
+  "tree_id": 120,
+  "url": "https://vietnamgiapha.com/XemPhaHe/120/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 142,
+  "relationship_count": 141,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 2,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 3,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 4,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 5,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 6,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 7,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 8,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 9,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 10,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 11,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 11,
+      "to_id": 12,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 11,
+      "to_id": 13,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 11,
+      "to_id": 14,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 11,
+      "to_id": 15,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 11,
+      "to_id": 16,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 11,
+      "to_id": 17,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 18,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 19,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 20,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 21,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 22,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 23,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 24,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 25,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 26,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 27,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 28,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 29,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 30,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 31,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 32,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 33,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 34,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 35,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 146,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 36,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 36,
+      "to_id": 37,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 36,
+      "to_id": 38,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 36,
+      "to_id": 39,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 40,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 40,
+      "to_id": 41,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 42,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 43,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 44,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 45,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 46,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 47,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 48,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 41,
+      "to_id": 49,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 40,
+      "to_id": 50,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 50,
+      "to_id": 51,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 50,
+      "to_id": 52,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 50,
+      "to_id": 53,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 50,
+      "to_id": 54,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 40,
+      "to_id": 55,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 56,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 56,
+      "to_id": 57,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 57,
+      "to_id": 58,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 56,
+      "to_id": 59,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 59,
+      "to_id": 147,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 59,
+      "to_id": 148,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 56,
+      "to_id": 60,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 60,
+      "to_id": 149,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 56,
+      "to_id": 61,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 61,
+      "to_id": 150,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 56,
+      "to_id": 62,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 62,
+      "to_id": 151,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 62,
+      "to_id": 152,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 63,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 63,
+      "to_id": 64,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 63,
+      "to_id": 67,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 63,
+      "to_id": 70,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 63,
+      "to_id": 73,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 63,
+      "to_id": 75,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 79,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 79,
+      "to_id": 80,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 79,
+      "to_id": 81,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 79,
+      "to_id": 82,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 79,
+      "to_id": 83,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 79,
+      "to_id": 84,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 85,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 85,
+      "to_id": 86,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 85,
+      "to_id": 87,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 88,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 88,
+      "to_id": 89,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 88,
+      "to_id": 90,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 88,
+      "to_id": 91,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 92,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 92,
+      "to_id": 93,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 92,
+      "to_id": 94,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 92,
+      "to_id": 95,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 55,
+      "to_id": 96,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 96,
+      "to_id": 97,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 96,
+      "to_id": 98,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 40,
+      "to_id": 99,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 100,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 101,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 102,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 103,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 104,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 105,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 99,
+      "to_id": 106,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 107,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 108,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 108,
+      "to_id": 109,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 110,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 110,
+      "to_id": 111,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 110,
+      "to_id": 112,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 110,
+      "to_id": 113,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 110,
+      "to_id": 114,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 115,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 116,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 117,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 118,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 119,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 120,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 121,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 122,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 115,
+      "to_id": 123,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 124,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 125,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 125,
+      "to_id": 126,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 125,
+      "to_id": 127,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 125,
+      "to_id": 128,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 125,
+      "to_id": 129,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 125,
+      "to_id": 130,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 131,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 131,
+      "to_id": 132,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 131,
+      "to_id": 133,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 131,
+      "to_id": 134,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 131,
+      "to_id": 135,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 131,
+      "to_id": 136,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 137,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 138,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 139,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 140,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 141,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 142,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 143,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 144,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 138,
+      "to_id": 145,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 120,
+      "node_id": 1,
+      "label": "1.1 Nguyễn Văn Do-Lê Thị Cẫm",
+      "name": "Nguyễn Văn Do-Lê Thị Cẫm",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 120,
+      "node_id": 2,
+      "label": "2.1 Nguyễn Thị Tự-Chồng bà Nguyễn Thị Tự",
+      "name": "Nguyễn Thị Tự-Chồng bà Nguyễn Thị Tự",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 3,
+      "label": "3.1 ...Cự",
+      "name": "...Cự",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 2
+    },
+    {
+      "tree_id": 120,
+      "node_id": 4,
+      "label": "3.2 Mùi",
+      "name": "Mùi",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 2
+    },
+    {
+      "tree_id": 120,
+      "node_id": 5,
+      "label": "3.3 Tuồn",
+      "name": "Tuồn",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 2
+    },
+    {
+      "tree_id": 120,
+      "node_id": 6,
+      "label": "2.2 Nguyễn Thị Nên-Chồng Bà Nguyễn Thị Nên",
+      "name": "Nguyễn Thị Nên-Chồng Bà Nguyễn Thị Nên",
+      "generation": 2,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 7,
+      "label": "3.1 Dề",
+      "name": "Dề",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 6
+    },
+    {
+      "tree_id": 120,
+      "node_id": 8,
+      "label": "3.2 Tĩnh",
+      "name": "Tĩnh",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 6
+    },
+    {
+      "tree_id": 120,
+      "node_id": 9,
+      "label": "3.3 Nghĩ",
+      "name": "Nghĩ",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 6
+    },
+    {
+      "tree_id": 120,
+      "node_id": 10,
+      "label": "3.4 Mĩnh",
+      "name": "Mĩnh",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "mid": 6
+    },
+    {
+      "tree_id": 120,
+      "node_id": 11,
+      "label": "2.3 Nguyễn Văn Công-Vợ Ông Nguyễn Văn Công",
+      "name": "Nguyễn Văn Công-Vợ Ông Nguyễn Văn Công",
+      "generation": 2,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 12,
+      "label": "3.1 Nguyễn ...Khai",
+      "name": "Nguyễn ...Khai",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 11
+    },
+    {
+      "tree_id": 120,
+      "node_id": 13,
+      "label": "3.2 Nguyễn...Nhung",
+      "name": "Nguyễn...Nhung",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 11
+    },
+    {
+      "tree_id": 120,
+      "node_id": 14,
+      "label": "3.3 Nguyễn ....Kiều",
+      "name": "Nguyễn ....Kiều",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 11
+    },
+    {
+      "tree_id": 120,
+      "node_id": 15,
+      "label": "3.4 Nguyễn ...Bường",
+      "name": "Nguyễn ...Bường",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 11
+    },
+    {
+      "tree_id": 120,
+      "node_id": 16,
+      "label": "3.5 Nguyễn ...Trị",
+      "name": "Nguyễn ...Trị",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 11
+    },
+    {
+      "tree_id": 120,
+      "node_id": 17,
+      "label": "3.6 Nguyễn.....Tý",
+      "name": "Nguyễn.....Tý",
+      "generation": 3,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 11
+    },
+    {
+      "tree_id": 120,
+      "node_id": 18,
+      "label": "2.4 Nguyễn Văn Bầy-Hồ Thị Lưu",
+      "name": "Nguyễn Văn Bầy-Hồ Thị Lưu",
+      "generation": 2,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 19,
+      "label": "3.1 Nguyễn thị Vĩnh (Đinh?)-Dương Đình Lành",
+      "name": "Nguyễn thị Vĩnh (Đinh?)-Dương Đình Lành",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 18
+    },
+    {
+      "tree_id": 120,
+      "node_id": 20,
+      "label": "4.1 Dương Thị Lách",
+      "name": "Dương Thị Lách",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 19
+    },
+    {
+      "tree_id": 120,
+      "node_id": 21,
+      "label": "4.2 Dương Đình Lau",
+      "name": "Dương Đình Lau",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 19
+    },
+    {
+      "tree_id": 120,
+      "node_id": 22,
+      "label": "4.3 Dương Đình Bén",
+      "name": "Dương Đình Bén",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 19
+    },
+    {
+      "tree_id": 120,
+      "node_id": 23,
+      "label": "4.4 Dương Đình Ngót",
+      "name": "Dương Đình Ngót",
+      "generation": 4,
+      "order_in_generation": 4,
+      "gender": "male",
+      "mid": 19
+    },
+    {
+      "tree_id": 120,
+      "node_id": 24,
+      "label": "4.5 Dương Thị Lèo",
+      "name": "Dương Thị Lèo",
+      "generation": 4,
+      "order_in_generation": 5,
+      "gender": "female",
+      "mid": 19
+    },
+    {
+      "tree_id": 120,
+      "node_id": 25,
+      "label": "4.6 Dương Đình Cáo",
+      "name": "Dương Đình Cáo",
+      "generation": 4,
+      "order_in_generation": 6,
+      "gender": "male",
+      "mid": 19
+    },
+    {
+      "tree_id": 120,
+      "node_id": 26,
+      "label": "3.2 Nguyễn Thị Bính-Phạm Văn Tuấn",
+      "name": "Nguyễn Thị Bính-Phạm Văn Tuấn",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 18
+    },
+    {
+      "tree_id": 120,
+      "node_id": 27,
+      "label": "4.1 Phạm Văn Dầu",
+      "name": "Phạm Văn Dầu",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 28,
+      "label": "4.2 Phạm Thị Ray",
+      "name": "Phạm Thị Ray",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 29,
+      "label": "4.3 Phạm Văn The",
+      "name": "Phạm Văn The",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 30,
+      "label": "4.4 Phạm Thị Chén",
+      "name": "Phạm Thị Chén",
+      "generation": 4,
+      "order_in_generation": 4,
+      "gender": "female",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 31,
+      "label": "4.5 Phạm Thị Khuân",
+      "name": "Phạm Thị Khuân",
+      "generation": 4,
+      "order_in_generation": 5,
+      "gender": "female",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 32,
+      "label": "4.6 Phạm Văn Khuôn",
+      "name": "Phạm Văn Khuôn",
+      "generation": 4,
+      "order_in_generation": 6,
+      "gender": "male",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 33,
+      "label": "4.7 Phạm Thị Kẽm",
+      "name": "Phạm Thị Kẽm",
+      "generation": 4,
+      "order_in_generation": 7,
+      "gender": "female",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 34,
+      "label": "4.8 Phạm Thị Kẻn",
+      "name": "Phạm Thị Kẻn",
+      "generation": 4,
+      "order_in_generation": 8,
+      "gender": "female",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 35,
+      "label": "4.9 Phạm Thị Ken",
+      "name": "Phạm Thị Ken",
+      "generation": 4,
+      "order_in_generation": 9,
+      "gender": "female",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 146,
+      "label": "4.10 Phạm Văn Vén",
+      "name": "Phạm Văn Vén",
+      "generation": 4,
+      "order_in_generation": 10,
+      "gender": "male",
+      "mid": 26
+    },
+    {
+      "tree_id": 120,
+      "node_id": 36,
+      "label": "3.3 Nguyễn Thị Hóa-Trần Văn Lọ",
+      "name": "Nguyễn Thị Hóa-Trần Văn Lọ",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 18
+    },
+    {
+      "tree_id": 120,
+      "node_id": 37,
+      "label": "4.1 Trần Thị Trâm",
+      "name": "Trần Thị Trâm",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 36
+    },
+    {
+      "tree_id": 120,
+      "node_id": 38,
+      "label": "4.2 Trần Thị Tỉa",
+      "name": "Trần Thị Tỉa",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 36
+    },
+    {
+      "tree_id": 120,
+      "node_id": 39,
+      "label": "4.3 Trần Văn Cày",
+      "name": "Trần Văn Cày",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 36
+    },
+    {
+      "tree_id": 120,
+      "node_id": 40,
+      "label": "3.4 Nguyễn Văn Lem-Nguyễn Thị Như",
+      "name": "Nguyễn Văn Lem-Nguyễn Thị Như",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 18
+    },
+    {
+      "tree_id": 120,
+      "node_id": 41,
+      "label": "4.1 Nguyễn Văn Xinh-Vợ Ông Xinh",
+      "name": "Nguyễn Văn Xinh-Vợ Ông Xinh",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 40
+    },
+    {
+      "tree_id": 120,
+      "node_id": 42,
+      "label": "5.1 Nguyễn Văn Sách",
+      "name": "Nguyễn Văn Sách",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 43,
+      "label": "5.2 Nguyễn Thị Nhiên",
+      "name": "Nguyễn Thị Nhiên",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 44,
+      "label": "5.3 Nguyễn Văn Bích",
+      "name": "Nguyễn Văn Bích",
+      "generation": 5,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 45,
+      "label": "5.4 Nguyễn Văn Huệ",
+      "name": "Nguyễn Văn Huệ",
+      "generation": 5,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 46,
+      "label": "5.5 Nguyễn Văn Khê",
+      "name": "Nguyễn Văn Khê",
+      "generation": 5,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 47,
+      "label": "5.6 Nguyễn Văn Khánh",
+      "name": "Nguyễn Văn Khánh",
+      "generation": 5,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 48,
+      "label": "5.7 Nguyễn Văn Lộc",
+      "name": "Nguyễn Văn Lộc",
+      "generation": 5,
+      "order_in_generation": 7,
+      "gender": "male",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 49,
+      "label": "5.8 Nguyễn Thị Út (khg biết tên)",
+      "name": "Nguyễn Thị Út (khg biết tên)",
+      "generation": 5,
+      "order_in_generation": 8,
+      "gender": "female",
+      "fid": 41
+    },
+    {
+      "tree_id": 120,
+      "node_id": 50,
+      "label": "4.2 Nguyễn Thị Tư-Mai Văn Chất",
+      "name": "Nguyễn Thị Tư-Mai Văn Chất",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 40
+    },
+    {
+      "tree_id": 120,
+      "node_id": 51,
+      "label": "5.1 Mai Văn Chứa",
+      "name": "Mai Văn Chứa",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 50
+    },
+    {
+      "tree_id": 120,
+      "node_id": 52,
+      "label": "5.2 Mai Hửu Của",
+      "name": "Mai Hửu Của",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 50
+    },
+    {
+      "tree_id": 120,
+      "node_id": 53,
+      "label": "5.3 Mai Thị Reo",
+      "name": "Mai Thị Reo",
+      "generation": 5,
+      "order_in_generation": 3,
+      "gender": "female",
+      "mid": 50
+    },
+    {
+      "tree_id": 120,
+      "node_id": 54,
+      "label": "5.4 Mai thị Huệ Minh",
+      "name": "Mai thị Huệ Minh",
+      "generation": 5,
+      "order_in_generation": 4,
+      "gender": "female",
+      "mid": 50
+    },
+    {
+      "tree_id": 120,
+      "node_id": 55,
+      "label": "4.3 Nguyễn Văn Tờ-Nguyễn Thị Nấm-Huỳnh Thị Thà",
+      "name": "Nguyễn Văn Tờ-Nguyễn Thị Nấm-Huỳnh Thị Thà",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 40
+    },
+    {
+      "tree_id": 120,
+      "node_id": 56,
+      "label": "5.1 Nguyễn Hữu Quân-Phan Thị Út",
+      "name": "Nguyễn Hữu Quân-Phan Thị Út",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 57,
+      "label": "6.1 Nguyễn Cẫm Hồng-Trần Thanh Quang",
+      "name": "Nguyễn Cẫm Hồng-Trần Thanh Quang",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 56
+    },
+    {
+      "tree_id": 120,
+      "node_id": 58,
+      "label": "7.1 Trần thị Hồng Hạc",
+      "name": "Trần thị Hồng Hạc",
+      "generation": 7,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 57
+    },
+    {
+      "tree_id": 120,
+      "node_id": 59,
+      "label": "6.2 Nguyễn Phương Dung-Phan Văn Đàng",
+      "name": "Nguyễn Phương Dung-Phan Văn Đàng",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 56
+    },
+    {
+      "tree_id": 120,
+      "node_id": 147,
+      "label": "7.1 Phan ...Duyên",
+      "name": "Phan ...Duyên",
+      "generation": 7,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 59
+    },
+    {
+      "tree_id": 120,
+      "node_id": 148,
+      "label": "7.2 Phan ...Uyên",
+      "name": "Phan ...Uyên",
+      "generation": 7,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 59
+    },
+    {
+      "tree_id": 120,
+      "node_id": 60,
+      "label": "6.3 Nguyễn Ngọc Tuyền-Nguyễn Văn Ngự",
+      "name": "Nguyễn Ngọc Tuyền-Nguyễn Văn Ngự",
+      "generation": 6,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 56
+    },
+    {
+      "tree_id": 120,
+      "node_id": 149,
+      "label": "7.1 Nguyễn ..Thiện",
+      "name": "Nguyễn ..Thiện",
+      "generation": 7,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 60
+    },
+    {
+      "tree_id": 120,
+      "node_id": 61,
+      "label": "6.4 Nguyễn Bích Thuận-Bùi Văn Đằng",
+      "name": "Nguyễn Bích Thuận-Bùi Văn Đằng",
+      "generation": 6,
+      "order_in_generation": 4,
+      "gender": "female",
+      "fid": 56
+    },
+    {
+      "tree_id": 120,
+      "node_id": 150,
+      "label": "7.1 Bùi ...Nguyệt",
+      "name": "Bùi ...Nguyệt",
+      "generation": 7,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 61
+    },
+    {
+      "tree_id": 120,
+      "node_id": 62,
+      "label": "6.5 Nguyễn Phương Thảo-Chồng 1-Chồng 2",
+      "name": "Nguyễn Phương Thảo-Chồng 1-Chồng 2",
+      "generation": 6,
+      "order_in_generation": 5,
+      "gender": "female",
+      "fid": 56
+    },
+    {
+      "tree_id": 120,
+      "node_id": 151,
+      "label": "7.1 Vanessa",
+      "name": "Vanessa",
+      "generation": 7,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 62
+    },
+    {
+      "tree_id": 120,
+      "node_id": 152,
+      "label": "7.2 Phan Ben",
+      "name": "Phan Ben",
+      "generation": 7,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 62
+    },
+    {
+      "tree_id": 120,
+      "node_id": 63,
+      "label": "5.2 Nguyễn Thị Hường-Nguyễn Văn Mẫn",
+      "name": "Nguyễn Thị Hường-Nguyễn Văn Mẫn",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 64,
+      "label": "6.1 Nguyễn Quốc Tuấn",
+      "name": "Nguyễn Quốc Tuấn",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 63
+    },
+    {
+      "tree_id": 120,
+      "node_id": 67,
+      "label": "6.2 Nguyễn Quốc Cường",
+      "name": "Nguyễn Quốc Cường",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 63
+    },
+    {
+      "tree_id": 120,
+      "node_id": 70,
+      "label": "6.3 Nguyễn Thị Hương Huyền",
+      "name": "Nguyễn Thị Hương Huyền",
+      "generation": 6,
+      "order_in_generation": 3,
+      "gender": "female",
+      "mid": 63
+    },
+    {
+      "tree_id": 120,
+      "node_id": 73,
+      "label": "6.4 Nguyễn Thị Phương Mai",
+      "name": "Nguyễn Thị Phương Mai",
+      "generation": 6,
+      "order_in_generation": 4,
+      "gender": "female",
+      "mid": 63
+    },
+    {
+      "tree_id": 120,
+      "node_id": 75,
+      "label": "6.5 Nguyễn Quốc Bình",
+      "name": "Nguyễn Quốc Bình",
+      "generation": 6,
+      "order_in_generation": 5,
+      "gender": "male",
+      "mid": 63
+    },
+    {
+      "tree_id": 120,
+      "node_id": 79,
+      "label": "5.3 Nguyễn Thanh Ba-Vợ Nguyễn Thanh Ba",
+      "name": "Nguyễn Thanh Ba-Vợ Nguyễn Thanh Ba",
+      "generation": 5,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 80,
+      "label": "6.1 Nguyễn Hồng Nhung",
+      "name": "Nguyễn Hồng Nhung",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 79
+    },
+    {
+      "tree_id": 120,
+      "node_id": 81,
+      "label": "6.2 Nguyễn...Phương",
+      "name": "Nguyễn...Phương",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 79
+    },
+    {
+      "tree_id": 120,
+      "node_id": 82,
+      "label": "6.3 Nguyễn...Vũ",
+      "name": "Nguyễn...Vũ",
+      "generation": 6,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 79
+    },
+    {
+      "tree_id": 120,
+      "node_id": 83,
+      "label": "6.4 Nguyễn...Tuyết",
+      "name": "Nguyễn...Tuyết",
+      "generation": 6,
+      "order_in_generation": 4,
+      "gender": "female",
+      "fid": 79
+    },
+    {
+      "tree_id": 120,
+      "node_id": 84,
+      "label": "6.5 Nguyễn...Kiều",
+      "name": "Nguyễn...Kiều",
+      "generation": 6,
+      "order_in_generation": 5,
+      "gender": "female",
+      "fid": 79
+    },
+    {
+      "tree_id": 120,
+      "node_id": 85,
+      "label": "5.4 Nguyễn Thanh Nhàn-Vợ cả Nguyễn Thanh Nhàn-Vợ hai Nguyễn Thanh Nhàn",
+      "name": "Nguyễn Thanh Nhàn-Vợ cả Nguyễn Thanh Nhàn-Vợ hai Nguyễn Thanh Nhàn",
+      "generation": 5,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 86,
+      "label": "6.1 Nguyễn Thanh Nhã",
+      "name": "Nguyễn Thanh Nhã",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 85
+    },
+    {
+      "tree_id": 120,
+      "node_id": 87,
+      "label": "6.2 Nguyễn Thanh Tùng",
+      "name": "Nguyễn Thanh Tùng",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 85
+    },
+    {
+      "tree_id": 120,
+      "node_id": 88,
+      "label": "5.5 Nguyễn Thị Kim Thanh-Lê Hồng Sơn",
+      "name": "Nguyễn Thị Kim Thanh-Lê Hồng Sơn",
+      "generation": 5,
+      "order_in_generation": 5,
+      "gender": "female",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 89,
+      "label": "6.1 Lê Hồng Sang",
+      "name": "Lê Hồng Sang",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 88
+    },
+    {
+      "tree_id": 120,
+      "node_id": 90,
+      "label": "6.2 Lê Hồng Nam",
+      "name": "Lê Hồng Nam",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 88
+    },
+    {
+      "tree_id": 120,
+      "node_id": 91,
+      "label": "6.3 Lê...Hằng",
+      "name": "Lê...Hằng",
+      "generation": 6,
+      "order_in_generation": 3,
+      "gender": "female",
+      "mid": 88
+    },
+    {
+      "tree_id": 120,
+      "node_id": 92,
+      "label": "5.6 Nguyễn Thị Kim Thoa-Nguyễn Văn Thận-Nguyễn Văn Tâm-Hết Răng",
+      "name": "Nguyễn Thị Kim Thoa-Nguyễn Văn Thận-Nguyễn Văn Tâm-Hết Răng",
+      "generation": 5,
+      "order_in_generation": 6,
+      "gender": "female",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 93,
+      "label": "6.1 Nguyễn ...Lê",
+      "name": "Nguyễn ...Lê",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 92
+    },
+    {
+      "tree_id": 120,
+      "node_id": 94,
+      "label": "6.2 Nguyễn ....Đào",
+      "name": "Nguyễn ....Đào",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 92
+    },
+    {
+      "tree_id": 120,
+      "node_id": 95,
+      "label": "6.3 Nguyễn....Phương",
+      "name": "Nguyễn....Phương",
+      "generation": 6,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 92
+    },
+    {
+      "tree_id": 120,
+      "node_id": 96,
+      "label": "5.7 Nguyễn Thanh Mai-Đặng...Hà",
+      "name": "Nguyễn Thanh Mai-Đặng...Hà",
+      "generation": 5,
+      "order_in_generation": 7,
+      "gender": "male",
+      "fid": 55
+    },
+    {
+      "tree_id": 120,
+      "node_id": 97,
+      "label": "6.1 Nguyễn ...Cóc",
+      "name": "Nguyễn ...Cóc",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 96
+    },
+    {
+      "tree_id": 120,
+      "node_id": 98,
+      "label": "6.2 Nguyễn ...Nhái",
+      "name": "Nguyễn ...Nhái",
+      "generation": 6,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 96
+    },
+    {
+      "tree_id": 120,
+      "node_id": 99,
+      "label": "4.4 Nguyễn Thị Giấy-Chồng trước Bà Giấy-....Khang",
+      "name": "Nguyễn Thị Giấy-Chồng trước Bà Giấy-....Khang",
+      "generation": 4,
+      "order_in_generation": 4,
+      "gender": "female",
+      "fid": 40
+    },
+    {
+      "tree_id": 120,
+      "node_id": 100,
+      "label": "5.1 ...Chậm",
+      "name": "...Chậm",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 101,
+      "label": "5.2 ...Chạp",
+      "name": "...Chạp",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 102,
+      "label": "5.3 ...Đực",
+      "name": "...Đực",
+      "generation": 5,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 103,
+      "label": "5.4 ...Đằng",
+      "name": "...Đằng",
+      "generation": 5,
+      "order_in_generation": 4,
+      "gender": "male",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 104,
+      "label": "5.5 ...Hiệp",
+      "name": "...Hiệp",
+      "generation": 5,
+      "order_in_generation": 5,
+      "gender": "male",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 105,
+      "label": "5.6 ...Tuyết",
+      "name": "...Tuyết",
+      "generation": 5,
+      "order_in_generation": 6,
+      "gender": "female",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 106,
+      "label": "5.7 ...Minh",
+      "name": "...Minh",
+      "generation": 5,
+      "order_in_generation": 7,
+      "gender": "male",
+      "mid": 99
+    },
+    {
+      "tree_id": 120,
+      "node_id": 107,
+      "label": "3.5 Nguyễn....Lọ",
+      "name": "Nguyễn....Lọ",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 18
+    },
+    {
+      "tree_id": 120,
+      "node_id": 108,
+      "label": "2.5 Nguyễn Thị Hồi-Chồng Bà Nguyễn Thị Hồi",
+      "name": "Nguyễn Thị Hồi-Chồng Bà Nguyễn Thị Hồi",
+      "generation": 2,
+      "order_in_generation": 5,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 109,
+      "label": "3.1 ....Duôn",
+      "name": "....Duôn",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "mid": 108
+    },
+    {
+      "tree_id": 120,
+      "node_id": 110,
+      "label": "2.6 Nguyễn Văn Đồn-Vợ Ông Nguyễn Văn Đồn",
+      "name": "Nguyễn Văn Đồn-Vợ Ông Nguyễn Văn Đồn",
+      "generation": 2,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 111,
+      "label": "3.1 Nguyễn....Gia",
+      "name": "Nguyễn....Gia",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 110
+    },
+    {
+      "tree_id": 120,
+      "node_id": 112,
+      "label": "3.2 Nguyễn ....Tề",
+      "name": "Nguyễn ....Tề",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 110
+    },
+    {
+      "tree_id": 120,
+      "node_id": 113,
+      "label": "3.3 Nguyễn...Tôn",
+      "name": "Nguyễn...Tôn",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 110
+    },
+    {
+      "tree_id": 120,
+      "node_id": 114,
+      "label": "3.4 Nguyễn....Thất",
+      "name": "Nguyễn....Thất",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 110
+    },
+    {
+      "tree_id": 120,
+      "node_id": 115,
+      "label": "2.7 Nguyễn Văn Lũy-Vợ Ông Nguyễn Văn Lũy",
+      "name": "Nguyễn Văn Lũy-Vợ Ông Nguyễn Văn Lũy",
+      "generation": 2,
+      "order_in_generation": 7,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 116,
+      "label": "3.1 Nguyễn ...Hớn",
+      "name": "Nguyễn ...Hớn",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 117,
+      "label": "3.2 Nguyễn....Ân",
+      "name": "Nguyễn....Ân",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 118,
+      "label": "3.3 Nguyễn ...Yến",
+      "name": "Nguyễn ...Yến",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 119,
+      "label": "3.4 Nguyễn...Nhàn",
+      "name": "Nguyễn...Nhàn",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 120,
+      "label": "3.5 Nguyễn....Nho",
+      "name": "Nguyễn....Nho",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 121,
+      "label": "3.6 Nguyễn....Huấn",
+      "name": "Nguyễn....Huấn",
+      "generation": 3,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 122,
+      "label": "3.7 Nguyễn ....Huân",
+      "name": "Nguyễn ....Huân",
+      "generation": 3,
+      "order_in_generation": 7,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 123,
+      "label": "3.8 Nguyễn ....Sánh",
+      "name": "Nguyễn ....Sánh",
+      "generation": 3,
+      "order_in_generation": 8,
+      "gender": "male",
+      "fid": 115
+    },
+    {
+      "tree_id": 120,
+      "node_id": 124,
+      "label": "2.8 Nguyễn Văn Hải-Vợ cả Ông Nguyễn Văn Hải-Vợ hai Ông Nguyễn Văn Hải",
+      "name": "Nguyễn Văn Hải-Vợ cả Ông Nguyễn Văn Hải-Vợ hai Ông Nguyễn Văn Hải",
+      "generation": 2,
+      "order_in_generation": 8,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 125,
+      "label": "2.9 Nguyễn Thị Hà-Chồng Bà Nguyễn Thị Hà",
+      "name": "Nguyễn Thị Hà-Chồng Bà Nguyễn Thị Hà",
+      "generation": 2,
+      "order_in_generation": 9,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 126,
+      "label": "3.1 ...Quyên",
+      "name": "...Quyên",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 125
+    },
+    {
+      "tree_id": 120,
+      "node_id": 127,
+      "label": "3.2 ...Hóng",
+      "name": "...Hóng",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 125
+    },
+    {
+      "tree_id": 120,
+      "node_id": 128,
+      "label": "3.3 ...Tương",
+      "name": "...Tương",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 125
+    },
+    {
+      "tree_id": 120,
+      "node_id": 129,
+      "label": "3.4 ...Tỷ",
+      "name": "...Tỷ",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "mid": 125
+    },
+    {
+      "tree_id": 120,
+      "node_id": 130,
+      "label": "3.5 ...Nghiệm",
+      "name": "...Nghiệm",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "mid": 125
+    },
+    {
+      "tree_id": 120,
+      "node_id": 131,
+      "label": "2.10 Nguyễn Văn Hết-Vợ Ông Nguyễn Văn Hết",
+      "name": "Nguyễn Văn Hết-Vợ Ông Nguyễn Văn Hết",
+      "generation": 2,
+      "order_in_generation": 10,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 132,
+      "label": "3.1 Nguyễn...Đầy",
+      "name": "Nguyễn...Đầy",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 131
+    },
+    {
+      "tree_id": 120,
+      "node_id": 133,
+      "label": "3.2 Nguyễn....Sửu",
+      "name": "Nguyễn....Sửu",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 131
+    },
+    {
+      "tree_id": 120,
+      "node_id": 134,
+      "label": "3.3 Nguyễn....Tần",
+      "name": "Nguyễn....Tần",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 131
+    },
+    {
+      "tree_id": 120,
+      "node_id": 135,
+      "label": "3.4 Nguyễn....Ánh",
+      "name": "Nguyễn....Ánh",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 131
+    },
+    {
+      "tree_id": 120,
+      "node_id": 136,
+      "label": "3.5 Nguyễn....Ngọ",
+      "name": "Nguyễn....Ngọ",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 131
+    },
+    {
+      "tree_id": 120,
+      "node_id": 137,
+      "label": "2.11 Nguyễn Thị Phi",
+      "name": "Nguyễn Thị Phi",
+      "generation": 2,
+      "order_in_generation": 11,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 138,
+      "label": "2.12 Nguyễn Thị Phàng-Chồng Bà Nguyễn Thị Phàng",
+      "name": "Nguyễn Thị Phàng-Chồng Bà Nguyễn Thị Phàng",
+      "generation": 2,
+      "order_in_generation": 12,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 120,
+      "node_id": 139,
+      "label": "3.1 ...Hoa",
+      "name": "...Hoa",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 138
+    },
+    {
+      "tree_id": 120,
+      "node_id": 140,
+      "label": "3.2 ...Thẹo",
+      "name": "...Thẹo",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 138
+    },
+    {
+      "tree_id": 120,
+      "node_id": 141,
+      "label": "3.3 ...Dẹo",
+      "name": "...Dẹo",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 138
+    },
+    {
+      "tree_id": 120,
+      "node_id": 142,
+      "label": "3.4 ...Hanh",
+      "name": "...Hanh",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "mid": 138
+    },
+    {
+      "tree_id": 120,
+      "node_id": 143,
+      "label": "3.5 ...Chấn",
+      "name": "...Chấn",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "mid": 138
+    },
+    {
+      "tree_id": 120,
+      "node_id": 144,
+      "label": "3.6 ...Tụi",
+      "name": "...Tụi",
+      "generation": 3,
+      "order_in_generation": 6,
+      "gender": "male",
+      "mid": 138
+    },
+    {
+      "tree_id": 120,
+      "node_id": 145,
+      "label": "3.7 ...Nhì",
+      "name": "...Nhì",
+      "generation": 3,
+      "order_in_generation": 7,
+      "gender": "male",
+      "mid": 138
+    }
+  ]
+}

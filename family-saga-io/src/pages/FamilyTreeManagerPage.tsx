@@ -19,6 +19,7 @@ import {
 } from 'antd';
 import {
   ArrowLeftOutlined,
+  CloudDownloadOutlined,
   DeleteOutlined,
   EditOutlined,
   PlusOutlined,
@@ -33,6 +34,7 @@ import { BalkanFamilyTreeView } from '@/components/BalkanFamilyTreeView';
 import type { FamilyMember } from '@/data/familyMockData';
 import {
   createFamilyTree,
+  crawlAndSyncVietnamGiaPha,
   createLink,
   createNode,
   deleteLink,
@@ -71,6 +73,13 @@ type LinkFormValues = {
   fromId: number;
   toId: number;
   side?: 'fid' | 'mid';
+};
+
+type CrawlFormValues = {
+  startId: number;
+  endId: number;
+  delaySeconds?: number;
+  syncDb: boolean;
 };
 
 const inferGenderFromName = (name: string): Gender => {
@@ -233,11 +242,14 @@ const FamilyTreeManagerPage = () => {
   const [jsonEditorOpen, setJsonEditorOpen] = useState(false);
   const [savingJson, setSavingJson] = useState(false);
   const [jsonDraft, setJsonDraft] = useState('');
+  const [crawlModalOpen, setCrawlModalOpen] = useState(false);
+  const [crawlingData, setCrawlingData] = useState(false);
 
   const [treeForm] = Form.useForm<TreeFormValues>();
   const [memberForm] = Form.useForm<MemberFormValues>();
   const [createLinkForm] = Form.useForm<LinkFormValues>();
   const [deleteLinkForm] = Form.useForm<LinkFormValues>();
+  const [crawlForm] = Form.useForm<CrawlFormValues>();
 
   const members = useMemo(() => toFamilyMembers(currentTree?.nodes ?? []), [currentTree]);
   const stats = useMemo(() => toTreeStats(currentTree?.nodes ?? []), [currentTree]);
@@ -526,6 +538,35 @@ const FamilyTreeManagerPage = () => {
     setJsonEditorOpen(true);
   };
 
+  const openCrawlModal = () => {
+    crawlForm.setFieldsValue({
+      startId: 100,
+      endId: 200,
+      delaySeconds: 0.2,
+      syncDb: true,
+    });
+    setCrawlModalOpen(true);
+  };
+
+  const submitCrawlForm = async (values: CrawlFormValues) => {
+    setCrawlingData(true);
+    setPageError(null);
+    try {
+      await crawlAndSyncVietnamGiaPha({
+        start_id: values.startId,
+        end_id: values.endId,
+        delay_seconds: values.delaySeconds,
+        sync_db: values.syncDb,
+      });
+      setCrawlModalOpen(false);
+      await loadTrees(selectedTreeId ?? undefined);
+    } catch (error) {
+      setPageError(error instanceof Error ? error.message : 'Không thể crawl/sync dữ liệu');
+    } finally {
+      setCrawlingData(false);
+    }
+  };
+
   const submitJsonEditor = async () => {
     if (!currentTree) return;
 
@@ -601,6 +642,9 @@ const FamilyTreeManagerPage = () => {
         <div className="flex flex-wrap items-center gap-3">
           <LanguageSwitcher />
           <ThemeToggle />
+          <Button icon={<CloudDownloadOutlined />} onClick={openCrawlModal} loading={crawlingData}>
+            {t('familyTree.crawlSync', { defaultValue: 'Crawl + Sync DB' })}
+          </Button>
           <Button icon={<ReloadOutlined />} onClick={() => loadTrees(selectedTreeId ?? undefined)} loading={loadingTrees || loadingTree}>
             {t('familyTree.reload', { defaultValue: 'Tải lại' })}
           </Button>
@@ -1042,6 +1086,61 @@ const FamilyTreeManagerPage = () => {
           onChange={(event) => setJsonDraft(event.target.value)}
           autoSize={{ minRows: 18, maxRows: 28 }}
         />
+      </Modal>
+
+      <Modal
+        open={crawlModalOpen}
+        onCancel={() => setCrawlModalOpen(false)}
+        title={t('familyTree.crawlSyncTitle', { defaultValue: 'Crawl dữ liệu và đồng bộ database' })}
+        footer={[
+          <Button key="cancel" onClick={() => setCrawlModalOpen(false)}>
+            {t('familyTree.cancel', { defaultValue: 'Hủy' })}
+          </Button>,
+          <Button key="run" type="primary" loading={crawlingData} onClick={() => crawlForm.submit()}>
+            {t('familyTree.run', { defaultValue: 'Chạy' })}
+          </Button>,
+        ]}
+        destroyOnClose
+      >
+        <Form form={crawlForm} layout="vertical" onFinish={submitCrawlForm}>
+          <Row gutter={12}>
+            <Col span={12}>
+              <Form.Item
+                label={t('familyTree.startId', { defaultValue: 'ID bắt đầu' })}
+                name="startId"
+                rules={[{ required: true, message: 'Nhập ID bắt đầu' }]}
+              >
+                <InputNumber min={1} className="w-full" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                label={t('familyTree.endId', { defaultValue: 'ID kết thúc' })}
+                name="endId"
+                rules={[{ required: true, message: 'Nhập ID kết thúc' }]}
+              >
+                <InputNumber min={1} className="w-full" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Form.Item
+            label={t('familyTree.delaySeconds', { defaultValue: 'Delay giữa request (giây)' })}
+            name="delaySeconds"
+          >
+            <InputNumber min={0} max={5} step={0.1} className="w-full" />
+          </Form.Item>
+
+          <Form.Item
+            label={t('familyTree.syncDb', { defaultValue: 'Đồng bộ database' })}
+            name="syncDb"
+          >
+            <Radio.Group>
+              <Radio value>{t('common.yes', { defaultValue: 'Có' })}</Radio>
+              <Radio value={false}>{t('common.no', { defaultValue: 'Không' })}</Radio>
+            </Radio.Group>
+          </Form.Item>
+        </Form>
       </Modal>
 
       <Modal

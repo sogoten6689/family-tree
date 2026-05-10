@@ -1,0 +1,273 @@
+{
+  "tree_id": 115,
+  "url": "https://vietnamgiapha.com/XemPhaHe/115/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 15,
+  "relationship_count": 14,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 2,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 3,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 4,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 5,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 6,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 7,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 8,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 9,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 10,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 11,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 12,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 12,
+      "to_id": 13,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 12,
+      "to_id": 14,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 15,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 115,
+      "node_id": 1,
+      "label": "1.1 Trần Văn Hưng-Nguyễn Thu Hồng",
+      "name": "Trần Văn Hưng-Nguyễn Thu Hồng",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 115,
+      "node_id": 2,
+      "label": "2.1 Trần Hữu Thời-Huỳnh Thị Lý",
+      "name": "Trần Hữu Thời-Huỳnh Thị Lý",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 115,
+      "node_id": 3,
+      "label": "3.1 Trần Hữu Thái-Phan Thị Ngọc Nhi",
+      "name": "Trần Hữu Thái-Phan Thị Ngọc Nhi",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 2
+    },
+    {
+      "tree_id": 115,
+      "node_id": 4,
+      "label": "2.2 Trần Thị Ngọc Lang-Lê Xuân Nho",
+      "name": "Trần Thị Ngọc Lang-Lê Xuân Nho",
+      "generation": 2,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 115,
+      "node_id": 5,
+      "label": "3.1 Lê Thị Thu Trang",
+      "name": "Lê Thị Thu Trang",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 4
+    },
+    {
+      "tree_id": 115,
+      "node_id": 6,
+      "label": "3.2 Lê Thị Thanh Trúc",
+      "name": "Lê Thị Thanh Trúc",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "female",
+      "mid": 4
+    },
+    {
+      "tree_id": 115,
+      "node_id": 7,
+      "label": "2.3 Trần Thị Thanh Thủy-Phạm Ngọc Anh",
+      "name": "Trần Thị Thanh Thủy-Phạm Ngọc Anh",
+      "generation": 2,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 115,
+      "node_id": 8,
+      "label": "3.1 Phạm Thị Tường Vân-Tony Luu",
+      "name": "Phạm Thị Tường Vân-Tony Luu",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 7
+    },
+    {
+      "tree_id": 115,
+      "node_id": 9,
+      "label": "3.2 Phạm Anh Tuấn",
+      "name": "Phạm Anh Tuấn",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 7
+    },
+    {
+      "tree_id": 115,
+      "node_id": 10,
+      "label": "2.4 Trần Vĩnh Thuận-Trần Thị Thuận",
+      "name": "Trần Vĩnh Thuận-Trần Thị Thuận",
+      "generation": 2,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 115,
+      "node_id": 11,
+      "label": "3.1 Trần Ana",
+      "name": "Trần Ana",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 10
+    },
+    {
+      "tree_id": 115,
+      "node_id": 12,
+      "label": "2.5 Trần Hiếu Thảo-Nguyễn Thị Vân Phương",
+      "name": "Trần Hiếu Thảo-Nguyễn Thị Vân Phương",
+      "generation": 2,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 115,
+      "node_id": 13,
+      "label": "3.1 Trần Hiếu Trung-Đặng Thị Thanh Tuyền",
+      "name": "Trần Hiếu Trung-Đặng Thị Thanh Tuyền",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 12
+    },
+    {
+      "tree_id": 115,
+      "node_id": 14,
+      "label": "3.2 Trần Thị Mỹ Hạnh",
+      "name": "Trần Thị Mỹ Hạnh",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 12
+    },
+    {
+      "tree_id": 115,
+      "node_id": 15,
+      "label": "2.6 Trần Vĩnh Thành",
+      "name": "Trần Vĩnh Thành",
+      "generation": 2,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 1
+    }
+  ]
+}

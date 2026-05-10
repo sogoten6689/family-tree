@@ -1,0 +1,192 @@
+{
+  "tree_id": 184,
+  "url": "https://vietnamgiapha.com/XemPhaHe/184/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 11,
+  "relationship_count": 9,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 2,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 3,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 6,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 7,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 5,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 8,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 9,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 10,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 11,
+      "side": "mid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 184,
+      "node_id": 1,
+      "label": "1.1 Hoàng Văn Tứ",
+      "name": "Hoàng Văn Tứ",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 184,
+      "node_id": 2,
+      "label": "2.1 Hoàng Văn Tư-Trần Thị Lập (Vợ)",
+      "name": "Hoàng Văn Tư-Trần Thị Lập (Vợ)",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 184,
+      "node_id": 3,
+      "label": "3.1 Hoàng Đình Thiều",
+      "name": "Hoàng Đình Thiều",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 2
+    },
+    {
+      "tree_id": 184,
+      "node_id": 4,
+      "label": "1.2 Hoàng Thị Nhung-Vũ Đình Tài (Chồng)",
+      "name": "Hoàng Thị Nhung-Vũ Đình Tài (Chồng)",
+      "generation": 1,
+      "order_in_generation": 2,
+      "gender": "female"
+    },
+    {
+      "tree_id": 184,
+      "node_id": 6,
+      "label": "2.1 Trần Thị Liễu (con chồng tước-Trần Văn Hòa)",
+      "name": "Trần Thị Liễu (con chồng tước-Trần Văn Hòa)",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "female",
+      "mid": 4
+    },
+    {
+      "tree_id": 184,
+      "node_id": 7,
+      "label": "2.2 Trần Thị Hồng",
+      "name": "Trần Thị Hồng",
+      "generation": 2,
+      "order_in_generation": 2,
+      "gender": "male",
+      "mid": 4
+    },
+    {
+      "tree_id": 184,
+      "node_id": 5,
+      "label": "2.3 Hoàng Văn Chức",
+      "name": "Hoàng Văn Chức",
+      "generation": 2,
+      "order_in_generation": 3,
+      "gender": "male",
+      "mid": 4
+    },
+    {
+      "tree_id": 184,
+      "node_id": 8,
+      "label": "2.4 Hoàng Văn Kim",
+      "name": "Hoàng Văn Kim",
+      "generation": 2,
+      "order_in_generation": 4,
+      "gender": "male",
+      "mid": 4
+    },
+    {
+      "tree_id": 184,
+      "node_id": 9,
+      "label": "2.5 Hoàng Văn Tân",
+      "name": "Hoàng Văn Tân",
+      "generation": 2,
+      "order_in_generation": 5,
+      "gender": "male",
+      "mid": 4
+    },
+    {
+      "tree_id": 184,
+      "node_id": 10,
+      "label": "2.6 Hoàng Văn Đệ",
+      "name": "Hoàng Văn Đệ",
+      "generation": 2,
+      "order_in_generation": 6,
+      "gender": "male",
+      "mid": 4
+    },
+    {
+      "tree_id": 184,
+      "node_id": 11,
+      "label": "2.7 Hoàng Văn Khải",
+      "name": "Hoàng Văn Khải",
+      "generation": 2,
+      "order_in_generation": 7,
+      "gender": "male",
+      "mid": 4
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "tree_id": 105,
+  "url": "https://vietnamgiapha.com/XemPhaHe/105/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 30,
+  "relationship_count": 29,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 7,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 8,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 16,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 17,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 18,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 19,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 19,
+      "to_id": 46,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 20,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 20,
+      "to_id": 45,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 20,
+      "to_id": 21,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 22,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 24,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 18,
+      "to_id": 40,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 40,
+      "to_id": 47,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 25,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 26,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 31,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 32,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 26,
+      "to_id": 33,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 27,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 28,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 28,
+      "to_id": 34,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 28,
+      "to_id": 35,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 29,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 29,
+      "to_id": 36,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 29,
+      "to_id": 37,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 16,
+      "to_id": 42,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 42,
+      "to_id": 43,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 42,
+      "to_id": 44,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 105,
+      "node_id": 1,
+      "label": "1.1",
+      "name": "1.1",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 105,
+      "node_id": 7,
+      "label": "2.1 Ông Thông",
+      "name": "Ông Thông",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 105,
+      "node_id": 8,
+      "label": "2.2 Maria Vũ Thị Sáng-Antôn Trần Văn Phúc",
+      "name": "Maria Vũ Thị Sáng-Antôn Trần Văn Phúc",
+      "generation": 2,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 1
+    },
+    {
+      "tree_id": 105,
+      "node_id": 16,
+      "label": "2.3 Giuse Vũ Bình Huyên-Anna Phạm Thị Hường",
+      "name": "Giuse Vũ Bình Huyên-Anna Phạm Thị Hường",
+      "generation": 2,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 105,
+      "node_id": 17,
+      "label": "3.1 Maria Vũ Thị Hương-Giuse Ngô Văn Hòa",
+      "name": "Maria Vũ Thị Hương-Giuse Ngô Văn Hòa",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 18,
+      "label": "3.2 Giuse Vũ Minh Hiếu-Maria Hà Thị Kim Cúc",
+      "name": "Giuse Vũ Minh Hiếu-Maria Hà Thị Kim Cúc",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 19,
+      "label": "4.1 Giuse Vũ Hà Minh Thảo-Tống thị Mai Trâm",
+      "name": "Giuse Vũ Hà Minh Thảo-Tống thị Mai Trâm",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 18
+    },
+    {
+      "tree_id": 105,
+      "node_id": 46,
+      "label": "5.1 Vũ Tống Maya",
+      "name": "Vũ Tống Maya",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 19
+    },
+    {
+      "tree_id": 105,
+      "node_id": 20,
+      "label": "4.2 Phêrô Vũ Hà Tuấn Anh-Têrêsa Hoàng Thị Hồng Vân",
+      "name": "Phêrô Vũ Hà Tuấn Anh-Têrêsa Hoàng Thị Hồng Vân",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 18
+    },
+    {
+      "tree_id": 105,
+      "node_id": 45,
+      "label": "5.1 Maria Vũ Hoàng Quỳnh Anh",
+      "name": "Maria Vũ Hoàng Quỳnh Anh",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 20
+    },
+    {
+      "tree_id": 105,
+      "node_id": 21,
+      "label": "5.2 Phaolô Vũ Hoàng Minh Anh",
+      "name": "Phaolô Vũ Hoàng Minh Anh",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 20
+    },
+    {
+      "tree_id": 105,
+      "node_id": 22,
+      "label": "4.3 Têrêsa Vũ Hà Kim Thi-Phêrô Nguyễn Toàn",
+      "name": "Têrêsa Vũ Hà Kim Thi-Phêrô Nguyễn Toàn",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 18
+    },
+    {
+      "tree_id": 105,
+      "node_id": 24,
+      "label": "4.4 Maria Vũ Hà Kim Phượng-Nguyễn văn Hùng",
+      "name": "Maria Vũ Hà Kim Phượng-Nguyễn văn Hùng",
+      "generation": 4,
+      "order_in_generation": 4,
+      "gender": "female",
+      "fid": 18
+    },
+    {
+      "tree_id": 105,
+      "node_id": 40,
+      "label": "4.5 Martinô Vũ Hà Minh Thắng-Têrêsa Vũ Thị Phương Thảo",
+      "name": "Martinô Vũ Hà Minh Thắng-Têrêsa Vũ Thị Phương Thảo",
+      "generation": 4,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 18
+    },
+    {
+      "tree_id": 105,
+      "node_id": 47,
+      "label": "5.1 Maria Vũ Thiên Ân",
+      "name": "Maria Vũ Thiên Ân",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "female",
+      "fid": 40
+    },
+    {
+      "tree_id": 105,
+      "node_id": 25,
+      "label": "3.3 Maria Vũ Thị Nhiệm-Trần Văn Quảng",
+      "name": "Maria Vũ Thị Nhiệm-Trần Văn Quảng",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 26,
+      "label": "3.4 Phêrô Vũ Mạnh Cường-Têrêxa Nguyễn Thị Bích Đào",
+      "name": "Phêrô Vũ Mạnh Cường-Têrêxa Nguyễn Thị Bích Đào",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 31,
+      "label": "4.1 Phêrô Vũ Khánh Hoàng",
+      "name": "Phêrô Vũ Khánh Hoàng",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 26
+    },
+    {
+      "tree_id": 105,
+      "node_id": 32,
+      "label": "4.2 Giuse Vũ Đức Huy",
+      "name": "Giuse Vũ Đức Huy",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 26
+    },
+    {
+      "tree_id": 105,
+      "node_id": 33,
+      "label": "4.3 Têrêxa Vũ Thụy Bảo An",
+      "name": "Têrêxa Vũ Thụy Bảo An",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "female",
+      "fid": 26
+    },
+    {
+      "tree_id": 105,
+      "node_id": 27,
+      "label": "3.5 Lucia Vũ Thị Kim Liên-Phêrô Vũ Văn Hòa",
+      "name": "Lucia Vũ Thị Kim Liên-Phêrô Vũ Văn Hòa",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "female",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 28,
+      "label": "3.6 Phêrô Vũ Duy Sơn-Anna Trương Thị Thu Nguyệt",
+      "name": "Phêrô Vũ Duy Sơn-Anna Trương Thị Thu Nguyệt",
+      "generation": 3,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 34,
+      "label": "4.1 Phêrô Vũ Duy Quang",
+      "name": "Phêrô Vũ Duy Quang",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 28
+    },
+    {
+      "tree_id": 105,
+      "node_id": 35,
+      "label": "4.2 Gioan Vũ Duy Tâm",
+      "name": "Gioan Vũ Duy Tâm",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 28
+    },
+    {
+      "tree_id": 105,
+      "node_id": 29,
+      "label": "3.7 Gioan Vũ Đăng Hải-Anna Trần Thị Lệ Chi",
+      "name": "Gioan Vũ Đăng Hải-Anna Trần Thị Lệ Chi",
+      "generation": 3,
+      "order_in_generation": 7,
+      "gender": "male",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 36,
+      "label": "4.1 Giuse Vũ Đăng Khoa",
+      "name": "Giuse Vũ Đăng Khoa",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 29
+    },
+    {
+      "tree_id": 105,
+      "node_id": 37,
+      "label": "4.2 Maria Vũ Bảo Trân",
+      "name": "Maria Vũ Bảo Trân",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "female",
+      "fid": 29
+    },
+    {
+      "tree_id": 105,
+      "node_id": 42,
+      "label": "3.8 Phêrô Vũ minh Toàn",
+      "name": "Phêrô Vũ minh Toàn",
+      "generation": 3,
+      "order_in_generation": 8,
+      "gender": "male",
+      "fid": 16
+    },
+    {
+      "tree_id": 105,
+      "node_id": 43,
+      "label": "4.1 Têrêxa Vũ Trần Minh Thư",
+      "name": "Têrêxa Vũ Trần Minh Thư",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 42
+    },
+    {
+      "tree_id": 105,
+      "node_id": 44,
+      "label": "4.2 Vũ Trần Minh Tú",
+      "name": "Vũ Trần Minh Tú",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 42
+    }
+  ]
+}

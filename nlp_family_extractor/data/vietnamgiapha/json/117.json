@@ -1,0 +1,273 @@
+{
+  "tree_id": 117,
+  "url": "https://vietnamgiapha.com/XemPhaHe/117/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 15,
+  "relationship_count": 14,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 2,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 7,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 8,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 9,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 3,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 4,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 10,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 11,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 12,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 13,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 14,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 15,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 16,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 17,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 117,
+      "node_id": 1,
+      "label": "1.1 PHẠM VĂN HÀO",
+      "name": "PHẠM VĂN HÀO",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 117,
+      "node_id": 2,
+      "label": "2.1 PHẠM VĂN HIẾN",
+      "name": "PHẠM VĂN HIẾN",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 117,
+      "node_id": 7,
+      "label": "3.1 PHẠM VĂN THỬ",
+      "name": "PHẠM VĂN THỬ",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 2
+    },
+    {
+      "tree_id": 117,
+      "node_id": 8,
+      "label": "3.2 PHẠM VĂN THOẠI",
+      "name": "PHẠM VĂN THOẠI",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 2
+    },
+    {
+      "tree_id": 117,
+      "node_id": 9,
+      "label": "3.3 PHẠM VĂN HOÀI",
+      "name": "PHẠM VĂN HOÀI",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 2
+    },
+    {
+      "tree_id": 117,
+      "node_id": 3,
+      "label": "2.2 PHẠM VĂN LÂU",
+      "name": "PHẠM VĂN LÂU",
+      "generation": 2,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 117,
+      "node_id": 4,
+      "label": "3.1 PHẠM THỊ PHÁN",
+      "name": "PHẠM THỊ PHÁN",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 10,
+      "label": "3.2 PHẠM VĂN HUẤN",
+      "name": "PHẠM VĂN HUẤN",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 11,
+      "label": "3.3 PHẠM THỊ GIÁO",
+      "name": "PHẠM THỊ GIÁO",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 12,
+      "label": "3.4 PHẠM VĂN HÓA",
+      "name": "PHẠM VĂN HÓA",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 13,
+      "label": "3.5 PHẠM VĂN THI",
+      "name": "PHẠM VĂN THI",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 14,
+      "label": "3.6 PHẠM VĂN CỬ",
+      "name": "PHẠM VĂN CỬ",
+      "generation": 3,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 15,
+      "label": "3.7 PHẠM VĂN DỰ",
+      "name": "PHẠM VĂN DỰ",
+      "generation": 3,
+      "order_in_generation": 7,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 117,
+      "node_id": 16,
+      "label": "2.3 PHẠM THỊ VÂN",
+      "name": "PHẠM THỊ VÂN",
+      "generation": 2,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 117,
+      "node_id": 17,
+      "label": "2.4 phạm Đăng KHOa",
+      "name": "phạm Đăng KHOa",
+      "generation": 2,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 1
+    }
+  ]
+}

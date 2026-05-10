@@ -1,0 +1,20 @@
+{
+  "tree_id": 181,
+  "url": "https://vietnamgiapha.com/XemPhaHe/181/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 1,
+  "relationship_count": 0,
+  "relationships": [],
+  "nodes": [
+    {
+      "tree_id": 181,
+      "node_id": 1,
+      "label": "1.1",
+      "name": "1.1",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "tree_id": 102,
+  "url": "https://vietnamgiapha.com/XemPhaHe/102/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 1,
+  "relationship_count": 0,
+  "relationships": [],
+  "nodes": [
+    {
+      "tree_id": 102,
+      "node_id": 1,
+      "label": "1.1 Đinh Đức Tuyên",
+      "name": "Đinh Đức Tuyên",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    }
+  ]
+}

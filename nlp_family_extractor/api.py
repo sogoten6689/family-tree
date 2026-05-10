@@ -27,6 +27,8 @@ from app.validate import (
     validate_no_self_relationship,
     validate_parent_age_gap,
 )
+from tools.fetch_vietnamgiapha import run as crawl_vietnamgiapha_run
+from tools.sync_vietnamgiapha_to_db import _default_db_config, sync as sync_vietnamgiapha_to_db
 
 
 class RequestMetadata(BaseModel):
@@ -209,6 +211,25 @@ class FamilyTreeDeleteResponse(BaseModel):
     id: str
 
 
+class VietnamGiaPhaCrawlSyncRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    start_id: int = Field(default=100, ge=1, le=100000)
+    end_id: int = Field(default=200, ge=1, le=100000)
+    delay_seconds: float = Field(default=0.2, ge=0.0, le=5.0)
+    sync_db: bool = Field(default=True)
+
+
+class VietnamGiaPhaCrawlSyncResponse(BaseModel):
+    start_id: int
+    end_id: int
+    output_dir: str
+    crawl_success: int
+    crawl_errors: int
+    sync_upserted: int
+    sync_errors: int
+
+
 _TAGS_METADATA = [
     {
         "name": "Analysis",
@@ -229,6 +250,10 @@ _TAGS_METADATA = [
     {
         "name": "FamilyTrees",
         "description": "CRUD cây gia phả dạng JSON file (BALKAN nodes).",
+    },
+    {
+        "name": "Crawlers",
+        "description": "Tiện ích crawl dữ liệu nguồn ngoài và đồng bộ vào database.",
     },
 ]
 
@@ -723,6 +748,57 @@ def delete_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyT
     except Exception as error:
         _raise_store_error(error)
     return FamilyTreeDocument(**item)
+
+
+@app.post(
+    "/api/vietnamgiapha/crawl-sync",
+    response_model=VietnamGiaPhaCrawlSyncResponse,
+    tags=["Crawlers"],
+    summary="Crawl vietnamgiapha và đồng bộ DB",
+)
+def crawl_and_sync_vietnamgiapha(
+    req: VietnamGiaPhaCrawlSyncRequest,
+) -> VietnamGiaPhaCrawlSyncResponse:
+    if req.start_id > req.end_id:
+        raise HTTPException(status_code=400, detail="start_id must be <= end_id")
+
+    output_dir = Path(__file__).resolve().parent / "data" / "vietnamgiapha"
+
+    try:
+        crawl_summary = crawl_vietnamgiapha_run(
+            start_id=req.start_id,
+            end_id=req.end_id,
+            output_dir=output_dir,
+            save_html=False,
+            delay_seconds=req.delay_seconds,
+            timeout_seconds=20.0,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Crawl failed: {exc}") from exc
+
+    sync_upserted = 0
+    sync_errors = 0
+    if req.sync_db:
+        try:
+            sync_report = sync_vietnamgiapha_to_db(
+                input_dir=output_dir / "json",
+                db_cfg=_default_db_config(),
+                dry_run=False,
+            )
+            sync_upserted = len(sync_report.get("upserted", []))
+            sync_errors = len(sync_report.get("errors", []))
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"DB sync failed: {exc}") from exc
+
+    return VietnamGiaPhaCrawlSyncResponse(
+        start_id=req.start_id,
+        end_id=req.end_id,
+        output_dir=str(output_dir),
+        crawl_success=len(crawl_summary.get("success", [])),
+        crawl_errors=len(crawl_summary.get("errors", [])),
+        sync_upserted=sync_upserted,
+        sync_errors=sync_errors,
+    )
 
 
 @app.post(

@@ -1,0 +1,381 @@
+{
+  "tree_id": 125,
+  "url": "https://vietnamgiapha.com/XemPhaHe/125/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 21,
+  "relationship_count": 20,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 3,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 3,
+      "to_id": 4,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 5,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 5,
+      "to_id": 7,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 5,
+      "to_id": 8,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 5,
+      "to_id": 9,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 4,
+      "to_id": 6,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 10,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 15,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 15,
+      "to_id": 16,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 15,
+      "to_id": 17,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 17,
+      "to_id": 20,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 17,
+      "to_id": 21,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 17,
+      "to_id": 22,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 15,
+      "to_id": 18,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 15,
+      "to_id": 19,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 11,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 12,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 13,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 14,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 125,
+      "node_id": 1,
+      "label": "1.1 Đoàn Nhất lang",
+      "name": "Đoàn Nhất lang",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 125,
+      "node_id": 3,
+      "label": "2.1 Đoàn Nhất lang (2)",
+      "name": "Đoàn Nhất lang (2)",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 125,
+      "node_id": 4,
+      "label": "3.1 Đoàn Danh Quản",
+      "name": "Đoàn Danh Quản",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 3
+    },
+    {
+      "tree_id": 125,
+      "node_id": 5,
+      "label": "4.1 Đoàn Vô Niệm",
+      "name": "Đoàn Vô Niệm",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 4
+    },
+    {
+      "tree_id": 125,
+      "node_id": 7,
+      "label": "5.1 Đoàn Danh Đại",
+      "name": "Đoàn Danh Đại",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 5
+    },
+    {
+      "tree_id": 125,
+      "node_id": 8,
+      "label": "5.2 Đoàn Danh Thừa",
+      "name": "Đoàn Danh Thừa",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 5
+    },
+    {
+      "tree_id": 125,
+      "node_id": 9,
+      "label": "5.3 Đoàn Danh Thế",
+      "name": "Đoàn Danh Thế",
+      "generation": 5,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 5
+    },
+    {
+      "tree_id": 125,
+      "node_id": 6,
+      "label": "4.2 Đoàn Danh Nhiều",
+      "name": "Đoàn Danh Nhiều",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 4
+    },
+    {
+      "tree_id": 125,
+      "node_id": 10,
+      "label": "5.1 Đoàn Di Phúc",
+      "name": "Đoàn Di Phúc",
+      "generation": 5,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 125,
+      "node_id": 15,
+      "label": "6.1 Đoàn Chân Tính-Trần thị Rằng",
+      "name": "Đoàn Chân Tính-Trần thị Rằng",
+      "generation": 6,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 125,
+      "node_id": 16,
+      "label": "7.1 Đoàn Danh Lắm",
+      "name": "Đoàn Danh Lắm",
+      "generation": 7,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 15
+    },
+    {
+      "tree_id": 125,
+      "node_id": 17,
+      "label": "7.2 Đoàn Trịnh Hằng-Nguyễn thị Hăng nhất",
+      "name": "Đoàn Trịnh Hằng-Nguyễn thị Hăng nhất",
+      "generation": 7,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 15
+    },
+    {
+      "tree_id": 125,
+      "node_id": 20,
+      "label": "8.1 Đoàn Danh Trọng húy là Chưng",
+      "name": "Đoàn Danh Trọng húy là Chưng",
+      "generation": 8,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 17
+    },
+    {
+      "tree_id": 125,
+      "node_id": 21,
+      "label": "8.2 Đoàn Danh Dự",
+      "name": "Đoàn Danh Dự",
+      "generation": 8,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 17
+    },
+    {
+      "tree_id": 125,
+      "node_id": 22,
+      "label": "8.3 Đoàn Danh Liêu",
+      "name": "Đoàn Danh Liêu",
+      "generation": 8,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 17
+    },
+    {
+      "tree_id": 125,
+      "node_id": 18,
+      "label": "7.3 Đoàn Danh Huynh",
+      "name": "Đoàn Danh Huynh",
+      "generation": 7,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 15
+    },
+    {
+      "tree_id": 125,
+      "node_id": 19,
+      "label": "7.4 Đoàn Danh Dâu",
+      "name": "Đoàn Danh Dâu",
+      "generation": 7,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 15
+    },
+    {
+      "tree_id": 125,
+      "node_id": 11,
+      "label": "5.2 Đoàn Đức Nhuận",
+      "name": "Đoàn Đức Nhuận",
+      "generation": 5,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 125,
+      "node_id": 12,
+      "label": "5.3 Đoàn Danh Dư",
+      "name": "Đoàn Danh Dư",
+      "generation": 5,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 125,
+      "node_id": 13,
+      "label": "5.4 Đoàn danh Hạ",
+      "name": "Đoàn danh Hạ",
+      "generation": 5,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 125,
+      "node_id": 14,
+      "label": "5.5 Đoàn thị Đặc Thụy Hoa",
+      "name": "Đoàn thị Đặc Thụy Hoa",
+      "generation": 5,
+      "order_in_generation": 5,
+      "gender": "female",
+      "fid": 6
+    }
+  ]
+}

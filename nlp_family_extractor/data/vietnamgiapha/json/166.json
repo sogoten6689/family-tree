@@ -1,0 +1,363 @@
+{
+  "tree_id": 166,
+  "url": "https://vietnamgiapha.com/XemPhaHe/166/cay_pha_he.html",
+  "http_status": 200,
+  "title": "Viet Nam Gia Pha, Website cua toc",
+  "node_count": 20,
+  "relationship_count": 19,
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 2,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 3,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 4,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 5,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 1,
+      "to_id": 6,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 7,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 8,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 9,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 10,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 11,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 12,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 13,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 14,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 15,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 16,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 17,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 18,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 19,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 10,
+      "to_id": 20,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ],
+  "nodes": [
+    {
+      "tree_id": 166,
+      "node_id": 1,
+      "label": "1.1 Thân Phước Cẩm",
+      "name": "Thân Phước Cẩm",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": "male"
+    },
+    {
+      "tree_id": 166,
+      "node_id": 2,
+      "label": "2.1 Thân Phước Trạch",
+      "name": "Thân Phước Trạch",
+      "generation": 2,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 166,
+      "node_id": 3,
+      "label": "2.2 Thân phước Triều",
+      "name": "Thân phước Triều",
+      "generation": 2,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 166,
+      "node_id": 4,
+      "label": "2.3 Thân phước Tài",
+      "name": "Thân phước Tài",
+      "generation": 2,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 166,
+      "node_id": 5,
+      "label": "2.4 Thân phước Mai",
+      "name": "Thân phước Mai",
+      "generation": 2,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 166,
+      "node_id": 6,
+      "label": "2.5 Thân phước Mao",
+      "name": "Thân phước Mao",
+      "generation": 2,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 1
+    },
+    {
+      "tree_id": 166,
+      "node_id": 7,
+      "label": "3.1 Thân phước Thọ",
+      "name": "Thân phước Thọ",
+      "generation": 3,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 166,
+      "node_id": 8,
+      "label": "3.2 Thân phước Văn",
+      "name": "Thân phước Văn",
+      "generation": 3,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 166,
+      "node_id": 9,
+      "label": "3.3 Thân phước Bá",
+      "name": "Thân phước Bá",
+      "generation": 3,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 166,
+      "node_id": 10,
+      "label": "3.4 Thân Phước Mỹ",
+      "name": "Thân Phước Mỹ",
+      "generation": 3,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 6
+    },
+    {
+      "tree_id": 166,
+      "node_id": 11,
+      "label": "4.1 Thân phước Hựu",
+      "name": "Thân phước Hựu",
+      "generation": 4,
+      "order_in_generation": 1,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 12,
+      "label": "4.2 Thân phước Trinh",
+      "name": "Thân phước Trinh",
+      "generation": 4,
+      "order_in_generation": 2,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 13,
+      "label": "4.3 Thân vĩnh Tự",
+      "name": "Thân vĩnh Tự",
+      "generation": 4,
+      "order_in_generation": 3,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 14,
+      "label": "4.4 Thân phước Thường",
+      "name": "Thân phước Thường",
+      "generation": 4,
+      "order_in_generation": 4,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 15,
+      "label": "4.5 Thân phước Thị",
+      "name": "Thân phước Thị",
+      "generation": 4,
+      "order_in_generation": 5,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 16,
+      "label": "4.6 Thân phước Cường",
+      "name": "Thân phước Cường",
+      "generation": 4,
+      "order_in_generation": 6,
+      "gender": "male",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 17,
+      "label": "4.7 Thân thị Kỳ",
+      "name": "Thân thị Kỳ",
+      "generation": 4,
+      "order_in_generation": 7,
+      "gender": "female",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 18,
+      "label": "4.8 Thân thị Mai",
+      "name": "Thân thị Mai",
+      "generation": 4,
+      "order_in_generation": 8,
+      "gender": "female",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 19,
+      "label": "4.9 Thân thị Sớm",
+      "name": "Thân thị Sớm",
+      "generation": 4,
+      "order_in_generation": 9,
+      "gender": "female",
+      "fid": 10
+    },
+    {
+      "tree_id": 166,
+      "node_id": 20,
+      "label": "4.10 Thân t Tối",
+      "name": "Thân t Tối",
+      "generation": 4,
+      "order_in_generation": 10,
+      "gender": "female",
+      "fid": 10
+    }
+  ]
+}
