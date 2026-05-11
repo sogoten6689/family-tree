@@ -46,17 +46,30 @@ export function BalkanFamilyTreeView({
     const el = containerRef.current;
     if (!el || nodes.length === 0) return undefined;
 
-    const chart = new FamilyTree(el, {
-      nodeBinding: {
-        field_0: "name",
-        field_1: "birthYear",
-      },
-    });
-    chart.load(toFamilyTreeNodes(nodes));
+    try {
+      const chart = new FamilyTree(el, {
+        nodeBinding: {
+          field_0: "name",
+          field_1: "birthYear",
+        },
+      });
+      chart.load(toFamilyTreeNodes(nodes));
 
-    return () => {
-      chart.destroy();
-    };
+      return () => {
+        try {
+          chart.destroy();
+        } catch (e) {
+          console.warn("Error destroying FamilyTree chart:", e);
+        }
+      };
+    } catch (error) {
+      console.error("Error initializing FamilyTree chart:", error);
+      // Display error message in container
+      if (el) {
+        el.textContent = `Error: Unable to load family tree chart. ${error instanceof Error ? error.message : 'Unknown error'}`;
+      }
+      return undefined;
+    }
   }, [nodesKey, nodes.length]);
 
   if (nodes.length === 0) return null;

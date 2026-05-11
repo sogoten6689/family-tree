@@ -179,7 +179,7 @@ class _FamilyTreeStoreBase:
             pids = payload["pids"]
             if not isinstance(pids, list):
                 raise FamilyTreeValidationError("node.pids must be array")
-            deduped = sorted(set(int(pid) for pid in pids))
+            deduped = sorted(set(int(pid) for pid in pids if pid is not None))
             if deduped:
                 node["pids"] = deduped
 
