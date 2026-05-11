@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/121/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "NGUYỄN - ẤP CHÁNH - ĐỨC HOÀ",
   "node_count": 48,
+  "detail_fetched_count": 48,
   "relationship_count": 47,
   "relationships": [
     {
@@ -391,7 +393,24 @@
       "name": "NGUYỄN THÁI SUNG",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: NGUYỄN THÁI SUNG",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "Ông là người xây dựng Đình Thần Đức Lập,theo như công đức hiện còn ghi chép lưu giữ tại Đình. Hiện còn đang sưu tầm lại xem Ông là Nguyễn Tấn sung hay Nguyễn Thái sung.Được nghe người lớn kể lại,Ông hay cha ông làm quan lại triều Nguyễn cũng như câu chuyện kề về nguyên nhân tại sao,Đình thần Đức Lập hiện tại lại thuộc về họ Nguyễn ở Tha La",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "NGUYỄN VĂN CHUẨN"
+        ],
+        "children_node_ids": [
+          2
+        ],
+        "tree_id": 121,
+        "node_id": 1
+      },
+      "bio": "Ông là người xây dựng Đình Thần Đức Lập,theo như công đức hiện còn ghi chép lưu giữ tại Đình. Hiện còn đang sưu tầm lại xem Ông là Nguyễn Tấn sung hay Nguyễn Thái sung.Được nghe người lớn kể lại,Ông hay cha ông làm quan lại triều Nguyễn cũng như câu chuyện kề về nguyên nhân tại sao,Đình thần Đức Lập hiện tại lại thuộc về họ Nguyễn ở Tha La"
     },
     {
       "tree_id": 121,
@@ -401,7 +420,35 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: NGUYỄN VĂN CHUẨN",
+        "generation_text": 1,
+        "parent_text": "NGUYỄN THÁI SUNG",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Nguyễn Bà Hai",
+          "Nguyễn Bà Ba",
+          "Nguyễn Bà Tư",
+          "Nguyễn Ông Năm",
+          "Nguyễn Ông Sáu",
+          "Nguyễn Ông Bãy",
+          "Nguyễn Văn Bề"
+        ],
+        "children_node_ids": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "tree_id": 121,
+        "node_id": 2
+      }
     },
     {
       "tree_id": 121,
@@ -411,7 +458,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Bà Hai",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Ba Nguyễn Bà Tư Nguyễn Ông Năm Nguyễn Ông Sáu Nguyễn Ông Bãy Nguyễn Văn Bề",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 5
+      }
     },
     {
       "tree_id": 121,
@@ -421,7 +480,23 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Bà Ba",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Hai Nguyễn Bà Tư Nguyễn Ông Năm Nguyễn Ông Sáu Nguyễn Ông Bãy Nguyễn Văn Bề",
+        "children_names": [
+          "Cô Bảy Đắng"
+        ],
+        "children_node_ids": [
+          63
+        ],
+        "tree_id": 121,
+        "node_id": 6
+      }
     },
     {
       "tree_id": 121,
@@ -431,7 +506,23 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 6
+      "mid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/63/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Cô Bảy Đắng",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "....... Quâng"
+        ],
+        "children_node_ids": [
+          64
+        ],
+        "tree_id": 121,
+        "node_id": 63
+      }
     },
     {
       "tree_id": 121,
@@ -441,7 +532,19 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 63
+      "mid": 63,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/64/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: ....... Quâng",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 64
+      }
     },
     {
       "tree_id": 121,
@@ -451,7 +554,19 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Bà Tư",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Hai Nguyễn Bà Ba Nguyễn Ông Năm Nguyễn Ông Sáu Nguyễn Ông Bãy Nguyễn Văn Bề",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 7
+      }
     },
     {
       "tree_id": 121,
@@ -461,7 +576,19 @@
       "generation": 3,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Ông Năm",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Hai Nguyễn Bà Ba Nguyễn Bà Tư Nguyễn Ông Sáu Nguyễn Ông Bãy Nguyễn Văn Bề",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 8
+      }
     },
     {
       "tree_id": 121,
@@ -471,7 +598,19 @@
       "generation": 3,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Ông Sáu",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Hai Nguyễn Bà Ba Nguyễn Bà Tư Nguyễn Ông Năm Nguyễn Ông Bãy Nguyễn Văn Bề",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 9
+      }
     },
     {
       "tree_id": 121,
@@ -481,7 +620,19 @@
       "generation": 3,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Ông Bãy",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Hai Nguyễn Bà Ba Nguyễn Bà Tư Nguyễn Ông Năm Nguyễn Ông Sáu Nguyễn Văn Bề",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 10
+      }
     },
     {
       "tree_id": 121,
@@ -491,7 +642,37 @@
       "generation": 3,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Bề",
+        "generation_text": 2,
+        "parent_text": "NGUYỄN VĂN CHUẨN",
+        "note": "",
+        "siblings_text": "Nguyễn Bà Hai Nguyễn Bà Ba Nguyễn Bà Tư Nguyễn Ông Năm Nguyễn Ông Sáu Nguyễn Ông Bãy",
+        "children_names": [
+          "Nguyễn Bác Hai",
+          "Nguyễn Văn Mẫn",
+          "Nguyễn Văn Quân",
+          "Nguyễn Thành Nhơn",
+          "Nguyễn Chú Sáu",
+          "Nguyễn Văn Di",
+          "Nguyễn thị Siêng",
+          "Nguyễn Thị Hừng"
+        ],
+        "children_node_ids": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "tree_id": 121,
+        "node_id": 11
+      }
     },
     {
       "tree_id": 121,
@@ -501,7 +682,20 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Bác Hai",
+        "death_text": "chết trẻ",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Văn Mẫn Nguyễn Văn Quân Nguyễn Thành Nhơn Nguyễn Chú Sáu Nguyễn Văn Di Nguyễn thị Siêng Nguyễn Thị Hừng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 12
+      }
     },
     {
       "tree_id": 121,
@@ -511,7 +705,40 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Mẫn",
+        "common_name": "Muội",
+        "courtesy_name": "Ba Kia",
+        "death_text": "13/08/1970 âm lịch",
+        "death_year": 1970,
+        "burial_place": "Ấp chánh -Xã Đức Lập-Huyện Đức Hoà-Tỉnh Long An",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "Y sỹ Bệnh viện Sài Gòn",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Quân Nguyễn Thành Nhơn Nguyễn Chú Sáu Nguyễn Văn Di Nguyễn thị Siêng Nguyễn Thị Hừng",
+        "children_names": [
+          "Nguyễn Quốc Tuấn",
+          "Nguyễn Quốc Hùng",
+          "Nguyễn Quốc Cường",
+          "Nguyễn Thị Hương Huyền",
+          "Nguyễn Thị Phương Mai",
+          "Nguyễn Quốc Bình"
+        ],
+        "children_node_ids": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "tree_id": 121,
+        "node_id": 13
+      },
+      "deathYear": 1970,
+      "bio": "Y sỹ Bệnh viện Sài Gòn"
     },
     {
       "tree_id": 121,
@@ -521,7 +748,30 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 13
+      "fid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Tuấn",
+        "courtesy_name": "Hai Tuấn",
+        "birth_text": "03/04/1972",
+        "birth_year": 1972,
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Mẫn",
+        "note": "Có vợ và công tác tại Hà Nội",
+        "siblings_text": "Nguyễn Quốc Hùng Nguyễn Quốc Cường Nguyễn Thị Hương Huyền Nguyễn Thị Phương Mai Nguyễn Quốc Bình",
+        "children_names": [
+          "Nguyễn Ngọc Trâm",
+          "Nguyễn Quốc Tiến"
+        ],
+        "children_node_ids": [
+          29,
+          30
+        ],
+        "tree_id": 121,
+        "node_id": 21
+      },
+      "birthYear": 1972,
+      "bio": "Có vợ và công tác tại Hà Nội"
     },
     {
       "tree_id": 121,
@@ -531,7 +781,24 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 21
+      "fid": 21,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/29/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Ngọc Trâm",
+        "common_name": "Cún",
+        "courtesy_name": "Cún",
+        "birth_text": "17h50 18/08/1999",
+        "birth_year": 1999,
+        "generation_text": 5,
+        "parent_text": "Nguyễn Quốc Tuấn",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Tiến",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 29
+      },
+      "birthYear": 1999
     },
     {
       "tree_id": 121,
@@ -541,7 +808,24 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 21
+      "fid": 21,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/30/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Tiến",
+        "common_name": "Tom",
+        "courtesy_name": "Tom",
+        "birth_text": "03h45 07/04/2004",
+        "birth_year": 2004,
+        "generation_text": 5,
+        "parent_text": "Nguyễn Quốc Tuấn",
+        "note": "",
+        "siblings_text": "Nguyễn Ngọc Trâm",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 30
+      },
+      "birthYear": 2004
     },
     {
       "tree_id": 121,
@@ -551,7 +835,23 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 13
+      "fid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Hùng",
+        "birth_text": "1963",
+        "birth_year": 1963,
+        "death_text": "chết trẻ",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Mẫn",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Tuấn Nguyễn Quốc Cường Nguyễn Thị Hương Huyền Nguyễn Thị Phương Mai Nguyễn Quốc Bình",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 22
+      },
+      "birthYear": 1963
     },
     {
       "tree_id": 121,
@@ -561,7 +861,29 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 13
+      "fid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/23/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Cường",
+        "courtesy_name": "Tư Cường",
+        "birth_text": "06/1969",
+        "birth_year": 1969,
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Mẫn",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Tuấn Nguyễn Quốc Hùng Nguyễn Thị Hương Huyền Nguyễn Thị Phương Mai Nguyễn Quốc Bình",
+        "children_names": [
+          "Nguyễn Quốc Dũng",
+          "Nguyễn Thị Như Ý"
+        ],
+        "children_node_ids": [
+          31,
+          32
+        ],
+        "tree_id": 121,
+        "node_id": 23
+      },
+      "birthYear": 1969
     },
     {
       "tree_id": 121,
@@ -571,7 +893,24 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/31/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Dũng",
+        "common_name": "Dũng",
+        "courtesy_name": "Dũng mập",
+        "birth_text": "05/05/1993",
+        "birth_year": 1993,
+        "generation_text": 5,
+        "parent_text": "Nguyễn Quốc Cường",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Như Ý",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 31
+      },
+      "birthYear": 1993
     },
     {
       "tree_id": 121,
@@ -581,7 +920,24 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/32/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Như Ý",
+        "common_name": "Ti",
+        "courtesy_name": "Ti",
+        "birth_text": "20/06/2001",
+        "birth_year": 2001,
+        "generation_text": 5,
+        "parent_text": "Nguyễn Quốc Cường",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Dũng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 32
+      },
+      "birthYear": 2001
     },
     {
       "tree_id": 121,
@@ -591,7 +947,25 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 13
+      "fid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/24/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Hương Huyền",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Mẫn",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Tuấn Nguyễn Quốc Hùng Nguyễn Quốc Cường Nguyễn Thị Phương Mai Nguyễn Quốc Bình",
+        "children_names": [
+          "Nguyễn Thị Hương",
+          "Nguyễn Đức Nhựt"
+        ],
+        "children_node_ids": [
+          45,
+          46
+        ],
+        "tree_id": 121,
+        "node_id": 24
+      }
     },
     {
       "tree_id": 121,
@@ -601,7 +975,21 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 24
+      "mid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/45/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Hương",
+        "common_name": "Hương",
+        "courtesy_name": "Hương to đùng",
+        "generation_text": 5,
+        "parent_text": "Chồng: Nguyễn Văn Đức",
+        "note": "",
+        "siblings_text": "Nguyễn Đức Nhựt",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 45
+      }
     },
     {
       "tree_id": 121,
@@ -611,7 +999,21 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 24
+      "mid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/46/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Đức Nhựt",
+        "common_name": "Nhựt",
+        "courtesy_name": "Nhựt sún",
+        "generation_text": 5,
+        "parent_text": "Chồng: Nguyễn Văn Đức",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Hương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 46
+      }
     },
     {
       "tree_id": 121,
@@ -621,7 +1023,27 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 13
+      "fid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/25/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Phương Mai",
+        "courtesy_name": "Quyên",
+        "birth_text": "07/1967",
+        "birth_year": 1967,
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Mẫn",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Tuấn Nguyễn Quốc Hùng Nguyễn Quốc Cường Nguyễn Thị Hương Huyền Nguyễn Quốc Bình",
+        "children_names": [
+          "Trần thị Thanh Trúc"
+        ],
+        "children_node_ids": [
+          47
+        ],
+        "tree_id": 121,
+        "node_id": 25
+      },
+      "birthYear": 1967
     },
     {
       "tree_id": 121,
@@ -631,7 +1053,21 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 25
+      "mid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/47/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần thị Thanh Trúc",
+        "common_name": "ỷTúc",
+        "courtesy_name": "Trúc bành ky",
+        "generation_text": 5,
+        "parent_text": "Chồng: Trần Quang Thanh",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 47
+      }
     },
     {
       "tree_id": 121,
@@ -641,7 +1077,26 @@
       "generation": 5,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 13
+      "fid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/26/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Bình",
+        "courtesy_name": "Út Bình",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Mẫn",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Tuấn Nguyễn Quốc Hùng Nguyễn Quốc Cường Nguyễn Thị Hương Huyền Nguyễn Thị Phương Mai",
+        "children_names": [
+          "Nguyễn Thị Cẫm Tú",
+          "Nguyễn Quốc Đông"
+        ],
+        "children_node_ids": [
+          27,
+          28
+        ],
+        "tree_id": 121,
+        "node_id": 26
+      }
     },
     {
       "tree_id": 121,
@@ -651,7 +1106,21 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/27/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Cẫm Tú",
+        "common_name": "Tú",
+        "courtesy_name": "Tú Rề",
+        "generation_text": 5,
+        "parent_text": "Nguyễn Quốc Bình",
+        "note": "",
+        "siblings_text": "Nguyễn Quốc Đông",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 27
+      }
     },
     {
       "tree_id": 121,
@@ -661,7 +1130,21 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/28/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Quốc Đông",
+        "common_name": "Đông",
+        "courtesy_name": "Đông còi",
+        "generation_text": 5,
+        "parent_text": "Nguyễn Quốc Bình",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Cẫm Tú",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 28
+      }
     },
     {
       "tree_id": 121,
@@ -671,7 +1154,20 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Quân",
+        "death_text": "chết trẻ",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Mẫn Nguyễn Thành Nhơn Nguyễn Chú Sáu Nguyễn Văn Di Nguyễn thị Siêng Nguyễn Thị Hừng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 14
+      }
     },
     {
       "tree_id": 121,
@@ -681,7 +1177,29 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thành Nhơn",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Mẫn Nguyễn Văn Quân Nguyễn Chú Sáu Nguyễn Văn Di Nguyễn thị Siêng Nguyễn Thị Hừng",
+        "children_names": [
+          "Nguyễn Thị Vân",
+          "Nguyễn Thị Loan",
+          "Nguyễn Thanh Tùng",
+          "Nguyễn Thanh Phong"
+        ],
+        "children_node_ids": [
+          33,
+          34,
+          35,
+          36
+        ],
+        "tree_id": 121,
+        "node_id": 15
+      }
     },
     {
       "tree_id": 121,
@@ -691,7 +1209,19 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/33/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Vân",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Thành Nhơn",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Loan Nguyễn Thanh Tùng Nguyễn Thanh Phong",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 33
+      }
     },
     {
       "tree_id": 121,
@@ -701,7 +1231,19 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/34/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Loan",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Thành Nhơn",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Vân Nguyễn Thanh Tùng Nguyễn Thanh Phong",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 34
+      }
     },
     {
       "tree_id": 121,
@@ -711,7 +1253,19 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/35/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thanh Tùng",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Thành Nhơn",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Vân Nguyễn Thị Loan Nguyễn Thanh Phong",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 35
+      }
     },
     {
       "tree_id": 121,
@@ -721,7 +1275,19 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/36/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thanh Phong",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Thành Nhơn",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Vân Nguyễn Thị Loan Nguyễn Thanh Tùng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 36
+      }
     },
     {
       "tree_id": 121,
@@ -731,7 +1297,20 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Chú Sáu",
+        "death_text": "chết trẻ",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Mẫn Nguyễn Văn Quân Nguyễn Thành Nhơn Nguyễn Văn Di Nguyễn thị Siêng Nguyễn Thị Hừng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 16
+      }
     },
     {
       "tree_id": 121,
@@ -741,7 +1320,32 @@
       "generation": 4,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Di",
+        "common_name": "Dụng",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Mẫn Nguyễn Văn Quân Nguyễn Thành Nhơn Nguyễn Chú Sáu Nguyễn thị Siêng Nguyễn Thị Hừng",
+        "children_names": [
+          "Nguyễn Thành Trung",
+          "Nguyễn Thị Diễm Châu",
+          "Nguyễn Văn Thiện",
+          "Nguyễn Văn Lâm",
+          "Nguỹen Văn Hải"
+        ],
+        "children_node_ids": [
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "tree_id": 121,
+        "node_id": 17
+      }
     },
     {
       "tree_id": 121,
@@ -751,7 +1355,21 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/37/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thành Trung",
+        "common_name": "Du Long",
+        "courtesy_name": "Du Long",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Di",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Diễm Châu Nguyễn Văn Thiện Nguyễn Văn Lâm Nguỹen Văn Hải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 37
+      }
     },
     {
       "tree_id": 121,
@@ -761,7 +1379,19 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/38/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Diễm Châu",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Di",
+        "note": "",
+        "siblings_text": "Nguyễn Thành Trung Nguyễn Văn Thiện Nguyễn Văn Lâm Nguỹen Văn Hải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 38
+      }
     },
     {
       "tree_id": 121,
@@ -771,7 +1401,19 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/39/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Thiện",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Di",
+        "note": "",
+        "siblings_text": "Nguyễn Thành Trung Nguyễn Thị Diễm Châu Nguyễn Văn Lâm Nguỹen Văn Hải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 39
+      }
     },
     {
       "tree_id": 121,
@@ -781,7 +1423,19 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/40/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Lâm",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Di",
+        "note": "",
+        "siblings_text": "Nguyễn Thành Trung Nguyễn Thị Diễm Châu Nguyễn Văn Thiện Nguỹen Văn Hải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 40
+      }
     },
     {
       "tree_id": 121,
@@ -791,7 +1445,19 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/41/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguỹen Văn Hải",
+        "generation_text": 4,
+        "parent_text": "Nguyễn Văn Di",
+        "note": "",
+        "siblings_text": "Nguyễn Thành Trung Nguyễn Thị Diễm Châu Nguyễn Văn Thiện Nguyễn Văn Lâm",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 41
+      }
     },
     {
       "tree_id": 121,
@@ -801,7 +1467,28 @@
       "generation": 4,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn thị Siêng",
+        "common_name": "Mười Cọp",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Mẫn Nguyễn Văn Quân Nguyễn Thành Nhơn Nguyễn Chú Sáu Nguyễn Văn Di Nguyễn Thị Hừng",
+        "children_names": [
+          "Phạm ... Tâm",
+          "Phạm... Ngân",
+          "Phạm Anh Kiệt"
+        ],
+        "children_node_ids": [
+          42,
+          43,
+          44
+        ],
+        "tree_id": 121,
+        "node_id": 18
+      }
     },
     {
       "tree_id": 121,
@@ -811,7 +1498,19 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 18
+      "mid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/42/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm ... Tâm",
+        "generation_text": 4,
+        "parent_text": "Chồng:Phạm văn Dần",
+        "note": "",
+        "siblings_text": "Phạm... Ngân Phạm Anh Kiệt",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 42
+      }
     },
     {
       "tree_id": 121,
@@ -821,7 +1520,19 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "mid": 18
+      "mid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/43/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm... Ngân",
+        "generation_text": 4,
+        "parent_text": "Chồng:Phạm văn Dần",
+        "note": "",
+        "siblings_text": "Phạm ... Tâm Phạm Anh Kiệt",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 43
+      }
     },
     {
       "tree_id": 121,
@@ -831,7 +1542,19 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "mid": 18
+      "mid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/44/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm Anh Kiệt",
+        "generation_text": 4,
+        "parent_text": "Chồng:Phạm văn Dần",
+        "note": "",
+        "siblings_text": "Phạm ... Tâm Phạm... Ngân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 44
+      }
     },
     {
       "tree_id": 121,
@@ -841,7 +1564,25 @@
       "generation": 4,
       "order_in_generation": 8,
       "gender": "female",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Hừng",
+        "generation_text": 3,
+        "parent_text": "Nguyễn Văn Bề",
+        "note": "",
+        "siblings_text": "Nguyễn Bác Hai Nguyễn Văn Mẫn Nguyễn Văn Quân Nguyễn Thành Nhơn Nguyễn Chú Sáu Nguyễn Văn Di Nguyễn thị Siêng",
+        "children_names": [
+          ".... Ân",
+          ".... Nghĩa"
+        ],
+        "children_node_ids": [
+          48,
+          49
+        ],
+        "tree_id": 121,
+        "node_id": 19
+      }
     },
     {
       "tree_id": 121,
@@ -851,7 +1592,20 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 19
+      "mid": 19,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/48/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: .... Ân",
+        "common_name": "NôĐa",
+        "generation_text": 4,
+        "parent_text": "Chồng:.......Hùng",
+        "note": "",
+        "siblings_text": ".... Nghĩa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 48
+      }
     },
     {
       "tree_id": 121,
@@ -861,7 +1615,20 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 19
+      "mid": 19,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/121/49/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: .... Nghĩa",
+        "common_name": "Nghĩa",
+        "generation_text": 4,
+        "parent_text": "Chồng:.......Hùng",
+        "note": "",
+        "siblings_text": ".... Ân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 121,
+        "node_id": 49
+      }
     }
   ]
 }

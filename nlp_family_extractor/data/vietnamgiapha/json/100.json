@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/100/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Vu Van",
   "node_count": 33,
+  "detail_fetched_count": 33,
   "relationship_count": 32,
   "relationships": [
     {
@@ -271,7 +273,25 @@
       "name": "ông Phúc Cát",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: ông Phúc Cát",
+        "epithet": "Phúc Cát",
+        "birth_text": "nhất",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Vũ Huý Công"
+        ],
+        "children_node_ids": [
+          2
+        ],
+        "tree_id": 100,
+        "node_id": 1
+      }
     },
     {
       "tree_id": 100,
@@ -281,7 +301,25 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Huý Công",
+        "generation_text": 1,
+        "parent_text": "ông Phúc Cát",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Vũ Văn Trại",
+          "Vũ Văn Trang"
+        ],
+        "children_node_ids": [
+          3,
+          4
+        ],
+        "tree_id": 100,
+        "node_id": 2
+      }
     },
     {
       "tree_id": 100,
@@ -291,7 +329,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Văn Trại",
+        "generation_text": 2,
+        "parent_text": "Vũ Huý Công",
+        "note": "",
+        "siblings_text": "Vũ Văn Trang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 3
+      }
     },
     {
       "tree_id": 100,
@@ -301,7 +351,31 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Văn Trang",
+        "generation_text": 2,
+        "parent_text": "Vũ Huý Công",
+        "note": "",
+        "siblings_text": "Vũ Văn Trại",
+        "children_names": [
+          "Vũ văn Ể",
+          "Vũ văn Quyền",
+          "Vũ văn Truật",
+          "Vũ văn Huỳnh",
+          "Vũ văn Vinh"
+        ],
+        "children_node_ids": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "tree_id": 100,
+        "node_id": 4
+      }
     },
     {
       "tree_id": 100,
@@ -311,7 +385,19 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Ể",
+        "generation_text": 3,
+        "parent_text": "Vũ Văn Trang",
+        "note": "",
+        "siblings_text": "Vũ văn Quyền Vũ văn Truật Vũ văn Huỳnh Vũ văn Vinh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 5
+      }
     },
     {
       "tree_id": 100,
@@ -321,7 +407,19 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Quyền",
+        "generation_text": 3,
+        "parent_text": "Vũ Văn Trang",
+        "note": "",
+        "siblings_text": "Vũ văn Ể Vũ văn Truật Vũ văn Huỳnh Vũ văn Vinh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 6
+      }
     },
     {
       "tree_id": 100,
@@ -331,7 +429,23 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Truật",
+        "generation_text": 3,
+        "parent_text": "Vũ Văn Trang",
+        "note": "",
+        "siblings_text": "Vũ văn Ể Vũ văn Quyền Vũ văn Huỳnh Vũ văn Vinh",
+        "children_names": [
+          "Vũ văn Triệu"
+        ],
+        "children_node_ids": [
+          10
+        ],
+        "tree_id": 100,
+        "node_id": 7
+      }
     },
     {
       "tree_id": 100,
@@ -341,7 +455,31 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 7
+      "fid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Triệu",
+        "generation_text": 4,
+        "parent_text": "Vũ văn Truật",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Vũ văn Lịch",
+          "Vũ văn Chiểu",
+          "Vũ Văn Lãm",
+          "Vũ văn Liểu",
+          "Vũ Thị Chừng"
+        ],
+        "children_node_ids": [
+          11,
+          12,
+          13,
+          14,
+          18
+        ],
+        "tree_id": 100,
+        "node_id": 10
+      }
     },
     {
       "tree_id": 100,
@@ -351,7 +489,34 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Lịch",
+        "common_name": "Lịch",
+        "generation_text": 5,
+        "parent_text": "Vũ văn Triệu",
+        "note": "",
+        "siblings_text": "Vũ văn Chiểu Vũ Văn Lãm Vũ văn Liểu Vũ Thị Chừng",
+        "children_names": [
+          "Vũ Thị Bích",
+          "Vũ thị Đức",
+          "Vũ Thị Hưng",
+          "Vũ Thị Chừng",
+          "Vũ Tâm Lộc",
+          "Vũ văn Đài"
+        ],
+        "children_node_ids": [
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "tree_id": 100,
+        "node_id": 11
+      }
     },
     {
       "tree_id": 100,
@@ -361,7 +526,19 @@
       "generation": 7,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Thị Bích",
+        "generation_text": 6,
+        "parent_text": "Vũ văn Lịch",
+        "note": "",
+        "siblings_text": "Vũ thị Đức Vũ Thị Hưng Vũ Thị Chừng Vũ Tâm Lộc Vũ văn Đài",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 19
+      }
     },
     {
       "tree_id": 100,
@@ -371,7 +548,19 @@
       "generation": 7,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ thị Đức",
+        "generation_text": 6,
+        "parent_text": "Vũ văn Lịch",
+        "note": "",
+        "siblings_text": "Vũ Thị Bích Vũ Thị Hưng Vũ Thị Chừng Vũ Tâm Lộc Vũ văn Đài",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 20
+      }
     },
     {
       "tree_id": 100,
@@ -381,7 +570,19 @@
       "generation": 7,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Thị Hưng",
+        "generation_text": 6,
+        "parent_text": "Vũ văn Lịch",
+        "note": "",
+        "siblings_text": "Vũ Thị Bích Vũ thị Đức Vũ Thị Chừng Vũ Tâm Lộc Vũ văn Đài",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 21
+      }
     },
     {
       "tree_id": 100,
@@ -391,7 +592,19 @@
       "generation": 7,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Thị Chừng",
+        "generation_text": 6,
+        "parent_text": "Vũ văn Lịch",
+        "note": "",
+        "siblings_text": "Vũ Thị Bích Vũ thị Đức Vũ Thị Hưng Vũ Tâm Lộc Vũ văn Đài",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 22
+      }
     },
     {
       "tree_id": 100,
@@ -401,7 +614,31 @@
       "generation": 7,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/23/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Tâm Lộc",
+        "generation_text": 6,
+        "parent_text": "Vũ văn Lịch",
+        "note": "",
+        "siblings_text": "Vũ Thị Bích Vũ thị Đức Vũ Thị Hưng Vũ Thị Chừng Vũ văn Đài",
+        "children_names": [
+          "Vũ thi Luyện",
+          "Vũ thị Liên",
+          "Vũ văn Khánh",
+          "Vũ văn Sơn",
+          "Vũ thị Liễu"
+        ],
+        "children_node_ids": [
+          29,
+          30,
+          31,
+          32,
+          33
+        ],
+        "tree_id": 100,
+        "node_id": 23
+      }
     },
     {
       "tree_id": 100,
@@ -411,7 +648,19 @@
       "generation": 8,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/29/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ thi Luyện",
+        "generation_text": 7,
+        "parent_text": "Vũ Tâm Lộc",
+        "note": "",
+        "siblings_text": "Vũ thị Liên Vũ văn Khánh Vũ văn Sơn Vũ thị Liễu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 29
+      }
     },
     {
       "tree_id": 100,
@@ -421,7 +670,19 @@
       "generation": 8,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/30/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ thị Liên",
+        "generation_text": 7,
+        "parent_text": "Vũ Tâm Lộc",
+        "note": "",
+        "siblings_text": "Vũ thi Luyện Vũ văn Khánh Vũ văn Sơn Vũ thị Liễu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 30
+      }
     },
     {
       "tree_id": 100,
@@ -431,7 +692,27 @@
       "generation": 8,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/31/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Khánh",
+        "generation_text": 7,
+        "parent_text": "Vũ Tâm Lộc",
+        "note": "",
+        "siblings_text": "Vũ thi Luyện Vũ thị Liên Vũ văn Sơn Vũ thị Liễu",
+        "children_names": [
+          "Vũ xuân Thành",
+          "Vũ trí Công",
+          "Vũ thị Khoa"
+        ],
+        "children_node_ids": [
+          34,
+          35,
+          36
+        ],
+        "tree_id": 100,
+        "node_id": 31
+      }
     },
     {
       "tree_id": 100,
@@ -441,7 +722,19 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 31
+      "fid": 31,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/34/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ xuân Thành",
+        "generation_text": 8,
+        "parent_text": "Vũ văn Khánh",
+        "note": "",
+        "siblings_text": "Vũ trí Công Vũ thị Khoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 34
+      }
     },
     {
       "tree_id": 100,
@@ -451,7 +744,19 @@
       "generation": 9,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 31
+      "fid": 31,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/35/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ trí Công",
+        "generation_text": 8,
+        "parent_text": "Vũ văn Khánh",
+        "note": "",
+        "siblings_text": "Vũ xuân Thành Vũ thị Khoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 35
+      }
     },
     {
       "tree_id": 100,
@@ -461,7 +766,19 @@
       "generation": 9,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 31
+      "fid": 31,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/36/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ thị Khoa",
+        "generation_text": 8,
+        "parent_text": "Vũ văn Khánh",
+        "note": "",
+        "siblings_text": "Vũ xuân Thành Vũ trí Công",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 36
+      }
     },
     {
       "tree_id": 100,
@@ -471,7 +788,19 @@
       "generation": 8,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/32/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Sơn",
+        "generation_text": 7,
+        "parent_text": "Vũ Tâm Lộc",
+        "note": "",
+        "siblings_text": "Vũ thi Luyện Vũ thị Liên Vũ văn Khánh Vũ thị Liễu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 32
+      }
     },
     {
       "tree_id": 100,
@@ -481,7 +810,19 @@
       "generation": 8,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/33/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ thị Liễu",
+        "generation_text": 7,
+        "parent_text": "Vũ Tâm Lộc",
+        "note": "",
+        "siblings_text": "Vũ thi Luyện Vũ thị Liên Vũ văn Khánh Vũ văn Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 33
+      }
     },
     {
       "tree_id": 100,
@@ -491,7 +832,30 @@
       "generation": 7,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 11
+      "fid": 11,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/24/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Đài",
+        "birth_text": "10/08/1947",
+        "birth_year": 1947,
+        "generation_text": 6,
+        "parent_text": "Vũ văn Lịch",
+        "note": "",
+        "siblings_text": "Vũ Thị Bích Vũ thị Đức Vũ Thị Hưng Vũ Thị Chừng Vũ Tâm Lộc",
+        "children_names": [
+          "Vũ Quỳnh Hoa",
+          "Vũ mạnh Hùng",
+          "Vũ Thuý Qùynh"
+        ],
+        "children_node_ids": [
+          25,
+          26,
+          27
+        ],
+        "tree_id": 100,
+        "node_id": 24
+      },
+      "birthYear": 1947
     },
     {
       "tree_id": 100,
@@ -501,7 +865,22 @@
       "generation": 8,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/25/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Quỳnh Hoa",
+        "birth_text": "02/121972",
+        "birth_year": 1972,
+        "generation_text": 7,
+        "parent_text": "Vũ văn Đài",
+        "note": "",
+        "siblings_text": "Vũ mạnh Hùng Vũ Thuý Qùynh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 25
+      },
+      "birthYear": 1972
     },
     {
       "tree_id": 100,
@@ -511,7 +890,27 @@
       "generation": 8,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/26/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ mạnh Hùng",
+        "common_name": "Vũ quốc Tuấn",
+        "birth_text": "27/07/1974",
+        "birth_year": 1974,
+        "generation_text": 7,
+        "parent_text": "Vũ văn Đài",
+        "note": "",
+        "siblings_text": "Vũ Quỳnh Hoa Vũ Thuý Qùynh",
+        "children_names": [
+          "Vũ Minh Đức"
+        ],
+        "children_node_ids": [
+          28
+        ],
+        "tree_id": 100,
+        "node_id": 26
+      },
+      "birthYear": 1974
     },
     {
       "tree_id": 100,
@@ -521,7 +920,22 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/28/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Minh Đức",
+        "birth_text": "28/12/2003",
+        "birth_year": 2003,
+        "generation_text": 8,
+        "parent_text": "Vũ mạnh Hùng",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 28
+      },
+      "birthYear": 2003
     },
     {
       "tree_id": 100,
@@ -531,7 +945,22 @@
       "generation": 8,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/27/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Thuý Qùynh",
+        "birth_text": "10/09/1976",
+        "birth_year": 1976,
+        "generation_text": 7,
+        "parent_text": "Vũ văn Đài",
+        "note": "",
+        "siblings_text": "Vũ Quỳnh Hoa Vũ mạnh Hùng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 27
+      },
+      "birthYear": 1976
     },
     {
       "tree_id": 100,
@@ -541,7 +970,19 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Chiểu",
+        "generation_text": 5,
+        "parent_text": "Vũ văn Triệu",
+        "note": "",
+        "siblings_text": "Vũ văn Lịch Vũ Văn Lãm Vũ văn Liểu Vũ Thị Chừng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 12
+      }
     },
     {
       "tree_id": 100,
@@ -551,7 +992,19 @@
       "generation": 6,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Văn Lãm",
+        "generation_text": 5,
+        "parent_text": "Vũ văn Triệu",
+        "note": "",
+        "siblings_text": "Vũ văn Lịch Vũ văn Chiểu Vũ văn Liểu Vũ Thị Chừng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 13
+      }
     },
     {
       "tree_id": 100,
@@ -561,7 +1014,19 @@
       "generation": 6,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Liểu",
+        "generation_text": 5,
+        "parent_text": "Vũ văn Triệu",
+        "note": "",
+        "siblings_text": "Vũ văn Lịch Vũ văn Chiểu Vũ Văn Lãm Vũ Thị Chừng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 14
+      }
     },
     {
       "tree_id": 100,
@@ -571,7 +1036,19 @@
       "generation": 6,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Thị Chừng",
+        "generation_text": 5,
+        "parent_text": "Vũ văn Triệu",
+        "note": "",
+        "siblings_text": "Vũ văn Lịch Vũ văn Chiểu Vũ Văn Lãm Vũ văn Liểu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 18
+      }
     },
     {
       "tree_id": 100,
@@ -581,7 +1058,20 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Huỳnh",
+        "common_name": "4",
+        "generation_text": 3,
+        "parent_text": "Vũ Văn Trang",
+        "note": "",
+        "siblings_text": "Vũ văn Ể Vũ văn Quyền Vũ văn Truật Vũ văn Vinh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 8
+      }
     },
     {
       "tree_id": 100,
@@ -591,7 +1081,19 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/100/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ văn Vinh",
+        "generation_text": 3,
+        "parent_text": "Vũ Văn Trang",
+        "note": "",
+        "siblings_text": "Vũ văn Ể Vũ văn Quyền Vũ văn Truật Vũ văn Huỳnh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 100,
+        "node_id": 9
+      }
     }
   ]
 }

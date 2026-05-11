@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/184/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Hoàng",
   "node_count": 11,
+  "detail_fetched_count": 11,
   "relationship_count": 9,
   "relationships": [
     {
@@ -87,7 +89,39 @@
       "name": "Hoàng Văn Tứ",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Tứ",
+        "common_name": "Tứ",
+        "courtesy_name": "Ông Trùm Tứ",
+        "death_text": "23 tháng chạp năm 200",
+        "burial_place": "Phúc Nhạc, Gia Tân Thống Nhất, Đồng Nai",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Hoàng Văn Tư",
+          "Hoàng Thị Nhung",
+          "Hoàng Văn Chức",
+          "Hoàng Văn Kim",
+          "Hoàng Văn Tân",
+          "Hoàng Văn Đệ",
+          "Hoàng Văn Khải"
+        ],
+        "children_node_ids": [
+          2,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11
+        ],
+        "tree_id": 184,
+        "node_id": 1
+      }
     },
     {
       "tree_id": 184,
@@ -97,7 +131,28 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Tư",
+        "common_name": "Lập",
+        "courtesy_name": "Tư Cồ",
+        "birth_text": "1950",
+        "birth_year": 1950,
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Thị Nhung Hoàng Văn Chức Hoàng Văn Kim Hoàng Văn Tân Hoàng Văn Đệ Hoàng Văn Khải",
+        "children_names": [
+          "Hoàng Đình Thiều"
+        ],
+        "children_node_ids": [
+          3
+        ],
+        "tree_id": 184,
+        "node_id": 2
+      },
+      "birthYear": 1950
     },
     {
       "tree_id": 184,
@@ -107,7 +162,23 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Đình Thiều",
+        "courtesy_name": "Thiều",
+        "birth_text": "15-10-1970",
+        "birth_year": 1970,
+        "generation_text": 2,
+        "parent_text": "Hoàng Văn Tư",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 3
+      },
+      "birthYear": 1970
     },
     {
       "tree_id": 184,
@@ -116,7 +187,29 @@
       "name": "Hoàng Thị Nhung-Vũ Đình Tài (Chồng)",
       "generation": 1,
       "order_in_generation": 2,
-      "gender": "female"
+      "gender": "female",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Thị Nhung",
+        "death_text": "17-04-2008 Nhằm ngày 12-3-",
+        "death_year": 2008,
+        "burial_place": "Lê Lợi Quang Trung Thống Nhất Đồng Nai",
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Văn Tư Hoàng Văn Chức Hoàng Văn Kim Hoàng Văn Tân Hoàng Văn Đệ Hoàng Văn Khải",
+        "children_names": [
+          "Trần Thị Liễu (con chồng tước-Trần Văn Hòa)",
+          "Trần Thị Hồng"
+        ],
+        "children_node_ids": [
+          6,
+          7
+        ],
+        "tree_id": 184,
+        "node_id": 4
+      },
+      "deathYear": 2008
     },
     {
       "tree_id": 184,
@@ -126,7 +219,19 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Thị Liễu (con chồng tước-Trần Văn Hòa)",
+        "generation_text": 1,
+        "parent_text": "Vũ Đình Tài (Chồng)",
+        "note": "",
+        "siblings_text": "Trần Thị Hồng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 6
+      }
     },
     {
       "tree_id": 184,
@@ -136,7 +241,19 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Thị Hồng",
+        "generation_text": 1,
+        "parent_text": "Vũ Đình Tài (Chồng)",
+        "note": "",
+        "siblings_text": "Trần Thị Liễu (con chồng tước-Trần Văn Hòa)",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 7
+      }
     },
     {
       "tree_id": 184,
@@ -146,7 +263,20 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "male",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Chức",
+        "common_name": "Chức",
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Văn Tư Hoàng Thị Nhung Hoàng Văn Kim Hoàng Văn Tân Hoàng Văn Đệ Hoàng Văn Khải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 5
+      }
     },
     {
       "tree_id": 184,
@@ -156,7 +286,19 @@
       "generation": 2,
       "order_in_generation": 4,
       "gender": "male",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Kim",
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Văn Tư Hoàng Thị Nhung Hoàng Văn Chức Hoàng Văn Tân Hoàng Văn Đệ Hoàng Văn Khải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 8
+      }
     },
     {
       "tree_id": 184,
@@ -166,7 +308,19 @@
       "generation": 2,
       "order_in_generation": 5,
       "gender": "male",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Tân",
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Văn Tư Hoàng Thị Nhung Hoàng Văn Chức Hoàng Văn Kim Hoàng Văn Đệ Hoàng Văn Khải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 9
+      }
     },
     {
       "tree_id": 184,
@@ -176,7 +330,19 @@
       "generation": 2,
       "order_in_generation": 6,
       "gender": "male",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Đệ",
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Văn Tư Hoàng Thị Nhung Hoàng Văn Chức Hoàng Văn Kim Hoàng Văn Tân Hoàng Văn Khải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 10
+      }
     },
     {
       "tree_id": 184,
@@ -186,7 +352,19 @@
       "generation": 2,
       "order_in_generation": 7,
       "gender": "male",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/184/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hoàng Văn Khải",
+        "generation_text": 1,
+        "parent_text": "Hoàng Văn Tứ",
+        "note": "",
+        "siblings_text": "Hoàng Văn Tư Hoàng Thị Nhung Hoàng Văn Chức Hoàng Văn Kim Hoàng Văn Tân Hoàng Văn Đệ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 184,
+        "node_id": 11
+      }
     }
   ]
 }

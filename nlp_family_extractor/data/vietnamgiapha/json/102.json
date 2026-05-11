@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/102/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Đinh Tộc Kiên Lao",
   "node_count": 1,
+  "detail_fetched_count": 1,
   "relationship_count": 0,
   "relationships": [],
   "nodes": [
@@ -14,7 +16,22 @@
       "name": "Đinh Đức Tuyên",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/102/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đinh Đức Tuyên",
+        "epithet": "Cụ Thuỷ Tổ",
+        "death_text": "15 tháng giêng",
+        "burial_place": "Nghĩa trang ND Kiên Lao",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 102,
+        "node_id": 1
+      }
     }
   ]
 }

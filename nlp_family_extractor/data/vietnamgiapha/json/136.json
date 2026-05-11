@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/136/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Họ Bùi ở Hải Phòng",
   "node_count": 131,
+  "detail_fetched_count": 131,
   "relationship_count": 130,
   "relationships": [
     {
@@ -1055,7 +1057,23 @@
       "name": "Bùi Công Từ-Nguyễn Thị ...",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Công Từ",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Bùi Công Mãi"
+        ],
+        "children_node_ids": [
+          2
+        ],
+        "tree_id": 136,
+        "node_id": 1
+      }
     },
     {
       "tree_id": 136,
@@ -1065,7 +1083,25 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Công Mãi",
+        "generation_text": 1,
+        "parent_text": "Bùi Công Từ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Bùi Công Tự",
+          "Bùi Hữu Nghị"
+        ],
+        "children_node_ids": [
+          3,
+          4
+        ],
+        "tree_id": 136,
+        "node_id": 2
+      }
     },
     {
       "tree_id": 136,
@@ -1075,7 +1111,27 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Công Tự",
+        "generation_text": 2,
+        "parent_text": "Bùi Công Mãi",
+        "note": "",
+        "siblings_text": "Bùi Hữu Nghị",
+        "children_names": [
+          "Bùi Đức Trọng",
+          "Bùi Duy Kỳ",
+          "Bùi Công Bá"
+        ],
+        "children_node_ids": [
+          5,
+          6,
+          7
+        ],
+        "tree_id": 136,
+        "node_id": 3
+      }
     },
     {
       "tree_id": 136,
@@ -1085,7 +1141,19 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Đức Trọng",
+        "generation_text": 3,
+        "parent_text": "Bùi Công Tự",
+        "note": "",
+        "siblings_text": "Bùi Duy Kỳ Bùi Công Bá",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 5
+      }
     },
     {
       "tree_id": 136,
@@ -1095,7 +1163,29 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Duy Kỳ",
+        "epithet": "Diệu Cương",
+        "death_text": "21/1",
+        "generation_text": 3,
+        "parent_text": "Bùi Công Tự",
+        "note": "",
+        "siblings_text": "Bùi Đức Trọng Bùi Công Bá",
+        "children_names": [
+          "Bùi Thị Bằng",
+          "Bùi Nhật Đảng",
+          "Bùi Thị Bầng"
+        ],
+        "children_node_ids": [
+          8,
+          9,
+          17
+        ],
+        "tree_id": 136,
+        "node_id": 6
+      }
     },
     {
       "tree_id": 136,
@@ -1105,7 +1195,20 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Bằng",
+        "death_text": "25/7",
+        "generation_text": 4,
+        "parent_text": "Bùi Duy Kỳ",
+        "note": "",
+        "siblings_text": "Bùi Nhật Đảng Bùi Thị Bầng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 8
+      }
     },
     {
       "tree_id": 136,
@@ -1115,7 +1218,36 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Nhật Đảng",
+        "death_text": "1/8",
+        "generation_text": 4,
+        "parent_text": "Bùi Duy Kỳ",
+        "note": "",
+        "siblings_text": "Bùi Thị Bằng Bùi Thị Bầng",
+        "children_names": [
+          "Bùi Văn Cừu",
+          "Bùi Văn Nhã",
+          "Bùi Văn Thành",
+          "Bùi Thị Lượt",
+          "Bùi Thị Đỗ",
+          "Bùi Thị Đậu",
+          "Bùi Thị Chu"
+        ],
+        "children_node_ids": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "tree_id": 136,
+        "node_id": 9
+      }
     },
     {
       "tree_id": 136,
@@ -1125,7 +1257,32 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Cừu",
+        "death_text": "28/3",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "",
+        "siblings_text": "Bùi Văn Nhã Bùi Văn Thành Bùi Thị Lượt Bùi Thị Đỗ Bùi Thị Đậu Bùi Thị Chu",
+        "children_names": [
+          "Bùi Văn Khuỳnh",
+          "Bùi Thị Chiêu",
+          "Bùi Thị Sum",
+          "Bùi Văn Phồm",
+          "Bùi Văn Kiệu"
+        ],
+        "children_node_ids": [
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "tree_id": 136,
+        "node_id": 10
+      }
     },
     {
       "tree_id": 136,
@@ -1135,7 +1292,28 @@
       "generation": 7,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Khuỳnh",
+        "death_text": "22/2",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Cừu",
+        "note": "",
+        "siblings_text": "Bùi Thị Chiêu Bùi Thị Sum Bùi Văn Phồm Bùi Văn Kiệu",
+        "children_names": [
+          "Bùi Thị Chăn",
+          "Bùi Văn Tiếu",
+          "Bùi Văn Đính"
+        ],
+        "children_node_ids": [
+          87,
+          88,
+          89
+        ],
+        "tree_id": 136,
+        "node_id": 18
+      }
     },
     {
       "tree_id": 136,
@@ -1145,7 +1323,20 @@
       "generation": 8,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/87/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Chăn",
+        "death_text": "(23/2)",
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Khuỳnh",
+        "note": "",
+        "siblings_text": "Bùi Văn Tiếu Bùi Văn Đính",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 87
+      }
     },
     {
       "tree_id": 136,
@@ -1155,7 +1346,24 @@
       "generation": 8,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/88/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Tiếu",
+        "birth_text": "1895",
+        "birth_year": 1895,
+        "death_text": "(15/7)",
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Khuỳnh",
+        "note": "Còn 1 người con ở Cam Lộ",
+        "siblings_text": "Bùi Thị Chăn Bùi Văn Đính",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 88
+      },
+      "birthYear": 1895,
+      "bio": "Còn 1 người con ở Cam Lộ"
     },
     {
       "tree_id": 136,
@@ -1165,7 +1373,29 @@
       "generation": 8,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/89/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Đính",
+        "birth_text": "1902",
+        "birth_year": 1902,
+        "death_text": "1976 (22/12)",
+        "death_year": 1976,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Khuỳnh",
+        "note": "",
+        "siblings_text": "Bùi Thị Chăn Bùi Văn Tiếu",
+        "children_names": [
+          "Bùi Văn Tuynh"
+        ],
+        "children_node_ids": [
+          90
+        ],
+        "tree_id": 136,
+        "node_id": 89
+      },
+      "birthYear": 1902,
+      "deathYear": 1976
     },
     {
       "tree_id": 136,
@@ -1175,7 +1405,22 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 89
+      "fid": 89,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/90/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Tuynh",
+        "birth_text": "1938",
+        "birth_year": 1938,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Đính",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 90
+      },
+      "birthYear": 1938
     },
     {
       "tree_id": 136,
@@ -1185,7 +1430,23 @@
       "generation": 7,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Chiêu",
+        "death_text": "1945 (8/5)",
+        "death_year": 1945,
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Cừu",
+        "note": "Phạm Quang Dứa, thường gọi cụ Hương Lương",
+        "siblings_text": "Bùi Văn Khuỳnh Bùi Thị Sum Bùi Văn Phồm Bùi Văn Kiệu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 19
+      },
+      "deathYear": 1945,
+      "bio": "Phạm Quang Dứa, thường gọi cụ Hương Lương"
     },
     {
       "tree_id": 136,
@@ -1195,7 +1456,24 @@
       "generation": 7,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Sum",
+        "courtesy_name": "Đụn",
+        "death_text": "1944 (13/4)",
+        "death_year": 1944,
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Cừu",
+        "note": "Dương Văn Ảm (cụ Lý Đạm) sinh ra ông Lý Sò. Ông Sò sinh ra Nhô, Nho",
+        "siblings_text": "Bùi Văn Khuỳnh Bùi Thị Chiêu Bùi Văn Phồm Bùi Văn Kiệu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 20
+      },
+      "deathYear": 1944,
+      "bio": "Dương Văn Ảm (cụ Lý Đạm) sinh ra ông Lý Sò. Ông Sò sinh ra Nhô, Nho"
     },
     {
       "tree_id": 136,
@@ -1205,7 +1483,26 @@
       "generation": 7,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Phồm",
+        "birth_text": "1871",
+        "birth_year": 1871,
+        "death_text": "1943 (24/9)",
+        "death_year": 1943,
+        "burial_place": "Ruộng mạ",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Cừu",
+        "note": "",
+        "siblings_text": "Bùi Văn Khuỳnh Bùi Thị Chiêu Bùi Thị Sum Bùi Văn Kiệu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 21
+      },
+      "birthYear": 1871,
+      "deathYear": 1943
     },
     {
       "tree_id": 136,
@@ -1215,7 +1512,41 @@
       "generation": 7,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Kiệu",
+        "birth_text": "1871",
+        "birth_year": 1871,
+        "death_text": "1935 (30/11)",
+        "death_year": 1935,
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Cừu",
+        "note": "",
+        "siblings_text": "Bùi Văn Khuỳnh Bùi Thị Chiêu Bùi Thị Sum Bùi Văn Phồm",
+        "children_names": [
+          "Bùi Văn Chum",
+          "Bùi Thị Tí",
+          "Bùi Văn Bịch",
+          "Bùi Thị Tẹo",
+          "Bùi Văn Bích",
+          "Bùi Thị Tọ",
+          "Bùi Thị Đề"
+        ],
+        "children_node_ids": [
+          23,
+          105,
+          91,
+          109,
+          113,
+          121,
+          125
+        ],
+        "tree_id": 136,
+        "node_id": 22
+      },
+      "birthYear": 1871,
+      "deathYear": 1935
     },
     {
       "tree_id": 136,
@@ -1225,7 +1556,44 @@
       "generation": 8,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/23/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Chum",
+        "birth_text": "1895",
+        "birth_year": 1895,
+        "death_text": "1981 (4/6)",
+        "death_year": 1981,
+        "burial_place": "Ruộng mạ",
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Thị Tí Bùi Văn Bịch Bùi Thị Tẹo Bùi Văn Bích Bùi Thị Tọ Bùi Thị Đề",
+        "children_names": [
+          "Bùi Văn Quý",
+          "Bùi Đốc Tuệ",
+          "Bùi Văn Rộng",
+          "Bùi Văn Toàn",
+          "Bùi Văn Toán",
+          "Bùi Thị May",
+          "Bùi Thị Mừng",
+          "Bùi Văn Tám"
+        ],
+        "children_node_ids": [
+          24,
+          40,
+          49,
+          57,
+          58,
+          61,
+          62,
+          63
+        ],
+        "tree_id": 136,
+        "node_id": 23
+      },
+      "birthYear": 1895,
+      "deathYear": 1981
     },
     {
       "tree_id": 136,
@@ -1235,7 +1603,36 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/24/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Quý",
+        "birth_text": "1920 An Khê",
+        "birth_year": 1920,
+        "death_text": "10g15 3/2 Canh Dần 18/3/20",
+        "burial_place": "Nghĩa trang chùa Giác Hải, Bình Tân, Tp.HCM",
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Đốc Tuệ Bùi Văn Rộng Bùi Văn Toàn Bùi Văn Toán Bùi Thị May Bùi Thị Mừng Bùi Văn Tám",
+        "children_names": [
+          "Bùi Thị Nguyệt",
+          "Bùi Xuân Sơn",
+          "Bùi Minh Tâm",
+          "Bùi Sinh Thụy",
+          "Bùi Văn Thanh"
+        ],
+        "children_node_ids": [
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "tree_id": 136,
+        "node_id": 24
+      },
+      "birthYear": 1920
     },
     {
       "tree_id": 136,
@@ -1245,7 +1642,31 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/25/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Nguyệt",
+        "birth_text": "19/4/1936",
+        "birth_year": 1936,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Quý",
+        "note": "Dược sỹ",
+        "siblings_text": "Bùi Xuân Sơn Bùi Minh Tâm Bùi Sinh Thụy Bùi Văn Thanh",
+        "children_names": [
+          "Dương Thanh Nguyệt Mai",
+          "Dương Đình Hải",
+          "Dương Đình Hà"
+        ],
+        "children_node_ids": [
+          37,
+          38,
+          39
+        ],
+        "tree_id": 136,
+        "node_id": 25
+      },
+      "birthYear": 1936,
+      "bio": "Dược sỹ"
     },
     {
       "tree_id": 136,
@@ -1255,7 +1676,20 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 25
+      "mid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/37/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Dương Thanh Nguyệt Mai",
+        "common_name": "Joe",
+        "generation_text": 10,
+        "parent_text": "Dương Đình Hợp",
+        "note": "",
+        "siblings_text": "Dương Đình Hải Dương Đình Hà",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 37
+      }
     },
     {
       "tree_id": 136,
@@ -1265,7 +1699,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 25
+      "mid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/38/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Dương Đình Hải",
+        "birth_text": "9/10/1975",
+        "birth_year": 1975,
+        "generation_text": 10,
+        "parent_text": "Dương Đình Hợp",
+        "note": "",
+        "siblings_text": "Dương Thanh Nguyệt Mai Dương Đình Hà",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 38
+      },
+      "birthYear": 1975
     },
     {
       "tree_id": 136,
@@ -1275,7 +1724,22 @@
       "generation": 11,
       "order_in_generation": 3,
       "gender": "male",
-      "mid": 25
+      "mid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/39/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Dương Đình Hà",
+        "birth_text": "17/11/1976",
+        "birth_year": 1976,
+        "generation_text": 10,
+        "parent_text": "Dương Đình Hợp",
+        "note": "",
+        "siblings_text": "Dương Thanh Nguyệt Mai Dương Đình Hải",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 39
+      },
+      "birthYear": 1976
     },
     {
       "tree_id": 136,
@@ -1285,7 +1749,29 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/26/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Xuân Sơn",
+        "birth_text": "3/5/1952",
+        "birth_year": 1952,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Quý",
+        "note": "Đi học ở Mỹ từ 1968, có bằng Cao Học",
+        "siblings_text": "Bùi Thị Nguyệt Bùi Minh Tâm Bùi Sinh Thụy Bùi Văn Thanh",
+        "children_names": [
+          "Bùi Hoàng Thảo Nguyên",
+          "Bùi Minh Khuê"
+        ],
+        "children_node_ids": [
+          35,
+          36
+        ],
+        "tree_id": 136,
+        "node_id": 26
+      },
+      "birthYear": 1952,
+      "bio": "Đi học ở Mỹ từ 1968, có bằng Cao Học"
     },
     {
       "tree_id": 136,
@@ -1295,7 +1781,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/35/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Hoàng Thảo Nguyên",
+        "birth_text": "1982",
+        "birth_year": 1982,
+        "generation_text": 10,
+        "parent_text": "Bùi Xuân Sơn",
+        "note": "",
+        "siblings_text": "Bùi Minh Khuê",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 35
+      },
+      "birthYear": 1982
     },
     {
       "tree_id": 136,
@@ -1305,7 +1806,19 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/36/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Khuê",
+        "generation_text": 10,
+        "parent_text": "Bùi Xuân Sơn",
+        "note": "",
+        "siblings_text": "Bùi Hoàng Thảo Nguyên",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 36
+      }
     },
     {
       "tree_id": 136,
@@ -1315,7 +1828,24 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/27/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Tâm",
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Quý",
+        "note": "Cử Nhân Luật",
+        "siblings_text": "Bùi Thị Nguyệt Bùi Xuân Sơn Bùi Sinh Thụy Bùi Văn Thanh",
+        "children_names": [
+          "Trần Minh Thu"
+        ],
+        "children_node_ids": [
+          34
+        ],
+        "tree_id": 136,
+        "node_id": 27
+      },
+      "bio": "Cử Nhân Luật"
     },
     {
       "tree_id": 136,
@@ -1325,7 +1855,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 27
+      "mid": 27,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/34/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Minh Thu",
+        "birth_text": "1989",
+        "birth_year": 1989,
+        "generation_text": 10,
+        "parent_text": "Trần Thanh Hùng",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 34
+      },
+      "birthYear": 1989
     },
     {
       "tree_id": 136,
@@ -1335,7 +1880,29 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/28/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Sinh Thụy",
+        "birth_text": "1961",
+        "birth_year": 1961,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Quý",
+        "note": "Kỹ sư Công Nghệ",
+        "siblings_text": "Bùi Thị Nguyệt Bùi Xuân Sơn Bùi Minh Tâm Bùi Văn Thanh",
+        "children_names": [
+          "Bùi Duy Khang",
+          "Bùi Thùy Trang"
+        ],
+        "children_node_ids": [
+          32,
+          33
+        ],
+        "tree_id": 136,
+        "node_id": 28
+      },
+      "birthYear": 1961,
+      "bio": "Kỹ sư Công Nghệ"
     },
     {
       "tree_id": 136,
@@ -1345,7 +1912,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 28
+      "fid": 28,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/32/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Duy Khang",
+        "birth_text": "1993",
+        "birth_year": 1993,
+        "generation_text": 10,
+        "parent_text": "Bùi Sinh Thụy",
+        "note": "",
+        "siblings_text": "Bùi Thùy Trang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 32
+      },
+      "birthYear": 1993
     },
     {
       "tree_id": 136,
@@ -1355,7 +1937,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 28
+      "fid": 28,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/33/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thùy Trang",
+        "birth_text": "1994",
+        "birth_year": 1994,
+        "generation_text": 10,
+        "parent_text": "Bùi Sinh Thụy",
+        "note": "",
+        "siblings_text": "Bùi Duy Khang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 33
+      },
+      "birthYear": 1994
     },
     {
       "tree_id": 136,
@@ -1365,7 +1962,29 @@
       "generation": 10,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 24
+      "fid": 24,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/29/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Thanh",
+        "birth_text": "31/10/1957",
+        "birth_year": 1957,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Quý",
+        "note": "Cử nhân Sinh Học",
+        "siblings_text": "Bùi Thị Nguyệt Bùi Xuân Sơn Bùi Minh Tâm Bùi Sinh Thụy",
+        "children_names": [
+          "Bùi Thanh Chương",
+          "Bùi Thùy Dương"
+        ],
+        "children_node_ids": [
+          30,
+          31
+        ],
+        "tree_id": 136,
+        "node_id": 29
+      },
+      "birthYear": 1957,
+      "bio": "Cử nhân Sinh Học"
     },
     {
       "tree_id": 136,
@@ -1375,7 +1994,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/30/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thanh Chương",
+        "birth_text": "23/8/1990",
+        "birth_year": 1990,
+        "generation_text": 10,
+        "parent_text": "Bùi Văn Thanh",
+        "note": "",
+        "siblings_text": "Bùi Thùy Dương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 30
+      },
+      "birthYear": 1990
     },
     {
       "tree_id": 136,
@@ -1385,7 +2019,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/31/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thùy Dương",
+        "birth_text": "25/2/1999",
+        "birth_year": 1999,
+        "generation_text": 10,
+        "parent_text": "Bùi Văn Thanh",
+        "note": "",
+        "siblings_text": "Bùi Thanh Chương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 31
+      },
+      "birthYear": 1999
     },
     {
       "tree_id": 136,
@@ -1395,7 +2044,43 @@
       "generation": 9,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/40/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Đốc Tuệ",
+        "birth_text": "1925",
+        "birth_year": 1925,
+        "death_text": "1994 (24/3)",
+        "death_year": 1994,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Văn Quý Bùi Văn Rộng Bùi Văn Toàn Bùi Văn Toán Bùi Thị May Bùi Thị Mừng Bùi Văn Tám",
+        "children_names": [
+          "Bùi Trung Lập",
+          "Bùi Trung Kiên",
+          "Bùi Thị Nhẫn",
+          "Bùi Thị Lan",
+          "Bùi Trung Hưng",
+          "Bùi Thị Vân",
+          "Bùi Trung Dung",
+          "Bùi thị Ngọc Oanh"
+        ],
+        "children_node_ids": [
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "tree_id": 136,
+        "node_id": 40
+      },
+      "birthYear": 1925,
+      "deathYear": 1994
     },
     {
       "tree_id": 136,
@@ -1405,7 +2090,28 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/41/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Lập",
+        "birth_text": "1953",
+        "birth_year": 1953,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Kiên Bùi Thị Nhẫn Bùi Thị Lan Bùi Trung Hưng Bùi Thị Vân Bùi Trung Dung Bùi thị Ngọc Oanh",
+        "children_names": [
+          "Bùi Trần Luật",
+          "Bùi Trần Minh"
+        ],
+        "children_node_ids": [
+          74,
+          75
+        ],
+        "tree_id": 136,
+        "node_id": 41
+      },
+      "birthYear": 1953
     },
     {
       "tree_id": 136,
@@ -1415,7 +2121,19 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 41
+      "fid": 41,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/74/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trần Luật",
+        "generation_text": 10,
+        "parent_text": "Bùi Trung Lập",
+        "note": "",
+        "siblings_text": "Bùi Trần Minh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 74
+      }
     },
     {
       "tree_id": 136,
@@ -1425,7 +2143,19 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 41
+      "fid": 41,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/75/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trần Minh",
+        "generation_text": 10,
+        "parent_text": "Bùi Trung Lập",
+        "note": "",
+        "siblings_text": "Bùi Trần Luật",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 75
+      }
     },
     {
       "tree_id": 136,
@@ -1435,7 +2165,26 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/42/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Dương Thúy Chinh",
+        "birth_text": "1949",
+        "birth_year": 1949,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Lập Bùi Thị Nhẫn Bùi Thị Lan Bùi Trung Hưng Bùi Thị Vân Bùi Trung Dung Bùi thị Ngọc Oanh",
+        "children_names": [
+          "Bùi Quyết Định"
+        ],
+        "children_node_ids": [
+          76
+        ],
+        "tree_id": 136,
+        "node_id": 42
+      },
+      "birthYear": 1949
     },
     {
       "tree_id": 136,
@@ -1445,7 +2194,19 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/76/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Quyết Định",
+        "generation_text": 10,
+        "parent_text": "Bùi Trung Kiên",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 76
+      }
     },
     {
       "tree_id": 136,
@@ -1455,7 +2216,22 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/43/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Nhẫn",
+        "birth_text": "1943",
+        "birth_year": 1943,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Lập Bùi Trung Kiên Bùi Thị Lan Bùi Trung Hưng Bùi Thị Vân Bùi Trung Dung Bùi thị Ngọc Oanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 43
+      },
+      "birthYear": 1943
     },
     {
       "tree_id": 136,
@@ -1465,7 +2241,25 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/44/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Lan",
+        "birth_text": "1932",
+        "birth_year": 1932,
+        "death_text": "1975 ở Đà Nẵng",
+        "death_year": 1975,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Lập Bùi Trung Kiên Bùi Thị Nhẫn Bùi Trung Hưng Bùi Thị Vân Bùi Trung Dung Bùi thị Ngọc Oanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 44
+      },
+      "birthYear": 1932,
+      "deathYear": 1975
     },
     {
       "tree_id": 136,
@@ -1475,7 +2269,26 @@
       "generation": 10,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/45/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Hưng",
+        "birth_text": "1958",
+        "birth_year": 1958,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Lập Bùi Trung Kiên Bùi Thị Nhẫn Bùi Thị Lan Bùi Thị Vân Bùi Trung Dung Bùi thị Ngọc Oanh",
+        "children_names": [
+          "Bùi Mai Huy"
+        ],
+        "children_node_ids": [
+          77
+        ],
+        "tree_id": 136,
+        "node_id": 45
+      },
+      "birthYear": 1958
     },
     {
       "tree_id": 136,
@@ -1485,7 +2298,19 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 45
+      "fid": 45,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/77/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Mai Huy",
+        "generation_text": 10,
+        "parent_text": "Bùi Trung Hưng",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 77
+      }
     },
     {
       "tree_id": 136,
@@ -1495,7 +2320,22 @@
       "generation": 10,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/46/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Vân",
+        "birth_text": "1957",
+        "birth_year": 1957,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Lập Bùi Trung Kiên Bùi Thị Nhẫn Bùi Thị Lan Bùi Trung Hưng Bùi Trung Dung Bùi thị Ngọc Oanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 46
+      },
+      "birthYear": 1957
     },
     {
       "tree_id": 136,
@@ -1505,7 +2345,27 @@
       "generation": 10,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/47/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Dung",
+        "birth_text": "1958",
+        "birth_year": 1958,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "Kỹ sư Xây Dựng; Thạc sỹ;",
+        "siblings_text": "Bùi Trung Lập Bùi Trung Kiên Bùi Thị Nhẫn Bùi Thị Lan Bùi Trung Hưng Bùi Thị Vân Bùi thị Ngọc Oanh",
+        "children_names": [
+          "Bùi Trung Đức"
+        ],
+        "children_node_ids": [
+          78
+        ],
+        "tree_id": 136,
+        "node_id": 47
+      },
+      "birthYear": 1958,
+      "bio": "Kỹ sư Xây Dựng; Thạc sỹ;"
     },
     {
       "tree_id": 136,
@@ -1515,7 +2375,19 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 47
+      "fid": 47,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/78/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Đức",
+        "generation_text": 10,
+        "parent_text": "Bùi Trung Dung",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 78
+      }
     },
     {
       "tree_id": 136,
@@ -1525,7 +2397,25 @@
       "generation": 10,
       "order_in_generation": 8,
       "gender": "female",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/48/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi thị Ngọc Oanh",
+        "birth_text": "1960",
+        "birth_year": 1960,
+        "death_text": "1991 ở Canada",
+        "death_year": 1991,
+        "generation_text": 9,
+        "parent_text": "Bùi Đốc Tuệ",
+        "note": "",
+        "siblings_text": "Bùi Trung Lập Bùi Trung Kiên Bùi Thị Nhẫn Bùi Thị Lan Bùi Trung Hưng Bùi Thị Vân Bùi Trung Dung",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 48
+      },
+      "birthYear": 1960,
+      "deathYear": 1991
     },
     {
       "tree_id": 136,
@@ -1535,7 +2425,38 @@
       "generation": 9,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/49/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Rộng",
+        "birth_text": "1929",
+        "birth_year": 1929,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Văn Quý Bùi Đốc Tuệ Bùi Văn Toàn Bùi Văn Toán Bùi Thị May Bùi Thị Mừng Bùi Văn Tám",
+        "children_names": [
+          "Bùi Xuân Khoát",
+          "Bũi Xuân Tràng",
+          "Bùi Thị Hồng",
+          "Bùi Văn Cao",
+          "Bùi thị Kim Loan",
+          "Bùi Anh Tuấn",
+          "Bùi Anh Tú"
+        ],
+        "children_node_ids": [
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56
+        ],
+        "tree_id": 136,
+        "node_id": 49
+      },
+      "birthYear": 1929
     },
     {
       "tree_id": 136,
@@ -1545,7 +2466,28 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/50/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Xuân Khoát",
+        "birth_text": "1953",
+        "birth_year": 1953,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "",
+        "siblings_text": "Bũi Xuân Tràng Bùi Thị Hồng Bùi Văn Cao Bùi thị Kim Loan Bùi Anh Tuấn Bùi Anh Tú",
+        "children_names": [
+          "Bùi Đức Khiêm",
+          "Bùi Minh Khôi"
+        ],
+        "children_node_ids": [
+          79,
+          80
+        ],
+        "tree_id": 136,
+        "node_id": 50
+      },
+      "birthYear": 1953
     },
     {
       "tree_id": 136,
@@ -1555,7 +2497,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 50
+      "fid": 50,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/79/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Đức Khiêm",
+        "birth_text": "1984",
+        "birth_year": 1984,
+        "generation_text": 10,
+        "parent_text": "Bùi Xuân Khoát",
+        "note": "",
+        "siblings_text": "Bùi Minh Khôi",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 79
+      },
+      "birthYear": 1984
     },
     {
       "tree_id": 136,
@@ -1565,7 +2522,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 50
+      "fid": 50,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/80/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Khôi",
+        "birth_text": "1992",
+        "birth_year": 1992,
+        "generation_text": 10,
+        "parent_text": "Bùi Xuân Khoát",
+        "note": "",
+        "siblings_text": "Bùi Đức Khiêm",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 80
+      },
+      "birthYear": 1992
     },
     {
       "tree_id": 136,
@@ -1575,7 +2547,28 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/51/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bũi Xuân Tràng",
+        "birth_text": "1957",
+        "birth_year": 1957,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "",
+        "siblings_text": "Bùi Xuân Khoát Bùi Thị Hồng Bùi Văn Cao Bùi thị Kim Loan Bùi Anh Tuấn Bùi Anh Tú",
+        "children_names": [
+          "Bùi Xuân Khoa",
+          "Bùi Xuân Luật"
+        ],
+        "children_node_ids": [
+          81,
+          82
+        ],
+        "tree_id": 136,
+        "node_id": 51
+      },
+      "birthYear": 1957
     },
     {
       "tree_id": 136,
@@ -1585,7 +2578,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 51
+      "fid": 51,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/81/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Xuân Khoa",
+        "birth_text": "1981",
+        "birth_year": 1981,
+        "generation_text": 10,
+        "parent_text": "Bũi Xuân Tràng",
+        "note": "",
+        "siblings_text": "Bùi Xuân Luật",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 81
+      },
+      "birthYear": 1981
     },
     {
       "tree_id": 136,
@@ -1595,7 +2603,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 51
+      "fid": 51,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/82/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Xuân Luật",
+        "birth_text": "1989",
+        "birth_year": 1989,
+        "generation_text": 10,
+        "parent_text": "Bũi Xuân Tràng",
+        "note": "",
+        "siblings_text": "Bùi Xuân Khoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 82
+      },
+      "birthYear": 1989
     },
     {
       "tree_id": 136,
@@ -1605,7 +2628,23 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/52/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Hồng",
+        "birth_text": "1950",
+        "birth_year": 1950,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "Dược sỹ",
+        "siblings_text": "Bùi Xuân Khoát Bũi Xuân Tràng Bùi Văn Cao Bùi thị Kim Loan Bùi Anh Tuấn Bùi Anh Tú",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 52
+      },
+      "birthYear": 1950,
+      "bio": "Dược sỹ"
     },
     {
       "tree_id": 136,
@@ -1615,7 +2654,27 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/53/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Cao",
+        "birth_text": "1965",
+        "birth_year": 1965,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "Dược sỹ",
+        "siblings_text": "Bùi Xuân Khoát Bũi Xuân Tràng Bùi Thị Hồng Bùi thị Kim Loan Bùi Anh Tuấn Bùi Anh Tú",
+        "children_names": [
+          "Bùi Thị Thùy Anh"
+        ],
+        "children_node_ids": [
+          83
+        ],
+        "tree_id": 136,
+        "node_id": 53
+      },
+      "birthYear": 1965,
+      "bio": "Dược sỹ"
     },
     {
       "tree_id": 136,
@@ -1625,7 +2684,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 53
+      "fid": 53,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/83/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Thùy Anh",
+        "birth_text": "1989",
+        "birth_year": 1989,
+        "generation_text": 10,
+        "parent_text": "Bùi Văn Cao",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 83
+      },
+      "birthYear": 1989
     },
     {
       "tree_id": 136,
@@ -1635,7 +2709,23 @@
       "generation": 10,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/54/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi thị Kim Loan",
+        "birth_text": "1959",
+        "birth_year": 1959,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "Cao Đẳng Sư Phạm",
+        "siblings_text": "Bùi Xuân Khoát Bũi Xuân Tràng Bùi Thị Hồng Bùi Văn Cao Bùi Anh Tuấn Bùi Anh Tú",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 54
+      },
+      "birthYear": 1959,
+      "bio": "Cao Đẳng Sư Phạm"
     },
     {
       "tree_id": 136,
@@ -1645,7 +2735,29 @@
       "generation": 10,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/55/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Anh Tuấn",
+        "birth_text": "1960",
+        "birth_year": 1960,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "Kỹ sư Thú Y",
+        "siblings_text": "Bùi Xuân Khoát Bũi Xuân Tràng Bùi Thị Hồng Bùi Văn Cao Bùi thị Kim Loan Bùi Anh Tú",
+        "children_names": [
+          "Bùi Anh Duy",
+          "Bùi Nhật Tân"
+        ],
+        "children_node_ids": [
+          84,
+          85
+        ],
+        "tree_id": 136,
+        "node_id": 55
+      },
+      "birthYear": 1960,
+      "bio": "Kỹ sư Thú Y"
     },
     {
       "tree_id": 136,
@@ -1655,7 +2767,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 55
+      "fid": 55,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/84/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Anh Duy",
+        "birth_text": "1989",
+        "birth_year": 1989,
+        "generation_text": 10,
+        "parent_text": "Bùi Anh Tuấn",
+        "note": "",
+        "siblings_text": "Bùi Nhật Tân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 84
+      },
+      "birthYear": 1989
     },
     {
       "tree_id": 136,
@@ -1665,7 +2792,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 55
+      "fid": 55,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/85/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Nhật Tân",
+        "birth_text": "1994",
+        "birth_year": 1994,
+        "generation_text": 10,
+        "parent_text": "Bùi Anh Tuấn",
+        "note": "",
+        "siblings_text": "Bùi Anh Duy",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 85
+      },
+      "birthYear": 1994
     },
     {
       "tree_id": 136,
@@ -1675,7 +2817,26 @@
       "generation": 10,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 49
+      "fid": 49,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/56/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Anh Tú",
+        "birth_text": "1964",
+        "birth_year": 1964,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Rộng",
+        "note": "",
+        "siblings_text": "Bùi Xuân Khoát Bũi Xuân Tràng Bùi Thị Hồng Bùi Văn Cao Bùi thị Kim Loan Bùi Anh Tuấn",
+        "children_names": [
+          "Bùi Thanh Nhã"
+        ],
+        "children_node_ids": [
+          86
+        ],
+        "tree_id": 136,
+        "node_id": 56
+      },
+      "birthYear": 1964
     },
     {
       "tree_id": 136,
@@ -1685,7 +2846,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 56
+      "fid": 56,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/86/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thanh Nhã",
+        "birth_text": "1992",
+        "birth_year": 1992,
+        "generation_text": 10,
+        "parent_text": "Bùi Anh Tú",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 86
+      },
+      "birthYear": 1992
     },
     {
       "tree_id": 136,
@@ -1695,7 +2871,25 @@
       "generation": 9,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/57/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Toàn",
+        "birth_text": "1924",
+        "birth_year": 1924,
+        "death_text": "1937 (26/8)",
+        "death_year": 1937,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Văn Quý Bùi Đốc Tuệ Bùi Văn Rộng Bùi Văn Toán Bùi Thị May Bùi Thị Mừng Bùi Văn Tám",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 57
+      },
+      "birthYear": 1924,
+      "deathYear": 1937
     },
     {
       "tree_id": 136,
@@ -1705,7 +2899,36 @@
       "generation": 9,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/58/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Toán",
+        "birth_text": "1931 Phủ Lý",
+        "birth_year": 1931,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Văn Quý Bùi Đốc Tuệ Bùi Văn Rộng Bùi Văn Toàn Bùi Thị May Bùi Thị Mừng Bùi Văn Tám",
+        "children_names": [
+          "Bùi Thị Hạnh",
+          "Bùi Thị Tuyết",
+          "Bùi Công Nghiệp",
+          "Bùi Văn Vĩnh",
+          "Bùi Văn Quang",
+          "Bùi Thị Anh Đào"
+        ],
+        "children_node_ids": [
+          59,
+          60,
+          64,
+          65,
+          66,
+          67
+        ],
+        "tree_id": 136,
+        "node_id": 58
+      },
+      "birthYear": 1931
     },
     {
       "tree_id": 136,
@@ -1715,7 +2938,23 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 58
+      "fid": 58,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/59/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Hạnh",
+        "common_name": "Kiểm",
+        "birth_text": "1958",
+        "birth_year": 1958,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Toán",
+        "note": "",
+        "siblings_text": "Bùi Thị Tuyết Bùi Công Nghiệp Bùi Văn Vĩnh Bùi Văn Quang Bùi Thị Anh Đào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 59
+      },
+      "birthYear": 1958
     },
     {
       "tree_id": 136,
@@ -1725,7 +2964,23 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 58
+      "fid": 58,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/60/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Tuyết",
+        "birth_text": "1956",
+        "birth_year": 1956,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Toán",
+        "note": "Dược sỹ",
+        "siblings_text": "Bùi Thị Hạnh Bùi Công Nghiệp Bùi Văn Vĩnh Bùi Văn Quang Bùi Thị Anh Đào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 60
+      },
+      "birthYear": 1956,
+      "bio": "Dược sỹ"
     },
     {
       "tree_id": 136,
@@ -1735,7 +2990,23 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 58
+      "fid": 58,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/64/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Công Nghiệp",
+        "common_name": "Kiểm",
+        "birth_text": "1958",
+        "birth_year": 1958,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Toán",
+        "note": "",
+        "siblings_text": "Bùi Thị Hạnh Bùi Thị Tuyết Bùi Văn Vĩnh Bùi Văn Quang Bùi Thị Anh Đào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 64
+      },
+      "birthYear": 1958
     },
     {
       "tree_id": 136,
@@ -1745,7 +3016,22 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 58
+      "fid": 58,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/65/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Vĩnh",
+        "birth_text": "1961",
+        "birth_year": 1961,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Toán",
+        "note": "",
+        "siblings_text": "Bùi Thị Hạnh Bùi Thị Tuyết Bùi Công Nghiệp Bùi Văn Quang Bùi Thị Anh Đào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 65
+      },
+      "birthYear": 1961
     },
     {
       "tree_id": 136,
@@ -1755,7 +3041,25 @@
       "generation": 10,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 58
+      "fid": 58,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/66/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Quang",
+        "birth_text": "1967",
+        "birth_year": 1967,
+        "death_text": "1968",
+        "death_year": 1968,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Toán",
+        "note": "",
+        "siblings_text": "Bùi Thị Hạnh Bùi Thị Tuyết Bùi Công Nghiệp Bùi Văn Vĩnh Bùi Thị Anh Đào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 66
+      },
+      "birthYear": 1967,
+      "deathYear": 1968
     },
     {
       "tree_id": 136,
@@ -1765,7 +3069,22 @@
       "generation": 10,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 58
+      "fid": 58,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/67/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Anh Đào",
+        "birth_text": "1969",
+        "birth_year": 1969,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Toán",
+        "note": "",
+        "siblings_text": "Bùi Thị Hạnh Bùi Thị Tuyết Bùi Công Nghiệp Bùi Văn Vĩnh Bùi Văn Quang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 67
+      },
+      "birthYear": 1969
     },
     {
       "tree_id": 136,
@@ -1775,7 +3094,25 @@
       "generation": 9,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/61/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị May",
+        "birth_text": "1927",
+        "birth_year": 1927,
+        "death_text": "1967 (16/3)",
+        "death_year": 1967,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Văn Quý Bùi Đốc Tuệ Bùi Văn Rộng Bùi Văn Toàn Bùi Văn Toán Bùi Thị Mừng Bùi Văn Tám",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 61
+      },
+      "birthYear": 1927,
+      "deathYear": 1967
     },
     {
       "tree_id": 136,
@@ -1785,7 +3122,22 @@
       "generation": 9,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/62/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Mừng",
+        "birth_text": "1932",
+        "birth_year": 1932,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "",
+        "siblings_text": "Bùi Văn Quý Bùi Đốc Tuệ Bùi Văn Rộng Bùi Văn Toàn Bùi Văn Toán Bùi Thị May Bùi Văn Tám",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 62
+      },
+      "birthYear": 1932
     },
     {
       "tree_id": 136,
@@ -1795,7 +3147,33 @@
       "generation": 9,
       "order_in_generation": 8,
       "gender": "male",
-      "fid": 23
+      "fid": 23,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/63/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Tám",
+        "birth_text": "1935",
+        "birth_year": 1935,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Chum",
+        "note": "Giáo viên",
+        "siblings_text": "Bùi Văn Quý Bùi Đốc Tuệ Bùi Văn Rộng Bùi Văn Toàn Bùi Văn Toán Bùi Thị May Bùi Thị Mừng",
+        "children_names": [
+          "Bùi Minh Triết",
+          "Bùi Thùy Diễm",
+          "Bùi Minh Trị",
+          "Bùi Bảo Quốc"
+        ],
+        "children_node_ids": [
+          68,
+          69,
+          70,
+          71
+        ],
+        "tree_id": 136,
+        "node_id": 63
+      },
+      "birthYear": 1935,
+      "bio": "Giáo viên"
     },
     {
       "tree_id": 136,
@@ -1805,7 +3183,29 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 63
+      "fid": 63,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/68/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Triết",
+        "birth_text": "1965",
+        "birth_year": 1965,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Tám",
+        "note": "Bác sỹ lão khoa",
+        "siblings_text": "Bùi Thùy Diễm Bùi Minh Trị Bùi Bảo Quốc",
+        "children_names": [
+          "Bùi Minh Khoa",
+          "Bùi Minh Quân"
+        ],
+        "children_node_ids": [
+          72,
+          73
+        ],
+        "tree_id": 136,
+        "node_id": 68
+      },
+      "birthYear": 1965,
+      "bio": "Bác sỹ lão khoa"
     },
     {
       "tree_id": 136,
@@ -1815,7 +3215,22 @@
       "generation": 11,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 68
+      "fid": 68,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/72/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Khoa",
+        "birth_text": "1993",
+        "birth_year": 1993,
+        "generation_text": 10,
+        "parent_text": "Bùi Minh Triết",
+        "note": "",
+        "siblings_text": "Bùi Minh Quân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 72
+      },
+      "birthYear": 1993
     },
     {
       "tree_id": 136,
@@ -1825,7 +3240,22 @@
       "generation": 11,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 68
+      "fid": 68,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/73/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Quân",
+        "birth_text": "1995",
+        "birth_year": 1995,
+        "generation_text": 10,
+        "parent_text": "Bùi Minh Triết",
+        "note": "",
+        "siblings_text": "Bùi Minh Khoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 73
+      },
+      "birthYear": 1995
     },
     {
       "tree_id": 136,
@@ -1835,7 +3265,20 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 63
+      "fid": 63,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/69/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thùy Diễm",
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Tám",
+        "note": "Nha sỹ",
+        "siblings_text": "Bùi Minh Triết Bùi Minh Trị Bùi Bảo Quốc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 69
+      },
+      "bio": "Nha sỹ"
     },
     {
       "tree_id": 136,
@@ -1845,7 +3288,23 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 63
+      "fid": 63,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/70/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Trị",
+        "birth_text": "1968",
+        "birth_year": 1968,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Tám",
+        "note": "Bác sỹ",
+        "siblings_text": "Bùi Minh Triết Bùi Thùy Diễm Bùi Bảo Quốc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 70
+      },
+      "birthYear": 1968,
+      "bio": "Bác sỹ"
     },
     {
       "tree_id": 136,
@@ -1855,7 +3314,23 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 63
+      "fid": 63,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/71/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Bảo Quốc",
+        "birth_text": "1975",
+        "birth_year": 1975,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Tám",
+        "note": "Bác sỹ",
+        "siblings_text": "Bùi Minh Triết Bùi Thùy Diễm Bùi Minh Trị",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 71
+      },
+      "birthYear": 1975,
+      "bio": "Bác sỹ"
     },
     {
       "tree_id": 136,
@@ -1865,7 +3340,29 @@
       "generation": 8,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/105/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Tí",
+        "birth_text": "1894",
+        "birth_year": 1894,
+        "death_text": "1943 (27-6)",
+        "death_year": 1943,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Văn Chum Bùi Văn Bịch Bùi Thị Tẹo Bùi Văn Bích Bùi Thị Tọ Bùi Thị Đề",
+        "children_names": [
+          "Vũ Trọng Thạo"
+        ],
+        "children_node_ids": [
+          106
+        ],
+        "tree_id": 136,
+        "node_id": 105
+      },
+      "birthYear": 1894,
+      "deathYear": 1943
     },
     {
       "tree_id": 136,
@@ -1875,7 +3372,26 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 105
+      "mid": 105,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/106/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trọng Thạo",
+        "burial_place": "1990",
+        "generation_text": 8,
+        "parent_text": "Vũ Trọng Ồ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Vũ Trọng Thuấn",
+          "Vũ Trọng Thành"
+        ],
+        "children_node_ids": [
+          107,
+          108
+        ],
+        "tree_id": 136,
+        "node_id": 106
+      }
     },
     {
       "tree_id": 136,
@@ -1885,7 +3401,19 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 106
+      "fid": 106,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/107/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trọng Thuấn",
+        "generation_text": 9,
+        "parent_text": "Vũ Trọng Thạo",
+        "note": "",
+        "siblings_text": "Vũ Trọng Thành",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 107
+      }
     },
     {
       "tree_id": 136,
@@ -1895,7 +3423,19 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 106
+      "fid": 106,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/108/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trọng Thành",
+        "generation_text": 9,
+        "parent_text": "Vũ Trọng Thạo",
+        "note": "",
+        "siblings_text": "Vũ Trọng Thuấn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 108
+      }
     },
     {
       "tree_id": 136,
@@ -1905,7 +3445,33 @@
       "generation": 8,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/91/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Bịch",
+        "birth_text": "1909",
+        "birth_year": 1909,
+        "death_text": "1990 (9-6)",
+        "death_year": 1990,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Văn Chum Bùi Thị Tí Bùi Thị Tẹo Bùi Văn Bích Bùi Thị Tọ Bùi Thị Đề",
+        "children_names": [
+          "Bùi Thị Len",
+          "Bùi Văn Bì",
+          "Bùi Thị Biên"
+        ],
+        "children_node_ids": [
+          92,
+          93,
+          104
+        ],
+        "tree_id": 136,
+        "node_id": 91
+      },
+      "birthYear": 1909,
+      "deathYear": 1990
     },
     {
       "tree_id": 136,
@@ -1915,7 +3481,22 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 91
+      "fid": 91,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/92/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Len",
+        "birth_text": "1926",
+        "birth_year": 1926,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Bịch",
+        "note": "",
+        "siblings_text": "Bùi Văn Bì Bùi Thị Biên",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 92
+      },
+      "birthYear": 1926
     },
     {
       "tree_id": 136,
@@ -1925,7 +3506,47 @@
       "generation": 9,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 91
+      "fid": 91,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/93/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Bì",
+        "birth_text": "1937",
+        "birth_year": 1937,
+        "death_text": "1994 (10-8)",
+        "death_year": 1994,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Bịch",
+        "note": "",
+        "siblings_text": "Bùi Thị Len Bùi Thị Biên",
+        "children_names": [
+          "Bùi Văn Chính",
+          "Bùi Thị Quy",
+          "Bùi Thị Quyên",
+          "Bùi Thị Loan",
+          "Bùi Văn Tân",
+          "Bùi Văn Cảng",
+          "Bùi Thị Hà",
+          "Bùi Văn Hội",
+          "Bùi Thị Lan",
+          "Bùi Thị Thuơng"
+        ],
+        "children_node_ids": [
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103
+        ],
+        "tree_id": 136,
+        "node_id": 93
+      },
+      "birthYear": 1937,
+      "deathYear": 1994
     },
     {
       "tree_id": 136,
@@ -1935,7 +3556,22 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/94/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Chính",
+        "birth_text": "1967",
+        "birth_year": 1967,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 94
+      },
+      "birthYear": 1967
     },
     {
       "tree_id": 136,
@@ -1945,7 +3581,22 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/95/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Quy",
+        "birth_text": "1961",
+        "birth_year": 1961,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 95
+      },
+      "birthYear": 1961
     },
     {
       "tree_id": 136,
@@ -1955,7 +3606,22 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/96/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Quyên",
+        "birth_text": "1964",
+        "birth_year": 1964,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 96
+      },
+      "birthYear": 1964
     },
     {
       "tree_id": 136,
@@ -1965,7 +3631,22 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/97/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Loan",
+        "birth_text": "1964",
+        "birth_year": 1964,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 97
+      },
+      "birthYear": 1964
     },
     {
       "tree_id": 136,
@@ -1975,7 +3656,22 @@
       "generation": 10,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/98/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Tân",
+        "birth_text": "1971",
+        "birth_year": 1971,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 98
+      },
+      "birthYear": 1971
     },
     {
       "tree_id": 136,
@@ -1985,7 +3681,22 @@
       "generation": 10,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/99/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Cảng",
+        "birth_text": "1974",
+        "birth_year": 1974,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 99
+      },
+      "birthYear": 1974
     },
     {
       "tree_id": 136,
@@ -1995,7 +3706,22 @@
       "generation": 10,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/100/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Hà",
+        "birth_text": "1969",
+        "birth_year": 1969,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Văn Hội Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 100
+      },
+      "birthYear": 1969
     },
     {
       "tree_id": 136,
@@ -2005,7 +3731,22 @@
       "generation": 10,
       "order_in_generation": 8,
       "gender": "male",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/101/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Hội",
+        "birth_text": "1971",
+        "birth_year": 1971,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Thị Lan Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 101
+      },
+      "birthYear": 1971
     },
     {
       "tree_id": 136,
@@ -2015,7 +3756,22 @@
       "generation": 10,
       "order_in_generation": 9,
       "gender": "female",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/102/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Lan",
+        "birth_text": "1973",
+        "birth_year": 1973,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Thuơng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 102
+      },
+      "birthYear": 1973
     },
     {
       "tree_id": 136,
@@ -2025,7 +3781,22 @@
       "generation": 10,
       "order_in_generation": 10,
       "gender": "female",
-      "fid": 93
+      "fid": 93,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/103/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Thuơng",
+        "birth_text": "1976",
+        "birth_year": 1976,
+        "generation_text": 9,
+        "parent_text": "Bùi Văn Bì",
+        "note": "",
+        "siblings_text": "Bùi Văn Chính Bùi Thị Quy Bùi Thị Quyên Bùi Thị Loan Bùi Văn Tân Bùi Văn Cảng Bùi Thị Hà Bùi Văn Hội Bùi Thị Lan",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 103
+      },
+      "birthYear": 1976
     },
     {
       "tree_id": 136,
@@ -2035,7 +3806,25 @@
       "generation": 9,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 91
+      "fid": 91,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/104/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Biên",
+        "birth_text": "1935",
+        "birth_year": 1935,
+        "death_text": "1989 (11-11)",
+        "death_year": 1989,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Bịch",
+        "note": "",
+        "siblings_text": "Bùi Thị Len Bùi Văn Bì",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 104
+      },
+      "birthYear": 1935,
+      "deathYear": 1989
     },
     {
       "tree_id": 136,
@@ -2045,7 +3834,33 @@
       "generation": 8,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/109/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Tẹo",
+        "birth_text": "1891",
+        "birth_year": 1891,
+        "death_text": "1950 (5-2)",
+        "death_year": 1950,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Văn Chum Bùi Thị Tí Bùi Văn Bịch Bùi Văn Bích Bùi Thị Tọ Bùi Thị Đề",
+        "children_names": [
+          "Phạm Thị Bé",
+          "Phạm Hữu Giới",
+          "Phạm Hữu Thiệu"
+        ],
+        "children_node_ids": [
+          110,
+          111,
+          112
+        ],
+        "tree_id": 136,
+        "node_id": 109
+      },
+      "birthYear": 1891,
+      "deathYear": 1950
     },
     {
       "tree_id": 136,
@@ -2055,7 +3870,19 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 109
+      "mid": 109,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/110/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm Thị Bé",
+        "generation_text": 8,
+        "parent_text": "Phạm Hữu Hành",
+        "note": "",
+        "siblings_text": "Phạm Hữu Giới Phạm Hữu Thiệu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 110
+      }
     },
     {
       "tree_id": 136,
@@ -2065,7 +3892,19 @@
       "generation": 9,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 109
+      "mid": 109,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/111/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm Hữu Giới",
+        "generation_text": 8,
+        "parent_text": "Phạm Hữu Hành",
+        "note": "",
+        "siblings_text": "Phạm Thị Bé Phạm Hữu Thiệu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 111
+      }
     },
     {
       "tree_id": 136,
@@ -2075,7 +3914,19 @@
       "generation": 9,
       "order_in_generation": 3,
       "gender": "male",
-      "mid": 109
+      "mid": 109,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/112/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm Hữu Thiệu",
+        "generation_text": 8,
+        "parent_text": "Phạm Hữu Hành",
+        "note": "",
+        "siblings_text": "Phạm Thị Bé Phạm Hữu Giới",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 112
+      }
     },
     {
       "tree_id": 136,
@@ -2085,7 +3936,31 @@
       "generation": 8,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/113/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Bích",
+        "birth_text": "1914",
+        "birth_year": 1914,
+        "death_text": "1992",
+        "death_year": 1992,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Văn Chum Bùi Thị Tí Bùi Văn Bịch Bùi Thị Tẹo Bùi Thị Tọ Bùi Thị Đề",
+        "children_names": [
+          "Bùi Thị Kít",
+          "Bùi Trung Dũng"
+        ],
+        "children_node_ids": [
+          114,
+          115
+        ],
+        "tree_id": 136,
+        "node_id": 113
+      },
+      "birthYear": 1914,
+      "deathYear": 1992
     },
     {
       "tree_id": 136,
@@ -2095,7 +3970,25 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 113
+      "fid": 113,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/114/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Kít",
+        "birth_text": "1930",
+        "birth_year": 1930,
+        "death_text": "1967",
+        "death_year": 1967,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Bích",
+        "note": "",
+        "siblings_text": "Bùi Trung Dũng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 114
+      },
+      "birthYear": 1930,
+      "deathYear": 1967
     },
     {
       "tree_id": 136,
@@ -2105,7 +3998,34 @@
       "generation": 9,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 113
+      "fid": 113,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/115/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Dũng",
+        "birth_text": "1946",
+        "birth_year": 1946,
+        "generation_text": 8,
+        "parent_text": "Bùi Văn Bích",
+        "note": "",
+        "siblings_text": "Bùi Thị Kít",
+        "children_names": [
+          "Bùi Trung Tuyến",
+          "Bùi Thị Trà Mi",
+          "Bùi Trung Kiêm",
+          "Bùi Trung Tá",
+          "Bùi Thị Thương"
+        ],
+        "children_node_ids": [
+          116,
+          117,
+          118,
+          119,
+          120
+        ],
+        "tree_id": 136,
+        "node_id": 115
+      },
+      "birthYear": 1946
     },
     {
       "tree_id": 136,
@@ -2115,7 +4035,22 @@
       "generation": 10,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 115
+      "fid": 115,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/116/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Tuyến",
+        "birth_text": "1971",
+        "birth_year": 1971,
+        "generation_text": 9,
+        "parent_text": "Bùi Trung Dũng",
+        "note": "",
+        "siblings_text": "Bùi Thị Trà Mi Bùi Trung Kiêm Bùi Trung Tá Bùi Thị Thương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 116
+      },
+      "birthYear": 1971
     },
     {
       "tree_id": 136,
@@ -2125,7 +4060,22 @@
       "generation": 10,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 115
+      "fid": 115,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/117/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Trà Mi",
+        "birth_text": "1973",
+        "birth_year": 1973,
+        "generation_text": 9,
+        "parent_text": "Bùi Trung Dũng",
+        "note": "",
+        "siblings_text": "Bùi Trung Tuyến Bùi Trung Kiêm Bùi Trung Tá Bùi Thị Thương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 117
+      },
+      "birthYear": 1973
     },
     {
       "tree_id": 136,
@@ -2135,7 +4085,22 @@
       "generation": 10,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 115
+      "fid": 115,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/118/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Kiêm",
+        "birth_text": "1975",
+        "birth_year": 1975,
+        "generation_text": 9,
+        "parent_text": "Bùi Trung Dũng",
+        "note": "",
+        "siblings_text": "Bùi Trung Tuyến Bùi Thị Trà Mi Bùi Trung Tá Bùi Thị Thương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 118
+      },
+      "birthYear": 1975
     },
     {
       "tree_id": 136,
@@ -2145,7 +4110,22 @@
       "generation": 10,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 115
+      "fid": 115,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/119/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Trung Tá",
+        "birth_text": "1978",
+        "birth_year": 1978,
+        "generation_text": 9,
+        "parent_text": "Bùi Trung Dũng",
+        "note": "",
+        "siblings_text": "Bùi Trung Tuyến Bùi Thị Trà Mi Bùi Trung Kiêm Bùi Thị Thương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 119
+      },
+      "birthYear": 1978
     },
     {
       "tree_id": 136,
@@ -2155,7 +4135,22 @@
       "generation": 10,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 115
+      "fid": 115,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/120/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Thương",
+        "birth_text": "1976",
+        "birth_year": 1976,
+        "generation_text": 9,
+        "parent_text": "Bùi Trung Dũng",
+        "note": "",
+        "siblings_text": "Bùi Trung Tuyến Bùi Thị Trà Mi Bùi Trung Kiêm Bùi Trung Tá",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 120
+      },
+      "birthYear": 1976
     },
     {
       "tree_id": 136,
@@ -2165,7 +4160,33 @@
       "generation": 8,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/121/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Tọ",
+        "birth_text": "1911",
+        "birth_year": 1911,
+        "death_text": "1945 (24-4)",
+        "death_year": 1945,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Văn Chum Bùi Thị Tí Bùi Văn Bịch Bùi Thị Tẹo Bùi Văn Bích Bùi Thị Đề",
+        "children_names": [
+          "Vũ Trọng Cam",
+          "Vũ Trọng Thuận",
+          "Vũ Trọng Hòa"
+        ],
+        "children_node_ids": [
+          122,
+          123,
+          124
+        ],
+        "tree_id": 136,
+        "node_id": 121
+      },
+      "birthYear": 1911,
+      "deathYear": 1945
     },
     {
       "tree_id": 136,
@@ -2175,7 +4196,19 @@
       "generation": 9,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 121
+      "mid": 121,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/122/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trọng Cam",
+        "generation_text": 8,
+        "parent_text": "Vũ Trọng Căm",
+        "note": "",
+        "siblings_text": "Vũ Trọng Thuận Vũ Trọng Hòa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 122
+      }
     },
     {
       "tree_id": 136,
@@ -2185,7 +4218,19 @@
       "generation": 9,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 121
+      "mid": 121,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/123/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trọng Thuận",
+        "generation_text": 8,
+        "parent_text": "Vũ Trọng Căm",
+        "note": "",
+        "siblings_text": "Vũ Trọng Cam Vũ Trọng Hòa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 123
+      }
     },
     {
       "tree_id": 136,
@@ -2195,7 +4240,19 @@
       "generation": 9,
       "order_in_generation": 3,
       "gender": "male",
-      "mid": 121
+      "mid": 121,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/124/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trọng Hòa",
+        "generation_text": 8,
+        "parent_text": "Vũ Trọng Căm",
+        "note": "",
+        "siblings_text": "Vũ Trọng Cam Vũ Trọng Thuận",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 124
+      }
     },
     {
       "tree_id": 136,
@@ -2205,7 +4262,25 @@
       "generation": 8,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 22
+      "fid": 22,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/125/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Đề",
+        "birth_text": "1912",
+        "birth_year": 1912,
+        "death_text": "1920",
+        "death_year": 1920,
+        "generation_text": 7,
+        "parent_text": "Bùi Văn Kiệu",
+        "note": "",
+        "siblings_text": "Bùi Văn Chum Bùi Thị Tí Bùi Văn Bịch Bùi Thị Tẹo Bùi Văn Bích Bùi Thị Tọ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 125
+      },
+      "birthYear": 1912,
+      "deathYear": 1920
     },
     {
       "tree_id": 136,
@@ -2215,7 +4290,20 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Nhã",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "19 tuổi, vô tự",
+        "siblings_text": "Bùi Văn Cừu Bùi Văn Thành Bùi Thị Lượt Bùi Thị Đỗ Bùi Thị Đậu Bùi Thị Chu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 11
+      },
+      "bio": "19 tuổi, vô tự"
     },
     {
       "tree_id": 136,
@@ -2225,7 +4313,34 @@
       "generation": 6,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Thành",
+        "death_text": "27/9",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "",
+        "siblings_text": "Bùi Văn Cừu Bùi Văn Nhã Bùi Thị Lượt Bùi Thị Đỗ Bùi Thị Đậu Bùi Thị Chu",
+        "children_names": [
+          "Bùi Văn Mền",
+          "Bùi Văn Kép",
+          "Bùi Văn Điệp",
+          "Bùi Văn Chũi",
+          "Bùi Văn Lương",
+          "Bùi Văn Lang"
+        ],
+        "children_node_ids": [
+          126,
+          127,
+          128,
+          129,
+          130,
+          131
+        ],
+        "tree_id": 136,
+        "node_id": 12
+      }
     },
     {
       "tree_id": 136,
@@ -2235,7 +4350,20 @@
       "generation": 7,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/126/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Mền",
+        "death_text": "27-1",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Thành",
+        "note": "",
+        "siblings_text": "Bùi Văn Kép Bùi Văn Điệp Bùi Văn Chũi Bùi Văn Lương Bùi Văn Lang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 126
+      }
     },
     {
       "tree_id": 136,
@@ -2245,7 +4373,20 @@
       "generation": 7,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/127/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Kép",
+        "death_text": "18-6",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Thành",
+        "note": "",
+        "siblings_text": "Bùi Văn Mền Bùi Văn Điệp Bùi Văn Chũi Bùi Văn Lương Bùi Văn Lang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 127
+      }
     },
     {
       "tree_id": 136,
@@ -2255,7 +4396,22 @@
       "generation": 7,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/128/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Điệp",
+        "death_text": "17-2-1945",
+        "death_year": 1945,
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Thành",
+        "note": "",
+        "siblings_text": "Bùi Văn Mền Bùi Văn Kép Bùi Văn Chũi Bùi Văn Lương Bùi Văn Lang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 128
+      },
+      "deathYear": 1945
     },
     {
       "tree_id": 136,
@@ -2265,7 +4421,20 @@
       "generation": 7,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/129/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Chũi",
+        "death_text": "26-12",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Thành",
+        "note": "",
+        "siblings_text": "Bùi Văn Mền Bùi Văn Kép Bùi Văn Điệp Bùi Văn Lương Bùi Văn Lang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 129
+      }
     },
     {
       "tree_id": 136,
@@ -2275,7 +4444,20 @@
       "generation": 7,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/130/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Lương",
+        "death_text": "7-1",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Thành",
+        "note": "",
+        "siblings_text": "Bùi Văn Mền Bùi Văn Kép Bùi Văn Điệp Bùi Văn Chũi Bùi Văn Lang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 130
+      }
     },
     {
       "tree_id": 136,
@@ -2285,7 +4467,19 @@
       "generation": 7,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/131/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Văn Lang",
+        "generation_text": 6,
+        "parent_text": "Bùi Văn Thành",
+        "note": "",
+        "siblings_text": "Bùi Văn Mền Bùi Văn Kép Bùi Văn Điệp Bùi Văn Chũi Bùi Văn Lương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 131
+      }
     },
     {
       "tree_id": 136,
@@ -2295,7 +4489,21 @@
       "generation": 6,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Lượt",
+        "death_text": "18/12",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "Sinh ra các Ông Phạm Quang Cảy, Mò, Tích. Đến các Ông Viễn, Sụ, Nguyên là cháu nội",
+        "siblings_text": "Bùi Văn Cừu Bùi Văn Nhã Bùi Văn Thành Bùi Thị Đỗ Bùi Thị Đậu Bùi Thị Chu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 13
+      },
+      "bio": "Sinh ra các Ông Phạm Quang Cảy, Mò, Tích. Đến các Ông Viễn, Sụ, Nguyên là cháu nội"
     },
     {
       "tree_id": 136,
@@ -2305,7 +4513,20 @@
       "generation": 6,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Đỗ",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "Sinh ra ông Phán Chú",
+        "siblings_text": "Bùi Văn Cừu Bùi Văn Nhã Bùi Văn Thành Bùi Thị Lượt Bùi Thị Đậu Bùi Thị Chu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 14
+      },
+      "bio": "Sinh ra ông Phán Chú"
     },
     {
       "tree_id": 136,
@@ -2315,7 +4536,20 @@
       "generation": 6,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Đậu",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "Chồng là cụ Hương Thấu họ Dương",
+        "siblings_text": "Bùi Văn Cừu Bùi Văn Nhã Bùi Văn Thành Bùi Thị Lượt Bùi Thị Đỗ Bùi Thị Chu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 15
+      },
+      "bio": "Chồng là cụ Hương Thấu họ Dương"
     },
     {
       "tree_id": 136,
@@ -2325,7 +4559,20 @@
       "generation": 6,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Chu",
+        "generation_text": 5,
+        "parent_text": "Bùi Nhật Đảng",
+        "note": "Sinh ra ông Xã Năn",
+        "siblings_text": "Bùi Văn Cừu Bùi Văn Nhã Bùi Văn Thành Bùi Thị Lượt Bùi Thị Đỗ Bùi Thị Đậu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 16
+      },
+      "bio": "Sinh ra ông Xã Năn"
     },
     {
       "tree_id": 136,
@@ -2335,7 +4582,21 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Thị Bầng",
+        "death_text": "26/3",
+        "generation_text": 4,
+        "parent_text": "Bùi Duy Kỳ",
+        "note": "Bà tổ Cô Nị",
+        "siblings_text": "Bùi Thị Bằng Bùi Nhật Đảng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 17
+      },
+      "bio": "Bà tổ Cô Nị"
     },
     {
       "tree_id": 136,
@@ -2345,7 +4606,19 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Công Bá",
+        "generation_text": 3,
+        "parent_text": "Bùi Công Tự",
+        "note": "",
+        "siblings_text": "Bùi Đức Trọng Bùi Duy Kỳ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 7
+      }
     },
     {
       "tree_id": 136,
@@ -2355,7 +4628,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/136/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Hữu Nghị",
+        "generation_text": 2,
+        "parent_text": "Bùi Công Mãi",
+        "note": "",
+        "siblings_text": "Bùi Công Tự",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 136,
+        "node_id": 4
+      }
     }
   ]
 }

@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/148/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Hồ",
   "node_count": 43,
+  "detail_fetched_count": 43,
   "relationship_count": 42,
   "relationships": [
     {
@@ -351,7 +353,40 @@
       "name": "Hồ Văn Cu-Đoàn Thị Tình",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Cu",
+        "birth_text": "1858",
+        "birth_year": 1858,
+        "death_text": "1918",
+        "death_year": 1918,
+        "burial_place": "Biên Hoà",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Hồ Thị Chim",
+          "Hồ Thị Cò",
+          "Hồ Văn Ngói",
+          "Hồ Văn Móc",
+          "Hồ Văn Neo",
+          "Hồ Thị Tào"
+        ],
+        "children_node_ids": [
+          2,
+          3,
+          4,
+          11,
+          12,
+          13
+        ],
+        "tree_id": 148,
+        "node_id": 1
+      },
+      "birthYear": 1858,
+      "deathYear": 1918
     },
     {
       "tree_id": 148,
@@ -361,7 +396,20 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thị Chim",
+        "generation_text": 1,
+        "parent_text": "Hồ Văn Cu",
+        "note": "không có gia đình và con cái gì",
+        "siblings_text": "Hồ Thị Cò Hồ Văn Ngói Hồ Văn Móc Hồ Văn Neo Hồ Thị Tào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 2
+      },
+      "bio": "không có gia đình và con cái gì"
     },
     {
       "tree_id": 148,
@@ -371,7 +419,20 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thị Cò",
+        "generation_text": 1,
+        "parent_text": "Hồ Văn Cu",
+        "note": "không có gia đình và con cái gì",
+        "siblings_text": "Hồ Thị Chim Hồ Văn Ngói Hồ Văn Móc Hồ Văn Neo Hồ Thị Tào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 3
+      },
+      "bio": "không có gia đình và con cái gì"
     },
     {
       "tree_id": 148,
@@ -381,7 +442,41 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Ngói",
+        "birth_text": "1878",
+        "birth_year": 1878,
+        "death_text": "1969",
+        "death_year": 1969,
+        "generation_text": 1,
+        "parent_text": "Hồ Văn Cu",
+        "note": "",
+        "siblings_text": "Hồ Thị Chim Hồ Thị Cò Hồ Văn Móc Hồ Văn Neo Hồ Thị Tào",
+        "children_names": [
+          "Hồ Văn Thể",
+          "Hồ Văn Tam",
+          "Hồ Văn Công",
+          "Hồ Văn Tâm",
+          "Hồ Văn Leo",
+          "Hồ Văn Mên",
+          "Hồ Văn Thế"
+        ],
+        "children_node_ids": [
+          5,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "tree_id": 148,
+        "node_id": 4
+      },
+      "birthYear": 1878,
+      "deathYear": 1969
     },
     {
       "tree_id": 148,
@@ -391,7 +486,38 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Thể",
+        "birth_text": "1903",
+        "birth_year": 1903,
+        "death_text": "1979",
+        "death_year": 1979,
+        "burial_place": "Biên Hòa",
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Tam Hồ Văn Công Hồ Văn Tâm Hồ Văn Leo Hồ Văn Mên Hồ Văn Thế",
+        "children_names": [
+          "Hồ Văn Phú",
+          "Hồ Văn Quý",
+          "Hồ Văn Vinh",
+          "Hồ Văn Hoa",
+          "Hồ Văn Trung"
+        ],
+        "children_node_ids": [
+          6,
+          7,
+          8,
+          9,
+          20
+        ],
+        "tree_id": 148,
+        "node_id": 5
+      },
+      "birthYear": 1903,
+      "deathYear": 1979
     },
     {
       "tree_id": 148,
@@ -401,7 +527,37 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Phú",
+        "birth_text": "1928",
+        "birth_year": 1928,
+        "death_text": "1990",
+        "death_year": 1990,
+        "generation_text": 3,
+        "parent_text": "Hồ Văn Thể",
+        "note": "",
+        "siblings_text": "Hồ Văn Quý Hồ Văn Vinh Hồ Văn Hoa Hồ Văn Trung",
+        "children_names": [
+          "Hồ Hữu Lộc",
+          "Hồ Hữu Thọ",
+          "Hồ Hữu Ninh",
+          "Hồ Hữu Trọng",
+          "Hồ Hữu Hậu"
+        ],
+        "children_node_ids": [
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "tree_id": 148,
+        "node_id": 6
+      },
+      "birthYear": 1928,
+      "deathYear": 1990
     },
     {
       "tree_id": 148,
@@ -411,7 +567,23 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/27/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Hữu Lộc",
+        "courtesy_name": "Tine",
+        "birth_text": "1951",
+        "birth_year": 1951,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Phú",
+        "note": "",
+        "siblings_text": "Hồ Hữu Thọ Hồ Hữu Ninh Hồ Hữu Trọng Hồ Hữu Hậu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 27
+      },
+      "birthYear": 1951
     },
     {
       "tree_id": 148,
@@ -421,7 +593,23 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/28/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Hữu Thọ",
+        "common_name": "Ba Thọ",
+        "birth_text": "1952",
+        "birth_year": 1952,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Phú",
+        "note": "",
+        "siblings_text": "Hồ Hữu Lộc Hồ Hữu Ninh Hồ Hữu Trọng Hồ Hữu Hậu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 28
+      },
+      "birthYear": 1952
     },
     {
       "tree_id": 148,
@@ -431,7 +619,23 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/29/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Hữu Ninh",
+        "common_name": "Betty",
+        "birth_text": "1954",
+        "birth_year": 1954,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Phú",
+        "note": "",
+        "siblings_text": "Hồ Hữu Lộc Hồ Hữu Thọ Hồ Hữu Trọng Hồ Hữu Hậu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 29
+      },
+      "birthYear": 1954
     },
     {
       "tree_id": 148,
@@ -441,7 +645,23 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/30/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Hữu Trọng",
+        "common_name": "Tí hon",
+        "birth_text": "1958",
+        "birth_year": 1958,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Phú",
+        "note": "",
+        "siblings_text": "Hồ Hữu Lộc Hồ Hữu Thọ Hồ Hữu Ninh Hồ Hữu Hậu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 30
+      },
+      "birthYear": 1958
     },
     {
       "tree_id": 148,
@@ -451,7 +671,26 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/31/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Hữu Hậu",
+        "birth_text": "1963",
+        "birth_year": 1963,
+        "death_text": "1966",
+        "death_year": 1966,
+        "burial_place": "Biên Hòa",
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Phú",
+        "note": "",
+        "siblings_text": "Hồ Hữu Lộc Hồ Hữu Thọ Hồ Hữu Ninh Hồ Hữu Trọng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 31
+      },
+      "birthYear": 1963,
+      "deathYear": 1966
     },
     {
       "tree_id": 148,
@@ -461,7 +700,37 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Quý",
+        "courtesy_name": "Hồ Văn Ngôn",
+        "birth_text": "1943",
+        "birth_year": 1943,
+        "death_text": "2000",
+        "death_year": 2000,
+        "burial_place": "Biên Hòa",
+        "generation_text": 3,
+        "parent_text": "Hồ Văn Thể",
+        "note": "",
+        "siblings_text": "Hồ Văn Phú Hồ Văn Vinh Hồ Văn Hoa Hồ Văn Trung",
+        "children_names": [
+          "Hồ Trường Giang",
+          "Hồ Thanh Nguyệt",
+          "Hồ Trọng Bình",
+          "Hồ Thị Phương Thảo"
+        ],
+        "children_node_ids": [
+          32,
+          33,
+          34,
+          35
+        ],
+        "tree_id": 148,
+        "node_id": 7
+      },
+      "birthYear": 1943,
+      "deathYear": 2000
     },
     {
       "tree_id": 148,
@@ -471,7 +740,19 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 7
+      "fid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/32/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Trường Giang",
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Quý",
+        "note": "",
+        "siblings_text": "Hồ Thanh Nguyệt Hồ Trọng Bình Hồ Thị Phương Thảo",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 32
+      }
     },
     {
       "tree_id": 148,
@@ -481,7 +762,19 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 7
+      "fid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/33/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thanh Nguyệt",
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Quý",
+        "note": "",
+        "siblings_text": "Hồ Trường Giang Hồ Trọng Bình Hồ Thị Phương Thảo",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 33
+      }
     },
     {
       "tree_id": 148,
@@ -491,7 +784,22 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 7
+      "fid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/34/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Trọng Bình",
+        "birth_text": "1975",
+        "birth_year": 1975,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Quý",
+        "note": "",
+        "siblings_text": "Hồ Trường Giang Hồ Thanh Nguyệt Hồ Thị Phương Thảo",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 34
+      },
+      "birthYear": 1975
     },
     {
       "tree_id": 148,
@@ -501,7 +809,22 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 7
+      "fid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/35/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thị Phương Thảo",
+        "birth_text": "1974",
+        "birth_year": 1974,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Quý",
+        "note": "",
+        "siblings_text": "Hồ Trường Giang Hồ Thanh Nguyệt Hồ Trọng Bình",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 35
+      },
+      "birthYear": 1974
     },
     {
       "tree_id": 148,
@@ -511,7 +834,36 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Vinh",
+        "birth_text": "1935",
+        "birth_year": 1935,
+        "generation_text": 3,
+        "parent_text": "Hồ Văn Thể",
+        "note": "",
+        "siblings_text": "Hồ Văn Phú Hồ Văn Quý Hồ Văn Hoa Hồ Văn Trung",
+        "children_names": [
+          "Hồ Lê Hải",
+          "Hồ Thị Hải Châu",
+          "Hồ Châu Phong",
+          "Hồ Lê Phong Lan",
+          "Hồ Lê Lan Phương",
+          "Hồ Lê Phương Mai"
+        ],
+        "children_node_ids": [
+          10,
+          26,
+          36,
+          37,
+          39,
+          40
+        ],
+        "tree_id": 148,
+        "node_id": 8
+      },
+      "birthYear": 1935
     },
     {
       "tree_id": 148,
@@ -521,7 +873,29 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Lê Hải",
+        "common_name": "Nuôi",
+        "birth_text": "03-05-1957",
+        "birth_year": 1957,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Vinh",
+        "note": "",
+        "siblings_text": "Hồ Thị Hải Châu Hồ Châu Phong Hồ Lê Phong Lan Hồ Lê Lan Phương Hồ Lê Phương Mai",
+        "children_names": [
+          "Hồ Phạm Hải Minh",
+          "Hồ Phạm Hồng Trinh"
+        ],
+        "children_node_ids": [
+          24,
+          25
+        ],
+        "tree_id": 148,
+        "node_id": 10
+      },
+      "birthYear": 1957
     },
     {
       "tree_id": 148,
@@ -531,7 +905,24 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/24/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Phạm Hải Minh",
+        "common_name": "Minh",
+        "courtesy_name": "Minh",
+        "birth_text": "30/11/1981",
+        "birth_year": 1981,
+        "generation_text": 5,
+        "parent_text": "Hồ Lê Hải",
+        "note": "",
+        "siblings_text": "Hồ Phạm Hồng Trinh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 24
+      },
+      "birthYear": 1981
     },
     {
       "tree_id": 148,
@@ -541,7 +932,24 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/25/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Phạm Hồng Trinh",
+        "common_name": "Trinh",
+        "courtesy_name": "Mimosa",
+        "birth_text": "16/5/1986",
+        "birth_year": 1986,
+        "generation_text": 5,
+        "parent_text": "Hồ Lê Hải",
+        "note": "",
+        "siblings_text": "Hồ Phạm Hải Minh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 25
+      },
+      "birthYear": 1986
     },
     {
       "tree_id": 148,
@@ -551,7 +959,19 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/26/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thị Hải Châu",
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Vinh",
+        "note": "",
+        "siblings_text": "Hồ Lê Hải Hồ Châu Phong Hồ Lê Phong Lan Hồ Lê Lan Phương Hồ Lê Phương Mai",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 26
+      }
     },
     {
       "tree_id": 148,
@@ -561,7 +981,23 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/36/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Châu Phong",
+        "common_name": "Tèo",
+        "birth_text": "4/12/1964",
+        "birth_year": 1964,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Vinh",
+        "note": "",
+        "siblings_text": "Hồ Lê Hải Hồ Thị Hải Châu Hồ Lê Phong Lan Hồ Lê Lan Phương Hồ Lê Phương Mai",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 36
+      },
+      "birthYear": 1964
     },
     {
       "tree_id": 148,
@@ -571,7 +1007,27 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/37/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Lê Phong Lan",
+        "common_name": "Lan",
+        "birth_text": "15/4/1967",
+        "birth_year": 1967,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Vinh",
+        "note": "",
+        "siblings_text": "Hồ Lê Hải Hồ Thị Hải Châu Hồ Châu Phong Hồ Lê Lan Phương Hồ Lê Phương Mai",
+        "children_names": [
+          "Trương Hồ Lan Anh"
+        ],
+        "children_node_ids": [
+          38
+        ],
+        "tree_id": 148,
+        "node_id": 37
+      },
+      "birthYear": 1967
     },
     {
       "tree_id": 148,
@@ -581,7 +1037,23 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 37
+      "mid": 37,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/38/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trương Hồ Lan Anh",
+        "common_name": "Bé Anh",
+        "birth_text": "3/3/1995",
+        "birth_year": 1995,
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 38
+      },
+      "birthYear": 1995
     },
     {
       "tree_id": 148,
@@ -591,7 +1063,27 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/39/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Lê Lan Phương",
+        "common_name": "Phương",
+        "birth_text": "1968",
+        "birth_year": 1968,
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Vinh",
+        "note": "",
+        "siblings_text": "Hồ Lê Hải Hồ Thị Hải Châu Hồ Châu Phong Hồ Lê Phong Lan Hồ Lê Phương Mai",
+        "children_names": [
+          "Hồ Tuyết Nhi"
+        ],
+        "children_node_ids": [
+          43
+        ],
+        "tree_id": 148,
+        "node_id": 39
+      },
+      "birthYear": 1968
     },
     {
       "tree_id": 148,
@@ -601,7 +1093,19 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 39
+      "fid": 39,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/43/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Tuyết Nhi",
+        "generation_text": 5,
+        "parent_text": "Hồ Lê Lan Phương",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 43
+      }
     },
     {
       "tree_id": 148,
@@ -611,7 +1115,25 @@
       "generation": 5,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/40/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Lê Phương Mai",
+        "generation_text": 4,
+        "parent_text": "Hồ Văn Vinh",
+        "note": "",
+        "siblings_text": "Hồ Lê Hải Hồ Thị Hải Châu Hồ Châu Phong Hồ Lê Phong Lan Hồ Lê Lan Phương",
+        "children_names": [
+          "Bùi Minh Nhật",
+          "Bùi Minh Trí"
+        ],
+        "children_node_ids": [
+          41,
+          42
+        ],
+        "tree_id": 148,
+        "node_id": 40
+      }
     },
     {
       "tree_id": 148,
@@ -621,7 +1143,23 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 40
+      "mid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/41/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Nhật",
+        "common_name": "Tommy",
+        "birth_text": "14/8/1999",
+        "birth_year": 1999,
+        "generation_text": 5,
+        "parent_text": "Bùi Minh Thiện",
+        "note": "",
+        "siblings_text": "Bùi Minh Trí",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 41
+      },
+      "birthYear": 1999
     },
     {
       "tree_id": 148,
@@ -631,7 +1169,19 @@
       "generation": 6,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 40
+      "mid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/42/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bùi Minh Trí",
+        "generation_text": 5,
+        "parent_text": "Bùi Minh Thiện",
+        "note": "",
+        "siblings_text": "Bùi Minh Nhật",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 42
+      }
     },
     {
       "tree_id": 148,
@@ -641,7 +1191,26 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Hoa",
+        "birth_text": "1937",
+        "birth_year": 1937,
+        "death_text": "1978",
+        "death_year": 1978,
+        "burial_place": "Đồng nai",
+        "generation_text": 3,
+        "parent_text": "Hồ Văn Thể",
+        "note": "",
+        "siblings_text": "Hồ Văn Phú Hồ Văn Quý Hồ Văn Vinh Hồ Văn Trung",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 9
+      },
+      "birthYear": 1937,
+      "deathYear": 1978
     },
     {
       "tree_id": 148,
@@ -651,7 +1220,22 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Trung",
+        "birth_text": "1938",
+        "birth_year": 1938,
+        "generation_text": 3,
+        "parent_text": "Hồ Văn Thể",
+        "note": "",
+        "siblings_text": "Hồ Văn Phú Hồ Văn Quý Hồ Văn Vinh Hồ Văn Hoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 20
+      },
+      "birthYear": 1938
     },
     {
       "tree_id": 148,
@@ -661,7 +1245,26 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Tam",
+        "birth_text": "1911",
+        "birth_year": 1911,
+        "death_text": "1988",
+        "death_year": 1988,
+        "burial_place": "Biên Hòa",
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Thể Hồ Văn Công Hồ Văn Tâm Hồ Văn Leo Hồ Văn Mên Hồ Văn Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 14
+      },
+      "birthYear": 1911,
+      "deathYear": 1988
     },
     {
       "tree_id": 148,
@@ -671,7 +1274,22 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Công",
+        "death_text": "1935",
+        "death_year": 1935,
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Thể Hồ Văn Tam Hồ Văn Tâm Hồ Văn Leo Hồ Văn Mên Hồ Văn Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 15
+      },
+      "deathYear": 1935
     },
     {
       "tree_id": 148,
@@ -681,7 +1299,25 @@
       "generation": 3,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Tâm",
+        "birth_text": "1928",
+        "birth_year": 1928,
+        "death_text": "1957",
+        "death_year": 1957,
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Thể Hồ Văn Tam Hồ Văn Công Hồ Văn Leo Hồ Văn Mên Hồ Văn Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 16
+      },
+      "birthYear": 1928,
+      "deathYear": 1957
     },
     {
       "tree_id": 148,
@@ -691,7 +1327,25 @@
       "generation": 3,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Leo",
+        "birth_text": "1918",
+        "birth_year": 1918,
+        "death_text": "1995",
+        "death_year": 1995,
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Thể Hồ Văn Tam Hồ Văn Công Hồ Văn Tâm Hồ Văn Mên Hồ Văn Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 17
+      },
+      "birthYear": 1918,
+      "deathYear": 1995
     },
     {
       "tree_id": 148,
@@ -701,7 +1355,26 @@
       "generation": 3,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Mên",
+        "birth_text": "1920",
+        "birth_year": 1920,
+        "death_text": "1997",
+        "death_year": 1997,
+        "burial_place": "Biê Hòa",
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Thể Hồ Văn Tam Hồ Văn Công Hồ Văn Tâm Hồ Văn Leo Hồ Văn Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 18
+      },
+      "birthYear": 1920,
+      "deathYear": 1997
     },
     {
       "tree_id": 148,
@@ -711,7 +1384,25 @@
       "generation": 3,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Thế",
+        "birth_text": "1923",
+        "birth_year": 1923,
+        "death_text": "1997",
+        "death_year": 1997,
+        "generation_text": 2,
+        "parent_text": "Hồ Văn Ngói",
+        "note": "",
+        "siblings_text": "Hồ Văn Thể Hồ Văn Tam Hồ Văn Công Hồ Văn Tâm Hồ Văn Leo Hồ Văn Mên",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 19
+      },
+      "birthYear": 1923,
+      "deathYear": 1997
     },
     {
       "tree_id": 148,
@@ -721,7 +1412,19 @@
       "generation": 2,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Móc",
+        "generation_text": 1,
+        "parent_text": "Hồ Văn Cu",
+        "note": "",
+        "siblings_text": "Hồ Thị Chim Hồ Thị Cò Hồ Văn Ngói Hồ Văn Neo Hồ Thị Tào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 11
+      }
     },
     {
       "tree_id": 148,
@@ -731,7 +1434,19 @@
       "generation": 2,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Văn Neo",
+        "generation_text": 1,
+        "parent_text": "Hồ Văn Cu",
+        "note": "",
+        "siblings_text": "Hồ Thị Chim Hồ Thị Cò Hồ Văn Ngói Hồ Văn Móc Hồ Thị Tào",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 12
+      }
     },
     {
       "tree_id": 148,
@@ -741,7 +1456,34 @@
       "generation": 2,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thị Tào",
+        "birth_text": "1879",
+        "birth_year": 1879,
+        "death_text": "1953",
+        "death_year": 1953,
+        "burial_place": "Biên Hòa",
+        "generation_text": 1,
+        "parent_text": "Hồ Văn Cu",
+        "note": "",
+        "siblings_text": "Hồ Thị Chim Hồ Thị Cò Hồ Văn Ngói Hồ Văn Móc Hồ Văn Neo",
+        "children_names": [
+          "Nguyễn Văn Gần",
+          "Nguyễn Thị Nay",
+          "Nguyễn Thị May"
+        ],
+        "children_node_ids": [
+          21,
+          22,
+          23
+        ],
+        "tree_id": 148,
+        "node_id": 13
+      },
+      "birthYear": 1879,
+      "deathYear": 1953
     },
     {
       "tree_id": 148,
@@ -751,7 +1493,25 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "mid": 13
+      "mid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Văn Gần",
+        "birth_text": "1920",
+        "birth_year": 1920,
+        "death_text": "2002",
+        "death_year": 2002,
+        "generation_text": 2,
+        "parent_text": "Nguyễn Văn Chạy",
+        "note": "",
+        "siblings_text": "Nguyễn Thị Nay Nguyễn Thị May",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 21
+      },
+      "birthYear": 1920,
+      "deathYear": 2002
     },
     {
       "tree_id": 148,
@@ -761,7 +1521,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "female",
-      "mid": 13
+      "mid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị Nay",
+        "generation_text": 2,
+        "parent_text": "Nguyễn Văn Chạy",
+        "note": "",
+        "siblings_text": "Nguyễn Văn Gần Nguyễn Thị May",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 22
+      }
     },
     {
       "tree_id": 148,
@@ -771,7 +1543,22 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "female",
-      "mid": 13
+      "mid": 13,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/148/23/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Thị May",
+        "birth_text": "1928",
+        "birth_year": 1928,
+        "generation_text": 2,
+        "parent_text": "Nguyễn Văn Chạy",
+        "note": "",
+        "siblings_text": "Nguyễn Văn Gần Nguyễn Thị Nay",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 148,
+        "node_id": 23
+      },
+      "birthYear": 1928
     }
   ]
 }

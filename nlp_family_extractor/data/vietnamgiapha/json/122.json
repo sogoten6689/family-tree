@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/122/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Họ Võ tại Tây Hồ - Diễn Phong - Diễ",
   "node_count": 74,
+  "detail_fetched_count": 74,
   "relationship_count": 73,
   "relationships": [
     {
@@ -599,7 +601,31 @@
       "name": "Ông cố Võ Đào + Bà cố Quế Thị Thưởng-Bà cố Quế Thị Thưởng (vợ)",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Ông cố Võ Đào + Bà cố Quế Thị Thưởng",
+        "common_name": "Quế Thị ThưO",
+        "death_text": "19/6",
+        "burial_place": "NT Cồn Nghè -Tây Hồ - Diễn Phong- Diễn Châu - Nghệ An",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "ông Làm nghề chăn nuôi vịt.Ông lấy Bà Quế Thị Thưởng ,sinh được 3 người con là : Võ Khuê ;Võ Thị Diễn ; Võ Thãnh",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Ông Võ Khuê + Bà Bùi Thị Khuyên",
+          "Võ Thãnh + Quế Thị Thư",
+          "Võ Thị Diễn + Dương Dinh"
+        ],
+        "children_node_ids": [
+          3,
+          5,
+          4
+        ],
+        "tree_id": 122,
+        "node_id": 1
+      },
+      "bio": "ông Làm nghề chăn nuôi vịt.Ông lấy Bà Quế Thị Thưởng ,sinh được 3 người con là : Võ Khuê ;Võ Thị Diễn ; Võ Thãnh"
     },
     {
       "tree_id": 122,
@@ -609,7 +635,31 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Ông Võ Khuê + Bà Bùi Thị Khuyên",
+        "common_name": "Bùi Thị Khuyên",
+        "death_text": "17/7",
+        "burial_place": "NT Cồn Nghè - Tây Hồ - Diễn Phong- Diễn Châu Nghê AN",
+        "generation_text": 1,
+        "parent_text": "Ông cố Võ Đào + Bà cố Quế Thị Thưởng",
+        "note": "Ông Võ Khuê lấy bà Bùi Thị Khuyên sinh được 3 người con là Bà Võ Thị Chắt ; Võ Giai và Võ Ban",
+        "siblings_text": "Võ Thãnh + Quế Thị Thư Võ Thị Diễn + Dương Dinh",
+        "children_names": [
+          "Bà Võ Thị Chắt + Ông Trần Thuynh",
+          "Ông Võ Giai + Bà Đặng Thị Định",
+          "Ông Võ Ban + Đặng Thị Nghiễm"
+        ],
+        "children_node_ids": [
+          7,
+          8,
+          9
+        ],
+        "tree_id": 122,
+        "node_id": 3
+      },
+      "bio": "Ông Võ Khuê lấy bà Bùi Thị Khuyên sinh được 3 người con là Bà Võ Thị Chắt ; Võ Giai và Võ Ban"
     },
     {
       "tree_id": 122,
@@ -619,7 +669,25 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bà Võ Thị Chắt + Ông Trần Thuynh",
+        "common_name": "ÔngTrần Thuynh",
+        "death_text": "19/12/1992",
+        "death_year": 1992,
+        "burial_place": "Xã Nghĩa Thuận - Nghĩa đàn - Nghệ An",
+        "generation_text": 2,
+        "parent_text": "Ông Võ Khuê + Bà Bùi Thị Khuyên",
+        "note": "Bà lấy ông Trần Thuynh xã Diễn Hải ,đi nông trang tại xã Nghĩa Thuận - Nghĩa đàn - Nghệ An . Bà sinh được 6 người con : Trần Thị Tham lấy anh Quế Mai ;Trần Thanh; Trần Dũng ;Trần Ái ; Trần Thị Thân ; Trần Hùng.",
+        "siblings_text": "Ông Võ Giai + Bà Đặng Thị Định Ông Võ Ban + Đặng Thị Nghiễm",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 7
+      },
+      "deathYear": 1992,
+      "bio": "Bà lấy ông Trần Thuynh xã Diễn Hải ,đi nông trang tại xã Nghĩa Thuận - Nghĩa đàn - Nghệ An . Bà sinh được 6 người con : Trần Thị Tham lấy anh Quế Mai ;Trần Thanh; Trần Dũng ;Trần Ái ; Trần Thị Thân ; Trần Hùng."
     },
     {
       "tree_id": 122,
@@ -629,7 +697,42 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Ông Võ Giai + Bà Đặng Thị Định",
+        "common_name": "Bà Định",
+        "birth_text": "1922",
+        "birth_year": 1922,
+        "death_text": "5/2/1996",
+        "death_year": 1996,
+        "burial_place": "NT Cồn nghè Tây Hồ - Diễn Phong- Diễn Châu - Nghệ An",
+        "generation_text": 2,
+        "parent_text": "Ông Võ Khuê + Bà Bùi Thị Khuyên",
+        "note": "Ông Võ Giai lấy bà Đặng Thị Định sinh được 6 người con : Võ Thị yên; Võ Bách Khoa ; Võ Thị Thìn; Võ Thị Tư ; Võ Quyền ; Võ Lực",
+        "siblings_text": "Bà Võ Thị Chắt + Ông Trần Thuynh Ông Võ Ban + Đặng Thị Nghiễm",
+        "children_names": [
+          "Võ Thị Yên + Trần Nậm",
+          "Võ Bách Khoa + Trần Thị Bảy",
+          "Võ Thị Thìn+ Hà Nhi",
+          "Võ Thị Tư + Lê Vơn",
+          "Võ Quyền + Nguyễn Thị Luận",
+          "Võ Lực + Hồ Thị Hồng(vợ 3)"
+        ],
+        "children_node_ids": [
+          38,
+          39,
+          40,
+          41,
+          42,
+          43
+        ],
+        "tree_id": 122,
+        "node_id": 8
+      },
+      "birthYear": 1922,
+      "deathYear": 1996,
+      "bio": "Ông Võ Giai lấy bà Đặng Thị Định sinh được 6 người con : Võ Thị yên; Võ Bách Khoa ; Võ Thị Thìn; Võ Thị Tư ; Võ Quyền ; Võ Lực"
     },
     {
       "tree_id": 122,
@@ -639,7 +742,21 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/38/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Yên + Trần Nậm",
+        "common_name": "Trần Nậm",
+        "generation_text": 3,
+        "parent_text": "Ông Võ Giai + Bà Đặng Thị Định",
+        "note": "Võ Thị Yên lấy chồng là Trần Nậm ở xã Quỳnh Lộc - Quỳnh Lưu ( cơ quan ga ) sau đó lên Nghĩa Thuận - Nghĩa Đàn - Nghệ An có 6 con : Trần Nam; Trần Bắc; Trần Thống ( Bệnh mất );Trần Nhất ; Trần Soái ; và Trần Thị Dệt",
+        "siblings_text": "Võ Bách Khoa + Trần Thị Bảy Võ Thị Thìn+ Hà Nhi Võ Thị Tư + Lê Vơn Võ Quyền + Nguyễn Thị Luận Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 38
+      },
+      "bio": "Võ Thị Yên lấy chồng là Trần Nậm ở xã Quỳnh Lộc - Quỳnh Lưu ( cơ quan ga ) sau đó lên Nghĩa Thuận - Nghĩa Đàn - Nghệ An có 6 con : Trần Nam; Trần Bắc; Trần Thống ( Bệnh mất );Trần Nhất ; Trần Soái ; và Trần Thị Dệt"
     },
     {
       "tree_id": 122,
@@ -649,7 +766,34 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/39/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Bách Khoa + Trần Thị Bảy",
+        "common_name": "Trần Thị Bảy",
+        "birth_text": "1953",
+        "birth_year": 1953,
+        "generation_text": 3,
+        "parent_text": "Ông Võ Giai + Bà Đặng Thị Định",
+        "note": "Anh Võ Bách Khoa sinh năm 1948 là trưởng họ Võ .Anh Võ Bách Khoa là cán bộ Xã Diễn Phong với các chức danh Chủ nhiệm hợp tác xã , Chủ tịch mặt trận và là Bí thư xã về hưu . Vợ là Trần Thị Bảy có 4 con : Võ Thị Hà ; Võ Xuân Khánh ; Võ Thị Oanh; Võ Thị Yến",
+        "siblings_text": "Võ Thị Yên + Trần Nậm Võ Thị Thìn+ Hà Nhi Võ Thị Tư + Lê Vơn Võ Quyền + Nguyễn Thị Luận Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "children_names": [
+          "Võ Thị Hà",
+          "Võ Xuân Khánh",
+          "Võ Thị Oanh",
+          "Võ Thị Yến"
+        ],
+        "children_node_ids": [
+          44,
+          45,
+          46,
+          47
+        ],
+        "tree_id": 122,
+        "node_id": 39
+      },
+      "birthYear": 1953,
+      "bio": "Anh Võ Bách Khoa sinh năm 1948 là trưởng họ Võ .Anh Võ Bách Khoa là cán bộ Xã Diễn Phong với các chức danh Chủ nhiệm hợp tác xã , Chủ tịch mặt trận và là Bí thư xã về hưu . Vợ là Trần Thị Bảy có 4 con : Võ Thị Hà ; Võ Xuân Khánh ; Võ Thị Oanh; Võ Thị Yến"
     },
     {
       "tree_id": 122,
@@ -659,7 +803,20 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 39
+      "fid": 39,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/44/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Hà",
+        "generation_text": 4,
+        "parent_text": "Võ Bách Khoa + Trần Thị Bảy",
+        "note": "Đã Lấy chồng và có con (Chưa cập nhật thông tin về chồng con )",
+        "siblings_text": "Võ Xuân Khánh Võ Thị Oanh Võ Thị Yến",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 44
+      },
+      "bio": "Đã Lấy chồng và có con (Chưa cập nhật thông tin về chồng con )"
     },
     {
       "tree_id": 122,
@@ -669,7 +826,24 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 39
+      "fid": 39,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/45/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Xuân Khánh",
+        "common_name": "Võ Xuân Khánh",
+        "birth_text": "29/4/1978",
+        "birth_year": 1978,
+        "generation_text": 4,
+        "parent_text": "Võ Bách Khoa + Trần Thị Bảy",
+        "note": "Học nghề Du lịch và Hiện nay công tác tại khách sạn Hoa Phượng Đỏ - TP Vinh- Nghệ An",
+        "siblings_text": "Võ Thị Hà Võ Thị Oanh Võ Thị Yến",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 45
+      },
+      "birthYear": 1978,
+      "bio": "Học nghề Du lịch và Hiện nay công tác tại khách sạn Hoa Phượng Đỏ - TP Vinh- Nghệ An"
     },
     {
       "tree_id": 122,
@@ -679,7 +853,20 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 39
+      "fid": 39,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/46/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Oanh",
+        "generation_text": 4,
+        "parent_text": "Võ Bách Khoa + Trần Thị Bảy",
+        "note": "Đã lấy chông .Thông tin Chông cập nhật sau .",
+        "siblings_text": "Võ Thị Hà Võ Xuân Khánh Võ Thị Yến",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 46
+      },
+      "bio": "Đã lấy chông .Thông tin Chông cập nhật sau ."
     },
     {
       "tree_id": 122,
@@ -689,7 +876,23 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 39
+      "fid": 39,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/47/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Yến",
+        "common_name": "Võ Thị Yến",
+        "birth_text": "3/2/1986",
+        "birth_year": 1986,
+        "generation_text": 4,
+        "parent_text": "Võ Bách Khoa + Trần Thị Bảy",
+        "note": "",
+        "siblings_text": "Võ Thị Hà Võ Xuân Khánh Võ Thị Oanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 47
+      },
+      "birthYear": 1986
     },
     {
       "tree_id": 122,
@@ -699,7 +902,28 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/40/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hà Nhi (chồng )",
+        "common_name": "Võ Thị Thìn",
+        "birth_text": "1953",
+        "birth_year": 1953,
+        "death_text": "19/8/1978",
+        "death_year": 1978,
+        "burial_place": "Xã Diễn Hải - Diễn Châu - Nghệ An",
+        "generation_text": 3,
+        "parent_text": "Ông Võ Giai + Bà Đặng Thị Định",
+        "note": "Anh Hà Nhi lấy chị Võ Thị Thìn có 3 con : Hà Thị Phương ; Hà Cường ; Hà Lương sau khi chị Thìn mất anh Nhi đưa các con lên Nghĩa Lộc - Nghĩa Đàn sinh sông",
+        "siblings_text": "Võ Thị Yên + Trần Nậm Võ Bách Khoa + Trần Thị Bảy Võ Thị Tư + Lê Vơn Võ Quyền + Nguyễn Thị Luận Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 40
+      },
+      "birthYear": 1953,
+      "deathYear": 1978,
+      "bio": "Anh Hà Nhi lấy chị Võ Thị Thìn có 3 con : Hà Thị Phương ; Hà Cường ; Hà Lương sau khi chị Thìn mất anh Nhi đưa các con lên Nghĩa Lộc - Nghĩa Đàn sinh sông"
     },
     {
       "tree_id": 122,
@@ -709,7 +933,21 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/41/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Tư + Lê Vơn",
+        "common_name": "Ông Vơn",
+        "generation_text": 3,
+        "parent_text": "Ông Võ Giai + Bà Đặng Thị Định",
+        "note": "Võ Thị Tư lấy chồng là Trịnh Phương quê Tháng Dương - Diễn Phong ,có các con là Trịnh Trung ; Trịnh Hiếu . Sau khi Anh Trịnh Phương bỏ chị Võ Thị Tư đi Quảng Ninh sinh sống thì chị Võ Thị Tư lấy Ông Lê Vơn ở Xã Diễn Yên - Diễn Châu - Nghệ An",
+        "siblings_text": "Võ Thị Yên + Trần Nậm Võ Bách Khoa + Trần Thị Bảy Võ Thị Thìn+ Hà Nhi Võ Quyền + Nguyễn Thị Luận Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 41
+      },
+      "bio": "Võ Thị Tư lấy chồng là Trịnh Phương quê Tháng Dương - Diễn Phong ,có các con là Trịnh Trung ; Trịnh Hiếu . Sau khi Anh Trịnh Phương bỏ chị Võ Thị Tư đi Quảng Ninh sinh sống thì chị Võ Thị Tư lấy Ông Lê Vơn ở Xã Diễn Yên - Diễn Châu - Nghệ An"
     },
     {
       "tree_id": 122,
@@ -719,7 +957,31 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/42/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Quyền + Nguyễn Thị Luận",
+        "common_name": "Nguyễn Thị Luậ",
+        "generation_text": 3,
+        "parent_text": "Ông Võ Giai + Bà Đặng Thị Định",
+        "note": "Võ Quyền lấy vợ là Nguyễn Thị Luận quê Hà Tĩnh hiện vào Tỉnh Con Tum làm ăn sinh sống có 4 con : Võ Anh , Võ Thị Ánh ; Võ An ; Võ Giang",
+        "siblings_text": "Võ Thị Yên + Trần Nậm Võ Bách Khoa + Trần Thị Bảy Võ Thị Thìn+ Hà Nhi Võ Thị Tư + Lê Vơn Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "children_names": [
+          "Võ Anh",
+          "Võ Thị Ánh",
+          "Võ An",
+          "Võ Giang"
+        ],
+        "children_node_ids": [
+          48,
+          49,
+          50,
+          51
+        ],
+        "tree_id": 122,
+        "node_id": 42
+      },
+      "bio": "Võ Quyền lấy vợ là Nguyễn Thị Luận quê Hà Tĩnh hiện vào Tỉnh Con Tum làm ăn sinh sống có 4 con : Võ Anh , Võ Thị Ánh ; Võ An ; Võ Giang"
     },
     {
       "tree_id": 122,
@@ -729,7 +991,20 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/48/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Anh",
+        "common_name": "Võ Anh",
+        "generation_text": 4,
+        "parent_text": "Võ Quyền + Nguyễn Thị Luận",
+        "note": "",
+        "siblings_text": "Võ Thị Ánh Võ An Võ Giang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 48
+      }
     },
     {
       "tree_id": 122,
@@ -739,7 +1014,20 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/49/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Ánh",
+        "common_name": "Võ Thị Ánh",
+        "generation_text": 4,
+        "parent_text": "Võ Quyền + Nguyễn Thị Luận",
+        "note": "",
+        "siblings_text": "Võ Anh Võ An Võ Giang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 49
+      }
     },
     {
       "tree_id": 122,
@@ -749,7 +1037,20 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/50/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ An",
+        "common_name": "Võ An",
+        "generation_text": 4,
+        "parent_text": "Võ Quyền + Nguyễn Thị Luận",
+        "note": "",
+        "siblings_text": "Võ Anh Võ Thị Ánh Võ Giang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 50
+      }
     },
     {
       "tree_id": 122,
@@ -759,7 +1060,20 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/51/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Giang",
+        "common_name": "Võ Giang",
+        "generation_text": 4,
+        "parent_text": "Võ Quyền + Nguyễn Thị Luận",
+        "note": "",
+        "siblings_text": "Võ Anh Võ Thị Ánh Võ An",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 51
+      }
     },
     {
       "tree_id": 122,
@@ -769,7 +1083,38 @@
       "generation": 4,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 8
+      "fid": 8,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/43/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Hồ Thị Hồng (vợ 3)",
+        "common_name": "Sỹ Lực",
+        "birth_text": "1961",
+        "birth_year": 1961,
+        "generation_text": 3,
+        "parent_text": "Ông Võ Giai + Bà Đặng Thị Định",
+        "note": "Hồ Thị Hồng ở Lâm Sinh- Nghĩa Yên - Nghĩa Đàn - Nghệ An .Lấy Võ Lực sinh được 2 con chung là Võ Thị Dung 1994 và Võ Thị Thủy 1995; Con riêng của Hồ Thị Hồng là Võ Nam sinh 1990",
+        "siblings_text": "Võ Thị Yên + Trần Nậm Võ Bách Khoa + Trần Thị Bảy Võ Thị Thìn+ Hà Nhi Võ Thị Tư + Lê Vơn Võ Quyền + Nguyễn Thị Luận",
+        "children_names": [
+          "Võ Thị Nhung",
+          "Võ Thị Tuyết",
+          "Võ Thuận",
+          "Võ Thị Loan",
+          "Võ Thị Dung",
+          "Võ Thị Thuỷ"
+        ],
+        "children_node_ids": [
+          52,
+          53,
+          55,
+          56,
+          57,
+          58
+        ],
+        "tree_id": 122,
+        "node_id": 43
+      },
+      "birthYear": 1961,
+      "bio": "Hồ Thị Hồng ở Lâm Sinh- Nghĩa Yên - Nghĩa Đàn - Nghệ An .Lấy Võ Lực sinh được 2 con chung là Võ Thị Dung 1994 và Võ Thị Thủy 1995; Con riêng của Hồ Thị Hồng là Võ Nam sinh 1990"
     },
     {
       "tree_id": 122,
@@ -779,7 +1124,24 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 43
+      "fid": 43,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/52/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Nhung",
+        "common_name": "Võ Thị Nhung",
+        "birth_text": "5/1981",
+        "birth_year": 1981,
+        "generation_text": 4,
+        "parent_text": "Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "note": "Võ Thị Nhung Theo mẹ là Nguyễn Thị Tân ở tại Thọ Thành - Yên Thành - Nghệ An",
+        "siblings_text": "Võ Thị Tuyết Võ Thuận Võ Thị Loan Võ Thị Dung Võ Thị Thuỷ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 52
+      },
+      "birthYear": 1981,
+      "bio": "Võ Thị Nhung Theo mẹ là Nguyễn Thị Tân ở tại Thọ Thành - Yên Thành - Nghệ An"
     },
     {
       "tree_id": 122,
@@ -789,7 +1151,24 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 43
+      "fid": 43,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/53/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Tuyết",
+        "common_name": "Võ Thị Tuyết",
+        "birth_text": "1983",
+        "birth_year": 1983,
+        "generation_text": 4,
+        "parent_text": "Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "note": "Võ Thị Tuyết theo bố sống tại Lâm Sinh- Nghĩa Yên - Nghĩa Đàn",
+        "siblings_text": "Võ Thị Nhung Võ Thuận Võ Thị Loan Võ Thị Dung Võ Thị Thuỷ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 53
+      },
+      "birthYear": 1983,
+      "bio": "Võ Thị Tuyết theo bố sống tại Lâm Sinh- Nghĩa Yên - Nghĩa Đàn"
     },
     {
       "tree_id": 122,
@@ -799,7 +1178,24 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 43
+      "fid": 43,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/55/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thuận",
+        "common_name": "Võ Thuận",
+        "birth_text": "7/1987",
+        "birth_year": 1987,
+        "generation_text": 4,
+        "parent_text": "Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "note": "Võ Thuận sinh 1987 theo mẹ sống tại 3/2 Quỳ Hợp - Nghệ An",
+        "siblings_text": "Võ Thị Nhung Võ Thị Tuyết Võ Thị Loan Võ Thị Dung Võ Thị Thuỷ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 55
+      },
+      "birthYear": 1987,
+      "bio": "Võ Thuận sinh 1987 theo mẹ sống tại 3/2 Quỳ Hợp - Nghệ An"
     },
     {
       "tree_id": 122,
@@ -809,7 +1205,24 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 43
+      "fid": 43,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/56/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Loan",
+        "common_name": "Võ Thị Loan",
+        "birth_text": "15/01/1990",
+        "birth_year": 1990,
+        "generation_text": 4,
+        "parent_text": "Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "note": "Võ Thị Loan là con của Võ Quyền và Phạm Thị Bình nay ở với bố tại Lâm Sinh- Nghia Yên - Nghĩa Đàn",
+        "siblings_text": "Võ Thị Nhung Võ Thị Tuyết Võ Thuận Võ Thị Dung Võ Thị Thuỷ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 56
+      },
+      "birthYear": 1990,
+      "bio": "Võ Thị Loan là con của Võ Quyền và Phạm Thị Bình nay ở với bố tại Lâm Sinh- Nghia Yên - Nghĩa Đàn"
     },
     {
       "tree_id": 122,
@@ -819,7 +1232,24 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 43
+      "fid": 43,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/57/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Dung",
+        "common_name": "Võ Thị Dung",
+        "birth_text": "1994",
+        "birth_year": 1994,
+        "generation_text": 4,
+        "parent_text": "Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "note": "Võ Thị Dung là con của Võ Lực và Hồ Thị Hồng nay sở tại Lâm Sinh- Nghĩa Yên - Nghĩa Đàn",
+        "siblings_text": "Võ Thị Nhung Võ Thị Tuyết Võ Thuận Võ Thị Loan Võ Thị Thuỷ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 57
+      },
+      "birthYear": 1994,
+      "bio": "Võ Thị Dung là con của Võ Lực và Hồ Thị Hồng nay sở tại Lâm Sinh- Nghĩa Yên - Nghĩa Đàn"
     },
     {
       "tree_id": 122,
@@ -829,7 +1259,24 @@
       "generation": 5,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 43
+      "fid": 43,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/58/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Thuỷ",
+        "common_name": "Võ Thị Thuỷ",
+        "birth_text": "1995",
+        "birth_year": 1995,
+        "generation_text": 4,
+        "parent_text": "Võ Lực + Hồ Thị Hồng(vợ 3)",
+        "note": "Võ Thị Thuỷ là on của Võ Lực và Hồ Thị Hồng nay ở Lâm Sinh - Nghĩa Yên - Nghĩa đàn -Nghệ An",
+        "siblings_text": "Võ Thị Nhung Võ Thị Tuyết Võ Thuận Võ Thị Loan Võ Thị Dung",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 58
+      },
+      "birthYear": 1995,
+      "bio": "Võ Thị Thuỷ là on của Võ Lực và Hồ Thị Hồng nay ở Lâm Sinh - Nghĩa Yên - Nghĩa đàn -Nghệ An"
     },
     {
       "tree_id": 122,
@@ -839,7 +1286,32 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đặng Thị Nghiễm",
+        "common_name": "Ông Võ Ban",
+        "birth_text": "1922",
+        "birth_year": 1922,
+        "death_text": "21/10/1998",
+        "death_year": 1998,
+        "burial_place": "NT Cồn Nghè- Tây Hồ - Diễn Phong- Diễn Châu - Nghệ An",
+        "generation_text": 2,
+        "parent_text": "Ông Võ Khuê + Bà Bùi Thị Khuyên",
+        "note": "Sau khi Ông Võ Ban Mất Bà đặng Thị Nghiễm sống cùng với vợ chồng người con riêng là Võ Thị Lam tại Đậu Vinh- Diễn Phong - Diễn Châu -Nghệ An",
+        "siblings_text": "Bà Võ Thị Chắt + Ông Trần Thuynh Ông Võ Giai + Bà Đặng Thị Định",
+        "children_names": [
+          "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)"
+        ],
+        "children_node_ids": [
+          59
+        ],
+        "tree_id": 122,
+        "node_id": 9
+      },
+      "birthYear": 1922,
+      "deathYear": 1998,
+      "bio": "Sau khi Ông Võ Ban Mất Bà đặng Thị Nghiễm sống cùng với vợ chồng người con riêng là Võ Thị Lam tại Đậu Vinh- Diễn Phong - Diễn Châu -Nghệ An"
     },
     {
       "tree_id": 122,
@@ -849,7 +1321,40 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 9
+      "fid": 9,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/59/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "common_name": "Trần Thị Thanh",
+        "birth_text": "1953",
+        "birth_year": 1953,
+        "generation_text": 3,
+        "parent_text": "Ông Võ Ban + Đặng Thị Nghiễm",
+        "note": "Anh Võ Đồng có 2 vợ : Nguyễn Thị Mỹ có 3 con và Trần Thị Thanh có 4 con",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Võ Đăng (Mất )",
+          "Võ Thị Nga",
+          "Võ Thị Hương",
+          "Võ Thị Giang",
+          "Võ Thị Nhung",
+          "Võ Thế Hưng",
+          "Võ Thị Hiền"
+        ],
+        "children_node_ids": [
+          64,
+          66,
+          67,
+          71,
+          70,
+          65,
+          69
+        ],
+        "tree_id": 122,
+        "node_id": 59
+      },
+      "birthYear": 1953,
+      "bio": "Anh Võ Đồng có 2 vợ : Nguyễn Thị Mỹ có 3 con và Trần Thị Thanh có 4 con"
     },
     {
       "tree_id": 122,
@@ -859,7 +1364,28 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/64/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đăng (Mất )",
+        "common_name": "Võ Đăng",
+        "birth_text": "02/10/1973",
+        "birth_year": 1973,
+        "death_text": "18/12/1981",
+        "death_year": 1981,
+        "burial_place": "NT Cồn Nghè - Tây Hồ - Diễn Phong- Diễn Châu -Nghê AN",
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Mất lúc còn nhỏ tuổi (8 tuổi)",
+        "siblings_text": "Võ Thị Nga Võ Thị Hương Võ Thị Giang Võ Thị Nhung Võ Thế Hưng Võ Thị Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 64
+      },
+      "birthYear": 1973,
+      "deathYear": 1981,
+      "bio": "Mất lúc còn nhỏ tuổi (8 tuổi)"
     },
     {
       "tree_id": 122,
@@ -869,7 +1395,24 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/66/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Nga",
+        "common_name": "Võ Thị Nga",
+        "birth_text": "6/1978",
+        "birth_year": 1978,
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Võ Thị Nga ở với mẹ là Nguyễn Thị Mỹ ;đã có gia đình riêng tại Quỳnh Thiện -Quỳnh Lưu -Nghệ An",
+        "siblings_text": "Võ Đăng (Mất ) Võ Thị Hương Võ Thị Giang Võ Thị Nhung Võ Thế Hưng Võ Thị Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 66
+      },
+      "birthYear": 1978,
+      "bio": "Võ Thị Nga ở với mẹ là Nguyễn Thị Mỹ ;đã có gia đình riêng tại Quỳnh Thiện -Quỳnh Lưu -Nghệ An"
     },
     {
       "tree_id": 122,
@@ -879,7 +1422,24 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/67/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Hương",
+        "common_name": "Võ Thị Hương",
+        "birth_text": "1984",
+        "birth_year": 1984,
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Võ Thị Hương là con của Anh Đồng và chị Mỹ ở với mẹ tại Quỳnh Thiện Quỳnh Lưu - Nghệ An .Đã có gia đình riêng ;",
+        "siblings_text": "Võ Đăng (Mất ) Võ Thị Nga Võ Thị Giang Võ Thị Nhung Võ Thế Hưng Võ Thị Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 67
+      },
+      "birthYear": 1984,
+      "bio": "Võ Thị Hương là con của Anh Đồng và chị Mỹ ở với mẹ tại Quỳnh Thiện Quỳnh Lưu - Nghệ An .Đã có gia đình riêng ;"
     },
     {
       "tree_id": 122,
@@ -889,7 +1449,24 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/71/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Giang",
+        "common_name": "Võ Thị Giang",
+        "birth_text": "1982",
+        "birth_year": 1982,
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Võ Thị Giang là con của Anh Võ Đồng và chị Trần Thị Thanh ở tại Đắc Lắc",
+        "siblings_text": "Võ Đăng (Mất ) Võ Thị Nga Võ Thị Hương Võ Thị Nhung Võ Thế Hưng Võ Thị Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 71
+      },
+      "birthYear": 1982,
+      "bio": "Võ Thị Giang là con của Anh Võ Đồng và chị Trần Thị Thanh ở tại Đắc Lắc"
     },
     {
       "tree_id": 122,
@@ -899,7 +1476,24 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/70/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Nhung",
+        "common_name": "Võ Thị Nhung",
+        "birth_text": "1985",
+        "birth_year": 1985,
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Võ Thị Nhung là con của Anh Võ Đồng với chị Trần Thị Thanh ở tại Đắc Lắc",
+        "siblings_text": "Võ Đăng (Mất ) Võ Thị Nga Võ Thị Hương Võ Thị Giang Võ Thế Hưng Võ Thị Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 70
+      },
+      "birthYear": 1985,
+      "bio": "Võ Thị Nhung là con của Anh Võ Đồng với chị Trần Thị Thanh ở tại Đắc Lắc"
     },
     {
       "tree_id": 122,
@@ -909,7 +1503,24 @@
       "generation": 5,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/65/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thế Hưng",
+        "common_name": "Võ Thế Hưng",
+        "birth_text": "1988",
+        "birth_year": 1988,
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Võ Thế Hưng là con Thứ 6 của anh Đông và là con của Bà Trần Thị Thanh ở tại Đắc Lắc",
+        "siblings_text": "Võ Đăng (Mất ) Võ Thị Nga Võ Thị Hương Võ Thị Giang Võ Thị Nhung Võ Thị Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 65
+      },
+      "birthYear": 1988,
+      "bio": "Võ Thế Hưng là con Thứ 6 của anh Đông và là con của Bà Trần Thị Thanh ở tại Đắc Lắc"
     },
     {
       "tree_id": 122,
@@ -919,7 +1530,24 @@
       "generation": 5,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 59
+      "fid": 59,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/69/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Hiền",
+        "common_name": "Võ Thị Hiền",
+        "birth_text": "1990",
+        "birth_year": 1990,
+        "generation_text": 4,
+        "parent_text": "Võ Đồng + (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+        "note": "Võ Thị Hiền là con của Anh Võ Đồng Và chị Trần Thị Thanh ở tại Đắc Lắc",
+        "siblings_text": "Võ Đăng (Mất ) Võ Thị Nga Võ Thị Hương Võ Thị Giang Võ Thị Nhung Võ Thế Hưng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 69
+      },
+      "birthYear": 1990,
+      "bio": "Võ Thị Hiền là con của Anh Võ Đồng Và chị Trần Thị Thanh ở tại Đắc Lắc"
     },
     {
       "tree_id": 122,
@@ -929,7 +1557,42 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thãnh + Quế Thị Thư",
+        "common_name": "Quế Thị Thư",
+        "birth_text": "1910",
+        "birth_year": 1910,
+        "death_text": "15/4/1996",
+        "death_year": 1996,
+        "burial_place": "NT Cồn Nghè - Tây Hồ - Diễn Phong- Diễn Châu -Nghê AN",
+        "generation_text": 1,
+        "parent_text": "Ông cố Võ Đào + Bà cố Quế Thị Thưởng",
+        "note": "Ông Võ Thãnh Lấy Bà Quế Thị Thư sinh được 6 người con : Ông Võ Thành ; Ông Võ Kính ;Bà Võ Thị Lý ; Bà CÔ Võ Thị Thanh(Năm ); Bà Võ Thị Xuân",
+        "siblings_text": "Ông Võ Khuê + Bà Bùi Thị Khuyên Võ Thị Diễn + Dương Dinh",
+        "children_names": [
+          "Vỗ Thành + Quế Thị Long",
+          "Võ Kính + Nguyễn Thị Liễu",
+          "Võ Thị Lý + Dương Đồng",
+          "Võ Quý +Trần Thị Quýnh",
+          "Bà Võ Thị Thanh",
+          "Võ Thị Xuân + Hoàng Đình Huỳnh"
+        ],
+        "children_node_ids": [
+          6,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "tree_id": 122,
+        "node_id": 5
+      },
+      "birthYear": 1910,
+      "deathYear": 1996,
+      "bio": "Ông Võ Thãnh Lấy Bà Quế Thị Thư sinh được 6 người con : Ông Võ Thành ; Ông Võ Kính ;Bà Võ Thị Lý ; Bà CÔ Võ Thị Thanh(Năm ); Bà Võ Thị Xuân"
     },
     {
       "tree_id": 122,
@@ -939,7 +1602,44 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vỗ Thành + Quế Thị Long",
+        "common_name": "Quế Thị Long",
+        "birth_text": "1935",
+        "birth_year": 1935,
+        "generation_text": 2,
+        "parent_text": "Võ Thãnh + Quế Thị Thư",
+        "note": "Ông Võ Thành kế nghiệp ông Võ Đào và cha mình là Võ Thãnh làm nghề chăn vịt ,ấp trứng vịt lộn .",
+        "siblings_text": "Võ Kính + Nguyễn Thị Liễu Võ Thị Lý + Dương Đồng Võ Quý +Trần Thị Quýnh Bà Võ Thị Thanh Võ Thị Xuân + Hoàng Đình Huỳnh",
+        "children_names": [
+          "Võ Thị Liên + Võ Trung Hưng",
+          "Võ Thị Hương + Nguyễn Sửu",
+          "Võ Thảo + Ngô Thị Nhung",
+          "Võ Thị Nguyên+ Trần Hoàn",
+          "Võ Thị Minh + Trần Liên",
+          "Võ Thị Dung + Nguyễn Đình Chiến",
+          "Võ Kha + Phan Thị Hà",
+          "Võ Tám + Trần Thị Khánh Tùng",
+          "Võ Thị Chín + Nguyễn Sơn"
+        ],
+        "children_node_ids": [
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "tree_id": 122,
+        "node_id": 6
+      },
+      "birthYear": 1935,
+      "bio": "Ông Võ Thành kế nghiệp ông Võ Đào và cha mình là Võ Thãnh làm nghề chăn vịt ,ấp trứng vịt lộn ."
     },
     {
       "tree_id": 122,
@@ -949,7 +1649,21 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/23/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Liên + Võ Trung Hưng",
+        "common_name": "Võ Trung Hưng",
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Thị Liên lấy chồng là Võ Hưng sinh được 3 con : Võ Trung Kiên; Võ Thị Hiền ; Võ Thị Huệ",
+        "siblings_text": "Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 23
+      },
+      "bio": "Võ Thị Liên lấy chồng là Võ Hưng sinh được 3 con : Võ Trung Kiên; Võ Thị Hiền ; Võ Thị Huệ"
     },
     {
       "tree_id": 122,
@@ -959,7 +1673,21 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/24/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Hương + Nguyễn Sửu",
+        "common_name": "Nguyễn Sửu",
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Thị Hương làm ngành ngân hàng lấy chồng Nguyễn Sửu là giáo viên có 2 con là Nguyễn Thanh Sơn và Nguyễn Thị Hà",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 24
+      },
+      "bio": "Võ Thị Hương làm ngành ngân hàng lấy chồng Nguyễn Sửu là giáo viên có 2 con là Nguyễn Thanh Sơn và Nguyễn Thị Hà"
     },
     {
       "tree_id": 122,
@@ -969,7 +1697,32 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/25/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thảo + Ngô Thị Nhung",
+        "common_name": "Ngô Thị Nhung",
+        "birth_text": "1959",
+        "birth_year": 1959,
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Thảo làm nghề cơ khí sau nghỉ việc tiếp tục sự nghiệp của cha làm nghề ấp trứng vịt lôn . lấy vợ là Ngô Thị Nhung quê tại xã Diễn Kim - Diên Châu - Nghệ An và sinh được 3 con là Võ Thị Vân ; Võ Thanh ; Võ Thị Kim Oanh",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [
+          "Võ Thị Vân",
+          "Võ Thanh",
+          "Võ Thị Kim Oanh"
+        ],
+        "children_node_ids": [
+          32,
+          33,
+          34
+        ],
+        "tree_id": 122,
+        "node_id": 25
+      },
+      "birthYear": 1959,
+      "bio": "Võ Thảo làm nghề cơ khí sau nghỉ việc tiếp tục sự nghiệp của cha làm nghề ấp trứng vịt lôn . lấy vợ là Ngô Thị Nhung quê tại xã Diễn Kim - Diên Châu - Nghệ An và sinh được 3 con là Võ Thị Vân ; Võ Thanh ; Võ Thị Kim Oanh"
     },
     {
       "tree_id": 122,
@@ -979,7 +1732,21 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 25
+      "fid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/32/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Chồng cập nhật sau",
+        "common_name": "Võ Thị Vân",
+        "generation_text": 4,
+        "parent_text": "Võ Thảo + Ngô Thị Nhung",
+        "note": "Chồng quê diễn Châu ở tại đông vĩnh cập nhật tiếp",
+        "siblings_text": "Võ Thanh Võ Thị Kim Oanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 32
+      },
+      "bio": "Chồng quê diễn Châu ở tại đông vĩnh cập nhật tiếp"
     },
     {
       "tree_id": 122,
@@ -989,7 +1756,21 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 25
+      "fid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/33/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thanh",
+        "common_name": "Võ Thanh",
+        "generation_text": 4,
+        "parent_text": "Võ Thảo + Ngô Thị Nhung",
+        "note": "Đã ra công tác (cập nhật tiếp thôngtin )",
+        "siblings_text": "Võ Thị Vân Võ Thị Kim Oanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 33
+      },
+      "bio": "Đã ra công tác (cập nhật tiếp thôngtin )"
     },
     {
       "tree_id": 122,
@@ -999,7 +1780,21 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 25
+      "fid": 25,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/34/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Kim Oanh",
+        "common_name": "Võ Thị Kim Oanh",
+        "generation_text": 4,
+        "parent_text": "Võ Thảo + Ngô Thị Nhung",
+        "note": "Học sinh",
+        "siblings_text": "Võ Thị Vân Võ Thanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 34
+      },
+      "bio": "Học sinh"
     },
     {
       "tree_id": 122,
@@ -1009,7 +1804,21 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/26/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Nguyên+ Trần Hoàn",
+        "common_name": "Trần Hoàn",
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Thị Nguyên là giáo viên lấy chồng là Trần Hoàn quê ở Cuồi -Diễn Phong - Diễn Châu - Nghệ An ; Có 3 con là Trần Thị Phương ; Trần Thị Nga ;Trần thị ....",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 26
+      },
+      "bio": "Võ Thị Nguyên là giáo viên lấy chồng là Trần Hoàn quê ở Cuồi -Diễn Phong - Diễn Châu - Nghệ An ; Có 3 con là Trần Thị Phương ; Trần Thị Nga ;Trần thị ...."
     },
     {
       "tree_id": 122,
@@ -1019,7 +1828,24 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/27/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Liên",
+        "common_name": "Võ Thị Minh",
+        "birth_text": "1964",
+        "birth_year": 1964,
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "ểnTần Liên Quê Hà Tĩnh lấy Võ Thị Minh sinh được 2 con Trần Thị Loan và Trần Linh. Nhà ở Tây Hồ Diễn Phong - Diễn Châu - Nghệ An",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 27
+      },
+      "birthYear": 1964,
+      "bio": "ểnTần Liên Quê Hà Tĩnh lấy Võ Thị Minh sinh được 2 con Trần Thị Loan và Trần Linh. Nhà ở Tây Hồ Diễn Phong - Diễn Châu - Nghệ An"
     },
     {
       "tree_id": 122,
@@ -1029,7 +1855,24 @@
       "generation": 4,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/28/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Đình Chiến",
+        "common_name": "Võ Thị Dung",
+        "birth_text": "1966",
+        "birth_year": 1966,
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Nguyễn Đình Chiến quê Diễn Thắng - Diễn Châu - Nghệ An",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 28
+      },
+      "birthYear": 1966,
+      "bio": "Nguyễn Đình Chiến quê Diễn Thắng - Diễn Châu - Nghệ An"
     },
     {
       "tree_id": 122,
@@ -1039,7 +1882,29 @@
       "generation": 4,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/29/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Kha + Phan Thị Hà",
+        "common_name": "Phan Thị Hà",
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Kha làm nghề ấp trứng vịt lôn và chăn vịt ở quê ,lấy vợ là Phan Thị Hà .con là Võ Đức Thắng -1994 ; Võ Thị Quỳnh Thương -1997 ;Võ Thị Thu Huyền 3/8/2007",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Tám + Trần Thị Khánh Tùng Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [
+          "Võ Đức Thắng",
+          "Võ Thị QuỳnhThương",
+          "Võ Thị Thu Huyền"
+        ],
+        "children_node_ids": [
+          35,
+          36,
+          75
+        ],
+        "tree_id": 122,
+        "node_id": 29
+      },
+      "bio": "Võ Kha làm nghề ấp trứng vịt lôn và chăn vịt ở quê ,lấy vợ là Phan Thị Hà .con là Võ Đức Thắng -1994 ; Võ Thị Quỳnh Thương -1997 ;Võ Thị Thu Huyền 3/8/2007"
     },
     {
       "tree_id": 122,
@@ -1049,7 +1914,24 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/35/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đức Thắng",
+        "common_name": "Võ Đức Thắng",
+        "birth_text": "1994",
+        "birth_year": 1994,
+        "generation_text": 4,
+        "parent_text": "Võ Kha + Phan Thị Hà",
+        "note": "Học sinh",
+        "siblings_text": "Võ Thị QuỳnhThương Võ Thị Thu Huyền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 35
+      },
+      "birthYear": 1994,
+      "bio": "Học sinh"
     },
     {
       "tree_id": 122,
@@ -1059,7 +1941,23 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/36/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị QuỳnhThương",
+        "common_name": "Võ Thị Quỳnh Thư",
+        "birth_text": "1977",
+        "birth_year": 1977,
+        "generation_text": 4,
+        "parent_text": "Võ Kha + Phan Thị Hà",
+        "note": "",
+        "siblings_text": "Võ Đức Thắng Võ Thị Thu Huyền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 36
+      },
+      "birthYear": 1977
     },
     {
       "tree_id": 122,
@@ -1069,7 +1967,23 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/75/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Thu Huyền",
+        "common_name": "Võ Thị Thu Huyền",
+        "birth_text": "03/8/2007",
+        "birth_year": 2007,
+        "generation_text": 4,
+        "parent_text": "Võ Kha + Phan Thị Hà",
+        "note": "",
+        "siblings_text": "Võ Đức Thắng Võ Thị QuỳnhThương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 75
+      },
+      "birthYear": 2007
     },
     {
       "tree_id": 122,
@@ -1079,7 +1993,25 @@
       "generation": 4,
       "order_in_generation": 8,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/30/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Tám + Trần Thị Khánh Tùng",
+        "common_name": "Trần Thị Khánh Tùng",
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Tám làm nghề Tư Pháp lấy vợ Trần Thị Khánh Tùng sinh 1977 làm nghề giáo viên tiếng Anh .Con là Võ Thuận Phong",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Thị Chín + Nguyễn Sơn",
+        "children_names": [
+          "Võ Thuận Phong"
+        ],
+        "children_node_ids": [
+          37
+        ],
+        "tree_id": 122,
+        "node_id": 30
+      },
+      "bio": "Võ Tám làm nghề Tư Pháp lấy vợ Trần Thị Khánh Tùng sinh 1977 làm nghề giáo viên tiếng Anh .Con là Võ Thuận Phong"
     },
     {
       "tree_id": 122,
@@ -1089,7 +2021,23 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 30
+      "fid": 30,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/37/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thuận Phong",
+        "common_name": "Võ Thuận Phong",
+        "birth_text": "2001",
+        "birth_year": 2001,
+        "generation_text": 4,
+        "parent_text": "Võ Tám + Trần Thị Khánh Tùng",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 37
+      },
+      "birthYear": 2001
     },
     {
       "tree_id": 122,
@@ -1099,7 +2047,21 @@
       "generation": 4,
       "order_in_generation": 9,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/31/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Chín + Nguyễn Sơn",
+        "common_name": "Nguyễn Sơn",
+        "generation_text": 3,
+        "parent_text": "Vỗ Thành + Quế Thị Long",
+        "note": "Võ Thị Chín làm nghề kế toán trường học lấy chồng là Nguyễn Văn Sơn quê ở Đậu Vinh - Diễn Phong - Diễn Châu - Nghệ . Con là Nguyễn Đức ; Nguyễn Thị Trang.",
+        "siblings_text": "Võ Thị Liên + Võ Trung Hưng Võ Thị Hương + Nguyễn Sửu Võ Thảo + Ngô Thị Nhung Võ Thị Nguyên+ Trần Hoàn Võ Thị Minh + Trần Liên Võ Thị Dung + Nguyễn Đình Chiến Võ Kha + Phan Thị Hà Võ Tám + Trần Thị Khánh Tùng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 31
+      },
+      "bio": "Võ Thị Chín làm nghề kế toán trường học lấy chồng là Nguyễn Văn Sơn quê ở Đậu Vinh - Diễn Phong - Diễn Châu - Nghệ . Con là Nguyễn Đức ; Nguyễn Thị Trang."
     },
     {
       "tree_id": 122,
@@ -1109,7 +2071,34 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Kính + Nguyễn Thị Liễu",
+        "common_name": "Nguyễn Thị Liễ",
+        "birth_text": "1941",
+        "birth_year": 1941,
+        "generation_text": 2,
+        "parent_text": "Võ Thãnh + Quế Thị Thư",
+        "note": "ông Võ Kính làm giáo viên sau chuyển sang quân đội thuộc cục 2 cục tình báo sau năm 1975 chuyển sang công tác bên ngành Du lịch làm Phó Giám đốc Công ty Du Lịch Nghệ An đến năm 1994 thành lập Sở Du lịch Nghệ An ông làm Trưởng phòng Tổ chức cán bộ cho đến năm 1996 về hưu sống tại quê cùng Bà Nguyễn Thị Liễu , các con của ông đã thoát ly .",
+        "siblings_text": "Vỗ Thành + Quế Thị Long Võ Thị Lý + Dương Đồng Võ Quý +Trần Thị Quýnh Bà Võ Thị Thanh Võ Thị Xuân + Hoàng Đình Huỳnh",
+        "children_names": [
+          "Võ An Huy + Trần Thị Thu Lan",
+          "Võ Thị Thu+ Nguyễn Văn Hùng",
+          "Võ Đức Hoàng+Trịnh Thị Lý",
+          "Võ Đức Hậu+ Nguyễn Thị Dung"
+        ],
+        "children_node_ids": [
+          15,
+          16,
+          17,
+          18
+        ],
+        "tree_id": 122,
+        "node_id": 10
+      },
+      "birthYear": 1941,
+      "bio": "ông Võ Kính làm giáo viên sau chuyển sang quân đội thuộc cục 2 cục tình báo sau năm 1975 chuyển sang công tác bên ngành Du lịch làm Phó Giám đốc Công ty Du Lịch Nghệ An đến năm 1994 thành lập Sở Du lịch Nghệ An ông làm Trưởng phòng Tổ chức cán bộ cho đến năm 1996 về hưu sống tại quê cùng Bà Nguyễn Thị Liễu , các con của ông đã thoát ly ."
     },
     {
       "tree_id": 122,
@@ -1119,7 +2108,30 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ An Huy + Trần Thị Thu Lan",
+        "common_name": "Thu Lan",
+        "birth_text": "20/6/1966",
+        "birth_year": 1966,
+        "generation_text": 3,
+        "parent_text": "Võ Kính + Nguyễn Thị Liễu",
+        "note": "Học Nghề Sư phạm sau chuyển sang làm nghề Du lịch ,Hiện nay làm PGĐ Công ty cổ phần Sài Gòn - Kim Liên. Vợ là Trần thị Thu Lan sinh ngày 20/6/1966 làm nghề kế toán . Có hai con là Võ Thị Tâm An sinh 23/4/1991 và Võ Đức Anh sinh 15/6/1994 .",
+        "siblings_text": "Võ Thị Thu+ Nguyễn Văn Hùng Võ Đức Hoàng+Trịnh Thị Lý Võ Đức Hậu+ Nguyễn Thị Dung",
+        "children_names": [
+          "Võ Thị Tâm An",
+          "Võ Đức Anh"
+        ],
+        "children_node_ids": [
+          19,
+          20
+        ],
+        "tree_id": 122,
+        "node_id": 15
+      },
+      "birthYear": 1966,
+      "bio": "Học Nghề Sư phạm sau chuyển sang làm nghề Du lịch ,Hiện nay làm PGĐ Công ty cổ phần Sài Gòn - Kim Liên. Vợ là Trần thị Thu Lan sinh ngày 20/6/1966 làm nghề kế toán . Có hai con là Võ Thị Tâm An sinh 23/4/1991 và Võ Đức Anh sinh 15/6/1994 ."
     },
     {
       "tree_id": 122,
@@ -1129,7 +2141,24 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Tâm An",
+        "common_name": "Tâm An",
+        "birth_text": "23/4/1991",
+        "birth_year": 1991,
+        "generation_text": 4,
+        "parent_text": "Võ An Huy + Trần Thị Thu Lan",
+        "note": "Học sinh",
+        "siblings_text": "Võ Đức Anh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 19
+      },
+      "birthYear": 1991,
+      "bio": "Học sinh"
     },
     {
       "tree_id": 122,
@@ -1139,7 +2168,24 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đức Anh",
+        "common_name": "Võ Đức Anh",
+        "birth_text": "15/6/1994",
+        "birth_year": 1994,
+        "generation_text": 4,
+        "parent_text": "Võ An Huy + Trần Thị Thu Lan",
+        "note": "Học sinh",
+        "siblings_text": "Võ Thị Tâm An",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 20
+      },
+      "birthYear": 1994,
+      "bio": "Học sinh"
     },
     {
       "tree_id": 122,
@@ -1149,7 +2195,24 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Thu+ Nguyễn Văn Hùng",
+        "common_name": "Nguyễn Văn Hùng",
+        "birth_text": "1966",
+        "birth_year": 1966,
+        "generation_text": 3,
+        "parent_text": "Võ Kính + Nguyễn Thị Liễu",
+        "note": "Võ Thị Thu lấy Nguyễn Văn Hùng quê Thanh Chương ;sinh năm 1966 có hai con là Nguyễn Thị Hằng sinh 21/1/1992 và Nguyễn Thị Huyền sinh tháng 8/1998 .",
+        "siblings_text": "Võ An Huy + Trần Thị Thu Lan Võ Đức Hoàng+Trịnh Thị Lý Võ Đức Hậu+ Nguyễn Thị Dung",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 16
+      },
+      "birthYear": 1966,
+      "bio": "Võ Thị Thu lấy Nguyễn Văn Hùng quê Thanh Chương ;sinh năm 1966 có hai con là Nguyễn Thị Hằng sinh 21/1/1992 và Nguyễn Thị Huyền sinh tháng 8/1998 ."
     },
     {
       "tree_id": 122,
@@ -1159,7 +2222,30 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đức Hoàng+Trịnh Thị Lý",
+        "common_name": "Trịnh Thị Lý",
+        "birth_text": "1977",
+        "birth_year": 1977,
+        "generation_text": 3,
+        "parent_text": "Võ Kính + Nguyễn Thị Liễu",
+        "note": "Làm công nhân điện lấy vợ Trịnh Thị Lý sinh 1977 tại Trị Trấn Diễn Châu - Nghệ An ,làm nghề giáo viên .Con gái là Võ Thị Thu Hiền sinh 18/7/2000 ;",
+        "siblings_text": "Võ An Huy + Trần Thị Thu Lan Võ Thị Thu+ Nguyễn Văn Hùng Võ Đức Hậu+ Nguyễn Thị Dung",
+        "children_names": [
+          "Võ Thị Thu Hiền",
+          "võ Đúc Lộc"
+        ],
+        "children_node_ids": [
+          21,
+          79
+        ],
+        "tree_id": 122,
+        "node_id": 17
+      },
+      "birthYear": 1977,
+      "bio": "Làm công nhân điện lấy vợ Trịnh Thị Lý sinh 1977 tại Trị Trấn Diễn Châu - Nghệ An ,làm nghề giáo viên .Con gái là Võ Thị Thu Hiền sinh 18/7/2000 ;"
     },
     {
       "tree_id": 122,
@@ -1169,7 +2255,23 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Thu Hiền",
+        "common_name": "Võ Thị Hiền",
+        "birth_text": "18/7/2000",
+        "birth_year": 2000,
+        "generation_text": 4,
+        "parent_text": "Võ Đức Hoàng+Trịnh Thị Lý",
+        "note": "",
+        "siblings_text": "võ Đúc Lộc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 21
+      },
+      "birthYear": 2000
     },
     {
       "tree_id": 122,
@@ -1179,7 +2281,23 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/79/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: võ Đúc Lộc",
+        "common_name": "võ Đúc Lộc",
+        "birth_text": "01/5/2009",
+        "birth_year": 2009,
+        "generation_text": 4,
+        "parent_text": "Võ Đức Hoàng+Trịnh Thị Lý",
+        "note": "",
+        "siblings_text": "Võ Thị Thu Hiền",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 79
+      },
+      "birthYear": 2009
     },
     {
       "tree_id": 122,
@@ -1189,7 +2307,27 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đức Hậu+ Nguyễn Thị Dung",
+        "common_name": "Nguyễn Thị Dung",
+        "generation_text": 3,
+        "parent_text": "Võ Kính + Nguyễn Thị Liễu",
+        "note": "Học ngành Ngân hàng nay công tác tại ngân hàng NN Nghệ an lấy vợ là Nguyễn Thị Dung quê Nghi Phú ,con trai Võ Đức Tài sinh 9/3/2003 , con gai Võ Thị Ngân sinh 01/5/2008",
+        "siblings_text": "Võ An Huy + Trần Thị Thu Lan Võ Thị Thu+ Nguyễn Văn Hùng Võ Đức Hoàng+Trịnh Thị Lý",
+        "children_names": [
+          "Võ Đức Tài",
+          "Võ Tuyết Ngân"
+        ],
+        "children_node_ids": [
+          22,
+          68
+        ],
+        "tree_id": 122,
+        "node_id": 18
+      },
+      "bio": "Học ngành Ngân hàng nay công tác tại ngân hàng NN Nghệ an lấy vợ là Nguyễn Thị Dung quê Nghi Phú ,con trai Võ Đức Tài sinh 9/3/2003 , con gai Võ Thị Ngân sinh 01/5/2008"
     },
     {
       "tree_id": 122,
@@ -1199,7 +2337,23 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đức Tài",
+        "common_name": "Đức Tài",
+        "birth_text": "9/3/2003",
+        "birth_year": 2003,
+        "generation_text": 4,
+        "parent_text": "Võ Đức Hậu+ Nguyễn Thị Dung",
+        "note": "",
+        "siblings_text": "Võ Tuyết Ngân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 22
+      },
+      "birthYear": 2003
     },
     {
       "tree_id": 122,
@@ -1209,7 +2363,23 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/68/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Tuyết Ngân",
+        "common_name": "Võ Tuyết Ngân",
+        "birth_text": "01/5/2008",
+        "birth_year": 2008,
+        "generation_text": 4,
+        "parent_text": "Võ Đức Hậu+ Nguyễn Thị Dung",
+        "note": "",
+        "siblings_text": "Võ Đức Tài",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 68
+      },
+      "birthYear": 2008
     },
     {
       "tree_id": 122,
@@ -1219,7 +2389,21 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Lý + Dương Đồng",
+        "common_name": "Dương Đồng",
+        "generation_text": 2,
+        "parent_text": "Võ Thãnh + Quế Thị Thư",
+        "note": "Bà Võ Thị Lý lấy ông Dương Đồng đi bộ đội nay đã về hưu ,hành nghề Bác Sỹ tại quê .Có 6 người con : Dương Thị Lê sinh 1959; Dương Thị Linh sinh 1963; Dương Văn Minh sinh 1970; Dương Thị Thắng sinh 1976; Dương Thị Hà sinh 1979; Dương Thị Hoài sinh 1981.Các con đã thoát ly .",
+        "siblings_text": "Vỗ Thành + Quế Thị Long Võ Kính + Nguyễn Thị Liễu Võ Quý +Trần Thị Quýnh Bà Võ Thị Thanh Võ Thị Xuân + Hoàng Đình Huỳnh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 11
+      },
+      "bio": "Bà Võ Thị Lý lấy ông Dương Đồng đi bộ đội nay đã về hưu ,hành nghề Bác Sỹ tại quê .Có 6 người con : Dương Thị Lê sinh 1959; Dương Thị Linh sinh 1963; Dương Văn Minh sinh 1970; Dương Thị Thắng sinh 1976; Dương Thị Hà sinh 1979; Dương Thị Hoài sinh 1981.Các con đã thoát ly ."
     },
     {
       "tree_id": 122,
@@ -1229,7 +2413,33 @@
       "generation": 3,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Quý +Trần Thị Quýnh",
+        "common_name": "Trần Thị Quýnh (v",
+        "generation_text": 2,
+        "parent_text": "Võ Thãnh + Quế Thị Thư",
+        "note": "Ông Làm Nghề Thầy Giáo nay đã về hưu . Lấy bà Trần Thị Quýnh sinh được 4 người con : Võ Thị Hoá ; Võ Đông , Võ Phương Nam ; Võ Thị Đạt",
+        "siblings_text": "Vỗ Thành + Quế Thị Long Võ Kính + Nguyễn Thị Liễu Võ Thị Lý + Dương Đồng Bà Võ Thị Thanh Võ Thị Xuân + Hoàng Đình Huỳnh",
+        "children_names": [
+          "Võ Thị Hoá",
+          "Võ Chí Quyết (Mất )",
+          "Võ Đông + Quế Thị Bảy",
+          "Võ Phương Nam (Mất )",
+          "Võ Thị Đạt+ ...Ngọc"
+        ],
+        "children_node_ids": [
+          60,
+          78,
+          61,
+          62,
+          63
+        ],
+        "tree_id": 122,
+        "node_id": 12
+      },
+      "bio": "Ông Làm Nghề Thầy Giáo nay đã về hưu . Lấy bà Trần Thị Quýnh sinh được 4 người con : Võ Thị Hoá ; Võ Đông , Võ Phương Nam ; Võ Thị Đạt"
     },
     {
       "tree_id": 122,
@@ -1239,7 +2449,24 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/60/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Hoá",
+        "common_name": "Võ Thị Hoá",
+        "birth_text": "19/5/1969",
+        "birth_year": 1969,
+        "generation_text": 3,
+        "parent_text": "Võ Quý +Trần Thị Quýnh",
+        "note": "Võ Thị Hóa sinh năm 1969 bị bệnh lúc nhỏ tuổi và để lại dị tật không đi lại bình thường ,không theo học được vì vậy chỉ ở nhà giúp việc cho cha mẹ.",
+        "siblings_text": "Võ Chí Quyết (Mất ) Võ Đông + Quế Thị Bảy Võ Phương Nam (Mất ) Võ Thị Đạt+ ...Ngọc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 60
+      },
+      "birthYear": 1969,
+      "bio": "Võ Thị Hóa sinh năm 1969 bị bệnh lúc nhỏ tuổi và để lại dị tật không đi lại bình thường ,không theo học được vì vậy chỉ ở nhà giúp việc cho cha mẹ."
     },
     {
       "tree_id": 122,
@@ -1249,7 +2476,21 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/78/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Chí Quyết (Mất )",
+        "common_name": "Võ Chí Quyết",
+        "death_text": "(Mất lúc còn nhỏ )",
+        "generation_text": 3,
+        "parent_text": "Võ Quý +Trần Thị Quýnh",
+        "note": "",
+        "siblings_text": "Võ Thị Hoá Võ Đông + Quế Thị Bảy Võ Phương Nam (Mất ) Võ Thị Đạt+ ...Ngọc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 78
+      }
     },
     {
       "tree_id": 122,
@@ -1259,7 +2500,27 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/61/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Đông + Quế Thị Bảy",
+        "common_name": "Quê Thị Bảy",
+        "generation_text": 3,
+        "parent_text": "Võ Quý +Trần Thị Quýnh",
+        "note": "Võ Đông lấy vợ Quế Thị Bảy tại Tây Hồ -Diễn Phong - Diễn Châu - Nghệ An ;có 2 con là Võ Thị Phương sinh 1994 và Võ Sỹ Sơn sinh 1998. Võ Đông học nghề thú y làm việc tại xã và hiện nay làm Cán bộ xóm Tây Hồ .",
+        "siblings_text": "Võ Thị Hoá Võ Chí Quyết (Mất ) Võ Phương Nam (Mất ) Võ Thị Đạt+ ...Ngọc",
+        "children_names": [
+          "Võ Thị Phương",
+          "Võ Sơn"
+        ],
+        "children_node_ids": [
+          76,
+          77
+        ],
+        "tree_id": 122,
+        "node_id": 61
+      },
+      "bio": "Võ Đông lấy vợ Quế Thị Bảy tại Tây Hồ -Diễn Phong - Diễn Châu - Nghệ An ;có 2 con là Võ Thị Phương sinh 1994 và Võ Sỹ Sơn sinh 1998. Võ Đông học nghề thú y làm việc tại xã và hiện nay làm Cán bộ xóm Tây Hồ ."
     },
     {
       "tree_id": 122,
@@ -1269,7 +2530,24 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 61
+      "fid": 61,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/76/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Phương",
+        "common_name": "Võ Thị Phương",
+        "birth_text": "1974",
+        "birth_year": 1974,
+        "generation_text": 4,
+        "parent_text": "Võ Đông + Quế Thị Bảy",
+        "note": "Học Sinh",
+        "siblings_text": "Võ Sơn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 76
+      },
+      "birthYear": 1974,
+      "bio": "Học Sinh"
     },
     {
       "tree_id": 122,
@@ -1279,7 +2557,24 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 61
+      "fid": 61,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/77/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Sơn",
+        "common_name": "Võ Sơn",
+        "birth_text": "1989",
+        "birth_year": 1989,
+        "generation_text": 4,
+        "parent_text": "Võ Đông + Quế Thị Bảy",
+        "note": "Học sinh",
+        "siblings_text": "Võ Thị Phương",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 77
+      },
+      "birthYear": 1989,
+      "bio": "Học sinh"
     },
     {
       "tree_id": 122,
@@ -1289,7 +2584,28 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/62/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Phương Nam (Mất )",
+        "common_name": "Võ Phương Nam",
+        "birth_text": "19/5/1976",
+        "birth_year": 1976,
+        "death_text": "23/10/2002",
+        "death_year": 2002,
+        "burial_place": "Tây Hồ - Diễn Phong- Diễn Châu - Nghệ An",
+        "generation_text": 3,
+        "parent_text": "Võ Quý +Trần Thị Quýnh",
+        "note": "Cán bộ Công an Nhân dân thuộc lực lượng 113 công an tỉnh Nghẹ An .Mất ngày 23/10/2002 ( đi thông báo cho Đoàn viên chi đoàn sinh hoạt đoàn bị tai nạn và mất )",
+        "siblings_text": "Võ Thị Hoá Võ Chí Quyết (Mất ) Võ Đông + Quế Thị Bảy Võ Thị Đạt+ ...Ngọc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 62
+      },
+      "birthYear": 1976,
+      "deathYear": 2002,
+      "bio": "Cán bộ Công an Nhân dân thuộc lực lượng 113 công an tỉnh Nghẹ An .Mất ngày 23/10/2002 ( đi thông báo cho Đoàn viên chi đoàn sinh hoạt đoàn bị tai nạn và mất )"
     },
     {
       "tree_id": 122,
@@ -1299,7 +2615,21 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/63/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Đạt+ ...Ngọc",
+        "common_name": "Ngọc",
+        "generation_text": 3,
+        "parent_text": "Võ Quý +Trần Thị Quýnh",
+        "note": "Võ Thị Đạt là giáo viên tại Diễn Mỹ lấy chồng là Ngọc tại xã Diễn Mỹ đã có một con",
+        "siblings_text": "Võ Thị Hoá Võ Chí Quyết (Mất ) Võ Đông + Quế Thị Bảy Võ Phương Nam (Mất )",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 63
+      },
+      "bio": "Võ Thị Đạt là giáo viên tại Diễn Mỹ lấy chồng là Ngọc tại xã Diễn Mỹ đã có một con"
     },
     {
       "tree_id": 122,
@@ -1309,7 +2639,29 @@
       "generation": 3,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Bà Võ Thị Thanh",
+        "common_name": "Bà cô năm",
+        "epithet": "Bà Cô",
+        "birth_text": "1945",
+        "birth_year": 1945,
+        "death_text": "13/7/1966",
+        "death_year": 1966,
+        "burial_place": "NT cồn Nghè Tây Hồ - Diễn Phong- Diễn Châu - NA",
+        "generation_text": 2,
+        "parent_text": "Võ Thãnh + Quế Thị Thư",
+        "note": "Bà cô năm đã chết trên đường đi học bị máy bay bắn Rockét chết tại dốc Bò Lăn - Thanh Hoá . Đến năm 1993 con cháu mới tìm mang hài cốt về tại nghĩa trang quê nhà .",
+        "siblings_text": "Vỗ Thành + Quế Thị Long Võ Kính + Nguyễn Thị Liễu Võ Thị Lý + Dương Đồng Võ Quý +Trần Thị Quýnh Võ Thị Xuân + Hoàng Đình Huỳnh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 13
+      },
+      "birthYear": 1945,
+      "deathYear": 1966,
+      "bio": "Bà cô năm đã chết trên đường đi học bị máy bay bắn Rockét chết tại dốc Bò Lăn - Thanh Hoá . Đến năm 1993 con cháu mới tìm mang hài cốt về tại nghĩa trang quê nhà ."
     },
     {
       "tree_id": 122,
@@ -1319,7 +2671,21 @@
       "generation": 3,
       "order_in_generation": 6,
       "gender": "female",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Xuân + Hoàng Đình Huỳnh",
+        "common_name": "Hoàng Đình Huỳnh",
+        "generation_text": 2,
+        "parent_text": "Võ Thãnh + Quế Thị Thư",
+        "note": "Bà làm nghề xét nghiệm ( Huyết học ) . Bà lấy ông Hoàng Đình Huỳnh quê ở thanh Chương sinh được hai con : Hoàng Thị Tâm -1978; Hoàng Đình Tùng - 1979.Hai con nay đã thoát ly.",
+        "siblings_text": "Vỗ Thành + Quế Thị Long Võ Kính + Nguyễn Thị Liễu Võ Thị Lý + Dương Đồng Võ Quý +Trần Thị Quýnh Bà Võ Thị Thanh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 14
+      },
+      "bio": "Bà làm nghề xét nghiệm ( Huyết học ) . Bà lấy ông Hoàng Đình Huỳnh quê ở thanh Chương sinh được hai con : Hoàng Thị Tâm -1978; Hoàng Đình Tùng - 1979.Hai con nay đã thoát ly."
     },
     {
       "tree_id": 122,
@@ -1329,7 +2695,21 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/122/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Võ Thị Diễn + Dương Dinh",
+        "common_name": "Dương Dinh",
+        "generation_text": 1,
+        "parent_text": "Ông cố Võ Đào + Bà cố Quế Thị Thưởng",
+        "note": "Bà Võ Thị Diễn lấy ông Dương Dinh sinh được Bà Dịnh (lấy chỗng xã Diễn Hoàng sinh được 2 con là Hoàng Huy và Hoàng Huê )và Ông Dương Mỳ ( Ông Dương Mỳ lấy bà Trần Thị Truật sinh được 6 con :Dương Nhu; Dương Thị Nha ;Dương Ba ; Dương Bốn ; Dương Thị Năm; Dương Thị Sáu; Dương Thị Bảy; Dương Thị Tám.)",
+        "siblings_text": "Ông Võ Khuê + Bà Bùi Thị Khuyên Võ Thãnh + Quế Thị Thư",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 122,
+        "node_id": 4
+      },
+      "bio": "Bà Võ Thị Diễn lấy ông Dương Dinh sinh được Bà Dịnh (lấy chỗng xã Diễn Hoàng sinh được 2 con là Hoàng Huy và Hoàng Huê )và Ông Dương Mỳ ( Ông Dương Mỳ lấy bà Trần Thị Truật sinh được 6 con :Dương Nhu; Dương Thị Nha ;Dương Ba ; Dương Bốn ; Dương Thị Năm; Dương Thị Sáu; Dương Thị Bảy; Dương Thị Tám.)"
     }
   ]
 }

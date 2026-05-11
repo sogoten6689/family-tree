@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/115/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Trần",
   "node_count": 15,
+  "detail_fetched_count": 15,
   "relationship_count": 14,
   "relationships": [
     {
@@ -127,7 +129,33 @@
       "name": "Trần Văn Hưng-Nguyễn Thu Hồng",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Văn Hưng",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Trần Hữu Thời",
+          "Trần Thị Ngọc Lang",
+          "Trần Thị Thanh Thủy",
+          "Trần Vĩnh Thuận",
+          "Trần Hiếu Thảo",
+          "Trần Vĩnh Thành"
+        ],
+        "children_node_ids": [
+          2,
+          4,
+          7,
+          10,
+          12,
+          15
+        ],
+        "tree_id": 115,
+        "node_id": 1
+      }
     },
     {
       "tree_id": 115,
@@ -137,7 +165,23 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Hữu Thời",
+        "generation_text": 1,
+        "parent_text": "Trần Văn Hưng",
+        "note": "",
+        "siblings_text": "Trần Thị Ngọc Lang Trần Thị Thanh Thủy Trần Vĩnh Thuận Trần Hiếu Thảo Trần Vĩnh Thành",
+        "children_names": [
+          "Trần Hữu Thái"
+        ],
+        "children_node_ids": [
+          3
+        ],
+        "tree_id": 115,
+        "node_id": 2
+      }
     },
     {
       "tree_id": 115,
@@ -147,7 +191,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Hữu Thái",
+        "generation_text": 2,
+        "parent_text": "Trần Hữu Thời",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 3
+      }
     },
     {
       "tree_id": 115,
@@ -157,7 +213,25 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Thị Ngọc Lang",
+        "generation_text": 1,
+        "parent_text": "Trần Văn Hưng",
+        "note": "",
+        "siblings_text": "Trần Hữu Thời Trần Thị Thanh Thủy Trần Vĩnh Thuận Trần Hiếu Thảo Trần Vĩnh Thành",
+        "children_names": [
+          "Lê Thị Thu Trang",
+          "Lê Thị Thanh Trúc"
+        ],
+        "children_node_ids": [
+          5,
+          6
+        ],
+        "tree_id": 115,
+        "node_id": 4
+      }
     },
     {
       "tree_id": 115,
@@ -167,7 +241,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Lê Thị Thu Trang",
+        "generation_text": 2,
+        "parent_text": "Lê Xuân Nho",
+        "note": "",
+        "siblings_text": "Lê Thị Thanh Trúc",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 5
+      }
     },
     {
       "tree_id": 115,
@@ -177,7 +263,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "female",
-      "mid": 4
+      "mid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Lê Thị Thanh Trúc",
+        "generation_text": 2,
+        "parent_text": "Lê Xuân Nho",
+        "note": "",
+        "siblings_text": "Lê Thị Thu Trang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 6
+      }
     },
     {
       "tree_id": 115,
@@ -187,7 +285,25 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Thị Thanh Thủy",
+        "generation_text": 1,
+        "parent_text": "Trần Văn Hưng",
+        "note": "",
+        "siblings_text": "Trần Hữu Thời Trần Thị Ngọc Lang Trần Vĩnh Thuận Trần Hiếu Thảo Trần Vĩnh Thành",
+        "children_names": [
+          "Phạm Thị Tường Vân",
+          "Phạm Anh Tuấn"
+        ],
+        "children_node_ids": [
+          8,
+          9
+        ],
+        "tree_id": 115,
+        "node_id": 7
+      }
     },
     {
       "tree_id": 115,
@@ -197,7 +313,20 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "female",
-      "mid": 7
+      "mid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm Thị Tường Vân",
+        "generation_text": 2,
+        "parent_text": "Phạm Ngọc Anh",
+        "note": "San Jose, California",
+        "siblings_text": "Phạm Anh Tuấn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 8
+      },
+      "bio": "San Jose, California"
     },
     {
       "tree_id": 115,
@@ -207,7 +336,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "mid": 7
+      "mid": 7,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phạm Anh Tuấn",
+        "generation_text": 2,
+        "parent_text": "Phạm Ngọc Anh",
+        "note": "",
+        "siblings_text": "Phạm Thị Tường Vân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 9
+      }
     },
     {
       "tree_id": 115,
@@ -217,7 +358,24 @@
       "generation": 2,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Vĩnh Thuận",
+        "common_name": "Mai",
+        "generation_text": 1,
+        "parent_text": "Trần Văn Hưng",
+        "note": "",
+        "siblings_text": "Trần Hữu Thời Trần Thị Ngọc Lang Trần Thị Thanh Thủy Trần Hiếu Thảo Trần Vĩnh Thành",
+        "children_names": [
+          "Trần Ana"
+        ],
+        "children_node_ids": [
+          11
+        ],
+        "tree_id": 115,
+        "node_id": 10
+      }
     },
     {
       "tree_id": 115,
@@ -227,7 +385,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Ana",
+        "generation_text": 2,
+        "parent_text": "Trần Vĩnh Thuận",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 11
+      }
     },
     {
       "tree_id": 115,
@@ -237,7 +407,25 @@
       "generation": 2,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Hiếu Thảo",
+        "generation_text": 1,
+        "parent_text": "Trần Văn Hưng",
+        "note": "",
+        "siblings_text": "Trần Hữu Thời Trần Thị Ngọc Lang Trần Thị Thanh Thủy Trần Vĩnh Thuận Trần Vĩnh Thành",
+        "children_names": [
+          "Trần Hiếu Trung",
+          "Trần Thị Mỹ Hạnh"
+        ],
+        "children_node_ids": [
+          13,
+          14
+        ],
+        "tree_id": 115,
+        "node_id": 12
+      }
     },
     {
       "tree_id": 115,
@@ -247,7 +435,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Hiếu Trung",
+        "generation_text": 2,
+        "parent_text": "Trần Hiếu Thảo",
+        "note": "",
+        "siblings_text": "Trần Thị Mỹ Hạnh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 13
+      }
     },
     {
       "tree_id": 115,
@@ -257,7 +457,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 12
+      "fid": 12,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Thị Mỹ Hạnh",
+        "generation_text": 2,
+        "parent_text": "Trần Hiếu Thảo",
+        "note": "",
+        "siblings_text": "Trần Hiếu Trung",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 14
+      }
     },
     {
       "tree_id": 115,
@@ -267,7 +479,19 @@
       "generation": 2,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/115/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Trần Vĩnh Thành",
+        "generation_text": 1,
+        "parent_text": "Trần Văn Hưng",
+        "note": "",
+        "siblings_text": "Trần Hữu Thời Trần Thị Ngọc Lang Trần Thị Thanh Thủy Trần Vĩnh Thuận Trần Hiếu Thảo",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 115,
+        "node_id": 15
+      }
     }
   ]
 }

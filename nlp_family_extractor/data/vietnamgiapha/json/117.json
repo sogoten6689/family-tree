@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/117/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Phạm",
   "node_count": 15,
+  "detail_fetched_count": 15,
   "relationship_count": 14,
   "relationships": [
     {
@@ -127,7 +129,31 @@
       "name": "PHẠM VĂN HÀO",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN HÀO",
+        "common_name": "Hương Thân Hào",
+        "death_text": "chết bão năm Thìn 190",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "PHẠM VĂN HIẾN",
+          "PHẠM VĂN LÂU",
+          "PHẠM THỊ VÂN",
+          "phạm Đăng KHOa"
+        ],
+        "children_node_ids": [
+          2,
+          3,
+          16,
+          17
+        ],
+        "tree_id": 117,
+        "node_id": 1
+      }
     },
     {
       "tree_id": 117,
@@ -137,7 +163,27 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN HIẾN",
+        "generation_text": 1,
+        "parent_text": "PHẠM VĂN HÀO",
+        "note": "",
+        "siblings_text": "PHẠM VĂN LÂU PHẠM THỊ VÂN phạm Đăng KHOa",
+        "children_names": [
+          "PHẠM VĂN THỬ",
+          "PHẠM VĂN THOẠI",
+          "PHẠM VĂN HOÀI"
+        ],
+        "children_node_ids": [
+          7,
+          8,
+          9
+        ],
+        "tree_id": 117,
+        "node_id": 2
+      }
     },
     {
       "tree_id": 117,
@@ -147,7 +193,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN THỬ",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN HIẾN",
+        "note": "",
+        "siblings_text": "PHẠM VĂN THOẠI PHẠM VĂN HOÀI",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 7
+      }
     },
     {
       "tree_id": 117,
@@ -157,7 +215,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN THOẠI",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN HIẾN",
+        "note": "",
+        "siblings_text": "PHẠM VĂN THỬ PHẠM VĂN HOÀI",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 8
+      }
     },
     {
       "tree_id": 117,
@@ -167,7 +237,19 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 2
+      "fid": 2,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN HOÀI",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN HIẾN",
+        "note": "",
+        "siblings_text": "PHẠM VĂN THỬ PHẠM VĂN THOẠI",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 9
+      }
     },
     {
       "tree_id": 117,
@@ -177,7 +259,36 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN LÂU",
+        "generation_text": 1,
+        "parent_text": "PHẠM VĂN HÀO",
+        "note": "có vợ là NGUYỄN THỊ SỬU",
+        "siblings_text": "PHẠM VĂN HIẾN PHẠM THỊ VÂN phạm Đăng KHOa",
+        "children_names": [
+          "PHẠM THỊ PHÁN",
+          "PHẠM VĂN HUẤN",
+          "PHẠM THỊ GIÁO",
+          "PHẠM VĂN HÓA",
+          "PHẠM VĂN THI",
+          "PHẠM VĂN CỬ",
+          "PHẠM VĂN DỰ"
+        ],
+        "children_node_ids": [
+          4,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "tree_id": 117,
+        "node_id": 3
+      },
+      "bio": "có vợ là NGUYỄN THỊ SỬU"
     },
     {
       "tree_id": 117,
@@ -187,7 +298,19 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM THỊ PHÁN",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM VĂN HUẤN PHẠM THỊ GIÁO PHẠM VĂN HÓA PHẠM VĂN THI PHẠM VĂN CỬ PHẠM VĂN DỰ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 4
+      }
     },
     {
       "tree_id": 117,
@@ -197,7 +320,19 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN HUẤN",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM THỊ PHÁN PHẠM THỊ GIÁO PHẠM VĂN HÓA PHẠM VĂN THI PHẠM VĂN CỬ PHẠM VĂN DỰ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 10
+      }
     },
     {
       "tree_id": 117,
@@ -207,7 +342,19 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM THỊ GIÁO",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM THỊ PHÁN PHẠM VĂN HUẤN PHẠM VĂN HÓA PHẠM VĂN THI PHẠM VĂN CỬ PHẠM VĂN DỰ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 11
+      }
     },
     {
       "tree_id": 117,
@@ -217,7 +364,19 @@
       "generation": 3,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN HÓA",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM THỊ PHÁN PHẠM VĂN HUẤN PHẠM THỊ GIÁO PHẠM VĂN THI PHẠM VĂN CỬ PHẠM VĂN DỰ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 12
+      }
     },
     {
       "tree_id": 117,
@@ -227,7 +386,19 @@
       "generation": 3,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN THI",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM THỊ PHÁN PHẠM VĂN HUẤN PHẠM THỊ GIÁO PHẠM VĂN HÓA PHẠM VĂN CỬ PHẠM VĂN DỰ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 13
+      }
     },
     {
       "tree_id": 117,
@@ -237,7 +408,19 @@
       "generation": 3,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN CỬ",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM THỊ PHÁN PHẠM VĂN HUẤN PHẠM THỊ GIÁO PHẠM VĂN HÓA PHẠM VĂN THI PHẠM VĂN DỰ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 14
+      }
     },
     {
       "tree_id": 117,
@@ -247,7 +430,19 @@
       "generation": 3,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM VĂN DỰ",
+        "generation_text": 2,
+        "parent_text": "PHẠM VĂN LÂU",
+        "note": "",
+        "siblings_text": "PHẠM THỊ PHÁN PHẠM VĂN HUẤN PHẠM THỊ GIÁO PHẠM VĂN HÓA PHẠM VĂN THI PHẠM VĂN CỬ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 15
+      }
     },
     {
       "tree_id": 117,
@@ -257,7 +452,19 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: PHẠM THỊ VÂN",
+        "generation_text": 1,
+        "parent_text": "PHẠM VĂN HÀO",
+        "note": "",
+        "siblings_text": "PHẠM VĂN HIẾN PHẠM VĂN LÂU phạm Đăng KHOa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 16
+      }
     },
     {
       "tree_id": 117,
@@ -267,7 +474,19 @@
       "generation": 2,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/117/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: phạm Đăng KHOa",
+        "generation_text": 1,
+        "parent_text": "PHẠM VĂN HÀO",
+        "note": "",
+        "siblings_text": "PHẠM VĂN HIẾN PHẠM VĂN LÂU PHẠM THỊ VÂN",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 117,
+        "node_id": 17
+      }
     }
   ]
 }

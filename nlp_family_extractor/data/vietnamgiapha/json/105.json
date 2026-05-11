@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/105/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "VŨ",
   "node_count": 30,
+  "detail_fetched_count": 30,
   "relationship_count": 29,
   "relationships": [
     {
@@ -247,7 +249,31 @@
       "name": "1.1",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet:",
+        "birth_text": "không rõ",
+        "death_text": "Tháng 5-1945 (8-3 Ất DN",
+        "death_year": 1945,
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Ông Thông",
+          "Maria Vũ Thị Sáng",
+          "Giuse Vũ Bình Huyên"
+        ],
+        "children_node_ids": [
+          7,
+          8,
+          16
+        ],
+        "tree_id": 105,
+        "node_id": 1
+      },
+      "deathYear": 1945
     },
     {
       "tree_id": 105,
@@ -257,7 +283,20 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Ông Thông",
+        "generation_text": 1,
+        "parent_text": "",
+        "note": "Bà Thông có con là: 1. Ông Minh thường gọi là Kính. Ông Kính đang sống tại Tóc Tiên, Đại Tòng Lâm, Bà Rịa Vũng Tàu. 2. Bà Nguyệt chồng là Phan đang sống tại Bảo Lộc, Lâm Đồng.",
+        "siblings_text": "Maria Vũ Thị Sáng Giuse Vũ Bình Huyên",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 7
+      },
+      "bio": "Bà Thông có con là: 1. Ông Minh thường gọi là Kính. Ông Kính đang sống tại Tóc Tiên, Đại Tòng Lâm, Bà Rịa Vũng Tàu. 2. Bà Nguyệt chồng là Phan đang sống tại Bảo Lộc, Lâm Đồng."
     },
     {
       "tree_id": 105,
@@ -267,7 +306,27 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Thị Sáng",
+        "birth_text": "1900",
+        "birth_year": 1900,
+        "death_text": "17-8-1963",
+        "death_year": 1963,
+        "burial_place": "Ấp G2 (Kênh G Cái Sắn), Tổ 1, Xã Thạch An, Huyện Thốt Nốt, Tỉnh Cần Thơ",
+        "generation_text": 1,
+        "parent_text": "",
+        "note": "Chồng bà Sáng là Antôn Trần văn Phúc sinh năm 1900 và mất ngày 17-8-1963 Mộ táng cùng với bà Sáng ở trên Có các con: 1. Bà Maria Trần thị Nguyệt sinh năm 1932 (Chồng tên là Nhật) có 10 con hiện đang sống tại Khu phố 2 Phường Long Bình, Biên Hòa, Tỉnh Đồng Nai. 2. Bà Maria Trần thị Tho sinh năm 1938 (Chồng tên là Duyên)Bà Duyên có 10 con hiện đang sống tại Phường Long Bình, Biên Hòa, Tỉnh Đồng Nai. 3. Bà Trần thị Chiên sinh năm 1943 (Chồng tên là Tường) có 9 con đang sống tại Kênh H, Cái Sắn, Thạch An, Thốt Nốt, Cần Thơ. 4. Ông Trần văn Khoan (Vợ tên là Hời) có 7 con đang sống tại Kêng G, Cái Sắn, Thạch An, Thốt Nốt, Cần Thơ (Con đầu là Tuyến thường gọi là Tuấn, con nhì là Tuyên thường gọi là Toàn), Con kế tiếp tên là Xiêm, Xuyến, Lịch……..",
+        "siblings_text": "Ông Thông Giuse Vũ Bình Huyên",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 8
+      },
+      "birthYear": 1900,
+      "deathYear": 1963,
+      "bio": "Chồng bà Sáng là Antôn Trần văn Phúc sinh năm 1900 và mất ngày 17-8-1963 Mộ táng cùng với bà Sáng ở trên Có các con: 1. Bà Maria Trần thị Nguyệt sinh năm 1932 (Chồng tên là Nhật) có 10 con hiện đang sống tại Khu phố 2 Phường Long Bình, Biên Hòa, Tỉnh Đồng Nai. 2. Bà Maria Trần thị Tho sinh năm 1938 (Chồng tên là Duyên)Bà Duyên có 10 con hiện đang sống tại Phường Long Bình, Biên Hòa, Tỉnh Đồng Nai. 3. Bà Trần thị Chiên sinh năm 1943 (Chồng tên là Tường) có 9 con đang sống tại Kênh H, Cái Sắn, Thạch An, Thốt Nốt, Cần Thơ. 4. Ông Trần văn Khoan (Vợ tên là Hời) có 7 con đang sống tại Kêng G, Cái Sắn, Thạch An, Thốt Nốt, Cần Thơ (Con đầu là Tuyến thường gọi là Tuấn, con nhì là Tuyên thường gọi là Toàn), Con kế tiếp tên là Xiêm, Xuyến, Lịch…….."
     },
     {
       "tree_id": 105,
@@ -277,7 +336,45 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Giuse Vũ Bình Huyên",
+        "birth_text": "01/01/1925",
+        "birth_year": 1925,
+        "death_text": "28/08/2001 (10-7 Tân Tỵ)",
+        "death_year": 2001,
+        "burial_place": "Nghĩa trang giáo xứ Bình Đức, Xã Bình Đức, Huyện Châu Thành, Tỉnh Tiền Giang",
+        "generation_text": 1,
+        "parent_text": "",
+        "note": "Ông Huyên sinh tại Làng Nho Lâm, Tổng Bồng Hải, Huyện Yên Khánh, Tỉnh Ninh Bình. (Thuộc giáo xứ Kim Sơn) Đã từng làm thầy giáo tại giáo họ Phụng Công thuộc giáo xứ Kim Sơn, Huyện Yên Khánh, Tỉnh Ninh Bình. Trước đây được mộ táng tại chân núi Sơn Trà, Quận Sơn Trà, TP. Đà Nẵng. Hiện nay đã được cải táng, và hài cốt được đem về Giáo xứ Thanh Bình. Đà Nẵng. Ông có vợ là bà Anna Phạm thị Hường sinh ngày 1-1-1925 Tại Nho Lâm Yên Khánh Ninh Bình. Mất ngày 28-08-2001 (10-7 Tân Tỵ) Tại Bình Đức Tiền Giang. Mộ táng của bà cũng tại Nghĩa trang Giáo xứ Tín Đức xã Bình Đức huyện Châu Thành Tỉnh Tiền Giang Về già bị lãng tai. Chết vì già yếu. Bà là con của Ông bà : -Con Ông Phêrô Phạm Văn Mùi, Ngày giỗ 15-6-1945 (Ất Dậu), Nho Lâm, Yên Khánh, Ninh Bình. - Và Bà Anna Phạm Thị Thơm, Ngày giỗ 28-3-1945 (Ất Dậu) Gia đình họ PHẠM gồm: Ông Phạm Tá sinh ông Phêrô Phạm Văn Mùi, ông Mùi sinh 7 người con: 1. Bà Răm chồng là Nguộc: có con là Bà Thơm chồng là Tỵ, Ông Tắc, Ông Học (có con đang sống tại TP.HCM), Ông Thành (sống tại Cần Thơ), Ông Phi (sống tại họ Tín Thuận giáo xứ Kim Sơn) 2. Ông Phàn 3. Ông Phạm Văn Lại đã chết khoảng 1997 tại Ninh Bình (Địa chỉ trước đây là đội 5 HTX Kim Liên, xã Kim Tân, Huyện Kim Sơn, Ninh Bình) có một số con đang sống tại Cồn Thoi, Ninh Bình. 4. Ông Phêrô Phạm Thường đã chết khoảng 1995 tại Bình Đức, Tiền Giang. Khi còn trai trẻ lấy vợ và bà vợ đã có 2 con riêng là Ông Ngọ và Bà Phụng. Ông Thường và vợ có hai con chung là Bà Kiểm (tên chồng) và Bà Công (tên chồng) đang sinh sống tại Bình Đức, Tiền Giang. Vợ Ông Thường đã chết khoảng 1998 tại Bình Đức, 5. Bà Phạm ….Ri đã chết năm đói khoảng năm 1943 (Có chồng tên là Kính) có con là Bà Chuộng hiện đang sống ở Thanh Hoá (Sau khi bà Ri chết, Ông Kính lấy vợ khác và bà vợ này đã đem Bà Chuộng bỏ rơi ngày chợ, được một gia đình ở Thanh Hóa là Ông bà ….. đem về nuôi và gả chồng cho Bà, chồng bà là Ông Mai văn Uy, Bà đã được rửa tội theo nghi thức Công Giáo, nhưng về sống trong gia đình Ngoại giáo nên hiện không còn giữ đạo. Tất cả đều sinh sống tại Huyện Nga Sơn. Thanh Hóa. 6. Bà Phạm Thị Hường 7. Bà Maria Phạm thị Hãy (tự là Háy Bé) sinh năm 1927 chồng là Ông Phêrô Lê Thái Bảo đã chết năm 2002. Bà còn sống tại Xã Bình Đức, Huyện Châu Thành, Tỉnh Tiền Giang có con gồm: Bà Đào chồng là Hóa, Ông Hòa (sống tại Mỹ), Bà Liễu chồng là Phong, Bà Mận chồng là Đạt, Ông Hợp vợ là Thủy, Ông Cường vợ là Anh, Bà Mơ chồng là Hoàng.",
+        "siblings_text": "Ông Thông Maria Vũ Thị Sáng",
+        "children_names": [
+          "Maria Vũ Thị Hương",
+          "Giuse Vũ Minh Hiếu",
+          "Maria Vũ Thị Nhiệm",
+          "Phêrô Vũ Mạnh Cường",
+          "Lucia Vũ Thị Kim Liên",
+          "Phêrô Vũ Duy Sơn",
+          "Gioan Vũ Đăng Hải",
+          "Phêrô Vũ minh Toàn"
+        ],
+        "children_node_ids": [
+          17,
+          18,
+          25,
+          26,
+          27,
+          28,
+          29,
+          42
+        ],
+        "tree_id": 105,
+        "node_id": 16
+      },
+      "birthYear": 1925,
+      "deathYear": 2001,
+      "bio": "Ông Huyên sinh tại Làng Nho Lâm, Tổng Bồng Hải, Huyện Yên Khánh, Tỉnh Ninh Bình. (Thuộc giáo xứ Kim Sơn) Đã từng làm thầy giáo tại giáo họ Phụng Công thuộc giáo xứ Kim Sơn, Huyện Yên Khánh, Tỉnh Ninh Bình. Trước đây được mộ táng tại chân núi Sơn Trà, Quận Sơn Trà, TP. Đà Nẵng. Hiện nay đã được cải táng, và hài cốt được đem về Giáo xứ Thanh Bình. Đà Nẵng. Ông có vợ là bà Anna Phạm thị Hường sinh ngày 1-1-1925 Tại Nho Lâm Yên Khánh Ninh Bình. Mất ngày 28-08-2001 (10-7 Tân Tỵ) Tại Bình Đức Tiền Giang. Mộ táng của bà cũng tại Nghĩa trang Giáo xứ Tín Đức xã Bình Đức huyện Châu Thành Tỉnh Tiền Giang Về già bị lãng tai. Chết vì già yếu. Bà là con của Ông bà : -Con Ông Phêrô Phạm Văn Mùi, Ngày giỗ 15-6-1945 (Ất Dậu), Nho Lâm, Yên Khánh, Ninh Bình. - Và Bà Anna Phạm Thị Thơm, Ngày giỗ 28-3-1945 (Ất Dậu) Gia đình họ PHẠM gồm: Ông Phạm Tá sinh ông Phêrô Phạm Văn Mùi, ông Mùi sinh 7 người con: 1. Bà Răm chồng là Nguộc: có con là Bà Thơm chồng là Tỵ, Ông Tắc, Ông Học (có con đang sống tại TP.HCM), Ông Thành (sống tại Cần Thơ), Ông Phi (sống tại họ Tín Thuận giáo xứ Kim Sơn) 2. Ông Phàn 3. Ông Phạm Văn Lại đã chết khoảng 1997 tại Ninh Bình (Địa chỉ trước đây là đội 5 HTX Kim Liên, xã Kim Tân, Huyện Kim Sơn, Ninh Bình) có một số con đang sống tại Cồn Thoi, Ninh Bình. 4. Ông Phêrô Phạm Thường đã chết khoảng 1995 tại Bình Đức, Tiền Giang. Khi còn trai trẻ lấy vợ và bà vợ đã có 2 con riêng là Ông Ngọ và Bà Phụng. Ông Thường và vợ có hai con chung là Bà Kiểm (tên chồng) và Bà Công (tên chồng) đang sinh sống tại Bình Đức, Tiền Giang. Vợ Ông Thường đã chết khoảng 1998 tại Bình Đức, 5. Bà Phạm ….Ri đã chết năm đói khoảng năm 1943 (Có chồng tên là Kính) có con là Bà Chuộng hiện đang sống ở Thanh Hoá (Sau khi bà Ri chết, Ông Kính lấy vợ khác và bà vợ này đã đem Bà Chuộng bỏ rơi ngày chợ, được một gia đình ở Thanh Hóa là Ông bà ….. đem về nuôi và gả chồng cho Bà, chồng bà là Ông Mai văn Uy, Bà đã được rửa tội theo nghi thức Công Giáo, nhưng về sống trong gia đình Ngoại giáo nên hiện không còn giữ đạo. Tất cả đều sinh sống tại Huyện Nga Sơn. Thanh Hóa. 6. Bà Phạm Thị Hường 7. Bà Maria Phạm thị Hãy (tự là Háy Bé) sinh năm 1927 chồng là Ông Phêrô Lê Thái Bảo đã chết năm 2002. Bà còn sống tại Xã Bình Đức, Huyện Châu Thành, Tỉnh Tiền Giang có con gồm: Bà Đào chồng là Hóa, Ông Hòa (sống tại Mỹ), Bà Liễu chồng là Phong, Bà Mận chồng là Đạt, Ông Hợp vợ là Thủy, Ông Cường vợ là Anh, Bà Mơ chồng là Hoàng."
     },
     {
       "tree_id": 105,
@@ -287,7 +384,23 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Thị Hương",
+        "birth_text": "1-2-1948",
+        "birth_year": 1948,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "40/2 Nguyễn Trường Tộ, Phường 17, Quận Tân Bình, Nay đổi lại địa chỉ mới số 13 (?) Nguyễn trường Tộ, Phường Tân Thành, Quận Bình Tân, TP. Hồ Chí Minh. Gồm 5 con: 1. Giuse Ngô Văn Minh, sinh ngày 10-6-1967 Có vợ là Têrêxa Đinh thị Sót sinh ngày 01-01-1961, Có hai con con đầu đã chết, Con thứ hai tên là Têrêxa Ngô thị Hồng Hạnh. 2. Gioan Baotixita Ngô Quốc Hùng, sinh năm 1968. Đã lập gia đình 4-2008 3. Têrêxa Ngô thị Kiều Trinh, sinh năm 1970. 4. Giuse Ngô Quốc Khánh, sinh năm 1973. Đã lập gia đình 5. Têrêxa Ngô thị Kiều Oanh, sinh năm 1983. Đã xuất ngoại lấy chồng Việt kiều Mỹ.",
+        "siblings_text": "Giuse Vũ Minh Hiếu Maria Vũ Thị Nhiệm Phêrô Vũ Mạnh Cường Lucia Vũ Thị Kim Liên Phêrô Vũ Duy Sơn Gioan Vũ Đăng Hải Phêrô Vũ minh Toàn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 17
+      },
+      "birthYear": 1948,
+      "bio": "40/2 Nguyễn Trường Tộ, Phường 17, Quận Tân Bình, Nay đổi lại địa chỉ mới số 13 (?) Nguyễn trường Tộ, Phường Tân Thành, Quận Bình Tân, TP. Hồ Chí Minh. Gồm 5 con: 1. Giuse Ngô Văn Minh, sinh ngày 10-6-1967 Có vợ là Têrêxa Đinh thị Sót sinh ngày 01-01-1961, Có hai con con đầu đã chết, Con thứ hai tên là Têrêxa Ngô thị Hồng Hạnh. 2. Gioan Baotixita Ngô Quốc Hùng, sinh năm 1968. Đã lập gia đình 4-2008 3. Têrêxa Ngô thị Kiều Trinh, sinh năm 1970. 4. Giuse Ngô Quốc Khánh, sinh năm 1973. Đã lập gia đình 5. Têrêxa Ngô thị Kiều Oanh, sinh năm 1983. Đã xuất ngoại lấy chồng Việt kiều Mỹ."
     },
     {
       "tree_id": 105,
@@ -297,7 +410,36 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Giuse Vũ Minh Hiếu",
+        "common_name": "Sanh",
+        "birth_text": "02/05/1953",
+        "birth_year": 1953,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "449 Ông Ích Khiêm, Quận Hải Châu, TP. Đà Nẵng. Có các con: 4.1-Giuse Vũ Hà Minh Thảo, Ngày sinh 01-01-1973 Vợ Tống thị Mai Trâm 4.2-Phêrô Vũ Hà Tuấn Anh, Ngày sinh 28-05-1974, vợ Têrêsa Hoàng Thị Hồng Vân, có con là Phaolô Vũ Hoàng Minh Anh. 4.3-Têrêsa Vũ Hà Kim Thi, Ngày sinh 01-8-1977, chồng Phêrô Nguyễn Toàn, Ngày sinh 22-4-1977, con Phêrô Nguyễn Trí (cu King) ngày sinh 31-7-2001 4.4-Maria Vũ Hà Kim Phượng, Ngày sinh 01-9-1979 4.5-Martinô Vũ Hà Minh Thắng, Ngày sinh 09-11-1985",
+        "siblings_text": "Maria Vũ Thị Hương Maria Vũ Thị Nhiệm Phêrô Vũ Mạnh Cường Lucia Vũ Thị Kim Liên Phêrô Vũ Duy Sơn Gioan Vũ Đăng Hải Phêrô Vũ minh Toàn",
+        "children_names": [
+          "Giuse Vũ Hà Minh Thảo",
+          "Phêrô Vũ Hà Tuấn Anh",
+          "Têrêsa Vũ Hà Kim Thi",
+          "Maria Vũ Hà Kim Phượng",
+          "Martinô Vũ Hà Minh Thắng"
+        ],
+        "children_node_ids": [
+          19,
+          20,
+          22,
+          24,
+          40
+        ],
+        "tree_id": 105,
+        "node_id": 18
+      },
+      "birthYear": 1953,
+      "bio": "449 Ông Ích Khiêm, Quận Hải Châu, TP. Đà Nẵng. Có các con: 4.1-Giuse Vũ Hà Minh Thảo, Ngày sinh 01-01-1973 Vợ Tống thị Mai Trâm 4.2-Phêrô Vũ Hà Tuấn Anh, Ngày sinh 28-05-1974, vợ Têrêsa Hoàng Thị Hồng Vân, có con là Phaolô Vũ Hoàng Minh Anh. 4.3-Têrêsa Vũ Hà Kim Thi, Ngày sinh 01-8-1977, chồng Phêrô Nguyễn Toàn, Ngày sinh 22-4-1977, con Phêrô Nguyễn Trí (cu King) ngày sinh 31-7-2001 4.4-Maria Vũ Hà Kim Phượng, Ngày sinh 01-9-1979 4.5-Martinô Vũ Hà Minh Thắng, Ngày sinh 09-11-1985"
     },
     {
       "tree_id": 105,
@@ -307,7 +449,26 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Tống thị Mai Trâm",
+        "birth_text": "01/01/1973",
+        "birth_year": 1973,
+        "generation_text": 3,
+        "parent_text": "Giuse Vũ Minh Hiếu",
+        "note": "",
+        "siblings_text": "Phêrô Vũ Hà Tuấn Anh Têrêsa Vũ Hà Kim Thi Maria Vũ Hà Kim Phượng Martinô Vũ Hà Minh Thắng",
+        "children_names": [
+          "Vũ Tống Maya"
+        ],
+        "children_node_ids": [
+          46
+        ],
+        "tree_id": 105,
+        "node_id": 19
+      },
+      "birthYear": 1973
     },
     {
       "tree_id": 105,
@@ -317,7 +478,23 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 19
+      "fid": 19,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/46/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Tống Maya",
+        "common_name": "Mai (Tên Việt Nam)",
+        "birth_text": "14 giờ 10 Ngày 27-5-2008 (",
+        "birth_year": 2008,
+        "generation_text": 4,
+        "parent_text": "Giuse Vũ Hà Minh Thảo",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 46
+      },
+      "birthYear": 2008
     },
     {
       "tree_id": 105,
@@ -327,7 +504,29 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phêrô Vũ Hà Tuấn Anh",
+        "birth_text": "01/10/1974",
+        "birth_year": 1974,
+        "generation_text": 3,
+        "parent_text": "Giuse Vũ Minh Hiếu",
+        "note": "Vợ Têrêxa Hoàng thị Hồng Vân, sinh ngày 28-5-1974 Con trưởng của Ông Hoàng Thành. Theo đạo Công giáo khi lấy chồng. Hiện nay có 2 con : Con Trai Phaolo Vũ Hoàng Minh Anh, Con gái Vũ Hoàng Quỳnh Anh.",
+        "siblings_text": "Giuse Vũ Hà Minh Thảo Têrêsa Vũ Hà Kim Thi Maria Vũ Hà Kim Phượng Martinô Vũ Hà Minh Thắng",
+        "children_names": [
+          "Maria Vũ Hoàng Quỳnh Anh",
+          "Phaolô Vũ Hoàng Minh Anh"
+        ],
+        "children_node_ids": [
+          45,
+          21
+        ],
+        "tree_id": 105,
+        "node_id": 20
+      },
+      "birthYear": 1974,
+      "bio": "Vợ Têrêxa Hoàng thị Hồng Vân, sinh ngày 28-5-1974 Con trưởng của Ông Hoàng Thành. Theo đạo Công giáo khi lấy chồng. Hiện nay có 2 con : Con Trai Phaolo Vũ Hoàng Minh Anh, Con gái Vũ Hoàng Quỳnh Anh."
     },
     {
       "tree_id": 105,
@@ -337,7 +536,22 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 20
+      "fid": 20,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/45/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Hoàng Quỳnh Anh",
+        "birth_text": "01-7-2002",
+        "birth_year": 2002,
+        "generation_text": 4,
+        "parent_text": "Phêrô Vũ Hà Tuấn Anh",
+        "note": "",
+        "siblings_text": "Phaolô Vũ Hoàng Minh Anh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 45
+      },
+      "birthYear": 2002
     },
     {
       "tree_id": 105,
@@ -347,7 +561,23 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 20
+      "fid": 20,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phaolô Vũ Hoàng Minh Anh",
+        "birth_text": "13/07/2002",
+        "birth_year": 2002,
+        "generation_text": 4,
+        "parent_text": "Phêrô Vũ Hà Tuấn Anh",
+        "note": "Đang ở với Cha mẹ tại 93 Xô Viết Nghệ Tĩnh,Quận Bình Thạnh, TP Hồ chí Minh.",
+        "siblings_text": "Maria Vũ Hoàng Quỳnh Anh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 21
+      },
+      "birthYear": 2002,
+      "bio": "Đang ở với Cha mẹ tại 93 Xô Viết Nghệ Tĩnh,Quận Bình Thạnh, TP Hồ chí Minh."
     },
     {
       "tree_id": 105,
@@ -357,7 +587,23 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Têrêsa Vũ Hà Kim Thi",
+        "birth_text": "22-4-1977",
+        "birth_year": 1977,
+        "generation_text": 3,
+        "parent_text": "Giuse Vũ Minh Hiếu",
+        "note": "Hai ông bà hiện đang cư ngụ tại Đường Lê Duẩn,TP Đà Nẵng. Đã có 2 con trai : Phêrô Nguyễn Trí (Cu King) sinh ngày 31-7-2001. Và Nguyễn Thiên",
+        "siblings_text": "Giuse Vũ Hà Minh Thảo Phêrô Vũ Hà Tuấn Anh Maria Vũ Hà Kim Phượng Martinô Vũ Hà Minh Thắng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 22
+      },
+      "birthYear": 1977,
+      "bio": "Hai ông bà hiện đang cư ngụ tại Đường Lê Duẩn,TP Đà Nẵng. Đã có 2 con trai : Phêrô Nguyễn Trí (Cu King) sinh ngày 31-7-2001. Và Nguyễn Thiên"
     },
     {
       "tree_id": 105,
@@ -367,7 +613,23 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "female",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/24/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Hà Kim Phượng",
+        "birth_text": "30-01-1978",
+        "birth_year": 1978,
+        "generation_text": 3,
+        "parent_text": "Giuse Vũ Minh Hiếu",
+        "note": "Hiện đang sống với Cha mẹ tại 449 Ông ích Khiêm,TP Đà Nẵng. Đại học kế toán. Đã lấy chồng là Ông Nguyễn văn Hùng, quận Long Biên Hà Nội. Hôn lễ cử hành tại Giáo Xứ Chính Tòa Đà Nẵng ngày 30-4-2008.",
+        "siblings_text": "Giuse Vũ Hà Minh Thảo Phêrô Vũ Hà Tuấn Anh Têrêsa Vũ Hà Kim Thi Martinô Vũ Hà Minh Thắng",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 24
+      },
+      "birthYear": 1978,
+      "bio": "Hiện đang sống với Cha mẹ tại 449 Ông ích Khiêm,TP Đà Nẵng. Đại học kế toán. Đã lấy chồng là Ông Nguyễn văn Hùng, quận Long Biên Hà Nội. Hôn lễ cử hành tại Giáo Xứ Chính Tòa Đà Nẵng ngày 30-4-2008."
     },
     {
       "tree_id": 105,
@@ -377,7 +639,26 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 18
+      "fid": 18,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/40/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Martinô Vũ Hà Minh Thắng",
+        "birth_text": "20-5-1983",
+        "birth_year": 1983,
+        "generation_text": 3,
+        "parent_text": "Giuse Vũ Minh Hiếu",
+        "note": "",
+        "siblings_text": "Giuse Vũ Hà Minh Thảo Phêrô Vũ Hà Tuấn Anh Têrêsa Vũ Hà Kim Thi Maria Vũ Hà Kim Phượng",
+        "children_names": [
+          "Maria Vũ Thiên Ân"
+        ],
+        "children_node_ids": [
+          47
+        ],
+        "tree_id": 105,
+        "node_id": 40
+      },
+      "birthYear": 1983
     },
     {
       "tree_id": 105,
@@ -387,7 +668,23 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "female",
-      "fid": 40
+      "fid": 40,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/47/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Thiên Ân",
+        "common_name": "Sun",
+        "birth_text": "25-12-2009",
+        "birth_year": 2009,
+        "generation_text": 4,
+        "parent_text": "Martinô Vũ Hà Minh Thắng",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 47
+      },
+      "birthYear": 2009
     },
     {
       "tree_id": 105,
@@ -397,7 +694,24 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/25/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Thị Nhiệm",
+        "death_text": "20/01/2002",
+        "death_year": 2002,
+        "burial_place": "Nghĩa trang giáo xứ Bình Đức, Xã Bình Đức, Huyện Châu Thành, Tỉnh Tiền Giang",
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "Bà Nhiệm có chồng là Trần văn Quảng. Có 3 con trai: 1. Trần Minh Quân 2. Trần Minh Quyền (thường gọi là Sĩ) 3. Trần Minh Quốc Tất cả đang sinh sống tại Bình Đức, Tiền Giang.",
+        "siblings_text": "Maria Vũ Thị Hương Giuse Vũ Minh Hiếu Phêrô Vũ Mạnh Cường Lucia Vũ Thị Kim Liên Phêrô Vũ Duy Sơn Gioan Vũ Đăng Hải Phêrô Vũ minh Toàn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 25
+      },
+      "deathYear": 2002,
+      "bio": "Bà Nhiệm có chồng là Trần văn Quảng. Có 3 con trai: 1. Trần Minh Quân 2. Trần Minh Quyền (thường gọi là Sĩ) 3. Trần Minh Quốc Tất cả đang sinh sống tại Bình Đức, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -407,7 +721,31 @@
       "generation": 3,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/26/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phêrô Vũ Mạnh Cường",
+        "birth_text": "31-8-1964",
+        "birth_year": 1964,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "Hai Ông bà hiện sống tại Mỹ Tho,Tiền Giang. Có 3 con: 1. Phêrô Vũ Khanh Hoàng, sinh ngày 01-9-1987 2. Giuse Vũ Đức Huy, sinh ngày 14-10-1991 3. Têrêxa Vũ Thụy Bảo An, sinh ngày 22-5-1996",
+        "siblings_text": "Maria Vũ Thị Hương Giuse Vũ Minh Hiếu Maria Vũ Thị Nhiệm Lucia Vũ Thị Kim Liên Phêrô Vũ Duy Sơn Gioan Vũ Đăng Hải Phêrô Vũ minh Toàn",
+        "children_names": [
+          "Phêrô Vũ Khánh Hoàng",
+          "Giuse Vũ Đức Huy",
+          "Têrêxa Vũ Thụy Bảo An"
+        ],
+        "children_node_ids": [
+          31,
+          32,
+          33
+        ],
+        "tree_id": 105,
+        "node_id": 26
+      },
+      "birthYear": 1964,
+      "bio": "Hai Ông bà hiện sống tại Mỹ Tho,Tiền Giang. Có 3 con: 1. Phêrô Vũ Khanh Hoàng, sinh ngày 01-9-1987 2. Giuse Vũ Đức Huy, sinh ngày 14-10-1991 3. Têrêxa Vũ Thụy Bảo An, sinh ngày 22-5-1996"
     },
     {
       "tree_id": 105,
@@ -417,7 +755,23 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/31/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phêrô Vũ Khánh Hoàng",
+        "birth_text": "01-9-1987",
+        "birth_year": 1987,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ Mạnh Cường",
+        "note": "Đang ở với Cha Mẹ tại Mỹ Tho, Tiền Giang",
+        "siblings_text": "Giuse Vũ Đức Huy Têrêxa Vũ Thụy Bảo An",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 31
+      },
+      "birthYear": 1987,
+      "bio": "Đang ở với Cha Mẹ tại Mỹ Tho, Tiền Giang"
     },
     {
       "tree_id": 105,
@@ -427,7 +781,23 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/32/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Giuse Vũ Đức Huy",
+        "birth_text": "14-10-1991",
+        "birth_year": 1991,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ Mạnh Cường",
+        "note": "Đang sống với Cha Mẹ tại Mỹ Tho, Tiền Giang",
+        "siblings_text": "Phêrô Vũ Khánh Hoàng Têrêxa Vũ Thụy Bảo An",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 32
+      },
+      "birthYear": 1991,
+      "bio": "Đang sống với Cha Mẹ tại Mỹ Tho, Tiền Giang"
     },
     {
       "tree_id": 105,
@@ -437,7 +807,23 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "female",
-      "fid": 26
+      "fid": 26,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/33/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Têrêxa Vũ Thụy Bảo An",
+        "birth_text": "22-5-1996",
+        "birth_year": 1996,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ Mạnh Cường",
+        "note": "Đang sống với Cha mẹ tại Mỹ Tho,Tiền Giang.",
+        "siblings_text": "Phêrô Vũ Khánh Hoàng Giuse Vũ Đức Huy",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 33
+      },
+      "birthYear": 1996,
+      "bio": "Đang sống với Cha mẹ tại Mỹ Tho,Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -447,7 +833,23 @@
       "generation": 3,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/27/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Lucia Vũ Thị Kim Liên",
+        "birth_text": "12-10-1958",
+        "birth_year": 1958,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "Đang sống với chồng và các con tai Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Maria Vũ Thị Hương Giuse Vũ Minh Hiếu Maria Vũ Thị Nhiệm Phêrô Vũ Mạnh Cường Phêrô Vũ Duy Sơn Gioan Vũ Đăng Hải Phêrô Vũ minh Toàn",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 27
+      },
+      "birthYear": 1958,
+      "bio": "Đang sống với chồng và các con tai Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -457,7 +859,29 @@
       "generation": 3,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/28/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phêrô Vũ Duy Sơn",
+        "birth_text": "18-10-1971",
+        "birth_year": 1971,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "Có 2 con: 1. Phêrô Vũ Duy Quang, 05/09/1991 2. Gioan Vũ Duy Tâm, 15/06/1997 Tất cả đều đang sinh sống tại Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Maria Vũ Thị Hương Giuse Vũ Minh Hiếu Maria Vũ Thị Nhiệm Phêrô Vũ Mạnh Cường Lucia Vũ Thị Kim Liên Gioan Vũ Đăng Hải Phêrô Vũ minh Toàn",
+        "children_names": [
+          "Phêrô Vũ Duy Quang",
+          "Gioan Vũ Duy Tâm"
+        ],
+        "children_node_ids": [
+          34,
+          35
+        ],
+        "tree_id": 105,
+        "node_id": 28
+      },
+      "birthYear": 1971,
+      "bio": "Có 2 con: 1. Phêrô Vũ Duy Quang, 05/09/1991 2. Gioan Vũ Duy Tâm, 15/06/1997 Tất cả đều đang sinh sống tại Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -467,7 +891,23 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 28
+      "fid": 28,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/34/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phêrô Vũ Duy Quang",
+        "birth_text": "05-09-1991",
+        "birth_year": 1991,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ Duy Sơn",
+        "note": "Đang sống với Cha Mẹ tại Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Gioan Vũ Duy Tâm",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 34
+      },
+      "birthYear": 1991,
+      "bio": "Đang sống với Cha Mẹ tại Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -477,7 +917,23 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 28
+      "fid": 28,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/35/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Gioan Vũ Duy Tâm",
+        "birth_text": "15-06-1997",
+        "birth_year": 1997,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ Duy Sơn",
+        "note": "Đang sống với Cha mẹ tại Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Phêrô Vũ Duy Quang",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 35
+      },
+      "birthYear": 1997,
+      "bio": "Đang sống với Cha mẹ tại Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -487,7 +943,29 @@
       "generation": 3,
       "order_in_generation": 7,
       "gender": "male",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/29/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Gioan Vũ Đăng Hải",
+        "birth_text": "1966",
+        "birth_year": 1966,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "Có 2 con: 1. Giuse Vũ Đăng Khoa, 06/07/1990. 2. Maria Vũ Bảo Trân, 01/05/1995. Tất cả đều sinh sống tại Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Maria Vũ Thị Hương Giuse Vũ Minh Hiếu Maria Vũ Thị Nhiệm Phêrô Vũ Mạnh Cường Lucia Vũ Thị Kim Liên Phêrô Vũ Duy Sơn Phêrô Vũ minh Toàn",
+        "children_names": [
+          "Giuse Vũ Đăng Khoa",
+          "Maria Vũ Bảo Trân"
+        ],
+        "children_node_ids": [
+          36,
+          37
+        ],
+        "tree_id": 105,
+        "node_id": 29
+      },
+      "birthYear": 1966,
+      "bio": "Có 2 con: 1. Giuse Vũ Đăng Khoa, 06/07/1990. 2. Maria Vũ Bảo Trân, 01/05/1995. Tất cả đều sinh sống tại Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -497,7 +975,23 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/36/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Giuse Vũ Đăng Khoa",
+        "birth_text": "06-07-1990",
+        "birth_year": 1990,
+        "generation_text": 3,
+        "parent_text": "Gioan Vũ Đăng Hải",
+        "note": "Đang sống với cha mẹ tại Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Maria Vũ Bảo Trân",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 36
+      },
+      "birthYear": 1990,
+      "bio": "Đang sống với cha mẹ tại Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -507,7 +1001,23 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "female",
-      "fid": 29
+      "fid": 29,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/37/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Maria Vũ Bảo Trân",
+        "birth_text": "01-05-1995",
+        "birth_year": 1995,
+        "generation_text": 3,
+        "parent_text": "Gioan Vũ Đăng Hải",
+        "note": "Đang sống với Cha mẹ tại Mỹ Tho, Tiền Giang.",
+        "siblings_text": "Giuse Vũ Đăng Khoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 37
+      },
+      "birthYear": 1995,
+      "bio": "Đang sống với Cha mẹ tại Mỹ Tho, Tiền Giang."
     },
     {
       "tree_id": 105,
@@ -517,7 +1027,29 @@
       "generation": 3,
       "order_in_generation": 8,
       "gender": "male",
-      "fid": 16
+      "fid": 16,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/42/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Phêrô Vũ minh Toàn",
+        "birth_text": "29-12-1966",
+        "birth_year": 1966,
+        "generation_text": 2,
+        "parent_text": "Giuse Vũ Bình Huyên",
+        "note": "Vợ là Lucia Trần thị Hường sinh năm 1971, theo đạo Công Giáo khi lấy chồng Tất cả sinh sống tai Bình Đức Tiền giang. Hình : Có 2 con: 1. Têrêxa Vũ Trần Minh Thư, 05/11/1991 . 2. Phêrô Vũ Trần Minh Tú, 2000.",
+        "siblings_text": "Maria Vũ Thị Hương Giuse Vũ Minh Hiếu Maria Vũ Thị Nhiệm Phêrô Vũ Mạnh Cường Lucia Vũ Thị Kim Liên Phêrô Vũ Duy Sơn Gioan Vũ Đăng Hải",
+        "children_names": [
+          "Têrêxa Vũ Trần Minh Thư",
+          "Vũ Trần Minh Tú"
+        ],
+        "children_node_ids": [
+          43,
+          44
+        ],
+        "tree_id": 105,
+        "node_id": 42
+      },
+      "birthYear": 1966,
+      "bio": "Vợ là Lucia Trần thị Hường sinh năm 1971, theo đạo Công Giáo khi lấy chồng Tất cả sinh sống tai Bình Đức Tiền giang. Hình : Có 2 con: 1. Têrêxa Vũ Trần Minh Thư, 05/11/1991 . 2. Phêrô Vũ Trần Minh Tú, 2000."
     },
     {
       "tree_id": 105,
@@ -527,7 +1059,22 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/43/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Têrêxa Vũ Trần Minh Thư",
+        "birth_text": "05-11-1991",
+        "birth_year": 1991,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ minh Toàn",
+        "note": "",
+        "siblings_text": "Vũ Trần Minh Tú",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 43
+      },
+      "birthYear": 1991
     },
     {
       "tree_id": 105,
@@ -537,7 +1084,22 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 42
+      "fid": 42,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/105/44/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Vũ Trần Minh Tú",
+        "birth_text": "2000",
+        "birth_year": 2000,
+        "generation_text": 3,
+        "parent_text": "Phêrô Vũ minh Toàn",
+        "note": "",
+        "siblings_text": "Têrêxa Vũ Trần Minh Thư",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 105,
+        "node_id": 44
+      },
+      "birthYear": 2000
     }
   ]
 }

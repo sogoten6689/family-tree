@@ -86,6 +86,39 @@ def _normalize_nodes(raw_nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if isinstance(generation, int) and isinstance(order, int):
             item["bio"] = f"Generation {generation}, order {order}"
 
+        detail = node.get("detail")
+        if isinstance(detail, dict):
+            display_name = detail.get("display_name")
+            if isinstance(display_name, str) and display_name.strip():
+                # Keep name from detail page, strip trailing gender marker in parentheses.
+                item["name"] = display_name.replace("(Nam)", "").replace("(Nữ)", "").strip()
+
+            detail_birth = _as_int(detail.get("birth_year"))
+            if detail_birth is not None:
+                item["birthYear"] = detail_birth
+
+            detail_death = _as_int(detail.get("death_year"))
+            if detail_death is not None:
+                item["deathYear"] = detail_death
+
+            note = detail.get("note")
+            if isinstance(note, str) and note.strip():
+                item["bio"] = note.strip()
+
+            detail_title = detail.get("common_name") or detail.get("courtesy_name")
+            if isinstance(detail_title, str) and detail_title.strip():
+                item["title"] = detail_title.strip()
+
+            burial_place = detail.get("burial_place")
+            if isinstance(burial_place, str) and burial_place.strip():
+                item["burialPlace"] = burial_place.strip()
+
+            children_ids = detail.get("children_node_ids")
+            if isinstance(children_ids, list):
+                item["childrenNodeIds"] = [x for x in children_ids if isinstance(x, int)]
+
+            item["detail"] = detail
+
         parent_info = inferred_parent_by_child.get(parsed_id)
         if parent_info:
             if parent_info.get("side") == "mid":
@@ -144,7 +177,10 @@ def _as_int(value: Any) -> Optional[int]:
 def _build_tree_document(source_json: Dict[str, Any], source_file: Path) -> Tuple[str, Dict[str, Any]]:
     tree_id = int(source_json["tree_id"])
     store_id = f"vgp-{tree_id}"
-    title = _safe_text(source_json.get("title"), fallback=f"VietnamGiaPha tree {tree_id}")
+    title = _safe_text(
+        source_json.get("lineage_name"),
+        fallback=_safe_text(source_json.get("title"), fallback=f"VietnamGiaPha tree {tree_id}"),
+    )
     source_url = _safe_text(source_json.get("url"), fallback="")
 
     nodes = _normalize_nodes(source_json.get("nodes", []))

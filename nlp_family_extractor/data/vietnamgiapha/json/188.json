@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/188/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Nguyen Tan",
   "node_count": 1,
+  "detail_fetched_count": 1,
   "relationship_count": 0,
   "relationships": [],
   "nodes": [
@@ -14,7 +16,19 @@
       "name": "Nguyễn Công Truyền",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/188/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Nguyễn Công Truyền",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 188,
+        "node_id": 1
+      }
     }
   ]
 }

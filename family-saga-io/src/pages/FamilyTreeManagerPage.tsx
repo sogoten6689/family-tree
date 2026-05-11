@@ -244,6 +244,7 @@ const FamilyTreeManagerPage = () => {
   const [jsonDraft, setJsonDraft] = useState('');
   const [crawlModalOpen, setCrawlModalOpen] = useState(false);
   const [crawlingData, setCrawlingData] = useState(false);
+  const [treeSearchKeyword, setTreeSearchKeyword] = useState('');
 
   const [treeForm] = Form.useForm<TreeFormValues>();
   const [memberForm] = Form.useForm<MemberFormValues>();
@@ -618,7 +619,18 @@ const FamilyTreeManagerPage = () => {
     }
   };
 
-  const treeOptions = trees.map((tree) => ({ label: tree.name, value: tree.id }));
+  const filteredTrees = useMemo(() => {
+    const kw = treeSearchKeyword.trim().toLowerCase();
+    if (!kw) return trees;
+    return trees.filter((tree) => {
+      const name = (tree.name ?? '').toLowerCase();
+      const id = (tree.id ?? '').toLowerCase();
+      const description = (tree.description ?? '').toLowerCase();
+      return name.includes(kw) || id.includes(kw) || description.includes(kw);
+    });
+  }, [trees, treeSearchKeyword]);
+
+  const treeOptions = filteredTrees.map((tree) => ({ label: tree.name, value: tree.id }));
   const ancestorOptions = currentTree?.nodes.map((node) => ({ label: `${node.name} (#${node.id})`, value: Number(node.id) })) ?? [];
   const spouseOptions = ancestorOptions;
 
@@ -680,9 +692,26 @@ const FamilyTreeManagerPage = () => {
                 className="w-full mb-4"
                 loading={loadingTrees}
                 allowClear
+                showSearch
+                optionFilterProp="label"
+                filterOption={(input, option) =>
+                  String(option?.label ?? '')
+                    .toLowerCase()
+                    .includes(input.toLowerCase()) ||
+                  String(option?.value ?? '')
+                    .toLowerCase()
+                    .includes(input.toLowerCase())
+                }
+              />
+              <Input
+                value={treeSearchKeyword}
+                onChange={(event) => setTreeSearchKeyword(event.target.value)}
+                placeholder={t('familyTree.searchTrees', { defaultValue: 'Tìm cây theo tên, mã hoặc mô tả' })}
+                className="mb-4"
+                allowClear
               />
               <div className="space-y-3 max-h-[420px] overflow-auto pr-1">
-                {trees.map((tree) => (
+                {filteredTrees.map((tree) => (
                   <button
                     key={tree.id}
                     type="button"
@@ -704,7 +733,7 @@ const FamilyTreeManagerPage = () => {
                     </div>
                   </button>
                 ))}
-                {trees.length === 0 && !loadingTrees && (
+                {filteredTrees.length === 0 && !loadingTrees && (
                   <Empty description={t('familyTree.noTrees', { defaultValue: 'Chưa có cây nào' })} image={Empty.PRESENTED_IMAGE_SIMPLE} />
                 )}
               </div>

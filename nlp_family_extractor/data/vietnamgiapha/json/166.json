@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/166/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "Thân",
   "node_count": 20,
+  "detail_fetched_count": 20,
   "relationship_count": 19,
   "relationships": [
     {
@@ -167,7 +169,33 @@
       "name": "Thân Phước Cẩm",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân Phước Cẩm",
+        "birth_text": "1470",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "Quê gốc Ái Châu, Thanh Hóa theo tường Lê Niệm vào dẹp Chiêm Thành, khai cơ lập nghiệp, lập xã hiệu Câu Nhi , có 5 người con , năm 1503 4 người con lớn về lại Ái Châu hoặc công vụ nơi khác, còn lại người con út là Thân phước Mao là đời thứ 2 sinh hạ con cháu lưu truyền đến ngày nay là 17 đời , tổng dân số gần 4 ngàn sinh sống khắp mọi miền đất nước , và hải ngoại .",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Thân Phước Trạch",
+          "Thân phước Triều",
+          "Thân phước Tài",
+          "Thân phước Mai",
+          "Thân phước Mao"
+        ],
+        "children_node_ids": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "tree_id": 166,
+        "node_id": 1
+      },
+      "bio": "Quê gốc Ái Châu, Thanh Hóa theo tường Lê Niệm vào dẹp Chiêm Thành, khai cơ lập nghiệp, lập xã hiệu Câu Nhi , có 5 người con , năm 1503 4 người con lớn về lại Ái Châu hoặc công vụ nơi khác, còn lại người con út là Thân phước Mao là đời thứ 2 sinh hạ con cháu lưu truyền đến ngày nay là 17 đời , tổng dân số gần 4 ngàn sinh sống khắp mọi miền đất nước , và hải ngoại ."
     },
     {
       "tree_id": 166,
@@ -177,7 +205,20 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/2/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân Phước Trạch",
+        "generation_text": 1,
+        "parent_text": "Thân Phước Cẩm",
+        "note": "Đi về quê củ hay lập nghiệp nơi khác năm 1503",
+        "siblings_text": "Thân phước Triều Thân phước Tài Thân phước Mai Thân phước Mao",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 2
+      },
+      "bio": "Đi về quê củ hay lập nghiệp nơi khác năm 1503"
     },
     {
       "tree_id": 166,
@@ -187,7 +228,20 @@
       "generation": 2,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Triều",
+        "generation_text": 1,
+        "parent_text": "Thân Phước Cẩm",
+        "note": "Về quê củ Ái Châu hay lập nghiệp nơi khác không rỏ",
+        "siblings_text": "Thân Phước Trạch Thân phước Tài Thân phước Mai Thân phước Mao",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 3
+      },
+      "bio": "Về quê củ Ái Châu hay lập nghiệp nơi khác không rỏ"
     },
     {
       "tree_id": 166,
@@ -197,7 +251,20 @@
       "generation": 2,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Tài",
+        "generation_text": 1,
+        "parent_text": "Thân Phước Cẩm",
+        "note": "Về quê củ Ái Châu hoặc lập nghiệp nơi khác từ năm 1503",
+        "siblings_text": "Thân Phước Trạch Thân phước Triều Thân phước Mai Thân phước Mao",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 4
+      },
+      "bio": "Về quê củ Ái Châu hoặc lập nghiệp nơi khác từ năm 1503"
     },
     {
       "tree_id": 166,
@@ -207,7 +274,20 @@
       "generation": 2,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Mai",
+        "generation_text": 1,
+        "parent_text": "Thân Phước Cẩm",
+        "note": "Về quê củ hay lập nghiệp nơi khác năm 1503.",
+        "siblings_text": "Thân Phước Trạch Thân phước Triều Thân phước Tài Thân phước Mao",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 5
+      },
+      "bio": "Về quê củ hay lập nghiệp nơi khác năm 1503."
     },
     {
       "tree_id": 166,
@@ -217,7 +297,30 @@
       "generation": 2,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Mao",
+        "generation_text": 1,
+        "parent_text": "Thân Phước Cẩm",
+        "note": "Cùng thân phụ canh cư lập nghiệp, lập xã hiệu Câu Nhi, sinh hạ con cháu lưu truyền đến ngày nay là 17 đời , trên 4 ngàn, sinh sống khắp mọi miền",
+        "siblings_text": "Thân Phước Trạch Thân phước Triều Thân phước Tài Thân phước Mai",
+        "children_names": [
+          "Thân phước Thọ",
+          "Thân phước Văn",
+          "Thân phước Bá",
+          "Thân Phước Mỹ"
+        ],
+        "children_node_ids": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "tree_id": 166,
+        "node_id": 6
+      },
+      "bio": "Cùng thân phụ canh cư lập nghiệp, lập xã hiệu Câu Nhi, sinh hạ con cháu lưu truyền đến ngày nay là 17 đời , trên 4 ngàn, sinh sống khắp mọi miền"
     },
     {
       "tree_id": 166,
@@ -227,7 +330,20 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Thọ",
+        "generation_text": 2,
+        "parent_text": "Thân phước Mao",
+        "note": "Vô tự",
+        "siblings_text": "Thân phước Văn Thân phước Bá Thân Phước Mỹ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 7
+      },
+      "bio": "Vô tự"
     },
     {
       "tree_id": 166,
@@ -237,7 +353,20 @@
       "generation": 3,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Văn",
+        "generation_text": 2,
+        "parent_text": "Thân phước Mao",
+        "note": "vô tự",
+        "siblings_text": "Thân phước Thọ Thân phước Bá Thân Phước Mỹ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 8
+      },
+      "bio": "vô tự"
     },
     {
       "tree_id": 166,
@@ -247,7 +376,20 @@
       "generation": 3,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Bá",
+        "generation_text": 2,
+        "parent_text": "Thân phước Mao",
+        "note": "Vô tự",
+        "siblings_text": "Thân phước Thọ Thân phước Văn Thân Phước Mỹ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 9
+      },
+      "bio": "Vô tự"
     },
     {
       "tree_id": 166,
@@ -257,7 +399,42 @@
       "generation": 3,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân Phước Mỹ",
+        "generation_text": 2,
+        "parent_text": "Thân phước Mao",
+        "note": "Người ghi chép gia phả đầu tiên cho đến nay bổ sung thêm nhiều đời .",
+        "siblings_text": "Thân phước Thọ Thân phước Văn Thân phước Bá",
+        "children_names": [
+          "Thân phước Hựu",
+          "Thân phước Trinh",
+          "Thân vĩnh Tự",
+          "Thân phước Thường",
+          "Thân phước Thị",
+          "Thân phước Cường",
+          "Thân thị Kỳ",
+          "Thân thị Mai",
+          "Thân thị Sớm",
+          "Thân t Tối"
+        ],
+        "children_node_ids": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "tree_id": 166,
+        "node_id": 10
+      },
+      "bio": "Người ghi chép gia phả đầu tiên cho đến nay bổ sung thêm nhiều đời ."
     },
     {
       "tree_id": 166,
@@ -267,7 +444,21 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Hựu",
+        "courtesy_name": "Tấn",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "Vô tự",
+        "siblings_text": "Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 11
+      },
+      "bio": "Vô tự"
     },
     {
       "tree_id": 166,
@@ -277,7 +468,21 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Trinh",
+        "courtesy_name": "Thủ",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "Đứng đầu phái nhất",
+        "siblings_text": "Thân phước Hựu Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 12
+      },
+      "bio": "Đứng đầu phái nhất"
     },
     {
       "tree_id": 166,
@@ -287,7 +492,21 @@
       "generation": 4,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân vĩnh Tự",
+        "courtesy_name": "Kim Bạch",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "Đứng đầu phái nhì",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 13
+      },
+      "bio": "Đứng đầu phái nhì"
     },
     {
       "tree_id": 166,
@@ -297,7 +516,21 @@
       "generation": 4,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Thường",
+        "courtesy_name": "Ba",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "vô tự",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 14
+      },
+      "bio": "vô tự"
     },
     {
       "tree_id": 166,
@@ -307,7 +540,21 @@
       "generation": 4,
       "order_in_generation": 5,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Thị",
+        "courtesy_name": "Hội",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "Vô tự",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Cường Thân thị Kỳ Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 15
+      },
+      "bio": "Vô tự"
     },
     {
       "tree_id": 166,
@@ -317,7 +564,21 @@
       "generation": 4,
       "order_in_generation": 6,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân phước Cường",
+        "courtesy_name": "Lãng",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "vô tự",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân thị Kỳ Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 16
+      },
+      "bio": "vô tự"
     },
     {
       "tree_id": 166,
@@ -327,7 +588,21 @@
       "generation": 4,
       "order_in_generation": 7,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân thị Kỳ",
+        "courtesy_name": "Rạy",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "không rõ",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Mai Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 17
+      },
+      "bio": "không rõ"
     },
     {
       "tree_id": 166,
@@ -337,7 +612,21 @@
       "generation": 4,
       "order_in_generation": 8,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân thị Mai",
+        "courtesy_name": "Ninh",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "không rỏ",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Sớm Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 18
+      },
+      "bio": "không rỏ"
     },
     {
       "tree_id": 166,
@@ -347,7 +636,21 @@
       "generation": 4,
       "order_in_generation": 9,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân thị Sớm",
+        "courtesy_name": "Ti",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "không rỏ",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Mai Thân t Tối",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 19
+      },
+      "bio": "không rỏ"
     },
     {
       "tree_id": 166,
@@ -357,7 +660,20 @@
       "generation": 4,
       "order_in_generation": 10,
       "gender": "female",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/166/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Thân t Tối",
+        "generation_text": 3,
+        "parent_text": "Thân Phước Mỹ",
+        "note": "không rỏ",
+        "siblings_text": "Thân phước Hựu Thân phước Trinh Thân vĩnh Tự Thân phước Thường Thân phước Thị Thân phước Cường Thân thị Kỳ Thân thị Mai Thân thị Sớm",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 166,
+        "node_id": 20
+      },
+      "bio": "không rỏ"
     }
   ]
 }

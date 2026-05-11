@@ -14,6 +14,10 @@ import httpx
 
 
 BASE_URL_TEMPLATE = "https://vietnamgiapha.com/XemPhaHe/{tree_id}/cay_pha_he.html"
+DETAIL_URL_TEMPLATES = [
+    "https://vietnamgiapha.com/XemChiTietTungNguoi/{tree_id}/{node_id}/giapha.html",
+    "https://vietnamgiapha.com/XemChiTietTungNguoi/{tree_id}/{node_id}/chitiet.html",
+]
 
 
 @dataclass
@@ -61,6 +65,47 @@ def _extract_title(html: str) -> Optional[str]:
     if not match:
         return None
     return _clean_html_text(match.group(1))
+
+
+def _extract_lineage_name(html: str) -> Optional[str]:
+    # Sidebar block usually contains: GIA / PHẢ / TỘC / <lineage name>
+    # We extract text from that TD and remove the fixed heading words.
+    match = re.search(
+        r"<TD[^>]*background=[\"'](?:https?://(?:www\.)?vietnamgiapha\.com)?/giapha_tml/oldbook(?:/|//)images/mid\.gif[\"'][^>]*>(?P<body>.*?)</TD>",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        # Fallback: locate by the heading sequence itself.
+        match = re.search(
+            r"<TD[^>]*>(?P<body>.*?<p>\s*GIA\s*</p>\s*<p>\s*PH[^<]*</p>\s*<p>\s*T[^<]*</p>.*?)(?:</TD>)",
+            html,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    if not match:
+        return None
+
+    body = match.group("body")
+
+    # Prefer extracting the trailing content after the 3 heading <p> tags.
+    after_heading = re.sub(
+        r"^\s*(?:<p>\s*GIA\s*</p>\s*<p>\s*PHẢ\s*</p>\s*<p>\s*TỘC\s*</p>\s*)",
+        "",
+        body,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    text = _clean_html_text(after_heading)
+
+    if not text:
+        text = _clean_html_text(body)
+        text = re.sub(r"\bGIA\b", " ", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bPHẢ\b", " ", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bTỘC\b", " ", text, flags=re.IGNORECASE)
+        text = re.sub(r"\s+", " ", text).strip()
+
+    if not text:
+        return None
+    return text
 
 
 def parse_nodes(html: str) -> List[NodeItem]:
@@ -150,13 +195,151 @@ def fetch_page(client: httpx.Client, tree_id: int) -> httpx.Response:
     return client.get(url)
 
 
+def _extract_int_year(value: str) -> Optional[int]:
+    match = re.search(r"(1[6-9]\d{2}|20\d{2})", value)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def _extract_node_ids_from_links(html: str, tree_id: int) -> List[int]:
+    pattern = re.compile(
+        rf"/XemChiTietTungNguoi/{tree_id}/(?P<node_id>\d+)/",
+        flags=re.IGNORECASE,
+    )
+    found: List[int] = []
+    for m in pattern.finditer(html):
+        nid = int(m.group("node_id"))
+        if nid not in found:
+            found.append(nid)
+    return found
+
+
+def _extract_detail_fields(html: str, tree_id: int, node_id: int, detail_url: str) -> Dict[str, Any]:
+    fields: Dict[str, Any] = {
+        "detail_url": detail_url,
+    }
+
+    title = _extract_title(html)
+    if title:
+        fields["detail_title"] = title
+
+    # Parse key-value rows in profile table.
+    row_pattern = re.compile(
+        r"<td[^>]*style=[\"'][^\"']*font-weight\s*:\s*bold[^\"']*[\"'][^>]*>(?P<label>.*?)</td>\s*"
+        r"<td[^>]*>(?P<value>.*?)</td>",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    kv: Dict[str, str] = {}
+    for m in row_pattern.finditer(html):
+        label = _clean_html_text(m.group("label")).rstrip(":")
+        value = _clean_html_text(m.group("value"))
+        if label:
+            kv[label] = value
+
+    detail_name = kv.get("Tên")
+    if detail_name:
+        fields["display_name"] = detail_name
+        if "(Nam)" in detail_name:
+            fields["gender_hint"] = "male"
+        elif "(Nữ)" in detail_name or "(Nu)" in detail_name:
+            fields["gender_hint"] = "female"
+
+    if kv.get("Tên thường"):
+        fields["common_name"] = kv["Tên thường"]
+    if kv.get("Tên Tự"):
+        fields["courtesy_name"] = kv["Tên Tự"]
+    if kv.get("Thụy hiệu"):
+        fields["epithet"] = kv["Thụy hiệu"]
+    if kv.get("Ngày sinh"):
+        fields["birth_text"] = kv["Ngày sinh"]
+        year = _extract_int_year(kv["Ngày sinh"])
+        if year is not None:
+            fields["birth_year"] = year
+    if kv.get("Ngày mất"):
+        fields["death_text"] = kv["Ngày mất"]
+        year = _extract_int_year(kv["Ngày mất"])
+        if year is not None:
+            fields["death_year"] = year
+    if kv.get("Nơi an táng"):
+        fields["burial_place"] = kv["Nơi an táng"]
+
+    # Generation and parent hint often appear outside table rows.
+    gen_match = re.search(r"Đời thứ\s*:\s*(\d+)", html, flags=re.IGNORECASE)
+    if gen_match:
+        fields["generation_text"] = int(gen_match.group(1))
+
+    parent_match = re.search(
+        r"Là con của\s*:\s*(.*?)</td>",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if parent_match:
+        fields["parent_text"] = _clean_html_text(parent_match.group(1))
+
+    note_match = re.search(
+        r"Sự nghiệp,\s*công đức,\s*ghi chú\s*</td>\s*</tr>\s*<tr>\s*<td[^>]*>(.*?)</td>",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if note_match:
+        fields["note"] = _clean_html_text(note_match.group(1))
+
+    sibling_match = re.search(
+        r"<b>\s*Các anh em, dâu rể:\s*</b>(.*?)</td>",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if sibling_match:
+        fields["siblings_text"] = _clean_html_text(sibling_match.group(1))
+
+    child_match = re.search(
+        r"<b>\s*Con cái:\s*</b>(.*?)</td>",
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if child_match:
+        child_html = child_match.group(1)
+        child_names = re.findall(r">([^<]+)</a>", child_html, flags=re.IGNORECASE)
+        fields["children_names"] = [_clean_html_text(x) for x in child_names if _clean_html_text(x)]
+        fields["children_node_ids"] = _extract_node_ids_from_links(child_html, tree_id)
+
+    fields["tree_id"] = tree_id
+    fields["node_id"] = node_id
+    return fields
+
+
+def fetch_detail_profile(
+    client: httpx.Client,
+    *,
+    tree_id: int,
+    node_id: int,
+) -> Optional[Dict[str, Any]]:
+    for template in DETAIL_URL_TEMPLATES:
+        detail_url = template.format(tree_id=tree_id, node_id=node_id)
+        try:
+            response = client.get(detail_url)
+            if response.status_code != 200:
+                continue
+            html = response.text
+            if "Chi tiết gia đình" not in html and "Người trong gia đình" not in html:
+                continue
+            return _extract_detail_fields(html, tree_id=tree_id, node_id=node_id, detail_url=detail_url)
+        except Exception:
+            continue
+    return None
+
+
 def run(
     start_id: int,
     end_id: int,
     output_dir: Path,
     save_html: bool,
+    fetch_detail: bool,
+    detail_delay_seconds: float,
     delay_seconds: float,
     timeout_seconds: float,
+    skip_empty: bool = True,
 ) -> Dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     json_dir = output_dir / "json"
@@ -170,6 +353,7 @@ def run(
         "end_id": end_id,
         "fetched_at": datetime.now(timezone.utc).isoformat(),
         "success": [],
+        "skipped": [],
         "errors": [],
     }
 
@@ -195,10 +379,33 @@ def run(
                         child_entry[rel.side] = rel.from_id
 
                 nodes_with_relationships: List[Dict[str, Any]] = []
+                detail_fetched_count = 0
                 for item in nodes:
                     record = asdict(item)
                     if item.node_id in parent_by_child:
                         record.update(parent_by_child[item.node_id])
+
+                    if fetch_detail:
+                        detail = fetch_detail_profile(
+                            client,
+                            tree_id=tree_id,
+                            node_id=item.node_id,
+                        )
+                        if detail:
+                            record["detail"] = detail
+                            detail_fetched_count += 1
+                            if detail.get("gender_hint") in ("male", "female") and not record.get("gender"):
+                                record["gender"] = detail["gender_hint"]
+                            if isinstance(detail.get("birth_year"), int):
+                                record["birthYear"] = detail["birth_year"]
+                            if isinstance(detail.get("death_year"), int):
+                                record["deathYear"] = detail["death_year"]
+                            if isinstance(detail.get("note"), str) and detail["note"]:
+                                record["bio"] = detail["note"]
+
+                        if detail_delay_seconds > 0:
+                            time.sleep(detail_delay_seconds)
+
                     nodes_with_relationships.append(record)
 
                 page_data: Dict[str, Any] = {
@@ -206,20 +413,39 @@ def run(
                     "url": url,
                     "http_status": response.status_code,
                     "title": _extract_title(html),
+                    "lineage_name": _extract_lineage_name(html),
                     "node_count": len(nodes),
+                    "detail_fetched_count": detail_fetched_count,
                     "relationship_count": len(relationships),
                     "relationships": [asdict(item) for item in relationships],
                     "nodes": nodes_with_relationships,
                 }
 
                 out_file = json_dir / f"{tree_id}.json"
+                html_file = html_dir / f"{tree_id}.html"
+
+                if skip_empty and len(nodes) == 0:
+                    if out_file.exists():
+                        out_file.unlink()
+                    if html_file.exists():
+                        html_file.unlink()
+                    summary["skipped"].append(
+                        {
+                            "tree_id": tree_id,
+                            "url": url,
+                            "reason": "empty_tree",
+                        }
+                    )
+                    if delay_seconds > 0:
+                        time.sleep(delay_seconds)
+                    continue
+
                 out_file.write_text(
                     json.dumps(page_data, ensure_ascii=False, indent=2) + "\n",
                     encoding="utf-8",
                 )
 
                 if save_html:
-                    html_file = html_dir / f"{tree_id}.html"
                     html_file.write_text(html, encoding="utf-8")
 
                 summary["success"].append(
@@ -270,6 +496,22 @@ def build_parser() -> argparse.ArgumentParser:
         help="Also persist raw HTML for each page.",
     )
     parser.add_argument(
+        "--keep-empty",
+        action="store_true",
+        help="Keep output files even when node_count=0 (default is skip).",
+    )
+    parser.add_argument(
+        "--no-detail",
+        action="store_true",
+        help="Skip fetching per-person detail pages.",
+    )
+    parser.add_argument(
+        "--detail-delay-seconds",
+        type=float,
+        default=0.05,
+        help="Delay between detail-page requests.",
+    )
+    parser.add_argument(
         "--delay-seconds",
         type=float,
         default=0.5,
@@ -295,13 +537,17 @@ def main() -> None:
         end_id=args.end,
         output_dir=args.output_dir,
         save_html=args.save_html,
+        fetch_detail=not args.no_detail,
+        detail_delay_seconds=args.detail_delay_seconds,
         delay_seconds=args.delay_seconds,
         timeout_seconds=args.timeout_seconds,
+        skip_empty=not args.keep_empty,
     )
 
     success_count = len(summary.get("success", []))
+    skipped_count = len(summary.get("skipped", []))
     error_count = len(summary.get("errors", []))
-    print(f"Done. success={success_count}, errors={error_count}")
+    print(f"Done. success={success_count}, skipped={skipped_count}, errors={error_count}")
     print(f"Summary: {args.output_dir / 'summary.json'}")
 
 

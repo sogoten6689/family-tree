@@ -1,6 +1,6 @@
 {
   "input_dir": "data/vietnamgiapha/json",
-  "total_files": 101,
+  "total_files": 19,
   "upserted": [
     {
       "store_id": "vgp-100",
@@ -24,20 +24,6 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-103",
-      "tree_id": 103,
-      "node_count": 0,
-      "source": "103.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-104",
-      "tree_id": 104,
-      "node_count": 0,
-      "source": "104.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-105",
       "tree_id": 105,
       "node_count": 30,
@@ -45,66 +31,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-106",
-      "tree_id": 106,
-      "node_count": 0,
-      "source": "106.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-107",
-      "tree_id": 107,
-      "node_count": 0,
-      "source": "107.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-108",
-      "tree_id": 108,
-      "node_count": 0,
-      "source": "108.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-109",
-      "tree_id": 109,
-      "node_count": 0,
-      "source": "109.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-110",
-      "tree_id": 110,
-      "node_count": 0,
-      "source": "110.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-111",
-      "tree_id": 111,
-      "node_count": 0,
-      "source": "111.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-112",
-      "tree_id": 112,
-      "node_count": 0,
-      "source": "112.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-113",
-      "tree_id": 113,
-      "node_count": 0,
-      "source": "113.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-114",
-      "tree_id": 114,
-      "node_count": 0,
-      "source": "114.json",
+      "store_id": "vgp-10679",
+      "tree_id": 10679,
+      "node_count": 219,
+      "source": "10679.json",
       "mode": "upsert"
     },
     {
@@ -115,31 +45,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-116",
-      "tree_id": 116,
-      "node_count": 0,
-      "source": "116.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-117",
       "tree_id": 117,
       "node_count": 15,
       "source": "117.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-118",
-      "tree_id": 118,
-      "node_count": 0,
-      "source": "118.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-119",
-      "tree_id": 119,
-      "node_count": 0,
-      "source": "119.json",
       "mode": "upsert"
     },
     {
@@ -164,94 +73,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-123",
-      "tree_id": 123,
-      "node_count": 0,
-      "source": "123.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-124",
-      "tree_id": 124,
-      "node_count": 0,
-      "source": "124.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-125",
       "tree_id": 125,
       "node_count": 21,
       "source": "125.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-126",
-      "tree_id": 126,
-      "node_count": 0,
-      "source": "126.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-127",
-      "tree_id": 127,
-      "node_count": 0,
-      "source": "127.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-128",
-      "tree_id": 128,
-      "node_count": 0,
-      "source": "128.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-129",
-      "tree_id": 129,
-      "node_count": 0,
-      "source": "129.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-130",
-      "tree_id": 130,
-      "node_count": 0,
-      "source": "130.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-131",
-      "tree_id": 131,
-      "node_count": 0,
-      "source": "131.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-132",
-      "tree_id": 132,
-      "node_count": 0,
-      "source": "132.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-133",
-      "tree_id": 133,
-      "node_count": 0,
-      "source": "133.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-134",
-      "tree_id": 134,
-      "node_count": 0,
-      "source": "134.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-135",
-      "tree_id": 135,
-      "node_count": 0,
-      "source": "135.json",
       "mode": "upsert"
     },
     {
@@ -262,59 +87,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-137",
-      "tree_id": 137,
-      "node_count": 0,
-      "source": "137.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-138",
-      "tree_id": 138,
-      "node_count": 0,
-      "source": "138.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-139",
-      "tree_id": 139,
-      "node_count": 0,
-      "source": "139.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-140",
-      "tree_id": 140,
-      "node_count": 0,
-      "source": "140.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-141",
       "tree_id": 141,
       "node_count": 382,
       "source": "141.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-142",
-      "tree_id": 142,
-      "node_count": 0,
-      "source": "142.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-143",
-      "tree_id": 143,
-      "node_count": 0,
-      "source": "143.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-144",
-      "tree_id": 144,
-      "node_count": 0,
-      "source": "144.json",
       "mode": "upsert"
     },
     {
@@ -325,143 +101,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-146",
-      "tree_id": 146,
-      "node_count": 0,
-      "source": "146.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-147",
-      "tree_id": 147,
-      "node_count": 0,
-      "source": "147.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-148",
       "tree_id": 148,
       "node_count": 43,
       "source": "148.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-149",
-      "tree_id": 149,
-      "node_count": 0,
-      "source": "149.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-150",
-      "tree_id": 150,
-      "node_count": 0,
-      "source": "150.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-151",
-      "tree_id": 151,
-      "node_count": 0,
-      "source": "151.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-152",
-      "tree_id": 152,
-      "node_count": 0,
-      "source": "152.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-153",
-      "tree_id": 153,
-      "node_count": 0,
-      "source": "153.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-154",
-      "tree_id": 154,
-      "node_count": 0,
-      "source": "154.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-155",
-      "tree_id": 155,
-      "node_count": 0,
-      "source": "155.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-156",
-      "tree_id": 156,
-      "node_count": 0,
-      "source": "156.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-157",
-      "tree_id": 157,
-      "node_count": 0,
-      "source": "157.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-158",
-      "tree_id": 158,
-      "node_count": 0,
-      "source": "158.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-159",
-      "tree_id": 159,
-      "node_count": 0,
-      "source": "159.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-160",
-      "tree_id": 160,
-      "node_count": 0,
-      "source": "160.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-161",
-      "tree_id": 161,
-      "node_count": 0,
-      "source": "161.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-162",
-      "tree_id": 162,
-      "node_count": 0,
-      "source": "162.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-163",
-      "tree_id": 163,
-      "node_count": 0,
-      "source": "163.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-164",
-      "tree_id": 164,
-      "node_count": 0,
-      "source": "164.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-165",
-      "tree_id": 165,
-      "node_count": 0,
-      "source": "165.json",
       "mode": "upsert"
     },
     {
@@ -472,122 +115,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-167",
-      "tree_id": 167,
-      "node_count": 0,
-      "source": "167.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-168",
-      "tree_id": 168,
-      "node_count": 0,
-      "source": "168.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-169",
-      "tree_id": 169,
-      "node_count": 0,
-      "source": "169.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-170",
-      "tree_id": 170,
-      "node_count": 0,
-      "source": "170.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-171",
-      "tree_id": 171,
-      "node_count": 0,
-      "source": "171.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-172",
-      "tree_id": 172,
-      "node_count": 0,
-      "source": "172.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-173",
-      "tree_id": 173,
-      "node_count": 0,
-      "source": "173.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-174",
-      "tree_id": 174,
-      "node_count": 0,
-      "source": "174.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-175",
-      "tree_id": 175,
-      "node_count": 0,
-      "source": "175.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-176",
-      "tree_id": 176,
-      "node_count": 0,
-      "source": "176.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-177",
-      "tree_id": 177,
-      "node_count": 0,
-      "source": "177.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-178",
-      "tree_id": 178,
-      "node_count": 0,
-      "source": "178.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-179",
-      "tree_id": 179,
-      "node_count": 0,
-      "source": "179.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-180",
-      "tree_id": 180,
-      "node_count": 0,
-      "source": "180.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-181",
       "tree_id": 181,
       "node_count": 1,
       "source": "181.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-182",
-      "tree_id": 182,
-      "node_count": 0,
-      "source": "182.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-183",
-      "tree_id": 183,
-      "node_count": 0,
-      "source": "183.json",
       "mode": "upsert"
     },
     {
@@ -598,115 +129,10 @@
       "mode": "upsert"
     },
     {
-      "store_id": "vgp-185",
-      "tree_id": 185,
-      "node_count": 0,
-      "source": "185.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-186",
-      "tree_id": 186,
-      "node_count": 0,
-      "source": "186.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-187",
-      "tree_id": 187,
-      "node_count": 0,
-      "source": "187.json",
-      "mode": "upsert"
-    },
-    {
       "store_id": "vgp-188",
       "tree_id": 188,
       "node_count": 1,
       "source": "188.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-189",
-      "tree_id": 189,
-      "node_count": 0,
-      "source": "189.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-190",
-      "tree_id": 190,
-      "node_count": 0,
-      "source": "190.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-191",
-      "tree_id": 191,
-      "node_count": 0,
-      "source": "191.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-192",
-      "tree_id": 192,
-      "node_count": 0,
-      "source": "192.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-193",
-      "tree_id": 193,
-      "node_count": 0,
-      "source": "193.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-194",
-      "tree_id": 194,
-      "node_count": 0,
-      "source": "194.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-195",
-      "tree_id": 195,
-      "node_count": 0,
-      "source": "195.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-196",
-      "tree_id": 196,
-      "node_count": 0,
-      "source": "196.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-197",
-      "tree_id": 197,
-      "node_count": 0,
-      "source": "197.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-198",
-      "tree_id": 198,
-      "node_count": 0,
-      "source": "198.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-199",
-      "tree_id": 199,
-      "node_count": 0,
-      "source": "199.json",
-      "mode": "upsert"
-    },
-    {
-      "store_id": "vgp-200",
-      "tree_id": 200,
-      "node_count": 0,
-      "source": "200.json",
       "mode": "upsert"
     }
   ],

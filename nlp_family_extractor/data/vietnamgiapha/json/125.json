@@ -3,7 +3,9 @@
   "url": "https://vietnamgiapha.com/XemPhaHe/125/cay_pha_he.html",
   "http_status": 200,
   "title": "Viet Nam Gia Pha, Website cua toc",
+  "lineage_name": "ĐOÀN -Quang chiêm-Đức thọ",
   "node_count": 21,
+  "detail_fetched_count": 21,
   "relationship_count": 20,
   "relationships": [
     {
@@ -175,7 +177,25 @@
       "name": "Đoàn Nhất lang",
       "generation": 1,
       "order_in_generation": 1,
-      "gender": "male"
+      "gender": "male",
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/1/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Nhất lang",
+        "courtesy_name": "Nhất lang",
+        "generation_text": 0,
+        "parent_text": "Thuỷ tổ",
+        "note": "Vị tổ sáng lập dòng họ Đoàn ở Vân chàng và Quang chiêm ngày nay",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Đoàn Nhất lang (2)"
+        ],
+        "children_node_ids": [
+          3
+        ],
+        "tree_id": 125,
+        "node_id": 1
+      },
+      "bio": "Vị tổ sáng lập dòng họ Đoàn ở Vân chàng và Quang chiêm ngày nay"
     },
     {
       "tree_id": 125,
@@ -185,7 +205,24 @@
       "generation": 2,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 1
+      "fid": 1,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/3/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Nhất lang (2)",
+        "courtesy_name": "Nhất lang",
+        "generation_text": 1,
+        "parent_text": "Đoàn Nhất lang",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Đoàn Danh Quản"
+        ],
+        "children_node_ids": [
+          4
+        ],
+        "tree_id": 125,
+        "node_id": 3
+      }
     },
     {
       "tree_id": 125,
@@ -195,7 +232,26 @@
       "generation": 3,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 3
+      "fid": 3,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/4/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Quản",
+        "courtesy_name": "Danh quản",
+        "generation_text": 2,
+        "parent_text": "Đoàn Nhất lang (2)",
+        "note": "",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Đoàn Vô Niệm",
+          "Đoàn Danh Nhiều"
+        ],
+        "children_node_ids": [
+          5,
+          6
+        ],
+        "tree_id": 125,
+        "node_id": 4
+      }
     },
     {
       "tree_id": 125,
@@ -205,7 +261,29 @@
       "generation": 4,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/5/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Vô Niệm",
+        "common_name": "Ông Đại",
+        "courtesy_name": "Vô Niệm phủ quân",
+        "generation_text": 3,
+        "parent_text": "Đoàn Danh Quản",
+        "note": "",
+        "siblings_text": "Đoàn Danh Nhiều",
+        "children_names": [
+          "Đoàn Danh Đại",
+          "Đoàn Danh Thừa",
+          "Đoàn Danh Thế"
+        ],
+        "children_node_ids": [
+          7,
+          8,
+          9
+        ],
+        "tree_id": 125,
+        "node_id": 5
+      }
     },
     {
       "tree_id": 125,
@@ -215,7 +293,20 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/7/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Đại",
+        "generation_text": 4,
+        "parent_text": "Đoàn Vô Niệm",
+        "note": "đi đâu không rõ",
+        "siblings_text": "Đoàn Danh Thừa Đoàn Danh Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 7
+      },
+      "bio": "đi đâu không rõ"
     },
     {
       "tree_id": 125,
@@ -225,7 +316,20 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/8/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Thừa",
+        "generation_text": 4,
+        "parent_text": "Đoàn Vô Niệm",
+        "note": "vô hậu",
+        "siblings_text": "Đoàn Danh Đại Đoàn Danh Thế",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 8
+      },
+      "bio": "vô hậu"
     },
     {
       "tree_id": 125,
@@ -235,7 +339,19 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 5
+      "fid": 5,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/9/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Thế",
+        "generation_text": 4,
+        "parent_text": "Đoàn Vô Niệm",
+        "note": "",
+        "siblings_text": "Đoàn Danh Đại Đoàn Danh Thừa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 9
+      }
     },
     {
       "tree_id": 125,
@@ -245,7 +361,33 @@
       "generation": 4,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 4
+      "fid": 4,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/6/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Nhiều",
+        "common_name": "Ông bà Hy",
+        "courtesy_name": "Danh Nhiều tam lang",
+        "generation_text": 3,
+        "parent_text": "Đoàn Danh Quản",
+        "note": "",
+        "siblings_text": "Đoàn Vô Niệm",
+        "children_names": [
+          "Đoàn Di Phúc",
+          "Đoàn Đức Nhuận",
+          "Đoàn Danh Dư",
+          "Đoàn danh Hạ",
+          "Đoàn thị Đặc Thụy Hoa"
+        ],
+        "children_node_ids": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "tree_id": 125,
+        "node_id": 6
+      }
     },
     {
       "tree_id": 125,
@@ -255,7 +397,26 @@
       "generation": 5,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/10/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Di Phúc",
+        "common_name": "Ông Minh",
+        "courtesy_name": "Di phúc phủ quân",
+        "generation_text": 4,
+        "parent_text": "Đoàn Danh Nhiều",
+        "note": "Theo gia phả Vân chàng:ông bà sinh được hai người con trai là Đoàn Chân Tính và Đoàn Danh Toán,sau di cư sang huyện khác và sing được hai người con trai nữa là Đoàn Danh Ong và Đoàn danh Anh và 4 gái là Đoàn thị Điệp,Đoàn thị Quy,Đoàn thị Thắm,Đoàn thị Tốt (đều mất sớm)",
+        "siblings_text": "Đoàn Đức Nhuận Đoàn Danh Dư Đoàn danh Hạ Đoàn thị Đặc Thụy Hoa",
+        "children_names": [
+          "Đoàn Chân Tính"
+        ],
+        "children_node_ids": [
+          15
+        ],
+        "tree_id": 125,
+        "node_id": 10
+      },
+      "bio": "Theo gia phả Vân chàng:ông bà sinh được hai người con trai là Đoàn Chân Tính và Đoàn Danh Toán,sau di cư sang huyện khác và sing được hai người con trai nữa là Đoàn Danh Ong và Đoàn danh Anh và 4 gái là Đoàn thị Điệp,Đoàn thị Quy,Đoàn thị Thắm,Đoàn thị Tốt (đều mất sớm)"
     },
     {
       "tree_id": 125,
@@ -265,7 +426,35 @@
       "generation": 6,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 10
+      "fid": 10,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/15/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Chân Tính",
+        "common_name": "Ông bà Niết",
+        "courtesy_name": "Chân Tính",
+        "epithet": "Trần thị nhũ nhân",
+        "death_text": "1/7",
+        "burial_place": "nam dăm eo chí",
+        "generation_text": 5,
+        "parent_text": "Đoàn Di Phúc",
+        "note": "Theo gia phả Vân chàng ông trước quán tại Vân chàng,huyện Can lộc đến thôn Quang chiêm thuộc xã Quang chiêm,huyện La sơn,làm nhà trên nương mạ xứ Cữa Đông,sau đó con cháu đông đúc thành một xóm mới.Ông nguyên làm nghề thợ rèn,phụ trách Tổ lò rèn (Dã tượng cục)",
+        "siblings_text": "Không có anh em",
+        "children_names": [
+          "Đoàn Danh Lắm",
+          "Đoàn Trịnh Hằng",
+          "Đoàn Danh Huynh",
+          "Đoàn Danh Dâu"
+        ],
+        "children_node_ids": [
+          16,
+          17,
+          18,
+          19
+        ],
+        "tree_id": 125,
+        "node_id": 15
+      },
+      "bio": "Theo gia phả Vân chàng ông trước quán tại Vân chàng,huyện Can lộc đến thôn Quang chiêm thuộc xã Quang chiêm,huyện La sơn,làm nhà trên nương mạ xứ Cữa Đông,sau đó con cháu đông đúc thành một xóm mới.Ông nguyên làm nghề thợ rèn,phụ trách Tổ lò rèn (Dã tượng cục)"
     },
     {
       "tree_id": 125,
@@ -275,7 +464,21 @@
       "generation": 7,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/16/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Lắm",
+        "courtesy_name": "Danh Lắm",
+        "generation_text": 6,
+        "parent_text": "Đoàn Chân Tính",
+        "note": "Sinh 1 con gái là Thị Hội gả cho người Gia thịnh,cúng ông làm ngoại tổ.",
+        "siblings_text": "Đoàn Trịnh Hằng Đoàn Danh Huynh Đoàn Danh Dâu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 16
+      },
+      "bio": "Sinh 1 con gái là Thị Hội gả cho người Gia thịnh,cúng ông làm ngoại tổ."
     },
     {
       "tree_id": 125,
@@ -285,7 +488,32 @@
       "generation": 7,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/17/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Trịnh Hằng",
+        "courtesy_name": "Trịnh Hằng",
+        "epithet": "Nguyễn thị Hăng nhất hiệu Từ ...Nhũ nhân",
+        "death_text": "13/3",
+        "burial_place": "dăm Mũi rồng nay đã cải táng về NT Nhà liêu.",
+        "generation_text": 6,
+        "parent_text": "Đoàn Chân Tính",
+        "note": "Ông là con thứ 2 của Ông Niết",
+        "siblings_text": "Đoàn Danh Lắm Đoàn Danh Huynh Đoàn Danh Dâu",
+        "children_names": [
+          "Đoàn Danh Trọng húy là Chưng",
+          "Đoàn Danh Dự",
+          "Đoàn Danh Liêu"
+        ],
+        "children_node_ids": [
+          20,
+          21,
+          22
+        ],
+        "tree_id": 125,
+        "node_id": 17
+      },
+      "bio": "Ông là con thứ 2 của Ông Niết"
     },
     {
       "tree_id": 125,
@@ -295,7 +523,24 @@
       "generation": 8,
       "order_in_generation": 1,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/20/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Trọng húy là Chưng",
+        "courtesy_name": "Danh Trọng thụy c",
+        "epithet": "Giáp phái phân chi tổ tiền thập lý hầu kiêm khán thủ hươ",
+        "birth_text": "Đinh sửu",
+        "death_text": "9/3",
+        "burial_place": "Kỳ soi nay đã cải táng về NT Nhà liêu .",
+        "generation_text": 7,
+        "parent_text": "Đoàn Trịnh Hằng",
+        "note": "",
+        "siblings_text": "Đoàn Danh Dự Đoàn Danh Liêu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 20
+      }
     },
     {
       "tree_id": 125,
@@ -305,7 +550,25 @@
       "generation": 8,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/21/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Dự",
+        "common_name": "Ông Triển",
+        "courtesy_name": "Danh Dự thụy trang t",
+        "epithet": "Ất phái chi tổ tiền kiệt trang tướng quân hiệu lệ",
+        "birth_text": "Quý Mão",
+        "death_text": "8/5 Tân dậu",
+        "burial_place": "dăm Bàn than nay đã cải táng về NT Nhà liệu",
+        "generation_text": 7,
+        "parent_text": "Đoàn Trịnh Hằng",
+        "note": "",
+        "siblings_text": "Đoàn Danh Trọng húy là Chưng Đoàn Danh Liêu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 21
+      }
     },
     {
       "tree_id": 125,
@@ -315,7 +578,21 @@
       "generation": 8,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 17
+      "fid": 17,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/22/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Liêu",
+        "common_name": "Ông Viết",
+        "courtesy_name": "Danh Liêu",
+        "generation_text": 7,
+        "parent_text": "Đoàn Trịnh Hằng",
+        "note": "",
+        "siblings_text": "Đoàn Danh Trọng húy là Chưng Đoàn Danh Dự",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 22
+      }
     },
     {
       "tree_id": 125,
@@ -325,7 +602,22 @@
       "generation": 7,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/18/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Huynh",
+        "epithet": "Tiền dã tượng cục Đoàn danh Huynh tam lang",
+        "death_text": "17/4",
+        "burial_place": "Mộ xứ Bàn than nay đã cải táng về NT Nhà liêu",
+        "generation_text": 6,
+        "parent_text": "Đoàn Chân Tính",
+        "note": "",
+        "siblings_text": "Đoàn Danh Lắm Đoàn Trịnh Hằng Đoàn Danh Dâu",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 18
+      }
     },
     {
       "tree_id": 125,
@@ -335,7 +627,22 @@
       "generation": 7,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 15
+      "fid": 15,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/19/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Dâu",
+        "courtesy_name": "Danh Dâu",
+        "death_text": "17/2",
+        "burial_place": "dăm Cơn Rơm",
+        "generation_text": 6,
+        "parent_text": "Đoàn Chân Tính",
+        "note": "",
+        "siblings_text": "Đoàn Danh Lắm Đoàn Trịnh Hằng Đoàn Danh Huynh",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 19
+      }
     },
     {
       "tree_id": 125,
@@ -345,7 +652,22 @@
       "generation": 5,
       "order_in_generation": 2,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/11/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Đức Nhuận",
+        "common_name": "Phương",
+        "courtesy_name": "Đức nhuận",
+        "generation_text": 4,
+        "parent_text": "Đoàn Danh Nhiều",
+        "note": "Ông bà sinh được 1 con trai là Đoàn Hải.",
+        "siblings_text": "Đoàn Di Phúc Đoàn Danh Dư Đoàn danh Hạ Đoàn thị Đặc Thụy Hoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 11
+      },
+      "bio": "Ông bà sinh được 1 con trai là Đoàn Hải."
     },
     {
       "tree_id": 125,
@@ -355,7 +677,20 @@
       "generation": 5,
       "order_in_generation": 3,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/12/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn Danh Dư",
+        "generation_text": 4,
+        "parent_text": "Đoàn Danh Nhiều",
+        "note": "mất sớm",
+        "siblings_text": "Đoàn Di Phúc Đoàn Đức Nhuận Đoàn danh Hạ Đoàn thị Đặc Thụy Hoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 12
+      },
+      "bio": "mất sớm"
     },
     {
       "tree_id": 125,
@@ -365,7 +700,21 @@
       "generation": 5,
       "order_in_generation": 4,
       "gender": "male",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/13/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn danh Hạ",
+        "courtesy_name": "Danh hạ",
+        "generation_text": 4,
+        "parent_text": "Đoàn Danh Nhiều",
+        "note": "Ông bà sinh được 3 con trai: Trưởng là Núi,thứ 2 là Dấu,thứ 3 là Lập (Dấu và Lập mất sớm) và 2 con gái là Thị Hy và Thị Ca,Đếu là chi phái tiên tổ quán tại xã Vân chàng,huyện Can lộc. Nay còn Đoàn Danh Thụy,Đoàn Danh Ý,Đoàn Danh Mưu,Đoàn Danh Thục,Đoàn Huệ đều thuộc chi tổ Danh Hạ. Đời Lê có Hương cống Đoàn Đảng là ông của Tú tài Đoàn Nhượng.",
+        "siblings_text": "Đoàn Di Phúc Đoàn Đức Nhuận Đoàn Danh Dư Đoàn thị Đặc Thụy Hoa",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 13
+      },
+      "bio": "Ông bà sinh được 3 con trai: Trưởng là Núi,thứ 2 là Dấu,thứ 3 là Lập (Dấu và Lập mất sớm) và 2 con gái là Thị Hy và Thị Ca,Đếu là chi phái tiên tổ quán tại xã Vân chàng,huyện Can lộc. Nay còn Đoàn Danh Thụy,Đoàn Danh Ý,Đoàn Danh Mưu,Đoàn Danh Thục,Đoàn Huệ đều thuộc chi tổ Danh Hạ. Đời Lê có Hương cống Đoàn Đảng là ông của Tú tài Đoàn Nhượng."
     },
     {
       "tree_id": 125,
@@ -375,7 +724,21 @@
       "generation": 5,
       "order_in_generation": 5,
       "gender": "female",
-      "fid": 6
+      "fid": 6,
+      "detail": {
+        "detail_url": "https://vietnamgiapha.com/XemChiTietTungNguoi/125/14/giapha.html",
+        "detail_title": "Viet Nam Gia Pha, Website cua toc - Chi tiet: Đoàn thị Đặc Thụy Hoa",
+        "epithet": "Đoàn thị Đặc thụy Hoa ngọc nương",
+        "death_text": "15/1",
+        "generation_text": 4,
+        "parent_text": "Đoàn Danh Nhiều",
+        "note": "",
+        "siblings_text": "Đoàn Di Phúc Đoàn Đức Nhuận Đoàn Danh Dư Đoàn danh Hạ",
+        "children_names": [],
+        "children_node_ids": [],
+        "tree_id": 125,
+        "node_id": 14
+      }
     }
   ]
 }
