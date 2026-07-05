@@ -1,17 +1,18 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Alert, Spin } from "antd";
 import FamilyTree from "@balkangraph/familytree.js";
 
 export type BalkanNode = Record<string, unknown>;
 
 function toFamilyTreeNodes(raw: BalkanNode[]): object[] {
   return raw.map((n) => {
+    const rawId = n.id ?? n.node_id;
     const idNum =
-      typeof n.id === "number" && Number.isFinite(n.id)
-        ? n.id
-        : Number(n.id);
+      typeof rawId === "number" && Number.isFinite(rawId) ? rawId : Number(rawId);
     const row: Record<string, unknown> = {
       ...n,
-      id: Number.isFinite(idNum) ? idNum : n.id,
+      id: Number.isFinite(idNum) ? idNum : rawId,
+      name: typeof n.name === "string" ? n.name : `Node ${rawId ?? "?"}`,
     };
     if (Array.isArray(n.pids)) {
       row.pids = n.pids
@@ -30,55 +31,102 @@ function toFamilyTreeNodes(raw: BalkanNode[]): object[] {
 
 type Props = {
   nodes: BalkanNode[];
+  treeId?: string;
   className?: string;
   height?: number;
 };
 
 export function BalkanFamilyTreeView({
   nodes,
+  treeId,
   className = "",
   height = 520,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
   const nodesKey = useMemo(() => JSON.stringify(nodes), [nodes]);
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el || nodes.length === 0) return undefined;
+    if (!el || nodes.length === 0) {
+      setReady(false);
+      setError(null);
+      return undefined;
+    }
 
-    try {
-      const chart = new FamilyTree(el, {
-        nodeBinding: {
-          field_0: "name",
-          field_1: "birthYear",
-        },
-      });
-      chart.load(toFamilyTreeNodes(nodes));
+    setError(null);
+    setReady(false);
+    el.innerHTML = "";
 
-      return () => {
+    let chart: FamilyTree | null = null;
+    let cancelled = false;
+
+    const timer = window.setTimeout(() => {
+      if (cancelled || !containerRef.current) return;
+
+      try {
+        chart = new FamilyTree(containerRef.current, {
+          template: "hugo",
+          nodeBinding: {
+            field_0: "name",
+            field_1: "birthYear",
+          },
+        });
+        chart.on("render", () => {
+          if (!cancelled) setReady(true);
+        });
+        chart.load(toFamilyTreeNodes(nodes));
+        if (!cancelled) setReady(true);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Unknown error";
+        setError(message);
+        setReady(false);
+      }
+    }, 0);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+      if (chart) {
         try {
           chart.destroy();
         } catch (e) {
           console.warn("Error destroying FamilyTree chart:", e);
         }
-      };
-    } catch (error) {
-      console.error("Error initializing FamilyTree chart:", error);
-      // Display error message in container
-      if (el) {
-        el.textContent = `Error: Unable to load family tree chart. ${error instanceof Error ? error.message : 'Unknown error'}`;
       }
-      return undefined;
-    }
-  }, [nodesKey, nodes.length]);
+    };
+  }, [nodesKey, nodes.length, treeId]);
 
-  if (nodes.length === 0) return null;
+  if (nodes.length === 0) {
+    return null;
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className={`w-full rounded-xl border border-[hsl(36,30%,80%)] bg-[hsl(39,50%,96%)] overflow-hidden ${className}`}
-      style={{ minHeight: Math.min(height, 400), height }}
-    />
+    <div className={`relative w-full ${className}`}>
+      {!ready && !error && (
+        <div
+          className="absolute inset-0 z-10 flex items-center justify-center rounded-xl border border-[#e9ecef] bg-white/80"
+          style={{ minHeight: height }}
+        >
+          <Spin size="large" />
+        </div>
+      )}
+      {error && (
+        <Alert
+          type="error"
+          showIcon
+          className="mb-3"
+          message="Không thể hiển thị cây gia phả"
+          description={error}
+        />
+      )}
+      <div
+        ref={containerRef}
+        key={treeId ?? nodesKey}
+        className="w-full rounded-xl border border-[#e9ecef] bg-white overflow-auto"
+        style={{ minHeight: height, height }}
+      />
+    </div>
   );
 }

@@ -14,7 +14,7 @@
 
 | Service  | Host port | Container port | Ghi chú |
 |----------|-----------|---------------|---------|
-| nginx    | **88**    | 80            | Reverse proxy chính |
+| nginx    | **87**    | 80            | Reverse proxy chính |
 | frontend | 5174      | 80            | Direct (bypass nginx) |
 | backend  | **8002**  | 8000          | FastAPI / uvicorn |
 | mysql    | 3309      | 3306          | MySQL 8.4 |
@@ -52,52 +52,111 @@ uvicorn api:app --reload --port 8002
 
 ---
 
+## Build scripts (khuyến nghị)
+
+Các script trong thư mục `scripts/` giúp build Docker image nhanh, tự dùng `DOCKER_BUILDKIT=0` để tránh lỗi `buildx permission denied` trên một số máy macOS.
+
+| Script | Mô tả |
+|--------|--------|
+| `scripts/build-backend.sh` | Build image backend (`nlp_family_extractor`) |
+| `scripts/build-frontend.sh` | Build image frontend (`family-saga-io`) |
+| `scripts/build-all.sh` | Build cả backend và frontend |
+
+Chạy từ thư mục gốc repo:
+
+```bash
+# Chỉ build image
+./scripts/build-backend.sh
+./scripts/build-frontend.sh
+
+# Build xong và restart container tương ứng
+./scripts/build-backend.sh --up
+./scripts/build-frontend.sh --up
+
+# Build cả hai + restart backend & frontend
+./scripts/build-all.sh --up
+```
+
+Xem thêm tùy chọn:
+
+```bash
+./scripts/build-backend.sh --help
+./scripts/build-frontend.sh --help
+./scripts/build-all.sh --help
+```
+
+Nếu Docker báo lỗi quyền, thử chạy với `sudo`:
+
+```bash
+sudo ./scripts/build-frontend.sh --up
+```
+
+> **Lưu ý:** Flag `--up` (hoặc `-u`) sẽ chạy `docker compose up -d --force-recreate` cho service tương ứng sau khi build xong.
+
+---
+
 ## Production (Docker Compose)
 
 ### Build & chạy toàn bộ stack
 
 ```bash
-docker compose -p family-tree up -d --build
+docker compose up -d --build
 ```
 
 ### Chỉ rebuild một service
 
+**Cách 1 — dùng script (khuyến nghị):**
+
+```bash
+./scripts/build-backend.sh --up
+./scripts/build-frontend.sh --up
+```
+
+**Cách 2 — docker compose trực tiếp:**
+
 ```bash
 # Rebuild frontend
-docker compose -p family-tree up -d --build frontend
+docker compose up -d --build frontend
 
 # Rebuild backend
-docker compose -p family-tree up -d --build backend
+docker compose up -d --build backend
+```
+
+Nếu gặp lỗi buildx, thêm biến môi trường:
+
+```bash
+DOCKER_BUILDKIT=0 docker compose build frontend
+DOCKER_BUILDKIT=0 docker compose up -d --force-recreate frontend
 ```
 
 ### Xem trạng thái containers
 
 ```bash
-docker compose -p family-tree ps -a
+docker compose ps -a
 ```
 
 ### Xem logs
 
 ```bash
 # Toàn bộ
-docker compose -p family-tree logs -f
+docker compose logs -f
 
 # Riêng từng service
-docker compose -p family-tree logs -f backend
-docker compose -p family-tree logs -f frontend
-docker compose -p family-tree logs -f nginx
+docker compose logs -f backend
+docker compose logs -f frontend
+docker compose logs -f nginx
 ```
 
 ### Dừng stack
 
 ```bash
-docker compose -p family-tree down
+docker compose down
 ```
 
 ### Dừng và xoá volume (reset DB)
 
 ```bash
-docker compose -p family-tree down -v
+docker compose down -v
 ```
 
 ---
@@ -111,7 +170,7 @@ Config: `nginx/conf.d/giapha.kimtudien.com.vn.conf`
 | `/api/*`, `/docs`, `/redoc`, `/health` | `backend:8000` |
 | `/` (mọi route còn lại) | `frontend:80` (SPA) |
 
-Domain: **giapha.kimtudien.com.vn** → port `88`
+Domain: **giapha.kimtudien.com.vn** → port `87`
 
 ---
 
@@ -121,7 +180,13 @@ Domain: **giapha.kimtudien.com.vn** → port `88`
 # Health check backend
 curl http://localhost:8002/health
 
+# Frontend (direct)
+open http://localhost:5174
+
+# Admin quản lý gia phả
+open http://localhost:5174/admin/gia-pha
+
 # Qua nginx
-curl http://giapha.kimtudien.com.vn/health
+curl http://localhost:87/health
 ```
 

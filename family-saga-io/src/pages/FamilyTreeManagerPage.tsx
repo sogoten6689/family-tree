@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   Alert,
+  Avatar,
   Button,
   Card,
   Col,
   Descriptions,
   Divider,
+  Drawer,
   Empty,
   Form,
   Input,
@@ -15,10 +17,13 @@ import {
   Row,
   Select,
   Spin,
+  Table,
+  Tabs,
   Tag,
   Typography,
 } from 'antd';
 import {
+  BranchesOutlined,
   CloudDownloadOutlined,
   DeleteOutlined,
   EditOutlined,
@@ -241,6 +246,7 @@ const FamilyTreeManagerPage = () => {
   const [crawlModalOpen, setCrawlModalOpen] = useState(false);
   const [crawlingData, setCrawlingData] = useState(false);
   const [treeSearchKeyword, setTreeSearchKeyword] = useState('');
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const [treeForm] = Form.useForm<TreeFormValues>();
   const [memberForm] = Form.useForm<MemberFormValues>();
@@ -266,24 +272,17 @@ const FamilyTreeManagerPage = () => {
       const response = await listFamilyTrees();
       setTrees(response.items);
 
-      const nextSelected = preferredId ?? response.items[0]?.id ?? null;
-      setSelectedTreeId(nextSelected);
-
-      if (nextSelected) {
-        setLoadingTree(true);
-        const tree = await getFamilyTree(nextSelected);
-        setCurrentTree(tree);
-      } else {
-        setCurrentTree(null);
+      if (preferredId) {
+        setSelectedTreeId(preferredId);
       }
     } catch (error) {
       setPageError(error instanceof Error ? error.message : 'Cannot load trees');
       setTrees([]);
       setSelectedTreeId(null);
       setCurrentTree(null);
+      setDrawerOpen(false);
     } finally {
       setLoadingTrees(false);
-      setLoadingTree(false);
     }
   };
 
@@ -317,19 +316,26 @@ const FamilyTreeManagerPage = () => {
     }
   };
 
-  const handleSelectTree = async (treeId: string) => {
+  const openTreeDetail = async (treeId: string) => {
     setSelectedTreeId(treeId);
     setSelectedNodeId(null);
+    setDrawerOpen(true);
     setLoadingTree(true);
     setPageError(null);
     try {
       const tree = await getFamilyTree(treeId);
       setCurrentTree(tree);
     } catch (error) {
+      setCurrentTree(null);
       setPageError(error instanceof Error ? error.message : 'Cannot load tree detail');
     } finally {
       setLoadingTree(false);
     }
+  };
+
+  const closeTreeDrawer = () => {
+    setDrawerOpen(false);
+    setSelectedNodeId(null);
   };
 
   const openCreateTreeModal = () => {
@@ -362,6 +368,7 @@ const FamilyTreeManagerPage = () => {
         setTreeModalOpen(false);
         setEditingTree(null);
         await loadTrees(created.id);
+        await openTreeDetail(created.id);
       }
     } catch (error) {
       setPageError(error instanceof Error ? error.message : 'Cannot save tree');
@@ -387,16 +394,8 @@ const FamilyTreeManagerPage = () => {
           setTrees(remaining);
           setCurrentTree(null);
           setSelectedNodeId(null);
-          const nextId = remaining[0]?.id ?? null;
-          setSelectedTreeId(nextId);
-          if (nextId) {
-            setLoadingTree(true);
-            try {
-              setCurrentTree(await getFamilyTree(nextId));
-            } finally {
-              setLoadingTree(false);
-            }
-          }
+          setSelectedTreeId(null);
+          setDrawerOpen(false);
         } catch (error) {
           setPageError(error instanceof Error ? error.message : String(error));
         }
@@ -556,7 +555,10 @@ const FamilyTreeManagerPage = () => {
         sync_db: values.syncDb,
       });
       setCrawlModalOpen(false);
-      await loadTrees(selectedTreeId ?? undefined);
+      await loadTrees(drawerOpen ? selectedTreeId ?? undefined : undefined);
+      if (drawerOpen && selectedTreeId) {
+        await openTreeDetail(selectedTreeId);
+      }
     } catch (error) {
       setPageError(error instanceof Error ? error.message : 'Không thể crawl/sync dữ liệu');
     } finally {
@@ -626,23 +628,205 @@ const FamilyTreeManagerPage = () => {
     });
   }, [trees, treeSearchKeyword]);
 
-  const treeOptions = filteredTrees.map((tree) => ({ label: tree.name, value: tree.id }));
+  const formatTreeDate = (value: string) => {
+    const parsed = new Date(value);
+    if (Number.isNaN(parsed.getTime())) return value;
+    return parsed.toLocaleDateString('vi-VN');
+  };
+
   const ancestorOptions = currentTree?.nodes.map((node) => ({ label: `${node.name} (#${node.id})`, value: Number(node.id) })) ?? [];
   const spouseOptions = ancestorOptions;
 
+  const treeDetailContent = currentTree ? (
+    <>
+      <Descriptions
+        bordered
+        size="small"
+        className="mb-4"
+        title={t('familyTree.treeDetailTitle', { defaultValue: 'Chi tiết cây gia phả' })}
+        column={{ xs: 1, sm: 2 }}
+      >
+        <Descriptions.Item label="ID">{currentTree.id}</Descriptions.Item>
+        <Descriptions.Item label={t('familyTree.treeName', { defaultValue: 'Tên cây' })}>
+          {currentTree.name}
+        </Descriptions.Item>
+        <Descriptions.Item label={t('familyTree.totalMembers', { defaultValue: 'Tổng thành viên' })}>
+          {stats.totalMembers}
+        </Descriptions.Item>
+        <Descriptions.Item label={t('familyTree.totalGenerations', { defaultValue: 'Tổng thế hệ' })}>
+          {Math.max(1, members.reduce((max, member) => Math.max(max, member.generation), 1))}
+        </Descriptions.Item>
+        <Descriptions.Item label={t('familyTree.createdAt', { defaultValue: 'Ngày tạo' })}>
+          {new Date(currentTree.created_at).toLocaleString('vi-VN')}
+        </Descriptions.Item>
+        <Descriptions.Item label={t('familyTree.updatedAt', { defaultValue: 'Cập nhật' })}>
+          {new Date(currentTree.updated_at).toLocaleString('vi-VN')}
+        </Descriptions.Item>
+        <Descriptions.Item label={t('familyTree.treeDescription', { defaultValue: 'Mô tả' })} span={2}>
+          {currentTree.description || t('familyTree.noDescription', { defaultValue: 'Không có mô tả' })}
+        </Descriptions.Item>
+      </Descriptions>
+
+      <Tabs
+        defaultActiveKey="visual"
+        items={[
+          {
+            key: 'visual',
+            label: t('familyTree.visualTreeTitle', { defaultValue: 'Cây gia phả trực quan' }),
+            children:
+              currentTree.nodes.length > 0 ? (
+                <BalkanFamilyTreeView
+                  key={currentTree.id}
+                  treeId={currentTree.id}
+                  nodes={currentTree.nodes}
+                  height={520}
+                />
+              ) : (
+                <Empty
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                  description={t('familyTree.emptyTree', { defaultValue: 'Cây này chưa có node nào' })}
+                />
+              ),
+          },
+          {
+            key: 'members',
+            label: t('familyTree.memberGridTitle', { defaultValue: 'Danh sách thành viên' }),
+            children: (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {members.map((member) => (
+                  <FamilyTreeNode
+                    key={member.id}
+                    member={member}
+                    onSelect={() => setSelectedNodeId(Number(member.id))}
+                    isSelected={selectedNodeId === Number(member.id)}
+                  />
+                ))}
+              </div>
+            ),
+          },
+          {
+            key: 'links',
+            label: t('familyTree.relationshipManager', { defaultValue: 'Quản lý liên kết quan hệ' }),
+            children: (
+              <Row gutter={[16, 16]}>
+                <Col xs={24}>
+                  <Card size="small" title={t('familyTree.createLink', { defaultValue: 'Tạo liên kết' })}>
+                    <Form
+                      form={createLinkForm}
+                      layout="vertical"
+                      initialValues={{ type: 'spouse_of', side: 'fid' }}
+                      onFinish={submitCreateLinkForm}
+                    >
+                      <Row gutter={12}>
+                        <Col span={12}>
+                          <Form.Item label={t('familyTree.linkType', { defaultValue: 'Loại quan hệ' })} name="type" rules={[{ required: true }]}>
+                            <Select
+                              options={[
+                                { value: 'spouse_of', label: t('familyTree.spouseLink', { defaultValue: 'Vợ / chồng' }) },
+                                { value: 'parent_of', label: t('familyTree.parentLink', { defaultValue: 'Cha/mẹ -> con' }) },
+                              ]}
+                            />
+                          </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                          <Form.Item noStyle shouldUpdate>
+                            {({ getFieldValue }) =>
+                              getFieldValue('type') === 'parent_of' ? (
+                                <Form.Item label={t('familyTree.parentSide', { defaultValue: 'Vai trò cha/mẹ' })} name="side" rules={[{ required: true }]}>
+                                  <Select
+                                    options={[
+                                      { value: 'fid', label: t('familyTree.father', { defaultValue: 'Cha (fid)' }) },
+                                      { value: 'mid', label: t('familyTree.mother', { defaultValue: 'Mẹ (mid)' }) },
+                                    ]}
+                                  />
+                                </Form.Item>
+                              ) : null
+                            }
+                          </Form.Item>
+                        </Col>
+                      </Row>
+                      <Form.Item label={t('familyTree.fromNode', { defaultValue: 'Từ node' })} name="fromId" rules={[{ required: true }]}>
+                        <Select options={ancestorOptions} />
+                      </Form.Item>
+                      <Form.Item label={t('familyTree.toNode', { defaultValue: 'Đến node' })} name="toId" rules={[{ required: true }]}>
+                        <Select options={ancestorOptions} />
+                      </Form.Item>
+                      <Button htmlType="submit" type="primary" loading={savingLink}>
+                        {t('familyTree.createLink', { defaultValue: 'Tạo liên kết' })}
+                      </Button>
+                    </Form>
+                  </Card>
+                </Col>
+                <Col xs={24}>
+                  <Card size="small" title={t('familyTree.deleteLink', { defaultValue: 'Gỡ liên kết' })}>
+                    <Form
+                      form={deleteLinkForm}
+                      layout="vertical"
+                      initialValues={{ type: 'spouse_of', side: 'fid' }}
+                      onFinish={submitDeleteLinkForm}
+                    >
+                      <Row gutter={12}>
+                        <Col span={12}>
+                          <Form.Item label={t('familyTree.linkType', { defaultValue: 'Loại quan hệ' })} name="type" rules={[{ required: true }]}>
+                            <Select
+                              options={[
+                                { value: 'spouse_of', label: t('familyTree.spouseLink', { defaultValue: 'Vợ / chồng' }) },
+                                { value: 'parent_of', label: t('familyTree.parentLink', { defaultValue: 'Cha/mẹ -> con' }) },
+                              ]}
+                            />
+                          </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                          <Form.Item noStyle shouldUpdate>
+                            {({ getFieldValue }) =>
+                              getFieldValue('type') === 'parent_of' ? (
+                                <Form.Item label={t('familyTree.parentSide', { defaultValue: 'Vai trò cha/mẹ' })} name="side">
+                                  <Select
+                                    allowClear
+                                    options={[
+                                      { value: 'fid', label: t('familyTree.father', { defaultValue: 'Cha (fid)' }) },
+                                      { value: 'mid', label: t('familyTree.mother', { defaultValue: 'Mẹ (mid)' }) },
+                                    ]}
+                                  />
+                                </Form.Item>
+                              ) : null
+                            }
+                          </Form.Item>
+                        </Col>
+                      </Row>
+                      <Form.Item label={t('familyTree.fromNode', { defaultValue: 'Từ node' })} name="fromId" rules={[{ required: true }]}>
+                        <Select options={ancestorOptions} />
+                      </Form.Item>
+                      <Form.Item label={t('familyTree.toNode', { defaultValue: 'Đến node' })} name="toId" rules={[{ required: true }]}>
+                        <Select options={ancestorOptions} />
+                      </Form.Item>
+                      <Button htmlType="submit" danger loading={savingLink}>
+                        {t('familyTree.deleteLink', { defaultValue: 'Gỡ liên kết' })}
+                      </Button>
+                    </Form>
+                  </Card>
+                </Col>
+              </Row>
+            ),
+          },
+        ]}
+      />
+    </>
+  ) : null;
+
   return (
-    <div className="max-w-[1600px] mx-auto">
+    <div className="max-w-6xl mx-auto">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <Typography.Paragraph type="secondary" className="!mb-0">
           {t('familyTree.managerSubtitle', {
-            defaultValue: 'Danh sách cây, node và liên kết được lấy trực tiếp từ backend JSON.',
+            defaultValue: 'Quản lý danh sách cây gia phả. Bấm Chi tiết để xem và chỉnh sửa.',
           })}
         </Typography.Paragraph>
         <div className="flex flex-wrap items-center gap-3">
           <Button icon={<CloudDownloadOutlined />} onClick={openCrawlModal} loading={crawlingData}>
             {t('familyTree.crawlSync', { defaultValue: 'Crawl + Sync DB' })}
           </Button>
-          <Button icon={<ReloadOutlined />} onClick={() => loadTrees(selectedTreeId ?? undefined)} loading={loadingTrees || loadingTree}>
+          <Button icon={<ReloadOutlined />} onClick={() => loadTrees()} loading={loadingTrees}>
             {t('familyTree.reload', { defaultValue: 'Tải lại' })}
           </Button>
           <Button icon={<PlusOutlined />} onClick={openCreateTreeModal} type="primary">
@@ -650,282 +834,148 @@ const FamilyTreeManagerPage = () => {
           </Button>
         </div>
       </div>
-        {pageError && (
-          <Alert
-            type="warning"
-            showIcon
-            className="mb-6"
-            message={t('familyTree.errorTitle', { defaultValue: 'Không tải được dữ liệu' })}
-            description={pageError}
-          />
+
+      {pageError && (
+        <Alert
+          type="warning"
+          showIcon
+          className="mb-6"
+          message={t('familyTree.errorTitle', { defaultValue: 'Không tải được dữ liệu' })}
+          description={pageError}
+        />
+      )}
+
+      <Card
+        title={t('familyTree.treeListTitle', { defaultValue: 'Danh sách gia phả' })}
+        extra={<Tag>{filteredTrees.length}</Tag>}
+      >
+        <Input.Search
+          allowClear
+          value={treeSearchKeyword}
+          onChange={(event) => setTreeSearchKeyword(event.target.value)}
+          placeholder={t('familyTree.searchTrees', { defaultValue: 'Tìm cây theo tên, mã hoặc mô tả' })}
+          className="mb-4 max-w-md"
+        />
+
+        <Table
+          rowKey="id"
+          loading={loadingTrees}
+          dataSource={filteredTrees}
+          pagination={{ pageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '50'] }}
+          scroll={{ x: 900 }}
+          locale={{
+            emptyText: (
+              <Empty description={t('familyTree.noTrees', { defaultValue: 'Chưa có cây nào' })} image={Empty.PRESENTED_IMAGE_SIMPLE}>
+                <Button type="primary" onClick={openCreateTreeModal}>
+                  {t('familyTree.createTree', { defaultValue: 'Tạo cây mới' })}
+                </Button>
+              </Empty>
+            ),
+          }}
+          columns={[
+            {
+              title: t('familyTree.treeName', { defaultValue: 'Gia phả' }).toUpperCase(),
+              dataIndex: 'name',
+              render: (_name: string, record: FamilyTreeSummary) => (
+                <div className="flex items-center gap-3 min-w-[220px]">
+                  <Avatar
+                    size={40}
+                    className="!bg-[#1677ff]/10 !text-[#1677ff] shrink-0"
+                    icon={<BranchesOutlined />}
+                  />
+                  <div>
+                    <div className="font-semibold text-foreground">{record.name}</div>
+                    <div className="text-xs text-muted-foreground">{record.id}</div>
+                  </div>
+                </div>
+              ),
+            },
+            {
+              title: t('familyTree.treeDescription', { defaultValue: 'Mô tả' }).toUpperCase(),
+              dataIndex: 'description',
+              ellipsis: true,
+              render: (description: string | null | undefined) =>
+                description?.trim() || t('familyTree.noDescription', { defaultValue: 'Không có mô tả' }),
+            },
+            {
+              title: t('familyTree.totalMembers', { defaultValue: 'Thành viên' }).toUpperCase(),
+              dataIndex: 'node_count',
+              width: 130,
+              render: (count: number) => (
+                <Tag color={count > 0 ? 'blue' : 'default'}>
+                  {count} {t('familyTree.membersShort', { defaultValue: 'người' })}
+                </Tag>
+              ),
+            },
+            {
+              title: t('familyTree.updatedAt', { defaultValue: 'Cập nhật' }).toUpperCase(),
+              dataIndex: 'updated_at',
+              width: 130,
+              render: (value: string) => formatTreeDate(value),
+            },
+            {
+              title: '',
+              key: 'actions',
+              width: 100,
+              align: 'right',
+              render: (_: unknown, record: FamilyTreeSummary) => (
+                <Button type="link" className="!px-0" onClick={() => void openTreeDetail(record.id)}>
+                  {t('familyTree.detail', { defaultValue: 'Chi tiết' })}
+                </Button>
+              ),
+            },
+          ]}
+        />
+      </Card>
+
+      <Drawer
+        title={currentTree?.name ?? t('familyTree.treeDetailTitle', { defaultValue: 'Chi tiết cây gia phả' })}
+        placement="right"
+        width={960}
+        open={drawerOpen}
+        onClose={closeTreeDrawer}
+        destroyOnClose
+        extra={
+          currentTree ? (
+            <div className="flex flex-wrap items-center gap-2">
+              <Button size="small" icon={<EditOutlined />} onClick={openEditTreeModal}>
+                {t('familyTree.editTree', { defaultValue: 'Sửa' })}
+              </Button>
+              <Button size="small" icon={<DeleteOutlined />} danger onClick={handleDeleteTree}>
+                {t('familyTree.deleteTree', { defaultValue: 'Xóa' })}
+              </Button>
+              <Button size="small" onClick={openJsonViewer}>
+                {t('familyTree.viewJson', { defaultValue: 'JSON' })}
+              </Button>
+              <Button size="small" onClick={openJsonEditor}>
+                {t('familyTree.editJson', { defaultValue: 'Sửa JSON' })}
+              </Button>
+              <Button size="small" type="primary" icon={<PlusOutlined />} onClick={openCreateMemberModal}>
+                {t('familyTree.addMember', { defaultValue: 'Thêm' })}
+              </Button>
+            </div>
+          ) : null
+        }
+      >
+        {loadingTree ? (
+          <div className="py-16 flex justify-center">
+            <Spin size="large" tip={t('familyTree.loadingTreeDetail', { defaultValue: 'Đang tải chi tiết cây...' })} />
+          </div>
+        ) : currentTree ? (
+          treeDetailContent
+        ) : (
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={t('familyTree.treeDetailLoadFailed', { defaultValue: 'Không tải được chi tiết cây' })}
+          >
+            {selectedTreeId && (
+              <Button onClick={() => void openTreeDetail(selectedTreeId)}>
+                {t('familyTree.reload', { defaultValue: 'Tải lại' })}
+              </Button>
+            )}
+          </Empty>
         )}
-
-        <Row gutter={[24, 24]}>
-          <Col xs={24} lg={6}>
-            <Card
-              title={t('familyTree.treeListTitle', { defaultValue: 'Danh sách cây' })}
-              extra={<Tag>{trees.length}</Tag>}
-              styles={{ body: { paddingTop: 12 } }}
-            >
-              <Select
-                value={selectedTreeId ?? undefined}
-                options={treeOptions}
-                onChange={handleSelectTree}
-                placeholder={t('familyTree.selectTree', { defaultValue: 'Chọn cây gia phả' })}
-                className="w-full mb-4"
-                loading={loadingTrees}
-                allowClear
-                showSearch
-                optionFilterProp="label"
-                filterOption={(input, option) =>
-                  String(option?.label ?? '')
-                    .toLowerCase()
-                    .includes(input.toLowerCase()) ||
-                  String(option?.value ?? '')
-                    .toLowerCase()
-                    .includes(input.toLowerCase())
-                }
-              />
-              <Input
-                value={treeSearchKeyword}
-                onChange={(event) => setTreeSearchKeyword(event.target.value)}
-                placeholder={t('familyTree.searchTrees', { defaultValue: 'Tìm cây theo tên, mã hoặc mô tả' })}
-                className="mb-4"
-                allowClear
-              />
-              <div className="space-y-3 max-h-[420px] overflow-auto pr-1">
-                {filteredTrees.map((tree) => (
-                  <button
-                    key={tree.id}
-                    type="button"
-                    onClick={() => handleSelectTree(tree.id)}
-                    className={`w-full text-left rounded-lg border p-3 transition ${tree.id === selectedTreeId ? 'border-gold shadow-md' : 'border-border hover:border-gold/60'}`}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="font-semibold text-foreground">{tree.name}</div>
-                        <div className="text-xs text-muted-foreground mt-1 line-clamp-2">
-                          {tree.description || t('familyTree.noDescription', { defaultValue: 'Không có mô tả' })}
-                        </div>
-                      </div>
-                      <Tag color="gold">{tree.node_count}</Tag>
-                    </div>
-                    <div className="text-[11px] text-muted-foreground mt-3 flex items-center justify-between gap-2">
-                      <span>{tree.updated_at}</span>
-                      <span>{tree.id}</span>
-                    </div>
-                  </button>
-                ))}
-                {filteredTrees.length === 0 && !loadingTrees && (
-                  <Empty description={t('familyTree.noTrees', { defaultValue: 'Chưa có cây nào' })} image={Empty.PRESENTED_IMAGE_SIMPLE} />
-                )}
-              </div>
-            </Card>
-          </Col>
-
-          <Col xs={24} lg={18}>
-            <Card
-              title={currentTree ? currentTree.name : t('familyTree.noTreeSelected', { defaultValue: 'Chưa chọn cây' })}
-              extra={
-                <div className="flex items-center gap-2">
-                  {currentTree && (
-                    <>
-                      <Button icon={<EditOutlined />} onClick={openEditTreeModal}>
-                        {t('familyTree.editTree', { defaultValue: 'Sửa cây' })}
-                      </Button>
-                      <Button icon={<DeleteOutlined />} danger onClick={handleDeleteTree}>
-                        {t('familyTree.deleteTree', { defaultValue: 'Xóa cây' })}
-                      </Button>
-                      <Button onClick={openJsonViewer}>
-                        {t('familyTree.viewJson', { defaultValue: 'Xem JSON' })}
-                      </Button>
-                      <Button onClick={openJsonEditor}>
-                        {t('familyTree.editJson', { defaultValue: 'Sửa JSON' })}
-                      </Button>
-                      <Button icon={<PlusOutlined />} type="primary" onClick={openCreateMemberModal}>
-                        {t('familyTree.addMember', { defaultValue: 'Thêm thành viên' })}
-                      </Button>
-                    </>
-                  )}
-                </div>
-              }
-            >
-              {currentTree ? (
-                <>
-                  <Row gutter={[16, 16]} className="mb-4">
-                    <Col xs={24} md={8}>
-                      <Card size="small">
-                        <div className="text-sm text-muted-foreground">{t('familyTree.totalMembers', { defaultValue: 'Tổng thành viên' })}</div>
-                        <div className="text-2xl font-bold">{stats.totalMembers}</div>
-                      </Card>
-                    </Col>
-                    <Col xs={24} md={8}>
-                      <Card size="small">
-                        <div className="text-sm text-muted-foreground">{t('familyTree.totalGenerations', { defaultValue: 'Tổng thế hệ' })}</div>
-                        <div className="text-2xl font-bold">{Math.max(1, members.reduce((max, member) => Math.max(max, member.generation), 1))}</div>
-                      </Card>
-                    </Col>
-                    <Col xs={24} md={8}>
-                      <Card size="small">
-                        <div className="text-sm text-muted-foreground">{t('familyTree.origin', { defaultValue: 'Nguồn dữ liệu' })}</div>
-                        <div className="text-2xl font-bold">JSON</div>
-                      </Card>
-                    </Col>
-                  </Row>
-
-                  <div className="mb-6">
-                    {loadingTree ? (
-                      <div className="py-16 flex justify-center">
-                        <Spin size="large" />
-                      </div>
-                    ) : currentTree.nodes.length > 0 ? (
-                      <BalkanFamilyTreeView nodes={currentTree.nodes} height={640} />
-                    ) : (
-                      <Empty
-                        image={Empty.PRESENTED_IMAGE_SIMPLE}
-                        description={t('familyTree.emptyTree', { defaultValue: 'Cây này chưa có node nào' })}
-                      />
-                    )}
-                  </div>
-
-                  <Divider>{t('familyTree.memberGridTitle', { defaultValue: 'Danh sách thành viên' })}</Divider>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {members.map((member) => (
-                      <FamilyTreeNode
-                        key={member.id}
-                        member={member}
-                        onSelect={() => {
-                          const nodeId = Number(member.id);
-                          setSelectedNodeId(nodeId);
-                        }}
-                        isSelected={selectedNodeId === Number(member.id)}
-                      />
-                    ))}
-                  </div>
-
-                  <Divider>{t('familyTree.relationshipManager', { defaultValue: 'Quản lý liên kết quan hệ' })}</Divider>
-                  <Row gutter={[16, 16]}>
-                    <Col xs={24} lg={12}>
-                      <Card size="small" title={t('familyTree.createLink', { defaultValue: 'Tạo liên kết' })}>
-                        <Form
-                          form={createLinkForm}
-                          layout="vertical"
-                          initialValues={{ type: 'spouse_of', side: 'fid' }}
-                          onFinish={submitCreateLinkForm}
-                        >
-                          <Row gutter={12}>
-                            <Col span={12}>
-                              <Form.Item label={t('familyTree.linkType', { defaultValue: 'Loại quan hệ' })} name="type" rules={[{ required: true }]}>
-                                <Select
-                                  options={[
-                                    { value: 'spouse_of', label: t('familyTree.spouseLink', { defaultValue: 'Vợ / chồng' }) },
-                                    { value: 'parent_of', label: t('familyTree.parentLink', { defaultValue: 'Cha/mẹ -> con' }) },
-                                  ]}
-                                />
-                              </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                              <Form.Item noStyle shouldUpdate>
-                                {({ getFieldValue }) =>
-                                  getFieldValue('type') === 'parent_of' ? (
-                                    <Form.Item label={t('familyTree.parentSide', { defaultValue: 'Vai trò cha/mẹ' })} name="side" rules={[{ required: true }]}>
-                                      <Select
-                                        options={[
-                                          { value: 'fid', label: t('familyTree.father', { defaultValue: 'Cha (fid)' }) },
-                                          { value: 'mid', label: t('familyTree.mother', { defaultValue: 'Mẹ (mid)' }) },
-                                        ]}
-                                      />
-                                    </Form.Item>
-                                  ) : null
-                                }
-                              </Form.Item>
-                            </Col>
-                          </Row>
-
-                          <Form.Item label={t('familyTree.fromNode', { defaultValue: 'Từ node' })} name="fromId" rules={[{ required: true }]}>
-                            <Select options={ancestorOptions} />
-                          </Form.Item>
-                          <Form.Item label={t('familyTree.toNode', { defaultValue: 'Đến node' })} name="toId" rules={[{ required: true }]}>
-                            <Select options={ancestorOptions} />
-                          </Form.Item>
-
-                          <Button htmlType="submit" type="primary" loading={savingLink}>
-                            {t('familyTree.createLink', { defaultValue: 'Tạo liên kết' })}
-                          </Button>
-                        </Form>
-                      </Card>
-                    </Col>
-
-                    <Col xs={24} lg={12}>
-                      <Card size="small" title={t('familyTree.deleteLink', { defaultValue: 'Gỡ liên kết' })}>
-                        <Form
-                          form={deleteLinkForm}
-                          layout="vertical"
-                          initialValues={{ type: 'spouse_of', side: 'fid' }}
-                          onFinish={submitDeleteLinkForm}
-                        >
-                          <Row gutter={12}>
-                            <Col span={12}>
-                              <Form.Item label={t('familyTree.linkType', { defaultValue: 'Loại quan hệ' })} name="type" rules={[{ required: true }]}>
-                                <Select
-                                  options={[
-                                    { value: 'spouse_of', label: t('familyTree.spouseLink', { defaultValue: 'Vợ / chồng' }) },
-                                    { value: 'parent_of', label: t('familyTree.parentLink', { defaultValue: 'Cha/mẹ -> con' }) },
-                                  ]}
-                                />
-                              </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                              <Form.Item noStyle shouldUpdate>
-                                {({ getFieldValue }) =>
-                                  getFieldValue('type') === 'parent_of' ? (
-                                    <Form.Item label={t('familyTree.parentSide', { defaultValue: 'Vai trò cha/mẹ' })} name="side">
-                                      <Select
-                                        allowClear
-                                        options={[
-                                          { value: 'fid', label: t('familyTree.father', { defaultValue: 'Cha (fid)' }) },
-                                          { value: 'mid', label: t('familyTree.mother', { defaultValue: 'Mẹ (mid)' }) },
-                                        ]}
-                                      />
-                                    </Form.Item>
-                                  ) : null
-                                }
-                              </Form.Item>
-                            </Col>
-                          </Row>
-
-                          <Form.Item label={t('familyTree.fromNode', { defaultValue: 'Từ node' })} name="fromId" rules={[{ required: true }]}>
-                            <Select options={ancestorOptions} />
-                          </Form.Item>
-                          <Form.Item label={t('familyTree.toNode', { defaultValue: 'Đến node' })} name="toId" rules={[{ required: true }]}>
-                            <Select options={ancestorOptions} />
-                          </Form.Item>
-
-                          <Button htmlType="submit" danger loading={savingLink}>
-                            {t('familyTree.deleteLink', { defaultValue: 'Gỡ liên kết' })}
-                          </Button>
-                        </Form>
-                      </Card>
-                    </Col>
-                  </Row>
-                </>
-              ) : loadingTrees ? (
-                <div className="py-16 flex justify-center">
-                  <Spin size="large" />
-                </div>
-              ) : (
-                <Empty
-                  image={Empty.PRESENTED_IMAGE_SIMPLE}
-                  description={t('familyTree.emptyTrees', { defaultValue: 'Chưa có cây nào để hiển thị' })}
-                >
-                  <Button type="primary" onClick={openCreateTreeModal}>
-                    {t('familyTree.createTree', { defaultValue: 'Tạo cây mới' })}
-                  </Button>
-                </Empty>
-              )}
-            </Card>
-          </Col>
-        </Row>
+      </Drawer>
 
       <Modal
         open={treeModalOpen}
