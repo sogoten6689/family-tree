@@ -1,16 +1,21 @@
 from __future__ import annotations
 
 from collections import deque
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from threading import Lock
 from typing import Any, Dict, List, Literal, Optional
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
+from app.auth.bootstrap import bootstrap_auth
+from app.auth.dependencies import AdminUser
+from app.auth.router import router as auth_router
+from app.database import database_enabled, database_init_error, init_database
 from app.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
@@ -114,8 +119,15 @@ class HistoryResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str = Field(description="Trạng thái sống của service, hiện tại là `ok`.")
+    auth_storage: Literal["mysql", "disabled"] = Field(
+        description="Backend đang lưu user bằng MySQL hay chưa cấu hình DB."
+    )
     history_storage: Literal["mysql", "memory"] = Field(
         description="Backend đang lưu lịch sử bằng MySQL hay in-memory."
+    )
+    auth_init_error: Optional[str] = Field(
+        default=None,
+        description="Lỗi khởi tạo auth/database nếu có.",
     )
     history_init_error: Optional[str] = Field(
         default=None,
@@ -255,7 +267,19 @@ _TAGS_METADATA = [
         "name": "Crawlers",
         "description": "Tiện ích crawl dữ liệu nguồn ngoài và đồng bộ vào database.",
     },
+    {
+        "name": "Auth",
+        "description": "Đăng ký, đăng nhập JWT và quản lý người dùng (Admin).",
+    },
 ]
+
+
+@asynccontextmanager
+async def _lifespan(_: FastAPI):
+    init_database()
+    if database_enabled():
+        bootstrap_auth()
+    yield
 
 _DESCRIPTION = """
 ## Family Tree Analyzer API
@@ -295,7 +319,10 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
+    lifespan=_lifespan,
 )
+
+app.include_router(auth_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -369,9 +396,12 @@ def health() -> HealthResponse:
     """
     payload = {
         "status": "ok",
+        "auth_storage": "mysql" if database_enabled() else "disabled",
         "history_storage": "mysql" if _history_repo.enabled else "memory",
     }
     payload["tree_storage"] = _family_tree_storage
+    if database_init_error():
+        payload["auth_init_error"] = database_init_error()
     if _history_repo.init_error:
         payload["history_init_error"] = _history_repo.init_error
     return HealthResponse(**payload)
@@ -544,7 +574,7 @@ def clear_history() -> ClearHistoryResponse:
     tags=["FamilyTrees"],
     summary="Danh sách cây gia phả",
 )
-def list_family_trees() -> FamilyTreeListResponse:
+def list_family_trees(_: AdminUser) -> FamilyTreeListResponse:
     try:
         items = _family_tree_store.list_trees()
     except Exception as error:  # pragma: no cover - defensive
@@ -558,7 +588,7 @@ def list_family_trees() -> FamilyTreeListResponse:
     tags=["FamilyTrees"],
     summary="Tạo cây gia phả mới",
 )
-def create_family_tree(req: FamilyTreeCreateRequest) -> FamilyTreeDocument:
+def create_family_tree(req: FamilyTreeCreateRequest, _: AdminUser) -> FamilyTreeDocument:
     try:
         created = _family_tree_store.create_tree(
             name=req.name,
@@ -576,7 +606,7 @@ def create_family_tree(req: FamilyTreeCreateRequest) -> FamilyTreeDocument:
     tags=["FamilyTrees"],
     summary="Chi tiết cây gia phả",
 )
-def get_family_tree(tree_id: str) -> FamilyTreeDocument:
+def get_family_tree(tree_id: str, _: AdminUser) -> FamilyTreeDocument:
     try:
         item = _family_tree_store.get_tree(tree_id)
     except Exception as error:
@@ -590,7 +620,7 @@ def get_family_tree(tree_id: str) -> FamilyTreeDocument:
     tags=["FamilyTrees"],
     summary="Cập nhật metadata cây gia phả",
 )
-def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest) -> FamilyTreeDocument:
+def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest, _: AdminUser) -> FamilyTreeDocument:
     if req.name is None and req.description is None:
         raise HTTPException(status_code=400, detail="No fields to update")
 
@@ -611,7 +641,7 @@ def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest) -> FamilyTree
     tags=["FamilyTrees"],
     summary="Thay thế toàn bộ document cây gia phả",
 )
-def replace_family_tree_document(tree_id: str, req: FamilyTreeReplaceRequest) -> FamilyTreeDocument:
+def replace_family_tree_document(tree_id: str, req: FamilyTreeReplaceRequest, _: AdminUser) -> FamilyTreeDocument:
     try:
         item = _family_tree_store.replace_tree_document(
             tree_id,
@@ -630,7 +660,7 @@ def replace_family_tree_document(tree_id: str, req: FamilyTreeReplaceRequest) ->
     tags=["FamilyTrees"],
     summary="Xóa một cây gia phả",
 )
-def delete_family_tree(tree_id: str) -> FamilyTreeDeleteResponse:
+def delete_family_tree(tree_id: str, _: AdminUser) -> FamilyTreeDeleteResponse:
     try:
         _family_tree_store.delete_tree(tree_id)
     except Exception as error:
@@ -644,7 +674,7 @@ def delete_family_tree(tree_id: str) -> FamilyTreeDeleteResponse:
     tags=["FamilyTrees"],
     summary="Thêm node vào cây gia phả",
 )
-def add_family_tree_node(tree_id: str, req: FamilyTreeNodeRequest) -> FamilyTreeDocument:
+def add_family_tree_node(tree_id: str, req: FamilyTreeNodeRequest, _: AdminUser) -> FamilyTreeDocument:
     if req.name is None or req.gender is None:
         raise HTTPException(status_code=400, detail="name and gender are required")
 
@@ -665,6 +695,7 @@ def update_family_tree_node(
     tree_id: str,
     node_id: int,
     req: FamilyTreeNodeRequest,
+    _: AdminUser,
 ) -> FamilyTreeDocument:
     payload = req.model_dump(exclude_none=True)
     if not payload:
@@ -683,7 +714,7 @@ def update_family_tree_node(
     tags=["FamilyTrees"],
     summary="Xóa node",
 )
-def delete_family_tree_node(tree_id: str, node_id: int) -> FamilyTreeDocument:
+def delete_family_tree_node(tree_id: str, node_id: int, _: AdminUser) -> FamilyTreeDocument:
     try:
         item = _family_tree_store.delete_node(tree_id, node_id=node_id)
     except Exception as error:
@@ -697,7 +728,7 @@ def delete_family_tree_node(tree_id: str, node_id: int) -> FamilyTreeDocument:
     tags=["FamilyTrees"],
     summary="Tạo liên kết quan hệ",
 )
-def create_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyTreeDocument:
+def create_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest, _: AdminUser) -> FamilyTreeDocument:
     try:
         if req.type == "spouse_of":
             item = _family_tree_store.add_spouse_link(
@@ -730,7 +761,7 @@ def create_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyT
     tags=["FamilyTrees"],
     summary="Xóa liên kết quan hệ",
 )
-def delete_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyTreeDocument:
+def delete_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest, _: AdminUser) -> FamilyTreeDocument:
     try:
         if req.type == "spouse_of":
             item = _family_tree_store.delete_spouse_link(
@@ -758,6 +789,7 @@ def delete_family_tree_link(tree_id: str, req: FamilyTreeLinkRequest) -> FamilyT
 )
 def crawl_and_sync_vietnamgiapha(
     req: VietnamGiaPhaCrawlSyncRequest,
+    _: AdminUser,
 ) -> VietnamGiaPhaCrawlSyncResponse:
     if req.start_id > req.end_id:
         raise HTTPException(status_code=400, detail="start_id must be <= end_id")
@@ -770,6 +802,8 @@ def crawl_and_sync_vietnamgiapha(
             end_id=req.end_id,
             output_dir=output_dir,
             save_html=False,
+            fetch_detail=True,
+            detail_delay_seconds=req.delay_seconds,
             delay_seconds=req.delay_seconds,
             timeout_seconds=20.0,
         )

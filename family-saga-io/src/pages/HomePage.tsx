@@ -1,14 +1,16 @@
 import { Button, Card } from 'antd';
-import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined } from '@ant-design/icons';
+import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import heroBg from '@/assets/hero-bg.jpg';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeToggle from '@/components/ThemeToggle';
+import { useAuth } from '@/contexts/AuthContext';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isAuthenticated, isAdmin, logout } = useAuth();
 
   const features = [
     {
@@ -55,7 +57,7 @@ const HomePage = () => {
             <Button
               type="primary"
               size="large"
-              onClick={() => navigate('/family-tree')}
+              onClick={() => navigate(isAuthenticated ? '/family-tree' : '/login')}
               style={{
                 background: 'hsl(36, 70%, 42%)',
                 borderColor: 'hsl(36, 70%, 42%)',
@@ -69,7 +71,7 @@ const HomePage = () => {
             </Button>
             <Button
               size="large"
-              onClick={() => navigate('/document-reader')}
+              onClick={() => navigate(isAuthenticated ? '/document-reader' : '/login')}
               style={{
                 background: 'hsl(39, 50%, 96%)',
                 borderColor: 'hsl(39, 50%, 96%)',
@@ -82,21 +84,58 @@ const HomePage = () => {
             >
                 {t('home.btnOpenDoc')}
             </Button>
-            <Button
-              size="large"
-              onClick={() => navigate('/family-tree-manager')}
-              style={{
-                background: 'hsl(36, 60%, 90%)',
-                borderColor: 'hsl(36, 60%, 75%)',
-                color: 'hsl(20, 40%, 25%)',
-                height: 48,
-                fontSize: 16,
-                fontFamily: 'var(--font-body)',
-                paddingInline: 24,
-              }}
-            >
-              {t('home.btnManageTree', { defaultValue: 'Quản lý gia phả' })}
-            </Button>
+            {isAdmin && (
+              <Button
+                size="large"
+                onClick={() => navigate('/admin/gia-pha')}
+                style={{
+                  background: 'hsl(36, 60%, 90%)',
+                  borderColor: 'hsl(36, 60%, 75%)',
+                  color: 'hsl(20, 40%, 25%)',
+                  height: 48,
+                  fontSize: 16,
+                  fontFamily: 'var(--font-body)',
+                  paddingInline: 24,
+                }}
+              >
+                {t('home.btnManageTree', { defaultValue: 'Quản lý gia phả' })}
+              </Button>
+            )}
+            {!isAuthenticated ? (
+              <Button
+                size="large"
+                icon={<LoginOutlined />}
+                onClick={() => navigate('/login')}
+                style={{
+                  background: 'transparent',
+                  borderColor: 'hsl(39, 50%, 96%)',
+                  color: 'hsl(39, 50%, 96%)',
+                  height: 48,
+                  fontSize: 16,
+                  fontFamily: 'var(--font-body)',
+                  paddingInline: 24,
+                }}
+              >
+                {t('auth.loginBtn', { defaultValue: 'Đăng nhập' })}
+              </Button>
+            ) : (
+              <Button
+                size="large"
+                icon={<LogoutOutlined />}
+                onClick={logout}
+                style={{
+                  background: 'transparent',
+                  borderColor: 'hsl(39, 50%, 96%)',
+                  color: 'hsl(39, 50%, 96%)',
+                  height: 48,
+                  fontSize: 16,
+                  fontFamily: 'var(--font-body)',
+                  paddingInline: 24,
+                }}
+              >
+                {t('auth.logout', { defaultValue: 'Đăng xuất' })}
+              </Button>
+            )}
           </div>
         </div>
       </section>
@@ -162,7 +201,7 @@ const HomePage = () => {
         <Button
           type="primary"
           size="large"
-          onClick={() => navigate('/document-reader')}
+          onClick={() => navigate(isAuthenticated ? '/document-reader' : '/login')}
           style={{
             background: 'hsl(0, 45%, 35%)',
             borderColor: 'hsl(0, 45%, 35%)',
