@@ -16,6 +16,7 @@ import {
   Radio,
   Row,
   Select,
+  Space,
   Spin,
   Table,
   Tabs,
@@ -27,6 +28,7 @@ import {
   CloudDownloadOutlined,
   DeleteOutlined,
   EditOutlined,
+  FileTextOutlined,
   PlusOutlined,
   ReloadOutlined,
 } from '@ant-design/icons';
@@ -248,6 +250,7 @@ const FamilyTreeManagerPage = () => {
   const [crawlingData, setCrawlingData] = useState(false);
   const [treeSearchKeyword, setTreeSearchKeyword] = useState('');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerActiveTab, setDrawerActiveTab] = useState('visual');
 
   const [treeForm] = Form.useForm<TreeFormValues>();
   const [memberForm] = Form.useForm<MemberFormValues>();
@@ -317,7 +320,8 @@ const FamilyTreeManagerPage = () => {
     }
   };
 
-  const openTreeDetail = async (treeId: string) => {
+  const openTreeDetail = async (treeId: string, activeTab = 'visual') => {
+    setDrawerActiveTab(activeTab);
     setSelectedTreeId(treeId);
     setSelectedNodeId(null);
     setDrawerOpen(true);
@@ -337,6 +341,23 @@ const FamilyTreeManagerPage = () => {
   const closeTreeDrawer = () => {
     setDrawerOpen(false);
     setSelectedNodeId(null);
+  };
+
+  const openEditTreeFromList = (record: FamilyTreeSummary) => {
+    setEditingTree({
+      id: record.id,
+      name: record.name,
+      description: record.description,
+      created_at: record.created_at,
+      updated_at: record.updated_at,
+      nodes: [],
+    });
+    treeForm.setFieldsValue({ name: record.name, description: record.description ?? '' });
+    setTreeModalOpen(true);
+  };
+
+  const openTreeDocuments = (record: FamilyTreeSummary) => {
+    void openTreeDetail(record.id, 'documents');
   };
 
   const openCreateTreeModal = () => {
@@ -669,7 +690,8 @@ const FamilyTreeManagerPage = () => {
       </Descriptions>
 
       <Tabs
-        defaultActiveKey="visual"
+        activeKey={drawerActiveTab}
+        onChange={setDrawerActiveTab}
         items={[
           {
             key: 'visual',
@@ -868,7 +890,7 @@ const FamilyTreeManagerPage = () => {
           loading={loadingTrees}
           dataSource={filteredTrees}
           pagination={{ pageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '50'] }}
-          scroll={{ x: 900 }}
+          scroll={{ x: 1000 }}
           locale={{
             emptyText: (
               <Empty description={t('familyTree.noTrees', { defaultValue: 'Chưa có cây nào' })} image={Empty.PRESENTED_IMAGE_SIMPLE}>
@@ -920,14 +942,35 @@ const FamilyTreeManagerPage = () => {
               render: (value: string) => formatTreeDate(value),
             },
             {
-              title: '',
+              title: 'Thao tác',
               key: 'actions',
-              width: 100,
+              width: 220,
               align: 'right',
+              fixed: 'right',
               render: (_: unknown, record: FamilyTreeSummary) => (
-                <Button type="link" className="!px-0" onClick={() => void openTreeDetail(record.id)}>
-                  {t('familyTree.detail', { defaultValue: 'Chi tiết' })}
-                </Button>
+                <Space size={4} wrap>
+                  <Button type="link" size="small" className="!px-1" onClick={() => void openTreeDetail(record.id)}>
+                    {t('familyTree.detail', { defaultValue: 'Chi tiết' })}
+                  </Button>
+                  <Button
+                    type="link"
+                    size="small"
+                    className="!px-1"
+                    icon={<EditOutlined />}
+                    onClick={() => openEditTreeFromList(record)}
+                  >
+                    {t('familyTree.editTree', { defaultValue: 'Sửa' })}
+                  </Button>
+                  <Button
+                    type="link"
+                    size="small"
+                    className="!px-1"
+                    icon={<FileTextOutlined />}
+                    onClick={() => openTreeDocuments(record)}
+                  >
+                    {t('familyTree.documentsTab', { defaultValue: 'Tài liệu' })}
+                  </Button>
+                </Space>
               ),
             },
           ]}
@@ -946,6 +989,14 @@ const FamilyTreeManagerPage = () => {
             <div className="flex flex-wrap items-center gap-2">
               <Button size="small" icon={<EditOutlined />} onClick={openEditTreeModal}>
                 {t('familyTree.editTree', { defaultValue: 'Sửa' })}
+              </Button>
+              <Button
+                size="small"
+                icon={<FileTextOutlined />}
+                type={drawerActiveTab === 'documents' ? 'primary' : 'default'}
+                onClick={() => setDrawerActiveTab('documents')}
+              >
+                {t('familyTree.documentsTab', { defaultValue: 'Tài liệu' })}
               </Button>
               <Button size="small" icon={<DeleteOutlined />} danger onClick={handleDeleteTree}>
                 {t('familyTree.deleteTree', { defaultValue: 'Xóa' })}

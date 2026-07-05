@@ -1,7 +1,5 @@
-from __future__ import annotations
-
 import os
-from typing import Annotated, Callable
+from typing import Callable
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from sqlalchemy.orm import Session
@@ -109,10 +107,10 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
     def list_documents(
         tree_id: str,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
     ) -> DocumentListResponse:
         try:
-            items = service.list_documents(tree_id)
+            items = document_service.list_documents(tree_id)
         except Exception as error:
             _raise_service_error(error)
         serialized = [_serialize_document(item) for item in items]
@@ -128,11 +126,11 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
         tree_id: str,
         req: DocumentCreateRequest,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
         db: Session = Depends(get_db),
     ) -> DocumentResponse:
         try:
-            document = service.create_document(
+            document = document_service.create_document(
                 family_tree_id=tree_id,
                 title=req.title,
                 description=req.description,
@@ -153,10 +151,10 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
     def get_document(
         document_id: int,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
     ) -> DocumentResponse:
         try:
-            document = service.get_document(document_id)
+            document = document_service.get_document(document_id)
         except Exception as error:
             _raise_service_error(error)
         return _serialize_document(document)
@@ -170,13 +168,13 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
         document_id: int,
         req: DocumentUpdateRequest,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
         db: Session = Depends(get_db),
     ) -> DocumentResponse:
         if req.title is None and req.description is None and req.type is None:
             raise HTTPException(status_code=400, detail="No fields to update")
         try:
-            document = service.update_document(
+            document = document_service.update_document(
                 document_id,
                 title=req.title,
                 description=req.description,
@@ -197,11 +195,11 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
         document_id: int,
         file_id: int,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
         db: Session = Depends(get_db),
     ) -> DocumentResponse:
         try:
-            document = service.delete_file(document_id, file_id)
+            document = document_service.delete_file(document_id, file_id)
             db.commit()
         except Exception as error:
             db.rollback()
@@ -216,7 +214,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
     async def upload_files(
         document_id: int,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
         db: Session = Depends(get_db),
         files: list[UploadFile] = File(...),
     ) -> UploadFilesResponse:
@@ -249,12 +247,12 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             )
 
         try:
-            created = service.upload_files(document_id, uploads)
+            created = document_service.upload_files(document_id, uploads)
             db.commit()
             for item in created:
                 db.refresh(item)
                 try:
-                    item.download_url = service.storage.get_presigned_url(item.file_key)  # type: ignore[attr-defined]
+                    item.download_url = document_service.storage.get_presigned_url(item.file_key)  # type: ignore[attr-defined]
                 except ObjectStorageError:
                     item.download_url = None  # type: ignore[attr-defined]
         except Exception as error:
@@ -275,12 +273,12 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
         document_id: int,
         req: ReorderFilesRequest,
         _: AdminUser,
-        service: Annotated[DocumentService, Depends(get_service)],
+        document_service=Depends(get_service),
         db: Session = Depends(get_db),
     ) -> DocumentResponse:
         ordered_items = [(item.id, item.position) for item in req.files]
         try:
-            document = service.reorder_files(document_id, ordered_items)
+            document = document_service.reorder_files(document_id, ordered_items)
             db.commit()
         except Exception as error:
             db.rollback()
