@@ -16,6 +16,8 @@ from app.auth.bootstrap import bootstrap_auth
 from app.auth.dependencies import AdminUser
 from app.auth.router import router as auth_router
 from app.database import database_enabled, database_init_error, init_database
+from app.documents.bootstrap import bootstrap_documents
+from app.documents.router import create_documents_router
 from app.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
@@ -271,6 +273,10 @@ _TAGS_METADATA = [
         "name": "Auth",
         "description": "Đăng ký, đăng nhập JWT và quản lý người dùng (Admin).",
     },
+    {
+        "name": "Documents",
+        "description": "Quản lý tài liệu đính kèm cho từng cây gia phả (MinIO/S3).",
+    },
 ]
 
 
@@ -279,6 +285,7 @@ async def _lifespan(_: FastAPI):
     init_database()
     if database_enabled():
         bootstrap_auth()
+        bootstrap_documents()
     yield
 
 _DESCRIPTION = """
@@ -354,6 +361,13 @@ def _create_family_tree_store():
         return source_store, "json"
 
 _family_tree_store, _family_tree_storage = _create_family_tree_store()
+
+
+def _get_family_tree_document(tree_id: str) -> dict:
+    return _family_tree_store.get_tree(tree_id)
+
+
+app.include_router(create_documents_router(_get_family_tree_document))
 
 
 def _raise_store_error(error: Exception) -> None:

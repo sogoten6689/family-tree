@@ -21,6 +21,7 @@ import DocumentReaderPage from "./pages/DocumentReaderPage";
 import FamilyTreePage from "./pages/FamilyTreePage";
 import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
+import EditDocumentPage from "./pages/EditDocumentPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -89,6 +90,7 @@ const AppContent = () => {
             >
               <Route index element={<Navigate to="/admin/gia-pha" replace />} />
               <Route path="gia-pha" element={<FamilyTreeManagerPage />} />
+              <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
               <Route path="users" element={<AdminUsersPage />} />
             </Route>
 

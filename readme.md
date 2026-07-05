@@ -18,6 +18,41 @@
 | frontend | 5174      | 80            | Direct (bypass nginx) |
 | backend  | **8002**  | 8000          | FastAPI / uvicorn |
 | mysql    | 3309      | 3306          | MySQL 8.4 |
+| minio    | **9002**  | 9000          | S3 API (file storage) |
+| minio UI | **9003**  | 9001          | MinIO Console |
+
+---
+
+## MinIO / Documents (tài liệu gia phả)
+
+Backend lưu file tài liệu trên MinIO (tương thích S3) qua `boto3`.
+
+| Biến môi trường | Mô tả |
+|-----------------|--------|
+| `MINIO_ENDPOINT` | URL nội bộ, vd. `http://minio:9000` (Docker) |
+| `MINIO_PUBLIC_ENDPOINT` | URL public cho presigned URL, vd. `http://localhost:9002` |
+| `MINIO_ACCESS_KEY` | Access key |
+| `MINIO_SECRET_KEY` | Secret key |
+| `MINIO_BUCKET` | Tên bucket, vd. `family-tree-docs` |
+| `MINIO_USE_SSL` | `true` / `false` |
+| `MINIO_AUTO_CREATE_BUCKET` | Tự tạo bucket nếu chưa có (`true` mặc định) |
+| `MINIO_PRESIGN_EXPIRES` | Thời hạn presigned URL (giây), mặc định `3600` |
+| `MINIO_MAX_UPLOAD_BYTES` | Giới hạn upload (bytes), mặc định `52428800` (50MB) |
+
+### API Documents (Admin JWT)
+
+| Method | Route | Mô tả |
+|--------|-------|--------|
+| GET | `/api/family-trees/{id}/documents` | Danh sách tài liệu + files (sắp xếp theo `position`) |
+| POST | `/api/family-trees/{id}/documents` | Tạo tài liệu mới |
+| PUT | `/api/documents/{id}` | Cập nhật title/description/type |
+| DELETE | `/api/documents/{id}/files/{file_id}` | Xóa file (DB + MinIO) |
+| POST | `/api/documents/{id}/upload-files` | Upload nhiều file (`multipart/form-data`, field `files`) |
+| PUT | `/api/documents/{id}/reorder-files` | Cập nhật thứ tự file |
+
+Loại tài liệu (`type`): `han_nom`, `van_ban`, `hinh_anh`, `ket_qua_van_ban`, `ket_qua_hinh_anh`.
+
+MinIO Console: http://localhost:9003 (user/pass: `minioadmin` / `minioadmin123` khi chạy docker-compose mặc định).
 
 ---
 

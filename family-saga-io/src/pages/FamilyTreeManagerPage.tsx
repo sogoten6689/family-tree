@@ -33,6 +33,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import FamilyTreeNode from '@/components/FamilyTreeNode';
 import { BalkanFamilyTreeView } from '@/components/BalkanFamilyTreeView';
+import { FamilyTreeDocumentsPanel } from '@/components/documents/FamilyTreeDocumentsPanel';
 import type { FamilyMember } from '@/data/familyMockData';
 import {
   createFamilyTree,
@@ -808,6 +809,11 @@ const FamilyTreeManagerPage = () => {
                 </Col>
               </Row>
             ),
+          },
+          {
+            key: 'documents',
+            label: t('familyTree.documentsTab', { defaultValue: 'Tài liệu' }),
+            children: <FamilyTreeDocumentsPanel treeId={currentTree.id} />,
           },
         ]}
       />
