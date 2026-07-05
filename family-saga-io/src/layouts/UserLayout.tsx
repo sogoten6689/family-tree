@@ -1,0 +1,118 @@
+import {
+  BookOutlined,
+  BranchesOutlined,
+  DashboardOutlined,
+  LogoutOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
+import { Breadcrumb, Button, Card, Layout, Menu, Space, Typography } from "antd";
+import { useMemo } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
+import { getPageTitleKey } from "@/config/pages";
+import { useAuth } from "@/contexts/AuthContext";
+
+const { Header, Sider, Content } = Layout;
+
+const menuKeyByPath: Record<string, string> = {
+  "/user/dashboard": "dashboard",
+  "/user/document-reader": "document-reader",
+  "/user/family-tree": "family-tree",
+};
+
+const UserLayout = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, isAdmin, logout } = useAuth();
+
+  const selectedKey = menuKeyByPath[location.pathname] ?? "dashboard";
+  const pageTitle = t(getPageTitleKey(location.pathname), { defaultValue: "User" });
+
+  const menuItems = useMemo(
+    () => [
+      {
+        key: "dashboard",
+        icon: <DashboardOutlined />,
+        label: t("pages.userDashboard.title", { defaultValue: "Bảng điều khiển" }),
+      },
+      {
+        key: "document-reader",
+        icon: <BookOutlined />,
+        label: t("pages.userDocumentReader.title", { defaultValue: "Phòng đọc tài liệu" }),
+      },
+      {
+        key: "family-tree",
+        icon: <BranchesOutlined />,
+        label: t("pages.userFamilyTree.title", { defaultValue: "Xem gia phả" }),
+      },
+    ],
+    [t],
+  );
+
+  return (
+    <Layout className="min-h-screen">
+      <Sider width={250} breakpoint="lg" theme="light" className="!bg-[#f8f9fa] border-r border-[#e9ecef]">
+        <div className="px-5 py-6">
+          <Typography.Title level={5} className="!mb-1">
+            {t("user.panelTitle", { defaultValue: "Khu vực người dùng" })}
+          </Typography.Title>
+          <Typography.Text type="secondary" className="text-xs">
+            {user?.full_name}
+          </Typography.Text>
+        </div>
+        <Menu
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          items={menuItems}
+          className="!border-none !bg-transparent"
+          onClick={({ key }) => {
+            if (key === "dashboard") navigate("/user/dashboard");
+            if (key === "document-reader") navigate("/user/document-reader");
+            if (key === "family-tree") navigate("/user/family-tree");
+          }}
+        />
+        <div className="px-4 pb-4 mt-auto absolute bottom-4 left-0 right-0 space-y-2">
+          {isAdmin && (
+            <Button block icon={<SettingOutlined />} onClick={() => navigate("/admin/gia-pha")}>
+              {t("admin.panelTitle", { defaultValue: "Admin" })}
+            </Button>
+          )}
+          <Button block icon={<LogoutOutlined />} danger onClick={logout}>
+            {t("auth.logout", { defaultValue: "Đăng xuất" })}
+          </Button>
+        </div>
+      </Sider>
+
+      <Layout>
+        <Header className="!bg-white !px-6 flex items-center justify-between border-b border-[#e9ecef]" style={{ height: 64 }}>
+          <div>
+            <Breadcrumb
+              items={[
+                { title: <Link to="/">{t("common.backHome", { defaultValue: "Trang chủ" })}</Link> },
+                { title: t("user.zoneTitle", { defaultValue: "Người dùng" }) },
+                { title: pageTitle },
+              ]}
+            />
+            <Typography.Title level={4} className="!mb-0 !mt-1">
+              {pageTitle}
+            </Typography.Title>
+          </div>
+          <Space>
+            <LanguageSwitcher />
+            <ThemeToggle />
+          </Space>
+        </Header>
+
+        <Content className="p-6 bg-[#f0f2f5] min-h-[calc(100vh-64px)]">
+          <Outlet />
+        </Content>
+      </Layout>
+    </Layout>
+  );
+};
+
+export default UserLayout;

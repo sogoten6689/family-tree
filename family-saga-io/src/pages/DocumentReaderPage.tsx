@@ -870,7 +870,7 @@ const DocumentReaderPage = () => {
                   </Button>
                   <Button
                     type="primary"
-                    onClick={() => navigate("/family-tree")}
+                    onClick={() => navigate("/user/family-tree")}
                   >
                     {t("docReader.btnOpenTreePage")}
                   </Button>
@@ -1115,7 +1115,7 @@ const DocumentReaderPage = () => {
           <Button
             key="open-tree"
             type="primary"
-            onClick={() => navigate("/family-tree")}
+            onClick={() => navigate("/user/family-tree")}
           >
             {t("docReader.btnOpenTreePage")}
           </Button>,

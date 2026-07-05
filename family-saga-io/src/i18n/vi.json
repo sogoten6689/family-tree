@@ -191,5 +191,82 @@
     "createdAt": "Ngày tạo",
     "actions": "Thao tác",
     "delete": "Xóa"
+  },
+  "admin": {
+    "panelTitle": "Admin",
+    "panelSubtitle": "Quản trị hệ thống",
+    "zoneTitle": "Quản trị",
+    "menuFamilyTrees": "Quản lý gia phả",
+    "menuUsers": "Quản lý thành viên"
+  },
+  "user": {
+    "panelTitle": "Khu vực người dùng",
+    "zoneTitle": "Người dùng"
+  },
+  "pages": {
+    "home": {
+      "title": "Trang chủ",
+      "desc": "Landing page giới thiệu hệ thống gia phả."
+    },
+    "guide": {
+      "title": "Hướng dẫn",
+      "desc": "Danh sách trang và hướng dẫn sử dụng công khai."
+    },
+    "login": {
+      "title": "Đăng nhập",
+      "desc": "Đăng nhập bằng email và mật khẩu."
+    },
+    "register": {
+      "title": "Đăng ký",
+      "desc": "Tạo tài khoản mới (role mặc định: user)."
+    },
+    "userDashboard": {
+      "title": "Bảng điều khiển",
+      "desc": "Trang tổng quan sau khi đăng nhập."
+    },
+    "userDocumentReader": {
+      "title": "Phòng đọc tài liệu",
+      "desc": "Upload Word/ảnh và phân tích cây gia phả."
+    },
+    "userFamilyTree": {
+      "title": "Xem gia phả",
+      "desc": "Xem cây gia phả trực quan."
+    },
+    "adminGiaPha": {
+      "title": "Quản lý gia phả",
+      "desc": "CRUD cây gia phả (chỉ admin)."
+    },
+    "adminUsers": {
+      "title": "Quản lý thành viên",
+      "desc": "Quản lý tài khoản và role (chỉ admin)."
+    }
+  },
+  "guide": {
+    "pageTitle": "Hướng dẫn sử dụng",
+    "pageIntro": "Tài liệu tổng quan về cấu trúc ứng dụng: trang công khai, trang người dùng và trang quản trị.",
+    "allPagesTitle": "Danh sách toàn bộ trang",
+    "quickStartTitle": "Bắt đầu nhanh",
+    "colPage": "Trang",
+    "colPath": "Đường dẫn",
+    "colZone": "Khu vực",
+    "colAccess": "Quyền truy cập",
+    "colDesc": "Mô tả",
+    "accessPublic": "Công khai",
+    "accessUser": "Đã đăng nhập",
+    "accessAdmin": "Admin",
+    "publicSummary": "Trang ai cũng xem được: trang chủ, hướng dẫn, đăng nhập, đăng ký.",
+    "userSummary": "Cần đăng nhập: bảng điều khiển, đọc tài liệu, xem gia phả.",
+    "adminSummary": "Chỉ role admin: quản lý gia phả và quản lý tài khoản.",
+    "step1": "Đăng ký tài khoản tại /register (mặc định role user).",
+    "step2": "Đăng nhập và vào /user/document-reader để upload tài liệu gia phả.",
+    "step3": "Xem cây gia phả tại /user/family-tree.",
+    "step4": "Admin quản lý hệ thống tại /admin/gia-pha và /admin/users.",
+    "needHelp": "Cần hỗ trợ?",
+    "openGuide": "Xem hướng dẫn",
+    "zone": {
+      "public": "Public",
+      "user": "User",
+      "admin": "Admin"
+    }
   }
 }

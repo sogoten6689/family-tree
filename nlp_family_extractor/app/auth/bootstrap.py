@@ -12,7 +12,7 @@ def ensure_auth_schema() -> None:
 
 
 def seed_default_admin() -> None:
-    admin_email = os.getenv("ADMIN_EMAIL", "admin@giapha.local").lower()
+    admin_email = os.getenv("ADMIN_EMAIL", "admin@giapha.com").lower()
     admin_password = os.getenv("ADMIN_PASSWORD", "Admin@123456")
     admin_name = os.getenv("ADMIN_FULL_NAME", "System Admin")
 

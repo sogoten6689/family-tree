@@ -57,7 +57,7 @@ const HomePage = () => {
             <Button
               type="primary"
               size="large"
-              onClick={() => navigate(isAuthenticated ? '/family-tree' : '/login')}
+              onClick={() => navigate(isAuthenticated ? '/user/family-tree' : '/login')}
               style={{
                 background: 'hsl(36, 70%, 42%)',
                 borderColor: 'hsl(36, 70%, 42%)',
@@ -71,7 +71,7 @@ const HomePage = () => {
             </Button>
             <Button
               size="large"
-              onClick={() => navigate(isAuthenticated ? '/document-reader' : '/login')}
+              onClick={() => navigate(isAuthenticated ? '/user/document-reader' : '/login')}
               style={{
                 background: 'hsl(39, 50%, 96%)',
                 borderColor: 'hsl(39, 50%, 96%)',
@@ -201,7 +201,7 @@ const HomePage = () => {
         <Button
           type="primary"
           size="large"
-          onClick={() => navigate(isAuthenticated ? '/document-reader' : '/login')}
+          onClick={() => navigate(isAuthenticated ? '/user/document-reader' : '/login')}
           style={{
             background: 'hsl(0, 45%, 35%)',
             borderColor: 'hsl(0, 45%, 35%)',

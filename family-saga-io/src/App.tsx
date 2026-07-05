@@ -9,7 +9,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AdminRoute } from "@/components/AdminRoute";
+import PublicLayout from "@/layouts/PublicLayout";
+import UserLayout from "@/layouts/UserLayout";
+import AdminLayout from "@/layouts/AdminLayout";
 import HomePage from "./pages/HomePage";
+import GuidePage from "./pages/GuidePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
@@ -30,9 +34,19 @@ const AppContent = () => {
       theme={{
         algorithm: isDark ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
         token: {
-          colorPrimary: "hsl(36 70% 42%)",
-          borderRadius: 8,
+          colorPrimary: "#1677ff",
+          borderRadius: 12,
           fontFamily: "Roboto, sans-serif",
+        },
+        components: {
+          Layout: {
+            siderBg: "#f8f9fa",
+            headerBg: "#ffffff",
+            bodyBg: "#f0f2f5",
+          },
+          Menu: {
+            itemBorderRadius: 8,
+          },
         },
       }}
     >
@@ -41,50 +55,49 @@ const AppContent = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            {/* ── Public ── */}
+            <Route element={<PublicLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/huong-dan" element={<GuidePage />} />
+            </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+
+            {/* ── User (đã đăng nhập) ── */}
             <Route
-              path="/dashboard"
+              path="/user"
               element={
                 <ProtectedRoute>
-                  <DashboardPage />
+                  <UserLayout />
                 </ProtectedRoute>
               }
-            />
+            >
+              <Route index element={<Navigate to="/user/dashboard" replace />} />
+              <Route path="dashboard" element={<DashboardPage />} />
+              <Route path="document-reader" element={<DocumentReaderPage />} />
+              <Route path="family-tree" element={<FamilyTreePage />} />
+            </Route>
+
+            {/* ── Admin ── */}
             <Route
-              path="/document-reader"
-              element={
-                <ProtectedRoute>
-                  <DocumentReaderPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/family-tree"
-              element={
-                <ProtectedRoute>
-                  <FamilyTreePage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/gia-pha"
+              path="/admin"
               element={
                 <AdminRoute>
-                  <FamilyTreeManagerPage />
+                  <AdminLayout />
                 </AdminRoute>
               }
-            />
-            <Route
-              path="/admin/users"
-              element={
-                <AdminRoute>
-                  <AdminUsersPage />
-                </AdminRoute>
-              }
-            />
+            >
+              <Route index element={<Navigate to="/admin/gia-pha" replace />} />
+              <Route path="gia-pha" element={<FamilyTreeManagerPage />} />
+              <Route path="users" element={<AdminUsersPage />} />
+            </Route>
+
+            {/* Redirects cũ */}
+            <Route path="/dashboard" element={<Navigate to="/user/dashboard" replace />} />
+            <Route path="/document-reader" element={<Navigate to="/user/document-reader" replace />} />
+            <Route path="/family-tree" element={<Navigate to="/user/family-tree" replace />} />
             <Route path="/family-tree-manager" element={<Navigate to="/admin/gia-pha" replace />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

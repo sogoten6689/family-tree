@@ -42,7 +42,7 @@ services:
       MYSQL_USER: family_user
       MYSQL_PASSWORD: family_password
       JWT_SECRET_KEY: dev-secret-change-in-production
-      ADMIN_EMAIL: admin@giapha.local
+      ADMIN_EMAIL: admin@giapha.com
       ADMIN_PASSWORD: Admin@123456
     depends_on:
       mysql:

@@ -191,5 +191,82 @@
     "createdAt": "Created at",
     "actions": "Actions",
     "delete": "Delete"
+  },
+  "admin": {
+    "panelTitle": "Admin",
+    "panelSubtitle": "System administration",
+    "zoneTitle": "Administration",
+    "menuFamilyTrees": "Family tree management",
+    "menuUsers": "User management"
+  },
+  "user": {
+    "panelTitle": "User area",
+    "zoneTitle": "User"
+  },
+  "pages": {
+    "home": {
+      "title": "Home",
+      "desc": "Landing page introducing the family tree system."
+    },
+    "guide": {
+      "title": "Guide",
+      "desc": "Public page list and usage instructions."
+    },
+    "login": {
+      "title": "Sign in",
+      "desc": "Sign in with email and password."
+    },
+    "register": {
+      "title": "Register",
+      "desc": "Create a new account (default role: user)."
+    },
+    "userDashboard": {
+      "title": "Dashboard",
+      "desc": "Overview page after sign-in."
+    },
+    "userDocumentReader": {
+      "title": "Document reader",
+      "desc": "Upload Word/images and analyze family trees."
+    },
+    "userFamilyTree": {
+      "title": "View family tree",
+      "desc": "Visual family tree viewer."
+    },
+    "adminGiaPha": {
+      "title": "Family tree management",
+      "desc": "CRUD family trees (admin only)."
+    },
+    "adminUsers": {
+      "title": "User management",
+      "desc": "Manage accounts and roles (admin only)."
+    }
+  },
+  "guide": {
+    "pageTitle": "User guide",
+    "pageIntro": "Overview of the app structure: public pages, user pages, and admin pages.",
+    "allPagesTitle": "Full page list",
+    "quickStartTitle": "Quick start",
+    "colPage": "Page",
+    "colPath": "Path",
+    "colZone": "Zone",
+    "colAccess": "Access",
+    "colDesc": "Description",
+    "accessPublic": "Public",
+    "accessUser": "Signed in",
+    "accessAdmin": "Admin",
+    "publicSummary": "Open to everyone: home, guide, sign in, register.",
+    "userSummary": "Requires sign-in: dashboard, document reader, family tree viewer.",
+    "adminSummary": "Admin role only: family tree and user management.",
+    "step1": "Register at /register (default role: user).",
+    "step2": "Sign in and open /user/document-reader to upload documents.",
+    "step3": "View the family tree at /user/family-tree.",
+    "step4": "Admins manage the system at /admin/gia-pha and /admin/users.",
+    "needHelp": "Need help?",
+    "openGuide": "Open guide",
+    "zone": {
+      "public": "Public",
+      "user": "User",
+      "admin": "Admin"
+    }
   }
 }

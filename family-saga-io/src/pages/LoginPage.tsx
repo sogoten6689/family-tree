@@ -23,7 +23,7 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   const redirectTo =
-    (location.state as { from?: string } | null)?.from ?? "/dashboard";
+    (location.state as { from?: string } | null)?.from ?? "/user/dashboard";
 
   const handleSubmit = async (values: LoginFormValues) => {
     setLoading(true);

@@ -16,19 +16,16 @@ import {
   Select,
   Spin,
   Tag,
+  Typography,
 } from 'antd';
 import {
-  ArrowLeftOutlined,
   CloudDownloadOutlined,
   DeleteOutlined,
   EditOutlined,
   PlusOutlined,
   ReloadOutlined,
 } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
-import ThemeToggle from '@/components/ThemeToggle';
 import FamilyTreeNode from '@/components/FamilyTreeNode';
 import { BalkanFamilyTreeView } from '@/components/BalkanFamilyTreeView';
 import type { FamilyMember } from '@/data/familyMockData';
@@ -221,7 +218,6 @@ const toTreeStats = (nodes: BalkanNode[]) => {
 };
 
 const FamilyTreeManagerPage = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [trees, setTrees] = useState<FamilyTreeSummary[]>([]);
@@ -635,25 +631,14 @@ const FamilyTreeManagerPage = () => {
   const spouseOptions = ancestorOptions;
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="px-6 py-4 flex flex-wrap items-center justify-between gap-4 border-b" style={{ borderColor: 'hsl(36, 30%, 80%)' }}>
-        <div className="flex items-center gap-4">
-          <Button icon={<ArrowLeftOutlined />} type="text" onClick={() => navigate('/')} style={{ color: 'hsl(36, 70%, 42%)' }}>
-            {t('common.backHome')}
-          </Button>
-          <div className="w-px h-6" style={{ background: 'hsl(36, 30%, 80%)' }} />
-          <div>
-            <h1 className="text-xl font-display font-bold text-foreground">
-              {t('familyTree.managerTitle', { defaultValue: 'Quản lý gia phả' })}
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              {t('familyTree.managerSubtitle', { defaultValue: 'Danh sách cây, node và liên kết được lấy trực tiếp từ backend JSON.' })}
-            </p>
-          </div>
-        </div>
+    <div className="max-w-[1600px] mx-auto">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <Typography.Paragraph type="secondary" className="!mb-0">
+          {t('familyTree.managerSubtitle', {
+            defaultValue: 'Danh sách cây, node và liên kết được lấy trực tiếp từ backend JSON.',
+          })}
+        </Typography.Paragraph>
         <div className="flex flex-wrap items-center gap-3">
-          <LanguageSwitcher />
-          <ThemeToggle />
           <Button icon={<CloudDownloadOutlined />} onClick={openCrawlModal} loading={crawlingData}>
             {t('familyTree.crawlSync', { defaultValue: 'Crawl + Sync DB' })}
           </Button>
@@ -664,9 +649,7 @@ const FamilyTreeManagerPage = () => {
             {t('familyTree.createTree', { defaultValue: 'Tạo cây mới' })}
           </Button>
         </div>
-      </header>
-
-      <div className="p-6 max-w-[1600px] mx-auto">
+      </div>
         {pageError && (
           <Alert
             type="warning"
@@ -943,7 +926,6 @@ const FamilyTreeManagerPage = () => {
             </Card>
           </Col>
         </Row>
-      </div>
 
       <Modal
         open={treeModalOpen}
