@@ -4,6 +4,7 @@ import type {
   DocumentListResponse,
   DocumentUpdatePayload,
   FamilyTreeSourceDocument,
+  OcrTransliterateResponse,
   ReorderFilesPayload,
   UploadFilesResponse,
 } from "@/types/document";
@@ -82,4 +83,16 @@ export async function deleteDocumentFile(
   return apiRequest<FamilyTreeSourceDocument>(`/api/documents/${documentId}/files/${fileId}`, {
     method: "DELETE",
   });
+}
+
+export async function ocrTransliterateDocument(
+  documentId: number,
+  image: File,
+): Promise<OcrTransliterateResponse> {
+  const formData = new FormData();
+  formData.append("image", image);
+  return apiFormRequest<OcrTransliterateResponse>(
+    `/api/documents/${documentId}/ocr-transliterate`,
+    formData,
+  );
 }

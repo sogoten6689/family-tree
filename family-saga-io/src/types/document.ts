@@ -51,3 +51,14 @@ export interface UploadFilesResponse {
   document_id: number;
   uploaded: DocumentFile[];
 }
+
+export interface OcrTransliterateResponse {
+  source_document_id: number;
+  result_document_id: number;
+  ocr_text: string;
+  ocr_lines: string[];
+  transcription_lines: string[];
+  transcription_text: string;
+  saved_file: DocumentFile;
+  result_document: FamilyTreeSourceDocument;
+}

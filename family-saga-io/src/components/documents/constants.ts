@@ -1,3 +1,5 @@
+import type { DocumentType } from "@/types/document";
+
 export const DOCUMENT_TYPE_OPTIONS = [
   { value: "han_nom", label: "Hán-Nôm" },
   { value: "van_ban", label: "Văn bản" },
@@ -5,6 +7,8 @@ export const DOCUMENT_TYPE_OPTIONS = [
   { value: "ket_qua_van_ban", label: "Kết quả văn bản" },
   { value: "ket_qua_hinh_anh", label: "Kết quả hình ảnh" },
 ] as const;
+
+export const OCR_ELIGIBLE_DOCUMENT_TYPES: DocumentType[] = ["han_nom", "hinh_anh", "van_ban"];
 
 export function getDocumentTypeLabel(type: string): string {
   return DOCUMENT_TYPE_OPTIONS.find((item) => item.value === type)?.label ?? type;

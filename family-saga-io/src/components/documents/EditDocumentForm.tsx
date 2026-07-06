@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 import { DocumentFileDropzone } from "@/components/documents/DocumentFileDropzone";
 import { DocumentFileList } from "@/components/documents/DocumentFileList";
+import { DocumentOcrPanel } from "@/components/documents/DocumentOcrPanel";
 import { DOCUMENT_TYPE_OPTIONS, sortDocumentFiles } from "@/components/documents/constants";
 import { ApiError } from "@/lib/apiClient";
 import {
@@ -178,6 +179,8 @@ export function EditDocumentForm({ document, onUpdated, onCancel }: Props) {
           onDelete={handleDeleteFile}
         />
       </Card>
+
+      <DocumentOcrPanel document={{ ...document, files }} />
 
       <Card title="Thêm file mới">
         {uploading ? (

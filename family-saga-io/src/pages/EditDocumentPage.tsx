@@ -43,7 +43,13 @@ const EditDocumentPage = () => {
             type="link"
             icon={<ArrowLeftOutlined />}
             className="!px-0"
-            onClick={() => navigate("/admin/gia-pha")}
+            onClick={() =>
+              navigate(
+                document
+                  ? `/admin/gia-pha/${document.family_tree_id}?tab=documents`
+                  : "/admin/gia-pha",
+              )
+            }
           >
             Quay lại danh sách gia phả
           </Button>
@@ -76,7 +82,7 @@ const EditDocumentPage = () => {
         <EditDocumentForm
           document={document}
           onUpdated={setDocument}
-          onCancel={() => navigate("/admin/gia-pha")}
+          onCancel={() => navigate(`/admin/gia-pha/${document.family_tree_id}?tab=documents`)}
         />
       ) : null}
     </div>
