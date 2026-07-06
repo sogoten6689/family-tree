@@ -25,6 +25,24 @@ class FamilyTreeValidationError(FamilyTreeStoreError):
     """Raised when payload is invalid."""
 
 
+def _default_external_url(tree_id: str) -> Optional[str]:
+    clean = tree_id.strip()
+    if clean.startswith("vpg-"):
+        return f"https://vietnamgiapha.com/{clean}"
+    return None
+
+
+def _tree_metadata_from_doc(doc: Dict[str, Any]) -> Dict[str, Any]:
+    external_url = doc.get("external_url")
+    if not external_url:
+        external_url = _default_external_url(str(doc.get("id") or ""))
+    return {
+        "external_url": external_url,
+        "has_source_document": bool(doc.get("has_source_document", False)),
+        "has_hannom_text": bool(doc.get("has_hannom_text", False)),
+    }
+
+
 class _FamilyTreeStoreBase:
     """Shared business-logic helpers for all family tree store implementations."""
 
@@ -41,13 +59,25 @@ class _FamilyTreeStoreBase:
         name: str,
         description: Optional[str] = None,
         nodes: Optional[List[Dict[str, Any]]] = None,
+        external_url: Optional[str] = None,
+        has_source_document: bool = False,
+        has_hannom_text: bool = False,
     ) -> Dict[str, Any]:
         raise NotImplementedError
 
     def get_tree(self, tree_id: str) -> Dict[str, Any]:
         raise NotImplementedError
 
-    def update_tree(self, tree_id: str, *, name: Optional[str], description: Optional[str]) -> Dict[str, Any]:
+    def update_tree(
+        self,
+        tree_id: str,
+        *,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
+        external_url: Optional[str] = None,
+        has_source_document: Optional[bool] = None,
+        has_hannom_text: Optional[bool] = None,
+    ) -> Dict[str, Any]:
         raise NotImplementedError
 
     def replace_tree_document(
@@ -100,7 +130,7 @@ class _FamilyTreeStoreBase:
 
     def _summary(self, doc: Dict[str, Any]) -> Dict[str, Any]:
         nodes = doc.get("nodes", [])
-        return {
+        summary: Dict[str, Any] = {
             "id": doc.get("id"),
             "name": doc.get("name"),
             "description": doc.get("description"),
@@ -108,6 +138,8 @@ class _FamilyTreeStoreBase:
             "updated_at": doc.get("updated_at"),
             "node_count": len(nodes) if isinstance(nodes, list) else 0,
         }
+        summary.update(_tree_metadata_from_doc(doc))
+        return summary
 
     def _normalize_nodes(self, nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if not isinstance(nodes, list):
@@ -264,6 +296,9 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
         name: str,
         description: Optional[str] = None,
         nodes: Optional[List[Dict[str, Any]]] = None,
+        external_url: Optional[str] = None,
+        has_source_document: bool = False,
+        has_hannom_text: bool = False,
     ) -> Dict[str, Any]:
         clean_name = name.strip()
         if not clean_name:
@@ -279,6 +314,9 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
             "created_at": now,
             "updated_at": now,
             "nodes": normalized_nodes,
+            "external_url": (external_url.strip() if external_url else None) or _default_external_url(tree_id),
+            "has_source_document": bool(has_source_document),
+            "has_hannom_text": bool(has_hannom_text),
         }
 
         with self._lock:
@@ -289,7 +327,16 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
         with self._lock:
             return self._load_tree(tree_id)
 
-    def update_tree(self, tree_id: str, *, name: Optional[str], description: Optional[str]) -> Dict[str, Any]:
+    def update_tree(
+        self,
+        tree_id: str,
+        *,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
+        external_url: Optional[str] = None,
+        has_source_document: Optional[bool] = None,
+        has_hannom_text: Optional[bool] = None,
+    ) -> Dict[str, Any]:
         with self._lock:
             doc = self._load_tree(tree_id)
             if name is not None:
@@ -299,6 +346,12 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
                 doc["name"] = clean_name
             if description is not None:
                 doc["description"] = description
+            if external_url is not None:
+                doc["external_url"] = external_url.strip() or None
+            if has_source_document is not None:
+                doc["has_source_document"] = bool(has_source_document)
+            if has_hannom_text is not None:
+                doc["has_hannom_text"] = bool(has_hannom_text)
             doc["updated_at"] = self._now_iso()
             self._write_json(self._file_path(tree_id), doc)
             return doc
@@ -549,6 +602,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             description TEXT         NULL,
             nodes_json  JSON         NOT NULL,
             node_count  INT          NOT NULL DEFAULT 0,
+            external_url VARCHAR(512) NULL,
+            has_source_document TINYINT(1) NOT NULL DEFAULT 0,
+            has_hannom_text TINYINT(1) NOT NULL DEFAULT 0,
             created_at  VARCHAR(64)  NOT NULL,
             updated_at  VARCHAR(64)  NOT NULL,
             created_ts  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -557,6 +613,27 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         """
         with self._engine.begin() as conn:
             conn.execute(text(ddl))
+            self._migrate_schema(conn)
+
+    def _migrate_schema(self, conn) -> None:
+        existing = {
+            row[0]
+            for row in conn.execute(text("SHOW COLUMNS FROM family_tree")).fetchall()
+        }
+        migrations = [
+            ("external_url", "ALTER TABLE family_tree ADD COLUMN external_url VARCHAR(512) NULL"),
+            (
+                "has_source_document",
+                "ALTER TABLE family_tree ADD COLUMN has_source_document TINYINT(1) NOT NULL DEFAULT 0",
+            ),
+            (
+                "has_hannom_text",
+                "ALTER TABLE family_tree ADD COLUMN has_hannom_text TINYINT(1) NOT NULL DEFAULT 0",
+            ),
+        ]
+        for column_name, statement in migrations:
+            if column_name not in existing:
+                conn.execute(text(statement))
 
     # ------------------------------------------------------------------ #
     # Public CRUD API                                                      #
@@ -567,7 +644,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             with self._engine.connect() as conn:
                 rows = conn.execute(
                     text(
-                        "SELECT id, name, description, created_at, updated_at, node_count "
+                        "SELECT id, name, description, created_at, updated_at, node_count, "
+                        "external_url, has_source_document, has_hannom_text "
                         "FROM family_tree ORDER BY created_ts ASC"
                     )
                 ).mappings().all()
@@ -579,6 +657,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "created_at": r["created_at"],
                     "updated_at": r["updated_at"],
                     "node_count": r["node_count"],
+                    "external_url": r.get("external_url") or _default_external_url(str(r["id"])),
+                    "has_source_document": bool(r.get("has_source_document", 0)),
+                    "has_hannom_text": bool(r.get("has_hannom_text", 0)),
                 }
                 for r in rows
             ]
@@ -589,6 +670,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         name: str,
         description: Optional[str] = None,
         nodes: Optional[List[Dict[str, Any]]] = None,
+        external_url: Optional[str] = None,
+        has_source_document: bool = False,
+        has_hannom_text: bool = False,
     ) -> Dict[str, Any]:
         clean_name = name.strip()
         if not clean_name:
@@ -604,6 +688,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             "created_at": now,
             "updated_at": now,
             "nodes": normalized_nodes,
+            "external_url": (external_url.strip() if external_url else None) or _default_external_url(tree_id),
+            "has_source_document": bool(has_source_document),
+            "has_hannom_text": bool(has_hannom_text),
         }
 
         with self._lock:
@@ -614,7 +701,16 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         with self._lock:
             return self._load_tree(tree_id)
 
-    def update_tree(self, tree_id: str, *, name: Optional[str], description: Optional[str]) -> Dict[str, Any]:
+    def update_tree(
+        self,
+        tree_id: str,
+        *,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
+        external_url: Optional[str] = None,
+        has_source_document: Optional[bool] = None,
+        has_hannom_text: Optional[bool] = None,
+    ) -> Dict[str, Any]:
         with self._lock:
             doc = self._load_tree(tree_id)
             if name is not None:
@@ -624,6 +720,12 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 doc["name"] = clean_name
             if description is not None:
                 doc["description"] = description
+            if external_url is not None:
+                doc["external_url"] = external_url.strip() or None
+            if has_source_document is not None:
+                doc["has_source_document"] = bool(has_source_document)
+            if has_hannom_text is not None:
+                doc["has_hannom_text"] = bool(has_hannom_text)
             doc["updated_at"] = self._now_iso()
             self._db_save(doc)
             return doc
@@ -802,7 +904,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         with self._engine.connect() as conn:
             row = conn.execute(
                 text(
-                    "SELECT id, name, description, nodes_json, created_at, updated_at "
+                    "SELECT id, name, description, nodes_json, created_at, updated_at, "
+                    "external_url, has_source_document, has_hannom_text "
                     "FROM family_tree WHERE id = :id"
                 ),
                 {"id": tree_id},
@@ -818,6 +921,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             "created_at": row["created_at"],
             "updated_at": row["updated_at"],
             "nodes": self._normalize_nodes(nodes if isinstance(nodes, list) else []),
+            "external_url": row.get("external_url") or _default_external_url(str(row["id"])),
+            "has_source_document": bool(row.get("has_source_document", 0)),
+            "has_hannom_text": bool(row.get("has_hannom_text", 0)),
         }
         return doc
 
@@ -827,8 +933,10 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             conn.execute(
                 text(
                     "INSERT INTO family_tree "
-                    "(id, name, description, nodes_json, node_count, created_at, updated_at) "
-                    "VALUES (:id, :name, :description, CAST(:nodes_json AS JSON), :node_count, :created_at, :updated_at)"
+                    "(id, name, description, nodes_json, node_count, external_url, "
+                    "has_source_document, has_hannom_text, created_at, updated_at) "
+                    "VALUES (:id, :name, :description, CAST(:nodes_json AS JSON), :node_count, "
+                    ":external_url, :has_source_document, :has_hannom_text, :created_at, :updated_at)"
                 ),
                 {
                     "id": doc["id"],
@@ -836,6 +944,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "description": doc.get("description"),
                     "nodes_json": nodes_json,
                     "node_count": len(doc["nodes"]),
+                    "external_url": doc.get("external_url"),
+                    "has_source_document": int(bool(doc.get("has_source_document", False))),
+                    "has_hannom_text": int(bool(doc.get("has_hannom_text", False))),
                     "created_at": doc["created_at"],
                     "updated_at": doc["updated_at"],
                 },
@@ -849,6 +960,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "UPDATE family_tree "
                     "SET name = :name, description = :description, "
                     "    nodes_json = CAST(:nodes_json AS JSON), node_count = :node_count, "
+                    "    external_url = :external_url, "
+                    "    has_source_document = :has_source_document, "
+                    "    has_hannom_text = :has_hannom_text, "
                     "    updated_at = :updated_at "
                     "WHERE id = :id"
                 ),
@@ -858,6 +972,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "description": doc.get("description"),
                     "nodes_json": nodes_json,
                     "node_count": len(doc["nodes"]),
+                    "external_url": doc.get("external_url"),
+                    "has_source_document": int(bool(doc.get("has_source_document", False))),
+                    "has_hannom_text": int(bool(doc.get("has_hannom_text", False))),
                     "updated_at": doc["updated_at"],
                 },
             )
@@ -879,16 +996,42 @@ class MirroredFamilyTreeStore:
         name: str,
         description: Optional[str] = None,
         nodes: Optional[List[Dict[str, Any]]] = None,
+        external_url: Optional[str] = None,
+        has_source_document: bool = False,
+        has_hannom_text: bool = False,
     ) -> Dict[str, Any]:
-        doc = self._primary.create_tree(name=name, description=description, nodes=nodes)
+        doc = self._primary.create_tree(
+            name=name,
+            description=description,
+            nodes=nodes,
+            external_url=external_url,
+            has_source_document=has_source_document,
+            has_hannom_text=has_hannom_text,
+        )
         self._sync_source_document(doc)
         return doc
 
     def get_tree(self, tree_id: str) -> Dict[str, Any]:
         return self._primary.get_tree(tree_id)
 
-    def update_tree(self, tree_id: str, *, name: Optional[str], description: Optional[str]) -> Dict[str, Any]:
-        doc = self._primary.update_tree(tree_id, name=name, description=description)
+    def update_tree(
+        self,
+        tree_id: str,
+        *,
+        name: Optional[str] = None,
+        description: Optional[str] = None,
+        external_url: Optional[str] = None,
+        has_source_document: Optional[bool] = None,
+        has_hannom_text: Optional[bool] = None,
+    ) -> Dict[str, Any]:
+        doc = self._primary.update_tree(
+            tree_id,
+            name=name,
+            description=description,
+            external_url=external_url,
+            has_source_document=has_source_document,
+            has_hannom_text=has_hannom_text,
+        )
         self._sync_source_document(doc)
         return doc
 
@@ -985,6 +1128,9 @@ class MirroredFamilyTreeStore:
                 "created_at": doc.get("created_at"),
                 "updated_at": doc.get("updated_at"),
                 "nodes": self._source._normalize_nodes(doc.get("nodes", [])),
+                "external_url": doc.get("external_url"),
+                "has_source_document": doc.get("has_source_document", False),
+                "has_hannom_text": doc.get("has_hannom_text", False),
             }
             with self._source._lock:
                 self._source._write_json(self._source._file_path(tree_id), source_doc)

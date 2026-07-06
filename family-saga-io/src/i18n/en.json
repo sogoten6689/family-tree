@@ -96,7 +96,12 @@
     "searchMembers": "Search members by name, generation...",
     "establishedYear": "Earliest recorded year",
     "createdAt": "Created",
-    "updatedAt": "Updated"
+    "updatedAt": "Updated",
+    "totalTrees": "Total family trees",
+    "externalLink": "Link",
+    "sourceDocument": "Source document",
+    "hannomText": "Hán-Nôm text",
+    "downloadDocs": "Download docs"
   },
   "docReader": {
     "pageTitle": "Genealogy Document Reader",

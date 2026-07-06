@@ -96,7 +96,12 @@
     "searchMembers": "Tìm thành viên theo tên, đời...",
     "establishedYear": "Năm ghi nhận sớm nhất",
     "createdAt": "Ngày tạo",
-    "updatedAt": "Cập nhật"
+    "updatedAt": "Cập nhật",
+    "totalTrees": "Tổng số cây gia phả",
+    "externalLink": "Đường link",
+    "sourceDocument": "Tài liệu gốc",
+    "hannomText": "Văn bản Hán Nôm",
+    "downloadDocs": "Tải tài liệu"
   },
   "docReader": {
     "pageTitle": "Phòng đọc tư liệu gia phả",

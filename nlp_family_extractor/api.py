@@ -152,6 +152,9 @@ class FamilyTreeSummary(BaseModel):
     created_at: str
     updated_at: str
     node_count: int
+    external_url: Optional[str] = None
+    has_source_document: bool = False
+    has_hannom_text: bool = False
 
 
 class FamilyTreeListResponse(BaseModel):
@@ -166,6 +169,9 @@ class FamilyTreeDocument(BaseModel):
     created_at: str
     updated_at: str
     nodes: List[Dict[str, Any]] = Field(default_factory=list)
+    external_url: Optional[str] = None
+    has_source_document: bool = False
+    has_hannom_text: bool = False
 
 
 class FamilyTreeCreateRequest(BaseModel):
@@ -173,6 +179,9 @@ class FamilyTreeCreateRequest(BaseModel):
 
     name: str = Field(min_length=1, description="Tên cây gia phả.")
     description: Optional[str] = Field(default=None, description="Mô tả ngắn.")
+    external_url: Optional[str] = Field(default=None, description="Đường link nguồn (vietnamgiapha, ...).")
+    has_source_document: bool = Field(default=False, description="Có tài liệu gốc.")
+    has_hannom_text: bool = Field(default=False, description="Có văn bản Hán-Nôm.")
     nodes: List[Dict[str, Any]] = Field(
         default_factory=list,
         description="Danh sách node BALKAN khởi tạo ban đầu.",
@@ -184,6 +193,9 @@ class FamilyTreeUpdateRequest(BaseModel):
 
     name: Optional[str] = Field(default=None, min_length=1)
     description: Optional[str] = Field(default=None)
+    external_url: Optional[str] = Field(default=None)
+    has_source_document: Optional[bool] = Field(default=None)
+    has_hannom_text: Optional[bool] = Field(default=None)
 
 
 class FamilyTreeReplaceRequest(BaseModel):
@@ -610,6 +622,9 @@ def create_family_tree(req: FamilyTreeCreateRequest, _: AdminUser) -> FamilyTree
             name=req.name,
             description=req.description,
             nodes=req.nodes,
+            external_url=req.external_url,
+            has_source_document=req.has_source_document,
+            has_hannom_text=req.has_hannom_text,
         )
     except Exception as error:
         _raise_store_error(error)
@@ -637,7 +652,13 @@ def get_family_tree(tree_id: str, _: AdminUser) -> FamilyTreeDocument:
     summary="Cập nhật metadata cây gia phả",
 )
 def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest, _: AdminUser) -> FamilyTreeDocument:
-    if req.name is None and req.description is None:
+    if (
+        req.name is None
+        and req.description is None
+        and req.external_url is None
+        and req.has_source_document is None
+        and req.has_hannom_text is None
+    ):
         raise HTTPException(status_code=400, detail="No fields to update")
 
     try:
@@ -645,6 +666,9 @@ def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest, _: AdminUser)
             tree_id,
             name=req.name,
             description=req.description,
+            external_url=req.external_url,
+            has_source_document=req.has_source_document,
+            has_hannom_text=req.has_hannom_text,
         )
     except Exception as error:
         _raise_store_error(error)

@@ -142,6 +142,11 @@ export const toTreeStats = (nodes: BalkanNode[]) => {
 export const getFamilyTreePublicUrl = (treeId: string) =>
   `${window.location.origin}/gia-pha/${encodeURIComponent(treeId)}`;
 
+export const getFamilyTreeExternalUrl = (tree: {
+  id: string;
+  external_url?: string | null;
+}) => tree.external_url?.trim() || getFamilyTreePublicUrl(tree.id);
+
 export const formatTreeDate = (value: string) => {
   const parsed = new Date(value);
   if (Number.isNaN(parsed.getTime())) return value;
