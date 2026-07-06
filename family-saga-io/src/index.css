@@ -72,7 +72,7 @@
     --secondary-foreground: 39 40% 92%;
 
     --muted: 222 18% 20%;
-    --muted-foreground: 39 18% 70%;
+    --muted-foreground: 39 20% 75%;
 
     --accent: 36 60% 45%;
     --accent-foreground: 39 40% 92%;
@@ -85,10 +85,10 @@
     --ring: 36 70% 50%;
 
     --gold: 36 70% 50%;
-    --gold-light: 39 60% 72%;
+    --gold-light: 39 55% 72%;
     --crimson: 0 45% 45%;
-    --parchment: 222 24% 11%;
-    --wood: 39 40% 92%;
+    --parchment: 39 40% 90%;
+    --wood: 222 22% 10%;
 
     --sidebar-background: 222 24% 11%;
     --sidebar-foreground: 39 40% 92%;
@@ -141,17 +141,25 @@
     background: linear-gradient(135deg, hsl(36 70% 42%), hsl(39 60% 70%));
   }
 
+  .dark .gold-gradient {
+    background: linear-gradient(135deg, hsl(36 55% 36%), hsl(39 45% 26%));
+  }
+
   .section-divider {
     background: linear-gradient(90deg, transparent, hsl(36 70% 42%), transparent);
     height: 1px;
   }
 
+  .dark .section-divider {
+    background: linear-gradient(90deg, transparent, hsl(36 60% 48%), transparent);
+  }
+
   .tree-connector-v {
-    border-left: 2px solid hsl(36 70% 42%);
+    border-left: 2px solid hsl(var(--gold));
   }
 
   .tree-connector-h {
-    border-top: 2px solid hsl(36 70% 42%);
+    border-top: 2px solid hsl(var(--gold));
   }
 
   .tree-node-card {
@@ -160,7 +168,7 @@
   }
 
   .tree-node-card:hover {
-    box-shadow: 0 8px 24px hsl(36 70% 42% / 0.3);
+    box-shadow: 0 8px 24px hsl(var(--gold) / 0.25);
     transform: translateY(-2px);
   }
 }

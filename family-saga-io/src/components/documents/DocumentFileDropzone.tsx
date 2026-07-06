@@ -24,7 +24,7 @@ export function DocumentFileDropzone({ uploading = false, onUpload }: Props) {
   };
 
   return (
-    <Upload.Dragger {...uploadProps} className="!bg-[#fafafa]">
+    <Upload.Dragger {...uploadProps} className="!bg-muted/30 dark:!bg-muted/20">
       <p className="ant-upload-drag-icon">
         <InboxOutlined />
       </p>

@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ConfigProvider, theme as antdTheme } from "antd";
+import { ConfigProvider } from "antd";
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { useTheme } from "next-themes";
+import { getAntdTheme } from "@/lib/antdTheme";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -42,28 +44,10 @@ const AdminFamilyTreeRedirect = () => {
 const AppContent = () => {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const antTheme = useMemo(() => getAntdTheme(isDark), [isDark]);
 
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: isDark ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
-        token: {
-          colorPrimary: "#1677ff",
-          borderRadius: 12,
-          fontFamily: "Roboto, sans-serif",
-        },
-        components: {
-          Layout: {
-            siderBg: "#f8f9fa",
-            headerBg: "#ffffff",
-            bodyBg: "#f0f2f5",
-          },
-          Menu: {
-            itemBorderRadius: 8,
-          },
-        },
-      }}
-    >
+    <ConfigProvider theme={antTheme}>
       <TooltipProvider>
         <Toaster />
         <Sonner />

@@ -166,11 +166,7 @@ const HomePage = () => {
               <Card
                 key={i}
                 hoverable
-                className="text-center border-2 transition-all duration-300"
-                style={{
-                  borderColor: 'hsl(36, 30%, 80%)',
-                  background: 'hsl(39, 40%, 93%)',
-                }}
+                className="text-center border-2 transition-all duration-300 bg-card border-border hover:border-gold/60"
                 styles={{ body: { padding: 32 } }}
               >
                 <div className="mb-4">{f.icon}</div>
@@ -240,7 +236,7 @@ const HomePage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-wood py-8 px-6 text-center">
+      <footer className="bg-wood py-8 px-6 text-center text-parchment/80">
         <div className="flex items-center justify-center gap-4">
           <p className="text-parchment/70 text-sm">{t('home.footer')}</p>
           <LanguageSwitcher />

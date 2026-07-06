@@ -12,6 +12,7 @@ import { Button, Drawer, Layout, Menu, Space, Typography } from "antd";
 import type { MenuProps } from "antd";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "next-themes";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -26,6 +27,8 @@ const PublicLayout = () => {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
   const isMobile = useIsMobile();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const selectedKey =
@@ -89,9 +92,9 @@ const PublicLayout = () => {
   );
 
   return (
-    <Layout className="min-h-screen bg-[#f8f9fa]">
+    <Layout className="min-h-screen">
       <Header
-        className="!bg-white !px-4 md:!px-6 flex items-center justify-between shadow-sm sticky top-0 z-50"
+        className="!px-4 md:!px-6 flex items-center justify-between shadow-sm sticky top-0 z-50 border-b border-border"
         style={{ height: 64 }}
       >
         <Space size="middle" className="min-w-0">
@@ -105,8 +108,10 @@ const PublicLayout = () => {
           {!isMobile && (
             <Menu
               mode="horizontal"
+              theme={isDark ? "dark" : "light"}
               selectedKeys={[selectedKey]}
-              className="!border-none !bg-transparent min-w-[360px]"
+              className="!border-none min-w-[360px]"
+              style={{ background: "transparent" }}
               items={navItems}
               onClick={handleNav}
             />
@@ -134,7 +139,7 @@ const PublicLayout = () => {
         onClose={() => setMenuOpen(false)}
         width={280}
       >
-        <Menu mode="vertical" selectedKeys={[selectedKey]} items={navItems} onClick={handleNav} />
+        <Menu mode="vertical" theme={isDark ? "dark" : "light"} selectedKeys={[selectedKey]} items={navItems} onClick={handleNav} />
         <Space direction="vertical" className="mt-6 w-full">
           <LanguageSwitcher />
           <ThemeToggle />

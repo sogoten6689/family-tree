@@ -13,7 +13,7 @@ const ForbiddenPage = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#f0f2f5] p-6">
+    <div className="relative flex min-h-screen items-center justify-center bg-background p-6">
       <div className="absolute top-4 right-4 flex items-center gap-2">
         <LanguageSwitcher />
         <ThemeToggle />

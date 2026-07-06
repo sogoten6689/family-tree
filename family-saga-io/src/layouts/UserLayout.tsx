@@ -9,6 +9,7 @@ import { Breadcrumb, Button, Card, Layout, Menu, Space, Typography } from "antd"
 import { useMemo } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useTheme } from "next-themes";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -28,6 +29,8 @@ const UserLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, isAdmin, logout } = useAuth();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   const selectedKey = menuKeyByPath[location.pathname] ?? "dashboard";
   const pageTitle = t(getPageTitleKey(location.pathname), { defaultValue: "User" });
@@ -55,7 +58,7 @@ const UserLayout = () => {
 
   return (
     <Layout className="min-h-screen">
-      <Sider width={250} breakpoint="lg" theme="light" className="!bg-[#f8f9fa] border-r border-[#e9ecef]">
+      <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border">
         <div className="px-5 py-6">
           <Typography.Title level={5} className="!mb-1">
             {t("user.panelTitle", { defaultValue: "Khu vực người dùng" })}
@@ -66,6 +69,7 @@ const UserLayout = () => {
         </div>
         <Menu
           mode="inline"
+          theme={isDark ? "dark" : "light"}
           selectedKeys={[selectedKey]}
           items={menuItems}
           className="!border-none !bg-transparent"
@@ -88,7 +92,7 @@ const UserLayout = () => {
       </Sider>
 
       <Layout>
-        <Header className="!bg-white !px-6 flex items-center justify-between border-b border-[#e9ecef]" style={{ height: 64 }}>
+        <Header className="!px-6 flex items-center justify-between border-b border-border" style={{ height: 64 }}>
           <div>
             <Breadcrumb
               items={[
@@ -107,7 +111,7 @@ const UserLayout = () => {
           </Space>
         </Header>
 
-        <Content className="p-6 bg-[#f0f2f5] min-h-[calc(100vh-64px)]">
+        <Content className="p-6 min-h-[calc(100vh-64px)]">
           <Outlet />
         </Content>
       </Layout>

@@ -29,11 +29,11 @@ export function DocumentFileItem({ file, deleting = false, onDelete }: Props) {
     <div
       ref={setNodeRef}
       style={style}
-      className="flex items-center gap-3 rounded-xl border border-[#e9ecef] bg-white px-3 py-3"
+      className="flex items-center gap-3 rounded-xl border border-border bg-card px-3 py-3"
     >
       <button
         type="button"
-        className="cursor-grab text-gray-400 hover:text-gray-600 active:cursor-grabbing"
+        className="cursor-grab text-muted-foreground hover:text-foreground active:cursor-grabbing"
         aria-label="Kéo để sắp xếp"
         {...attributes}
         {...listeners}
@@ -45,10 +45,10 @@ export function DocumentFileItem({ file, deleting = false, onDelete }: Props) {
         <img
           src={file.download_url}
           alt={file.file_name}
-          className="h-12 w-12 rounded-lg object-cover border border-[#e9ecef]"
+          className="h-12 w-12 rounded-lg object-cover border border-border"
         />
       ) : (
-        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#f0f2f5] text-[#1677ff]">
+        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-[#1677ff]">
           <FileOutlined />
         </div>
       )}
@@ -57,7 +57,7 @@ export function DocumentFileItem({ file, deleting = false, onDelete }: Props) {
         <Typography.Text strong className="block truncate">
           {file.file_name}
         </Typography.Text>
-        <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+        <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           <span>{formatFileSize(file.size)}</span>
           <Tag>{file.file_type}</Tag>
           <span>Vị trí #{file.position + 1}</span>

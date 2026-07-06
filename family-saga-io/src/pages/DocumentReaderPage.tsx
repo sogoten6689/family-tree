@@ -1086,7 +1086,7 @@ const DocumentReaderPage = () => {
                                 description={analysisResult.gemini_error}
                               />
                             )}
-                            <pre className="max-h-64 overflow-auto rounded bg-black/5 p-3 text-xs leading-5 text-foreground">
+                            <pre className="max-h-64 overflow-auto rounded bg-muted p-3 text-xs leading-5 text-foreground">
                               {JSON.stringify(
                                 analysisResult.balkan_nodes,
                                 null,

@@ -17,8 +17,8 @@ const CodeBlock = ({ code, language = "text" }: CodeBlockProps) => {
   };
 
   return (
-    <div className="rounded-lg border border-[#e9ecef] bg-[#fafafa] overflow-hidden">
-      <div className="flex items-center justify-between px-3 py-2 border-b border-[#e9ecef] bg-white">
+    <div className="rounded-lg border border-border bg-muted/40 overflow-hidden">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-border bg-card">
         <Typography.Text type="secondary" className="text-xs uppercase">
           {language}
         </Typography.Text>

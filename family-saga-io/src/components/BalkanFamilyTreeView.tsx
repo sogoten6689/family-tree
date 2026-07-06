@@ -106,7 +106,7 @@ export function BalkanFamilyTreeView({
     <div className={`relative w-full ${className}`}>
       {!ready && !error && (
         <div
-          className="absolute inset-0 z-10 flex items-center justify-center rounded-xl border border-[#e9ecef] bg-white/80"
+          className="absolute inset-0 z-10 flex items-center justify-center rounded-xl border border-border bg-card/80 backdrop-blur-sm"
           style={{ minHeight: height }}
         >
           <Spin size="large" />
@@ -124,7 +124,7 @@ export function BalkanFamilyTreeView({
       <div
         ref={containerRef}
         key={treeId ?? nodesKey}
-        className="w-full rounded-xl border border-[#e9ecef] bg-white overflow-auto"
+        className="w-full rounded-xl border border-border bg-card overflow-auto"
         style={{ minHeight: height, height }}
       />
     </div>

@@ -63,7 +63,7 @@ export function FamilyTreeDocumentsPanel({ treeId }: Props) {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-muted-foreground">
           Quản lý tài liệu đính kèm cho cây gia phả này.
         </div>
         <div className="flex gap-2">
@@ -100,7 +100,7 @@ export function FamilyTreeDocumentsPanel({ treeId }: Props) {
               render: (title: string, record) => (
                 <div>
                   <div className="font-medium">{title}</div>
-                  <div className="text-xs text-gray-500">{record.description || "Không có mô tả"}</div>
+                  <div className="text-xs text-muted-foreground">{record.description || "Không có mô tả"}</div>
                 </div>
               ),
             },
