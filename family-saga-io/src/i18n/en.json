@@ -1,7 +1,14 @@
 {
   "common": {
     "appName": "HCMUS Family Tree",
-    "backHome": "Home"
+    "backHome": "Home",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "guide": "Guide",
+    "features": "Features",
+    "about": "About Us"
   },
   "home": {
     "heroTitle": "Vietnamese Family Tree",
@@ -27,6 +34,8 @@
     "ctaTitle": "Start Building Your Family Tree",
     "ctaSubtitle": "In just a few simple steps, you can create a complete family tree for your lineage.",
     "ctaBtn": "Upload Documents to Read",
+    "aboutTitle": "About Us",
+    "aboutDesc": "HCMUS Family Tree is a digital genealogy platform helping Vietnamese families preserve Hán-Nôm materials, build visual pedigree charts, and share them with future generations.",
     "footer": "© 2026 HCMUS Family Tree — Preserving traditions, connecting generations"
   },
   "familyTree": {
@@ -59,7 +68,35 @@
     "selectParent": "Select parent",
     "parentLabel": "{{name}} (gen. {{gen}})",
     "cancel": "Cancel",
-    "save": "Save Changes"
+    "save": "Save Changes",
+    "managerSubtitle": "Manage family trees. Click Detail to view and edit.",
+    "treeListTitle": "Family tree list",
+    "searchTrees": "Search by name, ID, or description",
+    "treeName": "Tree name",
+    "treeDescription": "Description",
+    "noDescription": "No description",
+    "linkColumn": "Link",
+    "openLink": "Open",
+    "detail": "Detail",
+    "editTree": "Edit",
+    "documentsTab": "Documents",
+    "backToList": "Back to list",
+    "visualTreeTab": "Pedigree Chart",
+    "memberDirectoryTab": "Member Directory",
+    "documentArchiveTab": "Hán-Nôm & Document Archive",
+    "ancestralSidebarTitle": "Ancestral House & History",
+    "noHistorySummary": "No historical summary yet.",
+    "timelineTitle": "Timeline",
+    "managerContact": "Manager",
+    "managerContactPlaceholder": "Contact details will be updated later.",
+    "statusPublic": "Public",
+    "totalDocuments": "Total documents",
+    "totalGenerations": "Generations",
+    "totalMembers": "Total members",
+    "searchMembers": "Search members by name, generation...",
+    "establishedYear": "Earliest recorded year",
+    "createdAt": "Created",
+    "updatedAt": "Updated"
   },
   "docReader": {
     "pageTitle": "Genealogy Document Reader",
@@ -235,6 +272,10 @@
     "adminGiaPha": {
       "title": "Family tree management",
       "desc": "CRUD family trees (admin only)."
+    },
+    "adminGiaPhaDetail": {
+      "title": "Family tree detail",
+      "desc": "View and manage a family tree."
     },
     "adminUsers": {
       "title": "User management",

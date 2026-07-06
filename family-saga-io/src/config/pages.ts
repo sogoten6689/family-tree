@@ -131,6 +131,7 @@ export function getPageTitleKey(pathname: string): string {
   if (pathname.startsWith("/admin/developer/storage")) return "admin.developer.breadcrumbStorage";
   if (pathname.startsWith("/admin/developer/logs")) return "admin.developer.breadcrumbLogs";
   if (pathname.startsWith("/admin/developer/docs")) return "admin.developer.breadcrumbDocs";
+  if (pathname.match(/^\/admin\/gia-pha\/[^/]+$/)) return "pages.adminGiaPhaDetail.title";
   if (pathname.startsWith("/admin/gia-pha")) return "pages.adminGiaPha.title";
   if (pathname.startsWith("/user/document-reader")) return "pages.userDocumentReader.title";
   if (pathname.startsWith("/user/family-tree")) return "pages.userFamilyTree.title";

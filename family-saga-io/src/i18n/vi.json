@@ -1,7 +1,14 @@
 {
   "common": {
     "appName": "HCMUS Family Tree",
-    "backHome": "Trang chủ"
+    "backHome": "Trang chủ",
+    "yes": "Có",
+    "no": "Không"
+  },
+  "nav": {
+    "guide": "Hướng dẫn",
+    "features": "Tính năng",
+    "about": "Về chúng tôi"
   },
   "home": {
     "heroTitle": "Gia Phả Việt",
@@ -27,6 +34,8 @@
     "ctaTitle": "Bắt Đầu Xây Dựng Gia Phả",
     "ctaSubtitle": "Chỉ vài bước đơn giản, bạn đã có thể tạo cây gia phả hoàn chỉnh cho dòng họ mình.",
     "ctaBtn": "Tải Tư Liệu Để Đọc",
+    "aboutTitle": "Về chúng tôi",
+    "aboutDesc": "HCMUS Family Tree là nền tảng số hóa gia phả, giúp các dòng họ Việt Nam lưu giữ tư liệu Hán-Nôm, xây dựng cây phả hệ trực quan và chia sẻ với thế hệ kế tiếp.",
     "footer": "© 2026 Gia Phả Việt — Gìn giữ truyền thống, kết nối thế hệ"
   },
   "familyTree": {
@@ -59,7 +68,35 @@
     "selectParent": "Chọn cha / mẹ",
     "parentLabel": "{{name}} (đời {{gen}})",
     "cancel": "Hủy",
-    "save": "Lưu thay đổi"
+    "save": "Lưu thay đổi",
+    "managerSubtitle": "Quản lý danh sách cây gia phả. Bấm Chi tiết để xem và chỉnh sửa.",
+    "treeListTitle": "Danh sách gia phả",
+    "searchTrees": "Tìm cây theo tên, mã hoặc mô tả",
+    "treeName": "Tên cây",
+    "treeDescription": "Mô tả",
+    "noDescription": "Không có mô tả",
+    "linkColumn": "Liên kết",
+    "openLink": "Mở",
+    "detail": "Chi tiết",
+    "editTree": "Sửa",
+    "documentsTab": "Tài liệu",
+    "backToList": "Quay lại danh sách",
+    "visualTreeTab": "Sơ đồ Gia phả",
+    "memberDirectoryTab": "Hồ sơ Thành viên",
+    "documentArchiveTab": "Kho Tư liệu Hán-Nôm & Văn bản",
+    "ancestralSidebarTitle": "Thông tin Từ đường / Lịch sử",
+    "noHistorySummary": "Chưa có mô tả lịch sử dòng họ.",
+    "timelineTitle": "Mốc thời gian",
+    "managerContact": "Người quản lý",
+    "managerContactPlaceholder": "Thông tin liên hệ sẽ được cập nhật sau.",
+    "statusPublic": "Công khai",
+    "totalDocuments": "Tổng tài liệu",
+    "totalGenerations": "Số đời",
+    "totalMembers": "Tổng thành viên",
+    "searchMembers": "Tìm thành viên theo tên, đời...",
+    "establishedYear": "Năm ghi nhận sớm nhất",
+    "createdAt": "Ngày tạo",
+    "updatedAt": "Cập nhật"
   },
   "docReader": {
     "pageTitle": "Phòng đọc tư liệu gia phả",
@@ -235,6 +272,10 @@
     "adminGiaPha": {
       "title": "Quản lý gia phả",
       "desc": "CRUD cây gia phả (chỉ admin)."
+    },
+    "adminGiaPhaDetail": {
+      "title": "Chi tiết gia phả",
+      "desc": "Xem và quản lý một cây gia phả."
     },
     "adminUsers": {
       "title": "Quản lý thành viên",

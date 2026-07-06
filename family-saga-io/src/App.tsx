@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConfigProvider, theme as antdTheme } from "antd";
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -20,6 +20,8 @@ import DashboardPage from "./pages/DashboardPage";
 import DocumentReaderPage from "./pages/DocumentReaderPage";
 import FamilyTreePage from "./pages/FamilyTreePage";
 import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
+import FamilyTreeDetailPage from "./pages/admin/FamilyTreeDetailPage";
+import PublicFamilyTreePage from "./pages/PublicFamilyTreePage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import EditDocumentPage from "./pages/EditDocumentPage";
 import NotFound from "./pages/NotFound";
@@ -31,6 +33,11 @@ import DocsPage from "./pages/developer/DocsPage";
 import { DeveloperRoute } from "@/components/DeveloperRoute";
 
 const queryClient = new QueryClient();
+
+const AdminFamilyTreeRedirect = () => {
+  const { treeId } = useParams<{ treeId: string }>();
+  return <Navigate to={`/admin/gia-pha/${treeId ?? ""}`} replace />;
+};
 
 const AppContent = () => {
   const { resolvedTheme } = useTheme();
@@ -66,6 +73,7 @@ const AppContent = () => {
             <Route element={<PublicLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/huong-dan" element={<GuidePage />} />
+              <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
@@ -97,6 +105,7 @@ const AppContent = () => {
             >
               <Route index element={<Navigate to="/admin/gia-pha" replace />} />
               <Route path="gia-pha" element={<FamilyTreeManagerPage />} />
+              <Route path="gia-pha/:treeId" element={<FamilyTreeDetailPage />} />
               <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
               <Route path="users" element={<AdminUsersPage />} />
               <Route
@@ -120,6 +129,7 @@ const AppContent = () => {
             <Route path="/document-reader" element={<Navigate to="/user/document-reader" replace />} />
             <Route path="/family-tree" element={<Navigate to="/user/family-tree" replace />} />
             <Route path="/family-tree-manager" element={<Navigate to="/admin/gia-pha" replace />} />
+            <Route path="/admin/family-tree/:treeId" element={<AdminFamilyTreeRedirect />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

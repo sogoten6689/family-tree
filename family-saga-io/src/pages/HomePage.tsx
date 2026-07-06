@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { Button, Card } from 'antd';
 import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import heroBg from '@/assets/hero-bg.jpg';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -9,8 +10,16 @@ import { useAuth } from '@/contexts/AuthContext';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const { isAuthenticated, isAdmin, logout } = useAuth();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+  }, [location.hash]);
 
   const features = [
     {
@@ -144,7 +153,7 @@ const HomePage = () => {
       <div className="section-divider mx-auto max-w-4xl my-0" />
 
       {/* Features */}
-      <section className="py-20 px-6">
+      <section id="features" className="py-20 px-6 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center text-foreground mb-4">
             {t('home.featuresTitle')}
@@ -213,6 +222,21 @@ const HomePage = () => {
         >
           {t('home.ctaBtn')}
         </Button>
+      </section>
+
+      {/* About */}
+      <section id="about" className="py-20 px-6 bg-background scroll-mt-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+            {t('home.aboutTitle', { defaultValue: 'Về chúng tôi' })}
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            {t('home.aboutDesc', {
+              defaultValue:
+                'HCMUS Family Tree là nền tảng số hóa gia phả, giúp các dòng họ Việt Nam lưu giữ tư liệu Hán-Nôm, xây dựng cây phả hệ trực quan và chia sẻ với thế hệ kế tiếp.',
+            })}
+          </p>
+        </div>
       </section>
 
       {/* Footer */}

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 import os
+import re
 from typing import Any
+from urllib.parse import unquote
 
 import httpx
 
 from app.hannom.client import (
-    DEFAULT_USER_AGENT,
     SUCCESS_CODE,
     _base_url,
     apply_runtime_token,
@@ -23,20 +24,14 @@ TOKEN_JSON_KEYS = (
     "id_token",
 )
 TOKEN_COOKIE_NAMES = (
-    "access_token",
     "token",
+    "access_token",
     "Authorization",
     "authorization",
     "jwt",
     "Bearer",
 )
-LOGIN_ATTEMPTS: tuple[tuple[str, dict[str, str]], ...] = (
-    ("/api/web/auth/login", {"username": "{user}", "password": "{password}"}),
-    ("/api/web/auth/login", {"email": "{user}", "password": "{password}"}),
-    ("/api/web/login", {"username": "{user}", "password": "{password}"}),
-    ("/api/web/login", {"email": "{user}", "password": "{password}"}),
-    ("/api/web/user/login", {"username": "{user}", "password": "{password}"}),
-)
+ACCOUNT_LOGIN_PATH = "/account/login"
 
 
 def _looks_like_jwt(value: str) -> bool:
@@ -47,10 +42,23 @@ def _looks_like_jwt(value: str) -> bool:
 
 
 def _normalize_bearer_token(value: str) -> str:
-    cleaned = value.strip()
+    cleaned = unquote(value.strip())
     if cleaned.lower().startswith("bearer "):
         return cleaned[7:].strip()
     return cleaned
+
+
+def _extract_csrf_token(html: str) -> str | None:
+    patterns = (
+        r'name="__RequestVerificationToken"\s+type="hidden"\s+value="([^"]+)"',
+        r'name="__RequestVerificationToken"\s+value="([^"]+)"',
+        r'value="([^"]+)"\s+name="__RequestVerificationToken"',
+    )
+    for pattern in patterns:
+        match = re.search(pattern, html, flags=re.IGNORECASE)
+        if match:
+            return match.group(1)
+    return None
 
 
 def _extract_token_from_json(payload: Any) -> str | None:
@@ -74,45 +82,96 @@ def _extract_token_from_json(payload: Any) -> str | None:
     return None
 
 
-def _extract_token_from_cookies(cookies: httpx.Cookies) -> str | None:
+def _extract_token_from_cookie_jar(cookies: httpx.Cookies) -> tuple[str, str] | None:
     for name in TOKEN_COOKIE_NAMES:
         value = cookies.get(name)
-        if isinstance(value, str) and value.strip():
-            token = _normalize_bearer_token(value)
-            if _looks_like_jwt(token) or len(token) >= 16:
-                return token
+        if not isinstance(value, str) or not value.strip():
+            continue
+        token = _normalize_bearer_token(value)
+        if _looks_like_jwt(token) or len(token) >= 16:
+            return token, f"cookie:{name}"
     return None
 
 
-def _parse_login_response(response: httpx.Response) -> tuple[str, str]:
-    token = _extract_token_from_cookies(response.cookies)
-    if token:
-        return token, "cookie"
+def _extract_login_error(html: str) -> str | None:
+    match = re.search(
+        r'class="[^"]*field-validation-error[^"]*"[^>]*>([^<]+)<',
+        html,
+        flags=re.IGNORECASE,
+    )
+    if match:
+        message = match.group(1).strip()
+        if message:
+            return message
+    if "Invalid login attempt" in html:
+        return "Invalid login attempt"
+    return None
 
-    try:
-        payload = response.json()
-    except ValueError as exc:
+
+def _login_via_account_form(client: httpx.Client, *, username: str, password: str) -> tuple[str, str]:
+    base = _base_url()
+    login_url = f"{base}{ACCOUNT_LOGIN_PATH}"
+
+    page = client.get(login_url)
+    if page.status_code >= 400:
         raise HannomApiError(
-            f"Đăng nhập trả về không phải JSON hợp lệ (HTTP {response.status_code}).",
+            f"Không thể mở trang đăng nhập Kim Hán Nôm (HTTP {page.status_code}).",
+            status_code=page.status_code,
+        )
+
+    form_data: dict[str, str] = {
+        "UserName": username,
+        "Password": password,
+    }
+    csrf = _extract_csrf_token(page.text)
+    if csrf:
+        form_data["__RequestVerificationToken"] = csrf
+
+    response = client.post(
+        login_url,
+        data=form_data,
+        headers={
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Referer": login_url,
+            "Origin": base,
+        },
+    )
+
+    token_info = _extract_token_from_cookie_jar(client.cookies)
+    if token_info:
+        return token_info
+
+    if response.headers.get("content-type", "").startswith("application/json"):
+        try:
+            payload = response.json()
+            if isinstance(payload, dict):
+                api_code = payload.get("code")
+                if api_code is not None and str(api_code) != SUCCESS_CODE:
+                    message = payload.get("message") or payload.get("msg") or "Đăng nhập thất bại"
+                    raise HannomApiError(
+                        str(message),
+                        status_code=response.status_code,
+                        api_code=str(api_code),
+                    )
+            token = _extract_token_from_json(payload)
+            if token:
+                return token, "json_body"
+        except ValueError:
+            pass
+
+    login_error = _extract_login_error(response.text)
+    if login_error:
+        raise HannomApiError(f"Đăng nhập thất bại: {login_error}", status_code=response.status_code)
+
+    if ACCOUNT_LOGIN_PATH in str(response.url):
+        raise HannomApiError(
+            "Đăng nhập không thành công. Kiểm tra lại tên đăng nhập/mật khẩu Kim Hán Nôm.",
             status_code=response.status_code,
-        ) from exc
-
-    if isinstance(payload, dict):
-        api_code = payload.get("code")
-        if api_code is not None and str(api_code) != SUCCESS_CODE:
-            message = payload.get("message") or payload.get("msg") or "Đăng nhập thất bại"
-            raise HannomApiError(
-                str(message),
-                status_code=response.status_code,
-                api_code=str(api_code),
-            )
-
-    token = _extract_token_from_json(payload)
-    if token:
-        return token, "json_body"
+        )
 
     raise HannomApiError(
-        "Đăng nhập thành công nhưng không tìm thấy Bearer token trong response.",
+        "Đăng nhập xong nhưng không tìm thấy cookie `token`. "
+        "Hãy đăng nhập thủ công trên kimhannom.fit.hcmus.edu.vn và copy cookie `token`.",
         status_code=response.status_code,
     )
 
@@ -124,70 +183,22 @@ def fetch_hannom_token(*, username: str, password: str) -> dict[str, Any]:
         raise HannomApiError("Email/tên đăng nhập và mật khẩu Kim Hán Nôm là bắt buộc.")
 
     headers = get_browser_headers(include_auth=False)
-    headers["Content-Type"] = "application/json"
-    headers["Accept"] = "application/json"
+    headers["Accept"] = "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8"
 
-    last_error: HannomApiError | None = None
-    base = _base_url()
+    with httpx.Client(
+        headers=headers,
+        timeout=httpx.Timeout(30.0, connect=15.0),
+        follow_redirects=True,
+    ) as client:
+        token, source = _login_via_account_form(client, username=user, password=pwd)
 
-    with httpx.Client(headers=headers, timeout=httpx.Timeout(30.0, connect=15.0), follow_redirects=True) as client:
-        for path, body_template in LOGIN_ATTEMPTS:
-            body = {
-                key: value.format(user=user, password=pwd)
-                for key, value in body_template.items()
-            }
-            url = f"{base}{path}"
-            try:
-                response = client.post(url, json=body)
-            except httpx.HTTPError as exc:
-                last_error = HannomApiError(f"Không thể kết nối {url}: {exc}")
-                continue
-
-            if response.status_code >= 500:
-                last_error = HannomApiError(
-                    f"Kim Hán Nôm server error HTTP {response.status_code} tại {path}.",
-                    status_code=response.status_code,
-                )
-                continue
-
-            if response.status_code >= 400:
-                detail = response.text[:300]
-                try:
-                    payload = response.json()
-                    if isinstance(payload, dict):
-                        message = payload.get("message") or payload.get("msg") or detail
-                        api_code = payload.get("code")
-                        last_error = HannomApiError(
-                            str(message),
-                            status_code=response.status_code,
-                            api_code=str(api_code) if api_code is not None else None,
-                        )
-                        continue
-                except ValueError:
-                    pass
-                last_error = HannomApiError(
-                    f"HTTP {response.status_code} tại {path}: {detail}",
-                    status_code=response.status_code,
-                )
-                continue
-
-            try:
-                token, source = _parse_login_response(response)
-            except HannomApiError as exc:
-                last_error = exc
-                continue
-
-            apply_runtime_token(token)
-            return {
-                "token": token,
-                "source": source,
-                "login_path": path,
-                "username": user,
-            }
-
-    if last_error:
-        raise last_error
-    raise HannomApiError("Không thể đăng nhập Kim Hán Nôm với các endpoint login đã cấu hình.")
+    apply_runtime_token(token)
+    return {
+        "token": token,
+        "source": source,
+        "login_path": ACCOUNT_LOGIN_PATH,
+        "username": user,
+    }
 
 
 def resolve_hannom_credentials(

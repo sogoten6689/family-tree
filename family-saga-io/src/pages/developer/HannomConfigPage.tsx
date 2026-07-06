@@ -104,7 +104,7 @@ const HannomConfigPage = () => {
         type="info"
         showIcon
         message="Token OCR Kim Hán Nôm"
-        description="Dùng form đăng nhập bên dưới để backend tự gọi API login fit.hcmus.edu.vn và lấy Bearer token. Token runtime có hiệu lực ngay; để giữ sau restart hãy cập nhật HANNOM_API_TOKEN trên VPS."
+        description="Hệ thống Kim Hán Nôm dùng form đăng nhập /account/login và lưu JWT trong cookie `token`. Backend sẽ mô phỏng trình duyệt, lấy cookie đó và dùng làm Bearer token cho OCR."
       />
 
       <Card
