@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConfigProvider, theme as antdTheme } from "antd";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -23,6 +23,12 @@ import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import EditDocumentPage from "./pages/EditDocumentPage";
 import NotFound from "./pages/NotFound";
+import ForbiddenPage from "./pages/ForbiddenPage";
+import HannomConfigPage from "./pages/developer/HannomConfigPage";
+import StoragePage from "./pages/developer/StoragePage";
+import LogsPage from "./pages/developer/LogsPage";
+import DocsPage from "./pages/developer/DocsPage";
+import { DeveloperRoute } from "@/components/DeveloperRoute";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +69,7 @@ const AppContent = () => {
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/403" element={<ForbiddenPage />} />
 
             {/* ── User (đã đăng nhập) ── */}
             <Route
@@ -92,6 +99,20 @@ const AppContent = () => {
               <Route path="gia-pha" element={<FamilyTreeManagerPage />} />
               <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
               <Route path="users" element={<AdminUsersPage />} />
+              <Route
+                path="developer"
+                element={
+                  <DeveloperRoute>
+                    <Outlet />
+                  </DeveloperRoute>
+                }
+              >
+                <Route index element={<Navigate to="/admin/developer/hannom-config" replace />} />
+                <Route path="hannom-config" element={<HannomConfigPage />} />
+                <Route path="storage" element={<StoragePage />} />
+                <Route path="logs" element={<LogsPage />} />
+                <Route path="docs" element={<DocsPage />} />
+              </Route>
             </Route>
 
             {/* Redirects cũ */}

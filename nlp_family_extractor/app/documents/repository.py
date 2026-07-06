@@ -5,8 +5,12 @@ from typing import Callable, Iterable, List, Optional
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from io import BytesIO
+
 from app.documents.models import Document, DocumentFile, DocumentType
 from app.documents.storage import ObjectStorage, ObjectStorageError
+from app.hannom.errors import HannomApiError
+from app.hannom.pipeline import process_hannom_image_to_vietnamese
 
 
 class DocumentNotFoundError(Exception):
@@ -20,6 +24,19 @@ class DocumentValidationError(Exception):
 class DocumentRepository:
     def __init__(self, db: Session) -> None:
         self.db = db
+
+    def find_result_document_for_source(self, source_document_id: int) -> Optional[Document]:
+        marker = f"source_document_id={source_document_id}"
+        stmt = (
+            select(Document)
+            .where(
+                Document.type == DocumentType.KET_QUA_VAN_BAN,
+                Document.description == marker,
+            )
+            .options(selectinload(Document.files))
+            .limit(1)
+        )
+        return self.db.scalar(stmt)
 
     def list_by_family_tree(self, family_tree_id: str) -> List[Document]:
         stmt = (
@@ -292,3 +309,75 @@ class DocumentService:
             position += 1
 
         return created
+
+    def ocr_transliterate_and_save(
+        self,
+        document_id: int,
+        file_bytes: bytes,
+        filename: str,
+        *,
+        ocr_id: int | None = None,
+        lang_type: int | None = None,
+    ) -> dict:
+        if not self.storage.config.enabled:
+            raise ObjectStorageError("Object storage is not configured.")
+
+        source = self.repository.get(document_id)
+        if source.type not in {
+            DocumentType.HAN_NOM,
+            DocumentType.HINH_ANH,
+            DocumentType.VAN_BAN,
+        }:
+            raise DocumentValidationError(
+                "Chỉ hỗ trợ OCR/phiên âm từ tài liệu loại han_nom, hinh_anh hoặc van_ban.",
+            )
+
+        try:
+            pipeline_result = process_hannom_image_to_vietnamese(
+                file_bytes,
+                filename,
+                ocr_id=ocr_id,
+                lang_type=lang_type,
+            )
+        except HannomApiError:
+            raise
+        except ValueError as exc:
+            raise DocumentValidationError(str(exc)) from exc
+
+        marker = f"source_document_id={document_id}"
+        result_document = self.repository.find_result_document_for_source(document_id)
+        if result_document is None:
+            result_document = self.repository.create(
+                family_tree_id=source.family_tree_id,
+                title=f"{source.title} - Kết quả phiên âm",
+                description=marker,
+                doc_type=DocumentType.KET_QUA_VAN_BAN,
+            )
+
+        transcription_text = str(pipeline_result["transcription_text"])
+        safe_source = self._sanitize_filename(filename)
+        result_name = f"{safe_source.rsplit('.', 1)[0]}_transcription.txt"
+        encoded = transcription_text.encode("utf-8")
+        buffer = BytesIO(encoded)
+
+        created_files = self.upload_files(
+            result_document.id,
+            [
+                (
+                    result_name,
+                    "text/plain; charset=utf-8",
+                    buffer,
+                    len(encoded),
+                )
+            ],
+        )
+
+        return {
+            "source_document": source,
+            "result_document": self.get_document(result_document.id),
+            "ocr_text": str(pipeline_result["ocr_text"]),
+            "ocr_lines": list(pipeline_result["ocr_lines"]),
+            "transcription_lines": list(pipeline_result["transcription_lines"]),
+            "transcription_text": transcription_text,
+            "saved_file": created_files[0],
+        }

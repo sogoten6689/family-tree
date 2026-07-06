@@ -18,6 +18,7 @@ from app.auth.router import router as auth_router
 from app.database import database_enabled, database_init_error, init_database
 from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
+from app.hannom.router import router as hannom_developer_router
 from app.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
@@ -368,6 +369,7 @@ def _get_family_tree_document(tree_id: str) -> dict:
 
 
 app.include_router(create_documents_router(_get_family_tree_document))
+app.include_router(hannom_developer_router)
 
 
 def _raise_store_error(error: Exception) -> None:

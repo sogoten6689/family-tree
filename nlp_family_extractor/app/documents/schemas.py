@@ -62,3 +62,14 @@ class ReorderFilesRequest(BaseModel):
 class UploadFilesResponse(BaseModel):
     document_id: int
     uploaded: List[DocumentFileResponse]
+
+
+class OcrTransliterateResponse(BaseModel):
+    source_document_id: int
+    result_document_id: int
+    ocr_text: str
+    ocr_lines: List[str]
+    transcription_lines: List[str]
+    transcription_text: str
+    saved_file: DocumentFileResponse
+    result_document: DocumentResponse

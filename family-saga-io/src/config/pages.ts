@@ -81,6 +81,42 @@ export const APP_PAGES: AppPageMeta[] = [
     requiresAuth: true,
     requiresAdmin: true,
   },
+  {
+    id: "admin-dev-hannom",
+    zone: "admin",
+    path: "/admin/developer/hannom-config",
+    titleKey: "admin.developer.breadcrumbHannom",
+    descKey: "admin.developer.descHannom",
+    requiresAuth: true,
+    requiresAdmin: true,
+  },
+  {
+    id: "admin-dev-storage",
+    zone: "admin",
+    path: "/admin/developer/storage",
+    titleKey: "admin.developer.breadcrumbStorage",
+    descKey: "admin.developer.descStorage",
+    requiresAuth: true,
+    requiresAdmin: true,
+  },
+  {
+    id: "admin-dev-logs",
+    zone: "admin",
+    path: "/admin/developer/logs",
+    titleKey: "admin.developer.breadcrumbLogs",
+    descKey: "admin.developer.descLogs",
+    requiresAuth: true,
+    requiresAdmin: true,
+  },
+  {
+    id: "admin-dev-docs",
+    zone: "admin",
+    path: "/admin/developer/docs",
+    titleKey: "admin.developer.breadcrumbDocs",
+    descKey: "admin.developer.descDocs",
+    requiresAuth: true,
+    requiresAdmin: true,
+  },
 ];
 
 export const PUBLIC_PAGES = APP_PAGES.filter((page) => page.zone === "public");
@@ -91,6 +127,10 @@ export function getPageTitleKey(pathname: string): string {
   const match = APP_PAGES.find((page) => page.path === pathname);
   if (match) return match.titleKey;
   if (pathname.startsWith("/admin/users")) return "pages.adminUsers.title";
+  if (pathname.startsWith("/admin/developer/hannom-config")) return "admin.developer.breadcrumbHannom";
+  if (pathname.startsWith("/admin/developer/storage")) return "admin.developer.breadcrumbStorage";
+  if (pathname.startsWith("/admin/developer/logs")) return "admin.developer.breadcrumbLogs";
+  if (pathname.startsWith("/admin/developer/docs")) return "admin.developer.breadcrumbDocs";
   if (pathname.startsWith("/admin/gia-pha")) return "pages.adminGiaPha.title";
   if (pathname.startsWith("/user/document-reader")) return "pages.userDocumentReader.title";
   if (pathname.startsWith("/user/family-tree")) return "pages.userFamilyTree.title";

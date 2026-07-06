@@ -50,7 +50,26 @@ Backend lưu file tài liệu trên MinIO (tương thích S3) qua `boto3`.
 | POST | `/api/documents/{id}/upload-files` | Upload nhiều file (`multipart/form-data`, field `files`) |
 | PUT | `/api/documents/{id}/reorder-files` | Cập nhật thứ tự file |
 
+| POST | `/api/documents/{id}/ocr-transliterate` | OCR Hán-Nôm + phiên âm Quốc ngữ (Kim Hán Nôm API), lưu `.txt` vào tài liệu `ket_qua_van_ban` |
+
 Loại tài liệu (`type`): `han_nom`, `van_ban`, `hinh_anh`, `ket_qua_van_ban`, `ket_qua_hinh_anh`.
+
+### Kim Hán Nôm OCR / Phiên âm
+
+Tích hợp API [Kim Hán Nôm](https://kimhannom.fit.hcmus.edu.vn) qua module `app/hannom/`.
+
+| Biến môi trường | Mô tả |
+|-----------------|--------|
+| `HANNOM_API_TOKEN` | **Bắt buộc** (hoặc lấy runtime). Bearer token OCR |
+| `HANNOM_EMAIL` / `HANNOM_PASSWORD` | Tài khoản Kim Hán Nôm (dùng cho fetch-token server-side) |
+| `POST /api/developer/hannom/fetch-token` | Admin: đăng nhập & lấy token tự động |
+| `HANNOM_API_BASE_URL` | Mặc định `https://kimhannom.fit.hcmus.edu.vn` |
+| `HANNOM_RATE_LIMIT_PER_MINUTE` | Giới hạn request (mặc định `40`/phút) |
+| `HANNOM_OCR_ID` | `1` = dọc thông thường |
+| `HANNOM_OCR_LANG_TYPE` | `0` chưa biết, `1` Hán, `2` Nôm |
+| `HANNOM_FONT_TYPE` / `HANNOM_TRANSLITERATION_LANG_TYPE` | Tham số phiên âm |
+
+Pipeline: upload ảnh → OCR → sinonom-transliteration → lưu file `.txt` vào document `ket_qua_van_ban` liên kết (`source_document_id=<id>`).
 
 MinIO Console: http://localhost:9003 (user/pass: `minioadmin` / `minioadmin123` khi chạy docker-compose mặc định).
 

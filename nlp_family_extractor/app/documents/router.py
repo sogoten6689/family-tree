@@ -18,11 +18,13 @@ from app.documents.schemas import (
     DocumentListResponse,
     DocumentResponse,
     DocumentUpdateRequest,
+    OcrTransliterateResponse,
     ReorderFilesRequest,
     UploadFilesResponse,
 )
 from app.documents.storage import ObjectStorage, ObjectStorageError
 from app.family_tree_store import FamilyTreeNotFoundError
+from app.hannom.errors import HannomApiError
 
 
 def require_documents_database() -> None:
@@ -74,6 +76,15 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             raise HTTPException(status_code=400, detail=str(error)) from error
         if isinstance(error, ObjectStorageError):
             raise HTTPException(status_code=503, detail=str(error)) from error
+        if isinstance(error, HannomApiError):
+            raise HTTPException(
+                status_code=502,
+                detail={
+                    "message": str(error),
+                    "api_code": error.api_code,
+                    "upstream_status": error.status_code,
+                },
+            ) from error
         raise HTTPException(status_code=500, detail="Unexpected document service error") from error
 
     def _serialize_file(file_item) -> DocumentFileResponse:
@@ -262,6 +273,58 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
         return UploadFilesResponse(
             document_id=document_id,
             uploaded=[_serialize_file(item) for item in created],
+        )
+
+    @router.post(
+        "/api/documents/{document_id}/ocr-transliterate",
+        response_model=OcrTransliterateResponse,
+        summary="OCR Hán-Nôm và phiên âm Quốc ngữ (Kim Hán Nôm API)",
+    )
+    async def ocr_transliterate(
+        document_id: int,
+        _: AdminUser,
+        document_service=Depends(get_service),
+        db: Session = Depends(get_db),
+        image: UploadFile = File(..., description="Ảnh gia phả chữ Hán-Nôm"),
+    ) -> OcrTransliterateResponse:
+        content = await image.read()
+        max_bytes = _max_upload_bytes()
+        if len(content) <= 0:
+            raise HTTPException(status_code=400, detail="File ảnh rỗng.")
+        if len(content) > max_bytes:
+            raise HTTPException(
+                status_code=400,
+                detail=f"File vượt quá giới hạn upload ({max_bytes} bytes).",
+            )
+
+        filename = image.filename or "hannom.jpg"
+        try:
+            result = document_service.ocr_transliterate_and_save(
+                document_id,
+                content,
+                filename,
+            )
+            db.commit()
+            saved_file = result["saved_file"]
+            db.refresh(saved_file)
+            try:
+                saved_file.download_url = document_service.storage.get_presigned_url(saved_file.file_key)  # type: ignore[attr-defined]
+            except ObjectStorageError:
+                saved_file.download_url = None  # type: ignore[attr-defined]
+        except Exception as error:
+            db.rollback()
+            _raise_service_error(error)
+
+        result_document = result["result_document"]
+        return OcrTransliterateResponse(
+            source_document_id=document_id,
+            result_document_id=result_document.id,
+            ocr_text=result["ocr_text"],
+            ocr_lines=result["ocr_lines"],
+            transcription_lines=result["transcription_lines"],
+            transcription_text=result["transcription_text"],
+            saved_file=_serialize_file(saved_file),
+            result_document=_serialize_document(result_document),
         )
 
     @router.put(

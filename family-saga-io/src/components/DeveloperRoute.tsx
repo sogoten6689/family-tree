@@ -4,7 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { isDeveloperPath } from "@/config/developerRoutes";
 import { useAuth } from "@/contexts/AuthContext";
 
-export function AdminRoute({ children }: { children: React.ReactNode }) {
+export function DeveloperRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isAdmin, isLoading } = useAuth();
   const location = useLocation();
 
@@ -20,11 +20,12 @@ export function AdminRoute({ children }: { children: React.ReactNode }) {
     return <Navigate to="/login" replace state={{ from: location.pathname }} />;
   }
 
+  if (isDeveloperPath(location.pathname) && !isAdmin) {
+    return <Navigate to="/403" replace />;
+  }
+
   if (!isAdmin) {
-    if (isDeveloperPath(location.pathname)) {
-      return <Navigate to="/403" replace />;
-    }
-    return <Navigate to="/user/dashboard" replace />;
+    return <Navigate to="/403" replace />;
   }
 
   return <>{children}</>;

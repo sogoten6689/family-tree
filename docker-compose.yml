@@ -51,6 +51,16 @@ services:
       MINIO_BUCKET: family-tree-docs
       MINIO_USE_SSL: "false"
       MINIO_AUTO_CREATE_BUCKET: "true"
+      HANNOM_API_BASE_URL: https://kimhannom.fit.hcmus.edu.vn
+      HANNOM_RATE_LIMIT_PER_MINUTE: "40"
+      HANNOM_OCR_ID: "1"
+      HANNOM_OCR_LANG_TYPE: "0"
+      HANNOM_FONT_TYPE: "1"
+      HANNOM_TRANSLITERATION_LANG_TYPE: "1"
+      HANNOM_EMAIL: ${HANNOM_EMAIL:-}
+      HANNOM_PASSWORD: ${HANNOM_PASSWORD:-}
+      # Hoặc token tĩnh / token lấy runtime qua /api/developer/hannom/fetch-token
+      HANNOM_API_TOKEN: ${HANNOM_API_TOKEN:-}
     depends_on:
       mysql:
         condition: service_healthy
