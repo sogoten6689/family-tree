@@ -156,9 +156,16 @@ export interface VietnamGiaPhaCrawlSyncResult {
   end_id: number;
   output_dir: string;
   crawl_success: number;
+  crawl_skipped: number;
+  crawl_skipped_unchanged: number;
   crawl_errors: number;
+  text_built: number;
   sync_upserted: number;
+  sync_skipped: number;
   sync_errors: number;
+  text_attached: number;
+  text_attach_skipped: number;
+  text_attach_errors: number;
 }
 
 export async function crawlAndSyncVietnamGiaPha(payload: {
@@ -166,6 +173,9 @@ export async function crawlAndSyncVietnamGiaPha(payload: {
   end_id: number;
   delay_seconds?: number;
   sync_db: boolean;
+  skip_unchanged?: boolean;
+  export_text?: boolean;
+  attach_documents?: boolean;
 }): Promise<VietnamGiaPhaCrawlSyncResult> {
   return apiRequest<VietnamGiaPhaCrawlSyncResult>("/api/vietnamgiapha/crawl-sync", {
     method: "POST",

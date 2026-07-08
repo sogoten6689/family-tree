@@ -34,6 +34,7 @@ import { useTranslation } from "react-i18next";
 import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
 import { FamilyTreeAncestralSidebar } from "@/components/family-tree/FamilyTreeAncestralSidebar";
 import { FamilyTreeMembersTable } from "@/components/family-tree/FamilyTreeMembersTable";
+import { GenealogyPipelineSteps } from "@/components/pipeline/GenealogyPipelineSteps";
 import { FamilyTreeDocumentsPanel } from "@/components/documents/FamilyTreeDocumentsPanel";
 import { listTreeDocuments } from "@/lib/documentApi";
 import {
@@ -462,6 +463,11 @@ const FamilyTreeDetailPage = () => {
                   children: (
                     <FamilyTreeMembersTable members={members} onSelectMember={setSelectedNodeId} />
                   ),
+                },
+                {
+                  key: "pipeline",
+                  label: t("pipeline.tab", { defaultValue: "Pipeline" }),
+                  children: <GenealogyPipelineSteps treeId={tree.id} />,
                 },
                 {
                   key: "documents",

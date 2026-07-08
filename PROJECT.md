@@ -377,7 +377,9 @@ uvicorn api:app --reload --port 8002
 
 | File | Nội dung |
 |------|----------|
-| [FEATURES.md](./FEATURES.md) | Tính năng theo vai trò Guest / User / Admin, ma trận spec vs hiện trạng |
+| [FEATURES.md](./FEATURES.md) | Spec Guest / User / Admin, ma trận spec vs hiện trạng |
+| [RESEARCH_SOURCES.md](./RESEARCH_SOURCES.md) | **Nguồn tư liệu nghiên cứu** (Nom Foundation, vietnamgiapha crawl, corpus) |
+| [CRAWL_PLAN.md](./CRAWL_PLAN.md) | **Kế hoạch nâng cấp crawl** (skip trùng VGP + text + Nom auto) |
 | [DESIGN_SYSTEM_GUIDELINES.md](./DESIGN_SYSTEM_GUIDELINES.md) | Theme Antd v6 SSOT, quy tắc Landing Page & UX/UI |
 | [readme.md](./readme.md) | Build, deploy, Docker, MinIO, OCR env vars |
 | [business.md](./business.md) | Phân tích nghiệp vụ & kiến trúc đề tài |

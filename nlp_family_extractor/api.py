@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from collections import deque
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
@@ -15,10 +16,13 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.auth.bootstrap import bootstrap_auth
 from app.auth.dependencies import AdminUser, CurrentUser, OptionalUser
 from app.auth.router import router as auth_router
-from app.database import database_enabled, database_init_error, init_database
+from app.database import database_enabled, database_init_error, get_db, init_database
 from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
+from app.documents.storage import ObjectStorage
 from app.hannom.router import router as hannom_developer_router
+from app.pipeline.bootstrap import bootstrap_pipeline
+from app.pipeline.router import create_pipeline_router
 from app.workspace.bootstrap import bootstrap_workspace
 from app.workspace.router import create_workspace_router
 from app.extractor import FamilyExtractor
@@ -38,6 +42,8 @@ from app.validate import (
     validate_parent_age_gap,
 )
 from tools.fetch_vietnamgiapha import run as crawl_vietnamgiapha_run
+from tools.fetch_nomfoundation import run as crawl_nomfoundation_run
+from tools.sync_vietnamgiapha_documents import attach_documents_batch
 from tools.sync_vietnamgiapha_to_db import _default_db_config, sync as sync_vietnamgiapha_to_db
 
 
@@ -260,6 +266,9 @@ class VietnamGiaPhaCrawlSyncRequest(BaseModel):
     end_id: int = Field(default=200, ge=1, le=100000)
     delay_seconds: float = Field(default=0.2, ge=0.0, le=5.0)
     sync_db: bool = Field(default=True)
+    skip_unchanged: bool = Field(default=True)
+    export_text: bool = Field(default=True)
+    attach_documents: bool = Field(default=False)
 
 
 class VietnamGiaPhaCrawlSyncResponse(BaseModel):
@@ -267,9 +276,35 @@ class VietnamGiaPhaCrawlSyncResponse(BaseModel):
     end_id: int
     output_dir: str
     crawl_success: int
+    crawl_skipped: int
+    crawl_skipped_unchanged: int
     crawl_errors: int
+    text_built: int
     sync_upserted: int
+    sync_skipped: int
     sync_errors: int
+    text_attached: int
+    text_attach_skipped: int
+    text_attach_errors: int
+
+
+class NomFoundationCrawlRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    collection_id: int = Field(default=1, ge=1)
+    volume_id: int = Field(ge=1)
+    delay_seconds: float = Field(default=0.3, ge=0.0, le=5.0)
+    max_pages: int = Field(default=20, ge=1, le=200)
+    link_tree_id: Optional[str] = Field(default=None, description="vgp-{id} hoặc tree id khác")
+
+
+class NomFoundationCrawlResponse(BaseModel):
+    collection_id: int
+    volume_id: int
+    output_dir: str
+    downloaded_pages: int
+    page_count: int
+    errors: int
 
 
 _TAGS_METADATA = [
@@ -314,6 +349,7 @@ async def _lifespan(_: FastAPI):
     if database_enabled():
         bootstrap_auth()
         bootstrap_documents()
+        bootstrap_pipeline()
         bootstrap_workspace()
     yield
 
@@ -397,6 +433,7 @@ def _get_family_tree_document(tree_id: str) -> dict:
 
 
 app.include_router(create_documents_router(_get_family_tree_document))
+app.include_router(create_pipeline_router(_get_family_tree_document))
 app.include_router(
     create_workspace_router(
         get_tree_store=lambda: _family_tree_store,
@@ -887,12 +924,16 @@ def crawl_and_sync_vietnamgiapha(
             detail_delay_seconds=req.delay_seconds,
             delay_seconds=req.delay_seconds,
             timeout_seconds=20.0,
+            skip_unchanged=req.skip_unchanged,
+            export_text=req.export_text,
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Crawl failed: {exc}") from exc
 
     sync_upserted = 0
+    sync_skipped = 0
     sync_errors = 0
+    sync_report: Dict[str, Any] = {}
     if req.sync_db:
         try:
             sync_report = sync_vietnamgiapha_to_db(
@@ -901,18 +942,169 @@ def crawl_and_sync_vietnamgiapha(
                 dry_run=False,
             )
             sync_upserted = len(sync_report.get("upserted", []))
+            sync_skipped = len(sync_report.get("skipped", []))
             sync_errors = len(sync_report.get("errors", []))
         except Exception as exc:
             raise HTTPException(status_code=500, detail=f"DB sync failed: {exc}") from exc
+
+    text_attached = 0
+    text_attach_skipped = 0
+    text_attach_errors = 0
+    if req.attach_documents:
+        if not database_enabled():
+            raise HTTPException(
+                status_code=503,
+                detail="attach_documents requires MySQL — thiết lập MYSQL_*.",
+            )
+        storage = ObjectStorage.from_env()
+        if not storage.config.enabled:
+            raise HTTPException(
+                status_code=503,
+                detail="attach_documents requires MinIO — thiết lập MINIO_*.",
+            )
+
+        tree_ids = list(range(req.start_id, req.end_id + 1))
+        from sqlalchemy.orm import Session
+
+        db_gen = get_db()
+        db: Session = next(db_gen)
+        try:
+            attach_report = attach_documents_batch(
+                db=db,
+                storage=storage,
+                get_tree=_get_family_tree_document,
+                text_root=output_dir / "text",
+                tree_ids=tree_ids,
+            )
+            db.commit()
+            text_attached = len(attach_report.get("attached", []))
+            text_attach_skipped = len(attach_report.get("skipped", []))
+            text_attach_errors = len(attach_report.get("errors", []))
+        except Exception as exc:
+            db.rollback()
+            raise HTTPException(status_code=500, detail=f"Attach documents failed: {exc}") from exc
+        finally:
+            try:
+                next(db_gen)
+            except StopIteration:
+                pass
+
+        if text_attached > 0:
+            for item in sync_report.get("upserted", []):
+                store_id = item.get("store_id")
+                if not store_id:
+                    continue
+                try:
+                    _family_tree_store.update_tree(
+                        store_id,
+                        has_source_document=True,
+                    )
+                except Exception:
+                    pass
+            for item in sync_report.get("skipped", []):
+                store_id = item.get("store_id")
+                if not store_id:
+                    continue
+                try:
+                    _family_tree_store.update_tree(
+                        store_id,
+                        has_source_document=True,
+                    )
+                except Exception:
+                    pass
 
     return VietnamGiaPhaCrawlSyncResponse(
         start_id=req.start_id,
         end_id=req.end_id,
         output_dir=str(output_dir),
         crawl_success=len(crawl_summary.get("success", [])),
+        crawl_skipped=len(crawl_summary.get("skipped", [])),
+        crawl_skipped_unchanged=len(crawl_summary.get("skipped_unchanged", [])),
         crawl_errors=len(crawl_summary.get("errors", [])),
+        text_built=len(crawl_summary.get("text_built", [])),
         sync_upserted=sync_upserted,
+        sync_skipped=sync_skipped,
         sync_errors=sync_errors,
+        text_attached=text_attached,
+        text_attach_skipped=text_attach_skipped,
+        text_attach_errors=text_attach_errors,
+    )
+
+
+@app.post(
+    "/api/nomfoundation/crawl-volume",
+    response_model=NomFoundationCrawlResponse,
+    tags=["Crawlers"],
+    summary="Crawl Nom Foundation volume",
+)
+def crawl_nomfoundation_volume(
+    req: NomFoundationCrawlRequest,
+    _: AdminUser,
+) -> NomFoundationCrawlResponse:
+    output_dir = Path(__file__).resolve().parent / "data" / "nomfoundation"
+    try:
+        summary = crawl_nomfoundation_run(
+            collection_id=req.collection_id,
+            volume_id=req.volume_id,
+            output_dir=output_dir,
+            delay_seconds=req.delay_seconds,
+            max_pages=req.max_pages,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Nom crawl failed: {exc}") from exc
+
+    if req.link_tree_id and database_enabled():
+        from sqlalchemy import text as sql_text
+        from sqlalchemy.orm import Session
+
+        db_gen = get_db()
+        db: Session = next(db_gen)
+        try:
+            volume_url = (
+                f"https://lib.nomfoundation.org/collection/{req.collection_id}/volume/{req.volume_id}/"
+            )
+            db.execute(
+                sql_text(
+                    """
+                    INSERT INTO research_source_links
+                        (family_tree_id, source_type, external_id, external_url, metadata_json, created_at)
+                    VALUES
+                        (:family_tree_id, 'nomfoundation', :external_id, :external_url, :metadata_json, UTC_TIMESTAMP())
+                    ON DUPLICATE KEY UPDATE
+                        external_url = VALUES(external_url),
+                        metadata_json = VALUES(metadata_json)
+                    """
+                ),
+                {
+                    "family_tree_id": req.link_tree_id,
+                    "external_id": str(req.volume_id),
+                    "external_url": volume_url,
+                    "metadata_json": json.dumps(
+                        {
+                            "collection_id": req.collection_id,
+                            "volume_id": req.volume_id,
+                            "page_count": summary.get("page_count", 0),
+                        },
+                        ensure_ascii=False,
+                    ),
+                },
+            )
+            db.commit()
+        except Exception:
+            db.rollback()
+        finally:
+            try:
+                next(db_gen)
+            except StopIteration:
+                pass
+
+    return NomFoundationCrawlResponse(
+        collection_id=req.collection_id,
+        volume_id=req.volume_id,
+        output_dir=str(output_dir),
+        downloaded_pages=len(summary.get("downloaded_pages", [])),
+        page_count=int(summary.get("page_count", 0)),
+        errors=len(summary.get("errors", [])),
     )
 
 

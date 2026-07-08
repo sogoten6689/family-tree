@@ -9,6 +9,8 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from sqlalchemy import create_engine, text
 
+from tools.vietnamgiapha_text_export import compute_nodes_hash
+
 
 def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -39,6 +41,8 @@ def _ensure_schema(engine) -> None:
         description TEXT         NULL,
         nodes_json  JSON         NOT NULL,
         node_count  INT          NOT NULL DEFAULT 0,
+        external_url VARCHAR(512) NULL,
+        has_source_document TINYINT(1) NOT NULL DEFAULT 0,
         created_at  VARCHAR(64)  NOT NULL,
         updated_at  VARCHAR(64)  NOT NULL,
         created_ts  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -47,6 +51,45 @@ def _ensure_schema(engine) -> None:
     """
     with engine.begin() as conn:
         conn.execute(text(ddl))
+        for column, alter_sql in (
+            ("external_url", "ALTER TABLE family_tree ADD COLUMN external_url VARCHAR(512) NULL"),
+            (
+                "has_source_document",
+                "ALTER TABLE family_tree ADD COLUMN has_source_document TINYINT(1) NOT NULL DEFAULT 0",
+            ),
+        ):
+            exists = conn.execute(
+                text(
+                    "SELECT COUNT(*) AS cnt FROM information_schema.COLUMNS "
+                    "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'family_tree' "
+                    "AND COLUMN_NAME = :column"
+                ),
+                {"column": column},
+            ).scalar()
+            if not exists:
+                conn.execute(text(alter_sql))
+
+
+def _get_existing_nodes_hash(conn, store_id: str) -> Optional[str]:
+    row = conn.execute(
+        text("SELECT nodes_json FROM family_tree WHERE id = :id"),
+        {"id": store_id},
+    ).mappings().first()
+    if row is None:
+        return None
+    nodes_raw = row.get("nodes_json")
+    if isinstance(nodes_raw, str):
+        try:
+            nodes = json.loads(nodes_raw)
+        except json.JSONDecodeError:
+            return None
+    elif isinstance(nodes_raw, list):
+        nodes = nodes_raw
+    else:
+        return None
+    if not isinstance(nodes, list):
+        return None
+    return compute_nodes_hash(nodes)
 
 
 def _safe_text(value: Any, fallback: str) -> str:
@@ -212,6 +255,7 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
         "input_dir": str(input_dir),
         "total_files": len(files),
         "upserted": [],
+        "skipped": [],
         "errors": [],
     }
 
@@ -220,11 +264,13 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
             try:
                 src = _load_json(file)
                 store_id, doc = _build_tree_document(src, file)
+                nodes_hash = compute_nodes_hash(doc.get("nodes", []))
                 report["upserted"].append(
                     {
                         "store_id": store_id,
                         "tree_id": src.get("tree_id"),
                         "node_count": len(doc.get("nodes", [])),
+                        "nodes_hash": nodes_hash,
                         "source": file.name,
                         "mode": "dry-run",
                     }
@@ -238,13 +284,20 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
 
     stmt = text(
         """
-        INSERT INTO family_tree (id, name, description, nodes_json, node_count, created_at, updated_at)
-        VALUES (:id, :name, :description, CAST(:nodes_json AS JSON), :node_count, :created_at, :updated_at)
+        INSERT INTO family_tree (
+            id, name, description, nodes_json, node_count,
+            external_url, has_source_document, created_at, updated_at
+        )
+        VALUES (
+            :id, :name, :description, CAST(:nodes_json AS JSON), :node_count,
+            :external_url, :has_source_document, :created_at, :updated_at
+        )
         ON DUPLICATE KEY UPDATE
             name = VALUES(name),
             description = VALUES(description),
             nodes_json = VALUES(nodes_json),
             node_count = VALUES(node_count),
+            external_url = VALUES(external_url),
             updated_at = VALUES(updated_at)
         """
     )
@@ -254,15 +307,33 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
             try:
                 src = _load_json(file)
                 store_id, doc = _build_tree_document(src, file)
+                nodes = doc.get("nodes", [])
+                nodes_hash = compute_nodes_hash(nodes)
+                existing_hash = _get_existing_nodes_hash(conn, store_id)
+                if existing_hash == nodes_hash:
+                    report["skipped"].append(
+                        {
+                            "store_id": store_id,
+                            "tree_id": src.get("tree_id"),
+                            "node_count": len(nodes),
+                            "nodes_hash": nodes_hash,
+                            "source": file.name,
+                            "reason": "nodes_unchanged",
+                        }
+                    )
+                    continue
 
+                source_url = _safe_text(src.get("url"), fallback="")
                 conn.execute(
                     stmt,
                     {
                         "id": doc["id"],
                         "name": doc["name"],
                         "description": doc["description"],
-                        "nodes_json": json.dumps(doc["nodes"], ensure_ascii=False),
-                        "node_count": len(doc["nodes"]),
+                        "nodes_json": json.dumps(nodes, ensure_ascii=False),
+                        "node_count": len(nodes),
+                        "external_url": source_url or None,
+                        "has_source_document": 0,
                         "created_at": doc["created_at"],
                         "updated_at": doc["updated_at"],
                     },
@@ -272,7 +343,8 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
                     {
                         "store_id": store_id,
                         "tree_id": src.get("tree_id"),
-                        "node_count": len(doc.get("nodes", [])),
+                        "node_count": len(nodes),
+                        "nodes_hash": nodes_hash,
                         "source": file.name,
                         "mode": "upsert",
                     }
@@ -328,6 +400,7 @@ def main() -> None:
 
     print(f"Input files: {report['total_files']}")
     print(f"Upserted: {len(report['upserted'])}")
+    print(f"Skipped: {len(report.get('skipped', []))}")
     print(f"Errors: {len(report['errors'])}")
     print(f"Report: {args.report}")
 

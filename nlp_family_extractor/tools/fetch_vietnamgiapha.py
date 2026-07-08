@@ -12,6 +12,11 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import httpx
 
+from tools.vietnamgiapha_text_export import (
+    compute_content_hash,
+    export_tree_text_files,
+)
+
 
 BASE_URL_TEMPLATE = "https://vietnamgiapha.com/XemPhaHe/{tree_id}/cay_pha_he.html"
 DETAIL_URL_TEMPLATES = [
@@ -330,6 +335,16 @@ def fetch_detail_profile(
     return None
 
 
+def _load_existing_page_data(out_file: Path) -> Optional[Dict[str, Any]]:
+    if not out_file.exists():
+        return None
+    try:
+        data = json.loads(out_file.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
 def run(
     start_id: int,
     end_id: int,
@@ -340,6 +355,8 @@ def run(
     delay_seconds: float,
     timeout_seconds: float,
     skip_empty: bool = True,
+    skip_unchanged: bool = False,
+    export_text: bool = True,
 ) -> Dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     json_dir = output_dir / "json"
@@ -354,6 +371,9 @@ def run(
         "fetched_at": datetime.now(timezone.utc).isoformat(),
         "success": [],
         "skipped": [],
+        "skipped_unchanged": [],
+        "text_built": [],
+        "text_skipped": [],
         "errors": [],
     }
 
@@ -364,7 +384,36 @@ def run(
     with httpx.Client(follow_redirects=True, timeout=timeout_seconds, headers=headers) as client:
         for tree_id in range(start_id, end_id + 1):
             url = BASE_URL_TEMPLATE.format(tree_id=tree_id)
+            out_file = json_dir / f"{tree_id}.json"
+            html_file = html_dir / f"{tree_id}.html"
+
             try:
+                if skip_unchanged:
+                    existing = _load_existing_page_data(out_file)
+                    if existing and existing.get("node_count", 0) > 0:
+                        existing_hash = existing.get("content_hash") or compute_content_hash(existing)
+                        if export_text:
+                            built, _ = export_tree_text_files(
+                                existing,
+                                output_root=output_dir,
+                                force=False,
+                            )
+                            if built:
+                                summary["text_built"].append({"tree_id": tree_id, "mode": "from_existing_json"})
+                            else:
+                                summary["text_skipped"].append({"tree_id": tree_id, "reason": "text_exists"})
+                        summary["skipped_unchanged"].append(
+                            {
+                                "tree_id": tree_id,
+                                "url": url,
+                                "content_hash": existing_hash,
+                                "reason": "unchanged",
+                            }
+                        )
+                        if delay_seconds > 0:
+                            time.sleep(delay_seconds)
+                        continue
+
                 response = fetch_page(client, tree_id)
                 response.raise_for_status()
                 html = response.text
@@ -420,9 +469,7 @@ def run(
                     "relationships": [asdict(item) for item in relationships],
                     "nodes": nodes_with_relationships,
                 }
-
-                out_file = json_dir / f"{tree_id}.json"
-                html_file = html_dir / f"{tree_id}.html"
+                page_data["content_hash"] = compute_content_hash(page_data)
 
                 if skip_empty and len(nodes) == 0:
                     if out_file.exists():
@@ -448,11 +495,19 @@ def run(
                 if save_html:
                     html_file.write_text(html, encoding="utf-8")
 
+                if export_text:
+                    built, _ = export_tree_text_files(page_data, output_root=output_dir, force=True)
+                    if built:
+                        summary["text_built"].append({"tree_id": tree_id, "mode": "fresh_crawl"})
+                    else:
+                        summary["text_skipped"].append({"tree_id": tree_id, "reason": "text_exists"})
+
                 summary["success"].append(
                     {
                         "tree_id": tree_id,
                         "url": url,
                         "node_count": len(nodes),
+                        "content_hash": page_data["content_hash"],
                         "output": str(out_file),
                     }
                 )
@@ -523,6 +578,16 @@ def build_parser() -> argparse.ArgumentParser:
         default=20.0,
         help="HTTP timeout for each request.",
     )
+    parser.add_argument(
+        "--skip-unchanged",
+        action="store_true",
+        help="Skip HTTP fetch when local JSON exists and content_hash is unchanged.",
+    )
+    parser.add_argument(
+        "--no-export-text",
+        action="store_true",
+        help="Do not build text/{tree_id}/ exports.",
+    )
     return parser
 
 
@@ -542,12 +607,19 @@ def main() -> None:
         delay_seconds=args.delay_seconds,
         timeout_seconds=args.timeout_seconds,
         skip_empty=not args.keep_empty,
+        skip_unchanged=args.skip_unchanged,
+        export_text=not args.no_export_text,
     )
 
     success_count = len(summary.get("success", []))
     skipped_count = len(summary.get("skipped", []))
+    skipped_unchanged_count = len(summary.get("skipped_unchanged", []))
     error_count = len(summary.get("errors", []))
-    print(f"Done. success={success_count}, skipped={skipped_count}, errors={error_count}")
+    print(
+        "Done. "
+        f"success={success_count}, skipped={skipped_count}, "
+        f"skipped_unchanged={skipped_unchanged_count}, errors={error_count}"
+    )
     print(f"Summary: {args.output_dir / 'summary.json'}")
 
 

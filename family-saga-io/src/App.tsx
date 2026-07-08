@@ -38,6 +38,7 @@ import StoragePage from "./pages/developer/StoragePage";
 import LogsPage from "./pages/developer/LogsPage";
 import DocsPage from "./pages/developer/DocsPage";
 import VietnamGiaPhaCrawlPage from "./pages/developer/VietnamGiaPhaCrawlPage";
+import NomFoundationCrawlPage from "./pages/developer/NomFoundationCrawlPage";
 import { DeveloperRoute } from "@/components/DeveloperRoute";
 
 const queryClient = new QueryClient();
@@ -112,6 +113,7 @@ const AppContent = () => (
                 <Route path="hannom-config" element={<HannomConfigPage />} />
                 <Route path="storage" element={<StoragePage />} />
                 <Route path="vietnamgiapha-crawl" element={<VietnamGiaPhaCrawlPage />} />
+                <Route path="nomfoundation-crawl" element={<NomFoundationCrawlPage />} />
                 <Route path="logs" element={<LogsPage />} />
                 <Route path="docs" element={<DocsPage />} />
               </Route>

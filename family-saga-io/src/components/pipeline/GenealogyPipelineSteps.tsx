@@ -1,0 +1,232 @@
+import {
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  FastForwardOutlined,
+  PlayCircleOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
+import { Alert, Button, Card, Space, Steps, Tag, Typography, message } from "antd";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import {
+  PIPELINE_STEP_LABELS,
+  getFamilyTreePipeline,
+  pipelineStepStatusColor,
+  runAllPipelineSteps,
+  runPipelineStep,
+  skipPipelineStep,
+  type PipelineStep,
+  type PipelineStepId,
+} from "@/lib/pipelineApi";
+
+type Props = {
+  treeId: string;
+};
+
+const ORDERED_STEPS: PipelineStepId[] = [
+  "name",
+  "hannom_image",
+  "ocr",
+  "han_chars",
+  "quoc_ngu",
+  "distilled",
+  "output",
+];
+
+export function GenealogyPipelineSteps({ treeId }: Props) {
+  const { t, i18n } = useTranslation();
+  const [steps, setSteps] = useState<PipelineStep[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [runningStep, setRunningStep] = useState<PipelineStepId | null>(null);
+  const [runningAll, setRunningAll] = useState(false);
+
+  const loadPipeline = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await getFamilyTreePipeline(treeId);
+      setSteps(response.steps);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không tải được pipeline");
+      setSteps([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [treeId]);
+
+  useEffect(() => {
+    void loadPipeline();
+  }, [loadPipeline]);
+
+  const stepMap = useMemo(() => {
+    const map = new Map<PipelineStepId, PipelineStep>();
+    for (const step of steps) {
+      map.set(step.step_id, step);
+    }
+    return map;
+  }, [steps]);
+
+  const handleRunStep = async (stepId: PipelineStepId) => {
+    setRunningStep(stepId);
+    try {
+      await runPipelineStep(treeId, stepId);
+      message.success(t("pipeline.runSuccess", { defaultValue: "Đã chạy bước pipeline." }));
+      await loadPipeline();
+    } catch (err) {
+      message.error(err instanceof Error ? err.message : "Không chạy được bước");
+    } finally {
+      setRunningStep(null);
+    }
+  };
+
+  const handleSkipStep = async (stepId: PipelineStepId) => {
+    setRunningStep(stepId);
+    try {
+      await skipPipelineStep(treeId, stepId);
+      message.info(t("pipeline.skipSuccess", { defaultValue: "Đã bỏ qua bước." }));
+      await loadPipeline();
+    } catch (err) {
+      message.error(err instanceof Error ? err.message : "Không bỏ qua được bước");
+    } finally {
+      setRunningStep(null);
+    }
+  };
+
+  const handleRunAll = async () => {
+    setRunningAll(true);
+    try {
+      const result = await runAllPipelineSteps(treeId);
+      message.success(
+        t("pipeline.runAllSuccess", {
+          defaultValue: "Chạy xong: {{ran}} bước, bỏ qua {{skipped}}.",
+          ran: result.ran.length,
+          skipped: result.skipped.length,
+        }),
+      );
+      await loadPipeline();
+    } catch (err) {
+      message.error(err instanceof Error ? err.message : "Không chạy được toàn bộ pipeline");
+    } finally {
+      setRunningAll(false);
+    }
+  };
+
+  const currentIndex = useMemo(() => {
+    for (let index = 0; index < ORDERED_STEPS.length; index += 1) {
+      const step = stepMap.get(ORDERED_STEPS[index]);
+      if (!step || (step.status !== "done" && step.status !== "skipped")) {
+        return index;
+      }
+    }
+    return ORDERED_STEPS.length;
+  }, [stepMap]);
+
+  const lang = i18n.language.startsWith("en") ? "en" : "vi";
+
+  return (
+    <Card
+      title={t("pipeline.title", { defaultValue: "Pipeline số hóa gia phả" })}
+      loading={loading}
+      extra={
+        <Space>
+          <Button icon={<ReloadOutlined />} onClick={() => void loadPipeline()} disabled={loading}>
+            {t("common.refresh", { defaultValue: "Làm mới" })}
+          </Button>
+          <Button
+            type="primary"
+            icon={<PlayCircleOutlined />}
+            loading={runningAll}
+            onClick={() => void handleRunAll()}
+          >
+            {t("pipeline.runAll", { defaultValue: "Chạy tất cả" })}
+          </Button>
+        </Space>
+      }
+    >
+      {error && (
+        <Alert type="error" showIcon message={error} className="mb-4" closable onClose={() => setError(null)} />
+      )}
+
+      <Typography.Paragraph type="secondary" className="!mb-4">
+        {t("pipeline.desc", {
+          defaultValue:
+            "7 bước số hóa: tên → ảnh Hán-Nôm → OCR → ký tự Hán → quốc ngữ → cô đọng → cây/văn bản. Mỗi bước có thể bỏ qua.",
+        })}
+      </Typography.Paragraph>
+
+      <Steps
+        direction="vertical"
+        current={currentIndex}
+        items={ORDERED_STEPS.map((stepId) => {
+          const step = stepMap.get(stepId);
+          const status = step?.status ?? "pending";
+          const label = PIPELINE_STEP_LABELS[stepId][lang];
+          const canAct = status === "pending" || status === "error";
+
+          return {
+            title: (
+              <Space wrap>
+                <span>{label}</span>
+                <Tag color={pipelineStepStatusColor(status)}>{status}</Tag>
+              </Space>
+            ),
+            description: (
+              <Space direction="vertical" size="small" className="w-full">
+                {step?.output_ref && (
+                  <Typography.Text type="secondary" className="text-xs">
+                    {t("pipeline.outputRef", { defaultValue: "Kết quả" })}: {step.output_ref}
+                  </Typography.Text>
+                )}
+                {step?.skipped_reason && (
+                  <Typography.Text type="secondary" className="text-xs">
+                    {t("pipeline.skipReason", { defaultValue: "Lý do bỏ qua" })}: {step.skipped_reason}
+                  </Typography.Text>
+                )}
+                {step?.error_message && (
+                  <Typography.Text type="danger" className="text-xs">
+                    {step.error_message}
+                  </Typography.Text>
+                )}
+                {canAct && (
+                  <Space wrap>
+                    <Button
+                      size="small"
+                      type="primary"
+                      icon={<PlayCircleOutlined />}
+                      loading={runningStep === stepId}
+                      onClick={() => void handleRunStep(stepId)}
+                    >
+                      {t("pipeline.runStep", { defaultValue: "Chạy" })}
+                    </Button>
+                    <Button
+                      size="small"
+                      icon={<FastForwardOutlined />}
+                      loading={runningStep === stepId}
+                      onClick={() => void handleSkipStep(stepId)}
+                    >
+                      {t("pipeline.skipStep", { defaultValue: "Bỏ qua" })}
+                    </Button>
+                  </Space>
+                )}
+                {status === "done" && <CheckCircleOutlined className="text-[var(--ant-color-success)]" />}
+                {status === "error" && <CloseCircleOutlined className="text-[var(--ant-color-error)]" />}
+              </Space>
+            ),
+            status:
+              status === "done"
+                ? "finish"
+                : status === "error"
+                  ? "error"
+                  : status === "running"
+                    ? "process"
+                    : status === "skipped"
+                      ? "finish"
+                      : "wait",
+          };
+        })}
+      />
+    </Card>
+  );
+}

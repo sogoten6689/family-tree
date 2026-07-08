@@ -6,6 +6,7 @@ import {
   Col,
   Descriptions,
   Form,
+  Input,
   InputNumber,
   Row,
   Space,
@@ -31,6 +32,9 @@ type CrawlFormValues = {
   endId: number;
   delaySeconds: number;
   syncDb: boolean;
+  skipUnchanged: boolean;
+  exportText: boolean;
+  attachDocuments: boolean;
 };
 
 const DEFAULT_VALUES: CrawlFormValues = {
@@ -38,6 +42,9 @@ const DEFAULT_VALUES: CrawlFormValues = {
   endId: 200,
   delaySeconds: 0.2,
   syncDb: true,
+  skipUnchanged: true,
+  exportText: true,
+  attachDocuments: false,
 };
 
 const baseUrl = getBackendBaseUrl() || "https://giapha.kimtudien.com.vn";
@@ -49,7 +56,10 @@ const CRAWL_CURL = `curl -X POST "${baseUrl}/api/vietnamgiapha/crawl-sync" \\
     "start_id": 100,
     "end_id": 200,
     "delay_seconds": 0.2,
-    "sync_db": true
+    "sync_db": true,
+    "skip_unchanged": true,
+    "export_text": true,
+    "attach_documents": false
   }'`;
 
 const VietnamGiaPhaCrawlPage = () => {
@@ -73,6 +83,9 @@ const VietnamGiaPhaCrawlPage = () => {
         end_id: values.endId,
         delay_seconds: values.delaySeconds,
         sync_db: values.syncDb,
+        skip_unchanged: values.skipUnchanged,
+        export_text: values.exportText,
+        attach_documents: values.attachDocuments,
       });
       setResult(response);
       message.success(
@@ -163,6 +176,33 @@ const VietnamGiaPhaCrawlPage = () => {
                 <Switch />
               </Form.Item>
             </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item
+                label={t("admin.developer.skipUnchanged", { defaultValue: "Bỏ qua nếu không đổi" })}
+                name="skipUnchanged"
+                valuePropName="checked"
+              >
+                <Switch />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item
+                label={t("admin.developer.exportText", { defaultValue: "Xuất text" })}
+                name="exportText"
+                valuePropName="checked"
+              >
+                <Switch />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item
+                label={t("admin.developer.attachDocuments", { defaultValue: "Gắn MinIO" })}
+                name="attachDocuments"
+                valuePropName="checked"
+              >
+                <Switch />
+              </Form.Item>
+            </Col>
           </Row>
 
           <Space wrap>
@@ -199,13 +239,34 @@ const VietnamGiaPhaCrawlPage = () => {
               <Statistic title="Crawl OK" value={result.crawl_success} valueStyle={{ color: "var(--ant-color-success)" }} />
             </Col>
             <Col xs={12} sm={8} md={4}>
+              <Statistic title="Crawl skip (trống)" value={result.crawl_skipped} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
+              <Statistic title="Crawl skip (không đổi)" value={result.crawl_skipped_unchanged} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
               <Statistic title="Crawl lỗi" value={result.crawl_errors} valueStyle={{ color: result.crawl_errors ? "var(--ant-color-error)" : undefined }} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
+              <Statistic title="Text mới" value={result.text_built} />
             </Col>
             <Col xs={12} sm={8} md={4}>
               <Statistic title="DB upsert" value={result.sync_upserted} />
             </Col>
             <Col xs={12} sm={8} md={4}>
+              <Statistic title="DB skip" value={result.sync_skipped} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
               <Statistic title="Sync lỗi" value={result.sync_errors} valueStyle={{ color: result.sync_errors ? "var(--ant-color-error)" : undefined }} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
+              <Statistic title="Text gắn MinIO" value={result.text_attached} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
+              <Statistic title="Gắn skip" value={result.text_attach_skipped} />
+            </Col>
+            <Col xs={12} sm={8} md={4}>
+              <Statistic title="Gắn lỗi" value={result.text_attach_errors} valueStyle={{ color: result.text_attach_errors ? "var(--ant-color-error)" : undefined }} />
             </Col>
           </Row>
           <Descriptions bordered column={1} size="small">
