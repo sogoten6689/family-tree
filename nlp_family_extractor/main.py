@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-from app.extractor import FamilyExtractor
-from app.validate import (
+from app.domains.extraction.extractor import FamilyExtractor
+from app.domains.extraction.validator import (
     validate_no_self_relationship,
     validate_no_duplicate_edges,
     validate_parent_age_gap,

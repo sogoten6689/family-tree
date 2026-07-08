@@ -4,16 +4,29 @@ import re
 from dataclasses import asdict
 from typing import Dict, List, Optional, Tuple
 
-from .models import Person, Relationship
-from .normalizer import normalize_text, normalize_name, infer_gender_from_title, find_year
-from .patterns import (
-    NAME_CAPS, NAME_WITH_TITLE,
-    RE_BIRTH, RE_DEATH,
-    RE_CHILD_OF, RE_SPOUSE,
-    RE_IS_SPOUSE, RE_HAVE_CHILD,
-    RE_FATHER_LABEL, RE_MOTHER_LABEL,
-    RE_SIBLING, RE_SENTENCE_SPLIT,
+from app.domains.extraction.normalizer import (
+    find_year,
+    infer_gender_from_title,
+    normalize_name,
+    normalize_text,
 )
+from app.domains.extraction.sentence_splitter import split_sentences
+from app.domains.extraction.rules.patterns import (
+    NAME_CAPS,
+    NAME_WITH_TITLE,
+    RE_BIRTH,
+    RE_CHILD_OF,
+    RE_DEATH,
+    RE_FATHER_LABEL,
+    RE_HAVE_CHILD,
+    RE_IS_SPOUSE,
+    RE_MOTHER_LABEL,
+    RE_SIBLING,
+    RE_SPOUSE,
+    RE_SENTENCE_SPLIT,
+)
+from app.models import Person, Relationship
+
 
 def _pick_longest_match(candidates: List[str], chunk: str) -> Optional[str]:
     hits = [c for c in candidates if c and c in chunk]
@@ -21,15 +34,22 @@ def _pick_longest_match(candidates: List[str], chunk: str) -> Optional[str]:
         return None
     return max(hits, key=len)
 
+
+def _split_sentences(text: str) -> List[str]:
+    # Backward-compatible wrapper.
+    return split_sentences(text)
+
+
 class FamilyExtractor:
     """
-    MVP rule-based:
-    - Detect people candidates (heuristics)
-    - Extract birth/death years
-    - Extract spouse_of and parent_of relations by keyword patterns
-    - Export JSON: people + relationships
+    MVP rule-based extractor (moved under app/domains/extraction).
+
+    Notes:
+    - This refactor keeps extraction behavior as-is to avoid breaking the pipeline.
+    - Next phase can replace the internal logic with independent rule modules.
     """
-    def __init__(self, id_prefix: str = "P"):
+
+    def __init__(self, id_prefix: str = "P") -> None:
         self.id_prefix = id_prefix
         self._next_id = 1
         self._people_by_key: Dict[Tuple[str, Optional[int]], Person] = {}
@@ -42,7 +62,9 @@ class FamilyExtractor:
         self._next_id += 1
         return pid
 
-    def _get_or_create(self, full_name: str, birth_year: Optional[int] = None, gender: Optional[str] = None) -> Person:
+    def _get_or_create(
+        self, full_name: str, birth_year: Optional[int] = None, gender: Optional[str] = None
+    ) -> Person:
         key = (full_name, birth_year)
         if key in self._people_by_key:
             p = self._people_by_key[key]
@@ -55,7 +77,9 @@ class FamilyExtractor:
         self._name_index.setdefault(full_name, []).append((key, p))
         return p
 
-    def _add_relationship(self, from_id: str, to_id: str, rel_type: str, confidence: float = 0.8) -> None:
+    def _add_relationship(
+        self, from_id: str, to_id: str, rel_type: str, confidence: float = 0.8
+    ) -> None:
         if not from_id or not to_id or from_id == to_id:
             return
 
@@ -65,12 +89,7 @@ class FamilyExtractor:
 
         self._relationship_keys.add(key)
         self._relationships.append(
-            Relationship(
-                from_id=from_id,
-                to_id=to_id,
-                type=rel_type,
-                confidence=confidence,
-            )
+            Relationship(from_id=from_id, to_id=to_id, type=rel_type, confidence=confidence)
         )
 
     def _names_with_positions(self, sentence: str, candidates: List[str]) -> List[Tuple[str, int]]:
@@ -82,8 +101,13 @@ class FamilyExtractor:
         hits.sort(key=lambda x: x[1])
         return hits
 
-    def _extract_sentence_relations(self, text: str, candidates: List[str], name_to_person: Dict[str, Person]) -> None:
-        sentences = [s.strip() for s in RE_SENTENCE_SPLIT.split(text) if s.strip()]
+    def _extract_sentence_relations(
+        self,
+        text: str,
+        candidates: List[str],
+        name_to_person: Dict[str, Person],
+    ) -> None:
+        sentences = _split_sentences(text)
 
         for sentence in sentences:
             names_pos = self._names_with_positions(sentence, candidates)
@@ -148,10 +172,8 @@ class FamilyExtractor:
                     self._add_relationship(name_to_person[b].id, name_to_person[a].id, "sibling_of", 0.75)
 
     def _all_candidate_names(self, text: str) -> List[Tuple[str, Optional[str]]]:
-        """
-        return list of (raw_name, gender_hint)
-        """
-        out = []
+        out: List[Tuple[str, Optional[str]]] = []
+
         # title + name
         for m in NAME_WITH_TITLE.finditer(text):
             raw = m.group(0)
@@ -165,7 +187,7 @@ class FamilyExtractor:
 
         # unique by raw
         seen = set()
-        uniq = []
+        uniq: List[Tuple[str, Optional[str]]] = []
         for raw, g in out:
             raw = raw.strip()
             if raw not in seen:
@@ -178,8 +200,9 @@ class FamilyExtractor:
 
         # gather candidates
         raw_candidates = self._all_candidate_names(text)
+
         # normalize names
-        normalized_candidates = []
+        normalized_candidates: List[Tuple[str, Optional[str]]] = []
         for raw, g in raw_candidates:
             name = normalize_name(raw)
             if len(name.split()) < 2:
@@ -192,39 +215,33 @@ class FamilyExtractor:
             p = self._get_or_create(name, None, g)
             name_to_person[name] = p
 
-        # 2) extract birth/death year near name (simple window)
+        # extract birth/death year near name (simple window)
         for name, _ in normalized_candidates:
-            # find "name ... sinh ... YEAR"
             m = re.search(rf"{re.escape(name)}(.{{0,80}})", text)
             if not m:
                 continue
             window = m.group(0)
 
-            # birth
             if RE_BIRTH.search(window):
                 y = find_year(window)
                 if y:
-                    # re-create with birth_year key (move)
                     old = name_to_person[name]
                     p = self._get_or_create(name, y, old.gender)
                     p.death_year = old.death_year or p.death_year
                     name_to_person[name] = p
 
-            # death
             if RE_DEATH.search(window):
                 y = find_year(window)
                 if y:
                     name_to_person[name].death_year = y
 
-        # refresh candidates for matching chunks
         candidates = sorted(set(name_to_person.keys()), key=len, reverse=True)
 
-        # 3) spouse relations
+        # spouse relations (global window heuristic)
         for m in RE_SPOUSE.finditer(text):
-            # take some left/right context around spouse keyword
             start, end = m.start(), m.end()
-            left = text[max(0, start - 120):start]
-            right = text[end:min(len(text), end + 120)]
+            left = text[max(0, start - 120) : start]
+            right = text[end : min(len(text), end + 120)]
 
             a = _pick_longest_match(candidates, left)
             b = _pick_longest_match(candidates, right)
@@ -233,19 +250,17 @@ class FamilyExtractor:
                 self._add_relationship(name_to_person[a].id, name_to_person[b].id, "spouse_of", 0.9)
                 self._add_relationship(name_to_person[b].id, name_to_person[a].id, "spouse_of", 0.9)
 
-        # 4) parent relations
-        # patterns like: "A là con của B và C"
+        # parent relations (global window heuristic)
         for m in RE_CHILD_OF.finditer(text):
             start, end = m.start(), m.end()
-            left = text[max(0, start - 140):start]
-            right = text[end:min(len(text), end + 180)]
+            left = text[max(0, start - 140) : start]
+            right = text[end : min(len(text), end + 180)]
 
             child = _pick_longest_match(candidates, left)
             if not child:
                 continue
 
-            # pick up to 2 parents in right
-            parents = []
+            parents: List[str] = []
             for cand in candidates:
                 if cand in right and cand != child:
                     parents.append(cand)
@@ -255,13 +270,12 @@ class FamilyExtractor:
             for par in parents:
                 self._add_relationship(name_to_person[par].id, name_to_person[child].id, "parent_of", 0.85)
 
-        # 4.5) richer sentence-level extraction for family relations
+        # richer sentence-level extraction
         self._extract_sentence_relations(text, candidates, name_to_person)
 
-        # 5) build final JSON
         people = list(self._people_by_key.values())
-        data = {
+        return {
             "people": [asdict(p) for p in people],
             "relationships": [asdict(r) for r in self._relationships],
         }
-        return data
+

@@ -25,7 +25,7 @@ from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
 from app.workspace.bootstrap import bootstrap_workspace
 from app.workspace.router import create_workspace_router
-from app.extractor import FamilyExtractor
+from app.domains.extraction.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
     FamilyTreeStoreError,
@@ -36,7 +36,7 @@ from app.family_tree_store import (
 from app.family_tree_store import MySqlFamilyTreeStore
 from app.gemini_service import normalize_balkan_nodes
 from app.history_repository import HistoryRepository
-from app.validate import (
+from app.domains.extraction.validator import (
     validate_no_duplicate_edges,
     validate_no_self_relationship,
     validate_parent_age_gap,
