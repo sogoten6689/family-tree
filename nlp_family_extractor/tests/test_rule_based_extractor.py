@@ -5,10 +5,11 @@ from app.domains.extraction.extractor import RuleBasedRelationExtractor
 
 def main():
     text = """
-    Ông Nguyễn Văn An kết hôn với bà Trần Thị Hạnh.
-    Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan.
-    Nguyễn Văn Bình là con của Nguyễn Văn An và Trần Thị Hạnh.
-    """
+Ông Nguyễn Văn An kết hôn với bà Trần Thị Hạnh.
+Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan.
+Nguyễn Văn Bình là con của Nguyễn Văn An và Trần Thị Hạnh.
+Nguyễn Văn Bình và Nguyễn Thị Lan là anh chị em ruột.
+"""
 
     extractor = RuleBasedRelationExtractor()
     relations = extractor.extract_relations(text)
