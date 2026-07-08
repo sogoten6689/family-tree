@@ -278,7 +278,7 @@ Lịch sử truy vấn trong Phòng đọc chỉ hiển thị **request phân t�
 | 3 | Quản lý tài liệu Hán-Nôm (danh sách, chi tiết theo gia phả) | ✅ | Tab Kho tư liệu + `/admin/documents/:documentId/edit` | `FamilyTreeDocumentsPanel`, `EditDocumentPage` |
 | 4 | Quản lý user hệ thống | ✅ | `/admin/users` | `AdminUsersPage.tsx` |
 | 5 | Quản lý lịch sử scan và truy vấn | ✅ | `/admin/history` | `AdminHistoryPage.tsx` |
-| 6 | Cấu hình hệ thống (crawl, OCR, lưu trữ) | ✅ | `/admin/developer/*` | Hannom, Storage, Docs pages |
+| 6 | Cấu hình hệ thống (crawl, OCR, lưu trữ) | ✅ | `/admin/developer/*` | Hannom, Storage, Crawl, Docs pages |
 
 ### 4.2. Dashboard quản trị ⚠️
 
@@ -304,7 +304,7 @@ Lịch sử truy vấn trong Phòng đọc chỉ hiển thị **request phân t�
 | Văn bản Hán-Nôm | Checkbox `has_hannom_text` |
 | Thành viên | `node_count` |
 | Cập nhật | `updated_at` |
-| Thao tác | Chi tiết, Sửa, Tải tài liệu, Crawl+Sync (dropdown) |
+| Thao tác | Chi tiết, Sửa, Tải tài liệu |
 
 **API:**
 
@@ -404,9 +404,10 @@ Lịch sử truy vấn trong Phòng đọc chỉ hiển thị **request phân t�
 |--------|-------|------|-----------|
 | Cấu hình OCR Hán-Nôm | `/admin/developer/hannom-config` | `HannomConfigPage.tsx` | Token Kim Hán Nôm, trạng thái kết nối |
 | Lưu trữ (MinIO) | `/admin/developer/storage` | `StoragePage.tsx` | Health, bucket info |
+| Crawl VietnamGiaPha | `/admin/developer/vietnamgiapha-crawl` | `VietnamGiaPhaCrawlPage.tsx` | Crawl + sync DB từ vietnamgiapha.com |
 | Logs API | `/admin/developer/logs` | `LogsPage.tsx` | Log debug OCR (local) |
 | Tài liệu API | `/admin/developer/docs` | `DocsPage.tsx` | CURL mẫu, schema |
-| Crawl dữ liệu | Modal trên Manager | `FamilyTreeManagerPage.tsx` | `POST /api/vietnamgiapha/crawl-sync` |
+| Crawl dữ liệu | Trang Developer | `VietnamGiaPhaCrawlPage.tsx` | `POST /api/vietnamgiapha/crawl-sync` |
 
 ---
 

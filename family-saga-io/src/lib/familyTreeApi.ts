@@ -151,13 +151,23 @@ export async function deleteLink(
   });
 }
 
+export interface VietnamGiaPhaCrawlSyncResult {
+  start_id: number;
+  end_id: number;
+  output_dir: string;
+  crawl_success: number;
+  crawl_errors: number;
+  sync_upserted: number;
+  sync_errors: number;
+}
+
 export async function crawlAndSyncVietnamGiaPha(payload: {
   start_id: number;
   end_id: number;
   delay_seconds?: number;
   sync_db: boolean;
-}): Promise<Record<string, unknown>> {
-  return apiRequest<Record<string, unknown>>("/api/vietnamgiapha/crawl-sync", {
+}): Promise<VietnamGiaPhaCrawlSyncResult> {
+  return apiRequest<VietnamGiaPhaCrawlSyncResult>("/api/vietnamgiapha/crawl-sync", {
     method: "POST",
     body: JSON.stringify(payload),
   });

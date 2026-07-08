@@ -5,6 +5,7 @@ export const DEVELOPER_ROUTES = {
   storage: `${DEVELOPER_BASE}/storage`,
   logs: `${DEVELOPER_BASE}/logs`,
   docs: `${DEVELOPER_BASE}/docs`,
+  vietnamgiaphaCrawl: `${DEVELOPER_BASE}/vietnamgiapha-crawl`,
 } as const;
 
 export type DeveloperRouteKey = keyof typeof DEVELOPER_ROUTES;
@@ -34,6 +35,14 @@ export const DEVELOPER_NAV_ITEMS: DeveloperNavItem[] = [
     labelDefault: "Lưu trữ MinIO/S3",
     breadcrumbKey: "admin.developer.breadcrumbStorage",
     breadcrumbDefault: "Storage",
+  },
+  {
+    key: "developer-crawl",
+    path: DEVELOPER_ROUTES.vietnamgiaphaCrawl,
+    labelKey: "admin.developer.menuCrawl",
+    labelDefault: "Crawl VietnamGiaPha",
+    breadcrumbKey: "admin.developer.breadcrumbCrawl",
+    breadcrumbDefault: "Crawl",
   },
   {
     key: "developer-logs",

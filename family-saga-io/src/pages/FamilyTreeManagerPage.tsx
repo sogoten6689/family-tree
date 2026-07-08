@@ -6,13 +6,10 @@ import {
   Card,
   Checkbox,
   Col,
-  Dropdown,
   Empty,
   Form,
   Input,
-  InputNumber,
   Modal,
-  Radio,
   Row,
   Space,
   Statistic,
@@ -21,15 +18,12 @@ import {
   Tag,
   Typography,
 } from "antd";
-import type { MenuProps } from "antd";
 import {
   BranchesOutlined,
-  CloudDownloadOutlined,
   DownloadOutlined,
   EditOutlined,
   EyeOutlined,
   LinkOutlined,
-  MoreOutlined,
   PlusOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
@@ -38,7 +32,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import {
   createFamilyTree,
-  crawlAndSyncVietnamGiaPha,
   listFamilyTrees,
   updateFamilyTree,
   type FamilyTreeSummary,
@@ -54,13 +47,6 @@ type TreeFormValues = {
   is_public?: boolean;
 };
 
-type CrawlFormValues = {
-  startId: number;
-  endId: number;
-  delaySeconds?: number;
-  syncDb: boolean;
-};
-
 const FamilyTreeManagerPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -72,12 +58,9 @@ const FamilyTreeManagerPage = () => {
   const [pageError, setPageError] = useState<string | null>(null);
   const [treeModalOpen, setTreeModalOpen] = useState(false);
   const [editingTree, setEditingTree] = useState<FamilyTreeSummary | null>(null);
-  const [crawlModalOpen, setCrawlModalOpen] = useState(false);
-  const [crawlingData, setCrawlingData] = useState(false);
   const [treeSearchKeyword, setTreeSearchKeyword] = useState("");
 
   const [treeForm] = Form.useForm<TreeFormValues>();
-  const [crawlForm] = Form.useForm<CrawlFormValues>();
 
   const loadTrees = async () => {
     setLoadingTrees(true);
@@ -152,16 +135,6 @@ const FamilyTreeManagerPage = () => {
     setTreeModalOpen(true);
   };
 
-  const openCrawlModal = () => {
-    crawlForm.setFieldsValue({
-      startId: 100,
-      endId: 200,
-      delaySeconds: 0.2,
-      syncDb: true,
-    });
-    setCrawlModalOpen(true);
-  };
-
   const submitTreeForm = async (values: TreeFormValues) => {
     setSavingTree(true);
     try {
@@ -199,39 +172,6 @@ const FamilyTreeManagerPage = () => {
       setSavingTree(false);
     }
   };
-
-  const submitCrawlForm = async (values: CrawlFormValues) => {
-    setCrawlingData(true);
-    setPageError(null);
-    try {
-      await crawlAndSyncVietnamGiaPha({
-        start_id: values.startId,
-        end_id: values.endId,
-        delay_seconds: values.delaySeconds,
-        sync_db: values.syncDb,
-      });
-      setCrawlModalOpen(false);
-      await loadTrees();
-      toast.success("Crawl và đồng bộ thành công.");
-    } catch (error) {
-      setPageError(error instanceof Error ? error.message : "Không thể crawl/sync dữ liệu");
-    } finally {
-      setCrawlingData(false);
-    }
-  };
-
-  const getRowMenu = (record: FamilyTreeSummary): MenuProps["items"] => [
-    {
-      key: "documents",
-      label: "Mở kho tài liệu",
-      onClick: () => navigate(`/admin/gia-pha/${record.id}?tab=documents`),
-    },
-    {
-      key: "crawl",
-      label: "Crawl + Sync DB",
-      onClick: openCrawlModal,
-    },
-  ];
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -417,7 +357,7 @@ const FamilyTreeManagerPage = () => {
             {
               title: t("auth.actions", { defaultValue: "Thao tác" }),
               key: "actions",
-              width: 280,
+              width: 240,
               align: "right",
               fixed: "right",
               render: (_: unknown, record: FamilyTreeSummary) => (
@@ -446,9 +386,6 @@ const FamilyTreeManagerPage = () => {
                   >
                     {t("familyTree.downloadDocs", { defaultValue: "Tải tài liệu" })}
                   </Button>
-                  <Dropdown menu={{ items: getRowMenu(record) }} trigger={["click"]}>
-                    <Button type="text" size="small" icon={<MoreOutlined />} />
-                  </Dropdown>
                 </Space>
               ),
             },
@@ -531,56 +468,6 @@ const FamilyTreeManagerPage = () => {
                 : t("familyTree.create", { defaultValue: "Tạo mới" })}
             </Button>
           </div>
-        </Form>
-      </Modal>
-
-      <Modal
-        open={crawlModalOpen}
-        onCancel={() => setCrawlModalOpen(false)}
-        title={t("familyTree.crawlSyncTitle", { defaultValue: "Crawl dữ liệu và đồng bộ database" })}
-        footer={[
-          <Button key="cancel" onClick={() => setCrawlModalOpen(false)}>
-            {t("familyTree.cancel", { defaultValue: "Hủy" })}
-          </Button>,
-          <Button key="run" type="primary" loading={crawlingData} onClick={() => crawlForm.submit()}>
-            {t("familyTree.run", { defaultValue: "Chạy" })}
-          </Button>,
-        ]}
-        destroyOnClose
-      >
-        <Form form={crawlForm} layout="vertical" onFinish={submitCrawlForm}>
-          <Row gutter={12}>
-            <Col span={12}>
-              <Form.Item
-                label={t("familyTree.startId", { defaultValue: "ID bắt đầu" })}
-                name="startId"
-                rules={[{ required: true, message: "Nhập ID bắt đầu" }]}
-              >
-                <InputNumber min={1} className="w-full" />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item
-                label={t("familyTree.endId", { defaultValue: "ID kết thúc" })}
-                name="endId"
-                rules={[{ required: true, message: "Nhập ID kết thúc" }]}
-              >
-                <InputNumber min={1} className="w-full" />
-              </Form.Item>
-            </Col>
-          </Row>
-          <Form.Item
-            label={t("familyTree.delaySeconds", { defaultValue: "Delay giữa request (giây)" })}
-            name="delaySeconds"
-          >
-            <InputNumber min={0} max={5} step={0.1} className="w-full" />
-          </Form.Item>
-          <Form.Item label={t("familyTree.syncDb", { defaultValue: "Đồng bộ database" })} name="syncDb">
-            <Radio.Group>
-              <Radio value>{t("common.yes", { defaultValue: "Có" })}</Radio>
-              <Radio value={false}>{t("common.no", { defaultValue: "Không" })}</Radio>
-            </Radio.Group>
-          </Form.Item>
         </Form>
       </Modal>
     </div>

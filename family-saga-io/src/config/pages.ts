@@ -100,6 +100,15 @@ export const APP_PAGES: AppPageMeta[] = [
     requiresAdmin: true,
   },
   {
+    id: "admin-dev-crawl",
+    zone: "admin",
+    path: "/admin/developer/vietnamgiapha-crawl",
+    titleKey: "admin.developer.breadcrumbCrawl",
+    descKey: "admin.developer.descCrawl",
+    requiresAuth: true,
+    requiresAdmin: true,
+  },
+  {
     id: "admin-dev-logs",
     zone: "admin",
     path: "/admin/developer/logs",
@@ -129,6 +138,7 @@ export function getPageTitleKey(pathname: string): string {
   if (pathname.startsWith("/admin/users")) return "pages.adminUsers.title";
   if (pathname.startsWith("/admin/developer/hannom-config")) return "admin.developer.breadcrumbHannom";
   if (pathname.startsWith("/admin/developer/storage")) return "admin.developer.breadcrumbStorage";
+  if (pathname.startsWith("/admin/developer/vietnamgiapha-crawl")) return "admin.developer.breadcrumbCrawl";
   if (pathname.startsWith("/admin/developer/logs")) return "admin.developer.breadcrumbLogs";
   if (pathname.startsWith("/admin/developer/docs")) return "admin.developer.breadcrumbDocs";
   if (pathname.match(/^\/admin\/gia-pha\/[^/]+$/)) return "pages.adminGiaPhaDetail.title";

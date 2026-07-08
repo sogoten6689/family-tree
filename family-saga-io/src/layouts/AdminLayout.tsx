@@ -1,5 +1,6 @@
 import {
   BranchesOutlined,
+  CloudDownloadOutlined,
   CodeOutlined,
   DashboardOutlined,
   DatabaseOutlined,
@@ -32,6 +33,7 @@ const { Header, Sider, Content } = Layout;
 const DEVELOPER_ICON_MAP: Record<string, React.ReactNode> = {
   "developer-hannom": <CodeOutlined />,
   "developer-storage": <DatabaseOutlined />,
+  "developer-crawl": <CloudDownloadOutlined />,
   "developer-logs": <UnorderedListOutlined />,
   "developer-docs": <FileTextOutlined />,
 };
