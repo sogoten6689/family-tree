@@ -73,7 +73,7 @@ const PublicFamilyTreePage = () => {
         <Col xs={24} sm={8}>
           <Card>
             <Statistic
-              title={t("familyTree.totalMembers", { defaultValue: "Tổng thành viên" })}
+              title={t("familyTree.totalMembers", { defaultValue: "Thành viên" })}
               value={stats.totalMembers}
             />
           </Card>

@@ -97,7 +97,7 @@
     "statusPublic": "Công khai",
     "totalDocuments": "Tổng tài liệu",
     "totalGenerations": "Số đời",
-    "totalMembers": "Tổng thành viên",
+    "totalMembers": "Thành viên",
     "searchMembers": "Tìm thành viên theo tên, đời...",
     "establishedYear": "Năm ghi nhận sớm nhất",
     "createdAt": "Ngày tạo",
@@ -105,7 +105,7 @@
     "totalTrees": "Tổng số cây gia phả",
     "externalLink": "Đường link",
     "sourceDocument": "Tài liệu gốc",
-    "hannomText": "Văn bản Hán Nôm",
+    "hannomText": "Hán Nôm",
     "downloadDocs": "Tài liệu"
   },
   "docReader": {

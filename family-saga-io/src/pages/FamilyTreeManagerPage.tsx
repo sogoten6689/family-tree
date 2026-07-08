@@ -6,6 +6,7 @@ import {
   Card,
   Checkbox,
   Col,
+  Dropdown,
   Empty,
   Form,
   Input,
@@ -23,7 +24,9 @@ import {
   DownloadOutlined,
   EditOutlined,
   EyeOutlined,
+  FileOutlined,
   LinkOutlined,
+  MoreOutlined,
   PlusOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
@@ -108,6 +111,29 @@ const FamilyTreeManagerPage = () => {
       setUpdatingFlagId(null);
     }
   };
+
+  const actionMenu = (record: any) => ({
+    items: [
+      {
+        key: 'detail',
+        label: t("familyTree.detail", { defaultValue: "Chi tiết" }),
+        icon: <EyeOutlined />,
+        onClick: () => navigate(`/admin/gia-pha/${record.id}`),
+      },
+      {
+        key: 'edit',
+        label: t("familyTree.editTree", { defaultValue: "Sửa" }),
+        icon: <EditOutlined />,
+        onClick: () => openEditTreeFromList(record),
+      },
+      {
+        key: 'docs',
+        label: t("familyTree.downloadDocs", { defaultValue: "Tải tài liệu" }),
+        icon: <FileOutlined />,
+        onClick: () => navigate(`/admin/gia-pha/${record.id}?tab=documents`),
+      },
+    ],
+  });
 
   const openEditTreeFromList = (record: FamilyTreeSummary) => {
     setEditingTree(record);
@@ -253,17 +279,22 @@ const FamilyTreeManagerPage = () => {
           }}
           columns={[
             {
-              title: t("familyTree.treeName", { defaultValue: "Gia phả" }).toUpperCase(),
-              dataIndex: "name",
-              fixed: "left",
-              width: 240,
-              render: (_name: string, record: FamilyTreeSummary) => (
-                <div className="flex items-center gap-3 min-w-[200px]">
+              title: () => (
+                <div className="flex items-center gap-2">
                   <Avatar
                     size={40}
                     className="shrink-0 !bg-primary/15 !text-primary"
                     icon={<BranchesOutlined />}
                   />
+                  <span>{t("familyTree.treeName", { defaultValue: "Gia phả" }).toUpperCase()}</span>
+                </div>
+              ),
+              dataIndex: "name",
+              fixed: "left",
+              width: 240,
+              render: (_name: string, record: FamilyTreeSummary) => (
+                <div className="flex items-center gap-3 min-w-[200px]">
+
                   <div>
                     <div className="font-semibold text-foreground">{record.name}</div>
                     <div className="text-xs text-muted-foreground">{record.id}</div>
@@ -357,36 +388,24 @@ const FamilyTreeManagerPage = () => {
             {
               title: t("auth.actions", { defaultValue: "Thao tác" }),
               key: "actions",
-              width: 240,
+              width: 100,
               align: "right",
               fixed: "right",
               render: (_: unknown, record: FamilyTreeSummary) => (
-                <Space size={4} wrap className="justify-end">
-                  <Button
-                    type="link"
-                    size="small"
-                    icon={<EyeOutlined />}
-                    onClick={() => navigate(`/admin/gia-pha/${record.id}`)}
+                <div className="flex justify-end">
+                  <Dropdown
+                    menu={actionMenu(record)}
+                    trigger={['click']}
+                    placement="bottomRight"
                   >
-                    {t("familyTree.detail", { defaultValue: "Chi tiết" })}
-                  </Button>
-                  <Button
-                    type="link"
-                    size="small"
-                    icon={<EditOutlined />}
-                    onClick={() => openEditTreeFromList(record)}
-                  >
-                    {t("familyTree.editTree", { defaultValue: "Sửa" })}
-                  </Button>
-                  <Button
-                    type="link"
-                    size="small"
-                    icon={<DownloadOutlined />}
-                    onClick={() => navigate(`/admin/gia-pha/${record.id}?tab=documents`)}
-                  >
-                    {t("familyTree.downloadDocs", { defaultValue: "Tải tài liệu" })}
-                  </Button>
-                </Space>
+                    <Button
+                      type="text"
+                      shape="circle"
+                      icon={<MoreOutlined className="text-lg" />}
+                      className="hover:!bg-black/5 dark:hover:!bg-white/10"
+                    />
+                  </Dropdown>
+                </div>
               ),
             },
           ]}
