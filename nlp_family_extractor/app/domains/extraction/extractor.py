@@ -27,6 +27,10 @@ from app.domains.extraction.rules.patterns import (
 )
 from app.models import Person, Relationship
 
+from app.domains.extraction.schemas import ExtractedRelation
+from app.domains.extraction.rules.spouse import SpouseRule
+from app.domains.extraction.rules.parent_child import ParentChildRule
+
 
 def _pick_longest_match(candidates: List[str], chunk: str) -> Optional[str]:
     hits = [c for c in candidates if c and c in chunk]
@@ -278,4 +282,54 @@ class FamilyExtractor:
             "people": [asdict(p) for p in people],
             "relationships": [asdict(r) for r in self._relationships],
         }
+
+class RuleBasedRelationExtractor:
+    """
+    New modular rule-based relation extractor.
+
+    This extractor runs independent rule modules such as:
+    - SpouseRule
+    - ParentChildRule
+    - SiblingRule later
+
+    It returns ExtractedRelation objects instead of full people/tree output.
+    """
+
+    def __init__(self) -> None:
+        self.rules = [
+            SpouseRule(),
+            ParentChildRule(),
+            # SiblingRule(),  # bật sau khi implement sibling.py
+        ]
+
+    def extract_relations(self, text: str) -> List[ExtractedRelation]:
+        normalized_text = normalize_text(text)
+        sentences = split_sentences(normalized_text)
+
+        relations: List[ExtractedRelation] = []
+
+        for sentence in sentences:
+            for rule in self.rules:
+                relations.extend(rule.extract(sentence))
+
+        return self._deduplicate(relations)
+
+    def _deduplicate(self, relations: List[ExtractedRelation]) -> List[ExtractedRelation]:
+        seen = set()
+        unique: List[ExtractedRelation] = []
+
+        for relation in relations:
+            key = (
+                relation.source_person,
+                relation.relation_type,
+                relation.target_person,
+            )
+
+            if key in seen:
+                continue
+
+            seen.add(key)
+            unique.append(relation)
+
+        return unique
 
