@@ -76,8 +76,8 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
     def run_pipeline_step(
         tree_id: str,
         step_id: str,
-        service: PipelineService = Depends(get_service),
         _: AdminUser,
+        service: PipelineService = Depends(get_service),
     ) -> PipelineStepResponse:
         try:
             parsed_step = PipelineStepId(step_id)
@@ -112,8 +112,8 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
         tree_id: str,
         step_id: str,
         req: PipelineSkipRequest,
-        service: PipelineService = Depends(get_service),
         _: AdminUser,
+        service: PipelineService = Depends(get_service),
     ) -> PipelineStepResponse:
         try:
             parsed_step = PipelineStepId(step_id)
@@ -146,8 +146,8 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
     )
     def run_all_pipeline_steps(
         tree_id: str,
-        service: PipelineService = Depends(get_service),
         _: AdminUser,
+        service: PipelineService = Depends(get_service),
     ) -> PipelineRunAllResponse:
         try:
             result = service.run_all(tree_id)
