@@ -378,13 +378,13 @@ const FamilyTreePage = () => {
       </header>
 
       {/* Family Info Banner */}
-      <div className="gold-gradient px-6 py-4">
+      <div className="brand-gradient px-6 py-4">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-parchment text-sm font-body">{t('familyTree.origin', { origin: runtimeInfo.origin })}</p>
-            <p className="text-parchment/80 text-sm italic mt-1">"{runtimeInfo.motto}"</p>
+            <p className="text-primary-foreground text-sm font-body">{t('familyTree.origin', { origin: runtimeInfo.origin })}</p>
+            <p className="text-primary-foreground/80 text-sm italic mt-1">"{runtimeInfo.motto}"</p>
           </div>
-          <div className="text-parchment text-sm">
+          <div className="text-primary-foreground text-sm">
             {t('familyTree.established', { year: runtimeInfo.established })}
           </div>
         </div>

@@ -321,7 +321,7 @@ const FamilyTreeManagerPage = () => {
                 <div className="flex items-center gap-3 min-w-[200px]">
                   <Avatar
                     size={40}
-                    className="shrink-0 !bg-[#1677ff]/15 dark:!bg-[#1677ff]/25 !text-[#1677ff] dark:!text-[#69b1ff]"
+                    className="shrink-0 !bg-primary/15 !text-primary"
                     icon={<BranchesOutlined />}
                   />
                   <div>

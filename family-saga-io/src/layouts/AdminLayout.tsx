@@ -177,8 +177,8 @@ const AdminLayout = () => {
         />
 
         <div className="px-4 absolute bottom-4 left-0 right-0 space-y-2">
-          <Card size="small" className="!bg-[#1677ff] !text-white !border-none">
-            <Typography.Text className="!text-white text-xs block mb-2">
+          <Card size="small" className="!bg-primary !text-primary-foreground !border-none">
+            <Typography.Text className="!text-primary-foreground text-xs block mb-2">
               {t("guide.needHelp", { defaultValue: "Cần hỗ trợ?" })}
             </Typography.Text>
             <Button block size="small" onClick={() => navigate("/huong-dan")}>

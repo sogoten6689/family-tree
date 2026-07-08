@@ -378,6 +378,7 @@ uvicorn api:app --reload --port 8002
 | File | Nội dung |
 |------|----------|
 | [FEATURES.md](./FEATURES.md) | Tính năng theo vai trò Guest / User / Admin, ma trận spec vs hiện trạng |
+| [DESIGN_SYSTEM_GUIDELINES.md](./DESIGN_SYSTEM_GUIDELINES.md) | Theme Antd v6 SSOT, quy tắc Landing Page & UX/UI |
 | [readme.md](./readme.md) | Build, deploy, Docker, MinIO, OCR env vars |
 | [business.md](./business.md) | Phân tích nghiệp vụ & kiến trúc đề tài |
 | [nlp_family_extractor/readme.md](./nlp_family_extractor/readme.md) | Backend chi tiết |

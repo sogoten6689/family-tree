@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Space, Statistic, Typography } from "antd";
+import { Button, Card, Col, Row, Skeleton, Space, Statistic, Typography } from "antd";
 import {
   BookOutlined,
   BranchesOutlined,
@@ -19,11 +19,14 @@ const DashboardPage = () => {
   const navigate = useNavigate();
   const { user, isAdmin } = useAuth();
   const [stats, setStats] = useState({ scanned_documents: 0, family_trees: 0, history_total: 0 });
+  const [statsLoading, setStatsLoading] = useState(true);
 
   useEffect(() => {
+    setStatsLoading(true);
     getUserStats()
       .then(setStats)
-      .catch(() => setStats({ scanned_documents: 0, family_trees: 0, history_total: 0 }));
+      .catch(() => setStats({ scanned_documents: 0, family_trees: 0, history_total: 0 }))
+      .finally(() => setStatsLoading(false));
   }, []);
 
   return (
@@ -46,26 +49,38 @@ const DashboardPage = () => {
       <Row gutter={[16, 16]}>
         <Col xs={24} md={8}>
           <Card>
-            <Statistic
-              title={t("dashboard.scannedDocs", { defaultValue: "Tài liệu đã scan" })}
-              value={stats.scanned_documents}
-            />
+            {statsLoading ? (
+              <Skeleton active paragraph={false} />
+            ) : (
+              <Statistic
+                title={t("dashboard.scannedDocs", { defaultValue: "Tài liệu đã scan" })}
+                value={stats.scanned_documents}
+              />
+            )}
           </Card>
         </Col>
         <Col xs={24} md={8}>
           <Card>
-            <Statistic
-              title={t("dashboard.familyTrees", { defaultValue: "Cây gia phả đã tạo" })}
-              value={stats.family_trees}
-            />
+            {statsLoading ? (
+              <Skeleton active paragraph={false} />
+            ) : (
+              <Statistic
+                title={t("dashboard.familyTrees", { defaultValue: "Cây gia phả đã tạo" })}
+                value={stats.family_trees}
+              />
+            )}
           </Card>
         </Col>
         <Col xs={24} md={8}>
           <Card>
-            <Statistic
-              title={t("dashboard.historyTotal", { defaultValue: "Lịch sử truy vấn" })}
-              value={stats.history_total}
-            />
+            {statsLoading ? (
+              <Skeleton active paragraph={false} />
+            ) : (
+              <Statistic
+                title={t("dashboard.historyTotal", { defaultValue: "Lịch sử truy vấn" })}
+                value={stats.history_total}
+              />
+            )}
           </Card>
         </Col>
       </Row>
@@ -73,7 +88,7 @@ const DashboardPage = () => {
       <Row gutter={[16, 16]}>
         <Col xs={24} md={8}>
           <Card hoverable onClick={() => navigate("/user/document-reader")}>
-            <BookOutlined className="text-2xl text-[#1677ff] mb-3" />
+            <BookOutlined className="text-2xl text-primary mb-3" />
             <Typography.Title level={5}>
               {t("pages.userDocumentReader.title", { defaultValue: "Phòng đọc tài liệu" })}
             </Typography.Title>
@@ -84,7 +99,7 @@ const DashboardPage = () => {
         </Col>
         <Col xs={24} md={8}>
           <Card hoverable onClick={() => navigate("/user/family-trees")}>
-            <BranchesOutlined className="text-2xl text-[#1677ff] mb-3" />
+            <BranchesOutlined className="text-2xl text-primary mb-3" />
             <Typography.Title level={5}>
               {t("userFamilyTrees.title", { defaultValue: "Gia phả đã tạo" })}
             </Typography.Title>
@@ -95,7 +110,7 @@ const DashboardPage = () => {
         </Col>
         <Col xs={24} md={8}>
           <Card hoverable onClick={() => navigate("/user/documents")}>
-            <BookOutlined className="text-2xl text-[#1677ff] mb-3" />
+            <BookOutlined className="text-2xl text-primary mb-3" />
             <Typography.Title level={5}>
               {t("userDocuments.title", { defaultValue: "Tài liệu đã scan" })}
             </Typography.Title>
@@ -106,7 +121,7 @@ const DashboardPage = () => {
         </Col>
         <Col xs={24} md={8}>
           <Card hoverable onClick={() => navigate("/user/profile")}>
-            <UserOutlined className="text-2xl text-[#1677ff] mb-3" />
+            <UserOutlined className="text-2xl text-primary mb-3" />
             <Typography.Title level={5}>
               {t("profile.title", { defaultValue: "Tài khoản" })}
             </Typography.Title>
@@ -120,7 +135,7 @@ const DashboardPage = () => {
       <Row gutter={[16, 16]}>
         <Col xs={24} md={8}>
           <Card hoverable onClick={() => navigate("/huong-dan")}>
-            <ReadOutlined className="text-2xl text-[#1677ff] mb-3" />
+            <ReadOutlined className="text-2xl text-primary mb-3" />
             <Typography.Title level={5}>
               {t("pages.guide.title", { defaultValue: "Hướng dẫn" })}
             </Typography.Title>

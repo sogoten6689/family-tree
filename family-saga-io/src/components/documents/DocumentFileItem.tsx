@@ -48,7 +48,7 @@ export function DocumentFileItem({ file, deleting = false, onDelete }: Props) {
           className="h-12 w-12 rounded-lg object-cover border border-border"
         />
       ) : (
-        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-[#1677ff]">
+        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-primary">
           <FileOutlined />
         </div>
       )}

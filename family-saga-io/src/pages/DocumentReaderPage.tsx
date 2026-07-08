@@ -552,17 +552,17 @@ const DocumentReaderPage = () => {
         </div>
       </header>
 
-      <section className="gold-gradient px-4 md:px-6 py-5">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-parchment">
+      <section className="brand-gradient px-4 md:px-6 py-5">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-primary-foreground">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-parchment/80">
+            <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/80">
               {t("docReader.bannerLabel")}
             </p>
             <h2 className="text-3xl font-display font-bold mt-2">
               {t("docReader.bannerTitle")}
             </h2>
           </div>
-          <div className="max-w-xl text-sm text-parchment/90 leading-6">
+          <div className="max-w-xl text-sm text-primary-foreground/90 leading-6">
             {t("docReader.bannerDesc")}
           </div>
         </div>

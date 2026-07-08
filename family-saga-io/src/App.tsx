@@ -1,9 +1,6 @@
-import { useMemo } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ConfigProvider } from "antd";
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
-import { useTheme } from "next-themes";
-import { getAntdTheme } from "@/lib/antdTheme";
+import { ThemeContextProvider } from "@/theme/ThemeContextProvider";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -49,13 +46,7 @@ const AdminFamilyTreeRedirect = () => {
   return <Navigate to={`/admin/gia-pha/${treeId ?? ""}`} replace />;
 };
 
-const AppContent = () => {
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
-  const antTheme = useMemo(() => getAntdTheme(isDark), [isDark]);
-
-  return (
-    <ConfigProvider theme={antTheme}>
+const AppContent = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -135,16 +126,16 @@ const AppContent = () => {
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
-    </ConfigProvider>
-  );
-};
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <AuthProvider>
-        <AppContent />
-      </AuthProvider>
+      <ThemeContextProvider>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
+      </ThemeContextProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );
