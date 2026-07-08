@@ -84,7 +84,7 @@ const PublicLayout = () => {
 
   const authButtons = isAuthenticated ? (
     <Button type="primary" onClick={() => navigate("/user/dashboard")}>
-      {t("auth.dashboardTitle", { defaultValue: "Bảng điều khiển" })}
+      {t("auth.dashboardTitle", { defaultValue: "Tổng quan" })}
     </Button>
   ) : (
     <>
@@ -151,7 +151,7 @@ const PublicLayout = () => {
           <ThemeToggle />
           {isAuthenticated ? (
             <Button block type="primary" onClick={() => { setMenuOpen(false); navigate("/user/dashboard"); }}>
-              {t("auth.dashboardTitle", { defaultValue: "Bảng điều khiển" })}
+              {t("auth.dashboardTitle", { defaultValue: "Tổng quan" })}
             </Button>
           ) : (
             <>

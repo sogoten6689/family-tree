@@ -8,13 +8,14 @@
   "nav": {
     "guide": "Hướng dẫn",
     "features": "Tính năng",
-    "about": "Về chúng tôi"
+    "about": "Về chúng tôi",
+    "sampleTrees": "Gia phả mẫu"
   },
   "home": {
     "heroTitle": "Gia Phả Việt",
     "heroSubtitle": "Gìn giữ và tôn vinh truyền thống dòng họ — Kết nối quá khứ, hiện tại và tương lai",
-    "btnViewSample": "Xem Gia Phả Mẫu",
-    "btnOpenDoc": "Mở Tài Liệu Gốc",
+    "btnViewSample": "Gia phả mẫu",
+    "btnOpenDoc": "Đọc tài liệu",
     "featuresTitle": "Tính Năng Nổi Bật",
     "featuresSubtitle": "Công cụ hiện đại giúp bạn xây dựng và lưu giữ gia phả dòng họ một cách dễ dàng",
     "f1Title": "Cây gia phả trực quan",
@@ -68,9 +69,13 @@
     "selectParent": "Chọn cha / mẹ",
     "parentLabel": "{{name}} (đời {{gen}})",
     "cancel": "Hủy",
-    "save": "Lưu thay đổi",
-    "managerSubtitle": "Quản lý danh sách cây gia phả. Bấm Chi tiết để xem và chỉnh sửa.",
-    "treeListTitle": "Danh sách gia phả",
+    "save": "Lưu",
+    "create": "Tạo mới",
+    "createTree": "Tạo mới",
+    "reload": "Tải lại",
+    "run": "Chạy",
+    "managerSubtitle": "Danh sách cây gia phả. Chọn Chi tiết để xem và sửa.",
+    "treeListTitle": "Danh sách",
     "searchTrees": "Tìm cây theo tên, mã hoặc mô tả",
     "treeName": "Tên cây",
     "treeDescription": "Mô tả",
@@ -80,7 +85,7 @@
     "detail": "Chi tiết",
     "editTree": "Sửa",
     "documentsTab": "Tài liệu",
-    "backToList": "Quay lại danh sách",
+    "backToList": "Quay lại",
     "visualTreeTab": "Sơ đồ Gia phả",
     "memberDirectoryTab": "Hồ sơ Thành viên",
     "documentArchiveTab": "Kho Tư liệu Hán-Nôm & Văn bản",
@@ -101,7 +106,7 @@
     "externalLink": "Đường link",
     "sourceDocument": "Tài liệu gốc",
     "hannomText": "Văn bản Hán Nôm",
-    "downloadDocs": "Tải tài liệu"
+    "downloadDocs": "Tài liệu"
   },
   "docReader": {
     "pageTitle": "Phòng đọc tư liệu gia phả",
@@ -222,7 +227,7 @@
     "registerSuccess": "Đăng ký thành công. Vui lòng đăng nhập.",
     "registerFailed": "Không thể đăng ký. Vui lòng thử lại.",
     "logout": "Đăng xuất",
-    "dashboardTitle": "Bảng điều khiển",
+    "dashboardTitle": "Tổng quan",
     "welcomeUser": "Xin chào, {{name}}",
     "currentRole": "Quyền hiện tại: {{role}}",
     "adminUsersTitle": "Quản lý thành viên",
@@ -238,11 +243,63 @@
     "panelTitle": "Admin",
     "panelSubtitle": "Quản trị hệ thống",
     "zoneTitle": "Quản trị",
-    "menuFamilyTrees": "Quản lý gia phả",
-    "menuUsers": "Quản lý thành viên"
+    "menuFamilyTrees": "Gia phả",
+    "menuUsers": "Thành viên",
+    "developer": {
+      "menu": "Developer",
+      "menuHannom": "Hán-Nôm",
+      "menuStorage": "Lưu trữ",
+      "menuCrawl": "Đồng bộ VGP",
+      "menuLogs": "Nhật ký",
+      "menuDocs": "API Docs",
+      "breadcrumbHannom": "Hán-Nôm",
+      "breadcrumbStorage": "Lưu trữ",
+      "breadcrumbCrawl": "Đồng bộ VGP",
+      "breadcrumbLogs": "Nhật ký",
+      "breadcrumbDocs": "API Docs",
+      "descHannom": "Cấu hình API phiên âm Hán-Nôm.",
+      "descStorage": "Trạng thái lưu trữ và backend.",
+      "descCrawl": "Crawl và đồng bộ từ vietnamgiapha.com.",
+      "descLogs": "Nhật ký debug OCR.",
+      "descDocs": "CURL mẫu và schema API.",
+      "crawlTitle": "Đồng bộ VGP",
+      "crawlDesc": "Thu thập cây phả hệ từ vietnamgiapha.com theo khoảng ID.",
+      "crawlWarningTitle": "Thao tác hệ thống",
+      "crawlWarningDesc": "Chỉ dành cho admin. Crawl nhiều ID có thể mất vài phút.",
+      "crawlFormTitle": "Tham số",
+      "crawlResult": "Kết quả",
+      "crawlSuccess": "Đồng bộ hoàn tất.",
+      "resetForm": "Đặt lại",
+      "viewTrees": "Xem gia phả"
+    }
+  },
+  "adminDashboard": {
+    "title": "Tổng quan"
+  },
+  "adminHistory": {
+    "title": "Lịch sử"
+  },
+  "userDocuments": {
+    "title": "Tài liệu",
+    "uploadNew": "Tải lên",
+    "viewDetail": "Chi tiết",
+    "empty": "Chưa có tài liệu. Hãy tải lên tài liệu đầu tiên."
+  },
+  "userFamilyTrees": {
+    "title": "Gia phả",
+    "createNew": "Tạo mới",
+    "view": "Xem",
+    "empty": "Chưa có cây gia phả. Tải tài liệu để tạo cây."
+  },
+  "profile": {
+    "title": "Tài khoản"
+  },
+  "publicFamilyTrees": {
+    "title": "Gia phả mẫu",
+    "viewDetail": "Chi tiết"
   },
   "user": {
-    "panelTitle": "Khu vực người dùng",
+    "panelTitle": "Tài khoản",
     "zoneTitle": "Người dùng"
   },
   "pages": {
@@ -263,27 +320,27 @@
       "desc": "Tạo tài khoản mới (role mặc định: user)."
     },
     "userDashboard": {
-      "title": "Bảng điều khiển",
+      "title": "Tổng quan",
       "desc": "Trang tổng quan sau khi đăng nhập."
     },
     "userDocumentReader": {
-      "title": "Phòng đọc tài liệu",
+      "title": "Đọc tài liệu",
       "desc": "Upload Word/ảnh và phân tích cây gia phả."
     },
     "userFamilyTree": {
-      "title": "Xem gia phả",
+      "title": "Gia phả",
       "desc": "Xem cây gia phả trực quan."
     },
     "adminGiaPha": {
-      "title": "Quản lý gia phả",
+      "title": "Gia phả",
       "desc": "CRUD cây gia phả (chỉ admin)."
     },
     "adminGiaPhaDetail": {
-      "title": "Chi tiết gia phả",
+      "title": "Chi tiết",
       "desc": "Xem và quản lý một cây gia phả."
     },
     "adminUsers": {
-      "title": "Quản lý thành viên",
+      "title": "Thành viên",
       "desc": "Quản lý tài khoản và role (chỉ admin)."
     }
   },
@@ -308,7 +365,7 @@
     "step3": "Xem cây gia phả tại /user/family-tree.",
     "step4": "Admin quản lý hệ thống tại /admin/gia-pha và /admin/users.",
     "needHelp": "Cần hỗ trợ?",
-    "openGuide": "Xem hướng dẫn",
+    "openGuide": "Hướng dẫn",
     "zone": {
       "public": "Public",
       "user": "User",

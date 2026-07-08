@@ -8,13 +8,14 @@
   "nav": {
     "guide": "Guide",
     "features": "Features",
-    "about": "About Us"
+    "about": "About Us",
+    "sampleTrees": "Sample trees"
   },
   "home": {
     "heroTitle": "Vietnamese Family Tree",
     "heroSubtitle": "Preserve and honor family traditions — Connecting past, present and future",
-    "btnViewSample": "View Sample Tree",
-    "btnOpenDoc": "Open Source Document",
+    "btnViewSample": "Sample trees",
+    "btnOpenDoc": "Read docs",
     "featuresTitle": "Key Features",
     "featuresSubtitle": "Modern tools to help you build and preserve your family genealogy easily",
     "f1Title": "Visual Family Tree",
@@ -68,9 +69,13 @@
     "selectParent": "Select parent",
     "parentLabel": "{{name}} (gen. {{gen}})",
     "cancel": "Cancel",
-    "save": "Save Changes",
-    "managerSubtitle": "Manage family trees. Click Detail to view and edit.",
-    "treeListTitle": "Family tree list",
+    "save": "Save",
+    "create": "Create",
+    "createTree": "Create",
+    "reload": "Reload",
+    "run": "Run",
+    "managerSubtitle": "Family tree list. Open Detail to view and edit.",
+    "treeListTitle": "List",
     "searchTrees": "Search by name, ID, or description",
     "treeName": "Tree name",
     "treeDescription": "Description",
@@ -80,7 +85,7 @@
     "detail": "Detail",
     "editTree": "Edit",
     "documentsTab": "Documents",
-    "backToList": "Back to list",
+    "backToList": "Back",
     "visualTreeTab": "Pedigree Chart",
     "memberDirectoryTab": "Member Directory",
     "documentArchiveTab": "Hán-Nôm & Document Archive",
@@ -101,7 +106,7 @@
     "externalLink": "Link",
     "sourceDocument": "Source document",
     "hannomText": "Hán-Nôm text",
-    "downloadDocs": "Download docs"
+    "downloadDocs": "Documents"
   },
   "docReader": {
     "pageTitle": "Genealogy Document Reader",
@@ -222,7 +227,7 @@
     "registerSuccess": "Registration successful. Please sign in.",
     "registerFailed": "Registration failed. Please try again.",
     "logout": "Sign out",
-    "dashboardTitle": "Dashboard",
+    "dashboardTitle": "Overview",
     "welcomeUser": "Welcome, {{name}}",
     "currentRole": "Current role: {{role}}",
     "adminUsersTitle": "User management",
@@ -238,11 +243,63 @@
     "panelTitle": "Admin",
     "panelSubtitle": "System administration",
     "zoneTitle": "Administration",
-    "menuFamilyTrees": "Family tree management",
-    "menuUsers": "User management"
+    "menuFamilyTrees": "Family trees",
+    "menuUsers": "Members",
+    "developer": {
+      "menu": "Developer",
+      "menuHannom": "Hán-Nôm",
+      "menuStorage": "Storage",
+      "menuCrawl": "VGP sync",
+      "menuLogs": "Logs",
+      "menuDocs": "API Docs",
+      "breadcrumbHannom": "Hán-Nôm",
+      "breadcrumbStorage": "Storage",
+      "breadcrumbCrawl": "VGP sync",
+      "breadcrumbLogs": "Logs",
+      "breadcrumbDocs": "API Docs",
+      "descHannom": "Hán-Nôm transliteration API config.",
+      "descStorage": "Storage and backend health.",
+      "descCrawl": "Crawl and sync from vietnamgiapha.com.",
+      "descLogs": "OCR debug logs.",
+      "descDocs": "Sample CURL and API schema.",
+      "crawlTitle": "VGP sync",
+      "crawlDesc": "Fetch family trees from vietnamgiapha.com by ID range.",
+      "crawlWarningTitle": "System operation",
+      "crawlWarningDesc": "Admin only. Large ID ranges may take several minutes.",
+      "crawlFormTitle": "Parameters",
+      "crawlResult": "Result",
+      "crawlSuccess": "Sync completed.",
+      "resetForm": "Reset",
+      "viewTrees": "View trees"
+    }
+  },
+  "adminDashboard": {
+    "title": "Overview"
+  },
+  "adminHistory": {
+    "title": "History"
+  },
+  "userDocuments": {
+    "title": "Documents",
+    "uploadNew": "Upload",
+    "viewDetail": "Detail",
+    "empty": "No documents yet. Upload your first file."
+  },
+  "userFamilyTrees": {
+    "title": "Family trees",
+    "createNew": "Create",
+    "view": "View",
+    "empty": "No trees yet. Upload a document to create one."
+  },
+  "profile": {
+    "title": "Account"
+  },
+  "publicFamilyTrees": {
+    "title": "Sample trees",
+    "viewDetail": "Detail"
   },
   "user": {
-    "panelTitle": "User area",
+    "panelTitle": "Account",
     "zoneTitle": "User"
   },
   "pages": {
@@ -263,27 +320,27 @@
       "desc": "Create a new account (default role: user)."
     },
     "userDashboard": {
-      "title": "Dashboard",
+      "title": "Overview",
       "desc": "Overview page after sign-in."
     },
     "userDocumentReader": {
-      "title": "Document reader",
+      "title": "Read docs",
       "desc": "Upload Word/images and analyze family trees."
     },
     "userFamilyTree": {
-      "title": "View family tree",
+      "title": "Family tree",
       "desc": "Visual family tree viewer."
     },
     "adminGiaPha": {
-      "title": "Family tree management",
+      "title": "Family trees",
       "desc": "CRUD family trees (admin only)."
     },
     "adminGiaPhaDetail": {
-      "title": "Family tree detail",
+      "title": "Detail",
       "desc": "View and manage a family tree."
     },
     "adminUsers": {
-      "title": "User management",
+      "title": "Members",
       "desc": "Manage accounts and roles (admin only)."
     }
   },
@@ -308,7 +365,7 @@
     "step3": "View the family tree at /user/family-tree.",
     "step4": "Admins manage the system at /admin/gia-pha and /admin/users.",
     "needHelp": "Need help?",
-    "openGuide": "Open guide",
+    "openGuide": "Guide",
     "zone": {
       "public": "Public",
       "user": "User",

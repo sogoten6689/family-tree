@@ -76,22 +76,22 @@ const AdminLayout = () => {
       {
         key: "dashboard",
         icon: <DashboardOutlined />,
-        label: t("adminDashboard.title", { defaultValue: "Dashboard" }),
+        label: t("adminDashboard.title", { defaultValue: "Tổng quan" }),
       },
       {
         key: "gia-pha",
         icon: <BranchesOutlined />,
-        label: t("admin.menuFamilyTrees", { defaultValue: "Quản lý gia phả" }),
+        label: t("admin.menuFamilyTrees", { defaultValue: "Gia phả" }),
       },
       {
         key: "history",
         icon: <UnorderedListOutlined />,
-        label: t("adminHistory.title", { defaultValue: "Lịch sử scan" }),
+        label: t("adminHistory.title", { defaultValue: "Lịch sử" }),
       },
       {
         key: "users",
         icon: <TeamOutlined />,
-        label: t("admin.menuUsers", { defaultValue: "Quản lý thành viên" }),
+        label: t("admin.menuUsers", { defaultValue: "Thành viên" }),
       },
     ];
 
@@ -184,7 +184,7 @@ const AdminLayout = () => {
               {t("guide.needHelp", { defaultValue: "Cần hỗ trợ?" })}
             </Typography.Text>
             <Button block size="small" onClick={() => navigate("/huong-dan")}>
-              {t("guide.openGuide", { defaultValue: "Xem hướng dẫn" })}
+              {t("guide.openGuide", { defaultValue: "Hướng dẫn" })}
             </Button>
           </Card>
           <Button block icon={<HomeOutlined />} onClick={() => navigate("/")}>

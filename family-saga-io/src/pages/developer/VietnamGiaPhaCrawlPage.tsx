@@ -172,7 +172,7 @@ const VietnamGiaPhaCrawlPage = () => {
               icon={<PlayCircleOutlined />}
               loading={running}
             >
-              {t("familyTree.run", { defaultValue: "Chạy crawl + sync" })}
+              {t("familyTree.run", { defaultValue: "Chạy" })}
             </Button>
             <Button
               icon={<ReloadOutlined />}

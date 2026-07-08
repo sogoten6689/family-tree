@@ -44,22 +44,22 @@ const UserLayout = () => {
       {
         key: "dashboard",
         icon: <DashboardOutlined />,
-        label: t("pages.userDashboard.title", { defaultValue: "Bảng điều khiển" }),
+        label: t("pages.userDashboard.title", { defaultValue: "Tổng quan" }),
       },
       {
         key: "document-reader",
         icon: <BookOutlined />,
-        label: t("pages.userDocumentReader.title", { defaultValue: "Phòng đọc tài liệu" }),
+        label: t("pages.userDocumentReader.title", { defaultValue: "Đọc tài liệu" }),
       },
       {
         key: "documents",
         icon: <BookOutlined />,
-        label: t("userDocuments.title", { defaultValue: "Tài liệu đã scan" }),
+        label: t("userDocuments.title", { defaultValue: "Tài liệu" }),
       },
       {
         key: "family-trees",
         icon: <BranchesOutlined />,
-        label: t("userFamilyTrees.title", { defaultValue: "Gia phả đã tạo" }),
+        label: t("userFamilyTrees.title", { defaultValue: "Gia phả" }),
       },
       {
         key: "profile",
@@ -75,7 +75,7 @@ const UserLayout = () => {
       <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border">
         <div className="px-5 py-6">
           <Typography.Title level={5} className="!mb-1">
-            {t("user.panelTitle", { defaultValue: "Khu vực người dùng" })}
+            {t("user.panelTitle", { defaultValue: "Tài khoản" })}
           </Typography.Title>
           <Typography.Text type="secondary" className="text-xs">
             {user?.full_name}

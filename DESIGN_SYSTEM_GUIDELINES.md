@@ -587,15 +587,73 @@ catch { console.error(e); }
 
 ### 6.4. Navigation & IA (Information Architecture)
 
-| Vai trò | Landing | Sau login |
-|---------|---------|-----------|
-| Guest | Header: Trang chủ · Gia phả mẫu · Hướng dẫn · Login | — |
-| User | — | Sidebar: Dashboard · Phòng đọc · Tài liệu · Gia phả · Tài khoản |
-| Admin | — | + Dashboard admin · Quản lý gia phả · Lịch sử · Users |
+| Vai trò | Menu chính (ngắn) | Ghi chú |
+|---------|-------------------|---------|
+| Guest | Trang chủ · Gia phả mẫu · Hướng dẫn · Đăng nhập | Max **7** mục |
+| User | Tổng quan · Đọc tài liệu · Tài liệu · Gia phả · Tài khoản | Sidebar |
+| Admin | Tổng quan · Gia phả · Lịch sử · Thành viên · Developer | CRUD tách Developer |
 
-**Quy tắc:** Max **7 mục** menu chính (Miller's Law). CTA đăng nhập luôn visible trên public header.
+**Quy tắc IA:** CTA đăng nhập luôn visible trên public header. Tính năng hệ thống (crawl, OCR config, storage) → **Developer**, không nhét vào menu nghiệp vụ.
 
-### 6.5. UX checklist (PR bắt buộc)
+### 6.5. Quy tắc đặt tên Menu, Header & Button
+
+> **Nguyên tắc:** Đơn giản · ngắn gọn · dễ hiểu — người dùng đọc lướt 1 giây là biết chức năng.
+
+#### 6.5.1. Giới hạn độ dài
+
+| Loại | Giới hạn | Ví dụ ✅ | Ví dụ ❌ |
+|------|----------|----------|----------|
+| **Menu** (sidebar/header nav) | ≤ **3 từ**, ≤ **24** ký tự | `Gia phả`, `Lịch sử`, `Hán-Nôm` | `Quản lý gia phả`, `Cấu hình API Kim Hán Nôm` |
+| **Header trang** (title H4) | ≤ **4 từ**, ưu tiên **trùng menu** | `Tổng quan`, `Đồng bộ VGP` | `Dashboard quản trị`, `Crawl dữ liệu và đồng bộ database` |
+| **Breadcrumb** (mục cuối) | = header hoặc ngắn hơn | `Gia phả` → `Chi tiết` | `Quản lý gia phả` → `Chi tiết cây gia phả số 101` |
+| **Button label** | **1–2 từ**, ≤ **20** ký tự | `Lưu`, `Tạo mới`, `Thử lại` | `Lưu thay đổi`, `Tải tài liệu về máy` |
+| **Subtitle / mô tả** | Câu đầy đủ, **không** đặt trong menu/button | Dưới `Typography.Title` | Nhét mô tả dài vào `label` menu |
+
+#### 6.5.2. Cách chọn từ
+
+| # | Quy tắc |
+|---|---------|
+| NAME-1 | **Menu = danh từ** hoặc cụm danh từ: `Tài liệu`, `Thành viên` — không dùng động từ |
+| NAME-2 | **Button = động từ** (+ tân ngữ nếu cần): `Tải lên`, `Xóa`, `Chạy` |
+| NAME-3 | **Bỏ tiền tố thừa:** `Quản lý`, `Xem`, `Mở`, `Danh sách` — ngữ cảnh menu đã đủ |
+| NAME-4 | **Thuật ngữ kỹ thuật** chỉ khi không thay được: `API`, `JSON`, `OCR`, `VGP` — không `MinIO/S3`, `Crawl VietnamGiaPha` |
+| NAME-5 | **Một khái niệm = một tên** xuyên suốt: menu `Gia phả` → header `Gia phả` → button `Tạo mới` (không đổi thành `Cây gia phả` / `Tạo cây`) |
+| NAME-6 | **i18n SSOT:** mọi label qua `vi.json` / `en.json`; `defaultValue` trong code chỉ là fallback ngắn |
+
+#### 6.5.3. Bảng chuẩn dự án (tham chiếu)
+
+| Vùng | Menu / Header | Button chính | Button phụ |
+|------|---------------|--------------|------------|
+| Public | Trang chủ · Gia phả mẫu · Hướng dẫn | Đăng nhập · Đăng ký | — |
+| User | Tổng quan · Đọc tài liệu · Tài liệu · Gia phả | Tải lên · Tạo mới | Tải lại · Quay lại |
+| Admin | Gia phả · Lịch sử · Thành viên | Tạo mới · Lưu · Xóa | Chi tiết · Sửa |
+| Developer | Hán-Nôm · Lưu trữ · Đồng bộ VGP · Nhật ký · API Docs | Chạy · Lưu | Đặt lại · Thử lại |
+
+#### 6.5.4. Do's & Don'ts
+
+**✅ DO**
+
+```tsx
+// Menu
+label: t("admin.menuFamilyTrees")  // "Gia phả"
+
+// Header
+<Typography.Title level={4}>Gia phả</Typography.Title>
+
+// Button
+<Button type="primary">Lưu</Button>
+<Button>Tải lại</Button>
+```
+
+**❌ DON'T**
+
+```tsx
+label: "Quản lý danh sách cây gia phả hệ thống"
+<Button type="primary">Lưu thay đổi vào cơ sở dữ liệu</Button>
+<Button>Crawl dữ liệu và đồng bộ database</Button>
+```
+
+### 6.6. UX checklist (PR bắt buộc)
 
 - [ ] Mỗi async action có loading state
 - [ ] Mỗi list có empty state + hướng dẫn bước tiếp
@@ -603,6 +661,7 @@ catch { console.error(e); }
 - [ ] Chỉ một `type="primary"` Button nổi bật nhất mỗi viewport
 - [ ] Form submit disabled khi đang loading
 - [ ] Destructive action có Popconfirm
+- [ ] Menu/header/button tuân thủ **§6.5** (độ dài, không tiền tố thừa)
 
 ---
 
@@ -703,4 +762,4 @@ family-saga-io/src/theme/
 
 ---
 
-*Phiên bản: 2.0 · 07/2026 · Ant Design ^6.3.3 · Bổ sung Landing Page Rules & UX Core Rules*
+*Phiên bản: 2.1 · 07/2026 · Bổ sung §6.5 Naming Rules (menu, header, button)*
