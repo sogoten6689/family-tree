@@ -1,18 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
-import { Card, Col, Empty, Row, Spin, Statistic, Tabs, Tag, Typography } from "antd";
+import { Button, Card, Col, Empty, Row, Spin, Statistic, Table, Tabs, Tag, Typography } from "antd";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
 import { FamilyTreeAncestralSidebar } from "@/components/family-tree/FamilyTreeAncestralSidebar";
 import { FamilyTreeMembersTable } from "@/components/family-tree/FamilyTreeMembersTable";
-import { getFamilyTree, type FamilyTreeDocument } from "@/lib/familyTreeApi";
+import { getPublicFamilyTree, listPublicFamilyTreeDocuments } from "@/lib/publicFamilyTreeApi";
+import type { FamilyTreeDocument } from "@/lib/familyTreeApi";
+import type { FamilyTreeSourceDocument } from "@/types/document";
 import { toFamilyMembers, toTreeStats } from "@/lib/familyTreeUtils";
 
 const PublicFamilyTreePage = () => {
   const { t } = useTranslation();
   const { treeId } = useParams<{ treeId: string }>();
   const [tree, setTree] = useState<FamilyTreeDocument | null>(null);
+  const [documents, setDocuments] = useState<FamilyTreeSourceDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,10 +25,15 @@ const PublicFamilyTreePage = () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await getFamilyTree(treeId);
-        setTree(data);
+        const [treeData, docsData] = await Promise.all([
+          getPublicFamilyTree(treeId),
+          listPublicFamilyTreeDocuments(treeId).catch(() => ({ total: 0, items: [] })),
+        ]);
+        setTree(treeData);
+        setDocuments(docsData.items);
       } catch (err) {
         setTree(null);
+        setDocuments([]);
         setError(err instanceof Error ? err.message : "Không tải được gia phả");
       } finally {
         setLoading(false);
@@ -111,6 +119,43 @@ const PublicFamilyTreePage = () => {
                   key: "members",
                   label: t("familyTree.memberDirectoryTab", { defaultValue: "Hồ sơ Thành viên" }),
                   children: <FamilyTreeMembersTable members={members} />,
+                },
+                {
+                  key: "documents",
+                  label: t("familyTree.documentsTab", { defaultValue: "Tài liệu Hán-Nôm" }),
+                  children: (
+                    <Table
+                      rowKey="id"
+                      dataSource={documents}
+                      pagination={false}
+                      locale={{ emptyText: t("publicFamilyTrees.noDocuments", { defaultValue: "Chưa có tài liệu công khai." }) }}
+                      columns={[
+                        {
+                          title: t("documents.title", { defaultValue: "Tiêu đề" }),
+                          dataIndex: "title",
+                        },
+                        {
+                          title: t("documents.type", { defaultValue: "Loại" }),
+                          dataIndex: "type",
+                        },
+                        {
+                          title: t("documents.files", { defaultValue: "Files" }),
+                          render: (_, record) => record.files?.length ?? 0,
+                        },
+                        {
+                          title: t("auth.actions", { defaultValue: "Thao tác" }),
+                          render: (_, record) =>
+                            record.files?.[0]?.download_url ? (
+                              <Button type="link" href={record.files[0].download_url} target="_blank" rel="noreferrer">
+                                {t("documents.download", { defaultValue: "Tải xuống" })}
+                              </Button>
+                            ) : (
+                              "—"
+                            ),
+                        },
+                      ]}
+                    />
+                  ),
                 },
               ]}
             />

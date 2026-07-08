@@ -4,6 +4,7 @@ import {
   DashboardOutlined,
   LogoutOutlined,
   SettingOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Button, Card, Layout, Menu, Space, Typography } from "antd";
 import { useMemo } from "react";
@@ -21,7 +22,10 @@ const { Header, Sider, Content } = Layout;
 const menuKeyByPath: Record<string, string> = {
   "/user/dashboard": "dashboard",
   "/user/document-reader": "document-reader",
+  "/user/documents": "documents",
+  "/user/family-trees": "family-trees",
   "/user/family-tree": "family-tree",
+  "/user/profile": "profile",
 };
 
 const UserLayout = () => {
@@ -48,9 +52,19 @@ const UserLayout = () => {
         label: t("pages.userDocumentReader.title", { defaultValue: "Phòng đọc tài liệu" }),
       },
       {
-        key: "family-tree",
+        key: "documents",
+        icon: <BookOutlined />,
+        label: t("userDocuments.title", { defaultValue: "Tài liệu đã scan" }),
+      },
+      {
+        key: "family-trees",
         icon: <BranchesOutlined />,
-        label: t("pages.userFamilyTree.title", { defaultValue: "Xem gia phả" }),
+        label: t("userFamilyTrees.title", { defaultValue: "Gia phả đã tạo" }),
+      },
+      {
+        key: "profile",
+        icon: <UserOutlined />,
+        label: t("profile.title", { defaultValue: "Tài khoản" }),
       },
     ],
     [t],
@@ -76,7 +90,9 @@ const UserLayout = () => {
           onClick={({ key }) => {
             if (key === "dashboard") navigate("/user/dashboard");
             if (key === "document-reader") navigate("/user/document-reader");
-            if (key === "family-tree") navigate("/user/family-tree");
+            if (key === "documents") navigate("/user/documents");
+            if (key === "family-trees") navigate("/user/family-trees");
+            if (key === "profile") navigate("/user/profile");
           }}
         />
         <div className="px-4 pb-4 mt-auto absolute bottom-4 left-0 right-0 space-y-2">

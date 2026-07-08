@@ -13,6 +13,7 @@ from app.auth.schemas import (
     UserListResponse,
     UserResponse,
     UserRoleUpdateRequest,
+    ProfileUpdateRequest,
 )
 from app.auth.security import create_access_token, verify_password
 from app.auth.user_repository import UserRepository
@@ -79,6 +80,22 @@ def login(payload: LoginRequest, repo: UserRepository = Depends(_repo)) -> Token
 @router.get("/me", response_model=UserResponse, summary="Thông tin người dùng hiện tại")
 def get_me(current_user: CurrentUser) -> UserResponse:
     return UserResponse.model_validate(current_user)
+
+
+@router.patch("/me", response_model=UserResponse, summary="Cập nhật hồ sơ cá nhân")
+def update_me(
+    payload: ProfileUpdateRequest,
+    current_user: CurrentUser,
+    repo: UserRepository = Depends(_repo),
+) -> UserResponse:
+    if payload.full_name is None and payload.password is None:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Không có trường nào để cập nhật.")
+    updated = repo.update_profile(
+        current_user,
+        full_name=payload.full_name,
+        password=payload.password,
+    )
+    return UserResponse.model_validate(updated)
 
 
 @router.get(

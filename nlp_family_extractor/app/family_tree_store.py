@@ -36,10 +36,16 @@ def _tree_metadata_from_doc(doc: Dict[str, Any]) -> Dict[str, Any]:
     external_url = doc.get("external_url")
     if not external_url:
         external_url = _default_external_url(str(doc.get("id") or ""))
+    nodes = doc.get("nodes", [])
+    from app.workspace.utils import compute_generation_count
+
     return {
         "external_url": external_url,
         "has_source_document": bool(doc.get("has_source_document", False)),
         "has_hannom_text": bool(doc.get("has_hannom_text", False)),
+        "user_id": doc.get("user_id"),
+        "is_public": bool(doc.get("is_public", False)),
+        "generation_count": compute_generation_count(nodes if isinstance(nodes, list) else []),
     }
 
 
@@ -62,8 +68,22 @@ class _FamilyTreeStoreBase:
         external_url: Optional[str] = None,
         has_source_document: bool = False,
         has_hannom_text: bool = False,
+        user_id: Optional[int] = None,
+        is_public: bool = False,
     ) -> Dict[str, Any]:
         raise NotImplementedError
+
+    def list_public_trees(self) -> List[Dict[str, Any]]:
+        return [item for item in self.list_trees() if bool(item.get("is_public"))]
+
+    def list_trees_by_user(self, user_id: int) -> List[Dict[str, Any]]:
+        return [item for item in self.list_trees() if item.get("user_id") == user_id]
+
+    def get_public_tree(self, tree_id: str) -> Dict[str, Any]:
+        doc = self.get_tree(tree_id)
+        if not bool(doc.get("is_public")):
+            raise FamilyTreeNotFoundError(f"public tree '{tree_id}' not found")
+        return doc
 
     def get_tree(self, tree_id: str) -> Dict[str, Any]:
         raise NotImplementedError
@@ -77,6 +97,7 @@ class _FamilyTreeStoreBase:
         external_url: Optional[str] = None,
         has_source_document: Optional[bool] = None,
         has_hannom_text: Optional[bool] = None,
+        is_public: Optional[bool] = None,
     ) -> Dict[str, Any]:
         raise NotImplementedError
 
@@ -299,6 +320,8 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
         external_url: Optional[str] = None,
         has_source_document: bool = False,
         has_hannom_text: bool = False,
+        user_id: Optional[int] = None,
+        is_public: bool = False,
     ) -> Dict[str, Any]:
         clean_name = name.strip()
         if not clean_name:
@@ -317,6 +340,8 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
             "external_url": (external_url.strip() if external_url else None) or _default_external_url(tree_id),
             "has_source_document": bool(has_source_document),
             "has_hannom_text": bool(has_hannom_text),
+            "user_id": user_id,
+            "is_public": bool(is_public),
         }
 
         with self._lock:
@@ -336,6 +361,7 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
         external_url: Optional[str] = None,
         has_source_document: Optional[bool] = None,
         has_hannom_text: Optional[bool] = None,
+        is_public: Optional[bool] = None,
     ) -> Dict[str, Any]:
         with self._lock:
             doc = self._load_tree(tree_id)
@@ -352,6 +378,8 @@ class JsonFamilyTreeStore(_FamilyTreeStoreBase):
                 doc["has_source_document"] = bool(has_source_document)
             if has_hannom_text is not None:
                 doc["has_hannom_text"] = bool(has_hannom_text)
+            if is_public is not None:
+                doc["is_public"] = bool(is_public)
             doc["updated_at"] = self._now_iso()
             self._write_json(self._file_path(tree_id), doc)
             return doc
@@ -630,39 +658,75 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 "has_hannom_text",
                 "ALTER TABLE family_tree ADD COLUMN has_hannom_text TINYINT(1) NOT NULL DEFAULT 0",
             ),
+            ("user_id", "ALTER TABLE family_tree ADD COLUMN user_id INT NULL"),
+            (
+                "is_public",
+                "ALTER TABLE family_tree ADD COLUMN is_public TINYINT(1) NOT NULL DEFAULT 0",
+            ),
         ]
         for column_name, statement in migrations:
             if column_name not in existing:
                 conn.execute(text(statement))
+                existing.add(column_name)
+        if "is_public" in existing:
+            conn.execute(
+                text("UPDATE family_tree SET is_public = 1 WHERE id LIKE 'vpg-%' AND is_public = 0")
+            )
 
     # ------------------------------------------------------------------ #
     # Public CRUD API                                                      #
     # ------------------------------------------------------------------ #
 
     def list_trees(self) -> List[Dict[str, Any]]:
+        return self._list_trees_query()
+
+    def list_public_trees(self) -> List[Dict[str, Any]]:
+        return self._list_trees_query(public_only=True)
+
+    def list_trees_by_user(self, user_id: int) -> List[Dict[str, Any]]:
+        return self._list_trees_query(user_id=user_id)
+
+    def _list_trees_query(
+        self,
+        *,
+        public_only: bool = False,
+        user_id: Optional[int] = None,
+    ) -> List[Dict[str, Any]]:
+        clauses = []
+        params: Dict[str, Any] = {}
+        if public_only:
+            clauses.append("is_public = 1")
+        if user_id is not None:
+            clauses.append("user_id = :user_id")
+            params["user_id"] = user_id
+        where_sql = f"WHERE {' AND '.join(clauses)}" if clauses else ""
         with self._lock:
             with self._engine.connect() as conn:
                 rows = conn.execute(
                     text(
                         "SELECT id, name, description, created_at, updated_at, node_count, "
-                        "external_url, has_source_document, has_hannom_text "
-                        "FROM family_tree ORDER BY created_ts ASC"
-                    )
+                        "external_url, has_source_document, has_hannom_text, user_id, is_public "
+                        f"FROM family_tree {where_sql} ORDER BY created_ts ASC"
+                    ),
+                    params,
                 ).mappings().all()
-            return [
-                {
-                    "id": r["id"],
-                    "name": r["name"],
-                    "description": r["description"],
-                    "created_at": r["created_at"],
-                    "updated_at": r["updated_at"],
-                    "node_count": r["node_count"],
-                    "external_url": r.get("external_url") or _default_external_url(str(r["id"])),
-                    "has_source_document": bool(r.get("has_source_document", 0)),
-                    "has_hannom_text": bool(r.get("has_hannom_text", 0)),
-                }
-                for r in rows
-            ]
+            return [self._row_to_summary(r) for r in rows]
+
+    def _row_to_summary(self, row: Dict[str, Any]) -> Dict[str, Any]:
+        return {
+            "id": row["id"],
+            "name": row["name"],
+            "description": row["description"],
+            "created_at": row["created_at"],
+            "updated_at": row["updated_at"],
+            "node_count": row["node_count"],
+            "external_url": row.get("external_url") or _default_external_url(str(row["id"])),
+            "has_source_document": bool(row.get("has_source_document", 0)),
+            "has_hannom_text": bool(row.get("has_hannom_text", 0)),
+            "user_id": row.get("user_id"),
+            "is_public": bool(row.get("is_public", 0)),
+            "generation_count": 0,
+        }
 
     def create_tree(
         self,
@@ -673,6 +737,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         external_url: Optional[str] = None,
         has_source_document: bool = False,
         has_hannom_text: bool = False,
+        user_id: Optional[int] = None,
+        is_public: bool = False,
     ) -> Dict[str, Any]:
         clean_name = name.strip()
         if not clean_name:
@@ -691,6 +757,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             "external_url": (external_url.strip() if external_url else None) or _default_external_url(tree_id),
             "has_source_document": bool(has_source_document),
             "has_hannom_text": bool(has_hannom_text),
+            "user_id": user_id,
+            "is_public": bool(is_public),
         }
 
         with self._lock:
@@ -710,6 +778,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         external_url: Optional[str] = None,
         has_source_document: Optional[bool] = None,
         has_hannom_text: Optional[bool] = None,
+        is_public: Optional[bool] = None,
     ) -> Dict[str, Any]:
         with self._lock:
             doc = self._load_tree(tree_id)
@@ -726,6 +795,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 doc["has_source_document"] = bool(has_source_document)
             if has_hannom_text is not None:
                 doc["has_hannom_text"] = bool(has_hannom_text)
+            if is_public is not None:
+                doc["is_public"] = bool(is_public)
             doc["updated_at"] = self._now_iso()
             self._db_save(doc)
             return doc
@@ -905,7 +976,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             row = conn.execute(
                 text(
                     "SELECT id, name, description, nodes_json, created_at, updated_at, "
-                    "external_url, has_source_document, has_hannom_text "
+                    "external_url, has_source_document, has_hannom_text, user_id, is_public "
                     "FROM family_tree WHERE id = :id"
                 ),
                 {"id": tree_id},
@@ -924,6 +995,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             "external_url": row.get("external_url") or _default_external_url(str(row["id"])),
             "has_source_document": bool(row.get("has_source_document", 0)),
             "has_hannom_text": bool(row.get("has_hannom_text", 0)),
+            "user_id": row.get("user_id"),
+            "is_public": bool(row.get("is_public", 0)),
         }
         return doc
 
@@ -934,9 +1007,10 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 text(
                     "INSERT INTO family_tree "
                     "(id, name, description, nodes_json, node_count, external_url, "
-                    "has_source_document, has_hannom_text, created_at, updated_at) "
+                    "has_source_document, has_hannom_text, user_id, is_public, created_at, updated_at) "
                     "VALUES (:id, :name, :description, CAST(:nodes_json AS JSON), :node_count, "
-                    ":external_url, :has_source_document, :has_hannom_text, :created_at, :updated_at)"
+                    ":external_url, :has_source_document, :has_hannom_text, :user_id, :is_public, "
+                    ":created_at, :updated_at)"
                 ),
                 {
                     "id": doc["id"],
@@ -947,6 +1021,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "external_url": doc.get("external_url"),
                     "has_source_document": int(bool(doc.get("has_source_document", False))),
                     "has_hannom_text": int(bool(doc.get("has_hannom_text", False))),
+                    "user_id": doc.get("user_id"),
+                    "is_public": int(bool(doc.get("is_public", False))),
                     "created_at": doc["created_at"],
                     "updated_at": doc["updated_at"],
                 },
@@ -963,6 +1039,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "    external_url = :external_url, "
                     "    has_source_document = :has_source_document, "
                     "    has_hannom_text = :has_hannom_text, "
+                    "    user_id = :user_id, is_public = :is_public, "
                     "    updated_at = :updated_at "
                     "WHERE id = :id"
                 ),
@@ -975,6 +1052,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "external_url": doc.get("external_url"),
                     "has_source_document": int(bool(doc.get("has_source_document", False))),
                     "has_hannom_text": int(bool(doc.get("has_hannom_text", False))),
+                    "user_id": doc.get("user_id"),
+                    "is_public": int(bool(doc.get("is_public", False))),
                     "updated_at": doc["updated_at"],
                 },
             )
@@ -990,6 +1069,15 @@ class MirroredFamilyTreeStore:
     def list_trees(self) -> List[Dict[str, Any]]:
         return self._primary.list_trees()
 
+    def list_public_trees(self) -> List[Dict[str, Any]]:
+        return self._primary.list_public_trees()
+
+    def list_trees_by_user(self, user_id: int) -> List[Dict[str, Any]]:
+        return self._primary.list_trees_by_user(user_id)
+
+    def get_public_tree(self, tree_id: str) -> Dict[str, Any]:
+        return self._primary.get_public_tree(tree_id)
+
     def create_tree(
         self,
         *,
@@ -999,6 +1087,8 @@ class MirroredFamilyTreeStore:
         external_url: Optional[str] = None,
         has_source_document: bool = False,
         has_hannom_text: bool = False,
+        user_id: Optional[int] = None,
+        is_public: bool = False,
     ) -> Dict[str, Any]:
         doc = self._primary.create_tree(
             name=name,
@@ -1007,6 +1097,8 @@ class MirroredFamilyTreeStore:
             external_url=external_url,
             has_source_document=has_source_document,
             has_hannom_text=has_hannom_text,
+            user_id=user_id,
+            is_public=is_public,
         )
         self._sync_source_document(doc)
         return doc
@@ -1023,6 +1115,7 @@ class MirroredFamilyTreeStore:
         external_url: Optional[str] = None,
         has_source_document: Optional[bool] = None,
         has_hannom_text: Optional[bool] = None,
+        is_public: Optional[bool] = None,
     ) -> Dict[str, Any]:
         doc = self._primary.update_tree(
             tree_id,
@@ -1031,6 +1124,7 @@ class MirroredFamilyTreeStore:
             external_url=external_url,
             has_source_document=has_source_document,
             has_hannom_text=has_hannom_text,
+            is_public=is_public,
         )
         self._sync_source_document(doc)
         return doc

@@ -1,6 +1,7 @@
 import {
   BranchesOutlined,
   CodeOutlined,
+  DashboardOutlined,
   DatabaseOutlined,
   FileTextOutlined,
   HomeOutlined,
@@ -71,9 +72,19 @@ const AdminLayout = () => {
   const menuItems = useMemo(() => {
     const items: MenuProps["items"] = [
       {
+        key: "dashboard",
+        icon: <DashboardOutlined />,
+        label: t("adminDashboard.title", { defaultValue: "Dashboard" }),
+      },
+      {
         key: "gia-pha",
         icon: <BranchesOutlined />,
         label: t("admin.menuFamilyTrees", { defaultValue: "Quản lý gia phả" }),
+      },
+      {
+        key: "history",
+        icon: <UnorderedListOutlined />,
+        label: t("adminHistory.title", { defaultValue: "Lịch sử scan" }),
       },
       {
         key: "users",
@@ -119,6 +130,14 @@ const AdminLayout = () => {
   }, [t, location.pathname, developerItem, pageTitle]);
 
   const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
+    if (key === "dashboard") {
+      navigate("/admin/dashboard");
+      return;
+    }
+    if (key === "history") {
+      navigate("/admin/history");
+      return;
+    }
     if (key === "users") {
       navigate("/admin/users");
       return;

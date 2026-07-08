@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  BranchesOutlined,
   HomeOutlined,
   InfoCircleOutlined,
   LoginOutlined,
@@ -60,6 +61,10 @@ const PublicLayout = () => {
       navigate("/huong-dan");
       return;
     }
+    if (key === "sample-trees") {
+      navigate("/gia-pha");
+      return;
+    }
     if (key === "features") {
       scrollToSection("features");
       return;
@@ -71,6 +76,7 @@ const PublicLayout = () => {
 
   const navItems: MenuProps["items"] = [
     { key: "home", icon: <HomeOutlined />, label: t("pages.home.title", { defaultValue: "Trang chủ" }) },
+    { key: "sample-trees", icon: <BranchesOutlined />, label: t("nav.sampleTrees", { defaultValue: "Gia phả mẫu" }) },
     { key: "guide", icon: <ReadOutlined />, label: t("nav.guide", { defaultValue: "Hướng dẫn" }) },
     { key: "features", icon: <StarOutlined />, label: t("nav.features", { defaultValue: "Tính năng" }) },
     { key: "about", icon: <InfoCircleOutlined />, label: t("nav.about", { defaultValue: "Về chúng tôi" }) },

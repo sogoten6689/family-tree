@@ -83,6 +83,20 @@ class HistoryRepository:
             if int(has_analysis_column or 0) == 0:
                 conn.execute(text("ALTER TABLE request_history ADD COLUMN analysis_json JSON NULL"))
 
+            has_user_column = conn.execute(
+                text(
+                    """
+                    SELECT COUNT(*)
+                    FROM information_schema.COLUMNS
+                    WHERE TABLE_SCHEMA = DATABASE()
+                      AND TABLE_NAME = 'request_history'
+                      AND COLUMN_NAME = 'user_id'
+                    """
+                )
+            ).scalar_one()
+            if int(has_user_column or 0) == 0:
+                conn.execute(text("ALTER TABLE request_history ADD COLUMN user_id INT NULL"))
+
     def append(self, item: Dict[str, Any]) -> bool:
         if not self.enabled or not self._engine:
             return False
@@ -91,10 +105,10 @@ class HistoryRepository:
             """
             INSERT INTO request_history (
                 request_id, created_at, source, metadata_json, analysis_json,
-                people_count, relationship_count, warning_count
+                people_count, relationship_count, warning_count, user_id
             ) VALUES (
                 :request_id, :created_at, :source, CAST(:metadata_json AS JSON), CAST(:analysis_json AS JSON),
-                :people_count, :relationship_count, :warning_count
+                :people_count, :relationship_count, :warning_count, :user_id
             )
             ON DUPLICATE KEY UPDATE
                 source = VALUES(source),
@@ -102,7 +116,8 @@ class HistoryRepository:
                 analysis_json = VALUES(analysis_json),
                 people_count = VALUES(people_count),
                 relationship_count = VALUES(relationship_count),
-                warning_count = VALUES(warning_count);
+                warning_count = VALUES(warning_count),
+                user_id = VALUES(user_id);
             """
         )
 
@@ -119,22 +134,30 @@ class HistoryRepository:
                         "people_count": int(item["people_count"]),
                         "relationship_count": int(item["relationship_count"]),
                         "warning_count": int(item["warning_count"]),
+                        "user_id": item.get("user_id"),
                     },
                 )
             return True
         except Exception:
             return False
 
-    def list_recent(self, limit: int) -> Tuple[int, List[Dict[str, Any]]]:
+    def list_recent(self, limit: int, user_id: Optional[int] = None) -> Tuple[int, List[Dict[str, Any]]]:
         if not self.enabled or not self._engine:
             return 0, []
 
-        q_count = text("SELECT COUNT(*) AS total FROM request_history")
+        params: Dict[str, Any] = {"limit": limit}
+        where_clause = ""
+        if user_id is not None:
+            where_clause = "WHERE user_id = :user_id"
+            params["user_id"] = user_id
+
+        q_count = text(f"SELECT COUNT(*) AS total FROM request_history {where_clause}")
         q_rows = text(
-            """
-            SELECT request_id, created_at, source, metadata_json,
+            f"""
+            SELECT request_id, created_at, source, metadata_json, user_id,
                    people_count, relationship_count, warning_count
             FROM request_history
+            {where_clause}
             ORDER BY id DESC
             LIMIT :limit;
             """
@@ -142,8 +165,8 @@ class HistoryRepository:
 
         try:
             with self._engine.connect() as conn:
-                total = int(conn.execute(q_count).scalar_one())
-                rows = conn.execute(q_rows, {"limit": limit}).mappings().all()
+                total = int(conn.execute(q_count, params).scalar_one())
+                rows = conn.execute(q_rows, params).mappings().all()
 
             items: List[Dict[str, Any]] = []
             for row in rows:
@@ -165,6 +188,7 @@ class HistoryRepository:
                         "people_count": int(row["people_count"]),
                         "relationship_count": int(row["relationship_count"]),
                         "warning_count": int(row["warning_count"]),
+                        "user_id": row.get("user_id"),
                     }
                 )
 
@@ -172,14 +196,23 @@ class HistoryRepository:
         except Exception:
             return 0, []
 
-    def clear(self) -> Optional[int]:
+    def list_all(self, limit: int) -> Tuple[int, List[Dict[str, Any]]]:
+        return self.list_recent(limit, user_id=None)
+
+    def clear(self, user_id: Optional[int] = None) -> Optional[int]:
         if not self.enabled or not self._engine:
             return None
 
-        stmt = text("DELETE FROM request_history")
+        if user_id is None:
+            stmt = text("DELETE FROM request_history")
+            params: Dict[str, Any] = {}
+        else:
+            stmt = text("DELETE FROM request_history WHERE user_id = :user_id")
+            params = {"user_id": user_id}
+
         try:
             with self._engine.begin() as conn:
-                result = conn.execute(stmt)
+                result = conn.execute(stmt, params)
                 return int(result.rowcount or 0)
         except Exception:
             return None

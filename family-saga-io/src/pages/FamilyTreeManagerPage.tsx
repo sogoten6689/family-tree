@@ -51,6 +51,7 @@ type TreeFormValues = {
   external_url?: string;
   has_source_document?: boolean;
   has_hannom_text?: boolean;
+  is_public?: boolean;
 };
 
 type CrawlFormValues = {
@@ -133,6 +134,7 @@ const FamilyTreeManagerPage = () => {
       external_url: record.external_url ?? "",
       has_source_document: !!record.has_source_document,
       has_hannom_text: !!record.has_hannom_text,
+      is_public: !!record.is_public,
     });
     setTreeModalOpen(true);
   };
@@ -145,6 +147,7 @@ const FamilyTreeManagerPage = () => {
       external_url: "",
       has_source_document: false,
       has_hannom_text: false,
+      is_public: false,
     });
     setTreeModalOpen(true);
   };
@@ -168,6 +171,7 @@ const FamilyTreeManagerPage = () => {
         external_url: values.external_url?.trim() || null,
         has_source_document: !!values.has_source_document,
         has_hannom_text: !!values.has_hannom_text,
+        is_public: !!values.is_public,
       };
 
       if (editingTree) {
@@ -182,6 +186,7 @@ const FamilyTreeManagerPage = () => {
           external_url: payload.external_url,
           has_source_document: payload.has_source_document,
           has_hannom_text: payload.has_hannom_text,
+          is_public: payload.is_public,
         });
         setTreeModalOpen(false);
         setEditingTree(null);
@@ -509,6 +514,13 @@ const FamilyTreeManagerPage = () => {
               </Form.Item>
             </Col>
           </Row>
+          <Form.Item
+            label={t("familyTree.isPublic", { defaultValue: "Công khai (Guest xem được)" })}
+            name="is_public"
+            valuePropName="checked"
+          >
+            <Switch />
+          </Form.Item>
           <div className="flex justify-end gap-3">
             <Button onClick={() => setTreeModalOpen(false)}>
               {t("familyTree.cancel", { defaultValue: "Hủy" })}

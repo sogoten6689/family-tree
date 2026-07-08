@@ -24,7 +24,15 @@ import FamilyTreePage from "./pages/FamilyTreePage";
 import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
 import FamilyTreeDetailPage from "./pages/admin/FamilyTreeDetailPage";
 import PublicFamilyTreePage from "./pages/PublicFamilyTreePage";
+import PublicFamilyTreeListPage from "./pages/PublicFamilyTreeListPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import AdminHistoryPage from "./pages/admin/AdminHistoryPage";
+import UserDocumentsPage from "./pages/user/UserDocumentsPage";
+import UserDocumentDetailPage from "./pages/user/UserDocumentDetailPage";
+import UserFamilyTreesPage from "./pages/user/UserFamilyTreesPage";
+import UserFamilyTreeDetailPage from "./pages/user/UserFamilyTreeDetailPage";
+import UserProfilePage from "./pages/user/UserProfilePage";
 import EditDocumentPage from "./pages/EditDocumentPage";
 import NotFound from "./pages/NotFound";
 import ForbiddenPage from "./pages/ForbiddenPage";
@@ -57,6 +65,7 @@ const AppContent = () => {
             <Route element={<PublicLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/huong-dan" element={<GuidePage />} />
+              <Route path="/gia-pha" element={<PublicFamilyTreeListPage />} />
               <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
@@ -75,7 +84,12 @@ const AppContent = () => {
               <Route index element={<Navigate to="/user/dashboard" replace />} />
               <Route path="dashboard" element={<DashboardPage />} />
               <Route path="document-reader" element={<DocumentReaderPage />} />
+              <Route path="documents" element={<UserDocumentsPage />} />
+              <Route path="documents/:scanId" element={<UserDocumentDetailPage />} />
+              <Route path="family-trees" element={<UserFamilyTreesPage />} />
+              <Route path="family-trees/:treeId" element={<UserFamilyTreeDetailPage />} />
               <Route path="family-tree" element={<FamilyTreePage />} />
+              <Route path="profile" element={<UserProfilePage />} />
             </Route>
 
             {/* ── Admin ── */}
@@ -87,9 +101,11 @@ const AppContent = () => {
                 </AdminRoute>
               }
             >
-              <Route index element={<Navigate to="/admin/gia-pha" replace />} />
+              <Route index element={<Navigate to="/admin/dashboard" replace />} />
+              <Route path="dashboard" element={<AdminDashboardPage />} />
               <Route path="gia-pha" element={<FamilyTreeManagerPage />} />
               <Route path="gia-pha/:treeId" element={<FamilyTreeDetailPage />} />
+              <Route path="history" element={<AdminHistoryPage />} />
               <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
               <Route path="users" element={<AdminUsersPage />} />
               <Route

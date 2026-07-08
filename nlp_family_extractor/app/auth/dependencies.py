@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.auth.models import User, UserRole
 from app.auth.security import decode_access_token
-from app.database import get_db
+from app.database import database_enabled, get_db, get_optional_db
 
 bearer_scheme = HTTPBearer(auto_error=False)
 
@@ -56,3 +56,22 @@ def require_admin(current_user: Annotated[User, Depends(get_current_user)]) -> U
 
 CurrentUser = Annotated[User, Depends(get_current_user)]
 AdminUser = Annotated[User, Depends(require_admin)]
+
+
+def get_optional_current_user(
+    credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(bearer_scheme)],
+    db: Annotated[Session | None, Depends(get_optional_db)],
+) -> User | None:
+    if not database_enabled() or db is None:
+        return None
+    if credentials is None or credentials.scheme.lower() != "bearer":
+        return None
+    try:
+        payload = decode_access_token(credentials.credentials)
+        user_id = int(payload.get("sub", "0"))
+    except (JWTError, ValueError, TypeError):
+        return None
+    return db.get(User, user_id)
+
+
+OptionalUser = Annotated[User | None, Depends(get_optional_current_user)]

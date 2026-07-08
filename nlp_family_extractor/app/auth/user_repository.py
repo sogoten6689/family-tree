@@ -54,6 +54,22 @@ class UserRepository:
         self._db.refresh(user)
         return user
 
+    def update_profile(
+        self,
+        user: User,
+        *,
+        full_name: Optional[str] = None,
+        password: Optional[str] = None,
+    ) -> User:
+        if full_name is not None:
+            user.full_name = full_name.strip()
+        if password is not None:
+            user.password_hash = hash_password(password)
+        self._db.add(user)
+        self._db.commit()
+        self._db.refresh(user)
+        return user
+
     def delete_user(self, user: User) -> None:
         self._db.delete(user)
         self._db.commit()

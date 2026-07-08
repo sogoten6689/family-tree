@@ -13,12 +13,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.auth.bootstrap import bootstrap_auth
-from app.auth.dependencies import AdminUser
+from app.auth.dependencies import AdminUser, CurrentUser, OptionalUser
 from app.auth.router import router as auth_router
 from app.database import database_enabled, database_init_error, init_database
 from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
 from app.hannom.router import router as hannom_developer_router
+from app.workspace.bootstrap import bootstrap_workspace
+from app.workspace.router import create_workspace_router
 from app.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
@@ -93,6 +95,10 @@ class AnalyzeRequest(BaseModel):
 class AnalyzeResponse(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
+    request_id: Optional[str] = Field(
+        default=None,
+        description="UUID của request, dùng tra lịch sử và liên kết tài liệu.",
+    )
     balkan_nodes: List[Dict[str, Any]] = Field(
         default_factory=list,
         description=(
@@ -113,6 +119,7 @@ class HistoryItem(BaseModel):
     people_count: int = Field(description="Số người trích xuất được.")
     relationship_count: int = Field(description="Số quan hệ trích xuất được.")
     warning_count: int = Field(description="Số lượng cảnh báo validation.")
+    user_id: Optional[int] = Field(default=None, description="User sở hữu request (nếu đã đăng nhập).")
 
 
 class HistoryResponse(BaseModel):
@@ -155,6 +162,9 @@ class FamilyTreeSummary(BaseModel):
     external_url: Optional[str] = None
     has_source_document: bool = False
     has_hannom_text: bool = False
+    user_id: Optional[int] = None
+    is_public: bool = False
+    generation_count: int = 0
 
 
 class FamilyTreeListResponse(BaseModel):
@@ -172,6 +182,9 @@ class FamilyTreeDocument(BaseModel):
     external_url: Optional[str] = None
     has_source_document: bool = False
     has_hannom_text: bool = False
+    user_id: Optional[int] = None
+    is_public: bool = False
+    generation_count: int = 0
 
 
 class FamilyTreeCreateRequest(BaseModel):
@@ -182,6 +195,7 @@ class FamilyTreeCreateRequest(BaseModel):
     external_url: Optional[str] = Field(default=None, description="Đường link nguồn (vietnamgiapha, ...).")
     has_source_document: bool = Field(default=False, description="Có tài liệu gốc.")
     has_hannom_text: bool = Field(default=False, description="Có văn bản Hán-Nôm.")
+    is_public: bool = Field(default=False, description="Cho phép khách xem công khai.")
     nodes: List[Dict[str, Any]] = Field(
         default_factory=list,
         description="Danh sách node BALKAN khởi tạo ban đầu.",
@@ -196,6 +210,7 @@ class FamilyTreeUpdateRequest(BaseModel):
     external_url: Optional[str] = Field(default=None)
     has_source_document: Optional[bool] = Field(default=None)
     has_hannom_text: Optional[bool] = Field(default=None)
+    is_public: Optional[bool] = Field(default=None)
 
 
 class FamilyTreeReplaceRequest(BaseModel):
@@ -299,6 +314,7 @@ async def _lifespan(_: FastAPI):
     if database_enabled():
         bootstrap_auth()
         bootstrap_documents()
+        bootstrap_workspace()
     yield
 
 _DESCRIPTION = """
@@ -381,6 +397,12 @@ def _get_family_tree_document(tree_id: str) -> dict:
 
 
 app.include_router(create_documents_router(_get_family_tree_document))
+app.include_router(
+    create_workspace_router(
+        get_tree_store=lambda: _family_tree_store,
+        get_history_repo=lambda: _history_repo,
+    )
+)
 app.include_router(hannom_developer_router)
 
 
@@ -465,7 +487,8 @@ def health() -> HealthResponse:
     },
 )
 def get_history(
-    limit: int = Query(default=20, ge=1, le=100, description="Số lượng item trả về (1–100).")
+    limit: int = Query(default=20, ge=1, le=100, description="Số lượng item trả về (1–100)."),
+    current_user: OptionalUser = None,
 ) -> HistoryResponse:
     """
     Trả về danh sách các request phân tích gần nhất.
@@ -474,15 +497,18 @@ def get_history(
     - Ưu tiên đọc từ MySQL nếu đã cấu hình; fallback sang in-memory store.
     """
     safe_limit = max(1, min(limit, 100))
+    user_id = current_user.id if current_user is not None else None
 
     # Prefer durable MySQL history when available
     if _history_repo.enabled:
-        total, db_items = _history_repo.list_recent(safe_limit)
-        if total > 0 or db_items:
+        total, db_items = _history_repo.list_recent(safe_limit, user_id=user_id)
+        if user_id is not None or total > 0 or db_items:
             return HistoryResponse(total=total, items=[HistoryItem(**item) for item in db_items])
 
     with _history_lock:
         snapshot = list(_history_store)
+        if user_id is not None:
+            snapshot = [item for item in snapshot if item.user_id == user_id]
 
     items = list(reversed(snapshot))[:safe_limit]
     return HistoryResponse(total=len(snapshot), items=items)
@@ -573,26 +599,38 @@ def get_history_detail(request_id: str) -> AnalyzeResponse:
         }
     },
 )
-def clear_history() -> ClearHistoryResponse:
+def clear_history(current_user: OptionalUser = None) -> ClearHistoryResponse:
     """
     Xoá toàn bộ lịch sử request khỏi store (MySQL hoặc in-memory).
 
     Trả về `{ "cleared": <số lượng> }`.
     """
+    user_id = current_user.id if current_user is not None else None
     if _history_repo.enabled:
-        removed = _history_repo.clear()
+        removed = _history_repo.clear(user_id=user_id)
         if removed is not None:
             with _history_lock:
-                _history_store.clear()
-                _detail_store.clear()
-                _detail_order.clear()
+                if user_id is None:
+                    _history_store.clear()
+                    _detail_store.clear()
+                    _detail_order.clear()
+                else:
+                    remaining = [item for item in _history_store if item.user_id != user_id]
+                    _history_store.clear()
+                    _history_store.extend(remaining)
             return ClearHistoryResponse(cleared=removed)
 
     with _history_lock:
-        removed = len(_history_store)
-        _history_store.clear()
-        _detail_store.clear()
-        _detail_order.clear()
+        if user_id is None:
+            removed = len(_history_store)
+            _history_store.clear()
+            _detail_store.clear()
+            _detail_order.clear()
+        else:
+            removed = sum(1 for item in _history_store if item.user_id == user_id)
+            remaining = [item for item in _history_store if item.user_id != user_id]
+            _history_store.clear()
+            _history_store.extend(remaining)
     return ClearHistoryResponse(cleared=removed)
 
 
@@ -625,6 +663,7 @@ def create_family_tree(req: FamilyTreeCreateRequest, _: AdminUser) -> FamilyTree
             external_url=req.external_url,
             has_source_document=req.has_source_document,
             has_hannom_text=req.has_hannom_text,
+            is_public=req.is_public,
         )
     except Exception as error:
         _raise_store_error(error)
@@ -658,6 +697,7 @@ def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest, _: AdminUser)
         and req.external_url is None
         and req.has_source_document is None
         and req.has_hannom_text is None
+        and req.is_public is None
     ):
         raise HTTPException(status_code=400, detail="No fields to update")
 
@@ -669,6 +709,7 @@ def update_family_tree(tree_id: str, req: FamilyTreeUpdateRequest, _: AdminUser)
             external_url=req.external_url,
             has_source_document=req.has_source_document,
             has_hannom_text=req.has_hannom_text,
+            is_public=req.is_public,
         )
     except Exception as error:
         _raise_store_error(error)
@@ -918,7 +959,7 @@ def crawl_and_sync_vietnamgiapha(
         }
     },
 )
-def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
+def analyze_family_text(req: AnalyzeRequest, current_user: OptionalUser = None) -> AnalyzeResponse:
     """
     Trả về **balkan_nodes** (Gemini) và **gemini_error** nếu có.
     """
@@ -940,6 +981,7 @@ def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
     people_count = len(balkan_nodes) if gemini_err is None else len(extraction.get("people", []))
 
     response_payload = AnalyzeResponse(
+        request_id=request_id,
         balkan_nodes=balkan_nodes,
         gemini_error=gemini_err,
     )
@@ -952,6 +994,7 @@ def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
         people_count=people_count,
         relationship_count=len(extraction.get("relationships", [])),
         warning_count=len(warnings),
+        user_id=current_user.id if current_user is not None else None,
     )
 
     with _history_lock:
@@ -966,6 +1009,7 @@ def analyze_family_text(req: AnalyzeRequest) -> AnalyzeResponse:
         {
             **history_item.model_dump(),
             "analysis": response_payload.model_dump(),
+            "user_id": history_item.user_id,
         }
     )
 

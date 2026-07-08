@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -62,6 +62,11 @@ class UserListResponse(BaseModel):
 
 class UserRoleUpdateRequest(BaseModel):
     role: UserRole
+
+
+class ProfileUpdateRequest(BaseModel):
+    full_name: Optional[str] = Field(default=None, min_length=1, max_length=255)
+    password: Optional[str] = Field(default=None, min_length=8, max_length=128)
 
 
 class MessageResponse(BaseModel):

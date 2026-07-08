@@ -30,6 +30,12 @@ import {
 } from "@/components/BalkanFamilyTreeView";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
+import { getStoredAccessToken } from "@/lib/apiClient";
+import {
+  createUserDocument,
+  createUserFamilyTree,
+  updateUserDocument,
+} from "@/lib/userWorkspaceApi";
 
 type PreviewType = "image" | "docx" | "text" | "unsupported" | null;
 
@@ -38,6 +44,7 @@ type DetectedLanguageCode = "vi" | "en" | "unknown";
 type DetectionMethod = "text-heuristic" | "filename-heuristic" | "unavailable";
 
 type FamilyAnalyzeResponse = {
+  request_id?: string | null;
   balkan_nodes: BalkanNode[];
   gemini_error: string | null;
 };
@@ -195,6 +202,25 @@ const DocumentReaderPage = () => {
   const [selectedHistoryRequestId, setSelectedHistoryRequestId] = useState<
     string | null
   >(null);
+  const [currentScanId, setCurrentScanId] = useState<number | null>(null);
+  const [isSavingTree, setIsSavingTree] = useState(false);
+
+  const registerScan = async (file: File, sourceText?: string) => {
+    const ext = file.name.split(".").pop()?.toLowerCase() ?? "unknown";
+    const fileType = file.type || ext;
+    try {
+      const created = await createUserDocument({
+        title: file.name,
+        file_name: file.name,
+        file_type: fileType,
+        page_count: 1,
+        source_text: sourceText,
+      });
+      setCurrentScanId(created.id);
+    } catch {
+      setCurrentScanId(null);
+    }
+  };
 
   useEffect(() => {
     return () => {
@@ -211,6 +237,13 @@ const DocumentReaderPage = () => {
     try {
       const response = await fetch(
         `${backendBaseUrl}/api/family-tree/history?limit=10`,
+        {
+          headers: {
+            ...(getStoredAccessToken()
+              ? { Authorization: `Bearer ${getStoredAccessToken()}` }
+              : {}),
+          },
+        },
       );
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -235,6 +268,11 @@ const DocumentReaderPage = () => {
         `${backendBaseUrl}/api/family-tree/history`,
         {
           method: "DELETE",
+          headers: {
+            ...(getStoredAccessToken()
+              ? { Authorization: `Bearer ${getStoredAccessToken()}` }
+              : {}),
+          },
         },
       );
       if (!response.ok) {
@@ -336,6 +374,7 @@ const DocumentReaderPage = () => {
       setImageUrl(URL.createObjectURL(file));
       setLanguageDetection(detectLanguageFromFilename(file.name));
       setStatusMessage(t("docReader.msgImageSuccess"));
+      await registerScan(file);
       return;
     }
 
@@ -349,6 +388,7 @@ const DocumentReaderPage = () => {
         setDocumentText(normalizedText || t("docReader.msgEmptyDocx"));
         setLanguageDetection(detectLanguage(normalizedText, file.name));
         setStatusMessage(t("docReader.msgTxtSuccess"));
+        await registerScan(file, normalizedText);
       } catch (error) {
         setErrorMessage(t("docReader.errTxtRead"));
       } finally {
@@ -372,6 +412,7 @@ const DocumentReaderPage = () => {
         setDocumentText(normalizedText || t("docReader.msgEmptyDocx"));
         setLanguageDetection(detectLanguage(normalizedText, file.name));
         setStatusMessage(t("docReader.msgDocxSuccess"));
+        await registerScan(file, normalizedText);
       } catch (error) {
         setErrorMessage(t("docReader.errDocxParse"));
       } finally {
@@ -421,12 +462,14 @@ const DocumentReaderPage = () => {
     setAnalysisError(null);
 
     try {
+      const token = getStoredAccessToken();
       const response = await fetch(
         `${backendBaseUrl}/api/family-tree/analyze`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
           body: JSON.stringify({
             text: documentText,
@@ -445,12 +488,21 @@ const DocumentReaderPage = () => {
 
       const raw = (await response.json()) as Partial<FamilyAnalyzeResponse>;
       const payload: FamilyAnalyzeResponse = {
+        request_id: raw.request_id ?? null,
         balkan_nodes: Array.isArray(raw.balkan_nodes) ? raw.balkan_nodes : [],
         gemini_error: raw.gemini_error ?? null,
       };
       setAnalysisResult(payload);
       setIsResultModalOpen(true);
       localStorage.setItem("family-tree.analysis", JSON.stringify(payload));
+      if (currentScanId) {
+        await updateUserDocument(currentScanId, {
+          request_id: payload.request_id ?? undefined,
+          tree_status: "draft",
+          ocr_status: "skipped",
+          source_text: documentText,
+        });
+      }
       fetchHistory();
       setStatusMessage(
         t("docReader.msgAnalyzeSuccess", {
@@ -1113,8 +1165,33 @@ const DocumentReaderPage = () => {
             {t("familyTree.close")}
           </Button>,
           <Button
-            key="open-tree"
+            key="save-tree"
             type="primary"
+            loading={isSavingTree}
+            disabled={!analysisResult?.balkan_nodes?.length}
+            onClick={async () => {
+              if (!analysisResult?.balkan_nodes?.length || !activeFile) return;
+              setIsSavingTree(true);
+              try {
+                const created = await createUserFamilyTree({
+                  name: activeFile.name.replace(/\.[^.]+$/, ""),
+                  description: t("docReader.savedFromScan", { defaultValue: "Tạo từ phòng đọc tài liệu" }),
+                  nodes: analysisResult.balkan_nodes,
+                  source_scan_id: currentScanId ?? undefined,
+                });
+                setIsResultModalOpen(false);
+                navigate(`/user/family-trees/${created.id}`);
+              } catch (error) {
+                setAnalysisError(error instanceof Error ? error.message : "Không lưu được cây gia phả");
+              } finally {
+                setIsSavingTree(false);
+              }
+            }}
+          >
+            {t("docReader.btnSaveTree", { defaultValue: "Lưu cây gia phả" })}
+          </Button>,
+          <Button
+            key="open-tree"
             onClick={() => navigate("/user/family-tree")}
           >
             {t("docReader.btnOpenTreePage")}

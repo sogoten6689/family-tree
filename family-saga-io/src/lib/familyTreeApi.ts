@@ -13,6 +13,10 @@ export interface FamilyTreeSummary {
   external_url?: string | null;
   has_source_document?: boolean;
   has_hannom_text?: boolean;
+  user_id?: number | null;
+  is_public?: boolean;
+  generation_count?: number;
+  source_document_title?: string | null;
 }
 
 export interface FamilyTreeDocument {
@@ -25,6 +29,10 @@ export interface FamilyTreeDocument {
   external_url?: string | null;
   has_source_document?: boolean;
   has_hannom_text?: boolean;
+  user_id?: number | null;
+  is_public?: boolean;
+  generation_count?: number;
+  source_document_title?: string | null;
 }
 
 export interface FamilyTreeListResponse {
@@ -46,6 +54,7 @@ export async function createFamilyTree(payload: {
   external_url?: string | null;
   has_source_document?: boolean;
   has_hannom_text?: boolean;
+  is_public?: boolean;
   nodes?: BalkanNode[];
 }): Promise<FamilyTreeDocument> {
   return apiRequest<FamilyTreeDocument>("/api/family-trees", {
@@ -62,6 +71,7 @@ export async function updateFamilyTree(
     external_url?: string | null;
     has_source_document?: boolean;
     has_hannom_text?: boolean;
+    is_public?: boolean;
   },
 ): Promise<FamilyTreeDocument> {
   return apiRequest<FamilyTreeDocument>(`/api/family-trees/${treeId}`, {

@@ -77,6 +77,17 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
 
 
+def get_optional_db() -> Generator[Session | None, None, None]:
+    if _SessionLocal is None:
+        yield None
+        return
+    db = _SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
 @contextmanager
 def session_scope() -> Generator[Session, None, None]:
     if _SessionLocal is None:
