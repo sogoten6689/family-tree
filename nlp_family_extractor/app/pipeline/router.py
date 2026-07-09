@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Callable
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from pydantic import ValidationError
 from sqlalchemy.orm import Session
 
 from app.auth.dependencies import AdminUser
@@ -10,12 +11,16 @@ from app.database import database_enabled, get_db
 from app.family_tree_store import FamilyTreeNotFoundError
 from app.pipeline.models import PipelineStepId
 from app.pipeline.schemas import (
+    PipelineContextResponse,
     PipelineResponse,
+    PipelineResyncRequest,
     PipelineRunAllResponse,
     PipelineSkipRequest,
+    PipelineStepDetailResponse,
     PipelineStepResponse,
+    PipelineStepUpdateRequest,
 )
-from app.pipeline.service import PipelineService
+from app.pipeline.service import PipelineConflictError, PipelineService
 
 
 def require_pipeline_database() -> None:
@@ -35,25 +40,32 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
     def get_service(db: Session = Depends(get_db)) -> PipelineService:
         return PipelineService(db, get_tree=get_tree)
 
-    def _to_response(family_tree_id: str, steps) -> PipelineResponse:
+    def _serialize_step(item) -> PipelineStepResponse:
+        return PipelineStepResponse(
+            step_id=item.step_id.value,
+            status=item.status.value,
+            skipped_reason=item.skipped_reason,
+            input_ref=item.input_ref,
+            output_ref=item.output_ref,
+            content_hash=item.content_hash,
+            error_message=item.error_message,
+            manual_override=bool(item.manual_override),
+            admin_note=item.admin_note,
+            started_at=item.started_at,
+            finished_at=item.finished_at,
+            updated_at=item.updated_at,
+            document_id=item.document_id,
+        )
+
+    def _to_response(
+        family_tree_id: str,
+        steps,
+        context: PipelineContextResponse,
+    ) -> PipelineResponse:
         return PipelineResponse(
             family_tree_id=family_tree_id,
-            steps=[
-                PipelineStepResponse(
-                    step_id=item.step_id.value,
-                    status=item.status.value,
-                    skipped_reason=item.skipped_reason,
-                    input_ref=item.input_ref,
-                    output_ref=item.output_ref,
-                    content_hash=item.content_hash,
-                    error_message=item.error_message,
-                    started_at=item.started_at,
-                    finished_at=item.finished_at,
-                    updated_at=item.updated_at,
-                    document_id=item.document_id,
-                )
-                for item in steps
-            ],
+            context=context,
+            steps=[_serialize_step(item) for item in steps],
         )
 
     @router.get(
@@ -63,10 +75,89 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
     )
     def get_pipeline(tree_id: str, service: PipelineService = Depends(get_service)) -> PipelineResponse:
         try:
-            steps = service.get_pipeline(tree_id)
+            steps, context = service.get_pipeline(tree_id)
         except FamilyTreeNotFoundError as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
-        return _to_response(tree_id, steps)
+        return _to_response(tree_id, steps, context)
+
+    @router.get(
+        "/api/family-trees/{tree_id}/pipeline/{step_id}",
+        response_model=PipelineStepDetailResponse,
+        summary="Chi tiết một bước pipeline",
+    )
+    def get_pipeline_step(
+        tree_id: str,
+        step_id: str,
+        service: PipelineService = Depends(get_service),
+    ) -> PipelineStepDetailResponse:
+        try:
+            parsed_step = PipelineStepId(step_id)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=f"Invalid step_id: {step_id}") from exc
+        try:
+            item, artifact, context = service.get_step(tree_id, parsed_step)
+        except FamilyTreeNotFoundError as exc:
+            raise HTTPException(status_code=404, detail=str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=404, detail=str(exc)) from exc
+        base = _serialize_step(item)
+        return PipelineStepDetailResponse(
+            **base.model_dump(),
+            artifact=artifact,
+            context=context,
+        )
+
+    @router.patch(
+        "/api/family-trees/{tree_id}/pipeline/{step_id}",
+        response_model=PipelineStepResponse,
+        summary="Cập nhật metadata một bước pipeline",
+    )
+    def update_pipeline_step(
+        tree_id: str,
+        step_id: str,
+        req: PipelineStepUpdateRequest,
+        _: AdminUser,
+        service: PipelineService = Depends(get_service),
+    ) -> PipelineStepResponse:
+        try:
+            parsed_step = PipelineStepId(step_id)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=f"Invalid step_id: {step_id}") from exc
+        try:
+            item = service.update_step(tree_id, parsed_step, req)
+        except FamilyTreeNotFoundError as exc:
+            raise HTTPException(status_code=404, detail=str(exc)) from exc
+        except PipelineConflictError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+        except ValidationError as exc:
+            raise HTTPException(status_code=422, detail=exc.errors()) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        return _serialize_step(item)
+
+    @router.post(
+        "/api/family-trees/{tree_id}/pipeline/resync",
+        response_model=PipelineResponse,
+        summary="Đồng bộ lại pipeline từ trạng thái cây",
+    )
+    def resync_pipeline(
+        tree_id: str,
+        req: PipelineResyncRequest,
+        _: AdminUser,
+        service: PipelineService = Depends(get_service),
+    ) -> PipelineResponse:
+        parsed_step = None
+        if req.step_id:
+            try:
+                parsed_step = PipelineStepId(req.step_id)
+            except ValueError as exc:
+                raise HTTPException(status_code=400, detail=f"Invalid step_id: {req.step_id}") from exc
+        try:
+            steps = service.resync_pipeline(tree_id, step_id=parsed_step)
+            context = service.build_context(tree_id)
+        except FamilyTreeNotFoundError as exc:
+            raise HTTPException(status_code=404, detail=str(exc)) from exc
+        return _to_response(tree_id, steps, context)
 
     @router.post(
         "/api/family-trees/{tree_id}/pipeline/{step_id}/run",
@@ -89,19 +180,7 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
-        return PipelineStepResponse(
-            step_id=item.step_id.value,
-            status=item.status.value,
-            skipped_reason=item.skipped_reason,
-            input_ref=item.input_ref,
-            output_ref=item.output_ref,
-            content_hash=item.content_hash,
-            error_message=item.error_message,
-            started_at=item.started_at,
-            finished_at=item.finished_at,
-            updated_at=item.updated_at,
-            document_id=item.document_id,
-        )
+        return _serialize_step(item)
 
     @router.post(
         "/api/family-trees/{tree_id}/pipeline/{step_id}/skip",
@@ -125,19 +204,7 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
-        return PipelineStepResponse(
-            step_id=item.step_id.value,
-            status=item.status.value,
-            skipped_reason=item.skipped_reason,
-            input_ref=item.input_ref,
-            output_ref=item.output_ref,
-            content_hash=item.content_hash,
-            error_message=item.error_message,
-            started_at=item.started_at,
-            finished_at=item.finished_at,
-            updated_at=item.updated_at,
-            document_id=item.document_id,
-        )
+        return _serialize_step(item)
 
     @router.post(
         "/api/family-trees/{tree_id}/pipeline/run-all",

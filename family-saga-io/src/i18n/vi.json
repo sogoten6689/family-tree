@@ -3,7 +3,10 @@
     "appName": "HCMUS Family Tree",
     "backHome": "Trang chủ",
     "yes": "Có",
-    "no": "Không"
+    "no": "Không",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "refresh": "Làm mới"
   },
   "nav": {
     "guide": "Hướng dẫn",
@@ -370,6 +373,71 @@
       "public": "Public",
       "user": "User",
       "admin": "Admin"
+    }
+  },
+  "pipeline": {
+    "tab": "Pipeline",
+    "title": "Pipeline số hóa gia phả",
+    "desc": "7 bước số hóa: tên → ảnh Hán-Nôm → OCR → ký tự Hán → quốc ngữ → cô đọng → cây/văn bản. Mỗi bước có thể bỏ qua.",
+    "detail": "Chi tiết",
+    "edit": "Sửa",
+    "artifact": "Artifact",
+    "outputRef": "Kết quả",
+    "skipReason": "Lý do bỏ qua",
+    "runStep": "Chạy",
+    "retryStep": "Thử lại",
+    "skipStep": "Bỏ qua",
+    "runAll": "Chạy tất cả",
+    "runSuccess": "Đã chạy bước pipeline.",
+    "skipSuccess": "Đã bỏ qua bước.",
+    "runAllSuccess": "Chạy xong: {{ran}} bước, bỏ qua {{skipped}}.",
+    "resyncAll": "Đồng bộ lại từ cây",
+    "resyncStep": "Đồng bộ lại bước này",
+    "resyncSuccess": "Đã đồng bộ lại pipeline từ cây.",
+    "resyncStepSuccess": "Đã đồng bộ lại bước này.",
+    "resyncError": "Không đồng bộ được",
+    "updateSuccess": "Đã cập nhật bước pipeline.",
+    "updateError": "Không cập nhật được",
+    "detailLoadError": "Không tải được chi tiết step",
+    "manualOverride": "Chỉnh tay",
+    "sourceType": "Nguồn",
+    "treeName": "Tên",
+    "openSource": "Mở nguồn",
+    "nodeCount": "{{count}} node",
+    "noArtifact": "Chưa có artifact.",
+    "viewFull": "Xem / tải file",
+    "editStepTitle": "Sửa bước: {{step}}",
+    "skippedReasonRequired": "Chọn lý do bỏ qua",
+    "outputBlocked": "Chạy bước Cô đọng trước hoặc bỏ qua bước đó.",
+    "fields": {
+      "status": "Trạng thái",
+      "skippedReason": "Lý do bỏ qua",
+      "inputRef": "Input ref",
+      "outputRef": "Output ref",
+      "documentId": "Document ID",
+      "contentHash": "Content hash",
+      "errorMessage": "Thông báo lỗi",
+      "adminNote": "Ghi chú admin"
+    },
+    "timestamps": {
+      "started": "Bắt đầu",
+      "finished": "Kết thúc",
+      "updated": "Cập nhật"
+    },
+    "status": {
+      "pending": "Chờ",
+      "running": "Đang chạy",
+      "done": "Xong",
+      "skipped": "Bỏ qua",
+      "error": "Lỗi"
+    },
+    "cta": {
+      "viewTree": "Xem cây gia phả",
+      "uploadImages": "Kho tư liệu — upload ảnh",
+      "openDocument": "Mở tài liệu & Phiên âm",
+      "addDocument": "Thêm tài liệu",
+      "distilledPending": "Bước cô đọng chưa triển khai tự động.",
+      "viewVisual": "Xem sơ đồ (Visual)"
     }
   }
 }

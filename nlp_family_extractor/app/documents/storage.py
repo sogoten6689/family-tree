@@ -127,6 +127,23 @@ class ObjectStorage:
         except (ClientError, BotoCoreError) as exc:
             raise ObjectStorageError(f"Cannot generate presigned URL: {exc}") from exc
 
+    def read_file_head(self, file_key: str, *, max_bytes: int = 8192) -> bytes:
+        if not self.config.enabled:
+            raise ObjectStorageError("Object storage is not configured.")
+
+        try:
+            response = self.internal_client.get_object(
+                Bucket=self.config.bucket,
+                Key=file_key,
+                Range=f"bytes=0-{max(0, max_bytes - 1)}",
+            )
+            body = response.get("Body")
+            if body is None:
+                return b""
+            return body.read(max_bytes)
+        except (ClientError, BotoCoreError) as exc:
+            raise ObjectStorageError(f"Read failed: {exc}") from exc
+
     def delete_file(self, file_key: str) -> None:
         if not self.config.enabled:
             raise ObjectStorageError("Object storage is not configured.")

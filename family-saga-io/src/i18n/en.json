@@ -3,7 +3,10 @@
     "appName": "HCMUS Family Tree",
     "backHome": "Home",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "save": "Save",
+    "cancel": "Cancel",
+    "refresh": "Refresh"
   },
   "nav": {
     "guide": "Guide",
@@ -370,6 +373,71 @@
       "public": "Public",
       "user": "User",
       "admin": "Admin"
+    }
+  },
+  "pipeline": {
+    "tab": "Pipeline",
+    "title": "Genealogy digitization pipeline",
+    "desc": "7 steps: name → Hán-Nôm images → OCR → Han characters → Vietnamese text → distilled → tree/output. Each step can be skipped.",
+    "detail": "Details",
+    "edit": "Edit",
+    "artifact": "Artifact",
+    "outputRef": "Output",
+    "skipReason": "Skip reason",
+    "runStep": "Run",
+    "retryStep": "Retry",
+    "skipStep": "Skip",
+    "runAll": "Run all",
+    "runSuccess": "Pipeline step completed.",
+    "skipSuccess": "Step skipped.",
+    "runAllSuccess": "Finished: {{ran}} ran, {{skipped}} skipped.",
+    "resyncAll": "Resync from tree",
+    "resyncStep": "Resync this step",
+    "resyncSuccess": "Pipeline resynced from tree state.",
+    "resyncStepSuccess": "Step resynced.",
+    "resyncError": "Resync failed",
+    "updateSuccess": "Pipeline step updated.",
+    "updateError": "Update failed",
+    "detailLoadError": "Could not load step details",
+    "manualOverride": "Manual",
+    "sourceType": "Source",
+    "treeName": "Name",
+    "openSource": "Open source",
+    "nodeCount": "{{count}} nodes",
+    "noArtifact": "No artifact yet.",
+    "viewFull": "View / download file",
+    "editStepTitle": "Edit step: {{step}}",
+    "skippedReasonRequired": "Select a skip reason",
+    "outputBlocked": "Complete or skip the distilled step first.",
+    "fields": {
+      "status": "Status",
+      "skippedReason": "Skip reason",
+      "inputRef": "Input ref",
+      "outputRef": "Output ref",
+      "documentId": "Document ID",
+      "contentHash": "Content hash",
+      "errorMessage": "Error message",
+      "adminNote": "Admin note"
+    },
+    "timestamps": {
+      "started": "Started",
+      "finished": "Finished",
+      "updated": "Updated"
+    },
+    "status": {
+      "pending": "Pending",
+      "running": "Running",
+      "done": "Done",
+      "skipped": "Skipped",
+      "error": "Error"
+    },
+    "cta": {
+      "viewTree": "View family tree",
+      "uploadImages": "Documents — upload images",
+      "openDocument": "Open document & transliterate",
+      "addDocument": "Add document",
+      "distilledPending": "Distilled step is not automated yet.",
+      "viewVisual": "View diagram (Visual)"
     }
   }
 }
