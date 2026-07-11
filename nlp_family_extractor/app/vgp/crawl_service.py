@@ -242,6 +242,8 @@ class VgpCrawlService:
             pha_ky_hash=pha_ky_hash,
             has_source_document=has_documents,
         )
+        # Commit tree + vgp_crawl so DocumentService / family_tree_store can see the row.
+        self.db.commit()
 
         document_results: Dict[str, Any] = {}
         if options.attach_documents and self.storage is not None and self.get_tree is not None:
@@ -258,11 +260,9 @@ class VgpCrawlService:
             pipeline = PipelineService(
                 self.db,
                 get_tree=self.get_tree,
-                storage=self.storage,
             )
             pipeline.sync_from_tree_state(family_tree_id)
-
-        self.db.flush()
+            self.db.commit()
 
         return {
             "tree_id": tree_id,
@@ -284,7 +284,11 @@ class VgpCrawlService:
         client: httpx.Client,
         force: bool,
     ) -> Dict[str, Any]:
-        service = DocumentService(self.db, self.storage, get_tree=self.get_tree)
+        service = DocumentService(
+            DocumentRepository(self.db),
+            self.storage,
+            get_tree=self.get_tree,
+        )
         results: Dict[str, Any] = {}
 
         if pha_ky_text:

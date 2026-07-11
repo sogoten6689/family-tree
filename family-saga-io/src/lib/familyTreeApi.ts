@@ -167,6 +167,7 @@ export interface VietnamGiaPhaCrawlSyncResult {
   text_attached: number;
   text_attach_skipped: number;
   text_attach_errors: number;
+  error_details?: Array<Record<string, unknown>>;
 }
 
 export async function crawlAndSyncVietnamGiaPha(payload: {

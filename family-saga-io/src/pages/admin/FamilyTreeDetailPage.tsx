@@ -33,6 +33,7 @@ import { useTranslation } from "react-i18next";
 
 import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
 import { DeleteFamilyTreeModal } from "@/components/family-tree/DeleteFamilyTreeModal";
+import { FamilyTreeAncestralSidebar } from "@/components/family-tree/FamilyTreeAncestralSidebar";
 import { FamilyTreeMembersTable } from "@/components/family-tree/FamilyTreeMembersTable";
 import { GenealogyPipelineSteps } from "@/components/pipeline/GenealogyPipelineSteps";
 import { FamilyTreeDocumentsPanel } from "@/components/documents/FamilyTreeDocumentsPanel";

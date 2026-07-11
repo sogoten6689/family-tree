@@ -100,6 +100,14 @@ def _safe_text(value: Any, fallback: str) -> str:
     return fallback
 
 
+def _infer_gender_from_name(name: str) -> str:
+    lowered = name.lower()
+    female_hints = (" thị ", " thị.", "bà ", "vợ", "chị ", "cô ", "dì ", "mrs", "ms ")
+    if any(hint in f" {lowered} " for hint in female_hints):
+        return "female"
+    return "male"
+
+
 def _normalize_nodes(raw_nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     inferred_parent_by_child = _infer_parent_by_child(raw_nodes)
     normalized: List[Dict[str, Any]] = []
@@ -123,6 +131,8 @@ def _normalize_nodes(raw_nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         gender = node.get("gender")
         if gender in ("male", "female"):
             item["gender"] = gender
+        else:
+            item["gender"] = _infer_gender_from_name(item["name"])
 
         generation = node.get("generation")
         order = node.get("order_in_generation")

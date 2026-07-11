@@ -294,6 +294,7 @@ class VietnamGiaPhaCrawlSyncResponse(BaseModel):
     text_attached: int
     text_attach_skipped: int
     text_attach_errors: int
+    error_details: List[Dict[str, Any]] = Field(default_factory=list)
 
 
 class NomFoundationCrawlRequest(BaseModel):
@@ -1025,6 +1026,7 @@ def _crawl_and_sync_vietnamgiapha_v2(req: VietnamGiaPhaCrawlSyncRequest) -> Viet
         text_attached=documents_attached,
         text_attach_skipped=documents_skipped,
         text_attach_errors=document_errors,
+        error_details=summary.get("errors", []),
     )
 
 

@@ -280,6 +280,19 @@ const VietnamGiaPhaCrawlPage = () => {
               <Descriptions.Item label="Thư mục output">{result.output_dir}</Descriptions.Item>
             ) : null}
           </Descriptions>
+          {result.error_details && result.error_details.length > 0 && (
+            <Alert
+              className="mt-4"
+              type="error"
+              showIcon
+              message="Chi tiết lỗi"
+              description={
+                <pre className="text-xs whitespace-pre-wrap m-0">
+                  {JSON.stringify(result.error_details, null, 2)}
+                </pre>
+              }
+            />
+          )}
         </Card>
       )}
 
