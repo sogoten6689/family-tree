@@ -23,6 +23,8 @@ from app.documents.storage import ObjectStorage
 from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
+from app.vgp.bootstrap import bootstrap_vgp
+from app.vgp.crawl_service import VgpCrawlOptions, VgpCrawlService
 from app.workspace.bootstrap import bootstrap_workspace
 from app.workspace.router import create_workspace_router
 from app.domains.extraction.extractor import FamilyExtractor
@@ -265,16 +267,22 @@ class VietnamGiaPhaCrawlSyncRequest(BaseModel):
     start_id: int = Field(default=100, ge=1, le=100000)
     end_id: int = Field(default=200, ge=1, le=100000)
     delay_seconds: float = Field(default=0.2, ge=0.0, le=5.0)
+    crawl_version: Literal["v1", "v2"] = Field(default="v2")
+    modules: List[Literal["giapha", "pha_ky", "pha_he", "images"]] = Field(
+        default_factory=lambda: ["giapha", "pha_ky", "pha_he", "images"]
+    )
     sync_db: bool = Field(default=True)
     skip_unchanged: bool = Field(default=True)
-    export_text: bool = Field(default=True)
-    attach_documents: bool = Field(default=False)
+    sync_pipeline: bool = Field(default=True)
+    export_text: bool = Field(default=False, description="V1 only — ghi text/ local")
+    attach_documents: bool = Field(default=True)
 
 
 class VietnamGiaPhaCrawlSyncResponse(BaseModel):
+    crawl_version: str
     start_id: int
     end_id: int
-    output_dir: str
+    output_dir: Optional[str] = None
     crawl_success: int
     crawl_skipped: int
     crawl_skipped_unchanged: int
@@ -350,6 +358,7 @@ async def _lifespan(_: FastAPI):
         bootstrap_auth()
         bootstrap_documents()
         bootstrap_pipeline()
+        bootstrap_vgp()
         bootstrap_workspace()
     yield
 
@@ -779,6 +788,30 @@ def replace_family_tree_document(tree_id: str, req: FamilyTreeReplaceRequest, _:
     summary="Xóa một cây gia phả",
 )
 def delete_family_tree(tree_id: str, _: AdminUser) -> FamilyTreeDeleteResponse:
+    if database_enabled():
+        from sqlalchemy.orm import Session
+
+        db_gen = get_db()
+        db: Session = next(db_gen)
+        storage = ObjectStorage.from_env()
+        try:
+            from app.family_tree_cleanup import delete_family_tree_related
+
+            delete_family_tree_related(
+                db,
+                tree_id,
+                storage if storage.config.enabled else None,
+            )
+            db.commit()
+        except Exception as exc:
+            db.rollback()
+            raise HTTPException(status_code=500, detail=f"Không xóa được dữ liệu liên quan: {exc}") from exc
+        finally:
+            try:
+                next(db_gen)
+            except StopIteration:
+                pass
+
     try:
         _family_tree_store.delete_tree(tree_id)
     except Exception as error:
@@ -912,6 +945,90 @@ def crawl_and_sync_vietnamgiapha(
     if req.start_id > req.end_id:
         raise HTTPException(status_code=400, detail="start_id must be <= end_id")
 
+    if req.crawl_version == "v2":
+        return _crawl_and_sync_vietnamgiapha_v2(req)
+
+    return _crawl_and_sync_vietnamgiapha_v1(req)
+
+
+def _crawl_and_sync_vietnamgiapha_v2(req: VietnamGiaPhaCrawlSyncRequest) -> VietnamGiaPhaCrawlSyncResponse:
+    if not database_enabled():
+        raise HTTPException(status_code=503, detail="V2 crawl requires MySQL — thiết lập MYSQL_*.")
+
+    storage: Optional[ObjectStorage] = None
+    if req.attach_documents:
+        storage = ObjectStorage.from_env()
+        if not storage.config.enabled:
+            raise HTTPException(
+                status_code=503,
+                detail="attach_documents requires MinIO — thiết lập MINIO_*.",
+            )
+
+    from sqlalchemy.orm import Session
+
+    db_gen = get_db()
+    db: Session = next(db_gen)
+    try:
+        service = VgpCrawlService(
+            db=db,
+            storage=storage,
+            get_tree=_get_family_tree_document,
+        )
+        summary = service.crawl_range(
+            start_id=req.start_id,
+            end_id=req.end_id,
+            options=VgpCrawlOptions(
+                modules=set(req.modules),
+                skip_unchanged=req.skip_unchanged,
+                sync_pipeline=req.sync_pipeline,
+                attach_documents=req.attach_documents,
+                delay_seconds=req.delay_seconds,
+            ),
+        )
+        db.commit()
+    except HTTPException:
+        db.rollback()
+        raise
+    except Exception as exc:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"V2 crawl failed: {exc}") from exc
+    finally:
+        try:
+            next(db_gen)
+        except StopIteration:
+            pass
+
+    documents_attached = 0
+    documents_skipped = 0
+    document_errors = len(summary.get("document_errors", []))
+    for item in summary.get("upserted", []):
+        docs = item.get("documents") or {}
+        for doc_result in docs.values():
+            if doc_result.get("attached"):
+                documents_attached += 1
+            else:
+                documents_skipped += 1
+
+    return VietnamGiaPhaCrawlSyncResponse(
+        crawl_version="v2",
+        start_id=req.start_id,
+        end_id=req.end_id,
+        output_dir=None,
+        crawl_success=len(summary.get("upserted", [])),
+        crawl_skipped=len(summary.get("skipped_empty", [])),
+        crawl_skipped_unchanged=len(summary.get("skipped_unchanged", [])),
+        crawl_errors=len(summary.get("errors", [])),
+        text_built=0,
+        sync_upserted=len(summary.get("upserted", [])),
+        sync_skipped=len(summary.get("skipped_unchanged", [])) + len(summary.get("skipped_empty", [])),
+        sync_errors=len(summary.get("errors", [])),
+        text_attached=documents_attached,
+        text_attach_skipped=documents_skipped,
+        text_attach_errors=document_errors,
+    )
+
+
+def _crawl_and_sync_vietnamgiapha_v1(req: VietnamGiaPhaCrawlSyncRequest) -> VietnamGiaPhaCrawlSyncResponse:
     output_dir = Path(__file__).resolve().parent / "data" / "vietnamgiapha"
 
     try:
@@ -1014,6 +1131,7 @@ def crawl_and_sync_vietnamgiapha(
                     pass
 
     return VietnamGiaPhaCrawlSyncResponse(
+        crawl_version="v1",
         start_id=req.start_id,
         end_id=req.end_id,
         output_dir=str(output_dir),

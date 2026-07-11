@@ -100,6 +100,8 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
         except ValueError as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"Pipeline detail failed: {exc}") from exc
         base = _serialize_step(item)
         return PipelineStepDetailResponse(
             **base.model_dump(),

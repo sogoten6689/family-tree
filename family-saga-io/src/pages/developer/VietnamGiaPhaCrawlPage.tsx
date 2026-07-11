@@ -43,8 +43,8 @@ const DEFAULT_VALUES: CrawlFormValues = {
   delaySeconds: 0.2,
   syncDb: true,
   skipUnchanged: true,
-  exportText: true,
-  attachDocuments: false,
+  exportText: false,
+  attachDocuments: true,
 };
 
 const baseUrl = getBackendBaseUrl() || "https://giapha.kimtudien.com.vn";
@@ -82,8 +82,10 @@ const VietnamGiaPhaCrawlPage = () => {
         start_id: values.startId,
         end_id: values.endId,
         delay_seconds: values.delaySeconds,
+        crawl_version: "v2",
         sync_db: values.syncDb,
         skip_unchanged: values.skipUnchanged,
+        sync_pipeline: true,
         export_text: values.exportText,
         attach_documents: values.attachDocuments,
       });
@@ -270,10 +272,13 @@ const VietnamGiaPhaCrawlPage = () => {
             </Col>
           </Row>
           <Descriptions bordered column={1} size="small">
+            <Descriptions.Item label="Phiên bản crawl">{result.crawl_version}</Descriptions.Item>
             <Descriptions.Item label="Khoảng ID">
               {result.start_id} – {result.end_id}
             </Descriptions.Item>
-            <Descriptions.Item label="Thư mục output">{result.output_dir}</Descriptions.Item>
+            {result.output_dir ? (
+              <Descriptions.Item label="Thư mục output">{result.output_dir}</Descriptions.Item>
+            ) : null}
           </Descriptions>
         </Card>
       )}

@@ -32,7 +32,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
-import { FamilyTreeAncestralSidebar } from "@/components/family-tree/FamilyTreeAncestralSidebar";
+import { DeleteFamilyTreeModal } from "@/components/family-tree/DeleteFamilyTreeModal";
 import { FamilyTreeMembersTable } from "@/components/family-tree/FamilyTreeMembersTable";
 import { GenealogyPipelineSteps } from "@/components/pipeline/GenealogyPipelineSteps";
 import { FamilyTreeDocumentsPanel } from "@/components/documents/FamilyTreeDocumentsPanel";
@@ -95,6 +95,8 @@ const FamilyTreeDetailPage = () => {
   const [jsonEditorOpen, setJsonEditorOpen] = useState(false);
   const [savingJson, setSavingJson] = useState(false);
   const [jsonDraft, setJsonDraft] = useState("");
+  const [deleteTreeOpen, setDeleteTreeOpen] = useState(false);
+  const [deletingTree, setDeletingTree] = useState(false);
 
   const [treeForm] = Form.useForm<TreeFormValues>();
   const [memberForm] = Form.useForm<MemberFormValues>();
@@ -159,21 +161,18 @@ const FamilyTreeDetailPage = () => {
     }
   };
 
-  const handleDeleteTree = () => {
+  const handleDeleteTree = async () => {
     if (!tree) return;
-    Modal.confirm({
-      title: t("familyTree.deleteTreeTitle", { defaultValue: "Xóa cây gia phả" }),
-      content: t("familyTree.deleteTreeConfirm", {
-        defaultValue: "Bạn có chắc muốn xóa cây này không? Hành động này không thể hoàn tác.",
-      }),
-      okText: t("familyTree.delete", { defaultValue: "Xóa" }),
-      okButtonProps: { danger: true },
-      cancelText: t("familyTree.cancel", { defaultValue: "Hủy" }),
-      onOk: async () => {
-        await deleteFamilyTree(tree.id);
-        navigate("/admin/gia-pha");
-      },
-    });
+    setDeletingTree(true);
+    try {
+      await deleteFamilyTree(tree.id);
+      navigate("/admin/gia-pha");
+    } catch (error) {
+      setPageError(error instanceof Error ? error.message : "Không thể xóa cây");
+    } finally {
+      setDeletingTree(false);
+      setDeleteTreeOpen(false);
+    }
   };
 
   const reloadTree = async () => {
@@ -401,7 +400,7 @@ const FamilyTreeDetailPage = () => {
           </Button>
           <Button onClick={openJsonViewer}>{t("familyTree.viewJson", { defaultValue: "JSON" })}</Button>
           <Button onClick={openJsonEditor}>{t("familyTree.editJson", { defaultValue: "Sửa JSON" })}</Button>
-          <Button danger icon={<DeleteOutlined />} onClick={handleDeleteTree}>
+          <Button danger icon={<DeleteOutlined />} onClick={() => setDeleteTreeOpen(true)}>
             {t("familyTree.deleteTree", { defaultValue: "Xóa" })}
           </Button>
           <Button type="primary" icon={<PlusOutlined />} onClick={openCreateMemberModal}>
@@ -869,6 +868,17 @@ const FamilyTreeDetailPage = () => {
           </>
         )}
       </Modal>
+
+      {tree && (
+        <DeleteFamilyTreeModal
+          open={deleteTreeOpen}
+          treeId={tree.id}
+          treeName={tree.name}
+          loading={deletingTree}
+          onCancel={() => setDeleteTreeOpen(false)}
+          onConfirm={handleDeleteTree}
+        />
+      )}
     </div>
   );
 };

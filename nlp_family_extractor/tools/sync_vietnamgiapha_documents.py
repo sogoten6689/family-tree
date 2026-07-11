@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from io import BytesIO
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Callable
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -13,19 +13,49 @@ from app.documents.repository import DocumentRepository, DocumentService
 from app.documents.storage import ObjectStorage
 
 VGP_TEXT_MARKER = "vgp_text_export=1"
+VGP_PHA_KY_MARKER = "vgp_pha_ky=1"
+VGP_HINH_ANH_MARKER = "vgp_hinh_anh=1"
 
 
-def _find_vgp_text_document(repository: DocumentRepository, family_tree_id: str) -> Optional[Document]:
+def _find_vgp_document(
+    repository: DocumentRepository,
+    *,
+    family_tree_id: str,
+    marker: str,
+    doc_type: DocumentType = DocumentType.VAN_BAN,
+) -> Optional[Document]:
     stmt = (
         select(Document)
         .where(
             Document.family_tree_id == family_tree_id,
-            Document.type == DocumentType.VAN_BAN,
-            Document.description == VGP_TEXT_MARKER,
+            Document.type == doc_type,
+            Document.description == marker,
         )
         .limit(1)
     )
     return repository.db.scalar(stmt)
+
+
+def _upload_text_file(
+    *,
+    service: DocumentService,
+    document: Document,
+    filename: str,
+    text_content: str,
+) -> List[Any]:
+    file_bytes = text_content.encode("utf-8")
+    buffer = BytesIO(file_bytes)
+    return service.upload_files(
+        document.id,
+        [
+            (
+                filename,
+                "text/plain; charset=utf-8",
+                buffer,
+                len(file_bytes),
+            )
+        ],
+    )
 
 
 def attach_vgp_text_document(
@@ -44,8 +74,26 @@ def attach_vgp_text_document(
             "reason": "missing_full_text",
         }
 
+    text_content = full_text_path.read_text(encoding="utf-8")
+    return attach_vgp_text_content(
+        service=service,
+        family_tree_id=family_tree_id,
+        lineage_name=lineage_name,
+        text_content=text_content,
+        force=force,
+    )
+
+
+def attach_vgp_text_content(
+    *,
+    service: DocumentService,
+    family_tree_id: str,
+    lineage_name: str,
+    text_content: str,
+    force: bool = False,
+) -> Dict[str, Any]:
     repository = service.repository
-    existing = _find_vgp_text_document(repository, family_tree_id)
+    existing = _find_vgp_document(repository, family_tree_id=family_tree_id, marker=VGP_TEXT_MARKER)
     if existing and existing.files and not force:
         return {
             "family_tree_id": family_tree_id,
@@ -65,20 +113,121 @@ def attach_vgp_text_document(
     else:
         document = existing
 
-    file_bytes = full_text_path.read_bytes()
-    buffer = BytesIO(file_bytes)
-    created_files = service.upload_files(
-        document.id,
-        [
-            (
-                "full_text.txt",
-                "text/plain; charset=utf-8",
-                buffer,
-                len(file_bytes),
-            )
-        ],
+    created_files = _upload_text_file(
+        service=service,
+        document=document,
+        filename="full_text.txt",
+        text_content=text_content,
     )
 
+    return {
+        "family_tree_id": family_tree_id,
+        "attached": True,
+        "document_id": document.id,
+        "file_count": len(created_files),
+        "file_names": [item.file_name for item in created_files],
+    }
+
+
+def attach_vgp_pha_ky_document(
+    *,
+    service: DocumentService,
+    family_tree_id: str,
+    lineage_name: str,
+    text_content: str,
+    force: bool = False,
+) -> Dict[str, Any]:
+    if not text_content.strip():
+        return {
+            "family_tree_id": family_tree_id,
+            "attached": False,
+            "reason": "empty_pha_ky",
+        }
+
+    repository = service.repository
+    existing = _find_vgp_document(repository, family_tree_id=family_tree_id, marker=VGP_PHA_KY_MARKER)
+    if existing and existing.files and not force:
+        return {
+            "family_tree_id": family_tree_id,
+            "attached": False,
+            "reason": "already_attached",
+            "document_id": existing.id,
+        }
+
+    title = f"VGP phả ký — {lineage_name or family_tree_id}"
+    if existing is None:
+        document = repository.create(
+            family_tree_id=family_tree_id,
+            title=title,
+            description=VGP_PHA_KY_MARKER,
+            doc_type=DocumentType.VAN_BAN,
+        )
+    else:
+        document = existing
+
+    created_files = _upload_text_file(
+        service=service,
+        document=document,
+        filename="pha_ky_gia_su.txt",
+        text_content=text_content,
+    )
+
+    return {
+        "family_tree_id": family_tree_id,
+        "attached": True,
+        "document_id": document.id,
+        "file_count": len(created_files),
+        "file_names": [item.file_name for item in created_files],
+        "char_count": len(text_content),
+    }
+
+
+def attach_vgp_images_document(
+    *,
+    service: DocumentService,
+    family_tree_id: str,
+    lineage_name: str,
+    files: List[Tuple[str, bytes, str]],
+    force: bool = False,
+) -> Dict[str, Any]:
+    if not files:
+        return {
+            "family_tree_id": family_tree_id,
+            "attached": False,
+            "reason": "no_images",
+        }
+
+    repository = service.repository
+    existing = _find_vgp_document(
+        repository,
+        family_tree_id=family_tree_id,
+        marker=VGP_HINH_ANH_MARKER,
+        doc_type=DocumentType.HINH_ANH,
+    )
+    if existing and existing.files and not force:
+        return {
+            "family_tree_id": family_tree_id,
+            "attached": False,
+            "reason": "already_attached",
+            "document_id": existing.id,
+        }
+
+    title = f"VGP hình ảnh — {lineage_name or family_tree_id}"
+    if existing is None:
+        document = repository.create(
+            family_tree_id=family_tree_id,
+            title=title,
+            description=VGP_HINH_ANH_MARKER,
+            doc_type=DocumentType.HINH_ANH,
+        )
+    else:
+        document = existing
+
+    upload_payload = []
+    for filename, content, mime in files:
+        upload_payload.append((filename, mime, BytesIO(content), len(content)))
+
+    created_files = service.upload_files(document.id, upload_payload)
     return {
         "family_tree_id": family_tree_id,
         "attached": True,

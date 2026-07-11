@@ -152,9 +152,10 @@ export async function deleteLink(
 }
 
 export interface VietnamGiaPhaCrawlSyncResult {
+  crawl_version: string;
   start_id: number;
   end_id: number;
-  output_dir: string;
+  output_dir?: string | null;
   crawl_success: number;
   crawl_skipped: number;
   crawl_skipped_unchanged: number;
@@ -172,8 +173,10 @@ export async function crawlAndSyncVietnamGiaPha(payload: {
   start_id: number;
   end_id: number;
   delay_seconds?: number;
+  crawl_version?: "v1" | "v2";
   sync_db: boolean;
   skip_unchanged?: boolean;
+  sync_pipeline?: boolean;
   export_text?: boolean;
   attach_documents?: boolean;
 }): Promise<VietnamGiaPhaCrawlSyncResult> {

@@ -21,6 +21,7 @@ import {
 } from "antd";
 import {
   BranchesOutlined,
+  DeleteOutlined,
   DownloadOutlined,
   EditOutlined,
   EyeOutlined,
@@ -35,10 +36,12 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import {
   createFamilyTree,
+  deleteFamilyTree,
   listFamilyTrees,
   updateFamilyTree,
   type FamilyTreeSummary,
 } from "@/lib/familyTreeApi";
+import { DeleteFamilyTreeModal } from "@/components/family-tree/DeleteFamilyTreeModal";
 import { formatTreeDate, getFamilyTreeExternalUrl } from "@/lib/familyTreeUtils";
 
 type TreeFormValues = {
@@ -62,6 +65,8 @@ const FamilyTreeManagerPage = () => {
   const [treeModalOpen, setTreeModalOpen] = useState(false);
   const [editingTree, setEditingTree] = useState<FamilyTreeSummary | null>(null);
   const [treeSearchKeyword, setTreeSearchKeyword] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState<FamilyTreeSummary | null>(null);
+  const [deletingTree, setDeletingTree] = useState(false);
 
   const [treeForm] = Form.useForm<TreeFormValues>();
 
@@ -132,8 +137,33 @@ const FamilyTreeManagerPage = () => {
         icon: <FileOutlined />,
         onClick: () => navigate(`/admin/gia-pha/${record.id}?tab=documents`),
       },
+      {
+        type: 'divider' as const,
+      },
+      {
+        key: 'delete',
+        label: t("familyTree.delete", { defaultValue: "Xóa" }),
+        icon: <DeleteOutlined />,
+        danger: true,
+        onClick: () => setDeleteTarget(record),
+      },
     ],
   });
+
+  const handleDeleteTree = async () => {
+    if (!deleteTarget) return;
+    setDeletingTree(true);
+    try {
+      await deleteFamilyTree(deleteTarget.id);
+      toast.success(t("familyTree.deleteTreeSuccess", { defaultValue: "Đã xóa gia phả." }));
+      setDeleteTarget(null);
+      await loadTrees();
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Không thể xóa gia phả");
+    } finally {
+      setDeletingTree(false);
+    }
+  };
 
   const openEditTreeFromList = (record: FamilyTreeSummary) => {
     setEditingTree(record);
@@ -489,6 +519,15 @@ const FamilyTreeManagerPage = () => {
           </div>
         </Form>
       </Modal>
+
+      <DeleteFamilyTreeModal
+        open={deleteTarget !== null}
+        treeId={deleteTarget?.id ?? ""}
+        treeName={deleteTarget?.name}
+        loading={deletingTree}
+        onCancel={() => setDeleteTarget(null)}
+        onConfirm={handleDeleteTree}
+      />
     </div>
   );
 };

@@ -22,7 +22,7 @@ from app.pipeline.schemas import (
     PipelineContextResponse,
     PipelineStepUpdateRequest,
 )
-from tools.sync_vietnamgiapha_documents import VGP_TEXT_MARKER
+from tools.sync_vietnamgiapha_documents import VGP_PHA_KY_MARKER, VGP_TEXT_MARKER
 
 PREVIEW_MAX_LEN = 200
 DOCUMENT_REF_PATTERN = re.compile(r"^documents:(\d+)$")
@@ -41,6 +41,12 @@ def _now() -> datetime:
 
 def _hash_ref(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def _enum_value(value: object) -> str:
+    if hasattr(value, "value"):
+        return str(getattr(value, "value"))
+    return str(value)
 
 
 class PipelineService:
@@ -125,12 +131,21 @@ class PipelineService:
             ),
             None,
         )
+        vgp_pha_ky_doc = next(
+            (
+                doc
+                for doc in documents
+                if doc.type == DocumentType.VAN_BAN and doc.description == VGP_PHA_KY_MARKER
+            ),
+            None,
+        )
         han_nom_docs = [doc for doc in documents if doc.type in {DocumentType.HAN_NOM, DocumentType.HINH_ANH}]
         ocr_result_docs = [doc for doc in documents if doc.type == DocumentType.KET_QUA_VAN_BAN]
         quoc_ngu_docs = [
             doc
             for doc in documents
-            if doc.type == DocumentType.VAN_BAN and doc.description != VGP_TEXT_MARKER
+            if doc.type == DocumentType.VAN_BAN
+            and doc.description not in {VGP_TEXT_MARKER, VGP_PHA_KY_MARKER}
         ]
 
         for step in steps:
@@ -185,8 +200,8 @@ class PipelineService:
                     step.skipped_reason = "vgp_entry"
 
             elif step.step_id == PipelineStepId.QUOC_NGU:
-                if vgp_text_doc or quoc_ngu_docs:
-                    target = vgp_text_doc or quoc_ngu_docs[0]
+                if vgp_pha_ky_doc or vgp_text_doc or quoc_ngu_docs:
+                    target = vgp_pha_ky_doc or vgp_text_doc or quoc_ngu_docs[0]
                     ref = f"documents:{target.id}"
                     step.status = PipelineStepStatus.DONE
                     step.output_ref = ref
@@ -357,12 +372,24 @@ class PipelineService:
                 target.content_hash = _hash_ref(ref)
             elif step_id == PipelineStepId.QUOC_NGU:
                 documents = self._tree_documents(family_tree_id)
-                text_doc = next(
+                vgp_pha_ky_doc = next(
                     (
                         doc
                         for doc in documents
-                        if doc.type == DocumentType.VAN_BAN
+                        if doc.type == DocumentType.VAN_BAN and doc.description == VGP_PHA_KY_MARKER
                     ),
+                    None,
+                )
+                vgp_text_doc = next(
+                    (
+                        doc
+                        for doc in documents
+                        if doc.type == DocumentType.VAN_BAN and doc.description == VGP_TEXT_MARKER
+                    ),
+                    None,
+                )
+                text_doc = vgp_pha_ky_doc or vgp_text_doc or next(
+                    (doc for doc in documents if doc.type == DocumentType.VAN_BAN),
                     None,
                 )
                 if text_doc is None:
@@ -434,11 +461,17 @@ class PipelineService:
         return normalized[: PREVIEW_MAX_LEN - 1] + "…"
 
     def _artifact_from_document(self, document_id: int) -> PipelineArtifactResponse:
-        document = self.db.get(
-            Document,
-            document_id,
-            options=(selectinload(Document.files),),
-        )
+        try:
+            document = self.db.get(
+                Document,
+                document_id,
+                options=(selectinload(Document.files),),
+            )
+        except Exception as exc:
+            return PipelineArtifactResponse(
+                kind="none",
+                message=f"Không đọc được tài liệu #{document_id}: {exc}",
+            )
         if document is None:
             return PipelineArtifactResponse(kind="none", message=f"Không tìm thấy tài liệu #{document_id}.")
 
@@ -464,13 +497,16 @@ class PipelineService:
                 )
             )
             if preview_text is None and self._is_text_file(file_item.file_type, file_item.file_name):
-                preview_text = self._read_text_preview(storage, file_item.file_key)
+                try:
+                    preview_text = self._read_text_preview(storage, file_item.file_key)
+                except ObjectStorageError:
+                    preview_text = None
 
         return PipelineArtifactResponse(
             kind="document",
             document_id=document.id,
             title=document.title,
-            type=document.type.value,
+            type=_enum_value(document.type),
             preview_text=preview_text,
             files=artifact_files,
         )

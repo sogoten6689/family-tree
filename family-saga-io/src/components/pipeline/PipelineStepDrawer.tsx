@@ -208,9 +208,9 @@ export function PipelineStepDrawer({ treeId, stepId, open, context, onClose, onU
   };
 
   const imageFiles =
-    detail?.artifact.files.filter((file) => isImageFile(file.mime_type, file.filename)) ?? [];
+    (detail?.artifact?.files ?? []).filter((file) => isImageFile(file.mime_type, file.filename));
   const textFiles =
-    detail?.artifact.files.filter((file) => !isImageFile(file.mime_type, file.filename)) ?? [];
+    (detail?.artifact?.files ?? []).filter((file) => !isImageFile(file.mime_type, file.filename));
 
   return (
     <>
@@ -242,6 +242,14 @@ export function PipelineStepDrawer({ treeId, stepId, open, context, onClose, onU
           <div className="flex justify-center py-12">
             <Spin />
           </div>
+        )}
+
+        {!loading && !detail && stepId && (
+          <Alert
+            type="error"
+            showIcon
+            message={t("pipeline.detailLoadError", { defaultValue: "Không tải được chi tiết step" })}
+          />
         )}
 
         {!loading && detail && (
