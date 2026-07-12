@@ -98,7 +98,7 @@ const PublicLayout = () => {
   );
 
   return (
-    <Layout className="min-h-screen">
+    <Layout className="min-h-screen bg-background">
       <Header
         className="!px-4 md:!px-6 flex items-center justify-between shadow-sm sticky top-0 z-50 border-b border-border"
         style={{ height: 64 }}

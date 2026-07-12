@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Button, Card } from 'antd';
 import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTheme } from 'next-themes';
 import heroBg from '@/assets/hero-bg.jpg';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -13,6 +14,8 @@ const HomePage = () => {
   const location = useLocation();
   const { t } = useTranslation();
   const { isAuthenticated, isAdmin, logout } = useAuth();
+  const { resolvedTheme } = useTheme();
+  const footerToggleVariant = resolvedTheme === 'dark' ? 'default' : 'on-dark';
 
   useEffect(() => {
     if (location.hash) {
@@ -35,10 +38,10 @@ const HomePage = () => {
         <img src={heroBg} alt="Gia phả truyền thống" className="absolute inset-0 w-full h-full object-cover" />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center max-w-3xl px-4 sm:px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary-foreground mb-4 md:mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 md:mb-6 leading-tight">
             {t('home.heroTitle')}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/90 font-body mb-6 md:mb-8">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-body mb-6 md:mb-8">
             {t('home.heroSubtitle')}
           </p>
           <div className="flex gap-3 sm:gap-4 justify-center flex-wrap">
@@ -51,8 +54,16 @@ const HomePage = () => {
               {t('home.btnViewSample')}
             </Button>
             <Button
+              type="default"
               size="large"
-              className="!h-12 !px-8 !bg-primary-foreground !text-foreground !border-primary-foreground hover:!opacity-90"
+              className="hero-btn-solid-light !h-12 !px-8"
+              styles={{
+                root: {
+                  background: "#ffffff",
+                  borderColor: "#ffffff",
+                  color: "hsl(0, 0%, 9%)",
+                },
+              }}
               onClick={() => navigate(isAuthenticated ? '/user/document-reader' : '/login')}
             >
               {t('home.btnOpenDoc')}
@@ -60,7 +71,7 @@ const HomePage = () => {
             {isAdmin && (
               <Button
                 size="large"
-                className="!h-12 !px-6"
+                className="!h-12 !px-6 !bg-white/10 !text-white !border-white/60 hover:!bg-white/20"
                 onClick={() => navigate('/admin/gia-pha')}
               >
                 {t('home.btnManageTree', { defaultValue: 'Quản lý gia phả' })}
@@ -71,7 +82,7 @@ const HomePage = () => {
                 size="large"
                 ghost
                 icon={<LoginOutlined />}
-                className="!h-12 !px-6 !text-primary-foreground !border-primary-foreground hover:!text-primary-foreground hover:!border-primary-foreground"
+                className="!h-12 !px-6 !text-white !border-white hover:!text-white hover:!border-white"
                 onClick={() => navigate('/login')}
               >
                 {t('auth.loginBtn', { defaultValue: 'Đăng nhập' })}
@@ -81,7 +92,7 @@ const HomePage = () => {
                 size="large"
                 ghost
                 icon={<LogoutOutlined />}
-                className="!h-12 !px-6 !text-primary-foreground !border-primary-foreground hover:!text-primary-foreground hover:!border-primary-foreground"
+                className="!h-12 !px-6 !text-white !border-white hover:!text-white hover:!border-white"
                 onClick={logout}
               >
                 {t('auth.logout', { defaultValue: 'Đăng xuất' })}
@@ -130,8 +141,8 @@ const HomePage = () => {
             { num: '99.9%', label: t('home.stat4') },
           ].map((s, i) => (
             <div key={i}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary-foreground">{s.num}</div>
-              <div className="text-primary-foreground/80 mt-1 text-sm sm:text-base">{s.label}</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">{s.num}</div>
+              <div className="opacity-90 mt-1 text-sm sm:text-base">{s.label}</div>
             </div>
           ))}
         </div>
@@ -169,12 +180,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <footer className="bg-foreground py-8 px-4 sm:px-6 text-center text-primary-foreground/80">
+      <footer className="site-footer border-t border-border py-8 px-4 sm:px-6 text-center">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <p className="text-primary-foreground/70 text-sm">{t('home.footer')}</p>
+          <p className="text-sm opacity-80">{t('home.footer')}</p>
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
-            <ThemeToggle variant="on-dark" />
+            <ThemeToggle variant={footerToggleVariant} />
           </div>
         </div>
       </footer>

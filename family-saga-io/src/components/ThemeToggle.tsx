@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -7,7 +8,13 @@ interface ThemeToggleProps {
 
 const ThemeToggle = ({ variant = "default" }: ThemeToggleProps) => {
   const { resolvedTheme, setTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
 
   const className =
     variant === "on-dark"
@@ -20,8 +27,15 @@ const ThemeToggle = ({ variant = "default" }: ThemeToggleProps) => {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={className}
+      disabled={!mounted}
     >
-      {isDark ? <Sun size={16} /> : <Moon size={16} />}
+      {!mounted ? (
+        <Moon size={16} className="opacity-50" />
+      ) : isDark ? (
+        <Sun size={16} />
+      ) : (
+        <Moon size={16} />
+      )}
     </button>
   );
 };

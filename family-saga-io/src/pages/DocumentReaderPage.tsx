@@ -519,21 +519,19 @@ const DocumentReaderPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <header
-        className="px-4 md:px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between border-b"
-        style={{ borderColor: "hsl(36, 30%, 80%)" }}
+        className="px-4 md:px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between border-b border-border"
       >
         <div className="w-full md:w-auto flex items-start md:items-center gap-3 md:gap-4">
           <Button
             icon={<ArrowLeftOutlined />}
             type="text"
             onClick={() => navigate("/")}
-            style={{ color: "hsl(36, 70%, 42%)" }}
+            className="!text-primary"
           >
             {t("common.backHome")}
           </Button>
           <div
-            className="section-divider w-px h-6 mx-2"
-            style={{ width: 1, background: "hsl(36, 30%, 80%)" }}
+            className="section-divider w-px h-6 mx-2 bg-border"
           />
           <div>
             <h1 className="text-2xl font-display font-bold text-foreground">
@@ -692,7 +690,7 @@ const DocumentReaderPage = () => {
               </div>
             </Card>
 
-            <Card bordered={false} style={{ background: "hsl(39, 40%, 93%)" }}>
+            <Card bordered={false} className="bg-muted">
               <Typography.Title
                 level={4}
                 style={{ fontFamily: "var(--font-display)", marginBottom: 16 }}
@@ -706,7 +704,7 @@ const DocumentReaderPage = () => {
               </div>
             </Card>
 
-            <Card bordered={false} style={{ background: "hsl(39, 40%, 93%)" }}>
+            <Card bordered={false} className="bg-muted">
               <div className="flex items-center justify-between gap-2 mb-3">
                 <Typography.Title
                   level={5}
@@ -896,7 +894,7 @@ const DocumentReaderPage = () => {
                 bordered={false}
                 className="mb-4"
                 title={t("docReader.analysisInlineTitle")}
-                style={{ background: "hsl(39, 40%, 93%)" }}
+                className="bg-muted"
               >
                 <div className="flex flex-wrap gap-2 mb-3">
                   <Tag color="processing">
@@ -932,7 +930,7 @@ const DocumentReaderPage = () => {
                   size="small"
                   className="mt-4"
                   title={t("docReader.inlineTreeTitle")}
-                  style={{ background: "hsl(39, 50%, 96%)" }}
+                  className="bg-muted"
                 >
                   {analysisResult.balkan_nodes.length > 0 ? (
                     <BalkanFamilyTreeView
@@ -949,7 +947,7 @@ const DocumentReaderPage = () => {
             {isParsing ? (
               <div
                 className="h-[520px] flex items-center justify-center rounded-2xl"
-                style={{ background: "hsl(39, 50%, 96%)" }}
+                className="bg-muted"
               >
                 <div className="text-center">
                   <Spin size="large" />
@@ -994,7 +992,7 @@ const DocumentReaderPage = () => {
                         style={{ borderColor: "hsl(36, 30%, 80%)" }}
                       >
                         {previewType === "image" && imageUrl ? (
-                          <div className="max-h-[620px] overflow-auto bg-[hsl(39,50%,96%)] p-4">
+                          <div className="max-h-[620px] overflow-auto bg-muted p-4">
                             <img
                               src={imageUrl}
                               alt={activeFile.name}
@@ -1002,13 +1000,13 @@ const DocumentReaderPage = () => {
                             />
                           </div>
                         ) : previewType === "docx" || previewType === "text" ? (
-                          <div className="h-[620px] overflow-auto bg-[hsl(39,50%,96%)] px-8 py-6">
+                          <div className="h-[620px] overflow-auto bg-muted px-8 py-6">
                             <article className="mx-auto max-w-4xl whitespace-pre-wrap text-[15px] leading-8 text-foreground">
                               {documentText}
                             </article>
                           </div>
                         ) : (
-                          <div className="h-[520px] flex items-center justify-center bg-[hsl(39,50%,96%)]">
+                          <div className="h-[520px] flex items-center justify-center bg-muted">
                             <Empty description={t("docReader.noPreview")} />
                           </div>
                         )}
@@ -1025,7 +1023,7 @@ const DocumentReaderPage = () => {
                     children: activeFile ? (
                       <Card
                         bordered={false}
-                        style={{ background: "hsl(39, 50%, 96%)" }}
+                        className="bg-muted"
                       >
                         <Descriptions column={1} bordered size="middle">
                           <Descriptions.Item
@@ -1082,11 +1080,11 @@ const DocumentReaderPage = () => {
                         <div className="grid gap-4 md:grid-cols-2 mt-6">
                           <Card
                             size="small"
-                            style={{ background: "hsl(39, 40%, 93%)" }}
+                            className="bg-muted"
                           >
                             <div className="flex items-center gap-3 mb-2">
                               <FileImageOutlined
-                                style={{ color: "hsl(36, 70%, 42%)" }}
+                                className="!text-primary"
                               />
                               <span className="font-medium">
                                 {t("docReader.cardImageTitle")}
@@ -1099,7 +1097,7 @@ const DocumentReaderPage = () => {
 
                           <Card
                             size="small"
-                            style={{ background: "hsl(39, 40%, 93%)" }}
+                            className="bg-muted"
                           >
                             <div className="flex items-center gap-3 mb-2">
                               <FileTextOutlined
@@ -1118,9 +1116,8 @@ const DocumentReaderPage = () => {
                         {analysisResult && (
                           <Card
                             size="small"
-                            className="mt-6"
+                            className="mt-6 bg-muted"
                             title={t("docReader.analysisTitle")}
-                            style={{ background: "hsl(39, 40%, 93%)" }}
                           >
                             <div className="flex flex-wrap gap-2 mb-3">
                               <Tag color="processing">

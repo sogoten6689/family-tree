@@ -336,20 +336,17 @@ const FamilyTreePage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header
-        className="px-6 py-4 flex items-center justify-between border-b"
-        style={{ borderColor: 'hsl(36, 30%, 80%)' }}
-      >
+      <header className="px-6 py-4 flex items-center justify-between border-b border-border">
         <div className="flex items-center gap-4">
           <Button
             icon={<ArrowLeftOutlined />}
             type="text"
             onClick={() => navigate('/')}
-            style={{ color: 'hsl(36, 70%, 42%)' }}
+            className="!text-primary"
           >
             {t('common.backHome')}
           </Button>
-          <div className="section-divider w-px h-6 mx-2" style={{ width: 1, background: 'hsl(36, 30%, 80%)' }} />
+          <div className="section-divider w-px h-6 mx-2 bg-border" />
           <h1 className="text-xl font-display font-bold text-foreground">
             {t('familyTree.pageTitle', { surname: runtimeInfo.surname })}
           </h1>
@@ -495,7 +492,7 @@ const FamilyTreePage = () => {
             </Descriptions>
 
             {selectedMember.bio && (
-              <div className="mt-4 p-3 rounded-lg" style={{ background: 'hsl(39, 40%, 93%)' }}>
+              <div className="mt-4 p-3 rounded-lg bg-muted">
                 <p className="text-sm text-muted-foreground italic">"{selectedMember.bio}"</p>
               </div>
             )}

@@ -86,12 +86,18 @@ const LoginPage = () => {
             </Button>
           </Form>
 
-          <Typography.Paragraph className="!mt-4 !mb-0 text-center">
+          <Typography.Paragraph className="!mt-4 !mb-2 text-center text-muted-foreground">
             {t("auth.noAccount", { defaultValue: "Chưa có tài khoản?" })}{" "}
-            <Link to="/register">{t("auth.registerLink", { defaultValue: "Đăng ký" })}</Link>
-            <Link to="/">{t("auth.homeLink", { defaultValue: "Trang chủ" })}</Link>
-
+            <Link to="/register" className="text-primary hover:underline">
+              {t("auth.registerLink", { defaultValue: "Đăng ký" })}
+            </Link>
           </Typography.Paragraph>
+          <Typography.Paragraph className="!mb-0 text-center">
+            <Link to="/" className="text-muted-foreground hover:text-foreground hover:underline">
+              {t("auth.homeLink", { defaultValue: "Trang chủ" })}
+            </Link>
+          </Typography.Paragraph>
+
         </Card>
       </div>
     </div>

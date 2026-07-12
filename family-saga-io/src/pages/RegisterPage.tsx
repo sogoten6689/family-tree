@@ -104,9 +104,16 @@ const RegisterPage = () => {
             </Button>
           </Form>
 
-          <Typography.Paragraph className="!mt-4 !mb-0 text-center">
+          <Typography.Paragraph className="!mt-4 !mb-2 text-center text-muted-foreground">
             {t("auth.haveAccount", { defaultValue: "Đã có tài khoản?" })}{" "}
-            <Link to="/login">{t("auth.loginLink", { defaultValue: "Đăng nhập" })}</Link>
+            <Link to="/login" className="text-primary hover:underline">
+              {t("auth.loginLink", { defaultValue: "Đăng nhập" })}
+            </Link>
+          </Typography.Paragraph>
+          <Typography.Paragraph className="!mb-0 text-center">
+            <Link to="/" className="text-muted-foreground hover:text-foreground hover:underline">
+              {t("auth.homeLink", { defaultValue: "Trang chủ" })}
+            </Link>
           </Typography.Paragraph>
         </Card>
       </div>

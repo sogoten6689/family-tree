@@ -97,14 +97,43 @@
   .hero-overlay {
     background: linear-gradient(
       to bottom,
-      hsl(var(--foreground) / 0.7) 0%,
-      hsl(var(--foreground) / 0.5) 50%,
-      hsl(var(--foreground) / 0.8) 100%
+      hsl(0 0% 9% / 0.72) 0%,
+      hsl(0 0% 9% / 0.52) 50%,
+      hsl(0 0% 9% / 0.78) 100%
     );
   }
 
+  .dark .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(0 0% 0% / 0.72) 0%,
+      hsl(0 0% 0% / 0.52) 50%,
+      hsl(0 0% 0% / 0.78) 100%
+    );
+  }
+
+  /* Gradient đủ đậm để chữ trắng đọc được ở light mode (tránh accent ~95% sáng) */
   .brand-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--brand-foreground))
+    );
+    color: hsl(0 0% 100%);
+  }
+
+  .hero-btn-solid-light.ant-btn,
+  .hero-btn-solid-light.ant-btn > span {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: hsl(0 0% 9%) !important;
+  }
+
+  .hero-btn-solid-light.ant-btn:hover,
+  .hero-btn-solid-light.ant-btn:focus {
+    background-color: rgb(255 255 255 / 0.92) !important;
+    border-color: #ffffff !important;
+    color: hsl(0 0% 9%) !important;
   }
 
   .section-divider {
@@ -128,5 +157,16 @@
   .tree-node-card:hover {
     box-shadow: 0 8px 24px hsl(var(--primary) / 0.25);
     transform: translateY(-2px);
+  }
+
+  /* Footer: nền tối + chữ sáng ở light; card tối ở dark */
+  .site-footer {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+
+  .dark .site-footer {
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
   }
 }
