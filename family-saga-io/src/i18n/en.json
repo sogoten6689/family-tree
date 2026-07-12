@@ -109,7 +109,16 @@
     "externalLink": "Link",
     "sourceDocument": "Source document",
     "hannomText": "Hán-Nôm text",
-    "downloadDocs": "Documents"
+    "downloadDocs": "Documents",
+    "renderer": {
+      "styleLabel": "Chart style",
+      "domClassic": "Card tree",
+      "table": "Member table",
+      "cytoscape": "Interactive graph",
+      "comingSoon": "Coming soon",
+      "dataHint": "{{count}} members · Same SSOT data · {{renderer}}",
+      "cytoscapeHint": "Interactive graph will be available in a future update."
+    }
   },
   "docReader": {
     "pageTitle": "Genealogy Document Reader",

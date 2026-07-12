@@ -31,8 +31,8 @@ import {
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
 import { DeleteFamilyTreeModal } from "@/components/family-tree/DeleteFamilyTreeModal";
+import { FamilyTreeVisualPanel } from "@/components/family-tree/FamilyTreeVisualPanel";
 import { FamilyTreeAncestralSidebar } from "@/components/family-tree/FamilyTreeAncestralSidebar";
 import { FamilyTreeMembersTable } from "@/components/family-tree/FamilyTreeMembersTable";
 import { GenealogyPipelineSteps } from "@/components/pipeline/GenealogyPipelineSteps";
@@ -449,7 +449,13 @@ const FamilyTreeDetailPage = () => {
                   label: t("familyTree.visualTreeTab", { defaultValue: "Sơ đồ Gia phả" }),
                   children:
                     tree.nodes.length > 0 ? (
-                      <BalkanFamilyTreeView key={tree.id} treeId={tree.id} nodes={tree.nodes} height={560} />
+                      <FamilyTreeVisualPanel
+                        key={tree.id}
+                        nodes={tree.nodes}
+                        members={members}
+                        selectedMemberId={selectedNodeId}
+                        onSelectMember={setSelectedNodeId}
+                      />
                     ) : (
                       <Empty
                         image={Empty.PRESENTED_IMAGE_SIMPLE}

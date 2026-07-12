@@ -1,0 +1,33 @@
+---
+description: Ràng buộc free-only — visualization & export (không license trả phí)
+alwaysApply: true
+---
+
+# Free-only visualization & export
+
+Ràng buộc dự án (Phụ lục C — `planning/output_formats_and_ui_plan.md`):
+
+## Cấm / deprecate
+
+| Thành phần | Lý do |
+|------------|-------|
+| `@balkangraph/familytree.js` | Trial 30 ngày; production cần license |
+| Balkan export PNG/PDF qua `balkan.app` | Dữ liệu qua server bên thứ ba |
+| Dependency viz/export commercial hoặc trial-only | Vi phạm policy |
+
+## Được phép
+
+| Output | Công nghệ |
+|--------|-----------|
+| Cây DOM | `FamilyTreeNode` + CSS |
+| Bảng | Ant Design Table |
+| Graph | Cytoscape.js / vis-network (MIT/Apache) |
+| Export | JSON, CSV, GEDCOM tự viết (`export/service.py`) |
+| In ấn | HTML `@media print` → browser Print to PDF |
+| Snapshot PNG (optional) | `html2canvas` (MIT) |
+
+## Checklist trước khi thêm dependency mới
+
+- [ ] License MIT / Apache-2.0 / BSD hoặc tự code?
+- [ ] Không gửi `nodes_json` ra server bên thứ ba chỉ để render?
+- [ ] Cập nhật `familyTreeRenderers.ts` nếu là renderer mới?

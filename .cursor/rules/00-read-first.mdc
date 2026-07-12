@@ -1,0 +1,39 @@
+---
+description: Đọc tài liệu nào trước khi làm task — onboarding dự án gia phả
+alwaysApply: true
+---
+
+# Đọc ban đầu (read-first)
+
+Trước khi sửa code, đọc đúng tài liệu theo loại task:
+
+| Loại task | Đọc trước |
+|-----------|-----------|
+| **Sơ đồ / renderer / tab visual** | `planning/visual_tree_ui_info_task.md` |
+| **Format dữ liệu, export, SSOT, pipeline UI** | `planning/output_formats_and_ui_plan.md` (§2 taxonomy, Phụ lục C free-only) |
+| **Tổng quan repo, route, API** | `PROJECT.md` |
+| **Backend family tree / nodes** | `nlp_family_extractor/app/balkan_node.py`, `family_tree_store.py` |
+| **FE types & API client** | `family-saga-io/src/lib/familyTreeApi.ts`, `familyTreeUtils.ts` |
+
+## Repo layout (tóm tắt)
+
+- `family-saga-io/` — React + Vite frontend
+- `nlp_family_extractor/` — FastAPI backend
+- `planning/` — task & architecture plans (ưu tiên đọc trước khi implement)
+- `schemas/balkan-node.schema.json` — JSON schema SSOT node
+
+## Nguyên tắc chung
+
+1. **SSOT dữ liệu** = `BalkanNode[]` trong `family_tree.nodes_json` — tên schema, không bắt buộc dùng thư viện Balkan Graph.
+2. **Renderer** = cách vẽ UI — tách khỏi SSOT; đổi renderer không đổi DB.
+3. **Free-only** — không thêm dependency visualization/export có license thương mại hoặc trial-only.
+4. **i18n** — mọi label UI mới thêm vào `vi.json` và `en.json` (prefix `familyTree.*`).
+5. **Scope nhỏ** — sửa đúng file task; không refactor ngoài phạm vi.
+
+## Trạng thái visual UI (2026-07)
+
+- Admin tab「Sơ đồ」: `FamilyTreeVisualPanel` — MVP ✅ `dom-classic`, `table`.
+- Backlog task: `planning/visual_tree_ui_info_task.md` — P1 view-full, P2 graph lib, P3 themes, P4 print-preview/PDF.
+- Registry: `family-saga-io/src/components/family-tree/familyTreeRenderers.ts`.
+- Preference: `localStorage` key `ft.visual.v1` — **không** lưu renderer vào `nodes_json`.
+- `BalkanFamilyTreeView` = legacy; không thêm vào catalog dropdown mới.

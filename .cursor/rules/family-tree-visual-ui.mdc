@@ -1,0 +1,58 @@
+---
+description: Sơ đồ gia phả — renderer, view switcher, component FE
+globs: family-saga-io/src/components/family-tree/**,family-saga-io/src/components/BalkanFamilyTreeView.tsx,family-saga-io/src/components/FamilyTreeNode.tsx,family-saga-io/src/pages/**/FamilyTree*.tsx,family-saga-io/src/pages/PublicFamilyTreePage.tsx,family-saga-io/src/pages/DocumentReaderPage.tsx
+alwaysApply: false
+---
+
+# Family tree visual UI
+
+## Tách SSOT vs renderer
+
+| | SSOT | Renderer |
+|---|------|----------|
+| Là gì | `BalkanNode[]` từ API | Component vẽ sơ đồ |
+| Lưu ở đâu | MySQL `nodes_json` | `localStorage` / UI state |
+| User chọn? | Không | Có — dropdown「Kiểu sơ đồ」 |
+
+Bridge SSOT → UI: `toFamilyMembers()` trong `familyTreeUtils.ts`.
+
+## Thêm renderer mới
+
+1. Thêm entry vào `familyTreeRenderers.ts` (`id`, `labelKey`, `enabled`, license MIT/Apache hoặc tự code).
+2. Tạo component đọc `BalkanNode[]` hoặc `FamilyMember[]`.
+3. Wire trong `FamilyTreeRendererHost` / `FamilyTreeVisualPanel`.
+4. i18n `familyTree.renderer.*`.
+
+```typescript
+// ✅ Đúng — registry là SSOT metadata renderer
+export const FAMILY_TREE_RENDERERS = {
+  "dom-classic": { enabled: true, ... },
+} as const;
+
+// ❌ Sai — không hardcode BalkanFamilyTreeView trực tiếp trên page mới
+<BalkanFamilyTreeView nodes={nodes} />
+```
+
+## Catalog hiện tại (free-only)
+
+| `rendererId` | Component | Status |
+|--------------|-----------|--------|
+| `dom-classic` | `FamilyTreeDomView` | ✅ active |
+| `table` | `FamilyTreeMembersTable` | ✅ active |
+| `view-full` | `FamilyTreeFullScreenView` (overlay) | ⬜ P1 |
+| `cytoscape-dagre` | `FamilyTreeCytoscapeView` | ⬜ P2 |
+| `vis-network` | `FamilyTreeVisView` | ⬜ P2 alt |
+| `dom-minimal` | `FamilyTreeDomView` + theme | ⬜ P3 |
+| `print-preview` | `FamilyTreePrintPreview` | ⬜ P4 |
+
+**Không** thêm `balkan-hugo` vào dropdown — trial/license.
+
+## Surface cần wire (backlog)
+
+- ✅ Admin `FamilyTreeDetailPage` tab `visual` (dom + table)
+- ⬜ P1 `view-full` — fullscreen modal
+- ⬜ P2 graph OSS — Cytoscape / vis-network
+- ⬜ P3 dom themes — `default`, `minimal`
+- ⬜ P4 `print-preview` + `window.print()` PDF
+
+Dùng `FamilyTreeVisualPanel` thay vì gọi renderer trực tiếp trên từng page.

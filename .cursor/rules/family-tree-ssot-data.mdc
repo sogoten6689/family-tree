@@ -1,0 +1,42 @@
+---
+description: SSOT BalkanNode — backend schema, export, validation
+globs: nlp_family_extractor/app/**/*.py,schemas/**,family-saga-io/src/lib/familyTree*.ts,family-saga-io/src/lib/familyTreeUtils.ts
+alwaysApply: false
+---
+
+# Family tree SSOT data
+
+## Canonical storage
+
+- Table: `family_tree.nodes_json` → mảng `BalkanNode[]`
+- Validate/normalize: `nlp_family_extractor/app/balkan_node.py`
+- Schema: `schemas/balkan-node.schema.json`
+- VGP detail mở rộng: `family_tree_node_meta` (không nhét vào `nodes_json`)
+
+## Trường node chuẩn (core)
+
+`id`, `name`, `gender`, `birthYear`, `deathYear`, `fid`, `mid`, `pids`, `title`, `bio`, `avatar` — unknown fields bị strip (D5).
+
+## Derived (runtime, không persist)
+
+- `FamilyMember[]` — FE flat view (`toFamilyMembers`)
+- Tree stats — `toTreeStats()`
+
+## Export API (đã có)
+
+- Admin: `GET /api/family-trees/{id}/export?format=json|csv|gedcom`
+- Public: `GET /api/public/family-trees/{id}/export?...` nếu `is_public`
+
+UTF-8, không latinize tên Việt.
+
+## Khi sửa schema
+
+1. Cập nhật `balkan_node.py` + JSON schema
+2. Cập nhật FE types nếu cần (`familyTreeApi.ts`)
+3. Chạy/kiểm tra `tools/migrate_strip_node_extensions.py` trên data cũ
+4. **Không** đổi tên `BalkanNode` trừ khi có task O1 riêng
+
+## Không làm
+
+- Lưu `rendererId` / UI preference vào `nodes_json`
+- Gửi `nodes_json` lên server bên thứ ba để render/export (trừ Gemini analyze có policy riêng)

@@ -109,7 +109,16 @@
     "externalLink": "Đường link",
     "sourceDocument": "Tài liệu gốc",
     "hannomText": "Hán Nôm",
-    "downloadDocs": "Tài liệu"
+    "downloadDocs": "Tài liệu",
+    "renderer": {
+      "styleLabel": "Kiểu sơ đồ",
+      "domClassic": "Cây thẻ",
+      "table": "Bảng thành viên",
+      "cytoscape": "Graph tương tác",
+      "comingSoon": "Sắp có",
+      "dataHint": "{{count}} thành viên · Cùng nguồn SSOT · {{renderer}}",
+      "cytoscapeHint": "Graph tương tác sẽ có trong bản cập nhật sau."
+    }
   },
   "docReader": {
     "pageTitle": "Phòng đọc tư liệu gia phả",
