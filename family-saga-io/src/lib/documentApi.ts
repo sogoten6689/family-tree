@@ -4,6 +4,7 @@ import type {
   DocumentListResponse,
   DocumentUpdatePayload,
   FamilyTreeSourceDocument,
+  OcrBatchResponse,
   OcrTransliterateResponse,
   ReorderFilesPayload,
   UploadFilesResponse,
@@ -95,4 +96,29 @@ export async function ocrTransliterateDocument(
     `/api/documents/${documentId}/ocr-transliterate`,
     formData,
   );
+}
+
+export async function ocrStoredDocumentFile(
+  documentId: number,
+  fileId: number,
+): Promise<OcrTransliterateResponse> {
+  return apiRequest<OcrTransliterateResponse>(
+    `/api/documents/${documentId}/ocr-stored-file/${fileId}`,
+    { method: "POST" },
+  );
+}
+
+export async function ocrBatchDocument(
+  documentId: number,
+  options?: { fileIds?: number[]; skipExisting?: boolean; mergePages?: boolean; syncPipeline?: boolean },
+): Promise<OcrBatchResponse> {
+  return apiRequest<OcrBatchResponse>(`/api/documents/${documentId}/ocr-batch`, {
+    method: "POST",
+    body: JSON.stringify({
+      file_ids: options?.fileIds ?? null,
+      skip_existing: options?.skipExisting ?? true,
+      merge_pages: options?.mergePages ?? true,
+      sync_pipeline: options?.syncPipeline ?? true,
+    }),
+  });
 }

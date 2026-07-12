@@ -76,3 +76,37 @@ class OcrTransliterateResponse(BaseModel):
     transcription_text: str
     saved_file: DocumentFileResponse
     result_document: DocumentResponse
+
+
+class OcrBatchRequest(BaseModel):
+    file_ids: Optional[List[int]] = Field(
+        default=None,
+        description="Danh sách file id; để trống = tất cả ảnh. Chỉ định 1 id = OCR từng trang.",
+    )
+    skip_existing: bool = Field(default=True, description="Bỏ qua trang đã có file kết quả OCR")
+    merge_pages: bool = Field(default=True, description="Ghép tất cả trang đã OCR vào combined_transcription.txt")
+    sync_pipeline: bool = Field(default=True, description="Đồng bộ pipeline sau OCR")
+
+
+class OcrBatchItemResult(BaseModel):
+    file_id: int
+    file_name: str
+    result_document_id: int
+    transcription_text: str
+
+
+class OcrBatchError(BaseModel):
+    file_id: int
+    file_name: str
+    error: str
+
+
+class OcrBatchResponse(BaseModel):
+    source_document_id: int
+    processed: int
+    skipped: int
+    results: List[OcrBatchItemResult] = Field(default_factory=list)
+    errors: List[OcrBatchError] = Field(default_factory=list)
+    combined_transcription_text: str = ""
+    merged_page_count: int = 0
+    pipeline_synced: bool = False

@@ -18,6 +18,10 @@ from app.documents.schemas import (
     DocumentListResponse,
     DocumentResponse,
     DocumentUpdateRequest,
+    OcrBatchError,
+    OcrBatchItemResult,
+    OcrBatchRequest,
+    OcrBatchResponse,
     OcrTransliterateResponse,
     ReorderFilesRequest,
     UploadFilesResponse,
@@ -25,6 +29,7 @@ from app.documents.schemas import (
 from app.documents.storage import ObjectStorage, ObjectStorageError
 from app.family_tree_store import FamilyTreeNotFoundError
 from app.hannom.errors import HannomApiError
+from app.nomfoundation.ocr_pipeline import post_ocr_hooks
 
 
 def require_documents_database() -> None:
@@ -329,6 +334,87 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             transcription_text=result["transcription_text"],
             saved_file=_serialize_file(saved_file),
             result_document=_serialize_document(result_document),
+        )
+
+    @router.post(
+        "/api/documents/{document_id}/ocr-stored-file/{file_id}",
+        response_model=OcrTransliterateResponse,
+        summary="OCR ảnh đã lưu MinIO (không cần upload lại)",
+    )
+    def ocr_stored_file(
+        document_id: int,
+        file_id: int,
+        _: AdminUser,
+        document_service=Depends(get_service),
+        db: Session = Depends(get_db),
+    ) -> OcrTransliterateResponse:
+        try:
+            result = document_service.ocr_transliterate_stored_file(document_id, file_id)
+            hook_result = post_ocr_hooks(db, document_service, document_id, sync_pipeline=True)
+            db.commit()
+            saved_file = result["saved_file"]
+            db.refresh(saved_file)
+            try:
+                saved_file.download_url = document_service.storage.get_presigned_url(saved_file.file_key)  # type: ignore[attr-defined]
+            except ObjectStorageError:
+                saved_file.download_url = None  # type: ignore[attr-defined]
+        except Exception as error:
+            db.rollback()
+            _raise_service_error(error)
+
+        result_document = result["result_document"]
+        return OcrTransliterateResponse(
+            source_document_id=document_id,
+            result_document_id=result_document.id,
+            ocr_text=result["ocr_text"],
+            ocr_lines=result["ocr_lines"],
+            transcription_lines=result["transcription_lines"],
+            transcription_text=result["transcription_text"],
+            saved_file=_serialize_file(saved_file),
+            result_document=_serialize_document(result_document),
+        )
+
+    @router.post(
+        "/api/documents/{document_id}/ocr-batch",
+        response_model=OcrBatchResponse,
+        summary="OCR batch tất cả ảnh trong document từ MinIO",
+    )
+    def ocr_batch(
+        document_id: int,
+        req: OcrBatchRequest,
+        _: AdminUser,
+        document_service=Depends(get_service),
+        db: Session = Depends(get_db),
+    ) -> OcrBatchResponse:
+        try:
+            result = document_service.ocr_transliterate_batch(
+                document_id,
+                file_ids=req.file_ids,
+                skip_existing=req.skip_existing,
+            )
+            hook_result = post_ocr_hooks(
+                db,
+                document_service,
+                document_id,
+                merge_pages=req.merge_pages,
+                sync_pipeline=req.sync_pipeline,
+            )
+            db.commit()
+        except Exception as error:
+            db.rollback()
+            _raise_service_error(error)
+
+        merge_info = hook_result.get("merge") or {}
+        return OcrBatchResponse(
+            source_document_id=document_id,
+            processed=result["processed"],
+            skipped=result["skipped"],
+            results=[OcrBatchItemResult(**item) for item in result["results"]],
+            errors=[OcrBatchError(**item) for item in result["errors"]],
+            combined_transcription_text=merge_info.get("combined_text")
+            or result.get("combined_transcription_text", ""),
+            merged_page_count=int(merge_info.get("page_count") or result.get("merged_page_count") or 0),
+            pipeline_synced=bool(hook_result.get("pipeline_synced")),
         )
 
     @router.put(

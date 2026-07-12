@@ -60,6 +60,14 @@ def test_build_page_image_urls():
     assert urls[-1].endswith("tnvnpf-001-006.jpg")
 
 
+def test_resolve_page_image_urls_page_range():
+    meta = parse_volume_metadata(VOLUME_208_HTML, collection_id=2, volume_id=208)
+    urls = resolve_page_image_urls(meta, image_variant="large", max_pages=79, page_start=11, page_end=15)
+    assert len(urls) == 5
+    assert "0155-011.jpg" in urls[0]
+    assert "0155-015.jpg" in urls[-1]
+
+
 def test_extract_catalog_slug_from_heading_only():
     html = "<html><h2>NLVNPF-0155</h2></html>"
     assert extract_catalog_slug(html) == "nlvnpf-0155"

@@ -22,28 +22,20 @@ import { toast } from "sonner";
 
 import { OCR_ELIGIBLE_DOCUMENT_TYPES } from "@/components/documents/constants";
 import { ApiError } from "@/lib/apiClient";
-import { ocrTransliterateDocument } from "@/lib/documentApi";
-import type { DocumentFile, FamilyTreeSourceDocument, OcrTransliterateResponse } from "@/types/document";
+import {
+  ocrBatchDocument,
+  ocrStoredDocumentFile,
+  ocrTransliterateDocument,
+} from "@/lib/documentApi";
+import type {
+  FamilyTreeSourceDocument,
+  OcrBatchResponse,
+  OcrTransliterateResponse,
+} from "@/types/document";
 
 type Props = {
   document: FamilyTreeSourceDocument;
 };
-
-async function fetchImageFile(docFile: DocumentFile): Promise<File> {
-  if (!docFile.download_url) {
-    throw new Error(`File "${docFile.file_name}" chưa có URL tải. Vui lòng tải lại trang.`);
-  }
-
-  const response = await fetch(docFile.download_url);
-  if (!response.ok) {
-    throw new Error(`Không tải được file "${docFile.file_name}" (${response.status}).`);
-  }
-
-  const blob = await response.blob();
-  return new File([blob], docFile.file_name, {
-    type: blob.type || docFile.file_type || "image/jpeg",
-  });
-}
 
 const copyText = async (text: string, label: string) => {
   try {
@@ -59,8 +51,10 @@ export function DocumentOcrPanel({ document }: Props) {
   const [selectedFileId, setSelectedFileId] = useState<number | null>(null);
   const [pendingUpload, setPendingUpload] = useState<File | null>(null);
   const [running, setRunning] = useState(false);
+  const [batchRunning, setBatchRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<OcrTransliterateResponse | null>(null);
+  const [batchResult, setBatchResult] = useState<OcrBatchResponse | null>(null);
 
   const imageFiles = useMemo(
     () => document.files.filter((file) => file.file_type.startsWith("image/")),
@@ -81,24 +75,23 @@ export function DocumentOcrPanel({ document }: Props) {
 
   const resolveImageFile = async (): Promise<File> => {
     if (pendingUpload) return pendingUpload;
-
-    if (selectedFileId != null) {
-      const docFile = imageFiles.find((file) => file.id === selectedFileId);
-      if (!docFile) {
-        throw new Error("File đã chọn không còn tồn tại.");
-      }
-      return fetchImageFile(docFile);
-    }
-
     throw new Error("Vui lòng chọn ảnh có sẵn hoặc upload ảnh mới để OCR.");
   };
 
   const handleRunOcr = async () => {
     setRunning(true);
     setError(null);
+    setBatchResult(null);
     try {
-      const imageFile = await resolveImageFile();
-      const response = await ocrTransliterateDocument(document.id, imageFile);
+      let response: OcrTransliterateResponse;
+      if (pendingUpload) {
+        const imageFile = await resolveImageFile();
+        response = await ocrTransliterateDocument(document.id, imageFile);
+      } else if (selectedFileId != null) {
+        response = await ocrStoredDocumentFile(document.id, selectedFileId);
+      } else {
+        throw new Error("Vui lòng chọn ảnh có sẵn hoặc upload ảnh mới để OCR.");
+      }
       setResult(response);
       toast.success("OCR và phiên âm thành công. Kết quả đã được lưu.");
     } catch (err) {
@@ -110,6 +103,34 @@ export function DocumentOcrPanel({ document }: Props) {
       toast.error(message);
     } finally {
       setRunning(false);
+    }
+  };
+
+  const handleRunBatchOcr = async () => {
+    setBatchRunning(true);
+    setError(null);
+    setResult(null);
+    try {
+      const response = await ocrBatchDocument(document.id, { skipExisting: true });
+      setBatchResult(response);
+      if (response.errors.length > 0) {
+        toast.warning(
+          `OCR: ${response.processed} trang, ghép ${response.merged_page_count}, ${response.errors.length} lỗi.`,
+        );
+      } else {
+        toast.success(
+          `OCR xong: ${response.processed} trang mới, tổng ghép ${response.merged_page_count} trang${response.pipeline_synced ? ", pipeline đã sync" : ""}.`,
+        );
+      }
+    } catch (err) {
+      const message =
+        err instanceof ApiError || err instanceof Error
+          ? err.message
+          : "Không thể chạy OCR batch.";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setBatchRunning(false);
     }
   };
 
@@ -142,7 +163,7 @@ export function DocumentOcrPanel({ document }: Props) {
         showIcon
         className="mb-4"
         message="Kim Hán Nôm API"
-        description="Hệ thống sẽ OCR chữ Hán/Nôm từ ảnh, phiên âm sang Quốc ngữ và lưu file .txt vào tài liệu kết quả (ket_qua_van_ban). Cần cấu hình token tại Developer → Hán-Nôm Config."
+        description="Ảnh đã lưu MinIO sẽ OCR trực tiếp (không cần tải lại). Kết quả lưu vào tài liệu ket_qua_van_ban. Cần token tại Developer → Hán-Nôm Config."
       />
 
       {error && <Alert type="error" showIcon message={error} className="mb-4" closable onClose={() => setError(null)} />}
@@ -183,21 +204,63 @@ export function DocumentOcrPanel({ document }: Props) {
         <Typography.Text>Kéo thả ảnh scan Hán-Nôm hoặc bấm để chọn</Typography.Text>
       </Upload.Dragger>
 
-      <Button
-        type="primary"
-        icon={<FileSearchOutlined />}
-        loading={running}
-        disabled={!pendingUpload && selectedFileId == null}
-        onClick={() => void handleRunOcr()}
-      >
-        Chạy OCR và lưu kết quả
-      </Button>
+      <Space wrap className="mb-4">
+        <Button
+          type="primary"
+          icon={<FileSearchOutlined />}
+          loading={running}
+          disabled={(!pendingUpload && selectedFileId == null) || batchRunning}
+          onClick={() => void handleRunOcr()}
+        >
+          Chạy OCR một trang
+        </Button>
+        {imageFiles.length > 1 && (
+          <Button
+            icon={<FileSearchOutlined />}
+            loading={batchRunning}
+            disabled={running}
+            onClick={() => void handleRunBatchOcr()}
+          >
+            OCR tất cả &amp; ghép ({imageFiles.length} trang)
+          </Button>
+        )}
+      </Space>
 
-      {running && (
-        <div className="mt-4 flex items-center gap-2 text-muted-foreground">
+      {(running || batchRunning) && (
+        <div className="mb-4 flex items-center gap-2 text-muted-foreground">
           <Spin size="small" />
-          <span>Đang gọi Kim Hán Nôm API (có thể mất 1–2 phút)...</span>
+          <span>
+            {batchRunning
+              ? "Đang OCR batch từ MinIO (có thể mất vài phút)..."
+              : "Đang gọi Kim Hán Nôm API (có thể mất 1–2 phút)..."}
+          </span>
         </div>
+      )}
+
+      {batchResult && (
+        <>
+          <Divider />
+          <Typography.Title level={5}>Kết quả OCR batch</Typography.Title>
+          <Typography.Paragraph type="secondary">
+            Đã xử lý {batchResult.processed}, bỏ qua {batchResult.skipped}, ghép{" "}
+            {batchResult.merged_page_count} trang, lỗi {batchResult.errors.length}.
+            {batchResult.pipeline_synced && " Pipeline đã đồng bộ."}
+          </Typography.Paragraph>
+          {batchResult.errors.length > 0 && (
+            <Alert
+              type="warning"
+              showIcon
+              className="mb-4"
+              message="Một số trang lỗi"
+              description={batchResult.errors.map((e) => `${e.file_name}: ${e.error}`).join("; ")}
+            />
+          )}
+          {batchResult.combined_transcription_text && (
+            <Typography.Paragraph className="!mb-0 whitespace-pre-wrap rounded-lg border border-border bg-muted/40 p-3 text-sm max-h-48 overflow-auto">
+              {batchResult.combined_transcription_text}
+            </Typography.Paragraph>
+          )}
+        </>
       )}
 
       {result && (

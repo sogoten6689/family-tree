@@ -58,14 +58,6 @@ def attach_nom_images_from_volume_dir(
     marker = nom_hinh_anh_marker(collection_id=collection_id, volume_id=volume_id)
     repository = service.repository
     existing = _find_nom_document(repository, family_tree_id=family_tree_id, marker=marker)
-    if existing and existing.files and len(existing.files) >= len(image_files) and not force:
-        return {
-            "family_tree_id": family_tree_id,
-            "attached": False,
-            "reason": "already_attached",
-            "document_id": existing.id,
-            "file_count": len(existing.files),
-        }
 
     doc_title = f"Nom scan — {title or family_tree_id}"
     if existing is None:
@@ -77,19 +69,41 @@ def attach_nom_images_from_volume_dir(
             subtype="nomfoundation",
         )
     else:
-        document = existing
+        document = repository.get(existing.id)
+        if existing.files and len(existing.files) >= len(image_files) and not force:
+            return {
+                "family_tree_id": family_tree_id,
+                "attached": False,
+                "reason": "already_attached",
+                "document_id": existing.id,
+                "file_count": len(existing.files),
+            }
 
+    existing_names = {item.file_name for item in (document.files or [])}
     upload_payload: List[Tuple[str, str, BytesIO, int]] = []
     for image_path in image_files:
+        if not force and image_path.name in existing_names:
+            continue
         content = image_path.read_bytes()
         upload_payload.append((image_path.name, "image/jpeg", BytesIO(content), len(content)))
 
+    if not upload_payload:
+        return {
+            "family_tree_id": family_tree_id,
+            "attached": False,
+            "reason": "no_new_images",
+            "document_id": document.id,
+            "file_count": len(document.files or []),
+        }
+
     created_files = service.upload_files(document.id, upload_payload)
+    total_files = len(document.files or []) + len(created_files)
     return {
         "family_tree_id": family_tree_id,
         "attached": True,
         "document_id": document.id,
-        "file_count": len(created_files),
+        "file_count": total_files,
+        "uploaded_count": len(created_files),
         "file_names": [item.file_name for item in created_files],
     }
 

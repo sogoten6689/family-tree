@@ -144,6 +144,19 @@ class ObjectStorage:
         except (ClientError, BotoCoreError) as exc:
             raise ObjectStorageError(f"Read failed: {exc}") from exc
 
+    def read_file_bytes(self, file_key: str) -> bytes:
+        if not self.config.enabled:
+            raise ObjectStorageError("Object storage is not configured.")
+
+        try:
+            response = self.internal_client.get_object(Bucket=self.config.bucket, Key=file_key)
+            body = response.get("Body")
+            if body is None:
+                return b""
+            return body.read()
+        except (ClientError, BotoCoreError) as exc:
+            raise ObjectStorageError(f"Read failed: {exc}") from exc
+
     def delete_file(self, file_key: str) -> None:
         if not self.config.enabled:
             raise ObjectStorageError("Object storage is not configured.")

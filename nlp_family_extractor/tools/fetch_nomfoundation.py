@@ -122,6 +122,8 @@ def resolve_page_image_urls(
     *,
     image_variant: ImageVariant = "large",
     max_pages: int = 100,
+    page_start: int = 1,
+    page_end: Optional[int] = None,
 ) -> List[str]:
     media_rel = metadata.get("media_rel")
     file_prefix = metadata.get("file_prefix") or metadata.get("catalog_slug")
@@ -134,6 +136,12 @@ def resolve_page_image_urls(
     else:
         page_count = min(page_count, max_pages)
 
+    start = max(1, int(page_start))
+    end = int(page_end) if page_end is not None else page_count
+    end = min(end, page_count)
+    if start > end:
+        return []
+
     return [
         build_page_image_url(
             media_rel=media_rel,
@@ -141,7 +149,7 @@ def resolve_page_image_urls(
             page=page,
             variant=image_variant,
         )
-        for page in range(1, page_count + 1)
+        for page in range(start, end + 1)
     ]
 
 
@@ -235,6 +243,8 @@ def run(
     delay_seconds: float = 0.3,
     max_pages: int = 100,
     image_variant: ImageVariant = "large",
+    page_start: int = 1,
+    page_end: Optional[int] = None,
 ) -> Dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     volume_dir = output_dir / "volumes" / str(volume_id)
@@ -246,6 +256,8 @@ def run(
     summary: Dict[str, Any] = {
         "collection_id": collection_id,
         "volume_id": volume_id,
+        "page_start": page_start,
+        "page_end": page_end,
         "downloaded_pages": [],
         "skipped_pages": [],
         "errors": [],
@@ -284,14 +296,22 @@ def run(
                     metadata["file_prefix"] = file_prefix
 
         metadata["image_variant"] = image_variant
-        page_urls = resolve_page_image_urls(metadata, image_variant=image_variant, max_pages=max_pages)
+        page_urls = resolve_page_image_urls(
+            metadata,
+            image_variant=image_variant,
+            max_pages=max_pages,
+            page_start=page_start,
+            page_end=page_end,
+        )
+        metadata["page_start"] = page_start
+        metadata["page_end"] = page_end or metadata.get("page_count")
         metadata["page_urls"] = page_urls
 
         metadata_path = volume_dir / "metadata.json"
         metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
         manifest_pages: List[Dict[str, Any]] = []
-        for index, image_url in enumerate(page_urls, start=1):
+        for index, image_url in enumerate(page_urls, start=page_start):
             file_name = f"{index:03d}.jpg"
             target = pages_dir / file_name
             if target.exists() and target.stat().st_size > 0:
@@ -397,6 +417,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-dir", type=Path, default=Path("data/nomfoundation"))
     parser.add_argument("--delay-seconds", type=float, default=0.3)
     parser.add_argument("--max-pages", type=int, default=100)
+    parser.add_argument("--page-start", type=int, default=1)
+    parser.add_argument("--page-end", type=int, default=None)
     parser.add_argument(
         "--image-variant",
         choices=("large", "jpeg"),
@@ -415,6 +437,8 @@ def main() -> None:
         delay_seconds=args.delay_seconds,
         max_pages=args.max_pages,
         image_variant=args.image_variant,
+        page_start=args.page_start,
+        page_end=args.page_end,
     )
     print(
         f"Done volume={args.volume} ({summary.get('catalog_slug')}): "

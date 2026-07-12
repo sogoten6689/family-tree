@@ -65,3 +65,27 @@ export interface OcrTransliterateResponse {
   saved_file: DocumentFile;
   result_document: FamilyTreeSourceDocument;
 }
+
+export interface OcrBatchItemResult {
+  file_id: number;
+  file_name: string;
+  result_document_id: number;
+  transcription_text: string;
+}
+
+export interface OcrBatchError {
+  file_id: number;
+  file_name: string;
+  error: string;
+}
+
+export interface OcrBatchResponse {
+  source_document_id: number;
+  processed: number;
+  skipped: number;
+  results: OcrBatchItemResult[];
+  errors: OcrBatchError[];
+  combined_transcription_text: string;
+  merged_page_count: number;
+  pipeline_synced: boolean;
+}

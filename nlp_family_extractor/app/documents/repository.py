@@ -172,6 +172,9 @@ class DocumentRepository:
         return record
 
 
+COMBINED_TRANSCRIPTION_FILENAME = "combined_transcription.txt"
+
+
 class DocumentService:
     def __init__(
         self,
@@ -336,9 +339,16 @@ class DocumentService:
         ocr_id: int | None = None,
         lang_type: int | None = None,
     ) -> dict:
-        if not self.storage.config.enabled:
-            raise ObjectStorageError("Object storage is not configured.")
+        source = self._validate_ocr_source_document(document_id)
+        return self._ocr_transliterate_bytes(
+            source,
+            file_bytes,
+            filename,
+            ocr_id=ocr_id,
+            lang_type=lang_type,
+        )
 
+    def _validate_ocr_source_document(self, document_id: int) -> Document:
         source = self.repository.get(document_id)
         if source.type not in {
             DocumentType.HAN_NOM,
@@ -348,6 +358,32 @@ class DocumentService:
             raise DocumentValidationError(
                 "Chỉ hỗ trợ OCR/phiên âm từ tài liệu loại han_nom, hinh_anh hoặc van_ban.",
             )
+        return source
+
+    def _expected_transcription_filename(self, image_filename: str) -> str:
+        safe_source = self._sanitize_filename(image_filename)
+        return f"{safe_source.rsplit('.', 1)[0]}_transcription.txt"
+
+    def _ocr_result_exists(self, document_id: int, image_filename: str) -> bool:
+        result_document = self.repository.find_result_document_for_source(document_id)
+        if result_document is None:
+            return False
+        expected = self._expected_transcription_filename(image_filename)
+        return any(item.file_name == expected for item in result_document.files)
+
+    def _ocr_transliterate_bytes(
+        self,
+        source: Document,
+        file_bytes: bytes,
+        filename: str,
+        *,
+        ocr_id: int | None = None,
+        lang_type: int | None = None,
+    ) -> dict:
+        if not self.storage.config.enabled:
+            raise ObjectStorageError("Object storage is not configured.")
+        if not file_bytes:
+            raise DocumentValidationError("File ảnh rỗng.")
 
         try:
             pipeline_result = process_hannom_image_to_vietnamese(
@@ -361,8 +397,8 @@ class DocumentService:
         except ValueError as exc:
             raise DocumentValidationError(str(exc)) from exc
 
-        marker = f"source_document_id={document_id}"
-        result_document = self.repository.find_result_document_for_source(document_id)
+        marker = f"source_document_id={source.id}"
+        result_document = self.repository.find_result_document_for_source(source.id)
         if result_document is None:
             result_document = self.repository.create(
                 family_tree_id=source.family_tree_id,
@@ -372,8 +408,7 @@ class DocumentService:
             )
 
         transcription_text = str(pipeline_result["transcription_text"])
-        safe_source = self._sanitize_filename(filename)
-        result_name = f"{safe_source.rsplit('.', 1)[0]}_transcription.txt"
+        result_name = self._expected_transcription_filename(filename)
         encoded = transcription_text.encode("utf-8")
         buffer = BytesIO(encoded)
 
@@ -398,3 +433,165 @@ class DocumentService:
             "transcription_text": transcription_text,
             "saved_file": created_files[0],
         }
+
+    def ocr_transliterate_stored_file(
+        self,
+        document_id: int,
+        file_id: int,
+        *,
+        ocr_id: int | None = None,
+        lang_type: int | None = None,
+    ) -> dict:
+        source = self._validate_ocr_source_document(document_id)
+        file_record = next((item for item in source.files if item.id == file_id), None)
+        if file_record is None:
+            raise DocumentNotFoundError(f"file '{file_id}' not found in document '{document_id}'")
+        if not str(file_record.file_type).startswith("image/"):
+            raise DocumentValidationError("File được chọn không phải ảnh.")
+
+        file_bytes = self.storage.read_file_bytes(file_record.file_key)
+        return self._ocr_transliterate_bytes(
+            source,
+            file_bytes,
+            file_record.file_name,
+            ocr_id=ocr_id,
+            lang_type=lang_type,
+        )
+
+    def ocr_transliterate_batch(
+        self,
+        document_id: int,
+        *,
+        file_ids: Optional[List[int]] = None,
+        skip_existing: bool = True,
+        ocr_id: int | None = None,
+        lang_type: int | None = None,
+    ) -> dict:
+        source = self.get_document(document_id)
+        image_files = [
+            item
+            for item in source.files
+            if str(item.file_type).startswith("image/")
+        ]
+        if file_ids is not None:
+            allowed = set(file_ids)
+            image_files = [item for item in image_files if item.id in allowed]
+
+        image_files.sort(key=lambda item: (item.position, item.id))
+        results: List[dict] = []
+        errors: List[dict] = []
+        skipped = 0
+
+        for file_record in image_files:
+            if skip_existing and self._ocr_result_exists(document_id, file_record.file_name):
+                skipped += 1
+                continue
+            try:
+                item_result = self.ocr_transliterate_stored_file(
+                    document_id,
+                    file_record.id,
+                    ocr_id=ocr_id,
+                    lang_type=lang_type,
+                )
+                results.append(
+                    {
+                        "file_id": file_record.id,
+                        "file_name": file_record.file_name,
+                        "result_document_id": item_result["result_document"].id,
+                        "transcription_text": item_result["transcription_text"],
+                    }
+                )
+            except Exception as exc:
+                errors.append(
+                    {
+                        "file_id": file_record.id,
+                        "file_name": file_record.file_name,
+                        "error": str(exc),
+                    }
+                )
+
+        combined = "\n\n".join(
+            f"--- {item['file_name']} ---\n{item['transcription_text']}".strip()
+            for item in results
+            if item.get("transcription_text")
+        )
+        return {
+            "source_document_id": document_id,
+            "processed": len(results),
+            "skipped": skipped,
+            "results": results,
+            "errors": errors,
+            "combined_transcription_text": combined,
+            "merged_page_count": 0,
+        }
+
+    def rebuild_merged_transcription(self, source_document_id: int) -> dict:
+        source = self.repository.get(source_document_id)
+        result_document = self.repository.find_result_document_for_source(source_document_id)
+        if result_document is None:
+            return {
+                "merged": False,
+                "reason": "no_result_document",
+                "page_count": 0,
+                "text_length": 0,
+                "combined_text": "",
+            }
+
+        image_files = sorted(
+            [item for item in source.files if str(item.file_type).startswith("image/")],
+            key=lambda item: (item.position, item.id),
+        )
+        trans_by_base: dict[str, DocumentFile] = {}
+        for file_item in result_document.files:
+            if (
+                file_item.file_name.endswith("_transcription.txt")
+                and file_item.file_name != COMBINED_TRANSCRIPTION_FILENAME
+            ):
+                base = file_item.file_name[: -len("_transcription.txt")]
+                trans_by_base[base] = file_item
+
+        parts: list[str] = []
+        for image_file in image_files:
+            base = image_file.file_name.rsplit(".", 1)[0]
+            trans_file = trans_by_base.get(base)
+            if trans_file is None:
+                continue
+            try:
+                raw = self.storage.read_file_bytes(trans_file.file_key)
+                text = raw.decode("utf-8").strip()
+            except ObjectStorageError:
+                continue
+            if text:
+                parts.append(f"--- {image_file.file_name} ---\n{text}")
+
+        combined = "\n\n".join(parts)
+        refreshed = self.repository.get(result_document.id)
+        for file_item in list(refreshed.files):
+            if file_item.file_name == COMBINED_TRANSCRIPTION_FILENAME:
+                self.delete_file(refreshed.id, file_item.id)
+
+        if combined:
+            encoded = combined.encode("utf-8")
+            self.upload_files(
+                refreshed.id,
+                [
+                    (
+                        COMBINED_TRANSCRIPTION_FILENAME,
+                        "text/plain; charset=utf-8",
+                        BytesIO(encoded),
+                        len(encoded),
+                    )
+                ],
+            )
+
+        return {
+            "merged": bool(combined),
+            "page_count": len(parts),
+            "text_length": len(combined),
+            "combined_text": combined,
+            "result_document_id": refreshed.id,
+        }
+
+    def read_merged_transcription_text(self, source_document_id: int) -> str:
+        merge_result = self.rebuild_merged_transcription(source_document_id)
+        return str(merge_result.get("combined_text") or "")

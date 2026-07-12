@@ -46,6 +46,7 @@ from app.domains.extraction.validator import (
 )
 from tools.fetch_vietnamgiapha import run as crawl_vietnamgiapha_run
 from app.nomfoundation.import_service import default_nom_tree_id, import_nom_volume
+from app.nomfoundation.jobs import get_job, start_nom_import_job
 from tools.sync_vietnamgiapha_documents import attach_documents_batch
 from tools.sync_vietnamgiapha_to_db import _default_db_config, sync as sync_vietnamgiapha_to_db
 
@@ -306,10 +307,17 @@ class NomFoundationCrawlRequest(BaseModel):
     delay_seconds: float = Field(default=0.3, ge=0.0, le=5.0)
     max_pages: int = Field(default=100, ge=1, le=200)
     image_variant: Literal["large", "jpeg"] = Field(default="large")
+    page_start: int = Field(default=1, ge=1, description="Trang bắt đầu (inclusive)")
+    page_end: Optional[int] = Field(default=None, ge=1, description="Trang kết thúc (inclusive)")
     save_to_system: bool = Field(
         default=True,
         description="Lưu ảnh MinIO + tạo cây gia phả (nom-{volume_id})",
     )
+    crawl_only: bool = Field(default=False, description="Chỉ tải ảnh local, không MinIO/tree")
+    attach_only: bool = Field(default=False, description="Chỉ upload ảnh local đã có lên MinIO")
+    background: bool = Field(default=False, description="Chạy job nền, tránh timeout HTTP")
+    run_ocr: bool = Field(default=True, description="OCR batch từ MinIO sau khi attach (chậm, cần token)")
+    run_analyze: bool = Field(default=False, description="Phân tích text OCR ghép → balkan_nodes (cần Gemini)")
     tree_id: Optional[str] = Field(
         default=None,
         description="ID cây tùy chỉnh; mặc định nom-{volume_id}",
@@ -337,6 +345,27 @@ class NomFoundationCrawlResponse(BaseModel):
     images_document_id: Optional[int] = None
     images_attached: int = 0
     pipeline_synced: bool = False
+    job_id: Optional[str] = None
+    job_status: Optional[str] = None
+    ocr_processed: int = 0
+    ocr_errors: int = 0
+    merged_pages: int = 0
+    analyze_node_count: int = 0
+    analyze_error: Optional[str] = None
+    page_start: Optional[int] = None
+    page_end: Optional[int] = None
+
+
+class NomFoundationJobResponse(BaseModel):
+    job_id: str
+    status: str
+    type: str
+    params: Dict[str, Any] = Field(default_factory=dict)
+    progress: Dict[str, Any] = Field(default_factory=dict)
+    result: Optional[Dict[str, Any]] = None
+    error: Optional[str] = None
+    created_at: Optional[str] = None
+    updated_at: Optional[str] = None
 
 
 _TAGS_METADATA = [
@@ -1196,8 +1225,24 @@ def crawl_nomfoundation_volume(
     output_dir = Path(__file__).resolve().parent / "data" / "nomfoundation"
     resolved_tree_id = (req.tree_id or req.link_tree_id or default_nom_tree_id(req.volume_id)).strip()
 
+    if req.attach_only and req.crawl_only:
+        raise HTTPException(status_code=400, detail="attach_only và crawl_only không dùng cùng lúc.")
+
     try:
-        if req.save_to_system:
+        if req.crawl_only or not req.save_to_system:
+            from tools.fetch_nomfoundation import run as crawl_nomfoundation_run
+
+            summary = crawl_nomfoundation_run(
+                collection_id=req.collection_id,
+                volume_id=req.volume_id,
+                output_dir=output_dir,
+                delay_seconds=req.delay_seconds,
+                max_pages=req.max_pages,
+                image_variant=req.image_variant,
+                page_start=req.page_start,
+                page_end=req.page_end,
+            )
+        elif req.save_to_system:
             if not database_enabled():
                 raise HTTPException(
                     status_code=400,
@@ -1208,6 +1253,73 @@ def crawl_nomfoundation_volume(
                 raise HTTPException(
                     status_code=400,
                     detail="save_to_system requires MinIO — thiết lập MINIO_*.",
+                )
+
+            if req.background:
+                job_params = req.model_dump()
+                job_params["resolved_tree_id"] = resolved_tree_id
+
+                def _runner(job_id: str, params: Dict[str, Any]) -> Dict[str, Any]:
+                    from app.nomfoundation.jobs import _update_job
+
+                    db_gen = get_db()
+                    db = next(db_gen)
+                    try:
+                        def _on_progress(patch: Dict[str, Any]) -> None:
+                            _update_job(output_dir, job_id, progress=patch)
+
+                        result = import_nom_volume(
+                            collection_id=params["collection_id"],
+                            volume_id=params["volume_id"],
+                            output_dir=output_dir,
+                            db=db,
+                            storage=storage,
+                            store=_family_tree_store,
+                            get_tree=_get_family_tree_document,
+                            delay_seconds=params.get("delay_seconds", 0.3),
+                            max_pages=params.get("max_pages", 100),
+                            image_variant=params.get("image_variant", "large"),
+                            page_start=params.get("page_start", 1),
+                            page_end=params.get("page_end"),
+                            family_tree_id=params.get("resolved_tree_id"),
+                            tree_name=params.get("tree_name"),
+                            sync_pipeline=params.get("sync_pipeline", True),
+                            force_documents=params.get("force_documents", False),
+                            crawl_only=False,
+                            attach_only=params.get("attach_only", False),
+                            run_ocr=params.get("run_ocr", True),
+                            run_analyze=params.get("run_analyze", False),
+                            job_id=job_id,
+                            on_progress=_on_progress,
+                        )
+                        _upsert_nom_research_source_link(
+                            db,
+                            family_tree_id=params["resolved_tree_id"],
+                            collection_id=params["collection_id"],
+                            volume_id=params["volume_id"],
+                            page_count=int(result.get("page_count", 0)),
+                        )
+                        db.commit()
+                        return result
+                    finally:
+                        try:
+                            next(db_gen)
+                        except StopIteration:
+                            pass
+
+                job = start_nom_import_job(output_dir=output_dir, params=job_params, runner=_runner)
+                return NomFoundationCrawlResponse(
+                    collection_id=req.collection_id,
+                    volume_id=req.volume_id,
+                    output_dir=str(output_dir),
+                    downloaded_pages=0,
+                    page_count=0,
+                    errors=0,
+                    tree_id=resolved_tree_id,
+                    job_id=job["job_id"],
+                    job_status=job["status"],
+                    page_start=req.page_start,
+                    page_end=req.page_end,
                 )
 
             db_gen = get_db()
@@ -1224,18 +1336,25 @@ def crawl_nomfoundation_volume(
                     delay_seconds=req.delay_seconds,
                     max_pages=req.max_pages,
                     image_variant=req.image_variant,
+                    page_start=req.page_start,
+                    page_end=req.page_end,
                     family_tree_id=resolved_tree_id,
                     tree_name=req.tree_name,
                     sync_pipeline=req.sync_pipeline,
                     force_documents=req.force_documents,
+                    crawl_only=False,
+                    attach_only=req.attach_only,
+                    run_ocr=req.run_ocr,
+                    run_analyze=req.run_analyze,
                 )
-                _upsert_nom_research_source_link(
-                    db,
-                    family_tree_id=resolved_tree_id,
-                    collection_id=req.collection_id,
-                    volume_id=req.volume_id,
-                    page_count=int(summary.get("page_count", 0)),
-                )
+                if not req.attach_only:
+                    _upsert_nom_research_source_link(
+                        db,
+                        family_tree_id=resolved_tree_id,
+                        collection_id=req.collection_id,
+                        volume_id=req.volume_id,
+                        page_count=int(summary.get("page_count", 0)),
+                    )
                 db.commit()
             finally:
                 try:
@@ -1243,22 +1362,15 @@ def crawl_nomfoundation_volume(
                 except StopIteration:
                     pass
         else:
-            from tools.fetch_nomfoundation import run as crawl_nomfoundation_run
-
-            summary = crawl_nomfoundation_run(
-                collection_id=req.collection_id,
-                volume_id=req.volume_id,
-                output_dir=output_dir,
-                delay_seconds=req.delay_seconds,
-                max_pages=req.max_pages,
-                image_variant=req.image_variant,
-            )
+            raise HTTPException(status_code=400, detail="save_to_system=false requires crawl_only or local crawl.")
     except HTTPException:
         raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Nom crawl failed: {exc}") from exc
 
     images_doc = summary.get("images_document") or {}
+    ocr_result = summary.get("ocr_result") or {}
+    analyze_result = summary.get("analyze_result") or {}
     return NomFoundationCrawlResponse(
         collection_id=req.collection_id,
         volume_id=req.volume_id,
@@ -1271,9 +1383,30 @@ def crawl_nomfoundation_volume(
         tree_id=summary.get("tree_id"),
         tree_name=summary.get("tree_name"),
         images_document_id=images_doc.get("document_id"),
-        images_attached=int(images_doc.get("file_count") or 0),
+        images_attached=int(images_doc.get("uploaded_count") or images_doc.get("file_count") or 0),
         pipeline_synced=bool(summary.get("pipeline_synced")),
+        ocr_processed=int(ocr_result.get("processed") or 0),
+        ocr_errors=len(ocr_result.get("errors") or []),
+        merged_pages=int(ocr_result.get("merged_page_count") or 0),
+        analyze_node_count=int(analyze_result.get("node_count") or 0),
+        analyze_error=analyze_result.get("gemini_error"),
+        page_start=summary.get("page_start", req.page_start),
+        page_end=summary.get("page_end", req.page_end),
     )
+
+
+@app.get(
+    "/api/nomfoundation/jobs/{job_id}",
+    response_model=NomFoundationJobResponse,
+    tags=["Crawlers"],
+    summary="Trạng thái job crawl/import Nom Foundation",
+)
+def get_nomfoundation_job(job_id: str, _: AdminUser) -> NomFoundationJobResponse:
+    output_dir = Path(__file__).resolve().parent / "data" / "nomfoundation"
+    job = get_job(output_dir, job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail=f"Job '{job_id}' not found")
+    return NomFoundationJobResponse(**job)
 
 
 def _upsert_nom_research_source_link(
