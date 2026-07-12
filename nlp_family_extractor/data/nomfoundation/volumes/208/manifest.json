@@ -1,0 +1,17 @@
+{
+  "collection_id": 2,
+  "volume_id": 208,
+  "catalog_slug": "nlvnpf-0155",
+  "image_variant": "jpeg",
+  "downloaded_at": "2026-07-12T14:43:20.375973+00:00",
+  "pages": [
+    {
+      "page": 1,
+      "file": "001.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0155/jpeg/nlvnpf-0155-001.jpg",
+      "size": 137409,
+      "sha256": "a690ea9bf6a4c42492b12a31577e27749359f02a6bc2e1261bf2eb4b965e2129",
+      "skipped": false
+    }
+  ]
+}

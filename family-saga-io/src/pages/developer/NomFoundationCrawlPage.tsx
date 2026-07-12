@@ -3,12 +3,14 @@ import {
   Alert,
   Button,
   Card,
+  Checkbox,
   Col,
   Descriptions,
   Form,
   Input,
   InputNumber,
   Row,
+  Select,
   Space,
   Statistic,
   Typography,
@@ -24,7 +26,10 @@ type FormValues = {
   volumeId: number;
   delaySeconds: number;
   maxPages: number;
-  linkTreeId?: string;
+  imageVariant: "large" | "jpeg";
+  saveToSystem: boolean;
+  treeId?: string;
+  syncPipeline: boolean;
 };
 
 type CrawlResult = {
@@ -34,14 +39,24 @@ type CrawlResult = {
   downloaded_pages: number;
   page_count: number;
   errors: number;
+  catalog_slug?: string | null;
+  title?: string | null;
+  tree_id?: string | null;
+  tree_name?: string | null;
+  images_document_id?: number | null;
+  images_attached?: number;
+  pipeline_synced?: boolean;
 };
 
 const DEFAULT_VALUES: FormValues = {
-  collectionId: 1,
-  volumeId: 429,
+  collectionId: 2,
+  volumeId: 1255,
   delaySeconds: 0.3,
-  maxPages: 20,
-  linkTreeId: "",
+  maxPages: 100,
+  imageVariant: "large",
+  saveToSystem: true,
+  treeId: "",
+  syncPipeline: true,
 };
 
 const NomFoundationCrawlPage = () => {
@@ -62,7 +77,10 @@ const NomFoundationCrawlPage = () => {
           volume_id: values.volumeId,
           delay_seconds: values.delaySeconds,
           max_pages: values.maxPages,
-          link_tree_id: values.linkTreeId?.trim() || null,
+          image_variant: values.imageVariant,
+          save_to_system: values.saveToSystem,
+          tree_id: values.treeId?.trim() || null,
+          sync_pipeline: values.syncPipeline,
         }),
       });
       setResult(response);
@@ -87,7 +105,7 @@ const NomFoundationCrawlPage = () => {
         <Typography.Paragraph type="secondary" className="!mb-0">
           {t("admin.developer.nomCrawlDesc", {
             defaultValue:
-              "Tải metadata và ảnh scan từ lib.nomfoundation.org (ví dụ volume 429 — Thuỵ Ứng gia phả).",
+              "Tải ảnh scan, lưu MinIO và tạo cây gia phả (nom-{volume}) từ lib.nomfoundation.org. (208, 855, 1255, 1256",
           })}
         </Typography.Paragraph>
       </div>
@@ -117,13 +135,38 @@ const NomFoundationCrawlPage = () => {
                 <InputNumber min={1} max={200} className="w-full" />
               </Form.Item>
             </Col>
+            <Col xs={24} sm={12} md={6}>
+              <Form.Item label="Ảnh" name="imageVariant">
+                <Select
+                  options={[
+                    { value: "large", label: "large (OCR)" },
+                    { value: "jpeg", label: "jpeg (nhanh)" },
+                  ]}
+                />
+              </Form.Item>
+            </Col>
             <Col xs={24} sm={12} md={12}>
               <Form.Item
-                label={t("admin.developer.linkTreeId", { defaultValue: "Gắn cây (vgp-100)" })}
-                name="linkTreeId"
+                label={t("admin.developer.nomTreeId", { defaultValue: "Tree ID (tùy chọn)" })}
+                name="treeId"
+                extra={t("admin.developer.nomTreeIdHint", { defaultValue: "Để trống → nom-{volumeId}" })}
               >
-                <Input placeholder="vgp-100" allowClear />
+                <Input placeholder="nom-1255" allowClear />
               </Form.Item>
+            </Col>
+            <Col xs={24}>
+              <Space size="large">
+                <Form.Item name="saveToSystem" valuePropName="checked" className="!mb-0">
+                  <Checkbox>
+                    {t("admin.developer.nomSaveToSystem", { defaultValue: "Lưu MinIO + tạo cây gia phả" })}
+                  </Checkbox>
+                </Form.Item>
+                <Form.Item name="syncPipeline" valuePropName="checked" className="!mb-0">
+                  <Checkbox>
+                    {t("admin.developer.nomSyncPipeline", { defaultValue: "Đồng bộ pipeline step ②" })}
+                  </Checkbox>
+                </Form.Item>
+              </Space>
             </Col>
           </Row>
           <Button type="primary" htmlType="submit" icon={<PlayCircleOutlined />} loading={running}>
@@ -150,6 +193,20 @@ const NomFoundationCrawlPage = () => {
             <Descriptions.Item label="Volume">
               collection/{result.collection_id}/volume/{result.volume_id}
             </Descriptions.Item>
+            {result.title && <Descriptions.Item label="Tên">{result.title}</Descriptions.Item>}
+            {result.catalog_slug && (
+              <Descriptions.Item label="Catalog slug">{result.catalog_slug}</Descriptions.Item>
+            )}
+            {result.tree_id && (
+              <Descriptions.Item label="Cây gia phả">
+                <a href={`/admin/gia-pha/${result.tree_id}?tab=documents`}>{result.tree_id}</a>
+              </Descriptions.Item>
+            )}
+            {result.images_document_id != null && (
+              <Descriptions.Item label="Document ảnh">
+                #{result.images_document_id} ({result.images_attached ?? 0} file)
+              </Descriptions.Item>
+            )}
           </Descriptions>
         </Card>
       )}

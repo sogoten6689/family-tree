@@ -45,7 +45,7 @@ from app.domains.extraction.validator import (
     validate_parent_age_gap,
 )
 from tools.fetch_vietnamgiapha import run as crawl_vietnamgiapha_run
-from tools.fetch_nomfoundation import run as crawl_nomfoundation_run
+from app.nomfoundation.import_service import default_nom_tree_id, import_nom_volume
 from tools.sync_vietnamgiapha_documents import attach_documents_batch
 from tools.sync_vietnamgiapha_to_db import _default_db_config, sync as sync_vietnamgiapha_to_db
 
@@ -301,11 +301,26 @@ class VietnamGiaPhaCrawlSyncResponse(BaseModel):
 class NomFoundationCrawlRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    collection_id: int = Field(default=1, ge=1)
+    collection_id: int = Field(default=2, ge=1)
     volume_id: int = Field(ge=1)
     delay_seconds: float = Field(default=0.3, ge=0.0, le=5.0)
-    max_pages: int = Field(default=20, ge=1, le=200)
-    link_tree_id: Optional[str] = Field(default=None, description="vgp-{id} hoặc tree id khác")
+    max_pages: int = Field(default=100, ge=1, le=200)
+    image_variant: Literal["large", "jpeg"] = Field(default="large")
+    save_to_system: bool = Field(
+        default=True,
+        description="Lưu ảnh MinIO + tạo cây gia phả (nom-{volume_id})",
+    )
+    tree_id: Optional[str] = Field(
+        default=None,
+        description="ID cây tùy chỉnh; mặc định nom-{volume_id}",
+    )
+    tree_name: Optional[str] = Field(default=None, description="Tên cây; mặc định lấy từ metadata Nom")
+    sync_pipeline: bool = Field(default=True)
+    force_documents: bool = Field(default=False)
+    link_tree_id: Optional[str] = Field(
+        default=None,
+        description="Deprecated alias của tree_id",
+    )
 
 
 class NomFoundationCrawlResponse(BaseModel):
@@ -315,6 +330,13 @@ class NomFoundationCrawlResponse(BaseModel):
     downloaded_pages: int
     page_count: int
     errors: int
+    catalog_slug: Optional[str] = None
+    title: Optional[str] = None
+    tree_id: Optional[str] = None
+    tree_name: Optional[str] = None
+    images_document_id: Optional[int] = None
+    images_attached: int = 0
+    pipeline_synced: bool = False
 
 
 _TAGS_METADATA = [
@@ -1172,62 +1194,71 @@ def crawl_nomfoundation_volume(
     _: AdminUser,
 ) -> NomFoundationCrawlResponse:
     output_dir = Path(__file__).resolve().parent / "data" / "nomfoundation"
+    resolved_tree_id = (req.tree_id or req.link_tree_id or default_nom_tree_id(req.volume_id)).strip()
+
     try:
-        summary = crawl_nomfoundation_run(
-            collection_id=req.collection_id,
-            volume_id=req.volume_id,
-            output_dir=output_dir,
-            delay_seconds=req.delay_seconds,
-            max_pages=req.max_pages,
-        )
+        if req.save_to_system:
+            if not database_enabled():
+                raise HTTPException(
+                    status_code=400,
+                    detail="save_to_system requires MySQL — thiết lập MYSQL_*.",
+                )
+            storage = ObjectStorage.from_env()
+            if not storage.config.enabled:
+                raise HTTPException(
+                    status_code=400,
+                    detail="save_to_system requires MinIO — thiết lập MINIO_*.",
+                )
+
+            db_gen = get_db()
+            db = next(db_gen)
+            try:
+                summary = import_nom_volume(
+                    collection_id=req.collection_id,
+                    volume_id=req.volume_id,
+                    output_dir=output_dir,
+                    db=db,
+                    storage=storage,
+                    store=_family_tree_store,
+                    get_tree=_get_family_tree_document,
+                    delay_seconds=req.delay_seconds,
+                    max_pages=req.max_pages,
+                    image_variant=req.image_variant,
+                    family_tree_id=resolved_tree_id,
+                    tree_name=req.tree_name,
+                    sync_pipeline=req.sync_pipeline,
+                    force_documents=req.force_documents,
+                )
+                _upsert_nom_research_source_link(
+                    db,
+                    family_tree_id=resolved_tree_id,
+                    collection_id=req.collection_id,
+                    volume_id=req.volume_id,
+                    page_count=int(summary.get("page_count", 0)),
+                )
+                db.commit()
+            finally:
+                try:
+                    next(db_gen)
+                except StopIteration:
+                    pass
+        else:
+            from tools.fetch_nomfoundation import run as crawl_nomfoundation_run
+
+            summary = crawl_nomfoundation_run(
+                collection_id=req.collection_id,
+                volume_id=req.volume_id,
+                output_dir=output_dir,
+                delay_seconds=req.delay_seconds,
+                max_pages=req.max_pages,
+                image_variant=req.image_variant,
+            )
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Nom crawl failed: {exc}") from exc
 
-    if req.link_tree_id and database_enabled():
-        from sqlalchemy import text as sql_text
-        from sqlalchemy.orm import Session
-
-        db_gen = get_db()
-        db: Session = next(db_gen)
-        try:
-            volume_url = (
-                f"https://lib.nomfoundation.org/collection/{req.collection_id}/volume/{req.volume_id}/"
-            )
-            db.execute(
-                sql_text(
-                    """
-                    INSERT INTO research_source_links
-                        (family_tree_id, source_type, external_id, external_url, metadata_json, created_at)
-                    VALUES
-                        (:family_tree_id, 'nomfoundation', :external_id, :external_url, :metadata_json, UTC_TIMESTAMP())
-                    ON DUPLICATE KEY UPDATE
-                        external_url = VALUES(external_url),
-                        metadata_json = VALUES(metadata_json)
-                    """
-                ),
-                {
-                    "family_tree_id": req.link_tree_id,
-                    "external_id": str(req.volume_id),
-                    "external_url": volume_url,
-                    "metadata_json": json.dumps(
-                        {
-                            "collection_id": req.collection_id,
-                            "volume_id": req.volume_id,
-                            "page_count": summary.get("page_count", 0),
-                        },
-                        ensure_ascii=False,
-                    ),
-                },
-            )
-            db.commit()
-        except Exception:
-            db.rollback()
-        finally:
-            try:
-                next(db_gen)
-            except StopIteration:
-                pass
-
+    images_doc = summary.get("images_document") or {}
     return NomFoundationCrawlResponse(
         collection_id=req.collection_id,
         volume_id=req.volume_id,
@@ -1235,6 +1266,52 @@ def crawl_nomfoundation_volume(
         downloaded_pages=len(summary.get("downloaded_pages", [])),
         page_count=int(summary.get("page_count", 0)),
         errors=len(summary.get("errors", [])),
+        catalog_slug=summary.get("catalog_slug"),
+        title=summary.get("title") or summary.get("tree_name"),
+        tree_id=summary.get("tree_id"),
+        tree_name=summary.get("tree_name"),
+        images_document_id=images_doc.get("document_id"),
+        images_attached=int(images_doc.get("file_count") or 0),
+        pipeline_synced=bool(summary.get("pipeline_synced")),
+    )
+
+
+def _upsert_nom_research_source_link(
+    db,
+    *,
+    family_tree_id: str,
+    collection_id: int,
+    volume_id: int,
+    page_count: int,
+) -> None:
+    from sqlalchemy import text as sql_text
+
+    volume_url = f"https://lib.nomfoundation.org/collection/{collection_id}/volume/{volume_id}/"
+    db.execute(
+        sql_text(
+            """
+            INSERT INTO research_source_links
+                (family_tree_id, source_type, external_id, external_url, metadata_json, created_at)
+            VALUES
+                (:family_tree_id, 'nomfoundation', :external_id, :external_url, :metadata_json, UTC_TIMESTAMP())
+            ON DUPLICATE KEY UPDATE
+                external_url = VALUES(external_url),
+                metadata_json = VALUES(metadata_json)
+            """
+        ),
+        {
+            "family_tree_id": family_tree_id,
+            "external_id": str(volume_id),
+            "external_url": volume_url,
+            "metadata_json": json.dumps(
+                {
+                    "collection_id": collection_id,
+                    "volume_id": volume_id,
+                    "page_count": page_count,
+                },
+                ensure_ascii=False,
+            ),
+        },
     )
 
 
