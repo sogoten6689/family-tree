@@ -3,13 +3,21 @@ import { useMemo, type ReactNode } from "react";
 import FamilyTreeNode from "@/components/FamilyTreeNode";
 import type { FamilyMember } from "@/data/familyMockData";
 
+import type { ThemeId } from "./familyTreeRenderers";
+
 type Props = {
   members: FamilyMember[];
+  themeId?: ThemeId | "print-a4";
   selectedMemberId?: number | null;
   onSelectMember?: (memberId: number) => void;
 };
 
-export function FamilyTreeDomView({ members, selectedMemberId, onSelectMember }: Props) {
+export function FamilyTreeDomView({
+  members,
+  themeId = "default",
+  selectedMemberId,
+  onSelectMember,
+}: Props) {
   const roots = useMemo(() => {
     const withoutParent = members.filter((member) => !member.parentId);
     if (withoutParent.length > 0) return withoutParent;
@@ -60,7 +68,7 @@ export function FamilyTreeDomView({ members, selectedMemberId, onSelectMember }:
   }
 
   return (
-    <div className="overflow-x-auto py-4">
+    <div className={`family-tree-dom family-tree-theme-${themeId} overflow-x-auto py-4`}>
       <div className="flex flex-wrap justify-center gap-12 min-w-max mx-auto">
         {roots.map((root) => (
           <div key={root.id} className="flex flex-col items-center">

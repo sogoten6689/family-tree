@@ -1,0 +1,40 @@
+.family-tree-theme-minimal .tree-node-card {
+  border-width: 1px;
+  border-color: hsl(var(--border));
+  box-shadow: none;
+  background: hsl(var(--background));
+}
+
+.family-tree-theme-minimal .tree-node-card:hover {
+  box-shadow: 0 2px 8px hsl(var(--foreground) / 0.08);
+  transform: none;
+}
+
+.family-tree-theme-minimal .tree-connector-v,
+.family-tree-theme-minimal .tree-connector-h {
+  border-color: hsl(var(--border));
+}
+
+.family-tree-theme-print-a4 .tree-node-card {
+  border-width: 1px;
+  border-color: #333;
+  box-shadow: none;
+  background: #fff;
+  color: #000;
+}
+
+.family-tree-theme-print-a4 .tree-connector-v,
+.family-tree-theme-print-a4 .tree-connector-h {
+  border-color: #333;
+}
+
+.family-tree-fullscreen-modal .ant-modal {
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.family-tree-fullscreen-modal .ant-modal-content {
+  min-height: 100vh;
+  border-radius: 0;
+}

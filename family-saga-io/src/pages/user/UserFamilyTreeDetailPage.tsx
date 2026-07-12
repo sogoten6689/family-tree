@@ -3,9 +3,10 @@ import { Button, Card, Col, Empty, Row, Spin, Typography } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
+import { FamilyTreeVisualPanel } from "@/components/family-tree/FamilyTreeVisualPanel";
 import { getUserFamilyTree } from "@/lib/userWorkspaceApi";
 import type { FamilyTreeDocument } from "@/lib/familyTreeApi";
+import { toFamilyMembers } from "@/lib/familyTreeUtils";
 
 const UserFamilyTreeDetailPage = () => {
   const { t } = useTranslation();
@@ -31,6 +32,7 @@ const UserFamilyTreeDetailPage = () => {
   }, [treeId]);
 
   const nodeCount = useMemo(() => tree?.nodes?.length ?? 0, [tree]);
+  const members = useMemo(() => toFamilyMembers(tree?.nodes ?? []), [tree]);
 
   if (loading) return <Spin className="flex justify-center py-16" size="large" />;
   if (!tree || error) return <Empty description={error ?? "Không tải được gia phả"} />;
@@ -49,7 +51,7 @@ const UserFamilyTreeDetailPage = () => {
         <Col><Typography.Text>{t("familyTree.totalMembers", { defaultValue: "Thành viên" })}: {nodeCount}</Typography.Text></Col>
       </Row>
       {tree.nodes.length > 0 ? (
-        <BalkanFamilyTreeView treeId={tree.id} nodes={tree.nodes} height={560} />
+        <FamilyTreeVisualPanel nodes={tree.nodes} treeName={tree.name} members={members} />
       ) : (
         <Empty description={t("familyTree.emptyTree", { defaultValue: "Cây này chưa có node nào" })} />
       )}

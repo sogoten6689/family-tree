@@ -452,6 +452,7 @@ const FamilyTreeDetailPage = () => {
                       <FamilyTreeVisualPanel
                         key={tree.id}
                         nodes={tree.nodes}
+                        treeName={tree.name}
                         members={members}
                         selectedMemberId={selectedNodeId}
                         onSelectMember={setSelectedNodeId}

@@ -3,7 +3,7 @@ import { Button, Card, Col, Empty, Row, Spin, Statistic, Table, Tabs, Tag, Typog
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { BalkanFamilyTreeView } from "@/components/BalkanFamilyTreeView";
+import { FamilyTreeVisualPanel } from "@/components/family-tree/FamilyTreeVisualPanel";
 import { FamilyTreeAncestralSidebar } from "@/components/family-tree/FamilyTreeAncestralSidebar";
 import { FamilyTreeMembersTable } from "@/components/family-tree/FamilyTreeMembersTable";
 import { getPublicFamilyTree, listPublicFamilyTreeDocuments } from "@/lib/publicFamilyTreeApi";
@@ -107,7 +107,12 @@ const PublicFamilyTreePage = () => {
                   label: t("familyTree.visualTreeTab", { defaultValue: "Sơ đồ Gia phả" }),
                   children:
                     tree.nodes.length > 0 ? (
-                      <BalkanFamilyTreeView key={tree.id} treeId={tree.id} nodes={tree.nodes} height={560} />
+                      <FamilyTreeVisualPanel
+                        key={tree.id}
+                        nodes={tree.nodes}
+                        treeName={tree.name}
+                        members={members}
+                      />
                     ) : (
                       <Empty
                         image={Empty.PRESENTED_IMAGE_SIMPLE}

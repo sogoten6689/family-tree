@@ -39,20 +39,18 @@ export const FAMILY_TREE_RENDERERS = {
 |--------------|-----------|--------|
 | `dom-classic` | `FamilyTreeDomView` | ✅ active |
 | `table` | `FamilyTreeMembersTable` | ✅ active |
-| `view-full` | `FamilyTreeFullScreenView` (overlay) | ⬜ P1 |
-| `cytoscape-dagre` | `FamilyTreeCytoscapeView` | ⬜ P2 |
+| `view-full` | `FamilyTreeFullScreenView` (overlay) | ✅ P1 |
+| `cytoscape-dagre` | `FamilyTreeCytoscapeView` | ✅ P2 |
 | `vis-network` | `FamilyTreeVisView` | ⬜ P2 alt |
-| `dom-minimal` | `FamilyTreeDomView` + theme | ⬜ P3 |
-| `print-preview` | `FamilyTreePrintPreview` | ⬜ P4 |
+| `dom-minimal` | `FamilyTreeDomView` + theme | ✅ P3 |
+| `print-preview` | `FamilyTreePrintPreview` | ✅ P4 |
 
 **Không** thêm `balkan-hugo` vào dropdown — trial/license.
 
 ## Surface cần wire (backlog)
 
-- ✅ Admin `FamilyTreeDetailPage` tab `visual` (dom + table)
-- ⬜ P1 `view-full` — fullscreen modal
-- ⬜ P2 graph OSS — Cytoscape / vis-network
-- ⬜ P3 dom themes — `default`, `minimal`
-- ⬜ P4 `print-preview` + `window.print()` PDF
+- ✅ Admin + Public + User — `FamilyTreeVisualPanel`
+- ✅ P1 view-full, P2 cytoscape, P3 themes, P4 print-preview
+- ⬜ `DocumentReaderPage` migrate khỏi Balkan
 
 Dùng `FamilyTreeVisualPanel` thay vì gọi renderer trực tiếp trên từng page.

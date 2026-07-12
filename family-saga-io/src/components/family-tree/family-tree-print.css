@@ -1,0 +1,43 @@
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body.family-tree-printing * {
+    visibility: hidden;
+  }
+
+  body.family-tree-printing .family-tree-print-root,
+  body.family-tree-printing .family-tree-print-root * {
+    visibility: visible;
+  }
+
+  body.family-tree-printing .family-tree-print-root {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body.family-tree-printing .family-tree-visual-content,
+  body.family-tree-printing .family-tree-visual-content * {
+    visibility: visible;
+  }
+
+  body.family-tree-printing .family-tree-visual-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}

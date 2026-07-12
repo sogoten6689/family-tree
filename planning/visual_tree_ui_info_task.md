@@ -312,12 +312,12 @@ FamilyTreeVisualPanel
 | Phase | Việc | Ước lượng | Status |
 |-------|------|-----------|--------|
 | **MVP** | Registry + `FamilyTreeVisualPanel` + dom + table + admin | 1–2 ngày | ✅ |
-| **P1** | `view-full` — Modal fullscreen + nút toolbar | 0.5 ngày | ⬜ |
-| **P2a** | `balkanNodesToGraph` + `FamilyTreeCytoscapeView` POC | 1–2 ngày | ⬜ |
+| **P1** | `view-full` — Modal fullscreen + nút toolbar | 0.5 ngày | ✅ |
+| **P2a** | `balkanNodesToGraph` + `FamilyTreeCytoscapeView` POC | 1–2 ngày | ✅ |
 | **P2b** | (optional) `vis-network` nếu so sánh | 1 ngày | ⬜ |
-| **P3** | `themeId` dropdown + `dom-minimal` CSS | 0.5 ngày | ⬜ |
-| **P4** | `print-preview` + `@media print` + nút In PDF | 1 ngày | ⬜ |
-| **P5** | Wire public + user page; `?renderer=` URL | 0.5 ngày | ⬜ |
+| **P3** | `themeId` dropdown + `dom-minimal` CSS | 0.5 ngày | ✅ |
+| **P4** | `print-preview` + `@media print` + nút In PDF | 1 ngày | ✅ |
+| **P5** | Wire public + user page; `?renderer=` URL | 0.5 ngày | ✅ |
 | **P6** | Gỡ `@balkangraph/familytree.js` | 0.5 ngày | ⬜ |
 
 ```mermaid
@@ -347,34 +347,34 @@ gantt
 
 ### P1 — view-full
 
-- [ ] Nút「Xem toàn màn」trên toolbar tab visual
-- [ ] Modal fullscreen hiển thị **cùng renderer** đang chọn
-- [ ] Nút thoát / Esc đóng full
-- [ ] DOM: scroll ngang hoạt động trong full
+- [x] Nút「Xem toàn màn」trên toolbar tab visual
+- [x] Modal fullscreen hiển thị **cùng renderer** đang chọn
+- [x] Nút thoát / Esc đóng full
+- [x] DOM: scroll ngang hoạt động trong full
 
 ### P2 — graph lib khác
 
-- [ ] `cytoscape-dagre` đọc `BalkanNode[]`, zoom/pan
-- [ ] Số node khớp SSOT
-- [ ] License MIT — không Balkan
+- [x] `cytoscape-dagre` đọc `BalkanNode[]`, zoom/pan
+- [x] Số node khớp SSOT
+- [x] License MIT — không Balkan
 
 ### P3 — style khác
 
-- [ ] Dropdown「Giao diện」cho dom: `default`, `minimal`
-- [ ] Đổi theme không đổi data
+- [x] Dropdown「Giao diện」cho dom: `default`, `minimal`
+- [x] Đổi theme không đổi data
 
 ### P4 — print-preview & PDF
 
-- [ ] Renderer `print-preview` trong dropdown
-- [ ] Layout A4, header/footer in
-- [ ] Nút「In PDF」→ `window.print()` → Save as PDF
-- [ ] `@media print` ẩn sidebar, toolbar (`.no-print`)
-- [ ] Không gọi server PDF / Balkan export
+- [x] Renderer `print-preview` trong dropdown
+- [x] Layout A4, header/footer in
+- [x] Nút「In PDF」→ `window.print()` → Save as PDF
+- [x] `@media print` ẩn sidebar, toolbar (`.no-print`)
+- [x] Không gọi server PDF / Balkan export
 
 ### P5 — surfaces
 
-- [ ] Public + user page dùng `FamilyTreeVisualPanel`
-- [ ] URL `?renderer=print-preview` (optional)
+- [x] Public + user page dùng `FamilyTreeVisualPanel`
+- [x] URL `?renderer=print-preview` (optional)
 
 ---
 

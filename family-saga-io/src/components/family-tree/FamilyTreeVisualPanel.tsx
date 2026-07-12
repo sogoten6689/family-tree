@@ -1,24 +1,36 @@
 import { useMemo, useState } from "react";
-import { Select, Space, Typography } from "antd";
+import { Button, Select, Space, Typography } from "antd";
+import { ExpandOutlined, PrinterOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import type { FamilyMember } from "@/data/familyMockData";
 import type { BalkanNode } from "@/lib/familyTreeApi";
 import { toFamilyMembers } from "@/lib/familyTreeUtils";
 
-import { FamilyTreeDomView } from "./FamilyTreeDomView";
-import { FamilyTreeMembersTable } from "./FamilyTreeMembersTable";
+import { FamilyTreeFullScreenView } from "./FamilyTreeFullScreenView";
+import { FamilyTreeRendererContent } from "./FamilyTreeRendererContent";
 import {
   DEFAULT_RENDERER_ID,
+  DEFAULT_THEME_ID,
   FAMILY_TREE_RENDERERS,
+  FAMILY_TREE_THEMES,
+  type FamilyTreeVisualSettings,
   type RendererId,
   RENDERER_IDS,
-  loadRendererId,
-  saveRendererId,
+  THEME_IDS,
+  loadVisualSettings,
+  saveVisualSettings,
+  supportsFullScreen,
+  supportsTheme,
 } from "./familyTreeRenderers";
+import { usePrintFamilyTree } from "./usePrintFamilyTree";
+
+import "./family-tree-themes.css";
+import "./family-tree-print.css";
 
 type Props = {
   nodes: BalkanNode[];
+  treeName?: string;
   members?: FamilyMember[];
   selectedMemberId?: number | null;
   onSelectMember?: (memberId: number) => void;
@@ -26,24 +38,32 @@ type Props = {
 
 export function FamilyTreeVisualPanel({
   nodes,
+  treeName,
   members: membersProp,
   selectedMemberId,
   onSelectMember,
 }: Props) {
   const { t } = useTranslation();
-  const [rendererId, setRendererId] = useState<RendererId>(() => loadRendererId());
+  const { print } = usePrintFamilyTree();
+  const [settings, setSettings] = useState<FamilyTreeVisualSettings>(() => loadVisualSettings());
+  const [fullOpen, setFullOpen] = useState(false);
+
+  const { rendererId, themeId } = settings;
 
   const members = useMemo(
     () => membersProp ?? toFamilyMembers(nodes),
     [membersProp, nodes],
   );
 
-  const handleRendererChange = (nextId: RendererId) => {
-    setRendererId(nextId);
-    saveRendererId(nextId);
+  const updateSettings = (next: Partial<FamilyTreeVisualSettings>) => {
+    setSettings((prev) => {
+      const merged = { ...prev, ...next };
+      saveVisualSettings(merged);
+      return merged;
+    });
   };
 
-  const selectOptions = RENDERER_IDS.map((id) => {
+  const rendererOptions = RENDERER_IDS.map((id) => {
     const meta = FAMILY_TREE_RENDERERS[id];
     return {
       value: id,
@@ -52,63 +72,85 @@ export function FamilyTreeVisualPanel({
     };
   });
 
+  const themeOptions = THEME_IDS.map((id) => {
+    const meta = FAMILY_TREE_THEMES[id];
+    return {
+      value: id,
+      label: t(meta.labelKey, { defaultValue: meta.labelDefault }),
+    };
+  });
+
   const activeMeta = FAMILY_TREE_RENDERERS[rendererId];
+  const rendererLabel = t(activeMeta.labelKey, { defaultValue: activeMeta.labelDefault });
 
   return (
-    <div>
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+    <div className="family-tree-visual-panel">
+      <div className="no-print flex flex-wrap items-center justify-between gap-3 mb-4">
         <Space wrap>
           <Typography.Text type="secondary">
             {t("familyTree.renderer.styleLabel", { defaultValue: "Kiểu sơ đồ" })}:
           </Typography.Text>
           <Select<RendererId>
             value={rendererId}
-            onChange={handleRendererChange}
-            options={selectOptions}
+            onChange={(value) => updateSettings({ rendererId: value })}
+            options={rendererOptions}
             style={{ minWidth: 200 }}
-            optionRender={(option) => {
-              const id = option.value as RendererId;
-              const meta = FAMILY_TREE_RENDERERS[id];
-              if (meta.enabled) return option.label;
-              return (
-                <span>
-                  {option.label}{" "}
-                  <Typography.Text type="secondary" className="text-xs">
-                    ({t("familyTree.renderer.comingSoon", { defaultValue: "Sắp có" })})
-                  </Typography.Text>
-                </span>
-              );
-            }}
           />
+          {supportsTheme(rendererId) && (
+            <>
+              <Typography.Text type="secondary">
+                {t("familyTree.renderer.themeLabel", { defaultValue: "Giao diện" })}:
+              </Typography.Text>
+              <Select
+                value={themeId}
+                onChange={(value) => updateSettings({ themeId: value })}
+                options={themeOptions}
+                style={{ minWidth: 140 }}
+              />
+            </>
+          )}
+          {supportsFullScreen(rendererId) && (
+            <Button icon={<ExpandOutlined />} onClick={() => setFullOpen(true)}>
+              {t("familyTree.renderer.viewFull", { defaultValue: "Xem toàn màn" })}
+            </Button>
+          )}
+          <Button icon={<PrinterOutlined />} onClick={print}>
+            {t("familyTree.renderer.printPdf", { defaultValue: "In PDF" })}
+          </Button>
         </Space>
         <Typography.Text type="secondary" className="text-sm">
           {t("familyTree.renderer.dataHint", {
             count: nodes.length,
-            renderer: t(activeMeta.labelKey, { defaultValue: activeMeta.labelDefault }),
+            renderer: rendererLabel,
             defaultValue: "{{count}} thành viên · Cùng nguồn SSOT · {{renderer}}",
           })}
         </Typography.Text>
       </div>
 
-      {rendererId === "dom-classic" && (
-        <FamilyTreeDomView
-          members={members}
-          selectedMemberId={selectedMemberId}
-          onSelectMember={onSelectMember}
-        />
-      )}
-      {rendererId === "table" && (
-        <FamilyTreeMembersTable members={members} onSelectMember={onSelectMember} />
-      )}
-      {rendererId === "cytoscape" && (
-        <Typography.Text type="secondary">
-          {t("familyTree.renderer.cytoscapeHint", {
-            defaultValue: "Graph tương tác sẽ có trong bản cập nhật sau.",
-          })}
-        </Typography.Text>
-      )}
+      <FamilyTreeRendererContent
+        rendererId={rendererId}
+        themeId={themeId}
+        nodes={nodes}
+        members={members}
+        treeName={treeName}
+        selectedMemberId={selectedMemberId}
+        onSelectMember={onSelectMember}
+      />
+
+      <FamilyTreeFullScreenView
+        open={fullOpen}
+        onClose={() => setFullOpen(false)}
+        rendererId={rendererId}
+        themeId={themeId}
+        nodes={nodes}
+        members={members}
+        treeName={treeName}
+        selectedMemberId={selectedMemberId}
+        onSelectMember={onSelectMember}
+        rendererLabel={rendererLabel}
+      />
     </div>
   );
 }
 
-export { DEFAULT_RENDERER_ID };
+export { DEFAULT_RENDERER_ID, DEFAULT_THEME_ID };
