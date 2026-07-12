@@ -91,6 +91,10 @@ export function supportsFullScreen(rendererId: RendererId): boolean {
   return rendererId !== "print-preview";
 }
 
+export function supportsZoom(rendererId: RendererId): boolean {
+  return rendererId === "dom-classic" || rendererId === "cytoscape-dagre";
+}
+
 function parseRendererFromUrl(): RendererId | null {
   if (typeof window === "undefined") return null;
   const raw = new URLSearchParams(window.location.search).get("renderer");

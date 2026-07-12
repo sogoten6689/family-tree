@@ -33,7 +33,7 @@ Trước khi sửa code, đọc đúng tài liệu theo loại task:
 ## Trạng thái visual UI (2026-07)
 
 - Admin tab「Sơ đồ」: `FamilyTreeVisualPanel` — MVP ✅ `dom-classic`, `table`.
-- Backlog task: `planning/visual_tree_ui_info_task.md` — P1 view-full, P2 graph lib, P3 themes, P4 print-preview/PDF.
+- Backlog task: `planning/visual_tree_ui_info_task.md` — **P7** zoom (DOM chưa +/−), **P8** in fit/chia phần.
 - Registry: `family-saga-io/src/components/family-tree/familyTreeRenderers.ts`.
 - Preference: `localStorage` key `ft.visual.v1` — **không** lưu renderer vào `nodes_json`.
 - `BalkanFamilyTreeView` = legacy; không thêm vào catalog dropdown mới.

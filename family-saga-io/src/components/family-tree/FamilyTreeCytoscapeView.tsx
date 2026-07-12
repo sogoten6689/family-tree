@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useRef } from "react";
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import cytoscape, { type Core } from "cytoscape";
 // @ts-expect-error cytoscape-dagre has no bundled types
 import dagre from "cytoscape-dagre";
@@ -6,24 +13,42 @@ import dagre from "cytoscape-dagre";
 import type { BalkanNode } from "@/lib/familyTreeApi";
 
 import { balkanNodesToGraph } from "./familyTreeGraphAdapter";
+import { ZOOM_STEP, clampZoom, zoomToPercent } from "./familyTreeZoom";
 
 cytoscape.use(dagre);
+
+export type CytoscapeViewHandle = {
+  zoomIn: () => void;
+  zoomOut: () => void;
+  fit: () => void;
+  reset: () => void;
+  setZoom: (scale: number) => void;
+  getScale: () => number;
+};
 
 type Props = {
   nodes: BalkanNode[];
   height?: number | string;
   selectedMemberId?: number | null;
   onSelectMember?: (memberId: number) => void;
+  onZoomChange?: (scale: number) => void;
 };
 
-export function FamilyTreeCytoscapeView({
-  nodes,
-  height = 520,
-  selectedMemberId,
-  onSelectMember,
-}: Props) {
+export const FamilyTreeCytoscapeView = forwardRef<CytoscapeViewHandle, Props>(function FamilyTreeCytoscapeView(
+  { nodes, height = 520, selectedMemberId, onSelectMember, onZoomChange },
+  ref,
+) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
+  const [, setZoomTick] = useState(0);
+
+  const notifyZoom = useCallback(
+    (cy: Core) => {
+      onZoomChange?.(cy.zoom());
+      setZoomTick((n) => n + 1);
+    },
+    [onZoomChange],
+  );
 
   const mountGraph = useCallback(() => {
     if (!containerRef.current || nodes.length === 0) return;
@@ -120,8 +145,53 @@ export function FamilyTreeCytoscapeView({
       }
     });
 
+    cy.on("zoom", () => notifyZoom(cy));
+
     cyRef.current = cy;
-  }, [nodes, onSelectMember]);
+    notifyZoom(cy);
+  }, [nodes, onSelectMember, notifyZoom]);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      zoomIn: () => {
+        const cy = cyRef.current;
+        if (!cy) return;
+        cy.zoom(clampZoom(cy.zoom() + ZOOM_STEP));
+        cy.center();
+        notifyZoom(cy);
+      },
+      zoomOut: () => {
+        const cy = cyRef.current;
+        if (!cy) return;
+        cy.zoom(clampZoom(cy.zoom() - ZOOM_STEP));
+        cy.center();
+        notifyZoom(cy);
+      },
+      fit: () => {
+        const cy = cyRef.current;
+        if (!cy) return;
+        cy.fit(undefined, 40);
+        notifyZoom(cy);
+      },
+      reset: () => {
+        const cy = cyRef.current;
+        if (!cy) return;
+        cy.zoom(1);
+        cy.center();
+        notifyZoom(cy);
+      },
+      setZoom: (scale: number) => {
+        const cy = cyRef.current;
+        if (!cy) return;
+        cy.zoom(clampZoom(scale));
+        cy.center();
+        notifyZoom(cy);
+      },
+      getScale: () => cyRef.current?.zoom() ?? 1,
+    }),
+    [notifyZoom],
+  );
 
   useEffect(() => {
     mountGraph();
@@ -139,7 +209,7 @@ export function FamilyTreeCytoscapeView({
       const node = cy.getElementById(String(selectedMemberId));
       if (node.nonempty()) {
         node.select();
-        cy.animate({ center: { eles: node }, zoom: 1 }, { duration: 200 });
+        cy.animate({ center: { eles: node } }, { duration: 200 });
       }
     }
   }, [selectedMemberId]);
@@ -157,4 +227,8 @@ export function FamilyTreeCytoscapeView({
       style={{ height }}
     />
   );
+});
+
+export function cytoscapeScaleLabel(scale: number): string {
+  return `${zoomToPercent(scale)}%`;
 }

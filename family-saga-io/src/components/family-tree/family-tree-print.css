@@ -1,5 +1,5 @@
 @page {
-  size: A4;
+  size: A4 portrait;
   margin: 12mm;
 }
 
@@ -29,15 +29,25 @@
     color: #000 !important;
   }
 
-  body.family-tree-printing .family-tree-visual-content,
-  body.family-tree-printing .family-tree-visual-content * {
-    visibility: visible;
+  body.family-tree-printing .print-page {
+    page-break-after: always;
+    break-after: page;
   }
 
-  body.family-tree-printing .family-tree-visual-content {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+  body.family-tree-printing .print-page:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
   }
+}
+
+.family-tree-print-root .print-page {
+  border: 1px dashed hsl(var(--border));
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: hsl(var(--background));
+}
+
+.family-tree-print-root .print-page:last-child {
+  margin-bottom: 0;
 }

@@ -892,9 +892,8 @@ const DocumentReaderPage = () => {
             {analysisResult && (
               <Card
                 bordered={false}
-                className="mb-4"
+                className="mb-4 bg-muted"
                 title={t("docReader.analysisInlineTitle")}
-                className="bg-muted"
               >
                 <div className="flex flex-wrap gap-2 mb-3">
                   <Tag color="processing">
@@ -928,9 +927,8 @@ const DocumentReaderPage = () => {
 
                 <Card
                   size="small"
-                  className="mt-4"
+                  className="mt-4 bg-muted"
                   title={t("docReader.inlineTreeTitle")}
-                  className="bg-muted"
                 >
                   {analysisResult.balkan_nodes.length > 0 ? (
                     <BalkanFamilyTreeView
@@ -945,10 +943,7 @@ const DocumentReaderPage = () => {
             )}
 
             {isParsing ? (
-              <div
-                className="h-[520px] flex items-center justify-center rounded-2xl"
-                className="bg-muted"
-              >
+              <div className="h-[520px] flex items-center justify-center rounded-2xl bg-muted">
                 <div className="text-center">
                   <Spin size="large" />
                   <Typography.Paragraph
