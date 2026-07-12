@@ -7,8 +7,10 @@ def main():
     text = """
 Ông Nguyễn Văn An kết hôn với bà Trần Thị Hạnh.
 Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan.
-Nguyễn Văn Bình là con của Nguyễn Văn An và Trần Thị Hạnh.
 Nguyễn Văn Bình và Nguyễn Thị Lan là anh chị em ruột.
+Nguyễn Văn An là ông nội của Nguyễn Văn Nam.
+Trần Thị Hạnh là bà nội của Nguyễn Văn Nam.
+Nguyễn Văn Nam là cháu nội của Nguyễn Văn An.
 """
 
     extractor = RuleBasedRelationExtractor()

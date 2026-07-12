@@ -1,0 +1,150 @@
+{
+  "people": [
+    {
+      "id": "P001",
+      "full_name": "Nguyễn Văn An"
+    },
+    {
+      "id": "P002",
+      "full_name": "Trần Thị Hạnh"
+    },
+    {
+      "id": "P003",
+      "full_name": "Nguyễn Văn Bình"
+    },
+    {
+      "id": "P004",
+      "full_name": "Nguyễn Thị Lan"
+    },
+    {
+      "id": "P005",
+      "full_name": "Lê Thị Hoa"
+    },
+    {
+      "id": "P006",
+      "full_name": "Nguyễn Văn Nam"
+    }
+  ],
+  "relationships": [
+    {
+      "from_id": "P001",
+      "from_name": "Nguyễn Văn An",
+      "to_id": "P002",
+      "to_name": "Trần Thị Hạnh",
+      "type": "spouse_of",
+      "confidence": 0.95,
+      "evidence": "Ông Nguyễn Văn An kết hôn với bà Trần Thị Hạnh",
+      "rule_name": "spouse_rule"
+    },
+    {
+      "from_id": "P002",
+      "from_name": "Trần Thị Hạnh",
+      "to_id": "P001",
+      "to_name": "Nguyễn Văn An",
+      "type": "spouse_of",
+      "confidence": 0.95,
+      "evidence": "Ông Nguyễn Văn An kết hôn với bà Trần Thị Hạnh",
+      "rule_name": "spouse_rule"
+    },
+    {
+      "from_id": "P001",
+      "from_name": "Nguyễn Văn An",
+      "to_id": "P003",
+      "to_name": "Nguyễn Văn Bình",
+      "type": "parent_of",
+      "confidence": 0.9,
+      "evidence": "Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan",
+      "rule_name": "have_child_pattern"
+    },
+    {
+      "from_id": "P002",
+      "from_name": "Trần Thị Hạnh",
+      "to_id": "P003",
+      "to_name": "Nguyễn Văn Bình",
+      "type": "parent_of",
+      "confidence": 0.9,
+      "evidence": "Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan",
+      "rule_name": "have_child_pattern"
+    },
+    {
+      "from_id": "P001",
+      "from_name": "Nguyễn Văn An",
+      "to_id": "P004",
+      "to_name": "Nguyễn Thị Lan",
+      "type": "parent_of",
+      "confidence": 0.9,
+      "evidence": "Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan",
+      "rule_name": "have_child_pattern"
+    },
+    {
+      "from_id": "P002",
+      "from_name": "Trần Thị Hạnh",
+      "to_id": "P004",
+      "to_name": "Nguyễn Thị Lan",
+      "type": "parent_of",
+      "confidence": 0.9,
+      "evidence": "Ông Nguyễn Văn An và bà Trần Thị Hạnh có con là Nguyễn Văn Bình và Nguyễn Thị Lan",
+      "rule_name": "have_child_pattern"
+    },
+    {
+      "from_id": "P003",
+      "from_name": "Nguyễn Văn Bình",
+      "to_id": "P004",
+      "to_name": "Nguyễn Thị Lan",
+      "type": "sibling_of",
+      "confidence": 0.9,
+      "evidence": "Nguyễn Văn Bình và Nguyễn Thị Lan là anh chị em",
+      "rule_name": "pair_sibling_pattern"
+    },
+    {
+      "from_id": "P004",
+      "from_name": "Nguyễn Thị Lan",
+      "to_id": "P003",
+      "to_name": "Nguyễn Văn Bình",
+      "type": "sibling_of",
+      "confidence": 0.9,
+      "evidence": "Nguyễn Văn Bình và Nguyễn Thị Lan là anh chị em",
+      "rule_name": "pair_sibling_pattern"
+    },
+    {
+      "from_id": "P003",
+      "from_name": "Nguyễn Văn Bình",
+      "to_id": "P005",
+      "to_name": "Lê Thị Hoa",
+      "type": "spouse_of",
+      "confidence": 0.95,
+      "evidence": "Nguyễn Văn Bình kết hôn với Lê Thị Hoa",
+      "rule_name": "spouse_rule"
+    },
+    {
+      "from_id": "P005",
+      "from_name": "Lê Thị Hoa",
+      "to_id": "P003",
+      "to_name": "Nguyễn Văn Bình",
+      "type": "spouse_of",
+      "confidence": 0.95,
+      "evidence": "Nguyễn Văn Bình kết hôn với Lê Thị Hoa",
+      "rule_name": "spouse_rule"
+    },
+    {
+      "from_id": "P003",
+      "from_name": "Nguyễn Văn Bình",
+      "to_id": "P006",
+      "to_name": "Nguyễn Văn Nam",
+      "type": "parent_of",
+      "confidence": 0.9,
+      "evidence": "Nguyễn Văn Bình và Lê Thị Hoa có con là Nguyễn Văn Nam",
+      "rule_name": "have_child_pattern"
+    },
+    {
+      "from_id": "P005",
+      "from_name": "Lê Thị Hoa",
+      "to_id": "P006",
+      "to_name": "Nguyễn Văn Nam",
+      "type": "parent_of",
+      "confidence": 0.9,
+      "evidence": "Nguyễn Văn Bình và Lê Thị Hoa có con là Nguyễn Văn Nam",
+      "rule_name": "have_child_pattern"
+    }
+  ]
+}

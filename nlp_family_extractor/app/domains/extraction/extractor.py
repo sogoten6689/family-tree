@@ -31,6 +31,7 @@ from app.domains.extraction.schemas import ExtractedRelation
 from app.domains.extraction.rules.spouse import SpouseRule
 from app.domains.extraction.rules.parent_child import ParentChildRule
 from app.domains.extraction.rules.sibling import SiblingRule
+from app.domains.extraction.rules.grandparent import GrandparentRule
 
 
 def _pick_longest_match(candidates: List[str], chunk: str) -> Optional[str]:
@@ -301,6 +302,7 @@ class RuleBasedRelationExtractor:
             SpouseRule(),
             ParentChildRule(),
             SiblingRule(),
+            GrandparentRule(),
         ]
 
     def extract_relations(self, text: str) -> List[ExtractedRelation]:
