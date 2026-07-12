@@ -49,8 +49,8 @@ export const FAMILY_TREE_RENDERERS = {
 
 ## Surface cần wire (backlog)
 
-- ✅ Admin + Public + User — `FamilyTreeVisualPanel`
-- ✅ P1 view-full, P2 cytoscape, P3 themes, P4 print-preview
-- ⬜ `DocumentReaderPage` migrate khỏi Balkan
+- ✅ Admin + Public + User + Document Reader + `/user/family-tree` — `FamilyTreeVisualPanel`
+- ✅ P1 view-full, P2 cytoscape, P3 themes, P4 print-preview, P7 zoom, P8 print fit
+- ⬜ Gỡ `@balkangraph/familytree.js` (`BalkanFamilyTreeView.tsx` unused)
 
 Dùng `FamilyTreeVisualPanel` thay vì gọi renderer trực tiếp trên từng page.

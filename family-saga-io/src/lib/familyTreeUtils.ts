@@ -152,3 +152,20 @@ export const formatTreeDate = (value: string) => {
   if (Number.isNaN(parsed.getTime())) return value;
   return parsed.toLocaleDateString("vi-VN");
 };
+
+/** Bridge FamilyMember[] → BalkanNode[] for visual panel (mock / legacy paths). */
+export const membersToBalkanNodes = (members: FamilyMember[]): BalkanNode[] => {
+  return members.map((member) => {
+    const node: BalkanNode = {
+      id: Number(member.id),
+      name: member.name,
+      gender: member.gender,
+      birthYear: member.birthYear,
+    };
+    if (member.deathYear != null) node.deathYear = member.deathYear;
+    if (member.title) node.title = member.title;
+    if (member.bio) node.bio = member.bio;
+    if (member.parentId) node.fid = Number(member.parentId);
+    return node;
+  });
+};

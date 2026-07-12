@@ -24,10 +24,8 @@ import {
 } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {
-  BalkanFamilyTreeView,
-  type BalkanNode,
-} from "@/components/BalkanFamilyTreeView";
+import { FamilyTreeVisualPanel } from "@/components/family-tree/FamilyTreeVisualPanel";
+import type { BalkanNode } from "@/lib/familyTreeApi";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import { getStoredAccessToken } from "@/lib/apiClient";
@@ -571,26 +569,15 @@ const DocumentReaderPage = () => {
           <div className="space-y-6">
             <Card
               bordered={false}
-              style={{
-                background: isDragging
-                  ? "hsl(39, 60%, 88%)"
-                  : "hsl(39, 40%, 93%)",
-                boxShadow: isDragging
-                  ? "0 20px 60px hsl(36 70% 42% / 0.16)"
-                  : "0 12px 36px hsl(20 40% 25% / 0.08)",
-              }}
+              className={`transition-shadow ${isDragging ? "bg-muted shadow-lg ring-2 ring-primary/40" : "bg-card shadow-md"}`}
               styles={{ body: { padding: 24 } }}
             >
               <div
-                className="rounded-2xl border-2 border-dashed p-8 text-center transition-all"
-                style={{
-                  borderColor: isDragging
-                    ? "hsl(0, 45%, 35%)"
-                    : "hsl(36, 45%, 58%)",
-                  background: isDragging
-                    ? "hsl(39, 60%, 92%)"
-                    : "hsl(39, 50%, 96%)",
-                }}
+                className={`rounded-2xl border-2 border-dashed p-8 text-center transition-all ${
+                  isDragging
+                    ? "border-primary bg-muted"
+                    : "border-border bg-background"
+                }`}
                 onDragEnter={(event) => {
                   event.preventDefault();
                   setIsDragging(true);
@@ -605,35 +592,20 @@ const DocumentReaderPage = () => {
                 }}
                 onDrop={handleDrop}
               >
-                <div
-                  className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, hsl(36 70% 42%), hsl(0 45% 35%))",
-                    color: "hsl(39 50% 96%)",
-                  }}
-                >
-                  <InboxOutlined style={{ fontSize: 34 }} />
+                <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full brand-gradient text-primary-foreground">
+                  <InboxOutlined className="text-[34px]" />
                 </div>
 
-                <Typography.Title
-                  level={4}
-                  style={{ marginBottom: 8, fontFamily: "var(--font-display)" }}
-                >
+                <Typography.Title level={4} className="!mb-2 font-display text-foreground">
                   {t("docReader.dropTitle")}
                 </Typography.Title>
-                <Typography.Paragraph
-                  style={{ color: "hsl(20, 15%, 45%)", marginBottom: 20 }}
-                >
+                <Typography.Paragraph className="!mb-5 text-muted-foreground">
                   {t("docReader.dropDesc")}
                 </Typography.Paragraph>
 
                 <div className="flex flex-wrap justify-center gap-2 mb-6">
                   {supportedFormats.map((format) => (
-                    <Tag
-                      key={format}
-                      style={{ paddingInline: 10, paddingBlock: 4 }}
-                    >
+                    <Tag key={format} className="px-2.5 py-1">
                       {format}
                     </Tag>
                   ))}
@@ -691,10 +663,7 @@ const DocumentReaderPage = () => {
             </Card>
 
             <Card bordered={false} className="bg-muted">
-              <Typography.Title
-                level={4}
-                style={{ fontFamily: "var(--font-display)", marginBottom: 16 }}
-              >
+              <Typography.Title level={4} className="!mb-4 font-display text-foreground">
                 {t("docReader.workflowTitle")}
               </Typography.Title>
               <div className="space-y-3 text-sm text-muted-foreground leading-6">
@@ -706,10 +675,7 @@ const DocumentReaderPage = () => {
 
             <Card bordered={false} className="bg-muted">
               <div className="flex items-center justify-between gap-2 mb-3">
-                <Typography.Title
-                  level={5}
-                  style={{ margin: 0, fontFamily: "var(--font-display)" }}
-                >
+                <Typography.Title level={5} className="!m-0 font-display text-foreground">
                   <HistoryOutlined className="mr-2" />
                   {t("docReader.historyTitle")}
                 </Typography.Title>
@@ -744,7 +710,7 @@ const DocumentReaderPage = () => {
                   type="error"
                   message={t("docReader.analysisFailedTitle")}
                   description={historyError}
-                  style={{ marginBottom: 12 }}
+                  className="mb-3"
                 />
               )}
 
@@ -809,19 +775,12 @@ const DocumentReaderPage = () => {
 
           <Card
             bordered={false}
-            style={{
-              background:
-                "linear-gradient(180deg, hsl(39 50% 96%), hsl(39 40% 93%))",
-              minHeight: 640,
-            }}
+            className="bg-card min-h-[640px]"
             styles={{ body: { padding: 24, height: "100%" } }}
           >
             <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
               <div>
-                <Typography.Title
-                  level={3}
-                  style={{ marginBottom: 4, fontFamily: "var(--font-display)" }}
-                >
+                <Typography.Title level={3} className="!mb-1 font-display text-foreground">
                   {t("docReader.previewAreaTitle")}
                 </Typography.Title>
                 <Typography.Text type="secondary">
@@ -830,10 +789,7 @@ const DocumentReaderPage = () => {
               </div>
 
               {activeFile && (
-                <Tag
-                  color="processing"
-                  style={{ paddingInline: 10, paddingBlock: 6 }}
-                >
+                <Tag color="processing" className="px-2.5 py-1.5">
                   {activeFile.name}
                 </Tag>
               )}
@@ -865,7 +821,7 @@ const DocumentReaderPage = () => {
                     )}
                   </div>
                 }
-                style={{ marginBottom: 16 }}
+                className="mb-4"
               />
             )}
 
@@ -875,7 +831,7 @@ const DocumentReaderPage = () => {
                 type="warning"
                 message={t("docReader.warningTitle")}
                 description={errorMessage}
-                style={{ marginBottom: 16 }}
+                className="mb-4"
               />
             )}
 
@@ -885,7 +841,7 @@ const DocumentReaderPage = () => {
                 type="error"
                 message={t("docReader.analysisFailedTitle")}
                 description={analysisError}
-                style={{ marginBottom: 16 }}
+                className="mb-4"
               />
             )}
 
@@ -909,7 +865,7 @@ const DocumentReaderPage = () => {
                     showIcon
                     message={t("docReader.geminiErrorTitle")}
                     description={analysisResult.gemini_error}
-                    style={{ marginBottom: 12 }}
+                    className="mb-3"
                   />
                 )}
 
@@ -931,9 +887,9 @@ const DocumentReaderPage = () => {
                   title={t("docReader.inlineTreeTitle")}
                 >
                   {analysisResult.balkan_nodes.length > 0 ? (
-                    <BalkanFamilyTreeView
+                    <FamilyTreeVisualPanel
                       nodes={analysisResult.balkan_nodes}
-                      height={480}
+                      treeName={t("docReader.inlineTreeTitle", { defaultValue: "Sơ đồ từ phân tích" })}
                     />
                   ) : (
                     <Empty description={t("docReader.inlineTreeEmpty")} />
@@ -946,25 +902,13 @@ const DocumentReaderPage = () => {
               <div className="h-[520px] flex items-center justify-center rounded-2xl bg-muted">
                 <div className="text-center">
                   <Spin size="large" />
-                  <Typography.Paragraph
-                    style={{
-                      marginTop: 16,
-                      marginBottom: 0,
-                      color: "hsl(20, 15%, 45%)",
-                    }}
-                  >
+                  <Typography.Paragraph className="!mt-4 !mb-0 text-muted-foreground">
                     {t("docReader.parsing")}
                   </Typography.Paragraph>
                 </div>
               </div>
             ) : !activeFile ? (
-              <div
-                className="h-[520px] flex items-center justify-center rounded-2xl border border-dashed"
-                style={{
-                  borderColor: "hsl(36, 30%, 80%)",
-                  background: "hsl(39, 50%, 96%)",
-                }}
-              >
+              <div className="h-[520px] flex items-center justify-center rounded-2xl border border-dashed border-border bg-background">
                 <Empty
                   image={Empty.PRESENTED_IMAGE_SIMPLE}
                   description={t("docReader.noDocument")}
@@ -982,10 +926,7 @@ const DocumentReaderPage = () => {
                       </span>
                     ),
                     children: (
-                      <div
-                        className="rounded-2xl border overflow-hidden"
-                        style={{ borderColor: "hsl(36, 30%, 80%)" }}
-                      >
+                      <div className="rounded-2xl border border-border overflow-hidden">
                         {previewType === "image" && imageUrl ? (
                           <div className="max-h-[620px] overflow-auto bg-muted p-4">
                             <img
@@ -1095,9 +1036,7 @@ const DocumentReaderPage = () => {
                             className="bg-muted"
                           >
                             <div className="flex items-center gap-3 mb-2">
-                              <FileTextOutlined
-                                style={{ color: "hsl(0, 45%, 35%)" }}
-                              />
+                              <FileTextOutlined className="!text-primary" />
                               <span className="font-medium">
                                 {t("docReader.cardDocxTitle")}
                               </span>
@@ -1211,9 +1150,9 @@ const DocumentReaderPage = () => {
               />
             )}
             {analysisResult.balkan_nodes.length > 0 ? (
-              <BalkanFamilyTreeView
+              <FamilyTreeVisualPanel
                 nodes={analysisResult.balkan_nodes}
-                height={420}
+                treeName={t("docReader.inlineTreeTitle", { defaultValue: "Sơ đồ từ phân tích" })}
               />
             ) : (
               <Empty description={t("docReader.inlineTreeEmpty")} />

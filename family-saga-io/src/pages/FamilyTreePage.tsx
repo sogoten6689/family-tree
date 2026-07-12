@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   Alert,
   Button,
@@ -16,8 +16,9 @@ import {
 import { UserOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { familyData, familyInfo, type FamilyMember } from '@/data/familyMockData';
-import { BalkanFamilyTreeView, type BalkanNode } from '@/components/BalkanFamilyTreeView';
-import FamilyTreeNode from '@/components/FamilyTreeNode';
+import { FamilyTreeVisualPanel } from '@/components/family-tree/FamilyTreeVisualPanel';
+import type { BalkanNode } from '@/lib/familyTreeApi';
+import { membersToBalkanNodes, toFamilyMembers } from '@/lib/familyTreeUtils';
 import * as XLSX from 'xlsx';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -211,13 +212,18 @@ const FamilyTreePage = () => {
     }
   }, []);
 
-  const root = members.find((m) => !m.parentId) ?? members[0];
+  const displayNodes = useMemo<BalkanNode[]>(
+    () => (isBalkanPayload ? balkanNodes : membersToBalkanNodes(members)),
+    [isBalkanPayload, balkanNodes, members],
+  );
+  const displayMembers = useMemo(
+    () => (isBalkanPayload ? toFamilyMembers(balkanNodes) : members),
+    [isBalkanPayload, balkanNodes, members],
+  );
 
-  const getChildren = (parentId: string) =>
-    members.filter((m) => m.parentId === parentId);
-
-  const handleSelect = (member: FamilyMember) => {
-    const fullMember = members.find((m) => m.id === member.id) ?? member;
+  const handleSelectMember = (memberId: number) => {
+    const fullMember = displayMembers.find((m) => Number(m.id) === memberId);
+    if (!fullMember) return;
     setSelectedMember(fullMember);
     setDetailOpen(true);
   };
@@ -298,41 +304,6 @@ const FamilyTreePage = () => {
     setEditOpen(false);
   };
 
-  const renderTree = (member: FamilyMember): React.ReactNode => {
-    const children = getChildren(member.id);
-    return (
-      <div key={member.id} className="flex flex-col items-center">
-        <FamilyTreeNode
-          member={member}
-          onSelect={handleSelect}
-          isSelected={selectedMember?.id === member.id}
-        />
-        {children.length > 0 && (
-          <>
-            <div className="tree-connector-v h-6" />
-            <div className="flex gap-4 relative">
-              {children.length > 1 && (
-                <div
-                  className="tree-connector-h absolute top-0"
-                  style={{
-                    width: `calc(100% - 180px)`,
-                    left: `90px`,
-                  }}
-                />
-              )}
-              {children.map((child) => (
-                <div key={child.id} className="flex flex-col items-center">
-                  <div className="tree-connector-v h-6" />
-                  {renderTree(child)}
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -393,7 +364,7 @@ const FamilyTreePage = () => {
           <Alert
             type="success"
             showIcon
-            message="Đang hiển thị cây BALKAN (Gemini)"
+            message={t('familyTree.visualTreeTab', { defaultValue: 'Sơ đồ Gia phả' })}
             description="Dữ liệu từ phân tích ở trang Document Reader."
             className="mb-6"
           />
@@ -407,21 +378,24 @@ const FamilyTreePage = () => {
             className="mb-6"
           />
         )}
-        {isBalkanPayload ? (
-          balkanNodes.length > 0 ? (
-            <div className="max-w-[1400px] mx-auto">
-              <BalkanFamilyTreeView nodes={balkanNodes} height={640} />
-            </div>
-          ) : (
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              description="Chưa có node BALKAN — kiểm tra Gemini / GOOGLE_API_KEY."
+        {displayNodes.length > 0 ? (
+          <div className="max-w-[1400px] mx-auto">
+            <FamilyTreeVisualPanel
+              nodes={displayNodes}
+              treeName={t('familyTree.pageTitle', { surname: runtimeInfo.surname })}
+              members={displayMembers}
+              onSelectMember={handleSelectMember}
             />
-          )
-        ) : (
-          <div className="min-w-[800px] flex justify-center py-8">
-            {root ? renderTree(root) : null}
           </div>
+        ) : (
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={
+              isBalkanPayload
+                ? 'Chưa có node — kiểm tra Gemini / GOOGLE_API_KEY.'
+                : t('familyTree.emptyTree', { defaultValue: 'Cây này chưa có node nào' })
+            }
+          />
         )}
       </div>
 
