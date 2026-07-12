@@ -400,7 +400,28 @@ class PipelineService:
                 target.document_id = text_doc.id
                 target.content_hash = _hash_ref(ref)
             elif step_id in {PipelineStepId.OCR, PipelineStepId.HAN_CHARS}:
-                raise ValueError("Chạy OCR từ tab Tài liệu (nút Phiên âm) rồi làm mới pipeline.")
+                steps = self.sync_from_tree_state(family_tree_id)
+                synced = next(item for item in steps if item.step_id == step_id)
+                if synced.status == PipelineStepStatus.DONE:
+                    target.status = PipelineStepStatus.DONE
+                    target.output_ref = synced.output_ref
+                    target.document_id = synced.document_id
+                    target.input_ref = synced.input_ref
+                    target.content_hash = synced.content_hash
+                    target.error_message = None
+                else:
+                    documents = self._tree_documents(family_tree_id)
+                    image_docs = [
+                        doc
+                        for doc in documents
+                        if doc.type in {DocumentType.HAN_NOM, DocumentType.HINH_ANH}
+                    ]
+                    if image_docs:
+                        raise ValueError(
+                            f"Chưa có kết quả OCR. Mở document ảnh #{image_docs[0].id} "
+                            "→ OCR từng trang → Ghép trang → Đồng bộ pipeline."
+                        )
+                    raise ValueError("Upload ảnh Hán-Nôm hoặc crawl Nom Foundation trước.")
             elif step_id == PipelineStepId.HANNOM_IMAGE:
                 raise ValueError("Upload ảnh Hán-Nôm hoặc crawl Nom Foundation trước.")
             elif step_id == PipelineStepId.DISTILLED:

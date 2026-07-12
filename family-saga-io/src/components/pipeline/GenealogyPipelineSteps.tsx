@@ -7,8 +7,9 @@ import {
   ReloadOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
-import { Alert, Button, Card, Space, Steps, Tag, Typography, message } from "antd";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Alert, Button, Card, Space, Steps, Tag, Typography, message } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepDrawer } from "@/components/pipeline/PipelineStepDrawer";
@@ -43,6 +44,7 @@ const ORDERED_STEPS: PipelineStepId[] = [
 
 export function GenealogyPipelineSteps({ treeId }: Props) {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const [steps, setSteps] = useState<PipelineStep[]>([]);
   const [context, setContext] = useState<PipelineContext | null>(null);
   const [loading, setLoading] = useState(true);
@@ -234,6 +236,7 @@ export function GenealogyPipelineSteps({ treeId }: Props) {
             const label = PIPELINE_STEP_LABELS[stepId][lang];
             const canAct = status === "pending" || status === "error";
             const runDisabled = stepId === "output" && !canRunOutput;
+            const imageDocId = stepMap.get("hannom_image")?.document_id;
 
             return {
               title: (
@@ -262,6 +265,24 @@ export function GenealogyPipelineSteps({ treeId }: Props) {
                     <Typography.Text type="danger" className="text-xs">
                       {step.error_message}
                     </Typography.Text>
+                  )}
+                  {stepId === "ocr" && (status === "pending" || status === "error") && imageDocId && (
+                    <Alert
+                      type="warning"
+                      showIcon
+                      className="!py-2"
+                      message="OCR từng trang để tránh timeout"
+                      description={
+                        <Button
+                          size="small"
+                          type="link"
+                          className="!p-0"
+                          onClick={() => navigate(`/admin/documents/${imageDocId}/edit`)}
+                        >
+                          Mở document ảnh #{imageDocId} → OCR từng trang → Ghép trang
+                        </Button>
+                      }
+                    />
                   )}
                   <Space wrap>
                     <Button size="small" icon={<EyeOutlined />} onClick={() => setDetailStepId(stepId)}>

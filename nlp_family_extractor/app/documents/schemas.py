@@ -76,6 +76,36 @@ class OcrTransliterateResponse(BaseModel):
     transcription_text: str
     saved_file: DocumentFileResponse
     result_document: DocumentResponse
+    merged_page_count: int = 0
+    pipeline_synced: bool = False
+
+
+class OcrPageStatusItem(BaseModel):
+    file_id: int
+    file_name: str
+    position: int
+    ocr_done: bool
+
+
+class OcrPageStatusResponse(BaseModel):
+    source_document_id: int
+    result_document_id: Optional[int] = None
+    total_pages: int
+    ocr_done_count: int
+    pages: List[OcrPageStatusItem] = Field(default_factory=list)
+    merged_page_count: int = 0
+
+
+class OcrMergeRequest(BaseModel):
+    sync_pipeline: bool = Field(default=True, description="Đồng bộ pipeline step OCR sau khi ghép")
+
+
+class OcrMergeResponse(BaseModel):
+    source_document_id: int
+    result_document_id: Optional[int] = None
+    merged_page_count: int = 0
+    combined_transcription_text: str = ""
+    pipeline_synced: bool = False
 
 
 class OcrBatchRequest(BaseModel):

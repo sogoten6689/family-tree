@@ -3,3 +3,4 @@ nlp_family_extractor/.env
 
 .venv/
 .venv/lib/
+nlp_family_extractor/data/nomfoundation/volumes/

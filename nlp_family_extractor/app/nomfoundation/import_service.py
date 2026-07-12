@@ -238,7 +238,7 @@ def import_nom_volume(
             service,
             images_doc_id,
             merge_pages=True,
-            sync_pipeline=False,
+            sync_pipeline=True,
         )
         ocr_result["merged_page_count"] = hook_result.get("merge", {}).get("page_count", 0)
         ocr_result["combined_transcription_text"] = hook_result.get("merge", {}).get("combined_text", "")

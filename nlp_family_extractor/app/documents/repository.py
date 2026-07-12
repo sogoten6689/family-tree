@@ -595,3 +595,50 @@ class DocumentService:
     def read_merged_transcription_text(self, source_document_id: int) -> str:
         merge_result = self.rebuild_merged_transcription(source_document_id)
         return str(merge_result.get("combined_text") or "")
+
+    def get_ocr_page_status(self, source_document_id: int) -> dict:
+        source = self.get_document(source_document_id)
+        image_files = sorted(
+            [item for item in source.files if str(item.file_type).startswith("image/")],
+            key=lambda item: (item.position, item.id),
+        )
+        result_document = self.repository.find_result_document_for_source(source_document_id)
+        done_names: set[str] = set()
+        if result_document is not None:
+            for file_item in result_document.files:
+                if (
+                    file_item.file_name.endswith("_transcription.txt")
+                    and file_item.file_name != COMBINED_TRANSCRIPTION_FILENAME
+                ):
+                    done_names.add(file_item.file_name)
+
+        pages = []
+        done_count = 0
+        has_combined = False
+        for image_file in image_files:
+            expected = self._expected_transcription_filename(image_file.file_name)
+            ocr_done = expected in done_names
+            if ocr_done:
+                done_count += 1
+            pages.append(
+                {
+                    "file_id": image_file.id,
+                    "file_name": image_file.file_name,
+                    "position": image_file.position,
+                    "ocr_done": ocr_done,
+                }
+            )
+
+        if result_document is not None:
+            has_combined = any(
+                item.file_name == COMBINED_TRANSCRIPTION_FILENAME for item in result_document.files
+            )
+
+        return {
+            "source_document_id": source_document_id,
+            "result_document_id": result_document.id if result_document else None,
+            "total_pages": len(image_files),
+            "ocr_done_count": done_count,
+            "pages": pages,
+            "merged_page_count": done_count if has_combined else 0,
+        }

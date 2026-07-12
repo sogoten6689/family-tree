@@ -22,6 +22,9 @@ from app.documents.schemas import (
     OcrBatchItemResult,
     OcrBatchRequest,
     OcrBatchResponse,
+    OcrMergeRequest,
+    OcrMergeResponse,
+    OcrPageStatusResponse,
     OcrTransliterateResponse,
     ReorderFilesRequest,
     UploadFilesResponse,
@@ -313,6 +316,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
                 content,
                 filename,
             )
+            hook_result = post_ocr_hooks(db, document_service, document_id, sync_pipeline=True)
             db.commit()
             saved_file = result["saved_file"]
             db.refresh(saved_file)
@@ -325,6 +329,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             _raise_service_error(error)
 
         result_document = result["result_document"]
+        merge_info = hook_result.get("merge") or {}
         return OcrTransliterateResponse(
             source_document_id=document_id,
             result_document_id=result_document.id,
@@ -334,6 +339,59 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             transcription_text=result["transcription_text"],
             saved_file=_serialize_file(saved_file),
             result_document=_serialize_document(result_document),
+            merged_page_count=int(merge_info.get("page_count") or 0),
+            pipeline_synced=bool(hook_result.get("pipeline_synced")),
+        )
+
+    @router.get(
+        "/api/documents/{document_id}/ocr-page-status",
+        response_model=OcrPageStatusResponse,
+        summary="Trạng thái OCR từng trang",
+    )
+    def ocr_page_status(
+        document_id: int,
+        _: AdminUser,
+        document_service=Depends(get_service),
+    ) -> OcrPageStatusResponse:
+        try:
+            result = document_service.get_ocr_page_status(document_id)
+        except Exception as error:
+            _raise_service_error(error)
+        return OcrPageStatusResponse(**result)
+
+    @router.post(
+        "/api/documents/{document_id}/ocr-merge",
+        response_model=OcrMergeResponse,
+        summary="Ghép các trang đã OCR (không gọi API OCR)",
+    )
+    def ocr_merge_pages(
+        document_id: int,
+        req: OcrMergeRequest,
+        _: AdminUser,
+        document_service=Depends(get_service),
+        db: Session = Depends(get_db),
+    ) -> OcrMergeResponse:
+        try:
+            hook_result = post_ocr_hooks(
+                db,
+                document_service,
+                document_id,
+                merge_pages=True,
+                sync_pipeline=req.sync_pipeline,
+            )
+            db.commit()
+        except Exception as error:
+            db.rollback()
+            _raise_service_error(error)
+
+        merge_info = hook_result.get("merge") or {}
+        status = document_service.get_ocr_page_status(document_id)
+        return OcrMergeResponse(
+            source_document_id=document_id,
+            result_document_id=status.get("result_document_id"),
+            merged_page_count=int(merge_info.get("page_count") or 0),
+            combined_transcription_text=str(merge_info.get("combined_text") or ""),
+            pipeline_synced=bool(hook_result.get("pipeline_synced")),
         )
 
     @router.post(
@@ -363,6 +421,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             _raise_service_error(error)
 
         result_document = result["result_document"]
+        merge_info = hook_result.get("merge") or {}
         return OcrTransliterateResponse(
             source_document_id=document_id,
             result_document_id=result_document.id,
@@ -372,6 +431,8 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             transcription_text=result["transcription_text"],
             saved_file=_serialize_file(saved_file),
             result_document=_serialize_document(result_document),
+            merged_page_count=int(merge_info.get("page_count") or 0),
+            pipeline_synced=bool(hook_result.get("pipeline_synced")),
         )
 
     @router.post(

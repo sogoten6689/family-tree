@@ -5,6 +5,8 @@ import type {
   DocumentUpdatePayload,
   FamilyTreeSourceDocument,
   OcrBatchResponse,
+  OcrMergeResponse,
+  OcrPageStatusResponse,
   OcrTransliterateResponse,
   ReorderFilesPayload,
   UploadFilesResponse,
@@ -106,6 +108,20 @@ export async function ocrStoredDocumentFile(
     `/api/documents/${documentId}/ocr-stored-file/${fileId}`,
     { method: "POST" },
   );
+}
+
+export async function getOcrPageStatus(documentId: number): Promise<OcrPageStatusResponse> {
+  return apiRequest<OcrPageStatusResponse>(`/api/documents/${documentId}/ocr-page-status`);
+}
+
+export async function mergeOcrPages(
+  documentId: number,
+  options?: { syncPipeline?: boolean },
+): Promise<OcrMergeResponse> {
+  return apiRequest<OcrMergeResponse>(`/api/documents/${documentId}/ocr-merge`, {
+    method: "POST",
+    body: JSON.stringify({ sync_pipeline: options?.syncPipeline ?? true }),
+  });
 }
 
 export async function ocrBatchDocument(

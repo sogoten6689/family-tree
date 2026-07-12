@@ -29,16 +29,6 @@
     },
     {
       "collection_id": 2,
-      "volume_id": 208,
-      "title": "Đông Trù Đoàn tộc phả",
-      "title_han": "東稠段族譜",
-      "catalog_code": "NLVNPF-0155",
-      "catalog_slug": "nlvnpf-0155",
-      "url": "https://lib.nomfoundation.org/collection/2/volume/208/",
-      "page_count": 79
-    },
-    {
-      "collection_id": 2,
       "volume_id": 855,
       "title": "Nguyễn tộc gia phả",
       "title_han": "阮族家譜",
@@ -46,6 +36,16 @@
       "catalog_slug": "nlvnpf-0686",
       "url": "https://lib.nomfoundation.org/collection/2/volume/855/",
       "page_count": 100
+    },
+    {
+      "collection_id": 2,
+      "volume_id": 208,
+      "title": "Đông Trù Đoàn tộc phả",
+      "title_han": "東稠段族譜",
+      "catalog_code": "NLVNPF-0155",
+      "catalog_slug": "nlvnpf-0155",
+      "url": "https://lib.nomfoundation.org/collection/2/volume/208/",
+      "page_count": 50
     }
   ]
 }

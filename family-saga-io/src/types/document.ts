@@ -64,6 +64,8 @@ export interface OcrTransliterateResponse {
   transcription_text: string;
   saved_file: DocumentFile;
   result_document: FamilyTreeSourceDocument;
+  merged_page_count?: number;
+  pipeline_synced?: boolean;
 }
 
 export interface OcrBatchItemResult {
@@ -87,5 +89,29 @@ export interface OcrBatchResponse {
   errors: OcrBatchError[];
   combined_transcription_text: string;
   merged_page_count: number;
+  pipeline_synced: boolean;
+}
+
+export interface OcrPageStatusItem {
+  file_id: number;
+  file_name: string;
+  position: number;
+  ocr_done: boolean;
+}
+
+export interface OcrPageStatusResponse {
+  source_document_id: number;
+  result_document_id?: number | null;
+  total_pages: number;
+  ocr_done_count: number;
+  pages: OcrPageStatusItem[];
+  merged_page_count: number;
+}
+
+export interface OcrMergeResponse {
+  source_document_id: number;
+  result_document_id?: number | null;
+  merged_page_count: number;
+  combined_transcription_text: string;
   pipeline_synced: boolean;
 }

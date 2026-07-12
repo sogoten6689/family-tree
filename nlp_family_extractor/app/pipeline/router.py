@@ -147,6 +147,7 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
         req: PipelineResyncRequest,
         _: AdminUser,
         service: PipelineService = Depends(get_service),
+        db: Session = Depends(get_db),
     ) -> PipelineResponse:
         parsed_step = None
         if req.step_id:
@@ -157,6 +158,7 @@ def create_pipeline_router(get_tree: Callable[[str], dict]) -> APIRouter:
         try:
             steps = service.resync_pipeline(tree_id, step_id=parsed_step)
             context = service.build_context(tree_id)
+            db.commit()
         except FamilyTreeNotFoundError as exc:
             raise HTTPException(status_code=404, detail=str(exc)) from exc
         return _to_response(tree_id, steps, context)
