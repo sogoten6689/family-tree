@@ -12,12 +12,14 @@ class DocumentCreateRequest(BaseModel):
     title: str = Field(min_length=1, max_length=255)
     description: Optional[str] = None
     type: DocumentType
+    subtype: Optional[str] = Field(default=None, max_length=64)
 
 
 class DocumentUpdateRequest(BaseModel):
     title: Optional[str] = Field(default=None, min_length=1, max_length=255)
     description: Optional[str] = None
     type: Optional[DocumentType] = None
+    subtype: Optional[str] = Field(default=None, max_length=64)
 
 
 class DocumentFileResponse(BaseModel):
@@ -41,6 +43,7 @@ class DocumentResponse(BaseModel):
     title: str
     description: Optional[str] = None
     type: DocumentType
+    subtype: Optional[str] = None
     created_at: datetime
     files: List[DocumentFileResponse] = Field(default_factory=list)
 

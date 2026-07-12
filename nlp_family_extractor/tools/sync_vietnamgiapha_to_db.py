@@ -9,6 +9,8 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from sqlalchemy import create_engine, text
 
+from app.balkan_node import strip_nodes_and_collect_meta
+from app.node_meta.repository import NodeMetaRepository
 from tools.vietnamgiapha_text_export import compute_nodes_hash
 
 
@@ -291,6 +293,7 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
 
     engine = create_engine(_db_url(db_cfg), pool_pre_ping=True, future=True)
     _ensure_schema(engine)
+    meta_repo = NodeMetaRepository(engine)
 
     stmt = text(
         """
@@ -318,7 +321,8 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
                 src = _load_json(file)
                 store_id, doc = _build_tree_document(src, file)
                 nodes = doc.get("nodes", [])
-                nodes_hash = compute_nodes_hash(nodes)
+                stripped, meta_map = strip_nodes_and_collect_meta(nodes, require_name_gender=False)
+                nodes_hash = compute_nodes_hash(stripped)
                 existing_hash = _get_existing_nodes_hash(conn, store_id)
                 if existing_hash == nodes_hash:
                     report["skipped"].append(
@@ -340,21 +344,24 @@ def sync(input_dir: Path, db_cfg: Dict[str, Any], dry_run: bool) -> Dict[str, An
                         "id": doc["id"],
                         "name": doc["name"],
                         "description": doc["description"],
-                        "nodes_json": json.dumps(nodes, ensure_ascii=False),
-                        "node_count": len(nodes),
+                        "nodes_json": json.dumps(stripped, ensure_ascii=False),
+                        "node_count": len(stripped),
                         "external_url": source_url or None,
                         "has_source_document": 0,
                         "created_at": doc["created_at"],
                         "updated_at": doc["updated_at"],
                     },
                 )
+                if meta_map:
+                    meta_repo.upsert_many(store_id, meta_map)
 
                 report["upserted"].append(
                     {
                         "store_id": store_id,
                         "tree_id": src.get("tree_id"),
-                        "node_count": len(nodes),
+                        "node_count": len(stripped),
                         "nodes_hash": nodes_hash,
+                        "meta_count": len(meta_map),
                         "source": file.name,
                         "mode": "upsert",
                     }

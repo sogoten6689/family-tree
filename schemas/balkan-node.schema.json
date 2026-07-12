@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-tree.local/schemas/balkan-node.schema.json",
+  "title": "BalkanNode",
+  "description": "Canonical family tree node stored in family_tree.nodes_json (Phụ lục B / O0).",
+  "type": "object",
+  "required": ["id", "name", "gender"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "gender": { "enum": ["male", "female"] },
+    "birthYear": { "type": "integer" },
+    "deathYear": { "type": "integer" },
+    "fid": { "type": "integer", "minimum": 1 },
+    "mid": { "type": "integer", "minimum": 1 },
+    "pids": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 }
+    },
+    "title": { "type": "string" },
+    "bio": { "type": "string" },
+    "avatar": { "type": "string" }
+  },
+  "additionalProperties": false
+}

@@ -22,6 +22,7 @@ export interface FamilyTreeSourceDocument {
   title: string;
   description?: string | null;
   type: DocumentType;
+  subtype?: string | null;
   created_at: string;
   files: DocumentFile[];
 }
@@ -35,12 +36,14 @@ export interface DocumentCreatePayload {
   title: string;
   description?: string;
   type: DocumentType;
+  subtype?: string;
 }
 
 export interface DocumentUpdatePayload {
   title?: string;
   description?: string | null;
   type?: DocumentType;
+  subtype?: string | null;
 }
 
 export interface ReorderFilesPayload {

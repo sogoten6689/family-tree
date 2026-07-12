@@ -106,6 +106,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             title=document.title,
             description=document.description,
             type=document.type,
+            subtype=document.subtype,
             created_at=document.created_at,
             files=[_serialize_file(file_item) for file_item in document.files],
         )
@@ -146,6 +147,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
                 title=req.title,
                 description=req.description,
                 doc_type=req.type,
+                subtype=req.subtype,
             )
             db.commit()
             db.refresh(document)
@@ -182,7 +184,7 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
         document_service=Depends(get_service),
         db: Session = Depends(get_db),
     ) -> DocumentResponse:
-        if req.title is None and req.description is None and req.type is None:
+        if req.title is None and req.description is None and req.type is None and "subtype" not in req.model_fields_set:
             raise HTTPException(status_code=400, detail="No fields to update")
         try:
             document = document_service.update_document(
@@ -190,6 +192,8 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
                 title=req.title,
                 description=req.description,
                 doc_type=req.type,
+                subtype=req.subtype,
+                update_subtype="subtype" in req.model_fields_set,
             )
             db.commit()
         except Exception as error:

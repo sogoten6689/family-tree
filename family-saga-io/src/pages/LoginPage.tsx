@@ -89,6 +89,8 @@ const LoginPage = () => {
           <Typography.Paragraph className="!mt-4 !mb-0 text-center">
             {t("auth.noAccount", { defaultValue: "Chưa có tài khoản?" })}{" "}
             <Link to="/register">{t("auth.registerLink", { defaultValue: "Đăng ký" })}</Link>
+            <Link to="/">{t("auth.homeLink", { defaultValue: "Trang chủ" })}</Link>
+
           </Typography.Paragraph>
         </Card>
       </div>

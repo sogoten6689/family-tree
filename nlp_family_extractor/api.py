@@ -27,6 +27,7 @@ from app.vgp.bootstrap import bootstrap_vgp
 from app.vgp.crawl_service import VgpCrawlOptions, VgpCrawlService
 from app.workspace.bootstrap import bootstrap_workspace
 from app.workspace.router import create_workspace_router
+from app.export.router import create_export_router, create_node_meta_router
 from app.domains.extraction.extractor import FamilyExtractor
 from app.family_tree_store import (
     FamilyTreeNotFoundError,
@@ -444,6 +445,15 @@ def _get_family_tree_document(tree_id: str) -> dict:
 
 app.include_router(create_documents_router(_get_family_tree_document))
 app.include_router(create_pipeline_router(_get_family_tree_document))
+app.include_router(
+    create_export_router(
+        get_tree=_get_family_tree_document,
+        get_public_tree=lambda tree_id: _family_tree_store.get_public_tree(tree_id),
+    )
+)
+app.include_router(
+    create_node_meta_router(get_tree_store=lambda: _family_tree_store),
+)
 app.include_router(
     create_workspace_router(
         get_tree_store=lambda: _family_tree_store,

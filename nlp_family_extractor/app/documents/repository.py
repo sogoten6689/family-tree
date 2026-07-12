@@ -68,12 +68,14 @@ class DocumentRepository:
         title: str,
         description: Optional[str],
         doc_type: DocumentType,
+        subtype: Optional[str] = None,
     ) -> Document:
         document = Document(
             family_tree_id=family_tree_id,
             title=title.strip(),
             description=description.strip() if description else None,
             type=doc_type,
+            subtype=subtype.strip() if subtype else None,
         )
         self.db.add(document)
         self.db.flush()
@@ -141,6 +143,8 @@ class DocumentRepository:
         title: Optional[str] = None,
         description: Optional[str] = None,
         doc_type: Optional[DocumentType] = None,
+        subtype: Optional[str] = None,
+        update_subtype: bool = False,
     ) -> Document:
         document = self.get(document_id)
         if title is not None:
@@ -149,6 +153,8 @@ class DocumentRepository:
             document.description = description.strip() if description else None
         if doc_type is not None:
             document.type = doc_type
+        if update_subtype:
+            document.subtype = subtype.strip() if subtype else None
         self.db.flush()
         return self.get(document_id)
 
@@ -203,6 +209,7 @@ class DocumentService:
         title: str,
         description: Optional[str],
         doc_type: DocumentType,
+        subtype: Optional[str] = None,
     ) -> Document:
         self._ensure_family_tree_exists(family_tree_id)
         return self.repository.create(
@@ -210,6 +217,7 @@ class DocumentService:
             title=title,
             description=description,
             doc_type=doc_type,
+            subtype=subtype,
         )
 
     def get_document(self, document_id: int) -> Document:
@@ -223,14 +231,23 @@ class DocumentService:
         title: Optional[str] = None,
         description: Optional[str] = None,
         doc_type: Optional[DocumentType] = None,
+        subtype: Optional[str] = None,
+        update_subtype: bool = False,
     ) -> Document:
-        if title is None and description is None and doc_type is None:
+        if (
+            title is None
+            and description is None
+            and doc_type is None
+            and not update_subtype
+        ):
             raise DocumentValidationError("No fields to update.")
         document = self.repository.update(
             document_id,
             title=title,
             description=description,
             doc_type=doc_type,
+            subtype=subtype,
+            update_subtype=update_subtype,
         )
         return self._attach_download_urls(document)
 

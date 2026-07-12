@@ -28,6 +28,7 @@ class Document(Base):
         Enum(DocumentType, name="document_type", native_enum=False, length=32),
         nullable=False,
     )
+    subtype: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

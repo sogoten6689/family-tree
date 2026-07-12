@@ -12,6 +12,13 @@ from uuid import uuid4
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
+from app.balkan_node import (
+    BalkanNodeValidationError,
+    build_canonical_node,
+    strip_nodes_and_collect_meta,
+)
+from app.node_meta.repository import NodeMetaRepository
+
 
 class FamilyTreeStoreError(Exception):
     """Base exception for family tree persistence errors."""
@@ -162,27 +169,20 @@ class _FamilyTreeStoreBase:
         summary.update(_tree_metadata_from_doc(doc))
         return summary
 
-    def _normalize_nodes(self, nodes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        if not isinstance(nodes, list):
-            raise FamilyTreeValidationError("nodes must be an array")
-
-        normalized = [self._build_node_payload(item, node_id=item.get("id")) for item in nodes]
-        ids = [int(n["id"]) for n in normalized]
-        if len(set(ids)) != len(ids):
-            raise FamilyTreeValidationError("duplicate node id detected")
-        known_ids = set(ids)
-
-        for node in normalized:
-            for k in ("fid", "mid"):
-                if k in node and node[k] not in known_ids:
-                    raise FamilyTreeValidationError(f"{k}={node[k]} does not reference existing node")
-            if "pids" in node:
-                for pid in node["pids"]:
-                    if pid not in known_ids:
-                        raise FamilyTreeValidationError(f"pids contains unknown node id '{pid}'")
-                    if pid == node["id"]:
-                        raise FamilyTreeValidationError("pids cannot reference self")
-        return normalized
+    def _normalize_nodes(
+        self,
+        nodes: List[Dict[str, Any]],
+        *,
+        meta_out: Optional[Dict[int, Dict[str, Any]]] = None,
+    ) -> List[Dict[str, Any]]:
+        try:
+            if meta_out is not None:
+                normalized, meta_map = strip_nodes_and_collect_meta(nodes)
+                meta_out.update(meta_map)
+                return normalized
+            return strip_nodes_and_collect_meta(nodes)[0]
+        except BalkanNodeValidationError as exc:
+            raise FamilyTreeValidationError(str(exc)) from exc
 
     def _build_node_payload(
         self,
@@ -191,57 +191,14 @@ class _FamilyTreeStoreBase:
         node_id: Optional[Any],
         require_name_gender: bool = True,
     ) -> Dict[str, Any]:
-        if not isinstance(payload, dict):
-            raise FamilyTreeValidationError("node payload must be object")
-
         try:
-            parsed_id = int(node_id)
-        except (TypeError, ValueError):
-            raise FamilyTreeValidationError("node id must be integer") from None
-        if parsed_id <= 0:
-            raise FamilyTreeValidationError("node id must be positive")
-
-        name = payload.get("name")
-        if require_name_gender and (not isinstance(name, str) or not name.strip()):
-            raise FamilyTreeValidationError("node.name is required")
-
-        gender = payload.get("gender")
-        if require_name_gender and gender not in ("male", "female"):
-            raise FamilyTreeValidationError("node.gender must be 'male' or 'female'")
-        if gender is not None and gender not in ("male", "female"):
-            raise FamilyTreeValidationError("node.gender must be 'male' or 'female'")
-
-        node: Dict[str, Any] = {
-            "id": parsed_id,
-            "name": name.strip() if isinstance(name, str) else payload.get("name"),
-        }
-        if gender is not None:
-            node["gender"] = gender
-
-        if "birthYear" in payload and payload["birthYear"] is not None:
-            node["birthYear"] = int(payload["birthYear"])
-
-        if "deathYear" in payload and payload["deathYear"] is not None:
-            node["deathYear"] = int(payload["deathYear"])
-
-        for k in ("fid", "mid"):
-            if payload.get(k) is not None:
-                node[k] = int(payload[k])
-
-        if "pids" in payload and payload["pids"] is not None:
-            pids = payload["pids"]
-            if not isinstance(pids, list):
-                raise FamilyTreeValidationError("node.pids must be array")
-            deduped = sorted(set(int(pid) for pid in pids if pid is not None))
-            if deduped:
-                node["pids"] = deduped
-
-        # Preserve optional display fields if provided.
-        for k in ("title", "avatar", "bio"):
-            if k in payload and payload[k] is not None:
-                node[k] = payload[k]
-
-        return node
+            return build_canonical_node(
+                payload,
+                node_id=node_id,
+                require_name_gender=require_name_gender,
+            )
+        except BalkanNodeValidationError as exc:
+            raise FamilyTreeValidationError(str(exc)) from exc
 
     def _node_index(self, nodes: List[Dict[str, Any]], node_id: int) -> int:
         for idx, item in enumerate(nodes):
@@ -602,6 +559,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
     def __init__(self, engine: Engine) -> None:
         self._engine = engine
         self._lock = Lock()
+        self._meta_repo = NodeMetaRepository(engine)
         self._ensure_schema()
 
     @classmethod
@@ -746,14 +704,13 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
 
         now = self._now_iso()
         tree_id = f"tree-{uuid4().hex[:8]}"
-        normalized_nodes = self._normalize_nodes(nodes or [])
         doc: Dict[str, Any] = {
             "id": tree_id,
             "name": clean_name,
             "description": description,
             "created_at": now,
             "updated_at": now,
-            "nodes": normalized_nodes,
+            "nodes": nodes or [],
             "external_url": (external_url.strip() if external_url else None) or _default_external_url(tree_id),
             "has_source_document": bool(has_source_document),
             "has_hannom_text": bool(has_hannom_text),
@@ -762,7 +719,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         }
 
         with self._lock:
-            self._db_insert(doc)
+            self._insert_document(doc)
         return doc
 
     def get_tree(self, tree_id: str) -> Dict[str, Any]:
@@ -817,9 +774,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             doc = self._load_tree(tree_id)
             doc["name"] = clean_name
             doc["description"] = description
-            doc["nodes"] = self._normalize_nodes(nodes)
+            doc["nodes"] = nodes
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            self._save_document(doc)
             return doc
 
     def delete_tree(self, tree_id: str) -> None:
@@ -831,18 +788,27 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 )
             if result.rowcount == 0:
                 raise FamilyTreeNotFoundError(f"tree '{tree_id}' not found")
+            self._meta_repo.delete_for_tree(tree_id)
+
+    def get_node_meta(self, tree_id: str, node_id: int) -> Optional[Dict[str, Any]]:
+        with self._lock:
+            self._load_tree(tree_id)
+            return self._meta_repo.get(tree_id, node_id)
+
+    def list_node_meta(self, tree_id: str) -> List[Dict[str, Any]]:
+        with self._lock:
+            self._load_tree(tree_id)
+            return self._meta_repo.list_for_tree(tree_id)
 
     def add_node(self, tree_id: str, payload: Dict[str, Any]) -> Dict[str, Any]:
         with self._lock:
             doc = self._load_tree(tree_id)
             nodes = doc.get("nodes", [])
             next_id = max([int(n["id"]) for n in nodes], default=0) + 1
-
-            node = self._build_node_payload(payload, node_id=next_id)
-            nodes.append(node)
-            self._normalize_nodes(nodes)
+            nodes.append({**payload, "id": next_id})
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
             return doc
 
     def update_node(self, tree_id: str, node_id: int, payload: Dict[str, Any]) -> Dict[str, Any]:
@@ -855,10 +821,10 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
 
             current = nodes[idx]
             merged = {**current, **payload, "id": int(node_id)}
-            nodes[idx] = self._build_node_payload(merged, node_id=int(node_id), require_name_gender=False)
-            self._normalize_nodes(nodes)
+            nodes[idx] = merged
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
             return doc
 
     def delete_node(self, tree_id: str, node_id: int) -> Dict[str, Any]:
@@ -881,9 +847,10 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     if not node["pids"]:
                         node.pop("pids", None)
 
-            self._normalize_nodes(nodes)
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
+            self._meta_repo.delete_node(tree_id, node_id)
             return doc
 
     def add_spouse_link(self, tree_id: str, from_id: int, to_id: int) -> Dict[str, Any]:
@@ -898,9 +865,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
 
             self._append_spouse(nodes, from_id, to_id)
             self._append_spouse(nodes, to_id, from_id)
-            self._normalize_nodes(nodes)
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
             return doc
 
     def delete_spouse_link(self, tree_id: str, from_id: int, to_id: int) -> Dict[str, Any]:
@@ -909,9 +876,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             nodes = doc.get("nodes", [])
             self._remove_spouse(nodes, from_id, to_id)
             self._remove_spouse(nodes, to_id, from_id)
-            self._normalize_nodes(nodes)
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
             return doc
 
     def add_parent_link(
@@ -934,9 +901,9 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 raise FamilyTreeNotFoundError(f"node '{child_id}' not found")
 
             child[side] = int(parent_id)
-            self._normalize_nodes(nodes)
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
             return doc
 
     def delete_parent_link(
@@ -962,14 +929,28 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     if child.get(k) == int(parent_id):
                         child.pop(k, None)
 
-            self._normalize_nodes(nodes)
             doc["updated_at"] = self._now_iso()
-            self._db_save(doc)
+            doc["nodes"] = nodes
+            self._save_document(doc)
             return doc
 
     # ------------------------------------------------------------------ #
     # MySQL helpers                                                        #
     # ------------------------------------------------------------------ #
+
+    def _insert_document(self, doc: Dict[str, Any]) -> None:
+        meta_out: Dict[int, Dict[str, Any]] = {}
+        doc["nodes"] = self._normalize_nodes(doc.get("nodes", []), meta_out=meta_out)
+        self._db_insert(doc)
+        if meta_out:
+            self._meta_repo.upsert_many(str(doc["id"]), meta_out)
+
+    def _save_document(self, doc: Dict[str, Any]) -> None:
+        meta_out: Dict[int, Dict[str, Any]] = {}
+        doc["nodes"] = self._normalize_nodes(doc.get("nodes", []), meta_out=meta_out)
+        self._db_save(doc)
+        if meta_out:
+            self._meta_repo.upsert_many(str(doc["id"]), meta_out)
 
     def _load_tree(self, tree_id: str) -> Dict[str, Any]:
         with self._engine.connect() as conn:

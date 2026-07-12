@@ -7,6 +7,8 @@ from typing import Any, Dict, List, Optional
 from sqlalchemy import select, text
 from sqlalchemy.orm import Session
 
+from app.balkan_node import strip_nodes_and_collect_meta
+from app.node_meta.repository import NodeMetaRepository
 from app.vgp.models import VgpCrawl
 from tools.sync_vietnamgiapha_to_db import _normalize_nodes
 from tools.vietnamgiapha_text_export import compute_nodes_hash
@@ -44,6 +46,10 @@ class VgpCrawlRepository:
         has_source_document: bool,
     ) -> Dict[str, Any]:
         normalized_nodes = _normalize_nodes(raw_nodes)
+        stripped_nodes, meta_map = strip_nodes_and_collect_meta(
+            normalized_nodes,
+            require_name_gender=False,
+        )
         now = _now_iso()
 
         stmt = text(
@@ -72,14 +78,18 @@ class VgpCrawlRepository:
                 "id": family_tree_id,
                 "name": name,
                 "description": description,
-                "nodes_json": json.dumps(normalized_nodes, ensure_ascii=False),
-                "node_count": len(normalized_nodes),
+                "nodes_json": json.dumps(stripped_nodes, ensure_ascii=False),
+                "node_count": len(stripped_nodes),
                 "external_url": external_url,
                 "has_source_document": 1 if has_source_document else 0,
                 "created_at": now,
                 "updated_at": now,
             },
         )
+
+        meta_repo = NodeMetaRepository(self.db.get_bind())
+        if meta_map:
+            meta_repo.upsert_many(family_tree_id, meta_map)
 
         existing = self.get_crawl(family_tree_id)
         if existing is None:
@@ -111,7 +121,7 @@ class VgpCrawlRepository:
         return {
             "family_tree_id": family_tree_id,
             "tree_id": tree_id,
-            "node_count": len(normalized_nodes),
+            "node_count": len(stripped_nodes),
             "nodes_hash": nodes_hash,
             "content_hash": content_hash,
         }
