@@ -15,16 +15,38 @@ TITLE = (
 
 PERSON = rf"((?:{TITLE}\s+)?{NAME_CORE})"
 
-
-def clean_evidence(text: str) -> str:
-    return re.sub(r"\s+", " ", text).strip(" .,:;!?\"'")
-
-
+NUMBER_WORD = r"(?:một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười|\d+)"
 
 TITLE_PATTERN = re.compile(
     r"^(ông|bà|cụ|anh|chị|chú|cô|bác|cậu|dì|mợ|thím|dượng)\s+",
     re.IGNORECASE,
 )
+
+
+def clean_evidence(text: str) -> str:
+    text = re.sub(r"\s+", " ", text)
+
+    # Fix title bị dính với tên: bàTrần -> bà Trần
+    text = re.sub(
+        r"\b(ông|bà|cụ|anh|chị|chú|cô|bác|cậu|dì|mợ|thím|dượng)(?=[A-ZÀ-Ỹ])",
+        r"\1 ",
+        text,
+        flags=re.IGNORECASE,
+    )
+
+    # Fix keyword bị dính với từ sau
+    text = re.sub(r"\bcủa(?=[A-ZÀ-Ỹ])", "của ", text)
+    text = re.sub(r"\bvới(?=[A-ZÀ-Ỹ])", "với ", text)
+    text = re.sub(r"\blà(?=[A-ZÀ-Ỹ])", "là ", text)
+
+    # Fix một số lỗi evidence hay gặp
+    text = text.replace("bàTrần", "bà Trần")
+    text = text.replace("ôngNguyễn", "ông Nguyễn")
+    text = text.replace("củaNguyễn", "của Nguyễn")
+    text = text.replace("vớiNguyễn", "với Nguyễn")
+    text = text.replace("kết hônvới", "kết hôn với")
+
+    return text.strip(" .,:;!?\"'")
 
 
 def clean_person_name(name: str) -> str:
@@ -38,24 +60,72 @@ class ParentChildRule:
     name = "parent_child_rule"
 
     def __init__(self) -> None:
+        # A là cha/bố/ba/thân phụ của B
         self.father_pattern = re.compile(
-            rf"{PERSON}\s+là\s+(?:cha|bố|ba|thân phụ)\s+của\s+{PERSON}",
+            rf"{PERSON}\s+là\s+"
+            rf"(?:cha ruột|bố ruột|thân phụ|phụ thân|cha|bố|ba)"
+            rf"\s+của\s+{PERSON}",
         )
 
+        # A là mẹ/má/thân mẫu của B
         self.mother_pattern = re.compile(
-            rf"{PERSON}\s+là\s+(?:mẹ|má|thân mẫu|mẫu thân)\s+của\s+{PERSON}",
+            rf"{PERSON}\s+là\s+"
+            rf"(?:mẹ ruột|thân mẫu|mẫu thân|mẹ|má)"
+            rf"\s+của\s+{PERSON}",
         )
 
+        # B là con của A và C
+        # B là con trai/con gái/trưởng nam/con út của A
         self.child_of_pattern = re.compile(
-            rf"{PERSON}\s+là\s+con\s+của\s+{PERSON}(?:\s+và\s+{PERSON})?",
+            rf"{PERSON}\s+là\s+"
+            rf"(?:con trai|con gái|con ruột|trưởng nam|trưởng nữ|con cả|con út|con thứ(?:\s+\w+)?|con)"
+            rf"\s+của\s+{PERSON}(?:\s+và\s+{PERSON})?",
         )
 
+        # A và B có con là C
+        # A và B có các con là C, D
+        # A và B có hai người con là C và D
         self.have_child_pattern = re.compile(
-            rf"{PERSON}\s+và\s+{PERSON}\s+có\s+con\s+là\s+(.+)",
+            rf"{PERSON}\s+và\s+{PERSON}\s+có\s+"
+            rf"(?:các\s+|những\s+)?"
+            rf"(?:(?:{NUMBER_WORD})\s+)?"
+            rf"(?:người\s+)?con\s*"
+            rf"(?:là|gồm|bao gồm|:)\s+(.+)",
         )
 
+        # A có con là B
+        # A có hai người con là B và C
         self.single_parent_have_child_pattern = re.compile(
-            rf"{PERSON}\s+có\s+con\s+là\s+(.+)",
+            rf"{PERSON}\s+có\s+"
+            rf"(?:các\s+|những\s+)?"
+            rf"(?:(?:{NUMBER_WORD})\s+)?"
+            rf"(?:người\s+)?con\s*"
+            rf"(?:là|gồm|bao gồm|:)\s+(.+)",
+        )
+
+        # A và B sinh được C
+        # A và B sinh được hai người con là C và D
+        # A và B sinh ra C và D
+        # A và B hạ sinh C
+        self.pair_parent_born_children_pattern = re.compile(
+            rf"{PERSON}\s+và\s+{PERSON}\s+"
+            rf"(?:sinh\s+(?:được|ra|hạ)|hạ\s+sinh)\s+"
+            rf"(?:(?:{NUMBER_WORD})\s+)?"
+            rf"(?:người\s+)?"
+            rf"(?:con\s*)?"
+            rf"(?:là|:)?\s*(.+)",
+        )
+
+        # A sinh ra B
+        # A sinh được B và C
+        # A hạ sinh B
+        self.single_parent_born_children_pattern = re.compile(
+            rf"{PERSON}\s+"
+            rf"(?:sinh\s+(?:được|ra|hạ)|hạ\s+sinh)\s+"
+            rf"(?:(?:{NUMBER_WORD})\s+)?"
+            rf"(?:người\s+)?"
+            rf"(?:con\s*)?"
+            rf"(?:là|:)?\s*(.+)",
         )
 
     def extract(self, sentence: str) -> List[ExtractedRelation]:
@@ -65,13 +135,17 @@ class ParentChildRule:
         results.extend(self._extract_mother(sentence))
         results.extend(self._extract_child_of(sentence))
 
-        have_child_results = self._extract_have_child(sentence)
-        results.extend(have_child_results)
+        pair_child_results: List[ExtractedRelation] = []
+        pair_child_results.extend(self._extract_have_child(sentence))
+        pair_child_results.extend(self._extract_pair_parent_born_children(sentence))
 
-    # Nếu câu đã match dạng "A và B có con là C",
-    # thì không chạy rule "A có con là C" nữa để tránh relation rác.
-        if not have_child_results:
+        results.extend(pair_child_results)
+
+        # Nếu câu đã match dạng "A và B có con/sinh được C",
+        # thì không chạy single-parent rule nữa để tránh relation rác.
+        if not pair_child_results:
             results.extend(self._extract_single_parent_have_child(sentence))
+            results.extend(self._extract_single_parent_born_children(sentence))
 
         return self._deduplicate(results)
 
@@ -211,27 +285,101 @@ class ParentChildRule:
 
         return results
 
+    def _extract_pair_parent_born_children(self, sentence: str) -> List[ExtractedRelation]:
+        results: List[ExtractedRelation] = []
+
+        for match in self.pair_parent_born_children_pattern.finditer(sentence):
+            parent_1 = clean_person_name(match.group(1))
+            parent_2 = clean_person_name(match.group(2))
+            children_text = match.group(3)
+            evidence = clean_evidence(match.group(0))
+
+            children = self._split_people_list(children_text)
+
+            for child in children:
+                results.append(
+                    ExtractedRelation(
+                        source_person=parent_1,
+                        relation_type="parent_of",
+                        target_person=child,
+                        evidence=evidence,
+                        rule_name="pair_parent_born_children_pattern",
+                        confidence=0.9,
+                    )
+                )
+
+                results.append(
+                    ExtractedRelation(
+                        source_person=parent_2,
+                        relation_type="parent_of",
+                        target_person=child,
+                        evidence=evidence,
+                        rule_name="pair_parent_born_children_pattern",
+                        confidence=0.9,
+                    )
+                )
+
+        return results
+
+    def _extract_single_parent_born_children(self, sentence: str) -> List[ExtractedRelation]:
+        results: List[ExtractedRelation] = []
+
+        for match in self.single_parent_born_children_pattern.finditer(sentence):
+            parent = clean_person_name(match.group(1))
+            children_text = match.group(2)
+            evidence = clean_evidence(match.group(0))
+
+            children = self._split_people_list(children_text)
+
+            for child in children:
+                results.append(
+                    ExtractedRelation(
+                        source_person=parent,
+                        relation_type="parent_of",
+                        target_person=child,
+                        evidence=evidence,
+                        rule_name="single_parent_born_children_pattern",
+                        confidence=0.85,
+                    )
+                )
+
+        return results
+
     def _split_people_list(self, text: str) -> List[str]:
         text = clean_evidence(text)
 
         # Cắt phần mô tả dư phía sau nếu có.
         text = re.split(
-            r"\s+(?:sinh năm|quê|ở|hiện|là|gồm|bao gồm)\s+",
+            r"\s+(?:sinh năm|mất năm|quê|ở|hiện|sau này|là|gồm|bao gồm)\s+",
             text,
             maxsplit=1,
             flags=re.IGNORECASE,
         )[0]
 
-        text = re.sub(r"\s+và\s+", ",", text)
-        text = re.sub(r"\s*,\s*", ",", text)
+        # Ưu tiên bắt tên người bằng regex PERSON.
+        matched_people = re.findall(PERSON, text)
 
-        parts = [clean_person_name(part) for part in text.split(",")]
+        if matched_people:
+            people = [clean_person_name(person) for person in matched_people]
+        else:
+            text = re.sub(r"\s+và\s+", ",", text)
+            text = re.sub(r"\s*,\s*", ",", text)
+            people = [clean_person_name(part) for part in text.split(",")]
 
-        return [
-            part
-            for part in parts
-            if part and len(part.split()) >= 2
-        ]
+        unique_people: List[str] = []
+        seen = set()
+
+        for person in people:
+            if not person or len(person.split()) < 2:
+                continue
+
+            if person in seen:
+                continue
+
+            seen.add(person)
+            unique_people.append(person)
+
+        return unique_people
 
     def _safe_clean_group(self, match: re.Match, index: int) -> Optional[str]:
         try:
