@@ -25,7 +25,14 @@ import {
   loadHannomConfig,
   saveHannomConfig,
 } from "@/lib/developerSettings";
-import { fetchHannomToken, getHannomTokenStatus, type HannomTokenStatusResponse } from "@/lib/hannomApi";
+import {
+  fetchHannomToken,
+  getHannomCredentials,
+  getHannomTokenStatus,
+  saveHannomCredentials,
+  type HannomCredentialsStatusResponse,
+  type HannomTokenStatusResponse,
+} from "@/lib/hannomApi";
 
 const HannomConfigPage = () => {
   const { t } = useTranslation();
@@ -33,15 +40,19 @@ const HannomConfigPage = () => {
   const [loginForm] = Form.useForm<{ loginEmail: string; loginPassword: string }>();
   const [saved, setSaved] = useState(false);
   const [fetchingToken, setFetchingToken] = useState(false);
+  const [savingCredentials, setSavingCredentials] = useState(false);
   const [tokenStatus, setTokenStatus] = useState<HannomTokenStatusResponse | null>(null);
+  const [dbCredentials, setDbCredentials] = useState<HannomCredentialsStatusResponse | null>(null);
   const [lastFetchMessage, setLastFetchMessage] = useState<string | null>(null);
 
   const refreshTokenStatus = useCallback(async () => {
     try {
-      const status = await getHannomTokenStatus();
+      const [status, creds] = await Promise.all([getHannomTokenStatus(), getHannomCredentials()]);
       setTokenStatus(status);
+      setDbCredentials(creds);
     } catch {
       setTokenStatus(null);
+      setDbCredentials(null);
     }
   }, []);
 
@@ -56,6 +67,26 @@ const HannomConfigPage = () => {
     saveHannomConfig(values);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+  };
+
+  const handleSaveCredentials = async () => {
+    const values = await loginForm.validateFields();
+    setSavingCredentials(true);
+    setLastFetchMessage(null);
+    try {
+      const result = await saveHannomCredentials({
+        username: values.loginEmail,
+        password: values.loginPassword,
+      });
+      setDbCredentials(result);
+      message.success("Đã lưu tài khoản + token lên server (DB, mã hóa). Tự refresh khi hết hạn.");
+      await refreshTokenStatus();
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : "Lưu credential thất bại";
+      message.error(detail);
+    } finally {
+      setSavingCredentials(false);
+    }
   };
 
   const handleFetchToken = async () => {
@@ -104,7 +135,7 @@ const HannomConfigPage = () => {
         type="info"
         showIcon
         message="Token OCR Kim Hán Nôm"
-        description="Hệ thống Kim Hán Nôm dùng form đăng nhập /account/login và lưu JWT trong cookie `token`. Backend sẽ mô phỏng trình duyệt, lấy cookie đó và dùng làm Bearer token cho OCR."
+        description="Backend lưu username/password/token trên MySQL (mã hóa), tự đăng nhập lại khi JWT hết hạn. Ưu tiên dùng「Lưu lên server (DB)」trên VPS production."
       />
 
       <Card
@@ -125,7 +156,26 @@ const HannomConfigPage = () => {
               </Descriptions.Item>
               <Descriptions.Item label="Nguồn">{tokenStatus.source}</Descriptions.Item>
               <Descriptions.Item label="Preview">{tokenStatus.preview ?? "—"}</Descriptions.Item>
+              <Descriptions.Item label="Hết hạn">{tokenStatus.expires_at ?? "—"}</Descriptions.Item>
               <Descriptions.Item label="Độ dài">{tokenStatus.token_length}</Descriptions.Item>
+            </Descriptions>
+          )}
+
+          {dbCredentials && (
+            <Descriptions bordered size="small" column={2} title="Credential trên server (DB)">
+              <Descriptions.Item label="Username">{dbCredentials.username ?? "—"}</Descriptions.Item>
+              <Descriptions.Item label="Có password">
+                <Tag color={dbCredentials.has_password ? "green" : "default"}>
+                  {dbCredentials.has_password ? "Có" : "Chưa"}
+                </Tag>
+              </Descriptions.Item>
+              <Descriptions.Item label="Token preview">{dbCredentials.token_preview ?? "—"}</Descriptions.Item>
+              <Descriptions.Item label="Hết hạn">{dbCredentials.token_expires_at ?? "—"}</Descriptions.Item>
+              {dbCredentials.last_error && (
+                <Descriptions.Item label="Lỗi gần nhất" span={2}>
+                  <Typography.Text type="danger">{dbCredentials.last_error}</Typography.Text>
+                </Descriptions.Item>
+              )}
             </Descriptions>
           )}
 
@@ -144,14 +194,23 @@ const HannomConfigPage = () => {
             >
               <Input.Password placeholder="Mật khẩu tài khoản kimhannom.fit.hcmus.edu.vn" autoComplete="current-password" />
             </Form.Item>
-            <Button
-              type="primary"
-              icon={<KeyOutlined />}
-              loading={fetchingToken}
-              onClick={() => void handleFetchToken()}
-            >
-              Lấy token OCR tự động
-            </Button>
+            <Space wrap>
+              <Button
+                type="primary"
+                icon={<SaveOutlined />}
+                loading={savingCredentials}
+                onClick={() => void handleSaveCredentials()}
+              >
+                Lưu lên server (DB)
+              </Button>
+              <Button
+                icon={<KeyOutlined />}
+                loading={fetchingToken}
+                onClick={() => void handleFetchToken()}
+              >
+                Lấy token (runtime)
+              </Button>
+            </Space>
           </Form>
 
           {lastFetchMessage && <Alert type="success" showIcon message={lastFetchMessage} />}
@@ -224,21 +283,21 @@ const HannomConfigPage = () => {
                   <Descriptions.Item label="HANNOM_EMAIL / HANNOM_PASSWORD">
                     Tài khoản đăng nhập (tùy chọn, dùng khi gọi fetch-token không gửi body)
                   </Descriptions.Item>
-                  <Descriptions.Item label="HANNOM_API_TOKEN">Bearer token (khuyến nghị cho production)</Descriptions.Item>
-                  <Descriptions.Item label="HANNOM_API_BASE_URL">
-                    https://kimhannom.fit.hcmus.edu.vn
+                  <Descriptions.Item label="PUT /api/developer/hannom/credentials">
+                    Lưu username/password → login → token (DB, mã hóa, auto refresh)
                   </Descriptions.Item>
-                  <Descriptions.Item label="API lấy token">
-                    POST /api/developer/hannom/fetch-token
+                  <Descriptions.Item label="POST /api/developer/hannom/fetch-token">
+                    Lấy token runtime (+ lưu DB nếu có MySQL)
                   </Descriptions.Item>
+                  <Descriptions.Item label="HANNOM_API_TOKEN">Override env (ưu tiên hơn DB)</Descriptions.Item>
                 </Descriptions>
                 <div className="mt-4">
                   <CodeBlock
                     language="bash"
-                    code={`curl -X POST "$BACKEND/api/developer/hannom/fetch-token" \\
+                    code={`curl -X PUT "$BACKEND/api/developer/hannom/credentials" \\
   -H "Authorization: Bearer <JWT_ADMIN>" \\
   -H "Content-Type: application/json" \\
-  -d '{"email":"sogoten6689@gmail.com","password":"R~G#bu^95)7qeDH"}'`}
+  -d '{"username":"email@example.com","password":"<PASSWORD>"}'`}
                   />
                 </div>
                 <Typography.Paragraph type="secondary" className="mt-4 !mb-0">

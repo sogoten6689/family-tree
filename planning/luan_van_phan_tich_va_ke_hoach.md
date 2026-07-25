@@ -193,6 +193,13 @@ Quản trị (Admin)
 - Thêm quan hệ NLP mở rộng khi chưa có evaluator.  
 - Gộp hết crawl vào demo bảo vệ (trừ khi đề cương yêu cầu thu thập corpus).
 
+### 4.5. Theme xanh lá sáng + UX/flow chi tiết
+
+> **Plan triển khai UI (màu, hình ảnh, stepper, happy path 6 bước):**  
+> → [ui_green_theme_flow_ux_plan.md](./ui_green_theme_flow_ux_plan.md)
+
+Tóm tắt: đổi SSOT màu từ vàng đồng → **xanh lá sáng** (`seedTokens.ts`), hero/illustration đồng bộ, stepper pipeline 6 bước trên User/Admin, demo ≤ 7 click.
+
 ---
 
 ## 5. Plan làm luận văn (khung làm việc)

@@ -45,9 +45,10 @@ services:
       ADMIN_EMAIL: admin@giapha.com
       ADMIN_PASSWORD: Admin@123456
       MINIO_ENDPOINT: http://minio:9000
-      MINIO_PUBLIC_ENDPOINT: http://localhost:9002
-      MINIO_ACCESS_KEY: minioadmin
-      MINIO_SECRET_KEY: minioadmin123
+      # VPS production: http://giapha.kimtudien.com.vn/minio (qua nginx) hoặc http://IP:9002
+      MINIO_PUBLIC_ENDPOINT: ${MINIO_PUBLIC_ENDPOINT:-http://localhost:9002}
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minioadmin}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minioadmin123}
       MINIO_BUCKET: family-tree-docs
       MINIO_USE_SSL: "false"
       MINIO_AUTO_CREATE_BUCKET: "true"

@@ -19,7 +19,8 @@ from app.auth.router import router as auth_router
 from app.database import database_enabled, database_init_error, get_db, init_database
 from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
-from app.documents.storage import ObjectStorage
+from app.documents.storage import ObjectStorage, ObjectStorageError
+from app.hannom.bootstrap import bootstrap_hannom
 from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
@@ -155,6 +156,14 @@ class HealthResponse(BaseModel):
     )
     tree_storage: Literal["mysql+json", "json"] = Field(
         description="Backend đang lưu cây gia phả: đồng bộ MySQL+JSON hoặc chỉ JSON file."
+    )
+    object_storage: Literal["ok", "disabled", "error"] = Field(
+        default="disabled",
+        description="Trạng thái MinIO/S3: ok, disabled (thiếu MINIO_*), hoặc error.",
+    )
+    object_storage_error: Optional[str] = Field(
+        default=None,
+        description="Chi tiết lỗi MinIO nếu object_storage=error.",
     )
 
 
@@ -413,6 +422,7 @@ async def _lifespan(_: FastAPI):
         bootstrap_pipeline()
         bootstrap_vgp()
         bootstrap_workspace()
+        bootstrap_hannom()
     yield
 
 _DESCRIPTION = """
@@ -562,6 +572,20 @@ def health() -> HealthResponse:
         payload["auth_init_error"] = database_init_error()
     if _history_repo.init_error:
         payload["history_init_error"] = _history_repo.init_error
+
+    storage = ObjectStorage.from_env()
+    if not storage.config.enabled:
+        payload["object_storage"] = "disabled"
+        payload["object_storage_error"] = "Thiếu MINIO_ENDPOINT / MINIO_ACCESS_KEY / MINIO_SECRET_KEY / MINIO_BUCKET."
+    else:
+        try:
+            storage.ensure_bucket()
+            payload["object_storage"] = "ok"
+        except ObjectStorageError as exc:
+            payload["object_storage"] = "error"
+            payload["object_storage_error"] = str(exc)
+            payload["status"] = "degraded"
+
     return HealthResponse(**payload)
 
 

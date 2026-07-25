@@ -30,7 +30,7 @@ Backend lưu file tài liệu trên MinIO (tương thích S3) qua `boto3`.
 | Biến môi trường | Mô tả |
 |-----------------|--------|
 | `MINIO_ENDPOINT` | URL nội bộ, vd. `http://minio:9000` (Docker) |
-| `MINIO_PUBLIC_ENDPOINT` | URL public cho presigned URL, vd. `http://localhost:9002` |
+| `MINIO_PUBLIC_ENDPOINT` | URL public cho presigned URL. **VPS:** `http://giapha.kimtudien.com.vn/minio` (qua nginx), không dùng `localhost` |
 | `MINIO_ACCESS_KEY` | Access key |
 | `MINIO_SECRET_KEY` | Secret key |
 | `MINIO_BUCKET` | Tên bucket, vd. `family-tree-docs` |
@@ -222,6 +222,7 @@ Config: `nginx/conf.d/giapha.kimtudien.com.vn.conf`
 | Pattern URL | Route đến |
 |-------------|-----------|
 | `/api/*`, `/docs`, `/redoc`, `/health` | `backend:8000` |
+| `/minio/*` | `minio:9000` (S3 API — presigned URL) |
 | `/` (mọi route còn lại) | `frontend:80` (SPA) |
 
 Domain: **giapha.kimtudien.com.vn** → port `87`
@@ -231,7 +232,7 @@ Domain: **giapha.kimtudien.com.vn** → port `87`
 ## Kiểm tra nhanh sau deploy
 
 ```bash
-# Health check backend
+# Health check backend (xem object_storage: ok | disabled | error)
 curl http://localhost:8002/health
 
 # Frontend (direct)
@@ -244,3 +245,78 @@ open http://localhost:5174/admin/gia-pha
 curl http://localhost:87/health
 ```
 
+---
+
+## Troubleshooting — VPS không lưu được file
+
+File tài liệu lưu trên **MinIO** (S3), không ghi trực tiếp lên disk app (trừ metadata crawl Nom trong `./nlp_family_extractor/data`).
+
+### 1. Kiểm tra health
+
+```bash
+curl -s http://localhost:87/health | jq
+```
+
+| `object_storage` | Ý nghĩa | Cách xử lý |
+|------------------|---------|------------|
+| `ok` | MinIO + bucket OK | Lỗi có thể do nginx giới hạn upload |
+| `disabled` | Thiếu `MINIO_*` | Kiểm tra env backend trong `docker compose` |
+| `error` | Backend không gọi được MinIO | `docker compose logs minio backend` |
+
+### 2. Nginx chặn file lớn (hay gặp nhất)
+
+Mặc định nginx **1MB**. Upload ảnh gia phả thường > 1MB → lỗi **413 Request Entity Too Large**.
+
+**Đã fix trong** `nginx/conf.d/giapha.kimtudien.com.vn.conf`: `client_max_body_size 55m`.
+
+Sau khi pull code mới trên VPS:
+
+```bash
+docker compose up -d --build nginx backend
+```
+
+### 3. `MINIO_PUBLIC_ENDPOINT` sai trên VPS
+
+`docker-compose.yml` mặc định `localhost:9002` — **chỉ đúng trên máy dev**.
+
+Trên VPS, tạo file `.env` ở thư mục gốc repo:
+
+```bash
+cp .env.production.example .env
+# Sửa MINIO_PUBLIC_ENDPOINT=http://giapha.kimtudien.com.vn/minio
+docker compose up -d --build backend nginx
+```
+
+Nginx proxy MinIO tại path `/minio/` → presigned URL tải file qua cùng domain.
+
+### 4. Container MinIO không chạy
+
+```bash
+docker compose ps minio
+docker compose logs --tail=50 minio
+```
+
+```bash
+docker compose up -d minio backend
+```
+
+### 5. Quyền ghi thư mục `data/` (crawl Nom)
+
+```bash
+sudo chown -R "$(id -u):$(id -g)" nlp_family_extractor/data
+chmod -R u+rwX nlp_family_extractor/data
+```
+
+### 6. Test upload (Admin JWT)
+
+```bash
+curl -X POST "http://localhost:87/api/documents/1/upload-files" \
+  -H "Authorization: Bearer $TOKEN" \
+  -F "files=@test.jpg" -v
+```
+
+| HTTP | Nguyên nhân thường gặp |
+|------|------------------------|
+| 413 | nginx chưa `client_max_body_size` |
+| 503 + Object storage | MinIO down / sai credential |
+| 401 | Thiếu JWT admin |

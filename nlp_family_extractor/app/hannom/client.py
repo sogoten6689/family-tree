@@ -67,11 +67,20 @@ def get_effective_token() -> str:
     env_token = os.getenv("HANNOM_API_TOKEN", "").strip()
     if env_token:
         return env_token.lstrip("Bearer ").strip()
+
+    from app.hannom.credential_store import get_credential_store
+
+    db_token = get_credential_store().get_valid_token()
+    if db_token:
+        apply_runtime_token(db_token)
+        return db_token
+
     if _cached_runtime_token:
         return _cached_runtime_token
     raise HannomApiError(
         "HANNOM_API_TOKEN chưa được cấu hình. "
-        "Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường.",
+        "Lưu tài khoản qua PUT /api/developer/hannom/credentials, "
+        "gọi POST /api/developer/hannom/fetch-token, hoặc thiết lập biến môi trường.",
     )
 
 
@@ -137,6 +146,19 @@ def _request_json(
         response = client.request(method, url, json=json_body, files=files)
     except httpx.HTTPError as exc:
         raise HannomApiError(f"Không thể kết nối Kim Hán Nôm API: {exc}") from exc
+
+    if response.status_code == 401:
+        from app.hannom.credential_store import get_credential_store
+
+        refreshed = get_credential_store().force_refresh()
+        if refreshed:
+            apply_runtime_token(refreshed)
+            client.headers["Authorization"] = f"Bearer {refreshed}"
+            _wait_for_rate_limit()
+            try:
+                response = client.request(method, url, json=json_body, files=files)
+            except httpx.HTTPError as exc:
+                raise HannomApiError(f"Không thể kết nối Kim Hán Nôm API: {exc}") from exc
 
     if response.status_code >= 400:
         detail = response.text[:500]

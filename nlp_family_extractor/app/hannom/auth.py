@@ -14,6 +14,7 @@ from app.hannom.client import (
     get_browser_headers,
 )
 from app.hannom.errors import HannomApiError
+from app.hannom.jwt_utils import parse_jwt_expiry
 
 TOKEN_JSON_KEYS = (
     "access_token",
@@ -215,23 +216,54 @@ def resolve_hannom_credentials(
 def get_token_status() -> dict[str, Any]:
     env_token = os.getenv("HANNOM_API_TOKEN", "").strip()
     from app.hannom.client import get_cached_token
+    from app.database import database_enabled, session_scope
+    from app.hannom.credential_store import get_credential_store
 
     cached = get_cached_token()
+    db_status: dict[str, Any] | None = None
+    if database_enabled():
+        try:
+            with session_scope() as db:
+                db_status = get_credential_store().get_status(db)
+        except Exception:
+            db_status = None
+
     active = env_token or cached
     preview = None
     source = "none"
+    expires_at = None
+
     if env_token:
         source = "env"
         preview = _mask_token(env_token)
+        exp = parse_jwt_expiry(env_token)
+        expires_at = exp.isoformat() if exp else None
+    elif db_status and db_status.get("token_preview"):
+        source = "db"
+        preview = db_status.get("token_preview")
+        exp_value = db_status.get("token_expires_at")
+        expires_at = exp_value.isoformat() if exp_value else None
+        active = db_status.get("configured")
     elif cached:
         source = "runtime_cache"
         preview = _mask_token(cached)
+        exp = parse_jwt_expiry(cached)
+        expires_at = exp.isoformat() if exp else None
+        active = cached
 
     return {
         "configured": bool(active),
         "source": source,
         "preview": preview,
-        "token_length": len(active) if active else 0,
+        "token_length": len(env_token or cached or ""),
+        "expires_at": expires_at,
+        "username": db_status.get("username") if db_status else None,
+        "last_login_at": (
+            db_status.get("last_login_at").isoformat()
+            if db_status and db_status.get("last_login_at")
+            else None
+        ),
+        "last_error": db_status.get("last_error") if db_status else None,
     }
 
 
