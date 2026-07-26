@@ -250,7 +250,12 @@ const FamilyTreePage = () => {
     XLSX.writeFile(wb, 'family-tree.xlsx');
   };
 
-  const handleEditSubmit = (values: any) => {
+  type MemberEditFormValues = Pick<
+    FamilyMember,
+    "name" | "birthYear" | "deathYear" | "gender" | "generation" | "spouseName" | "title" | "bio" | "parentId"
+  >;
+
+  const handleEditSubmit = (values: MemberEditFormValues) => {
     if (!editingMember) return;
 
     const oldParentId = editingMember.parentId;

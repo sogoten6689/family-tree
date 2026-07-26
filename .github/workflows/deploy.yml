@@ -38,6 +38,7 @@ jobs:
     needs: ci
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
+    environment: VPS_HOST
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1

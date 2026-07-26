@@ -117,7 +117,7 @@ const FamilyTreeManagerPage = () => {
     }
   };
 
-  const actionMenu = (record: any) => ({
+  const actionMenu = (record: FamilyTreeSummary) => ({
     items: [
       {
         key: 'detail',
