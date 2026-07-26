@@ -80,6 +80,8 @@ jobs:
         working-directory: nlp_family_extractor
 
     env:
+      # pytest 8+ dùng import-mode=importlib — cần PYTHONPATH để import app.*
+      PYTHONPATH: .
       # CI không có MySQL — tránh đọc .env local nếu có trên runner
       MYSQL_HOST: ""
       MYSQL_USER: ""
@@ -108,4 +110,4 @@ jobs:
       - name: Run unit tests
         run: |
           # test_family_tree_api cần MySQL + admin auth — chạy riêng khi có service container
-          pytest tests/ --ignore=tests/test_family_tree_api.py -q
+          python -m pytest tests/ --ignore=tests/test_family_tree_api.py -q
