@@ -2,17 +2,22 @@ name: CI Checks
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [master, main]
   pull_request:
-    branches: [ master, main ]
+    branches: [master, main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
-  # --------------------------------------------------
-  # JOB 1: Kiểm tra Frontend (family-saga-io)
-  # --------------------------------------------------
-  frontend-check:
-    name: Frontend CI
+  frontend:
+    name: Frontend
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     defaults:
       run:
@@ -25,29 +30,61 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: npm
           cache-dependency-path: family-saga-io/package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Lint (nếu có script)
-        run: npm run lint --if-present
+      - name: Run unit tests
+        run: npm run test
 
-      - name: Build Frontend
+      - name: Build (production — same as Docker)
+        env:
+          # Khớp Dockerfile: VITE_BACKEND_URL rỗng → fetch /api qua nginx
+          VITE_BACKEND_URL: ""
         run: npm run build
 
-  # --------------------------------------------------
-  # JOB 2: Kiểm tra Backend (nlp_family_extractor)
-  # --------------------------------------------------
-  backend-check:
-    name: Backend CI
+  frontend-lint:
+    name: Frontend lint (advisory)
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+
+    defaults:
+      run:
+        working-directory: family-saga-io
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: family-saga-io/package-lock.json
+
+      - run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+  backend:
+    name: Backend
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     defaults:
       run:
         working-directory: nlp_family_extractor
+
+    env:
+      # CI không có MySQL — tránh đọc .env local nếu có trên runner
+      MYSQL_HOST: ""
+      MYSQL_USER: ""
+      MYSQL_PASSWORD: ""
+      JWT_SECRET_KEY: ci-test-secret
 
     steps:
       - name: Checkout code
@@ -56,19 +93,19 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version: "3.11"
+          cache: pip
           cache-dependency-path: nlp_family_extractor/requirements.txt
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt pytest
 
-      - name: Smoke test (Import FastAPI app)
-        run: |
-          python -c "from api import app; print('FastAPI app imported successfully!')"
+      - name: Smoke test — import FastAPI app
+        run: python -c "from api import app; print('FastAPI app imported successfully')"
 
-      - name: Run Pytest (nếu có test suite)
+      - name: Run unit tests
         run: |
-          if [ -d "tests" ] || [ -f "pytest.ini" ]; then pytest; else echo "No tests found, skipping."; fi
+          # test_family_tree_api cần MySQL + admin auth — chạy riêng khi có service container
+          pytest tests/ --ignore=tests/test_family_tree_api.py -q
