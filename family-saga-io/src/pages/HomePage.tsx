@@ -14,8 +14,9 @@ const HomePage = () => {
   const location = useLocation();
   const { t } = useTranslation();
   const { isAuthenticated, isAdmin, logout } = useAuth();
-  const { resolvedTheme } = useTheme();
-  const footerToggleVariant = resolvedTheme === 'dark' ? 'default' : 'on-dark';
+  const { resolvedTheme, systemTheme } = useTheme();
+  const isDark = (resolvedTheme ?? systemTheme) === 'dark';
+  const footerToggleVariant = isDark ? 'default' : 'on-dark';
 
   useEffect(() => {
     if (location.hash) {
@@ -35,7 +36,11 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <section className="relative min-h-[480px] md:h-[600px] flex items-center justify-center overflow-hidden">
-        <img src={heroBg} alt="Gia phả truyền thống" className="absolute inset-0 w-full h-full object-cover" />
+        <img
+          src={heroBg}
+          alt="Gia phả truyền thống"
+          className="hero-bg-image absolute inset-0 w-full h-full object-cover"
+        />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center max-w-3xl px-4 sm:px-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 md:mb-6 leading-tight">
@@ -49,9 +54,13 @@ const HomePage = () => {
               type="primary"
               size="large"
               className="!h-12 !px-8"
-              onClick={() => navigate(isAuthenticated ? '/user/family-tree' : '/gia-pha')}
+              onClick={() =>
+                navigate(isAuthenticated ? "/user/documents" : "/login", {
+                  state: { from: "/user/documents" },
+                })
+              }
             >
-              {t('home.btnViewSample')}
+              {t("home.btnStartFlow", { defaultValue: "Bắt đầu quy trình" })}
             </Button>
             <Button
               type="default"
@@ -61,22 +70,20 @@ const HomePage = () => {
                 root: {
                   background: "#ffffff",
                   borderColor: "#ffffff",
-                  color: "hsl(0, 0%, 9%)",
+                  color: "hsl(160, 10%, 12%)",
                 },
               }}
-              onClick={() => navigate(isAuthenticated ? '/user/document-reader' : '/login')}
+              onClick={() => navigate("/gia-pha")}
             >
-              {t('home.btnOpenDoc')}
+              {t("home.btnViewSample")}
             </Button>
-            {isAdmin && (
-              <Button
-                size="large"
-                className="!h-12 !px-6 !bg-white/10 !text-white !border-white/60 hover:!bg-white/20"
-                onClick={() => navigate('/admin/gia-pha')}
-              >
-                {t('home.btnManageTree', { defaultValue: 'Quản lý gia phả' })}
-              </Button>
-            )}
+            <Button
+              size="large"
+              className="!h-12 !px-6 !bg-white/10 !text-white !border-white/60 hover:!bg-white/20"
+              onClick={() => navigate("/huong-dan")}
+            >
+              {t("nav.guide")}
+            </Button>
             {!isAuthenticated ? (
               <Button
                 size="large"
@@ -157,12 +164,13 @@ const HomePage = () => {
         </p>
         <Button
           type="primary"
-          danger
           size="large"
           className="!h-[52px] !px-10 !text-base"
-          onClick={() => navigate(isAuthenticated ? '/user/document-reader' : '/register')}
+          onClick={() =>
+            navigate(isAuthenticated ? "/user/documents" : "/register")
+          }
         >
-          {t('home.ctaBtn')}
+          {t("home.btnStartFlow", { defaultValue: "Bắt đầu quy trình" })}
         </Button>
       </section>
 

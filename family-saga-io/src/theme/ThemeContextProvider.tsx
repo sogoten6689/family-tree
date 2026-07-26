@@ -16,7 +16,7 @@ function AntdCssBridge() {
 
 export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
   const { resolvedTheme, systemTheme } = useTheme();
-  const isDark = (resolvedTheme ?? systemTheme) === "dark";
+  const isDark = (resolvedTheme ?? systemTheme ?? "light") === "dark";
   const antTheme = useMemo(() => getAntdTheme(isDark), [isDark]);
 
   return (

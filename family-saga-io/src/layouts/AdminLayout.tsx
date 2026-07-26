@@ -43,8 +43,8 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout, isAdmin } = useAuth();
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const { resolvedTheme, systemTheme } = useTheme();
+  const isDark = (resolvedTheme ?? systemTheme) === "dark";
   const [menuOpenKeys, setMenuOpenKeys] = useState<string[]>([]);
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const AdminLayout = () => {
       {
         key: "gia-pha",
         icon: <BranchesOutlined />,
-        label: t("admin.menuFamilyTrees", { defaultValue: "Gia phả" }),
+        label: t("flow.menu.treesAndDocs", { defaultValue: "Gia phả & tài liệu" }),
       },
       {
         key: "history",
@@ -99,7 +99,7 @@ const AdminLayout = () => {
       items.push({
         key: "developer",
         icon: <CodeOutlined />,
-        label: t("admin.developer.menu", { defaultValue: "Developer" }),
+        label: t("admin.developer.menu", { defaultValue: "Công cụ nghiên cứu" }),
         children: developerChildren,
       });
     }
@@ -157,7 +157,7 @@ const AdminLayout = () => {
 
   return (
     <Layout className="min-h-screen">
-      <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border">
+      <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border !bg-[hsl(var(--sidebar-background))]">
         <div className="px-5 py-6">
           <Typography.Title level={5} className="!mb-1">
             {t("admin.panelTitle", { defaultValue: "Admin" })}
@@ -194,7 +194,7 @@ const AdminLayout = () => {
       </Sider>
 
       <Layout>
-        <Header className="!px-6 flex items-center justify-between border-b border-border" style={{ height: 64 }}>
+        <Header className="!px-6 flex items-center justify-between border-b border-border !bg-card" style={{ height: 64 }}>
           <div>
             <Breadcrumb items={breadcrumbItems} />
             <Typography.Title level={4} className="!mb-0 !mt-1">

@@ -38,6 +38,8 @@
     "ctaTitle": "Start Building Your Family Tree",
     "ctaSubtitle": "In just a few simple steps, you can create a complete family tree for your lineage.",
     "ctaBtn": "Upload Documents to Read",
+    "btnStartFlow": "Start the workflow",
+    "btnGuide": "View guide",
     "aboutTitle": "About Us",
     "aboutDesc": "HCMUS Family Tree is a digital genealogy platform helping Vietnamese families preserve Hán-Nôm materials, build visual pedigree charts, and share them with future generations.",
     "footer": "© 2026 HCMUS Family Tree — Preserving traditions, connecting generations"
@@ -398,6 +400,14 @@
     "step2": "Sign in and open /user/document-reader to upload documents.",
     "step3": "View the family tree at /user/family-tree.",
     "step4": "Admins manage the system at /admin/gia-pha and /admin/users.",
+    "flowIntro": "Six-step workflow: materials → OCR → extract → normalize → visualize → export. Complete demo in 5–7 actions.",
+    "demoTitle": "Thesis demo (5–7 clicks)",
+    "demo1": "Sign in → /user/dashboard to track workflow progress.",
+    "demo2": "/user/documents — pick a sample document or upload images.",
+    "demo3": "Document detail — OCR each page → Merge pages (green banner for step ②).",
+    "demo4": "Extract relationships → preview people/edges.",
+    "demo5": "Save as family tree → /user/family-trees/:id.",
+    "demo6": "Diagram tab — choose dom-classic or table; (optional) Export JSON.",
     "needHelp": "Need help?",
     "openGuide": "Guide",
     "zone": {
@@ -405,6 +415,49 @@
       "user": "User",
       "admin": "Admin"
     }
+  },
+  "flow": {
+    "stepperTitle": "Genealogy processing workflow",
+    "dashboardIntro": "Track progress: materials → OCR → extract → family tree.",
+    "stepNumber": "Step {{n}}",
+    "openStep": "Open this step",
+    "ocrMergeDone": "Step ② OCR complete — page transcriptions merged.",
+    "nextExtract": "Extract relationships",
+    "menu": {
+      "process": "Processing workflow",
+      "library": "Document library",
+      "myTrees": "My family trees",
+      "treesAndDocs": "Trees & documents"
+    },
+    "step": {
+      "material": "Materials",
+      "ocr": "OCR / transliteration",
+      "extract": "Extract",
+      "canonical": "Normalize & save",
+      "visual": "View diagram",
+      "export": "Export / share"
+    },
+    "stepDesc": {
+      "material": "Upload scanned images or import genealogy text.",
+      "ocr": "OCR Hán-Nôm page by page and merge combined_transcription.",
+      "extract": "Analyze bloodline relationships from transliteration.",
+      "canonical": "Normalize and save as BalkanNode[] in the database.",
+      "visual": "View the tree with dom-classic, table, or graph.",
+      "export": "Export JSON, CSV, or GEDCOM."
+    },
+    "quick": {
+      "uploadTitle": "Upload materials",
+      "uploadDesc": "Step 1 — upload images or genealogy documents.",
+      "ocrTitle": "Continue OCR",
+      "ocrDesc": "Step 2 — OCR and merge page transcriptions.",
+      "treeTitle": "View family tree",
+      "treeDesc": "Step 5 — open the diagram for a saved tree."
+    }
+  },
+  "dashboard": {
+    "scannedDocs": "Scanned documents",
+    "familyTrees": "Family trees created",
+    "historyTotal": "Query history"
   },
   "pipeline": {
     "tab": "Pipeline",

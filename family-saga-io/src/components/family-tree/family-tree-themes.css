@@ -2,7 +2,7 @@
   border-width: 1px;
   border-color: hsl(var(--border));
   box-shadow: none;
-  background: hsl(var(--background));
+  background: hsl(var(--card));
 }
 
 .family-tree-theme-minimal .tree-node-card:hover {

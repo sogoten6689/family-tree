@@ -1,14 +1,34 @@
-import { LockOutlined, ReadOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
-import { Card, Col, Row, Table, Tag, Typography } from "antd";
+import {
+  ExportOutlined,
+  EyeOutlined,
+  FileSearchOutlined,
+  LockOutlined,
+  ReadOutlined,
+  SaveOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Button, Card, Col, Row, Table, Tag, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import { GenealogyFlowStepper } from "@/components/flow/GenealogyFlowStepper";
 import { ADMIN_PAGES, APP_PAGES, PUBLIC_PAGES, USER_PAGES, type AppPageMeta } from "@/config/pages";
+import { GENEALOGY_FLOW_STEPS, GENEALOGY_FLOW_ROUTES, type GenealogyFlowStepId } from "@/lib/genealogyFlow";
 
 const zoneColors: Record<AppPageMeta["zone"], string> = {
   public: "blue",
   user: "green",
   admin: "gold",
+};
+
+const FLOW_STEP_ICONS: Record<GenealogyFlowStepId, React.ReactNode> = {
+  material: <ReadOutlined />,
+  ocr: <FileSearchOutlined />,
+  extract: <TeamOutlined />,
+  canonical: <SaveOutlined />,
+  visual: <EyeOutlined />,
+  export: <ExportOutlined />,
 };
 
 const GuidePage = () => {
@@ -31,9 +51,7 @@ const GuidePage = () => {
       title: t("guide.colZone", { defaultValue: "Khu vực" }),
       dataIndex: "zone",
       render: (zone: AppPageMeta["zone"]) => (
-        <Tag color={zoneColors[zone]}>
-          {t(`guide.zone.${zone}`, { defaultValue: zone })}
-        </Tag>
+        <Tag color={zoneColors[zone]}>{t(`guide.zone.${zone}`, { defaultValue: zone })}</Tag>
       ),
     },
     {
@@ -73,11 +91,45 @@ const GuidePage = () => {
         {t("guide.pageTitle", { defaultValue: "Hướng dẫn sử dụng" })}
       </Typography.Title>
       <Typography.Paragraph type="secondary" className="text-lg">
-        {t("guide.pageIntro", {
+        {t("guide.flowIntro", {
           defaultValue:
-            "Tài liệu tổng quan về cấu trúc ứng dụng: trang công khai, trang người dùng và trang quản trị.",
+            "Quy trình 6 bước: tư liệu → OCR → trích xuất → chuẩn hóa → xem sơ đồ → xuất file. Demo hoàn chỉnh trong 5–7 thao tác.",
         })}
       </Typography.Paragraph>
+
+      <Card className="mb-8 border-[hsl(var(--border))]" title={t("flow.stepperTitle", { defaultValue: "Quy trình xử lý gia phả" })}>
+        <GenealogyFlowStepper currentStep="material" completedSteps={[]} />
+      </Card>
+
+      <Row gutter={[16, 16]} className="mb-8">
+        {GENEALOGY_FLOW_STEPS.map((stepId, index) => (
+          <Col xs={24} md={12} lg={8} key={stepId}>
+            <Card className="h-full border-[hsl(var(--border))] hover:border-[hsl(var(--primary)/0.45)] transition-colors">
+              <div className="flex items-start gap-3 mb-3">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[hsl(var(--accent))] text-[hsl(var(--primary))] text-lg">
+                  {FLOW_STEP_ICONS[stepId]}
+                </span>
+                <div>
+                  <Typography.Text type="secondary" className="text-xs">
+                    {t("flow.stepNumber", { defaultValue: "Bước {{n}}", n: index + 1 })}
+                  </Typography.Text>
+                  <Typography.Title level={5} className="!mb-0">
+                    {t(`flow.step.${stepId}`, { defaultValue: stepId })}
+                  </Typography.Title>
+                </div>
+              </div>
+              <Typography.Paragraph type="secondary" className="!mb-4 text-sm">
+                {t(`flow.stepDesc.${stepId}`, { defaultValue: "" })}
+              </Typography.Paragraph>
+              <Link to={GENEALOGY_FLOW_ROUTES[stepId]}>
+                <Button type="primary" size="small">
+                  {t("flow.openStep", { defaultValue: "Mở bước này" })}
+                </Button>
+              </Link>
+            </Card>
+          </Col>
+        ))}
+      </Row>
 
       <Row gutter={[16, 16]} className="mb-8">
         <Col xs={24} md={8}>
@@ -100,7 +152,7 @@ const GuidePage = () => {
             </Typography.Title>
             <Typography.Paragraph>
               {t("guide.userSummary", {
-                defaultValue: "Cần đăng nhập: bảng điều khiển, đọc tài liệu, xem gia phả.",
+                defaultValue: "Cần đăng nhập: tổng quan, thư viện tài liệu, quy trình OCR, gia phả.",
               })}
             </Typography.Paragraph>
             <Typography.Text strong>{USER_PAGES.length} trang</Typography.Text>
@@ -113,7 +165,7 @@ const GuidePage = () => {
             </Typography.Title>
             <Typography.Paragraph>
               {t("guide.adminSummary", {
-                defaultValue: "Chỉ role admin: quản lý gia phả và quản lý tài khoản.",
+                defaultValue: "Chỉ role admin: quản lý gia phả, pipeline và thành viên.",
               })}
             </Typography.Paragraph>
             <Typography.Text strong>{ADMIN_PAGES.length} trang</Typography.Text>
@@ -125,18 +177,24 @@ const GuidePage = () => {
         <Table rowKey="id" pagination={false} columns={columns} dataSource={APP_PAGES} scroll={{ x: 900 }} />
       </Card>
 
-      <Card className="mt-6" title={t("guide.quickStartTitle", { defaultValue: "Bắt đầu nhanh" })}>
+      <Card className="mt-6" title={t("guide.demoTitle", { defaultValue: "Demo luận văn (5–7 click)" })}>
         <Typography.Paragraph>
-          1. {t("guide.step1", { defaultValue: "Đăng ký tài khoản tại /register (mặc định role user)." })}
+          1. {t("guide.demo1", { defaultValue: "Đăng nhập → /user/dashboard xem tiến độ quy trình." })}
         </Typography.Paragraph>
         <Typography.Paragraph>
-          2. {t("guide.step2", { defaultValue: "Đăng nhập và vào /user/document-reader để upload tài liệu gia phả." })}
+          2. {t("guide.demo2", { defaultValue: "/user/documents — chọn tài liệu mẫu hoặc upload ảnh." })}
         </Typography.Paragraph>
         <Typography.Paragraph>
-          3. {t("guide.step3", { defaultValue: "Xem cây gia phả tại /user/family-tree." })}
+          3. {t("guide.demo3", { defaultValue: "Chi tiết tài liệu — OCR từng trang → Ghép trang (banner xanh bước ②)." })}
+        </Typography.Paragraph>
+        <Typography.Paragraph>
+          4. {t("guide.demo4", { defaultValue: "Trích xuất quan hệ → xem preview people/edges." })}
+        </Typography.Paragraph>
+        <Typography.Paragraph>
+          5. {t("guide.demo5", { defaultValue: "Lưu thành gia phả → /user/family-trees/:id." })}
         </Typography.Paragraph>
         <Typography.Paragraph className="!mb-0">
-          4. {t("guide.step4", { defaultValue: "Admin quản lý hệ thống tại /admin/gia-pha và /admin/users." })}
+          6. {t("guide.demo6", { defaultValue: "Tab Sơ đồ — chọn dom-classic hoặc bảng; (tuỳ chọn) Export JSON." })}
         </Typography.Paragraph>
       </Card>
     </div>

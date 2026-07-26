@@ -3,7 +3,7 @@
 > **Ngày:** 2026-07-25  
 > **Mục đích:** Đổi visual sang **xanh lá sáng (light-first)**, đồng bộ hình ảnh, cải thiện UX rõ ràng, hỗ trợ **một happy path end-to-end** cho demo luận văn  
 > **Liên quan:** [luan_van_phan_tich_va_ke_hoach.md](./luan_van_phan_tich_va_ke_hoach.md) §4, [visual_tree_ui_info_task.md](./visual_tree_ui_info_task.md)  
-> **Phạm vi:** Chỉ plan — **chưa** implement code trong file này
+> **Phạm vi:** Plan + **đã implement** P0–P2 (2026-07-25)
 
 ---
 
@@ -369,26 +369,26 @@ Người dùng / Lịch sử
 
 ### Theme & hình ảnh
 
-- [ ] Primary brand là **xanh lá** (không còn `#b8860b` trong SSOT)
-- [ ] Light mode: nền app sáng, cảm giác “xanh nhạt” (`#f7fbf8` hoặc tương đương)
-- [ ] Hero: overlay **không** dùng gradient xám đen thuần; chữ hero đọc được WCAG AA
-- [ ] Tree DOM connector + card border theo primary mới
-- [ ] Ảnh hero thay hoặc filter tạm — không lệch tông vàng sepia
+- [x] Primary brand là **xanh lá** (không còn `#b8860b` trong SSOT)
+- [x] Light mode: nền app sáng, cảm giác “xanh nhạt” (`#f7fbf8` hoặc tương đương)
+- [x] Hero: overlay **không** dùng gradient xám đen thuần; chữ hero đọc được WCAG AA
+- [x] Tree DOM connector + card border theo primary mới
+- [x] Ảnh hero thay hoặc filter tạm — không lệch tông vàng sepia
 
 ### UX & flow
 
-- [ ] User thấy **6 bước** pipeline trên Dashboard hoặc document detail
-- [ ] Sau OCR merge thành công → có **CTA rõ** sang bước trích xuất
-- [ ] Demo happy path §6.3 hoàn thành **≤ 7 click** không vào developer
-- [ ] `/huong-dan` mô tả đúng 6 bước + link vào app
-- [ ] Menu User ≤ 5 mục chính; tên phản ánh nhiệm vụ (không chỉ tên kỹ thuật)
-- [ ] i18n đủ `vi` + `en` cho label flow mới
+- [x] User thấy **6 bước** pipeline trên Dashboard hoặc document detail
+- [x] Sau OCR merge thành công → có **CTA rõ** sang bước trích xuất
+- [x] Demo happy path §6.3 hoàn thành **≤ 7 click** không vào developer
+- [x] `/huong-dan` mô tả đúng 6 bước + link vào app
+- [x] Menu User ≤ 5 mục chính; tên phản ánh nhiệm vụ (không chỉ tên kỹ thuật)
+- [x] i18n đủ `vi` + `en` cho label flow mới
 
 ### Không phá vỡ
 
-- [ ] Dark mode vẫn hoạt động; toggle không flash trắng
-- [ ] Free-only renderer policy giữ nguyên
-- [ ] Không đổi SSOT `BalkanNode[]`
+- [x] Dark mode vẫn hoạt động; toggle không flash trắng
+- [x] Free-only renderer policy giữ nguyên
+- [x] Không đổi SSOT `BalkanNode[]`
 
 ---
 

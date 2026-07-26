@@ -38,6 +38,8 @@
     "ctaTitle": "Bắt Đầu Xây Dựng Gia Phả",
     "ctaSubtitle": "Chỉ vài bước đơn giản, bạn đã có thể tạo cây gia phả hoàn chỉnh cho dòng họ mình.",
     "ctaBtn": "Tải Tư Liệu Để Đọc",
+    "btnStartFlow": "Bắt đầu quy trình",
+    "btnGuide": "Xem hướng dẫn",
     "aboutTitle": "Về chúng tôi",
     "aboutDesc": "HCMUS Family Tree là nền tảng số hóa gia phả, giúp các dòng họ Việt Nam lưu giữ tư liệu Hán-Nôm, xây dựng cây phả hệ trực quan và chia sẻ với thế hệ kế tiếp.",
     "footer": "© 2026 Gia Phả Việt — Gìn giữ truyền thống, kết nối thế hệ"
@@ -398,6 +400,14 @@
     "step2": "Đăng nhập và vào /user/document-reader để upload tài liệu gia phả.",
     "step3": "Xem cây gia phả tại /user/family-tree.",
     "step4": "Admin quản lý hệ thống tại /admin/gia-pha và /admin/users.",
+    "flowIntro": "Quy trình 6 bước: tư liệu → OCR → trích xuất → chuẩn hóa → xem sơ đồ → xuất file. Demo hoàn chỉnh trong 5–7 thao tác.",
+    "demoTitle": "Demo luận văn (5–7 click)",
+    "demo1": "Đăng nhập → /user/dashboard xem tiến độ quy trình.",
+    "demo2": "/user/documents — chọn tài liệu mẫu hoặc upload ảnh.",
+    "demo3": "Chi tiết tài liệu — OCR từng trang → Ghép trang (banner xanh bước ②).",
+    "demo4": "Trích xuất quan hệ → xem preview people/edges.",
+    "demo5": "Lưu thành gia phả → /user/family-trees/:id.",
+    "demo6": "Tab Sơ đồ — chọn dom-classic hoặc bảng; (tuỳ chọn) Export JSON.",
     "needHelp": "Cần hỗ trợ?",
     "openGuide": "Hướng dẫn",
     "zone": {
@@ -405,6 +415,49 @@
       "user": "User",
       "admin": "Admin"
     }
+  },
+  "flow": {
+    "stepperTitle": "Quy trình xử lý gia phả",
+    "dashboardIntro": "Theo dõi tiến độ xử lý tư liệu → OCR → trích xuất → cây gia phả.",
+    "stepNumber": "Bước {{n}}",
+    "openStep": "Mở bước này",
+    "ocrMergeDone": "Bước ② OCR hoàn tất — đã ghép phiên âm các trang.",
+    "nextExtract": "Trích xuất quan hệ",
+    "menu": {
+      "process": "Quy trình xử lý",
+      "library": "Thư viện tài liệu",
+      "myTrees": "Gia phả của tôi",
+      "treesAndDocs": "Gia phả & tài liệu"
+    },
+    "step": {
+      "material": "Tư liệu",
+      "ocr": "OCR / phiên âm",
+      "extract": "Trích xuất",
+      "canonical": "Chuẩn hóa & lưu",
+      "visual": "Xem sơ đồ",
+      "export": "Xuất / chia sẻ"
+    },
+    "stepDesc": {
+      "material": "Upload ảnh scan hoặc import văn bản gia phả.",
+      "ocr": "OCR Hán-Nôm từng trang và ghép combined_transcription.",
+      "extract": "Phân tích quan hệ huyết thống từ phiên âm.",
+      "canonical": "Chuẩn hóa và lưu thành BalkanNode[] trong DB.",
+      "visual": "Xem cây gia phả với dom-classic, bảng hoặc graph.",
+      "export": "Xuất JSON, CSV hoặc GEDCOM."
+    },
+    "quick": {
+      "uploadTitle": "Tải tư liệu",
+      "uploadDesc": "Bước 1 — upload ảnh hoặc văn bản gia phả.",
+      "ocrTitle": "Tiếp tục OCR",
+      "ocrDesc": "Bước 2 — OCR và ghép trang phiên âm.",
+      "treeTitle": "Xem gia phả",
+      "treeDesc": "Bước 5 — mở sơ đồ cây đã tạo."
+    }
+  },
+  "dashboard": {
+    "scannedDocs": "Tài liệu đã scan",
+    "familyTrees": "Cây gia phả đã tạo",
+    "historyTotal": "Lịch sử truy vấn"
   },
   "pipeline": {
     "tab": "Pipeline",

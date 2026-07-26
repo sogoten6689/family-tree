@@ -12,19 +12,20 @@ export function getAntdTheme(isDark: boolean): ThemeConfig {
     },
     components: {
       Layout: {
-        siderBg: isDark ? "#141414" : "#fafafa",
-        bodyBg: isDark ? "#141414" : "#f5f5f5",
-        headerBg: isDark ? "#1f1f1f" : "#ffffff",
-        triggerBg: isDark ? "#1f1f1f" : "#fafafa",
+        siderBg: isDark ? "#0f1412" : "#f0f7f2",
+        bodyBg: isDark ? "#0f1412" : "#f7fbf8",
+        headerBg: isDark ? "#141a17" : "#ffffff",
+        triggerBg: isDark ? "#141a17" : "#f0f7f2",
       },
       Menu: {
         itemBorderRadius: 8,
-        darkItemBg: "#141414",
-        darkSubMenuItemBg: "#141414",
+        darkItemBg: "#141a17",
+        darkSubMenuItemBg: "#141a17",
+        darkItemSelectedBg: "#1a2e24",
       },
       Table: {
-        headerBg: isDark ? "#262626" : "#fafafa",
-        rowHoverBg: isDark ? "#262626" : "#fafafa",
+        headerBg: isDark ? "#1a221d" : "#eef5f0",
+        rowHoverBg: isDark ? "#1a221d" : "#f0f7f2",
       },
       Button: {
         primaryShadow: "none",

@@ -1,4 +1,5 @@
 import {
+  ApartmentOutlined,
   BookOutlined,
   BranchesOutlined,
   DashboardOutlined,
@@ -33,8 +34,8 @@ const UserLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, isAdmin, logout } = useAuth();
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const { resolvedTheme, systemTheme } = useTheme();
+  const isDark = (resolvedTheme ?? systemTheme) === "dark";
 
   const selectedKey = menuKeyByPath[location.pathname] ?? "dashboard";
   const pageTitle = t(getPageTitleKey(location.pathname), { defaultValue: "User" });
@@ -48,18 +49,18 @@ const UserLayout = () => {
       },
       {
         key: "document-reader",
-        icon: <BookOutlined />,
-        label: t("pages.userDocumentReader.title", { defaultValue: "Đọc tài liệu" }),
+        icon: <ApartmentOutlined />,
+        label: t("flow.menu.process", { defaultValue: "Quy trình xử lý" }),
       },
       {
         key: "documents",
         icon: <BookOutlined />,
-        label: t("userDocuments.title", { defaultValue: "Tài liệu" }),
+        label: t("flow.menu.library", { defaultValue: "Thư viện tài liệu" }),
       },
       {
         key: "family-trees",
         icon: <BranchesOutlined />,
-        label: t("userFamilyTrees.title", { defaultValue: "Gia phả" }),
+        label: t("flow.menu.myTrees", { defaultValue: "Gia phả của tôi" }),
       },
       {
         key: "profile",
@@ -72,7 +73,7 @@ const UserLayout = () => {
 
   return (
     <Layout className="min-h-screen">
-      <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border">
+      <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border !bg-[hsl(var(--sidebar-background))]">
         <div className="px-5 py-6">
           <Typography.Title level={5} className="!mb-1">
             {t("user.panelTitle", { defaultValue: "Tài khoản" })}
@@ -108,7 +109,7 @@ const UserLayout = () => {
       </Sider>
 
       <Layout>
-        <Header className="!px-6 flex items-center justify-between border-b border-border" style={{ height: 64 }}>
+        <Header className="!px-6 flex items-center justify-between border-b border-border !bg-card" style={{ height: 64 }}>
           <div>
             <Breadcrumb
               items={[

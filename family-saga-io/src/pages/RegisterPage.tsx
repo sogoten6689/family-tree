@@ -47,7 +47,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen auth-page-shell flex flex-col">
       <div className="flex justify-end gap-3 p-4">
         <LanguageSwitcher />
         <ThemeToggle />

@@ -22,7 +22,10 @@ import {
   ReloadOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+
+import { FlowNextBanner } from "@/components/flow/FlowNextBanner";
 
 import { OCR_ELIGIBLE_DOCUMENT_TYPES } from "@/components/documents/constants";
 import { ApiError } from "@/lib/apiClient";
@@ -52,6 +55,7 @@ const copyText = async (text: string, label: string) => {
 };
 
 export function DocumentOcrPanel({ document }: Props) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [selectedFileId, setSelectedFileId] = useState<number | null>(null);
   const [pendingUpload, setPendingUpload] = useState<File | null>(null);
@@ -186,6 +190,11 @@ export function DocumentOcrPanel({ document }: Props) {
 
   const doneCount = pageStatus?.ocr_done_count ?? 0;
   const totalCount = pageStatus?.total_pages ?? imageFiles.length;
+  const mergedCount = pageStatus?.merged_page_count ?? 0;
+  const extractHref = document.family_tree_id
+    ? `/admin/gia-pha/${document.family_tree_id}?tab=pipeline`
+    : "/user/document-reader";
+  const showExtractBanner = mergedCount > 0 || !!mergedPreview;
 
   return (
     <Card
@@ -205,6 +214,16 @@ export function DocumentOcrPanel({ document }: Props) {
       />
 
       {error && <Alert type="error" showIcon message={error} className="mb-4" closable onClose={() => setError(null)} />}
+
+      {showExtractBanner && (
+        <FlowNextBanner
+          message={t("flow.ocrMergeDone", {
+            defaultValue: "Bước ② OCR hoàn tất — đã ghép phiên âm các trang.",
+          })}
+          nextLabel={t("flow.nextExtract", { defaultValue: "Trích xuất quan hệ" })}
+          nextHref={extractHref}
+        />
+      )}
 
       <Space wrap className="mb-4">
         <Tag color={doneCount === totalCount && totalCount > 0 ? "success" : "processing"}>

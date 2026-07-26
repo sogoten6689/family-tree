@@ -28,8 +28,8 @@ const PublicLayout = () => {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
   const isMobile = useIsMobile();
-  const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const { resolvedTheme, systemTheme } = useTheme();
+  const isDark = (resolvedTheme ?? systemTheme) === "dark";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const selectedKey =
@@ -100,7 +100,7 @@ const PublicLayout = () => {
   return (
     <Layout className="min-h-screen bg-background">
       <Header
-        className="!px-4 md:!px-6 flex items-center justify-between shadow-sm sticky top-0 z-50 border-b border-border"
+        className="!px-4 md:!px-6 flex items-center justify-between shadow-sm sticky top-0 z-50 border-b border-border !bg-card"
         style={{ height: 64 }}
       >
         <Space size="middle" className="min-w-0">
