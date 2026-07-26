@@ -50,6 +50,8 @@ const AdminLayout = () => {
   useEffect(() => {
     if (isDeveloperPath(location.pathname)) {
       setMenuOpenKeys(["developer"]);
+    } else {
+      setMenuOpenKeys([]);
     }
   }, [location.pathname]);
 

@@ -193,7 +193,7 @@ export function DocumentOcrPanel({ document }: Props) {
   const mergedCount = pageStatus?.merged_page_count ?? 0;
   const extractHref = document.family_tree_id
     ? `/admin/gia-pha/${document.family_tree_id}?tab=pipeline`
-    : "/user/document-reader";
+    : "/user/documents/new";
   const showExtractBanner = mergedCount > 0 || !!mergedPreview;
 
   return (

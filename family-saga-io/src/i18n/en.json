@@ -317,15 +317,40 @@
   },
   "userDocuments": {
     "title": "Documents",
-    "uploadNew": "Upload",
+    "uploadNew": "Upload document",
     "viewDetail": "Detail",
-    "empty": "No documents yet. Upload your first file."
+    "empty": "No documents yet. Upload your first file.",
+    "notFound": "Document not found.",
+    "fileName": "File name",
+    "name": "Title",
+    "fileType": "File type",
+    "pages": "Pages",
+    "uploadedAt": "Uploaded at",
+    "ocrStatusLabel": "OCR status",
+    "treeStatusLabel": "Tree status",
+    "tabOverview": "Overview",
+    "ocrTabTitle": "Hán-Nôm OCR",
+    "ocrTabDesc": "For scanned Hán-Nôm images: use transliterated Word/txt and switch to the Extract tab. Per-page OCR on server is coming in a future update.",
+    "ocrStatus": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Completed",
+      "failed": "Failed",
+      "skipped": "Skipped"
+    },
+    "treeStatus": {
+      "none": "No tree",
+      "draft": "Draft",
+      "created": "Tree created"
+    }
   },
   "userFamilyTrees": {
     "title": "Family trees",
     "createNew": "Create",
     "view": "View",
-    "empty": "No trees yet. Upload a document to create one."
+    "empty": "No trees yet. Upload a document to create one.",
+    "exportHint": "Use Export on the tree toolbar (Visual tab) for JSON, CSV, or GEDCOM.",
+    "editHint": "Tree is saved on the server. Detailed node editing will come in a future update."
   },
   "profile": {
     "title": "Account"
@@ -397,8 +422,11 @@
     "userSummary": "Requires sign-in: dashboard, document reader, family tree viewer.",
     "adminSummary": "Admin role only: family tree and user management.",
     "step1": "Register at /register (default role: user).",
-    "step2": "Sign in and open /user/document-reader to upload documents.",
-    "step3": "View the family tree at /user/family-tree.",
+    "step2": "Upload a family document (Word, txt, or scanned image).",
+    "step3": "Extract relationships and save as a family tree.",
+    "step4": "View the tree, export, or (admin) manage the system.",
+    "appendixHint": "Technical appendix — for admins / developers.",
+    "appendixPages": "Route & access table",
     "step4": "Admins manage the system at /admin/gia-pha and /admin/users.",
     "flowIntro": "Six-step workflow: materials → OCR → extract → normalize → visualize → export. Complete demo in 5–7 actions.",
     "demoTitle": "Thesis demo (5–7 clicks)",
@@ -423,6 +451,12 @@
     "openStep": "Open this step",
     "ocrMergeDone": "Step ② OCR complete — page transcriptions merged.",
     "nextExtract": "Extract relationships",
+    "continueStep": "Continue: {{step}}",
+    "serverSaved": "Saved on server",
+    "serverSavedAt": "Saved at {{time}} — safe when switching browsers.",
+    "serverSavedHint": "Data is stored on the server, not only in this browser.",
+    "treeCreated": "Family tree created.",
+    "openVisual": "View tree",
     "menu": {
       "process": "Processing workflow",
       "library": "Document library",

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Button, Card } from 'antd';
-import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons';
+import { BookOutlined, TeamOutlined, BranchesOutlined, SafetyOutlined, InboxOutlined } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from 'next-themes';
 import heroBg from '@/assets/hero-bg.jpg';
@@ -55,8 +55,8 @@ const HomePage = () => {
               size="large"
               className="!h-12 !px-8"
               onClick={() =>
-                navigate(isAuthenticated ? "/user/documents" : "/login", {
-                  state: { from: "/user/documents" },
+                navigate(isAuthenticated ? "/user/documents/new" : "/login", {
+                  state: { from: "/user/documents/new" },
                 })
               }
             >
@@ -77,35 +77,51 @@ const HomePage = () => {
             >
               {t("home.btnViewSample")}
             </Button>
-            <Button
-              size="large"
-              className="!h-12 !px-6 !bg-white/10 !text-white !border-white/60 hover:!bg-white/20"
+          </div>
+          <p className="mt-5 text-white/80 text-sm flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <button
+              type="button"
+              className="underline hover:text-white bg-transparent border-0 cursor-pointer"
               onClick={() => navigate("/huong-dan")}
             >
               {t("nav.guide")}
-            </Button>
+            </button>
             {!isAuthenticated ? (
-              <Button
-                size="large"
-                ghost
-                icon={<LoginOutlined />}
-                className="!h-12 !px-6 !text-white !border-white hover:!text-white hover:!border-white"
-                onClick={() => navigate('/login')}
+              <button
+                type="button"
+                className="underline hover:text-white bg-transparent border-0 cursor-pointer"
+                onClick={() => navigate("/login")}
               >
-                {t('auth.loginBtn', { defaultValue: 'Đăng nhập' })}
-              </Button>
+                {t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
+              </button>
             ) : (
-              <Button
-                size="large"
-                ghost
-                icon={<LogoutOutlined />}
-                className="!h-12 !px-6 !text-white !border-white hover:!text-white hover:!border-white"
-                onClick={logout}
-              >
-                {t('auth.logout', { defaultValue: 'Đăng xuất' })}
-              </Button>
+              <>
+                <button
+                  type="button"
+                  className="underline hover:text-white bg-transparent border-0 cursor-pointer"
+                  onClick={() => navigate("/user/dashboard")}
+                >
+                  {t("pages.userDashboard.title", { defaultValue: "Tổng quan" })}
+                </button>
+                {isAdmin && (
+                  <button
+                    type="button"
+                    className="underline hover:text-white bg-transparent border-0 cursor-pointer"
+                    onClick={() => navigate("/admin/dashboard")}
+                  >
+                    {t("admin.panelTitle", { defaultValue: "Admin" })}
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="underline hover:text-white bg-transparent border-0 cursor-pointer"
+                  onClick={logout}
+                >
+                  {t("auth.logout", { defaultValue: "Đăng xuất" })}
+                </button>
+              </>
             )}
-          </div>
+          </p>
         </div>
       </section>
 
@@ -167,7 +183,7 @@ const HomePage = () => {
           size="large"
           className="!h-[52px] !px-10 !text-base"
           onClick={() =>
-            navigate(isAuthenticated ? "/user/documents" : "/register")
+            navigate(isAuthenticated ? "/user/documents/new" : "/register")
           }
         >
           {t("home.btnStartFlow", { defaultValue: "Bắt đầu quy trình" })}

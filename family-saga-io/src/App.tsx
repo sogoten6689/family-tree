@@ -16,8 +16,6 @@ import GuidePage from "./pages/GuidePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
-import DocumentReaderPage from "./pages/DocumentReaderPage";
-import FamilyTreePage from "./pages/FamilyTreePage";
 import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
 import FamilyTreeDetailPage from "./pages/admin/FamilyTreeDetailPage";
 import PublicFamilyTreePage from "./pages/PublicFamilyTreePage";
@@ -76,12 +74,12 @@ const AppContent = () => (
             >
               <Route index element={<Navigate to="/user/dashboard" replace />} />
               <Route path="dashboard" element={<DashboardPage />} />
-              <Route path="document-reader" element={<DocumentReaderPage />} />
+              <Route path="document-reader" element={<Navigate to="/user/documents/new" replace />} />
               <Route path="documents" element={<UserDocumentsPage />} />
               <Route path="documents/:scanId" element={<UserDocumentDetailPage />} />
               <Route path="family-trees" element={<UserFamilyTreesPage />} />
               <Route path="family-trees/:treeId" element={<UserFamilyTreeDetailPage />} />
-              <Route path="family-tree" element={<FamilyTreePage />} />
+              <Route path="family-tree" element={<Navigate to="/user/family-trees" replace />} />
               <Route path="profile" element={<UserProfilePage />} />
             </Route>
 
@@ -121,8 +119,8 @@ const AppContent = () => (
 
             {/* Redirects cũ */}
             <Route path="/dashboard" element={<Navigate to="/user/dashboard" replace />} />
-            <Route path="/document-reader" element={<Navigate to="/user/document-reader" replace />} />
-            <Route path="/family-tree" element={<Navigate to="/user/family-tree" replace />} />
+            <Route path="/document-reader" element={<Navigate to="/user/documents/new" replace />} />
+            <Route path="/family-tree" element={<Navigate to="/user/family-trees" replace />} />
             <Route path="/family-tree-manager" element={<Navigate to="/admin/gia-pha" replace />} />
             <Route path="/admin/family-tree/:treeId" element={<AdminFamilyTreeRedirect />} />
 

@@ -317,15 +317,40 @@
   },
   "userDocuments": {
     "title": "Tài liệu",
-    "uploadNew": "Tải lên",
+    "uploadNew": "Tải lên tư liệu",
     "viewDetail": "Chi tiết",
-    "empty": "Chưa có tài liệu. Hãy tải lên tài liệu đầu tiên."
+    "empty": "Chưa có tài liệu. Hãy tải lên tài liệu đầu tiên.",
+    "notFound": "Không tìm thấy tài liệu.",
+    "fileName": "Tên file",
+    "name": "Tên tài liệu",
+    "fileType": "Loại file",
+    "pages": "Số trang",
+    "uploadedAt": "Ngày upload",
+    "ocrStatusLabel": "Trạng thái OCR",
+    "treeStatusLabel": "Trạng thái gia phả",
+    "tabOverview": "Tổng quan",
+    "ocrTabTitle": "OCR Hán-Nôm",
+    "ocrTabDesc": "Với ảnh scan Hán-Nôm: dùng file Word/txt đã phiên âm và chuyển sang tab Trích xuất. OCR từng trang trên server sẽ bổ sung trong bản cập nhật tiếp theo.",
+    "ocrStatus": {
+      "pending": "Chờ xử lý",
+      "processing": "Đang xử lý",
+      "completed": "Hoàn thành",
+      "failed": "Lỗi",
+      "skipped": "Bỏ qua"
+    },
+    "treeStatus": {
+      "none": "Chưa có cây",
+      "draft": "Bản nháp",
+      "created": "Đã tạo cây"
+    }
   },
   "userFamilyTrees": {
     "title": "Gia phả",
     "createNew": "Tạo mới",
     "view": "Xem",
-    "empty": "Chưa có cây gia phả. Tải tài liệu để tạo cây."
+    "empty": "Chưa có cây gia phả. Tải tài liệu để tạo cây.",
+    "exportHint": "Dùng nút Export trên thanh công cụ sơ đồ (tab Sơ đồ) để tải JSON, CSV hoặc GEDCOM.",
+    "editHint": "Cây đã lưu trên server. Chỉnh sửa node chi tiết sẽ bổ sung trong bản cập nhật tiếp."
   },
   "profile": {
     "title": "Tài khoản"
@@ -396,10 +421,12 @@
     "publicSummary": "Trang ai cũng xem được: trang chủ, hướng dẫn, đăng nhập, đăng ký.",
     "userSummary": "Cần đăng nhập: bảng điều khiển, đọc tài liệu, xem gia phả.",
     "adminSummary": "Chỉ role admin: quản lý gia phả và quản lý tài khoản.",
-    "step1": "Đăng ký tài khoản tại /register (mặc định role user).",
-    "step2": "Đăng nhập và vào /user/document-reader để upload tài liệu gia phả.",
-    "step3": "Xem cây gia phả tại /user/family-tree.",
-    "step4": "Admin quản lý hệ thống tại /admin/gia-pha và /admin/users.",
+    "step1": "Đăng ký tài khoản, sau đó đăng nhập.",
+    "step2": "Tải tư liệu gia phả (Word, txt hoặc ảnh scan).",
+    "step3": "Trích xuất quan hệ và lưu thành cây gia phả.",
+    "step4": "Xem sơ đồ, xuất file hoặc (admin) quản lý toàn hệ thống.",
+    "appendixHint": "Phụ lục kỹ thuật — dành cho quản trị / phát triển.",
+    "appendixPages": "Bảng route & quyền truy cập",
     "flowIntro": "Quy trình 6 bước: tư liệu → OCR → trích xuất → chuẩn hóa → xem sơ đồ → xuất file. Demo hoàn chỉnh trong 5–7 thao tác.",
     "demoTitle": "Demo luận văn (5–7 click)",
     "demo1": "Đăng nhập → /user/dashboard xem tiến độ quy trình.",
@@ -423,6 +450,12 @@
     "openStep": "Mở bước này",
     "ocrMergeDone": "Bước ② OCR hoàn tất — đã ghép phiên âm các trang.",
     "nextExtract": "Trích xuất quan hệ",
+    "continueStep": "Tiếp tục: {{step}}",
+    "serverSaved": "Đã lưu trên server",
+    "serverSavedAt": "Tài liệu được lưu lúc {{time}} — an toàn khi đổi trình duyệt.",
+    "serverSavedHint": "Dữ liệu được lưu trên server, không chỉ trên trình duyệt này.",
+    "treeCreated": "Cây gia phả đã được tạo.",
+    "openVisual": "Xem sơ đồ",
     "menu": {
       "process": "Quy trình xử lý",
       "library": "Thư viện tài liệu",

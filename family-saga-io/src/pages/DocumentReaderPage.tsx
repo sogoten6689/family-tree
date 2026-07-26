@@ -26,8 +26,8 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FamilyTreeVisualPanel } from "@/components/family-tree/FamilyTreeVisualPanel";
 import type { BalkanNode } from "@/lib/familyTreeApi";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import ThemeToggle from "@/components/ThemeToggle";
+import { ServerSavedAlert } from "@/components/flow/ServerSavedAlert";
+import { toast } from "sonner";
 import { getStoredAccessToken } from "@/lib/apiClient";
 import {
   createUserDocument,
@@ -173,7 +173,18 @@ const detectLanguage = (text: string, fileName: string): LanguageDetection => {
   return { code: "unknown", confidence: 0.3, method: "text-heuristic" };
 };
 
-const DocumentReaderPage = () => {
+type DocumentReaderPageProps = {
+  /** Nằm trong UserLayout — không render header/banner riêng */
+  embedded?: boolean;
+  initialScanId?: number | null;
+  onScanRegistered?: (scanId: number) => void;
+};
+
+const DocumentReaderPage = ({
+  embedded = false,
+  initialScanId = null,
+  onScanRegistered,
+}: DocumentReaderPageProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -200,7 +211,7 @@ const DocumentReaderPage = () => {
   const [selectedHistoryRequestId, setSelectedHistoryRequestId] = useState<
     string | null
   >(null);
-  const [currentScanId, setCurrentScanId] = useState<number | null>(null);
+  const [currentScanId, setCurrentScanId] = useState<number | null>(initialScanId);
   const [isSavingTree, setIsSavingTree] = useState(false);
 
   const registerScan = async (file: File, sourceText?: string) => {
@@ -215,6 +226,10 @@ const DocumentReaderPage = () => {
         source_text: sourceText,
       });
       setCurrentScanId(created.id);
+      onScanRegistered?.(created.id);
+      toast.success(
+        t("flow.serverSaved", { defaultValue: "Đã lưu trên server" }),
+      );
     } catch {
       setCurrentScanId(null);
     }
@@ -514,58 +529,12 @@ const DocumentReaderPage = () => {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-background">
-      <header
-        className="px-4 md:px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between border-b border-border"
-      >
-        <div className="w-full md:w-auto flex items-start md:items-center gap-3 md:gap-4">
-          <Button
-            icon={<ArrowLeftOutlined />}
-            type="text"
-            onClick={() => navigate("/")}
-            className="!text-primary"
-          >
-            {t("common.backHome")}
-          </Button>
-          <div
-            className="section-divider w-px h-6 mx-2 bg-border"
-          />
-          <div>
-            <h1 className="text-2xl font-display font-bold text-foreground">
-              {t("docReader.pageTitle")}
-            </h1>
-            <p className="text-sm text-muted-foreground mt-1">
-              {t("docReader.pageSubtitle")}
-            </p>
-          </div>
-        </div>
-        <div className="w-full md:w-auto flex flex-wrap items-center gap-2 md:gap-3 md:justify-end">
-          <Tag color="gold">{t("docReader.tagFormats")}</Tag>
-          <Tag color="red">{t("docReader.tagDragDrop")}</Tag>
-          <LanguageSwitcher />
-          <ThemeToggle />
-        </div>
-      </header>
-
-      <section className="brand-gradient px-4 md:px-6 py-5">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-primary-foreground">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/80">
-              {t("docReader.bannerLabel")}
-            </p>
-            <h2 className="text-3xl font-display font-bold mt-2">
-              {t("docReader.bannerTitle")}
-            </h2>
-          </div>
-          <div className="max-w-xl text-sm text-primary-foreground/90 leading-6">
-            {t("docReader.bannerDesc")}
-          </div>
-        </div>
-      </section>
-
-      <main className="px-4 md:px-6 py-8">
-        <div className="max-w-7xl mx-auto grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)] xl:grid-cols-[380px_minmax(0,1fr)]">
+  const mainContent = (
+    <div className={embedded ? "space-y-6" : "px-4 md:px-6 py-8"}>
+      {embedded && currentScanId != null && (
+        <ServerSavedAlert />
+      )}
+      <div className={`mx-auto grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)] xl:grid-cols-[380px_minmax(0,1fr)] ${embedded ? "max-w-full" : "max-w-7xl"}`}>
           <div className="space-y-6">
             <Card
               bordered={false}
@@ -875,7 +844,7 @@ const DocumentReaderPage = () => {
                   </Button>
                   <Button
                     type="primary"
-                    onClick={() => navigate("/user/family-tree")}
+                    onClick={() => navigate("/user/family-trees")}
                   >
                     {t("docReader.btnOpenTreePage")}
                   </Button>
@@ -1086,7 +1055,6 @@ const DocumentReaderPage = () => {
             )}
           </Card>
         </div>
-      </main>
 
       <Modal
         open={isResultModalOpen}
@@ -1101,17 +1069,26 @@ const DocumentReaderPage = () => {
             loading={isSavingTree}
             disabled={!analysisResult?.balkan_nodes?.length}
             onClick={async () => {
-              if (!analysisResult?.balkan_nodes?.length || !activeFile) return;
+              if (!analysisResult?.balkan_nodes?.length) return;
               setIsSavingTree(true);
               try {
+                const treeName =
+                  activeFile?.name.replace(/\.[^.]+$/, "") ??
+                  t("docReader.defaultTreeName", { defaultValue: "Gia phả mới" });
                 const created = await createUserFamilyTree({
-                  name: activeFile.name.replace(/\.[^.]+$/, ""),
+                  name: treeName,
                   description: t("docReader.savedFromScan", { defaultValue: "Tạo từ phòng đọc tài liệu" }),
                   nodes: analysisResult.balkan_nodes,
                   source_scan_id: currentScanId ?? undefined,
                 });
+                if (currentScanId) {
+                  await updateUserDocument(currentScanId, {
+                    tree_status: "created",
+                    family_tree_id: created.id,
+                  });
+                }
                 setIsResultModalOpen(false);
-                navigate(`/user/family-trees/${created.id}`);
+                navigate(`/user/family-trees/${created.id}?tab=visual`);
               } catch (error) {
                 setAnalysisError(error instanceof Error ? error.message : "Không lưu được cây gia phả");
               } finally {
@@ -1123,7 +1100,7 @@ const DocumentReaderPage = () => {
           </Button>,
           <Button
             key="open-tree"
-            onClick={() => navigate("/user/family-tree")}
+            onClick={() => navigate("/user/family-trees")}
           >
             {t("docReader.btnOpenTreePage")}
           </Button>,
@@ -1160,6 +1137,58 @@ const DocumentReaderPage = () => {
           </>
         )}
       </Modal>
+    </div>
+  );
+
+  if (embedded) {
+    return mainContent;
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <header className="px-4 md:px-6 py-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between border-b border-border">
+        <div className="w-full md:w-auto flex items-start md:items-center gap-3 md:gap-4">
+          <Button
+            icon={<ArrowLeftOutlined />}
+            type="text"
+            onClick={() => navigate("/user/dashboard")}
+            className="!text-primary"
+          >
+            {t("common.back", { defaultValue: "Quay lại" })}
+          </Button>
+          <div className="section-divider w-px h-6 mx-2 bg-border" />
+          <div>
+            <h1 className="text-2xl font-display font-bold text-foreground">
+              {t("docReader.pageTitle")}
+            </h1>
+            <p className="text-sm text-muted-foreground mt-1">
+              {t("docReader.pageSubtitle")}
+            </p>
+          </div>
+        </div>
+        <div className="w-full md:w-auto flex flex-wrap items-center gap-2 md:gap-3 md:justify-end">
+          <Tag color="gold">{t("docReader.tagFormats")}</Tag>
+          <Tag color="red">{t("docReader.tagDragDrop")}</Tag>
+        </div>
+      </header>
+
+      <section className="brand-gradient px-4 md:px-6 py-5">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-primary-foreground">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/80">
+              {t("docReader.bannerLabel")}
+            </p>
+            <h2 className="text-3xl font-display font-bold mt-2">
+              {t("docReader.bannerTitle")}
+            </h2>
+          </div>
+          <div className="max-w-xl text-sm text-primary-foreground/90 leading-6">
+            {t("docReader.bannerDesc")}
+          </div>
+        </div>
+      </section>
+
+      {mainContent}
     </div>
   );
 };

@@ -143,6 +143,12 @@ export function getPageTitleKey(pathname: string): string {
   if (pathname.startsWith("/admin/developer/docs")) return "admin.developer.breadcrumbDocs";
   if (pathname.match(/^\/admin\/gia-pha\/[^/]+$/)) return "pages.adminGiaPhaDetail.title";
   if (pathname.startsWith("/admin/gia-pha")) return "pages.adminGiaPha.title";
+  if (pathname.startsWith("/user/documents/new")) return "userDocuments.uploadNew";
+  if (pathname.match(/^\/user\/documents\/[^/]+$/)) return "userDocuments.title";
+  if (pathname.startsWith("/user/documents")) return "userDocuments.title";
+  if (pathname.match(/^\/user\/family-trees\/[^/]+$/)) return "userFamilyTrees.title";
+  if (pathname.startsWith("/user/family-trees")) return "userFamilyTrees.title";
+  if (pathname.startsWith("/user/profile")) return "profile.title";
   if (pathname.startsWith("/user/document-reader")) return "pages.userDocumentReader.title";
   if (pathname.startsWith("/user/family-tree")) return "pages.userFamilyTree.title";
   if (pathname.startsWith("/user/dashboard")) return "pages.userDashboard.title";

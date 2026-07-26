@@ -34,7 +34,7 @@ const UserFamilyTreesPage = () => {
   }, []);
 
   const emptyAction = (
-    <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/user/document-reader")}>
+    <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/user/documents/new")}>
       {t("userFamilyTrees.createNew", { defaultValue: "Tạo từ tài liệu" })}
     </Button>
   );
@@ -45,7 +45,7 @@ const UserFamilyTreesPage = () => {
         <Typography.Title level={4} className="!mb-0">
           {t("userFamilyTrees.title", { defaultValue: "Gia phả đã tạo" })}
         </Typography.Title>
-        <Button type="primary" onClick={() => navigate("/user/document-reader")}>
+        <Button type="primary" onClick={() => navigate("/user/documents/new")}>
           {t("userFamilyTrees.createNew", { defaultValue: "Tạo từ tài liệu" })}
         </Button>
       </Space>

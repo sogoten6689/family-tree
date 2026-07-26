@@ -1,25 +1,12 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Space, Table, Tag, Typography } from "antd";
+import { Button, Card, Space, Table, Typography } from "antd";
 import { EyeOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { OcrStatusTag, TreeStatusTag } from "@/components/flow/StatusTags";
 import { PageState } from "@/components/ui/PageState";
 import { listUserDocuments, type UserScan } from "@/lib/userWorkspaceApi";
-
-const ocrColor: Record<string, string> = {
-  pending: "default",
-  processing: "processing",
-  completed: "success",
-  failed: "error",
-  skipped: "warning",
-};
-
-const treeColor: Record<string, string> = {
-  none: "default",
-  draft: "processing",
-  created: "success",
-};
 
 const UserDocumentsPage = () => {
   const { t } = useTranslation();
@@ -47,7 +34,7 @@ const UserDocumentsPage = () => {
   }, []);
 
   const emptyAction = (
-    <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/user/document-reader")}>
+    <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/user/documents/new")}>
       {t("userDocuments.uploadNew", { defaultValue: "Upload mới" })}
     </Button>
   );
@@ -58,7 +45,7 @@ const UserDocumentsPage = () => {
         <Typography.Title level={4} className="!mb-0">
           {t("userDocuments.title", { defaultValue: "Tài liệu đã scan" })}
         </Typography.Title>
-        <Button type="primary" onClick={() => navigate("/user/document-reader")}>
+        <Button type="primary" icon={<PlusOutlined />} onClick={() => navigate("/user/documents/new")}>
           {t("userDocuments.uploadNew", { defaultValue: "Upload mới" })}
         </Button>
       </Space>
@@ -100,14 +87,14 @@ const UserDocumentsPage = () => {
               render: (value: string) => new Date(value).toLocaleString("vi-VN"),
             },
             {
-              title: t("userDocuments.ocrStatus", { defaultValue: "Trạng thái OCR" }),
+              title: t("userDocuments.ocrStatusLabel", { defaultValue: "Trạng thái OCR" }),
               dataIndex: "ocr_status",
-              render: (value: string) => <Tag color={ocrColor[value] ?? "default"}>{value}</Tag>,
+              render: (value: UserScan["ocr_status"]) => <OcrStatusTag status={value} />,
             },
             {
-              title: t("userDocuments.treeStatus", { defaultValue: "Trạng thái gia phả" }),
+              title: t("userDocuments.treeStatusLabel", { defaultValue: "Trạng thái gia phả" }),
               dataIndex: "tree_status",
-              render: (value: string) => <Tag color={treeColor[value] ?? "default"}>{value}</Tag>,
+              render: (value: UserScan["tree_status"]) => <TreeStatusTag status={value} />,
             },
             {
               title: t("auth.actions", { defaultValue: "Thao tác" }),

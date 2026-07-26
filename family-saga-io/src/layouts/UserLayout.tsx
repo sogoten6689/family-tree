@@ -1,5 +1,4 @@
 import {
-  ApartmentOutlined,
   BookOutlined,
   BranchesOutlined,
   DashboardOutlined,
@@ -20,14 +19,16 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const { Header, Sider, Content } = Layout;
 
-const menuKeyByPath: Record<string, string> = {
-  "/user/dashboard": "dashboard",
-  "/user/document-reader": "document-reader",
-  "/user/documents": "documents",
-  "/user/family-trees": "family-trees",
-  "/user/family-tree": "family-tree",
-  "/user/profile": "profile",
-};
+function resolveUserMenuKey(pathname: string): string {
+  if (pathname.startsWith("/user/documents")) return "documents";
+  if (pathname.startsWith("/user/family-trees") || pathname.startsWith("/user/family-tree")) {
+    return "family-trees";
+  }
+  if (pathname.startsWith("/user/profile")) return "profile";
+  if (pathname.startsWith("/user/dashboard")) return "dashboard";
+  if (pathname.startsWith("/user/document-reader")) return "documents";
+  return "dashboard";
+}
 
 const UserLayout = () => {
   const { t } = useTranslation();
@@ -37,7 +38,7 @@ const UserLayout = () => {
   const { resolvedTheme, systemTheme } = useTheme();
   const isDark = (resolvedTheme ?? systemTheme) === "dark";
 
-  const selectedKey = menuKeyByPath[location.pathname] ?? "dashboard";
+  const selectedKey = resolveUserMenuKey(location.pathname);
   const pageTitle = t(getPageTitleKey(location.pathname), { defaultValue: "User" });
 
   const menuItems = useMemo(
@@ -46,11 +47,6 @@ const UserLayout = () => {
         key: "dashboard",
         icon: <DashboardOutlined />,
         label: t("pages.userDashboard.title", { defaultValue: "Tổng quan" }),
-      },
-      {
-        key: "document-reader",
-        icon: <ApartmentOutlined />,
-        label: t("flow.menu.process", { defaultValue: "Quy trình xử lý" }),
       },
       {
         key: "documents",
@@ -90,7 +86,6 @@ const UserLayout = () => {
           className="!border-none !bg-transparent"
           onClick={({ key }) => {
             if (key === "dashboard") navigate("/user/dashboard");
-            if (key === "document-reader") navigate("/user/document-reader");
             if (key === "documents") navigate("/user/documents");
             if (key === "family-trees") navigate("/user/family-trees");
             if (key === "profile") navigate("/user/profile");

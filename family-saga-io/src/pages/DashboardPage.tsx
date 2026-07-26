@@ -1,39 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button, Card, Col, Row, Skeleton, Space, Statistic, Typography } from "antd";
 import { SettingOutlined, TeamOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { FlowNextBanner } from "@/components/flow/FlowNextBanner";
 import { GenealogyFlowStepper } from "@/components/flow/GenealogyFlowStepper";
 import { QuickStartCards } from "@/components/flow/QuickStartCards";
 import { useAuth } from "@/contexts/AuthContext";
-import type { GenealogyFlowStepId } from "@/lib/genealogyFlow";
-import { getUserStats } from "@/lib/userWorkspaceApi";
+import { computeFlowProgress } from "@/lib/flowProgress";
+import { getUserStats, listUserDocuments, type UserScan } from "@/lib/userWorkspaceApi";
 
 const DashboardPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, isAdmin } = useAuth();
   const [stats, setStats] = useState({ scanned_documents: 0, family_trees: 0, history_total: 0 });
+  const [scans, setScans] = useState<UserScan[]>([]);
   const [statsLoading, setStatsLoading] = useState(true);
 
   useEffect(() => {
     setStatsLoading(true);
-    getUserStats()
-      .then(setStats)
-      .catch(() => setStats({ scanned_documents: 0, family_trees: 0, history_total: 0 }))
+    Promise.all([getUserStats(), listUserDocuments()])
+      .then(([statsData, docsData]) => {
+        setStats(statsData);
+        setScans(docsData.items);
+      })
+      .catch(() => {
+        setStats({ scanned_documents: 0, family_trees: 0, history_total: 0 });
+        setScans([]);
+      })
       .finally(() => setStatsLoading(false));
   }, []);
 
-  const completedSteps: GenealogyFlowStepId[] =
-    stats.scanned_documents > 0
-      ? stats.family_trees > 0
-        ? ["material", "ocr", "extract", "canonical", "visual"]
-        : ["material"]
-      : [];
-
-  const currentStep: GenealogyFlowStepId =
-    stats.family_trees > 0 ? "visual" : stats.scanned_documents > 0 ? "ocr" : "material";
+  const flow = useMemo(() => computeFlowProgress(stats, scans), [stats, scans]);
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
@@ -51,11 +51,25 @@ const DashboardPage = () => {
         </Typography.Paragraph>
       </Card>
 
+      {flow.nextStep && !statsLoading && (
+        <FlowNextBanner
+          message={t(`flow.stepDesc.${flow.nextStep}`, { defaultValue: "" })}
+          nextLabel={t("flow.continueStep", {
+            defaultValue: "Tiếp tục: {{step}}",
+            step: t(`flow.step.${flow.nextStep}`, { defaultValue: flow.nextStep }),
+          })}
+          nextHref={flow.nextRoute}
+        />
+      )}
+
       <Card
         title={t("flow.stepperTitle", { defaultValue: "Quy trình xử lý gia phả" })}
         className="border-[hsl(var(--border))]"
       >
-        <GenealogyFlowStepper currentStep={currentStep} completedSteps={completedSteps} />
+        <GenealogyFlowStepper
+          currentStep={flow.currentStep}
+          completedSteps={flow.completedSteps}
+        />
       </Card>
 
       <QuickStartCards />

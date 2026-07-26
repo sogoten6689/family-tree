@@ -8,13 +8,13 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Col, Row, Table, Tag, Typography } from "antd";
+import { Button, Card, Col, Collapse, Row, Table, Tag, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import { GenealogyFlowStepper } from "@/components/flow/GenealogyFlowStepper";
 import { ADMIN_PAGES, APP_PAGES, PUBLIC_PAGES, USER_PAGES, type AppPageMeta } from "@/config/pages";
-import { GENEALOGY_FLOW_STEPS, GENEALOGY_FLOW_ROUTES, type GenealogyFlowStepId } from "@/lib/genealogyFlow";
+import { GENEALOGY_FLOW_STEPS, flowRouteForStep, type GenealogyFlowStepId } from "@/lib/genealogyFlow";
 
 const zoneColors: Record<AppPageMeta["zone"], string> = {
   public: "blue",
@@ -121,7 +121,7 @@ const GuidePage = () => {
               <Typography.Paragraph type="secondary" className="!mb-4 text-sm">
                 {t(`flow.stepDesc.${stepId}`, { defaultValue: "" })}
               </Typography.Paragraph>
-              <Link to={GENEALOGY_FLOW_ROUTES[stepId]}>
+              <Link to={flowRouteForStep(stepId)}>
                 <Button type="primary" size="small">
                   {t("flow.openStep", { defaultValue: "Mở bước này" })}
                 </Button>
@@ -173,8 +173,23 @@ const GuidePage = () => {
         </Col>
       </Row>
 
-      <Card title={t("guide.allPagesTitle", { defaultValue: "Danh sách toàn bộ trang" })}>
-        <Table rowKey="id" pagination={false} columns={columns} dataSource={APP_PAGES} scroll={{ x: 900 }} />
+      <Card title={t("guide.allPagesTitle", { defaultValue: "Danh sách toàn bộ trang" })} className="mb-6">
+        <Typography.Paragraph type="secondary" className="!mb-4">
+          {t("guide.appendixHint", {
+            defaultValue: "Phụ lục kỹ thuật — dành cho quản trị / phát triển.",
+          })}
+        </Typography.Paragraph>
+        <Collapse
+          items={[
+            {
+              key: "pages",
+              label: t("guide.appendixPages", { defaultValue: "Bảng route & quyền truy cập" }),
+              children: (
+                <Table rowKey="id" pagination={false} columns={columns} dataSource={APP_PAGES} scroll={{ x: 900 }} />
+              ),
+            },
+          ]}
+        />
       </Card>
 
       <Card className="mt-6" title={t("guide.demoTitle", { defaultValue: "Demo luận văn (5–7 click)" })}>

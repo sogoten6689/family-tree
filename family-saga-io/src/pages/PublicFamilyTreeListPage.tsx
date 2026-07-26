@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Statistic, Tag, Typography } from "antd";
+import { Button, Card, Col, Row, Statistic, Typography } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -56,7 +56,6 @@ const PublicFamilyTreeListPage = () => {
               <Card
                 hoverable
                 title={tree.name}
-                extra={<Tag color="blue">{tree.id}</Tag>}
                 actions={[
                   <Link key="view" to={`/gia-pha/${tree.id}`}>
                     <Button type="link" icon={<EyeOutlined />}>

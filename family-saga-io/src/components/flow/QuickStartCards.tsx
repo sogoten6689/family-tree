@@ -3,6 +3,8 @@ import { Card, Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
+import { flowRouteForStep } from "@/lib/genealogyFlow";
+
 export function QuickStartCards() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -13,21 +15,21 @@ export function QuickStartCards() {
       icon: CloudUploadOutlined,
       title: t("flow.quick.uploadTitle", { defaultValue: "Tải tư liệu" }),
       desc: t("flow.quick.uploadDesc", { defaultValue: "Bước 1 — upload ảnh hoặc văn bản gia phả." }),
-      href: "/user/documents",
+      href: flowRouteForStep("material"),
     },
     {
       key: "ocr",
       icon: BookOutlined,
       title: t("flow.quick.ocrTitle", { defaultValue: "Tiếp tục OCR" }),
       desc: t("flow.quick.ocrDesc", { defaultValue: "Bước 2 — OCR và ghép trang phiên âm." }),
-      href: "/user/documents",
+      href: flowRouteForStep("ocr"),
     },
     {
       key: "tree",
       icon: BranchesOutlined,
       title: t("flow.quick.treeTitle", { defaultValue: "Xem gia phả" }),
       desc: t("flow.quick.treeDesc", { defaultValue: "Bước 5 — mở sơ đồ cây đã tạo." }),
-      href: "/user/family-trees",
+      href: flowRouteForStep("visual"),
     },
   ];
 
