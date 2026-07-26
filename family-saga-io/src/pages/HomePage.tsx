@@ -39,7 +39,7 @@ const HomePage = () => {
         <img
           src={heroBg}
           alt="Gia phả truyền thống"
-          className="hero-bg-image absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative z-10 text-center max-w-3xl px-4 sm:px-6">

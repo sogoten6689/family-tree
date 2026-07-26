@@ -7,72 +7,72 @@
 /* Fallback trước khi AntdCssBridge sync — sẽ bị ghi đè bởi --ant-* */
 @layer base {
   :root {
-    --background: 140 25% 98%;
-    --foreground: 160 10% 12%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 160 10% 12%;
+    --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 160 10% 12%;
-    --primary: 152 48% 36%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 43 74% 38%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 152 35% 28%;
+    --secondary: 0 45% 35%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 140 20% 94%;
-    --muted-foreground: 160 8% 42%;
-    --accent: 148 45% 92%;
-    --accent-foreground: 152 48% 28%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 43 74% 95%;
+    --accent-foreground: 43 74% 30%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 140 15% 88%;
-    --input: 140 15% 88%;
-    --ring: 152 48% 36%;
-    --brand: 152 48% 36%;
-    --brand-light: 148 45% 92%;
-    --brand-foreground: 152 55% 28%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 43 74% 38%;
+    --brand: 43 74% 38%;
+    --brand-light: 43 74% 95%;
+    --brand-foreground: 43 74% 30%;
     --radius: 0.75rem;
     --font-display: 'Roboto', sans-serif;
     --font-body: 'Roboto', sans-serif;
-    --sidebar-background: 140 22% 97%;
-    --sidebar-foreground: 160 10% 12%;
-    --sidebar-primary: 152 48% 36%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 43 74% 38%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 148 45% 92%;
-    --sidebar-accent-foreground: 152 48% 28%;
-    --sidebar-border: 140 15% 88%;
-    --sidebar-ring: 152 48% 36%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 43 74% 38%;
   }
 
   .dark {
-    --background: 160 12% 8%;
-    --foreground: 140 15% 95%;
-    --card: 160 10% 12%;
-    --card-foreground: 140 15% 95%;
-    --popover: 160 10% 12%;
-    --popover-foreground: 140 15% 95%;
-    --primary: 152 45% 48%;
-    --primary-foreground: 160 12% 8%;
-    --secondary: 152 30% 38%;
-    --secondary-foreground: 140 15% 95%;
-    --muted: 160 10% 15%;
-    --muted-foreground: 140 8% 65%;
-    --accent: 152 35% 18%;
-    --accent-foreground: 152 45% 70%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 43 80% 47%;
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 45% 45%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 43 50% 20%;
+    --accent-foreground: 43 80% 70%;
     --destructive: 0 63% 50%;
     --destructive-foreground: 0 0% 95%;
-    --border: 160 8% 20%;
-    --input: 160 8% 20%;
-    --ring: 152 45% 48%;
-    --brand: 152 45% 48%;
-    --brand-light: 152 35% 18%;
-    --brand-foreground: 152 45% 70%;
-    --sidebar-background: 160 12% 8%;
-    --sidebar-foreground: 140 15% 95%;
-    --sidebar-primary: 152 45% 48%;
-    --sidebar-primary-foreground: 160 12% 8%;
-    --sidebar-accent: 160 10% 15%;
-    --sidebar-accent-foreground: 140 15% 95%;
-    --sidebar-border: 160 8% 20%;
-    --sidebar-ring: 152 45% 48%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 80% 47%;
+    --brand: 43 80% 47%;
+    --brand-light: 43 50% 20%;
+    --brand-foreground: 43 80% 70%;
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 43 80% 47%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 43 80% 47%;
   }
 }
 
@@ -94,25 +94,21 @@
 }
 
 @layer components {
-  .hero-bg-image {
-    filter: brightness(1.08) saturate(0.92) hue-rotate(75deg);
-  }
-
   .hero-overlay {
     background: linear-gradient(
       to bottom,
-      hsl(152 48% 18% / 0.62) 0%,
-      hsl(152 40% 22% / 0.45) 50%,
-      hsl(152 48% 16% / 0.72) 100%
+      hsl(0 0% 9% / 0.72) 0%,
+      hsl(0 0% 9% / 0.52) 50%,
+      hsl(0 0% 9% / 0.78) 100%
     );
   }
 
   .dark .hero-overlay {
     background: linear-gradient(
       to bottom,
-      hsl(160 20% 6% / 0.78) 0%,
-      hsl(152 30% 10% / 0.55) 50%,
-      hsl(160 20% 4% / 0.82) 100%
+      hsl(0 0% 0% / 0.72) 0%,
+      hsl(0 0% 0% / 0.52) 50%,
+      hsl(0 0% 0% / 0.78) 100%
     );
   }
 
@@ -165,26 +161,26 @@
 
   /* Footer: nền tối + chữ sáng ở light; card tối ở dark */
   .site-footer {
-    background: hsl(152 48% 22%);
-    color: hsl(0 0% 98%);
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
   }
 
   .dark .site-footer {
-    background: hsl(160 10% 12%);
-    color: hsl(140 15% 95%);
+    background: hsl(var(--card));
+    color: hsl(var(--foreground));
   }
 
   .auth-page-shell {
     background:
-      radial-gradient(circle at 20% 20%, hsl(148 45% 92% / 0.55), transparent 45%),
-      radial-gradient(circle at 80% 0%, hsl(152 48% 36% / 0.08), transparent 40%),
+      radial-gradient(circle at 20% 20%, hsl(var(--accent) / 0.55), transparent 45%),
+      radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.08), transparent 40%),
       hsl(var(--background));
   }
 
   .dark .auth-page-shell {
     background:
-      radial-gradient(circle at 20% 20%, hsl(152 35% 18% / 0.65), transparent 45%),
-      radial-gradient(circle at 80% 0%, hsl(152 45% 48% / 0.12), transparent 40%),
+      radial-gradient(circle at 20% 20%, hsl(var(--accent) / 0.65), transparent 45%),
+      radial-gradient(circle at 80% 0%, hsl(var(--primary) / 0.12), transparent 40%),
       hsl(var(--background));
   }
 
