@@ -1,0 +1,57 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: family-saga-io/package-lock.json
+
+      - name: Build frontend
+        working-directory: family-saga-io
+        run: |
+          npm ci
+          npm run build
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Backend deps check
+        working-directory: nlp_family_extractor
+        run: |
+          pip install -r requirements.txt
+          python -c "import api"
+
+  deploy:
+    needs: ci
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            set -e
+            cd ~/projects/family-tree
+            git fetch origin
+            git reset --hard origin/master   # hoặc main
+            ./scripts/build-all.sh --up
+            sleep 5
+            curl -fsS http://localhost:87/health
+            echo "Deploy OK"
