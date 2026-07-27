@@ -15,9 +15,9 @@ export function syncAntdTokensToCssVars(
   set("--card-foreground", toHslChannels(token.colorText));
   set("--popover", toHslChannels(token.colorBgElevated));
   set("--popover-foreground", toHslChannels(token.colorText));
-  set("--muted", toHslChannels(token.colorFillAlter));
+  set("--muted", toHslChannels(token.colorFillAlter, token.colorBgLayout));
   set("--muted-foreground", toHslChannels(token.colorTextSecondary));
-  set("--accent", toHslChannels(token.colorPrimaryBg));
+  set("--accent", toHslChannels(token.colorPrimaryBg, token.colorBgContainer));
   set("--accent-foreground", toHslChannels(token.colorPrimaryText));
   set("--secondary", toHslChannels(token.colorError));
   set("--secondary-foreground", toHslChannels(token.colorTextLightSolid));
@@ -27,7 +27,7 @@ export function syncAntdTokensToCssVars(
   set("--input", toHslChannels(token.colorBorder));
   set("--ring", toHslChannels(token.colorPrimary));
   set("--brand", toHslChannels(token.colorPrimary));
-  set("--brand-light", toHslChannels(token.colorPrimaryBg));
+  set("--brand-light", toHslChannels(token.colorPrimaryBg, token.colorBgContainer));
   set("--brand-foreground", toHslChannels(token.colorPrimaryText));
   set("--radius", `${token.borderRadius}px`);
   set("--sidebar-background", toHslChannels(token.colorBgContainer));
@@ -35,7 +35,7 @@ export function syncAntdTokensToCssVars(
   set("--sidebar-primary", toHslChannels(token.colorPrimary));
   set("--sidebar-border", toHslChannels(token.colorBorder));
   set("--sidebar-ring", toHslChannels(token.colorPrimary));
-  set("--sidebar-accent", toHslChannels(token.colorFillAlter));
+  set("--sidebar-accent", toHslChannels(token.colorFillAlter, token.colorBgContainer));
   set("--sidebar-accent-foreground", toHslChannels(token.colorText));
   set("--sidebar-primary-foreground", toHslChannels(token.colorTextLightSolid));
   set("--antd-font-size", `${token.fontSize}px`);
