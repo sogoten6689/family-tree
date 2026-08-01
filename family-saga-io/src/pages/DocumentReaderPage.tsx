@@ -34,6 +34,7 @@ import {
   createUserFamilyTree,
   updateUserDocument,
 } from "@/lib/userWorkspaceApi";
+import { Textarea } from "@/components/ui/textarea";
 
 type PreviewType = "image" | "docx" | "text" | "unsupported" | null;
 
@@ -204,6 +205,8 @@ const DocumentReaderPage = ({
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isResultModalOpen, setIsResultModalOpen] = useState(false);
+  const [inputMode, setInputMode] = useState<"file" | "text">("file");
+  const [manualInputText, setManualInputText] = useState("");
   const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
   const [historyTotal, setHistoryTotal] = useState(0);
   const [isHistoryLoading, setIsHistoryLoading] = useState(false);
@@ -358,6 +361,41 @@ const DocumentReaderPage = ({
     setAnalysisError(null);
     setIsAnalyzing(false);
     setIsResultModalOpen(false);
+    setInputMode("file");
+    setManualInputText("");
+  };
+
+  const applyManualText = async () => {
+    const normalizedText = manualInputText.replace(/\n{3,}/g, "\n\n").trim();
+    if (!normalizedText) {
+      setErrorMessage(t("docReader.errNeedDocxToAnalyze"));
+      return;
+    }
+
+    if (imageUrl) {
+      URL.revokeObjectURL(imageUrl);
+    }
+
+    const syntheticFile = new File(
+      [normalizedText],
+      "manual-input.txt",
+      {
+        type: "text/plain",
+      },
+    );
+
+    setActiveFile(syntheticFile);
+    setPreviewType("text");
+    setImageUrl(null);
+    setDocumentText(normalizedText);
+    setStatusMessage(t("docReader.msgTxtSuccess"));
+    setErrorMessage(null);
+    setLanguageDetection(detectLanguage(normalizedText, syntheticFile.name));
+    setAnalysisResult(null);
+    setAnalysisError(null);
+    setIsAnalyzing(false);
+    setIsResultModalOpen(false);
+    await registerScan(syntheticFile, normalizedText);
   };
 
   const loadFile = async (file: File) => {
@@ -522,6 +560,7 @@ const DocumentReaderPage = ({
           count: payload.balkan_nodes.length,
         }),
       );
+      setIsResultModalOpen(true);
     } catch (error) {
       setAnalysisError(t("docReader.errBackendUnavailable"));
     } finally {
@@ -614,6 +653,89 @@ const DocumentReaderPage = ({
                       {t("docReader.btnOpenAnalysisPopup")}
                     </Button>
                   )}
+                </div>
+
+                <div className="mt-6 rounded-2xl border border-border bg-background/80 p-4 text-left">
+                  <Tabs
+                    activeKey={inputMode}
+                    onChange={(key) => setInputMode(key as "file" | "text")}
+                    className="[&_.ant-tabs-nav]:mb-4"
+                    items={[
+                      {
+                        key: "file",
+                        label: t("docReader.inputModeFile", {
+                          defaultValue: "Upload file",
+                        }),
+                        children: (
+                          <Typography.Paragraph className="!mb-0 text-sm text-muted-foreground">
+                            {t("docReader.directInputFallback", {
+                              defaultValue:
+                                "Chuyển sang tab Nhập text để dán nội dung trực tiếp.",
+                            })}
+                          </Typography.Paragraph>
+                        ),
+                      },
+                      {
+                        key: "text",
+                        label: t("docReader.inputModeText", {
+                          defaultValue: "Nhập text",
+                        }),
+                        children: (
+                          <div className="space-y-3">
+                            <div>
+                              <Typography.Title
+                                level={5}
+                                className="!mb-1 font-display text-foreground"
+                              >
+                                {t("docReader.directInputTitle", {
+                                  defaultValue: "Nhập text trực tiếp",
+                                })}
+                              </Typography.Title>
+                              <Typography.Text type="secondary">
+                                {t("docReader.directInputDesc", {
+                                  defaultValue:
+                                    "Dán nội dung vào đây rồi phân tích ngay, không cần upload file.",
+                                })}
+                              </Typography.Text>
+                            </div>
+                            <Textarea
+                              value={manualInputText}
+                              onChange={(event) =>
+                                setManualInputText(event.target.value)
+                              }
+                              placeholder={t(
+                                "docReader.directInputPlaceholder",
+                                {
+                                  defaultValue:
+                                    "Dán hoặc gõ nội dung gia phả vào đây...",
+                                },
+                              )}
+                              className="min-h-[240px] w-full resize-y text-sm leading-6"
+                            />
+                            <div className="flex flex-wrap gap-2">
+                              <Button
+                                type="primary"
+                                onClick={applyManualText}
+                                disabled={!manualInputText.trim()}
+                              >
+                                {t("docReader.btnUseDirectText", {
+                                  defaultValue: "Dùng text này",
+                                })}
+                              </Button>
+                              <Button
+                                onClick={() => setManualInputText("")}
+                                disabled={!manualInputText}
+                              >
+                                {t("docReader.btnClearDirectText", {
+                                  defaultValue: "Xóa text",
+                                })}
+                              </Button>
+                            </div>
+                          </div>
+                        ),
+                      },
+                    ]}
+                  />
                 </div>
 
                 <input
@@ -1106,35 +1228,67 @@ const DocumentReaderPage = ({
           </Button>,
         ]}
         title={t("docReader.analysisPopupTitle")}
-        width={860}
+        width={1040}
       >
         {analysisResult && (
-          <>
-            <div className="flex flex-wrap gap-2 mb-3">
-              <Tag color="processing">
-                {t("docReader.analysisPeople", {
-                  count: analysisResult.balkan_nodes.length,
-                })}
-              </Tag>
-            </div>
-            {analysisResult.gemini_error && (
-              <Alert
-                type="warning"
-                showIcon
-                className="mb-3"
-                message={t("docReader.geminiErrorTitle")}
-                description={analysisResult.gemini_error}
-              />
-            )}
-            {analysisResult.balkan_nodes.length > 0 ? (
-              <FamilyTreeVisualPanel
-                nodes={analysisResult.balkan_nodes}
-                treeName={t("docReader.inlineTreeTitle", { defaultValue: "Sơ đồ từ phân tích" })}
-              />
-            ) : (
-              <Empty description={t("docReader.inlineTreeEmpty")} />
-            )}
-          </>
+          <Tabs
+            defaultActiveKey="analysis"
+            items={[
+              {
+                key: "analysis",
+                label: t("docReader.analysisTabLabel", {
+                  defaultValue: "Phân tích",
+                }),
+                children: (
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap gap-2">
+                      <Tag color="processing">
+                        {t("docReader.analysisPeople", {
+                          count: analysisResult.balkan_nodes.length,
+                        })}
+                      </Tag>
+                    </div>
+                    {analysisResult.gemini_error && (
+                      <Alert
+                        type="warning"
+                        showIcon
+                        message={t("docReader.geminiErrorTitle")}
+                        description={analysisResult.gemini_error}
+                      />
+                    )}
+                    <Card
+                      size="small"
+                      className="bg-muted"
+                      title={t("docReader.analysisTitle", {
+                        defaultValue: "Kết quả phân tích",
+                      })}
+                    >
+                      <pre className="max-h-[520px] overflow-auto rounded bg-background p-3 text-xs leading-5 text-foreground">
+                        {JSON.stringify(analysisResult.balkan_nodes, null, 2)}
+                      </pre>
+                    </Card>
+                  </div>
+                ),
+              },
+              {
+                key: "diagram",
+                label: t("docReader.diagramTabLabel", {
+                  defaultValue: "Sơ đồ",
+                }),
+                children:
+                  analysisResult.balkan_nodes.length > 0 ? (
+                    <FamilyTreeVisualPanel
+                      nodes={analysisResult.balkan_nodes}
+                      treeName={t("docReader.inlineTreeTitle", {
+                        defaultValue: "Sơ đồ từ phân tích",
+                      })}
+                    />
+                  ) : (
+                    <Empty description={t("docReader.inlineTreeEmpty")} />
+                  ),
+              },
+            ]}
+          />
         )}
       </Modal>
     </div>

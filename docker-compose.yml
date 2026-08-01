@@ -60,6 +60,7 @@ services:
       HANNOM_TRANSLITERATION_LANG_TYPE: "1"
       HANNOM_EMAIL: ${HANNOM_EMAIL:-}
       HANNOM_PASSWORD: ${HANNOM_PASSWORD:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
       # Hoặc token tĩnh / token lấy runtime qua /api/developer/hannom/fetch-token
       HANNOM_API_TOKEN: ${HANNOM_API_TOKEN:-}
     depends_on:
