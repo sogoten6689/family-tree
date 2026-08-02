@@ -5,3 +5,8 @@ nlp_family_extractor/.env
 .venv/lib/
 nlp_family_extractor/data/nomfoundation/volumes/
 nlp_family_extractor/data/
+
+# Label Studio pipeline artifacts
+data/vgp_corpus/
+data/gemini_labels/
+label_studio_pipeline/.env

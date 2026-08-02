@@ -316,6 +316,15 @@ Base URL: `http://localhost:8002` (dev) hoặc `/api` qua Nginx (production).
 - Presigned URL cho download
 - Console: http://localhost:9003
 
+### Label Studio (NER + Relation — gia phả VGP)
+
+- **Module:** `label_studio_pipeline/`
+- **Luồng:** Crawl Phả ký VGP → Gemini pre-annotate → import task Label Studio → human review
+- **Project:** Family Tree NER+RE (local: http://localhost:8080)
+- **Nhãn:** Entity `PER_NAME`, `GENERATION`, `DATE`, `ORDER`, `LOC`; Relation `FATHER_OF`, `MOTHER_OF`, `SPOUSE`
+- **Tài liệu:** [HUONG_DAN_GAN_NHAN.md](./label_studio_pipeline/HUONG_DAN_GAN_NHAN.md) · [THONG_KE.md](./label_studio_pipeline/THONG_KE.md) · [plan](./planning/label_studio_pipeline_plan.md)
+- **Chạy:** `python -m label_studio_pipeline.crawl_corpus` → `python -m label_studio_pipeline.label_and_import`
+
 ---
 
 ## 10. Phân quyền

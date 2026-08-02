@@ -302,6 +302,8 @@ Niên đại gia phả ảnh hưởng **từ vựng quan hệ**, **danh hiệu**
 - Ghi `evidence` span nguyên văn
 - Gán `region_hint`, `lang_layer`, `era` nếu suy ra được
 
+**Pilot VGP (Label Studio, Quốc ngữ):** schema cụ thể `PER_NAME` / `GENERATION` / `DATE` / `ORDER` / `LOC` + quan hệ `FATHER_OF` / `MOTHER_OF` / `SPOUSE` — xem [label_studio_pipeline/HUONG_DAN_GAN_NHAN.md](../label_studio_pipeline/HUONG_DAN_GAN_NHAN.md).
+
 ---
 
 ## 12. Acceptance criteria (luận văn)
