@@ -1,0 +1,70 @@
+{
+  "doc_id": "vgp_1510",
+  "tree_id": 1510,
+  "title": "Họ Huỳnh Làng Mỹ Á, Phú Lộc - Thừa Thiên Huế",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1510/pha_ky_gia_su.html",
+  "text": "Họ Huỳnh tại Làng Mỹ Á, Phú Lộc, Thừa Thiên là một họ lớn, con cháu lên đến số ngàn, sinh sống tập trung tại quê hương và rải rác trên cả thế giới.\nPhả ký này ghi lại phần gia phả của chi họ từ Ôn Cố Huỳnh Văn Biều đến Ôn Huỳnh Thuận, chi phái Cầu Đá, Mỹ Á. Chi tiết sẽ được bổ sung theo thời gian khi tài liệu được hoàn chỉnh hơn.\nSau khi hoàn chỉnh từng chi họ chúng tôi sẽ tăng cường hoàn chỉnh phả hệ của toàn Huỳnh Tộc. Công việc sẽ bao gồm cả lưu trữ tài liệu, hình ảnh, địa đồ mồ mã, ngày kỵ giỗ, v.v....\nBà con xa gần xin liên lạc để chúng tôi bổ sung cho hoàn chỉnh hơn.\nTrân trọng.\nHuỳnh Nguyên Quân (con trai Hoàng Đằng)\nLiên lạc:\nhien.henryn@gmail.com\n...............................................................................................",
+  "entities": [
+    {
+      "start": 13,
+      "end": 22,
+      "label": "LOC",
+      "text": "Làng Mỹ Á"
+    },
+    {
+      "start": 24,
+      "end": 31,
+      "label": "LOC",
+      "text": "Phú Lộc"
+    },
+    {
+      "start": 33,
+      "end": 43,
+      "label": "LOC",
+      "text": "Thừa Thiên"
+    },
+    {
+      "start": 200,
+      "end": 214,
+      "label": "PER_NAME",
+      "text": "Huỳnh Văn Biều"
+    },
+    {
+      "start": 222,
+      "end": 233,
+      "label": "PER_NAME",
+      "text": "Huỳnh Thuận"
+    },
+    {
+      "start": 244,
+      "end": 250,
+      "label": "LOC",
+      "text": "Cầu Đá"
+    },
+    {
+      "start": 252,
+      "end": 256,
+      "label": "LOC",
+      "text": "Mỹ Á"
+    },
+    {
+      "start": 592,
+      "end": 609,
+      "label": "PER_NAME",
+      "text": "Huỳnh Nguyên Quân"
+    },
+    {
+      "start": 620,
+      "end": 630,
+      "label": "PER_NAME",
+      "text": "Hoàng Đằng"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 7
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "vgp_166",
+  "tree_id": 166,
+  "title": "Thân - Bắc Giang",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/166/pha_ky_gia_su.html",
+  "text": "Hiện đang thảo luận để thống nhất toàn tộc về một phả ký chung , ngày 27 và 28 tháng 11 năm 2004 sẽ tổ chức hội thảo lịch sử tộc thân dưới sự bảo trợ của Hội Khoa học lịch sử Việt Nam và sau đó sẽ thống nhất lại tài liệu lịch sử tộc , từng bước hoàn thiện một phả đồ chung cho tộc Thân .",
+  "entities": [
+    {
+      "start": 65,
+      "end": 96,
+      "label": "DATE",
+      "text": "ngày 27 và 28 tháng 11 năm 2004"
+    },
+    {
+      "start": 175,
+      "end": 183,
+      "label": "LOC",
+      "text": "Việt Nam"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,106 @@
+{
+  "doc_id": "vgp_101",
+  "tree_id": 101,
+  "title": "Dòng họ Vũ (gốc An Bài - Đông Động - Đông Hưng - Thái Bình) - Thái Bình",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/101/pha_ky_gia_su.html",
+  "text": "Dòng Họ Vũ An Bài ở huyện Đông quan (Đông hưng - Thái Bình), nay là Nam Đông Hưng - Hưng Yên, là dòng họ có truyền thống lâu đời, mọi người đoàn kết - yêu thương, chăm chút học hành, các con cháu đều cố gắng học tập theo các bậc tổ tông cố gắng làm rạng danh họ tộc.\nHọ tộc rất chú trọng đến vấn đề phát triển bền vững cho con cháu, cố gắng tạo điều kiện học hành cho các con các cháu, cho dù cuộc sống còn nhiều khó khăn hay dư dả, vấn đề học tập luôn được đặt lên hàng đầu. Sự đoàn kết và sẻ chia trong cuộc sống, giúp nhau đã giúp cho họ tộc ngày càng phát triển. Hội khuyến học của họ Vũ luôn có các hoạt động hữu ích, định kỳ thường xuyên, phát huy truyền thống của các bậc tiền bối, được các cụ và họ tộc đánh giá cao.\nViệc thực hiện gia phả này được bắt đầu từ năm 2002, khi đó ông Vũ Tuấn Kiệt (đời thứ 9 của họ) chuẩn bị nhận chức trưởng họ. Và chính thức được đưa lên Gia phả Việt nam ngày 26/06/2004, do ông Vũ Xuân Cường con trai trưởng ông Vũ Tuấn Kiệt thực hiện.\nTrong thời gian thu thập các thông tin cũng chưa thật đầy đủ, một số luồng thông tin đang rất khó thu thập. Tuy nhiên, ông Vũ Tuấn Kiệt đã hết sức cố gắng công việc này, đặc biệt có sự bổ sung hoàn chỉnh của rất nhiều bậc bô lão trong họ tộc như :\n+ Cụ Ông Vũ Đình Hảo.\n+ Cụ Bà Vũ Thị Sâm.\n+ Cụ Bà Vũ Thị Si.\n+ Bà Vũ Thị Hạ\nVà rất nhiều các cụ ông, cụ bà và cô, dì, chú bác trong họ tộc...\n+ Các cụ trong họ tộc đã đóng góp rất nhiều thông tin quý báu.\nXin chân thành cảm ơn các cụ, các ông, các bà và mong tiếp tục nhận được các thông tin bổ sung chỉnh sửa để gia phả họ Vũ ngày càng đầy đủ.\nXin liên hệ Ông Vũ Xuân Cường - cuongvx@vov.vn Mobile: 0913303339",
+  "entities": [
+    {
+      "start": 26,
+      "end": 35,
+      "label": "LOC",
+      "text": "Đông quan"
+    },
+    {
+      "start": 37,
+      "end": 46,
+      "label": "LOC",
+      "text": "Đông hưng"
+    },
+    {
+      "start": 49,
+      "end": 58,
+      "label": "LOC",
+      "text": "Thái Bình"
+    },
+    {
+      "start": 68,
+      "end": 81,
+      "label": "LOC",
+      "text": "Nam Đông Hưng"
+    },
+    {
+      "start": 84,
+      "end": 92,
+      "label": "LOC",
+      "text": "Hưng Yên"
+    },
+    {
+      "start": 768,
+      "end": 776,
+      "label": "DATE",
+      "text": "năm 2002"
+    },
+    {
+      "start": 789,
+      "end": 801,
+      "label": "PER_NAME",
+      "text": "Vũ Tuấn Kiệt"
+    },
+    {
+      "start": 803,
+      "end": 812,
+      "label": "GENERATION",
+      "text": "đời thứ 9"
+    },
+    {
+      "start": 900,
+      "end": 910,
+      "label": "DATE",
+      "text": "26/06/2004"
+    },
+    {
+      "start": 919,
+      "end": 932,
+      "label": "PER_NAME",
+      "text": "Vũ Xuân Cường"
+    },
+    {
+      "start": 933,
+      "end": 948,
+      "label": "ORDER",
+      "text": "con trai trưởng"
+    },
+    {
+      "start": 1234,
+      "end": 1245,
+      "label": "PER_NAME",
+      "text": "Vũ Đình Hảo"
+    },
+    {
+      "start": 1255,
+      "end": 1265,
+      "label": "PER_NAME",
+      "text": "Vũ Thị Sâm"
+    },
+    {
+      "start": 1275,
+      "end": 1284,
+      "label": "PER_NAME",
+      "text": "Vũ Thị Si"
+    },
+    {
+      "start": 1291,
+      "end": 1300,
+      "label": "PER_NAME",
+      "text": "Vũ Thị Hạ"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 9
+    }
+  ]
+}

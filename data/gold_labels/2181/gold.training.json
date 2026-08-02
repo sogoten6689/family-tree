@@ -1,0 +1,136 @@
+{
+  "doc_id": "vgp_2181",
+  "tree_id": 2181,
+  "title": "Nguyễn Phúc - Hà Nội",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/2181/pha_ky_gia_su.html",
+  "text": "Cụ Nguyễn Quý Công\nlà Thế tổ của Họ NGUYỄN PHÚC\nở thôn Nội Lưu ,Lưu Hoàng, Ứng Hoà,\nT.P Hà Nội.\nTheo gia phả để lại thì họ NGUYỄN PHÚC được định cư ở đây khoảng cuối thế kỷ 18, đến nay đã 9 đời mà dân làng thường gọi là: Họ Ngự. Khi sưu tầm di sử họ tộc,tìm hiểu các mối liên hệ giữa các tộc họ Nguyễn, thì Cụ tổ của tộc Nguyễn Phúc đã di cư từ tỉnh Thanh Hóa về đây ngự cư.Nơi yên táng mộ phần của cụ ở khu đất cao sau làng,phía tây gần giáp mương nổi,phía bắc giáp đường làng đi xuống thôn Cáp Hoàng. Gia phả họ Nguyễn Phúc ở thôn Nội Lưu được ông Nguyễn Văn Hiển ghi chép, lưu truyền cho các thế hệ sau,biết được hệ thống nguồn gốc ở ba chi theo tuần tự\n- Chi thứ nhất: Ông Nguyễn Phúc Khoan\n(Chi ông Nguyễn Văn Kiểm, đời thứ sáu)\n- Chi thứ hai: Ông Nguyễn Phúc Nghiệp\n(Chi ông Nguyễn Văn Căm, đời thứ\nsáu)\n- Chi thứ ba: Ông Nguyễn Phúc Chiến\n(Chi ông Nguyễn Văn Mùi, đời thứ sáu).\nTiếp tục thừa kế chép Gia Phả họ Nguyễn Phúc, lưu truyền cho các thế hệ sau. Để con cháu luôn ghi nhớ đời đời câu nói của Họ tộc:\n\"Chớ thấy sang bắt quàng làm họ.\nĐừng vì khó mà bỏ tổ tông\"",
+  "entities": [
+    {
+      "start": 3,
+      "end": 18,
+      "label": "PER_NAME",
+      "text": "Nguyễn Quý Công"
+    },
+    {
+      "start": 50,
+      "end": 62,
+      "label": "LOC",
+      "text": "thôn Nội Lưu"
+    },
+    {
+      "start": 64,
+      "end": 73,
+      "label": "LOC",
+      "text": "Lưu Hoàng"
+    },
+    {
+      "start": 75,
+      "end": 82,
+      "label": "LOC",
+      "text": "Ứng Hoà"
+    },
+    {
+      "start": 84,
+      "end": 94,
+      "label": "LOC",
+      "text": "T.P Hà Nội"
+    },
+    {
+      "start": 161,
+      "end": 175,
+      "label": "DATE",
+      "text": "cuối thế kỷ 18"
+    },
+    {
+      "start": 188,
+      "end": 193,
+      "label": "GENERATION",
+      "text": "9 đời"
+    },
+    {
+      "start": 350,
+      "end": 359,
+      "label": "LOC",
+      "text": "Thanh Hóa"
+    },
+    {
+      "start": 487,
+      "end": 501,
+      "label": "LOC",
+      "text": "thôn Cáp Hoàng"
+    },
+    {
+      "start": 550,
+      "end": 565,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Hiển"
+    },
+    {
+      "start": 659,
+      "end": 671,
+      "label": "ORDER",
+      "text": "Chi thứ nhất"
+    },
+    {
+      "start": 677,
+      "end": 694,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Khoan"
+    },
+    {
+      "start": 704,
+      "end": 719,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Kiểm"
+    },
+    {
+      "start": 721,
+      "end": 732,
+      "label": "GENERATION",
+      "text": "đời thứ sáu"
+    },
+    {
+      "start": 736,
+      "end": 747,
+      "label": "ORDER",
+      "text": "Chi thứ hai"
+    },
+    {
+      "start": 753,
+      "end": 771,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Nghiệp"
+    },
+    {
+      "start": 781,
+      "end": 795,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Căm"
+    },
+    {
+      "start": 812,
+      "end": 822,
+      "label": "ORDER",
+      "text": "Chi thứ ba"
+    },
+    {
+      "start": 828,
+      "end": 845,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Chiến"
+    },
+    {
+      "start": 855,
+      "end": 869,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Mùi"
+    },
+    {
+      "start": 991,
+      "end": 996,
+      "label": "GENERATION",
+      "text": "đời c"
+    }
+  ],
+  "relations": []
+}

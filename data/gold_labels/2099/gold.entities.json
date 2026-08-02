@@ -1,0 +1,294 @@
+{
+  "entities": [
+    {
+      "text": "Bạch Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Ngọc Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Công Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Duệ Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xuân ái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phúc Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Duy Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Thiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Viên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Gia",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hiển Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Khải Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Khắc Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phù",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Tán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Đình Phùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thế kỷ 13",
+      "label": "DATE"
+    },
+    {
+      "text": "1372 - 1377",
+      "label": "DATE"
+    },
+    {
+      "text": "1425-1433",
+      "label": "DATE"
+    },
+    {
+      "text": "1915",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng 8 năm 1945",
+      "label": "DATE"
+    },
+    {
+      "text": "1954-1955",
+      "label": "DATE"
+    },
+    {
+      "text": "1885",
+      "label": "DATE"
+    },
+    {
+      "text": "1946-1954",
+      "label": "DATE"
+    },
+    {
+      "text": "1959-1975",
+      "label": "DATE"
+    },
+    {
+      "text": "1979",
+      "label": "DATE"
+    },
+    {
+      "text": "Đức Hoà",
+      "label": "LOC"
+    },
+    {
+      "text": "Yên Duệ",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức Lạng",
+      "label": "LOC"
+    },
+    {
+      "text": "Rú Dầu",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức Lạc",
+      "label": "LOC"
+    },
+    {
+      "text": "Đồng Công",
+      "label": "LOC"
+    },
+    {
+      "text": "Thọ Hoàng",
+      "label": "LOC"
+    },
+    {
+      "text": "Hương Khê",
+      "label": "LOC"
+    },
+    {
+      "text": "Thiên Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "3964",
+      "label": "DATE"
+    },
+    {
+      "text": "1954",
+      "label": "DATE"
+    },
+    {
+      "text": "1955",
+      "label": "DATE"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    },
+    {
+      "text": "1942",
+      "label": "DATE"
+    },
+    {
+      "text": "1943",
+      "label": "DATE"
+    },
+    {
+      "text": "1994",
+      "label": "DATE"
+    },
+    {
+      "text": "đời l",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời li",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Phúc Tâm",
+      "tail": "Nguyễn Duy Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Duy Minh",
+      "tail": "Nguyễn Trọng Thiều",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trọng Thiều",
+      "tail": "Nguyễn Đình Viên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Khắc Cần",
+      "tail": "Nguyễn Phù",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Viên",
+      "tail": "Nguyễn Tán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trọng Thiều",
+      "tail": "Nguyễn Đình Gia",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Công Thiện",
+      "tail": "Trần Thị Ngọc Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần Duệ Tông",
+      "tail": "Trần Thị Ngọc Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "entities": [
+    {
+      "text": "Ngô Vĩnh Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1955",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngô vĩnh Viễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1924-1994",
+      "label": "DATE"
+    },
+    {
+      "text": "Trương Thị Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1929-1996",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngô Văn Nhã",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1894-1973",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Thị Soạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1895-1969",
+      "label": "DATE"
+    },
+    {
+      "text": "21 phố Nhà Thờ, Hoàn Kiếm, Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Lào Cai",
+      "label": "LOC"
+    },
+    {
+      "text": "Vĩnh Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Phòng",
+      "label": "LOC"
+    },
+    {
+      "text": "Bắc Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Văn Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1921-1936",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngô Như Ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1926",
+      "label": "DATE"
+    },
+    {
+      "text": "23 Lê Thánh Tông",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Thúy Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1928-2004",
+      "label": "DATE"
+    },
+    {
+      "text": "10 Lý Nam Đế",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Lan Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1930",
+      "label": "DATE"
+    },
+    {
+      "text": "phố Cảm Hội",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Vĩnh Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1938-1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngô Văn Ái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lương Ngọc, Bình giang, Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Văn Hiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Vi Phương (Tuệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Văn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1924",
+      "label": "DATE"
+    },
+    {
+      "text": "1994",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Nhã",
+      "tail": "Ngô Văn Chí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Nhã",
+      "tail": "Ngô Vĩnh Viễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Vĩnh Viễn",
+      "tail": "Ngô Vĩnh Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Nhã",
+      "tail": "Ngô Như Ý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Nhã",
+      "tail": "Ngô Thúy Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Nhã",
+      "tail": "Ngô Lan Thái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Nhã",
+      "tail": "Ngô Vĩnh Bảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô vĩnh Viễn",
+      "tail": "Ngô Vĩnh Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trương Thị Vinh",
+      "tail": "Ngô Vĩnh Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Ngô vĩnh Viễn",
+      "tail": "Trương Thị Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Ngô Văn Nhã",
+      "tail": "Nguyễn Thị Soạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Soạn",
+      "tail": "Ngô Văn Chí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Soạn",
+      "tail": "Ngô Như Ý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Soạn",
+      "tail": "Ngô Thúy Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Soạn",
+      "tail": "Ngô Lan Thái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Soạn",
+      "tail": "Ngô Vĩnh Bảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Ngô Văn Ái",
+      "tail": "Nguyễn Thị Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Ái",
+      "tail": "Ngô Văn Nhã",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Ái",
+      "tail": "Ngô Văn Hiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Văn Ái",
+      "tail": "Ngô Vi Phương (Tuệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thắng",
+      "tail": "Ngô Văn Nhã",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thắng",
+      "tail": "Ngô Văn Hiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thắng",
+      "tail": "Ngô Vi Phương (Tuệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

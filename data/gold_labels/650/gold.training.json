@@ -1,0 +1,130 @@
+{
+  "doc_id": "vgp_650",
+  "tree_id": 650,
+  "title": "LƯƠNG - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/650/pha_ky_gia_su.html",
+  "text": "Giòng họ Lương phát xuất nguyên thủy từ đâu không thể xác định; có thể bắt nguồn từ 1 lớp người thuộc Hán tộc cư ngụ ở miền nam nước Tàu rồi di tản xuống mìền bắc nước ta để lập nghiệp.\nTuy nhiên, căn cứ ở gia phả, thì từ lâu đời đã có một dòng họ cư ngụ tại miền Trung Việt Nam : làng\nHội Triều (Hội Trào)\n, tỉnh Thanh Hóa, gần Sầm Sơn (một bãi biển nghỉ mát nổi tiếng phong cảnh đẹp).\nLàng nhỏ, dân nghèo, ruộng xấu (vì nước mặn) nên chỉ sinh sống bằng nghề chài lưới, và trồng cây ăn quả hoặc trồng dâu nuôi tằm.\nVào khoảng cuối thế kỷ 17, một số người trong họ di cư ra Hà Nội (Bắc Việt Nam), thành lập một chi hội mới và thành lập một làng mới : làng Nam Phổ (phố Hàng Bè, Hà Nội), tính đến ông thân sinh tôi là Cụ\nLương Ngọc Thụ\nđã sáu đời. Trên mộ bia của cụ ở Ngã tư Sở (Hà Nội) có ghi chữ Hán \"\nThanh Hà Đệ Lục Đại\n\" (đời thứ sáu Thanh Hóa - Hà Nội) -- và chính Cụ cũng đã tự đặt bút hiệu là Triều Nam (Hội Triều, Nam Phổ) để ghi rõ sự liên hệ giữa 2 chi họ....\nLương Danh Môn\n(Ghi gia phả năm 1988)\n(sẽ bổ túc)\n-----------\nCụ\nLương Danh Môn\ncũng chép trong gia phả về làng Hội Triều :\n\"...Vào khoảng 1934, tôi cũng có về thăm làng Hội Triều theo lời mời của chi họ và cũng để \"viếng tổ tầm tông\".\nTừ tỉnh lỵ Thanh Hóa, qua cầu Hàm Rồng (một cầu sắt, nhiều nhịp, dựng nên từ thời Pháp thuộc) về đến Hội Triều 1 cây số. Đường đi vào làng có hai hàng cây dưa nặng trĩu quả, cành lá xanh tươi. Dân số độ khoảng 500 người, ít nhá gạch. Tuy nhiên, dinh sở rất khang trang, và đặc biệt có đền thờ cụ Trạng : Cụ Lương Đắc Bằng, một vị danh nho công thần triều Lê, đỗ Bảng Nhãn. Đền thờ uy nghi, sân gạch tường hoa, trang hoàng câu đối hoành phi sơn son thếp vàng lộng lẫy. Mỗi năm vào ngày húy nhật Cụ, triều đình Huế thường cử một vị đại thần thay mặt vua, hoặc vị quan đầu tỉnh về cúng tế cùng dân làng...\"\n(Cầu Hàm Rồng cũng là nơi chịu nhiều bom đạn trong cuộc chiến Quốc-Cộng vừa qua. Và mới đây cụ Lương Đắc Bằng đã được công nhận là Danh nhân Quốc gia. )\nCũng theo ông\nLương Danh Môn\n, gia phả viết bằng chữ Hán truyền đến đời cụ\nLương Ngọc Thụ\nthì bị thất lạc. Lúc nhỏ, ông\nLương Danh Môn\nđã được nhìn thấy cuốn gia phả đó và được nghe cụ\nLương Ngọc Thụ\ndịch ra quốc văn, và sau này ông\nLương Danh Môn\nđã ghi chép những điều còn nhớ được.",
+  "entities": [
+    {
+      "start": 286,
+      "end": 295,
+      "label": "LOC",
+      "text": "Hội Triều"
+    },
+    {
+      "start": 297,
+      "end": 305,
+      "label": "LOC",
+      "text": "Hội Trào"
+    },
+    {
+      "start": 314,
+      "end": 323,
+      "label": "LOC",
+      "text": "Thanh Hóa"
+    },
+    {
+      "start": 329,
+      "end": 336,
+      "label": "LOC",
+      "text": "Sầm Sơn"
+    },
+    {
+      "start": 527,
+      "end": 541,
+      "label": "DATE",
+      "text": "cuối thế kỷ 17"
+    },
+    {
+      "start": 574,
+      "end": 580,
+      "label": "LOC",
+      "text": "Hà Nội"
+    },
+    {
+      "start": 656,
+      "end": 663,
+      "label": "LOC",
+      "text": "Nam Phổ"
+    },
+    {
+      "start": 665,
+      "end": 676,
+      "label": "LOC",
+      "text": "phố Hàng Bè"
+    },
+    {
+      "start": 720,
+      "end": 734,
+      "label": "PER_NAME",
+      "text": "Lương Ngọc Thụ"
+    },
+    {
+      "start": 768,
+      "end": 777,
+      "label": "LOC",
+      "text": "Ngã tư Sở"
+    },
+    {
+      "start": 804,
+      "end": 823,
+      "label": "GENERATION",
+      "text": "Thanh Hà Đệ Lục Đại"
+    },
+    {
+      "start": 827,
+      "end": 838,
+      "label": "GENERATION",
+      "text": "đời thứ sáu"
+    },
+    {
+      "start": 901,
+      "end": 910,
+      "label": "PER_NAME",
+      "text": "Triều Nam"
+    },
+    {
+      "start": 971,
+      "end": 985,
+      "label": "PER_NAME",
+      "text": "Lương Danh Môn"
+    },
+    {
+      "start": 1003,
+      "end": 1007,
+      "label": "DATE",
+      "text": "1988"
+    },
+    {
+      "start": 1110,
+      "end": 1114,
+      "label": "DATE",
+      "text": "1934"
+    },
+    {
+      "start": 1233,
+      "end": 1245,
+      "label": "LOC",
+      "text": "cầu Hàm Rồng"
+    },
+    {
+      "start": 1514,
+      "end": 1528,
+      "label": "PER_NAME",
+      "text": "Lương Đắc Bằng"
+    },
+    {
+      "start": 2032,
+      "end": 2037,
+      "label": "GENERATION",
+      "text": "đời c"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 13
+    }
+  ]
+}

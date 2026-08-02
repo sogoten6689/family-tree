@@ -1,0 +1,89 @@
+{
+  "entities": [
+    {
+      "text": "Hà Tĩnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Long Đống",
+      "label": "LOC"
+    },
+    {
+      "text": "1226 - 1400",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1320",
+      "label": "DATE"
+    },
+    {
+      "text": "ông Rưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "Ông Trần Đình Xuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghi Xuân",
+      "label": "LOC"
+    },
+    {
+      "text": "núi Thành Hưng Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Con cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "xã Hưng Tiến",
+      "label": "LOC"
+    },
+    {
+      "text": "Con thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Thầy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Láng Thông",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hưng Thông",
+      "label": "LOC"
+    },
+    {
+      "text": "Con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Yên Pháp",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hưng Phúc",
+      "label": "LOC"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đình Xuyên",
+      "tail": "Ông Thầy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "doc_id": "vgp_1693",
+  "tree_id": 1693,
+  "title": "Ngô Văn Ái, Ngô Văn Nhã, Ngô Vĩnh Viễn - Hải Dương",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1693/pha_ky_gia_su.html",
+  "text": "Tôi là Ngô Vĩnh Phúc, sinh 1955, con của cụ ông Ngô vĩnh Viễn (1924-1994) và bà Trương Thị Vinh (1929-1996). Tôi đang tìm chắp nối họ Ngô, mong ai biết xin giúp đỡ. Đt liên hệ 0913580169, hoặc 2119055\nTôi chỉ biết như sau:\n- Ông nội tôi là Ngô Văn Nhã (1894-1973) và bà nội tôi là Nguyễn Thị Soạn (1895-1969), trước khi mất sống ở 21 phố Nhà Thờ, Hoàn Kiếm, Hà Nội. Trước đó các cụ có sống ở Lào Cai, Vĩnh Yên, Hải Phòng, một thời gian dài sống ở Bắc Giang (thị xã thì phải, tôi không biết rõ). Các cụ sinh ra:\n 1. Ngô Văn Chí (1921-1936) (mất năm khoảng 10 tuổi, hình như mất ở Bắc giang)\n 2. Ngô Vĩnh Viễn (1924-1994), trước khi mất sống ở 21 phố Nhà Thờ, Hoàn Kiếm, Hà Nội. Là Nhà báo, Nhà văn, Nhà Dịch thuật, làm ở Báo Văn Nghệ. Trước đó làm ở Nhà xuất bản Văn học.\n 3. Ngô Như Ý (1926), trước làm việc ở Bộ Giáo Dục, đang sống ở tập thể Bộ Giáo Dục, 23 Lê Thánh Tông.\n 4. Ngô Thúy Hồng (1928-2004), trước làm ở Công ty Kim Khí Hóa Chất Hà Nội, sống ở 10 Lý Nam Đế\n 5. Ngô Lan Thái (1930), trước làm ở Việt Nam Thông Tấn Xã, đang sống ở Tập thể Đại Học Quốc Gia, phố Cảm Hội\n 6. Ngô Vĩnh Bảo (1938-1945, mất từ nhỏ, khoảng 7 tuổi)\n- Các cụ sinh ra ông nội tôi là Ngô Văn Ái và Nguyễn Thị Thắng\n- Tôi thấy Chứng minh thư của ông nội Ngô Văn Nhã ghi là: bố đẻ Ngô Văn Ái, quê quán: Lương Ngọc, Bình giang, Hải Dương.\n- Các cụ Ái và Thắng sinh ra: Ngô Văn Nhã, Ngô Văn Hiến và Ngô Vi Phương (Tuệ)",
+  "entities": [
+    {
+      "start": 7,
+      "end": 20,
+      "label": "PER_NAME",
+      "text": "Ngô Vĩnh Phúc"
+    },
+    {
+      "start": 27,
+      "end": 31,
+      "label": "DATE",
+      "text": "1955"
+    },
+    {
+      "start": 48,
+      "end": 61,
+      "label": "PER_NAME",
+      "text": "Ngô vĩnh Viễn"
+    },
+    {
+      "start": 63,
+      "end": 72,
+      "label": "DATE",
+      "text": "1924-1994"
+    },
+    {
+      "start": 80,
+      "end": 95,
+      "label": "PER_NAME",
+      "text": "Trương Thị Vinh"
+    },
+    {
+      "start": 97,
+      "end": 106,
+      "label": "DATE",
+      "text": "1929-1996"
+    },
+    {
+      "start": 240,
+      "end": 251,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Nhã"
+    },
+    {
+      "start": 253,
+      "end": 262,
+      "label": "DATE",
+      "text": "1894-1973"
+    },
+    {
+      "start": 281,
+      "end": 296,
+      "label": "PER_NAME",
+      "text": "Nguyễn Thị Soạn"
+    },
+    {
+      "start": 298,
+      "end": 307,
+      "label": "DATE",
+      "text": "1895-1969"
+    },
+    {
+      "start": 331,
+      "end": 364,
+      "label": "LOC",
+      "text": "21 phố Nhà Thờ, Hoàn Kiếm, Hà Nội"
+    },
+    {
+      "start": 392,
+      "end": 399,
+      "label": "LOC",
+      "text": "Lào Cai"
+    },
+    {
+      "start": 401,
+      "end": 409,
+      "label": "LOC",
+      "text": "Vĩnh Yên"
+    },
+    {
+      "start": 411,
+      "end": 420,
+      "label": "LOC",
+      "text": "Hải Phòng"
+    },
+    {
+      "start": 447,
+      "end": 456,
+      "label": "LOC",
+      "text": "Bắc Giang"
+    },
+    {
+      "start": 515,
+      "end": 526,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Chí"
+    },
+    {
+      "start": 528,
+      "end": 537,
+      "label": "DATE",
+      "text": "1921-1936"
+    },
+    {
+      "start": 775,
+      "end": 784,
+      "label": "PER_NAME",
+      "text": "Ngô Như Ý"
+    },
+    {
+      "start": 786,
+      "end": 790,
+      "label": "DATE",
+      "text": "1926"
+    },
+    {
+      "start": 856,
+      "end": 872,
+      "label": "LOC",
+      "text": "23 Lê Thánh Tông"
+    },
+    {
+      "start": 878,
+      "end": 891,
+      "label": "PER_NAME",
+      "text": "Ngô Thúy Hồng"
+    },
+    {
+      "start": 893,
+      "end": 902,
+      "label": "DATE",
+      "text": "1928-2004"
+    },
+    {
+      "start": 957,
+      "end": 969,
+      "label": "LOC",
+      "text": "10 Lý Nam Đế"
+    },
+    {
+      "start": 974,
+      "end": 986,
+      "label": "PER_NAME",
+      "text": "Ngô Lan Thái"
+    },
+    {
+      "start": 988,
+      "end": 992,
+      "label": "DATE",
+      "text": "1930"
+    },
+    {
+      "start": 1068,
+      "end": 1079,
+      "label": "LOC",
+      "text": "phố Cảm Hội"
+    },
+    {
+      "start": 1084,
+      "end": 1096,
+      "label": "PER_NAME",
+      "text": "Ngô Vĩnh Bảo"
+    },
+    {
+      "start": 1098,
+      "end": 1107,
+      "label": "DATE",
+      "text": "1938-1945"
+    },
+    {
+      "start": 1168,
+      "end": 1178,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Ái"
+    },
+    {
+      "start": 1182,
+      "end": 1198,
+      "label": "PER_NAME",
+      "text": "Nguyễn Thị Thắng"
+    },
+    {
+      "start": 1285,
+      "end": 1318,
+      "label": "LOC",
+      "text": "Lương Ngọc, Bình giang, Hải Dương"
+    },
+    {
+      "start": 1363,
+      "end": 1375,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Hiến"
+    },
+    {
+      "start": 1379,
+      "end": 1398,
+      "label": "PER_NAME",
+      "text": "Ngô Vi Phương (Tuệ)"
+    },
+    {
+      "start": 1237,
+      "end": 1244,
+      "label": "PER_NAME",
+      "text": "Ngô Văn"
+    },
+    {
+      "start": 609,
+      "end": 613,
+      "label": "DATE",
+      "text": "1924"
+    },
+    {
+      "start": 614,
+      "end": 618,
+      "label": "DATE",
+      "text": "1994"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 15
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 17
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 20
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 23
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 26
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 0
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 4,
+      "tail": 0
+    },
+    {
+      "type": "SPOUSE",
+      "head": 2,
+      "tail": 4
+    },
+    {
+      "type": "SPOUSE",
+      "head": 6,
+      "tail": 8
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 8,
+      "tail": 15
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 8,
+      "tail": 17
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 8,
+      "tail": 20
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 8,
+      "tail": 23
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 8,
+      "tail": 26
+    },
+    {
+      "type": "SPOUSE",
+      "head": 28,
+      "tail": 29
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 28,
+      "tail": 6
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 28,
+      "tail": 31
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 28,
+      "tail": 32
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 29,
+      "tail": 6
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 29,
+      "tail": 31
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 29,
+      "tail": 32
+    }
+  ]
+}

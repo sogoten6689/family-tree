@@ -1,0 +1,25 @@
+{
+  "entities": [
+    {
+      "text": "23/05/2004",
+      "label": "DATE"
+    },
+    {
+      "text": "Vũ Minh Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TP.HCM",
+      "label": "LOC"
+    },
+    {
+      "text": "12-5-2008",
+      "label": "DATE"
+    },
+    {
+      "text": "Đà Nẵng",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

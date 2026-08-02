@@ -1,0 +1,17 @@
+{
+  "entities": [
+    {
+      "text": "Việt Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "3 năm",
+      "label": "DATE"
+    },
+    {
+      "text": "NGUYỄN KỲ TRUNG",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

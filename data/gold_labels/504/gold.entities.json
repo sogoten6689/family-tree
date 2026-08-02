@@ -1,0 +1,93 @@
+{
+  "entities": [
+    {
+      "text": "cụ Đảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cụ Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cụ Phúc Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hiền Lương",
+      "label": "LOC"
+    },
+    {
+      "text": "cụ Phúc Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Văn Dĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ tư",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đồng Hàng",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ hai",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đồng Quán",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ ba",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nền Quán",
+      "label": "LOC"
+    },
+    {
+      "text": "mùng 10 tháng 1 năm 1982",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng 3 năm 1992",
+      "label": "DATE"
+    },
+    {
+      "text": "Đinh văn Bang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Gia Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 17 tháng 2 năm 2005",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày mùng 9 tháng giêng năm Ất Dậu",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,511 @@
+{
+  "entities": [
+    {
+      "text": "Ngô Lư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Tây",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Kinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Từ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Khể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Cẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Văn Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô tiến Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tiến Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Đình Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô đình Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô đình Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô đình Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phúc Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phúc Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cụ họ Lê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cương dũng hầu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Khắc Khoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Uy dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Hiệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Trọng Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Đăng Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Uông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Diễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Con trưởng",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ",
+      "label": "ORDER"
+    },
+    {
+      "text": "Bảo Thái thứ 9 ( 1713 )",
+      "label": "DATE"
+    },
+    {
+      "text": "Đời Vĩnh thịnh thứ năm (1709)",
+      "label": "DATE"
+    },
+    {
+      "text": "Bính Thìn (1856)",
+      "label": "DATE"
+    },
+    {
+      "text": "Tân Dậu (1861)",
+      "label": "DATE"
+    },
+    {
+      "text": "Qúy Tỵ\n(1893)",
+      "label": "DATE"
+    },
+    {
+      "text": "Động Phang",
+      "label": "LOC"
+    },
+    {
+      "text": "Sơn-Nam hạ",
+      "label": "LOC"
+    },
+    {
+      "text": "Tống Vũ",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Mã",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Khế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Nạp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Lương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Hữu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Ung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Đam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Xuyến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Chung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1860",
+      "label": "DATE"
+    },
+    {
+      "text": "1861",
+      "label": "DATE"
+    },
+    {
+      "text": "1862",
+      "label": "DATE"
+    },
+    {
+      "text": "1887",
+      "label": "DATE"
+    },
+    {
+      "text": "1893",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời L",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời x",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Rô",
+      "tail": "Ngô Tây",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Tây",
+      "tail": "Ngô Kinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Kinh",
+      "tail": "Ngô Từ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Việt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Lộc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Khế",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Nạp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Lương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Hữu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Ung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Kinh",
+      "tail": "Ngô Khiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Nhân",
+      "tail": "Ngô Hoà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Kinh",
+      "tail": "Ngô Đam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Đam",
+      "tail": "Ngô Xuyến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Xuyến",
+      "tail": "Ngô Chung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Lư",
+      "tail": "Ngô Rô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Từ",
+      "tail": "Ngô Khể",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Khể",
+      "tail": "Ngô Cung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Cung",
+      "tail": "Ngô Tú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Tú",
+      "tail": "Ngô Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Khang",
+      "tail": "Ngô Cẩm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Cẩm",
+      "tail": "Ngô Văn Phong",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngô Phong",
+      "tail": "Ngô tiến Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tiến Vinh",
+      "tail": "Ngô Đình Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tiến Vinh",
+      "tail": "Ngô đình Cơ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tiến Vinh",
+      "tail": "Ngô đình Quyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tiến Vinh",
+      "tail": "Ngô đình Lộc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phúc Toàn",
+      "tail": "Phúc Thọ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Cụ họ Lê",
+      "tail": "Phúc Thọ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phúc Toàn",
+      "tail": "Cụ họ Lê",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phúc Thọ",
+      "tail": "Cương dũng hầu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cương dũng hầu",
+      "tail": "Khắc Khoan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cương dũng hầu",
+      "tail": "Uy dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phan Hiệt",
+      "tail": "Nguyễn Thị Thảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

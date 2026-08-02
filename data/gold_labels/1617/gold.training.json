@@ -1,0 +1,52 @@
+{
+  "doc_id": "vgp_1617",
+  "tree_id": 1617,
+  "title": "Trần Văn - Nghệ An",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1617/pha_ky_gia_su.html",
+  "text": "Dòng họ Trần Văn phát xuất không rõ từ vùng Thanh Chương, Đô Lương, Nghệ An, Việt Nam.\ncụ Tổ Dòng họ Trần Văn không rõ xuất phát từ đâu, chỉ biết sau này, con cháu làm nhiều chức tước lớn, đóng góp cho các triều đình đương thời, vinh danh đủ đầy, con cháu đầy đàn, tỏa khắp nơi ở nước Việt.\nNgười viết:\nTrần Nam Hưng\nViết tại Thành Phố Hồ Chí Minh, Việt Nam, ngày 15 tháng 4 năm 2007.\nGhi chú: Bản chưa chính thức đang chờ bổ sung thêm thông tin dòng tộc",
+  "entities": [
+    {
+      "start": 44,
+      "end": 56,
+      "label": "LOC",
+      "text": "Thanh Chương"
+    },
+    {
+      "start": 58,
+      "end": 66,
+      "label": "LOC",
+      "text": "Đô Lương"
+    },
+    {
+      "start": 68,
+      "end": 75,
+      "label": "LOC",
+      "text": "Nghệ An"
+    },
+    {
+      "start": 77,
+      "end": 85,
+      "label": "LOC",
+      "text": "Việt Nam"
+    },
+    {
+      "start": 303,
+      "end": 316,
+      "label": "PER_NAME",
+      "text": "Trần Nam Hưng"
+    },
+    {
+      "start": 326,
+      "end": 347,
+      "label": "LOC",
+      "text": "Thành Phố Hồ Chí Minh"
+    },
+    {
+      "start": 359,
+      "end": 383,
+      "label": "DATE",
+      "text": "ngày 15 tháng 4 năm 2007"
+    }
+  ],
+  "relations": []
+}

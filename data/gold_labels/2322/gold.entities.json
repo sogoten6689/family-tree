@@ -1,0 +1,806 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Thu Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kim Huê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Tám Huê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "29 tháng 11 âm lịch năm Bính Tuất ( 1946 )",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Văn Kế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "sáu Cư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lá",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ấp Bà Sáu",
+      "label": "LOC"
+    },
+    {
+      "text": "ấp 1",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hựu Thạnh",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Đức Hòa",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Long An",
+      "label": "LOC"
+    },
+    {
+      "text": "Sáu Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN ĐỒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "tỉnh Tiền Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "ấp Voi",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Xương Thạnh",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Thạnh Lợi",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Bến Lức",
+      "label": "LOC"
+    },
+    {
+      "text": "thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "NGUYỄN VĂN ĐIẾU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "mùng 21 tháng giêng âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Đức Hòa",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Văn Củi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Cọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "bác tư Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "bác năm Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô sáu Lâu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 7 Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 8 Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 2 Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1954",
+      "label": "DATE"
+    },
+    {
+      "text": "cô 10 Nữa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tra",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Khảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Điệp lớn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Điệp Nhỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 3 Mối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 4 Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Anh 2 Thạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 4 Bích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Anh 2 Ly",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "3 Hân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "4 Trần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "5 Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Út Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Dượng 7 Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "bác 2 Hỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ông Bếp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "bác tư Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 5 Thân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "bác sáu Ất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "bác út Chót",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chị 2 Ca",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 2 Chơi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cai Tưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "2 Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "chị 3 Siêng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Dâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "chị 2 Nối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "chị tư Lo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ba Sử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 5 Xã",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh 7 Trưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "chị út Một",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Rái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "anh út Mười Hai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Vẹo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà bảy Trần thị Ngàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 3 Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "3 Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "5 Cu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "chú Tư Lén",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 3 Dìa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "2 Chiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 5 Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "dượng 5 Đài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô Hai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "3 Hí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô 7 Son",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô 7 Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô út Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tháng 8 năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "có con",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "không có con",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "NGUYỄN VĂN ĐỒNG",
+      "tail": "NGUYỄN VĂN ĐIẾU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NGUYỄN VĂN ĐIẾU",
+      "tail": "Nguyễn Văn Sáng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Kế",
+      "tail": "Nguyễn Thu Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Lá",
+      "tail": "Nguyễn Thu Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Văn Kế",
+      "tail": "Lê Thị Lá",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần Văn Củi",
+      "tail": "Lê Thị Cọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Văn Củi",
+      "tail": "Bà ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Văn Củi",
+      "tail": "Bà tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Văn Củi",
+      "tail": "Bà năm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Văn Củi",
+      "tail": "Ông sáu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Văn Củi",
+      "tail": "Bà bảy Trần thị Ngàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Cọc",
+      "tail": "Bà ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà ba",
+      "tail": "bác tư Nhàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà ba",
+      "tail": "bác năm Dân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà ba",
+      "tail": "cô sáu Lâu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà ba",
+      "tail": "cô 7 Trương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà ba",
+      "tail": "cô 8 Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác tư Nhàn",
+      "tail": "anh 2 Vấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác tư Nhàn",
+      "tail": "anh 3 Mối",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác tư Nhàn",
+      "tail": "anh 4 Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "anh 2 Vấn",
+      "tail": "cô 10 Nữa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 10 Nữa",
+      "tail": "Tra",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 10 Nữa",
+      "tail": "Khảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 10 Nữa",
+      "tail": "Điệp lớn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 10 Nữa",
+      "tail": "Điệp Nhỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà tư",
+      "tail": "bác 2 Hỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà tư",
+      "tail": "bác tư Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà tư",
+      "tail": "cô 5 Thân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà tư",
+      "tail": "bác sáu Ất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà tư",
+      "tail": "bác út Chót",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "Chị 2 Ca",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "chị 3 Siêng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "chị tư Lo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "anh 5 Xã",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "anh 7 Trưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "chị út Một",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "bác 2 Hỷ",
+      "tail": "anh út Mười Hai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Chị 2 Ca",
+      "tail": "anh 2 Chơi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "cai Tưởng",
+      "tail": "anh 2 Chơi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Chị 2 Ca",
+      "tail": "2 Ngoan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "chị 3 Siêng",
+      "tail": "Khải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "chị 2 Nối",
+      "tail": "Dâng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "chị tư Lo",
+      "tail": "ba Sử",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "chị út Một",
+      "tail": "Rái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần Thị Vẹo",
+      "tail": "Nguyễn Văn Sáng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà bảy Trần thị Ngàn",
+      "tail": "cô 3 Trụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà bảy Trần thị Ngàn",
+      "tail": "chú Tư Lén",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà bảy Trần thị Ngàn",
+      "tail": "cô 5 Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà bảy Trần thị Ngàn",
+      "tail": "cô 7 Son",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà bảy Trần thị Ngàn",
+      "tail": "Cô 7 Liên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà bảy Trần thị Ngàn",
+      "tail": "Cô út Tiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 3 Trụ",
+      "tail": "3 Ân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 3 Trụ",
+      "tail": "5 Cu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "chú Tư Lén",
+      "tail": "cô 3 Dìa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "chú Tư Lén",
+      "tail": "2 Chiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "chú Tư Lén",
+      "tail": "Lên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "cô 5 Sơn",
+      "tail": "dượng 5 Đài",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 5 Sơn",
+      "tail": "cô Hai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 5 Sơn",
+      "tail": "3 Hí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "cô 5 Sơn",
+      "tail": "cô Sáu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

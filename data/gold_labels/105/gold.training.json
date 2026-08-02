@@ -1,0 +1,40 @@
+{
+  "doc_id": "vgp_105",
+  "tree_id": 105,
+  "title": "VŨ - Ninh Bình",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/105/pha_ky_gia_su.html",
+  "text": "Gia phả được lập đầu tiên ngày 23/05/2004 bởi Ông Vũ Minh Hiếu tại TP.HCM. Đã cập nhật thêm một số chi tiết ngày 12-5-2008 bởi Ông Vũ minh Hiếu tại Đà Nẵng.\nGia phả đã được sửa chữa lại tuy cũng chưa được hoàn thiện trong thời gian hiện tại. Vì một số con cháu trong gia tộc lấy vợ gả chồng, và có thêm con cháu nội ngoại.\nGia phả hứa hẹn sẽ cập nhật liên tục để có thể nói lên là nơi chứa đựng những thông tin cần thiết cho con cháu mai sau.",
+  "entities": [
+    {
+      "start": 31,
+      "end": 41,
+      "label": "DATE",
+      "text": "23/05/2004"
+    },
+    {
+      "start": 50,
+      "end": 62,
+      "label": "PER_NAME",
+      "text": "Vũ Minh Hiếu"
+    },
+    {
+      "start": 67,
+      "end": 73,
+      "label": "LOC",
+      "text": "TP.HCM"
+    },
+    {
+      "start": 113,
+      "end": 122,
+      "label": "DATE",
+      "text": "12-5-2008"
+    },
+    {
+      "start": 148,
+      "end": 155,
+      "label": "LOC",
+      "text": "Đà Nẵng"
+    }
+  ],
+  "relations": []
+}

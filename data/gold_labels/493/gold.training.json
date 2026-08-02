@@ -1,0 +1,100 @@
+{
+  "doc_id": "vgp_493",
+  "tree_id": 493,
+  "title": "Trần Đức - Thái Bình",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/493/pha_ky_gia_su.html",
+  "text": "Chuyện truyền lại rằng các cụ tổ tiên họ Trần trên đất thôn Dưỡng Thông (còn gọi là Rãng Thông) xã Thượng Hiền huyện Kiến Xương tỉnh Thaí Bình là gốc người Thanh Hoá, có thể là nghĩa binh các cuộc nổi dậy của Nông dân nhưng thất bại đã chạy tới vùng ven biển Thái Bình khai hoang, lập nghiệp\nvà tránh sự truy lùng của các nhà chức trách đương thời. Các cụ đều có võ tướng, cao to, tay dài, đến mảnh đất này lập nghiệp cùng các cụ tổ họ khác. Bà cụ Tổ họ Phạm Ngọc, sau khi chồng chết đã xuất giá lấy cụ tổ họ Trần. So với các dòng họ khác trong làng thì họ Trần là một dòng họ nhỏ, một phần do người họ Trần sinh được ít con trai, một phần khác con cháu lại đi lập nghiệp nơi khác. Dù đời nào, tổ tiên con cháu họ Trần cũng vẫn lấy chữ ''Đức '' làm trọng nên con trai trong nhà phần lớn đều có chữ lót là Đức và mặc nhiên đuợc hiểu là họ TRẦN ĐỨC.\nTiếc rằng cho tới nay gia phả của dòng họ đã không nghi được sáu đời đầu tiên, vì vậy tạm coi cụ đời thứ bảy là cụ Tổ. Cụ Trần Đức Song là người giàu lòng nghĩ tới Tổ đường, thương con cháu, tuy không biết chữ mà năm Canh Tý (1960) đã lập quyển gia phả đầu tiên nhờ con cháu nghi lại. Tới nay họ đương có nhiều đổi thay, ông Trần Đức Quý dựa theo gia phả năm 1960 viết tiếp các phần mới. Mong rằng con cháu sau này tiếp tục thường xuyên bổ sung, hiệu chỉnh để quấn gia phả này được đầy đủ và liên tục.\nTháng 8 năm 1993\nTRẦN ĐỨC QUÝ",
+  "entities": [
+    {
+      "start": 55,
+      "end": 71,
+      "label": "LOC",
+      "text": "thôn Dưỡng Thông"
+    },
+    {
+      "start": 84,
+      "end": 94,
+      "label": "LOC",
+      "text": "Rãng Thông"
+    },
+    {
+      "start": 96,
+      "end": 110,
+      "label": "LOC",
+      "text": "xã Thượng Hiền"
+    },
+    {
+      "start": 111,
+      "end": 127,
+      "label": "LOC",
+      "text": "huyện Kiến Xương"
+    },
+    {
+      "start": 128,
+      "end": 142,
+      "label": "LOC",
+      "text": "tỉnh Thaí Bình"
+    },
+    {
+      "start": 156,
+      "end": 165,
+      "label": "LOC",
+      "text": "Thanh Hoá"
+    },
+    {
+      "start": 259,
+      "end": 268,
+      "label": "LOC",
+      "text": "Thái Bình"
+    },
+    {
+      "start": 909,
+      "end": 925,
+      "label": "GENERATION",
+      "text": "sáu đời đầu tiên"
+    },
+    {
+      "start": 945,
+      "end": 956,
+      "label": "GENERATION",
+      "text": "đời thứ bảy"
+    },
+    {
+      "start": 970,
+      "end": 983,
+      "label": "PER_NAME",
+      "text": "Trần Đức Song"
+    },
+    {
+      "start": 1065,
+      "end": 1072,
+      "label": "DATE",
+      "text": "Canh Tý"
+    },
+    {
+      "start": 1074,
+      "end": 1078,
+      "label": "DATE",
+      "text": "1960"
+    },
+    {
+      "start": 1173,
+      "end": 1185,
+      "label": "PER_NAME",
+      "text": "Trần Đức Quý"
+    },
+    {
+      "start": 1350,
+      "end": 1366,
+      "label": "DATE",
+      "text": "Tháng 8 năm 1993"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 9,
+      "tail": 12
+    }
+  ]
+}

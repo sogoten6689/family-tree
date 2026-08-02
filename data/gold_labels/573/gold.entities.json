@@ -1,0 +1,95 @@
+{
+  "entities": [
+    {
+      "text": "Thôn Dương Quang, Xã Đức Thắng, Huyện Mộ Đức, Tỉnh Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "Lê Văn Lạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thôn 4 Đức Chánh, Mộ Đức, Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "Lê Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thôn Hoài An, xã Đức Chánh, huyện Mộ Đức, tỉnh Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "trai cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "Lê Văn Thỉnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "trai thứ",
+      "label": "ORDER"
+    },
+    {
+      "text": "Lê Văn Lương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "miền Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Lê Văn Tháo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "Lê Văn Tư",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Dương",
+      "tail": "Lê Văn Tượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Tượng",
+      "tail": "Lê Văn Thỉnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Tượng",
+      "tail": "Lê Văn Lương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

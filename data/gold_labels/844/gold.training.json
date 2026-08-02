@@ -1,0 +1,142 @@
+{
+  "doc_id": "vgp_844",
+  "tree_id": 844,
+  "title": "Trần Huy - Hưng Yên",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/844/pha_ky_gia_su.html",
+  "text": "Vào khỏang đầu thế kỷ thứ XIX cụ Tổ dòng họ TRẦN HUY là cụ Trần Huy Nghệ. Cụ sinh ra tại làng Mai Hương, huyện Mỹ Lộc, phủ Xuân Trường tỉnh Nam Định, vì việc Sưu thuế đã lỡ tay sát thương người trương tuần nên Cụ bỏ làng ra cư ngụ tại thôn Xanh, làng Duyên Linh, huyện Phù cừ, tỉnh Hưng Yên và sinh ra dòng họ Trần Huy.\nCụ tổ có nghề làm Bánh Mứt Kẹo. Đến nay con cháu còn nhiều người giữ được nghề Tổ như Bảo Hương, Bảo Hiên rồng vàng, Bảo Hưng, Đức Hưng, Ngọc Hương, Việt Cường ...\nLăng mộ tổ dòng họ Trần Huy đặt tại khu đất trên lưng con Nhạn, cánh đồng Giàu thôn Duyên Linh, xã Đình Cao, huyện Phù Cừ, tỉnh Hưng Yên\nKhu mộ hiện nay do các trưởng ngành, chi, con cháu đời thứ 5 tôn tạo xây dựng lại năm Qúi dậu (1993 dương lịch). Lễ khánh thành được tổ chức ngày Thanh Minh 25 tháng 2 năm Giáp tuất (05/04/1994) với đông đủ con cháu từ Hưng yên, Hà Nội, Hải Phòng, Hải Dương.\nHàng năm, vào ngày Thanh minh, các chi, ngành, con cháu xa gần họp mặt về thăm quê hương, dâng hương tưởng nhớ những người đã khuất.",
+  "entities": [
+    {
+      "start": 11,
+      "end": 29,
+      "label": "DATE",
+      "text": "đầu thế kỷ thứ XIX"
+    },
+    {
+      "start": 59,
+      "end": 72,
+      "label": "PER_NAME",
+      "text": "Trần Huy Nghệ"
+    },
+    {
+      "start": 89,
+      "end": 103,
+      "label": "LOC",
+      "text": "làng Mai Hương"
+    },
+    {
+      "start": 105,
+      "end": 117,
+      "label": "LOC",
+      "text": "huyện Mỹ Lộc"
+    },
+    {
+      "start": 119,
+      "end": 134,
+      "label": "LOC",
+      "text": "phủ Xuân Trường"
+    },
+    {
+      "start": 135,
+      "end": 148,
+      "label": "LOC",
+      "text": "tỉnh Nam Định"
+    },
+    {
+      "start": 235,
+      "end": 244,
+      "label": "LOC",
+      "text": "thôn Xanh"
+    },
+    {
+      "start": 246,
+      "end": 261,
+      "label": "LOC",
+      "text": "làng Duyên Linh"
+    },
+    {
+      "start": 263,
+      "end": 275,
+      "label": "LOC",
+      "text": "huyện Phù cừ"
+    },
+    {
+      "start": 277,
+      "end": 290,
+      "label": "LOC",
+      "text": "tỉnh Hưng Yên"
+    },
+    {
+      "start": 548,
+      "end": 562,
+      "label": "LOC",
+      "text": "cánh đồng Giàu"
+    },
+    {
+      "start": 563,
+      "end": 578,
+      "label": "LOC",
+      "text": "thôn Duyên Linh"
+    },
+    {
+      "start": 580,
+      "end": 591,
+      "label": "LOC",
+      "text": "xã Đình Cao"
+    },
+    {
+      "start": 672,
+      "end": 681,
+      "label": "GENERATION",
+      "text": "đời thứ 5"
+    },
+    {
+      "start": 703,
+      "end": 714,
+      "label": "DATE",
+      "text": "năm Qúi dậu"
+    },
+    {
+      "start": 716,
+      "end": 720,
+      "label": "DATE",
+      "text": "1993"
+    },
+    {
+      "start": 778,
+      "end": 802,
+      "label": "DATE",
+      "text": "25 tháng 2 năm Giáp tuất"
+    },
+    {
+      "start": 804,
+      "end": 814,
+      "label": "DATE",
+      "text": "05/04/1994"
+    },
+    {
+      "start": 840,
+      "end": 848,
+      "label": "LOC",
+      "text": "Hưng yên"
+    },
+    {
+      "start": 850,
+      "end": 856,
+      "label": "LOC",
+      "text": "Hà Nội"
+    },
+    {
+      "start": 858,
+      "end": 867,
+      "label": "LOC",
+      "text": "Hải Phòng"
+    },
+    {
+      "start": 869,
+      "end": 878,
+      "label": "LOC",
+      "text": "Hải Dương"
+    }
+  ],
+  "relations": []
+}

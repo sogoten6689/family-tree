@@ -1,0 +1,216 @@
+{
+  "doc_id": "vgp_1202",
+  "tree_id": 1202,
+  "title": "Nguyễn - Đại Từ - Thái Nguyên",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1202/pha_ky_gia_su.html",
+  "text": "Dòng họ Nguyễn Công ở xã Hiệp Hoà - Vĩnh Bảo - Hải phòng có một nhánh là Nguyễn Đắc đi chiến khu Việt Bắc vào tháng 01/1950 và đến tháng 03/1950 thì về trú tại huyện Đại Từ - Tỉnh Thái Nguyên . Sau khi dịch bảng gia phả năm 2006 thì được biết Từ đời Thuỷ tổ dòng họ là Nguyễn Công đến đời hiển khảo là Nguyễn Đình sang đời thứ 6 lại đổi thành Nguyễn Đắc và tiếp đến đời thứ 7 là Nguyễn Đức ... Đời Thuỷ tổ Nguyễn Công, tự là Phúc Vạn. Đời cao tổ, có tự là Phúc Trong, Phúc Đạo. Đời tằng tổ, có tự là Phúc Trung, Phúc Trân, Phúc Chính. Đời tổ khảo, có tự là Phúc Trần, Phúc Thông, Phúc Lộc. Đến đời Hiển khảo thì đổi thành Nguyễn Đình, Tự là Phúc Hiếu .. và đến đời thứ 6 là Nguyến Đắc Thắng. Đời thứ 7 các con của Ông Thắng là Nguyễn Đức ..tự là Đức Dũng, Đức Thành, Đức Hiệp, Đức Lực, Đức Bình.",
+  "entities": [
+    {
+      "start": 25,
+      "end": 33,
+      "label": "LOC",
+      "text": "Hiệp Hoà"
+    },
+    {
+      "start": 36,
+      "end": 44,
+      "label": "LOC",
+      "text": "Vĩnh Bảo"
+    },
+    {
+      "start": 47,
+      "end": 56,
+      "label": "LOC",
+      "text": "Hải phòng"
+    },
+    {
+      "start": 110,
+      "end": 123,
+      "label": "DATE",
+      "text": "tháng 01/1950"
+    },
+    {
+      "start": 131,
+      "end": 144,
+      "label": "DATE",
+      "text": "tháng 03/1950"
+    },
+    {
+      "start": 166,
+      "end": 172,
+      "label": "LOC",
+      "text": "Đại Từ"
+    },
+    {
+      "start": 180,
+      "end": 191,
+      "label": "LOC",
+      "text": "Thái Nguyên"
+    },
+    {
+      "start": 220,
+      "end": 228,
+      "label": "DATE",
+      "text": "năm 2006"
+    },
+    {
+      "start": 8,
+      "end": 19,
+      "label": "PER_NAME",
+      "text": "Nguyễn Công"
+    },
+    {
+      "start": 302,
+      "end": 313,
+      "label": "PER_NAME",
+      "text": "Nguyễn Đình"
+    },
+    {
+      "start": 319,
+      "end": 328,
+      "label": "GENERATION",
+      "text": "đời thứ 6"
+    },
+    {
+      "start": 366,
+      "end": 375,
+      "label": "GENERATION",
+      "text": "đời thứ 7"
+    },
+    {
+      "start": 425,
+      "end": 433,
+      "label": "PER_NAME",
+      "text": "Phúc Vạn"
+    },
+    {
+      "start": 456,
+      "end": 466,
+      "label": "PER_NAME",
+      "text": "Phúc Trong"
+    },
+    {
+      "start": 468,
+      "end": 476,
+      "label": "PER_NAME",
+      "text": "Phúc Đạo"
+    },
+    {
+      "start": 500,
+      "end": 510,
+      "label": "PER_NAME",
+      "text": "Phúc Trung"
+    },
+    {
+      "start": 512,
+      "end": 521,
+      "label": "PER_NAME",
+      "text": "Phúc Trân"
+    },
+    {
+      "start": 523,
+      "end": 533,
+      "label": "PER_NAME",
+      "text": "Phúc Chính"
+    },
+    {
+      "start": 557,
+      "end": 566,
+      "label": "PER_NAME",
+      "text": "Phúc Trần"
+    },
+    {
+      "start": 568,
+      "end": 578,
+      "label": "PER_NAME",
+      "text": "Phúc Thông"
+    },
+    {
+      "start": 580,
+      "end": 588,
+      "label": "PER_NAME",
+      "text": "Phúc Lộc"
+    },
+    {
+      "start": 641,
+      "end": 650,
+      "label": "PER_NAME",
+      "text": "Phúc Hiếu"
+    },
+    {
+      "start": 674,
+      "end": 690,
+      "label": "PER_NAME",
+      "text": "Nguyến Đắc Thắng"
+    },
+    {
+      "start": 714,
+      "end": 723,
+      "label": "PER_NAME",
+      "text": "Ông Thắng"
+    },
+    {
+      "start": 746,
+      "end": 754,
+      "label": "PER_NAME",
+      "text": "Đức Dũng"
+    },
+    {
+      "start": 756,
+      "end": 765,
+      "label": "PER_NAME",
+      "text": "Đức Thành"
+    },
+    {
+      "start": 767,
+      "end": 775,
+      "label": "PER_NAME",
+      "text": "Đức Hiệp"
+    },
+    {
+      "start": 777,
+      "end": 784,
+      "label": "PER_NAME",
+      "text": "Đức Lực"
+    },
+    {
+      "start": 786,
+      "end": 794,
+      "label": "PER_NAME",
+      "text": "Đức Bình"
+    },
+    {
+      "start": 435,
+      "end": 440,
+      "label": "GENERATION",
+      "text": "Đời c"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 23,
+      "tail": 24
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 23,
+      "tail": 25
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 23,
+      "tail": 26
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 23,
+      "tail": 27
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 23,
+      "tail": 28
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "doc_id": "vgp_2432",
+  "tree_id": 2432,
+  "title": "Nguyễn Làng Son - Thái Bình",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/2432/pha_ky_gia_su.html",
+  "text": "Cụ tổ họ Nguyễn Làng Son - Cụ Nguyễn Tiến Đạt từ đất Thanh Nga, huyện Hưng nhân, tỉnh Thái Bình đến lập nghiệp tại đất Kênh Son từ đời vua Quang Trung (1771-1792), cách đây khoảng 220 năm.\nNgạn ngữ ta có câu: \"Uống nước nhớ nguồn\", \"Ăn quả nhớ kẻ trồng cây\". Mọi người sinh ra đều có cha, có mẹ, có ông bà, tổ tiên. Thật đúng là:\nChim trời còn có Tổ tông\nLàm người phải biết cha, ông, giống nòi\nSau hơn 3 năm sưu tầm từ năm 1991 đến năm 1993, được sự cộng tác của anh em các cành và của các cụ cao niên trong dòng họ, Ban biên tập đã sưu tầm và lập được sơ đồ dòng họ từ đời cụ Thủy tổ đến đời thứ 10 tương đối hoàn chỉnh.\nViệc lập gia phả lần này mới nêu được ngôi thứ của các cụ ông (chưa có các cụ bà), chưa biết ngày, tháng, năm, sinh và ngày, tháng, năm mất của các cụ, chưa nêu lên được thành tích, công lao của các cụ đã đóng góp cho đất nước, cho quê hương cho dòng họ. Do đó công việc này còn phải được tiếp tục trong thời gian tời và mãi mãi cho các đời kế tiếp.\nBan biên tập gồm có:\n1. Ông Nguyễn Văn Phối, đời thứ 9, cành 5\n2. Ông Nguyễn Văn Rừa, đời thứ 9, cảnh trưởng\n3. Ông Nguyễn Mạnh Hùng, đời thứ 11, cành trưởng\n4. Ông Nguyễn Văn Hệ, đời thứ 12, cành thứ\n5. Ông Nguyễn Mạnh Truyền, đời thứ 12, cành 3\n6. Ông Nguyễn Duy Kiểm, đời thứ 11, cành 4\n7. Ông Nguyễn Văn Cảnh, đời thứ 11, cành 5",
+  "entities": [
+    {
+      "start": 30,
+      "end": 45,
+      "label": "PER_NAME",
+      "text": "Nguyễn Tiến Đạt"
+    },
+    {
+      "start": 16,
+      "end": 24,
+      "label": "LOC",
+      "text": "Làng Son"
+    },
+    {
+      "start": 53,
+      "end": 62,
+      "label": "LOC",
+      "text": "Thanh Nga"
+    },
+    {
+      "start": 70,
+      "end": 79,
+      "label": "LOC",
+      "text": "Hưng nhân"
+    },
+    {
+      "start": 86,
+      "end": 95,
+      "label": "LOC",
+      "text": "Thái Bình"
+    },
+    {
+      "start": 119,
+      "end": 127,
+      "label": "LOC",
+      "text": "Kênh Son"
+    },
+    {
+      "start": 139,
+      "end": 150,
+      "label": "PER_NAME",
+      "text": "Quang Trung"
+    },
+    {
+      "start": 152,
+      "end": 161,
+      "label": "DATE",
+      "text": "1771-1792"
+    },
+    {
+      "start": 420,
+      "end": 428,
+      "label": "DATE",
+      "text": "năm 1991"
+    },
+    {
+      "start": 433,
+      "end": 441,
+      "label": "DATE",
+      "text": "năm 1993"
+    },
+    {
+      "start": 590,
+      "end": 600,
+      "label": "GENERATION",
+      "text": "đời thứ 10"
+    },
+    {
+      "start": 1001,
+      "end": 1016,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Phối"
+    },
+    {
+      "start": 1018,
+      "end": 1027,
+      "label": "GENERATION",
+      "text": "đời thứ 9"
+    },
+    {
+      "start": 1043,
+      "end": 1057,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Rừa"
+    },
+    {
+      "start": 1089,
+      "end": 1105,
+      "label": "PER_NAME",
+      "text": "Nguyễn Mạnh Hùng"
+    },
+    {
+      "start": 1107,
+      "end": 1117,
+      "label": "GENERATION",
+      "text": "đời thứ 11"
+    },
+    {
+      "start": 1138,
+      "end": 1151,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Hệ"
+    },
+    {
+      "start": 1153,
+      "end": 1163,
+      "label": "GENERATION",
+      "text": "đời thứ 12"
+    },
+    {
+      "start": 1181,
+      "end": 1199,
+      "label": "PER_NAME",
+      "text": "Nguyễn Mạnh Truyền"
+    },
+    {
+      "start": 1227,
+      "end": 1242,
+      "label": "PER_NAME",
+      "text": "Nguyễn Duy Kiểm"
+    },
+    {
+      "start": 1270,
+      "end": 1285,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Cảnh"
+    },
+    {
+      "start": 131,
+      "end": 136,
+      "label": "GENERATION",
+      "text": "đời v"
+    },
+    {
+      "start": 571,
+      "end": 576,
+      "label": "GENERATION",
+      "text": "đời c"
+    }
+  ],
+  "relations": []
+}

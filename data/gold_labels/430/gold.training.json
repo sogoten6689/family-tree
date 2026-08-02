@@ -1,0 +1,58 @@
+{
+  "doc_id": "vgp_430",
+  "tree_id": 430,
+  "title": "Họ Thân làng khê thượng - Hà Tây",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/430/pha_ky_gia_su.html",
+  "text": "Dòng họ Thân bắt nguồn từ họ vương bên trung hoa . Sau nhiều năm lưu lạc 3 anh em dòng họ Vương là:\nanh cả ngụ tại sài gòn gia định, anh hai ở tại hà tây , và anh ba ở tại hà bắc\nDòng họ Thân làng khê thượng con trai bắt",
+  "entities": [
+    {
+      "start": 39,
+      "end": 48,
+      "label": "LOC",
+      "text": "trung hoa"
+    },
+    {
+      "start": 100,
+      "end": 106,
+      "label": "ORDER",
+      "text": "anh cả"
+    },
+    {
+      "start": 115,
+      "end": 131,
+      "label": "LOC",
+      "text": "sài gòn gia định"
+    },
+    {
+      "start": 133,
+      "end": 140,
+      "label": "ORDER",
+      "text": "anh hai"
+    },
+    {
+      "start": 147,
+      "end": 153,
+      "label": "LOC",
+      "text": "hà tây"
+    },
+    {
+      "start": 159,
+      "end": 165,
+      "label": "ORDER",
+      "text": "anh ba"
+    },
+    {
+      "start": 172,
+      "end": 178,
+      "label": "LOC",
+      "text": "hà bắc"
+    },
+    {
+      "start": 197,
+      "end": 207,
+      "label": "LOC",
+      "text": "khê thượng"
+    }
+  ],
+  "relations": []
+}

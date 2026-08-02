@@ -1,0 +1,70 @@
+{
+  "doc_id": "vgp_1633",
+  "tree_id": 1633,
+  "title": "ĐÀO - Bình Thuận",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1633/pha_ky_gia_su.html",
+  "text": "Thiết nghỉ rằng cây có góc, sông nước có cội nguồn và con người có tổ tiên. Con cháu chúng ta ngày nay được vinh dự sinh ra, lớn lên và phát triển tồn tại trên xã hội là nhờ có Tổ tiên, ông bà, cha mẹ. Bản thân con cháu chúng ta ngày nay và nhiều thế hệ mai sau cần phải biết cội nguồn tổ tiên để tưởng nhớ và biết ơn.\nViệc lập gia phả là cần thiết, từ đó mọi người trong dòng họ biết bà con thân thuộc và tổ tiên chúng ta; biết tên của từng người trong họ; biết ngày đám giỗ của những người đã chết và ngày giỗ tổ họ mà cầu nguyện, tưởng nhớ hoặc đến dự lễ.\nVào khoản năm 1898, lúc đó là thời vua Nguyễn Cụ tổ từ quê Bình Định vào\nNam\nlập nghiệp tại làng Tân Thắng, xã Hiệp Hòa không có bà con thân tộc chỉ có người anh kết nghĩa cùng họ. Thân tộc họ Đào tại Bình Định vẫn còn nhưng không liên hệ được. Vì vậy trong gia phả này bắt đầu ghi chép lịch sử từ đời ông tổ Đào Đắc. Tộc Đào bắt đầu từ lúc đó tính đến nay khoảng gần 110 năm.\nGia phả họ Đào được lập với bản đầu tiên ngày 06/02/2008 (\nAL\n29/01/2007 năm Đinh Hợi) thời kỳ nước cộng hòa xã hội chủ nghĩa Việt\nNam\n.\nCông việc này có nhiều khó khăn và phức tạp, song chúng tôi vẫn phải mạnh dạng tiến hành và nếu có những phần nào thiếu sót rất mong mọi người trong họ tộc góp ý xây dựng.",
+  "entities": [
+    {
+      "start": 569,
+      "end": 577,
+      "label": "DATE",
+      "text": "năm 1898"
+    },
+    {
+      "start": 618,
+      "end": 627,
+      "label": "LOC",
+      "text": "Bình Định"
+    },
+    {
+      "start": 632,
+      "end": 635,
+      "label": "LOC",
+      "text": "Nam"
+    },
+    {
+      "start": 651,
+      "end": 665,
+      "label": "LOC",
+      "text": "làng Tân Thắng"
+    },
+    {
+      "start": 667,
+      "end": 678,
+      "label": "LOC",
+      "text": "xã Hiệp Hòa"
+    },
+    {
+      "start": 868,
+      "end": 875,
+      "label": "PER_NAME",
+      "text": "Đào Đắc"
+    },
+    {
+      "start": 977,
+      "end": 992,
+      "label": "DATE",
+      "text": "ngày 06/02/2008"
+    },
+    {
+      "start": 995,
+      "end": 1008,
+      "label": "DATE",
+      "text": "AL\n29/01/2007"
+    },
+    {
+      "start": 1009,
+      "end": 1021,
+      "label": "DATE",
+      "text": "năm Đinh Hợi"
+    },
+    {
+      "start": 1062,
+      "end": 1070,
+      "label": "LOC",
+      "text": "Việt\nNam"
+    }
+  ],
+  "relations": []
+}

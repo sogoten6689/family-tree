@@ -1,0 +1,25 @@
+{
+  "entities": [
+    {
+      "text": "Việt nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Châu Ái",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngô Nhật Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thế kỷ thứ VIII",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

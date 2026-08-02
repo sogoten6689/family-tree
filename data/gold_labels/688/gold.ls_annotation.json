@@ -1,0 +1,67 @@
+{
+  "result": [
+    {
+      "id": "ent_28204057996b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 235,
+        "end": 242,
+        "text": "Phù Tải",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_bc2b67e44a56",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 297,
+        "end": 307,
+        "text": "đời thứ 10",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_fc3e0b9b6752",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 495,
+        "end": 503,
+        "text": "Năm 1965",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_af35d812306b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1093,
+        "end": 1121,
+        "text": "Mùa Xuân năm Canh Ngọ (1990)",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

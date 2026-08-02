@@ -1,0 +1,10 @@
+{
+  "entity_count": 23,
+  "relation_count": 3,
+  "per_name_count": 7,
+  "diagram_backed_per_name": 0,
+  "gemini_entities_in": 23,
+  "gemini_relations_in": 4,
+  "pha_he_node_matches": 0,
+  "rule_entity_count": 4
+}

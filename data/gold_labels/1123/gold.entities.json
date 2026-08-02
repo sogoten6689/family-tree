@@ -1,0 +1,81 @@
+{
+  "entities": [
+    {
+      "text": "Suối-nghệ",
+      "label": "LOC"
+    },
+    {
+      "text": "1972",
+      "label": "DATE"
+    },
+    {
+      "text": "Châu-đức",
+      "label": "LOC"
+    },
+    {
+      "text": "Bà-rịa",
+      "label": "LOC"
+    },
+    {
+      "text": "Bùi Quang Liêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "2012",
+      "label": "DATE"
+    },
+    {
+      "text": "Bùi Khanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mai-xá",
+      "label": "LOC"
+    },
+    {
+      "text": "Gio-linh",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng-trị",
+      "label": "LOC"
+    },
+    {
+      "text": "BÙI ĐƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bái-trời",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thế hệ thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thế hệ thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1558",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

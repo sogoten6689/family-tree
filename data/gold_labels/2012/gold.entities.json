@@ -1,0 +1,523 @@
+{
+  "entities": [
+    {
+      "text": "Phạm Hữu Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Mô Độ",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Yên Mô Thượng",
+      "label": "LOC"
+    },
+    {
+      "text": "1407",
+      "label": "DATE"
+    },
+    {
+      "text": "2007",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 19",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Huý Ngọc Đường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phúc Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1672",
+      "label": "DATE"
+    },
+    {
+      "text": "Đặng Sĩ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đạo Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1680 – 1705",
+      "label": "DATE"
+    },
+    {
+      "text": "Đăng Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hữu Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đạo Âu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đại An",
+      "label": "LOC"
+    },
+    {
+      "text": "Vĩ Danh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hữu Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Định Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1740",
+      "label": "DATE"
+    },
+    {
+      "text": "Hữu Vĩ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trung Quán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Hữu Hiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1740 – 1786",
+      "label": "DATE"
+    },
+    {
+      "text": "Phạm Hữu Thấu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thuỷ Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Phạm Thị Ký",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Huy Lục",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Xuân Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Đình Cánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Phạm Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trịnh Đình Trấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hà Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Hữu Du",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Xuân Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hữu Hào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bần Lạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Quốc Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại Cát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Nhữ Cẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hữu Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thuỷ Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nhữ Di",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mạnh Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1930 – 1954",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng 8/1945 – Ngày 02/09/1945",
+      "label": "DATE"
+    },
+    {
+      "text": "02/07/1976",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Ông Cư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Bảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hương Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lai Thành – Kim Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Ông Hồng (Bình)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hoà Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Ông Xin",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tửu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Dảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Yên Mạc",
+      "label": "LOC"
+    },
+    {
+      "text": "Ông Tuấn (Tuất)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tam Điệp",
+      "label": "LOC"
+    },
+    {
+      "text": "Ông Uýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Gia Lai",
+      "label": "LOC"
+    },
+    {
+      "text": "1955",
+      "label": "DATE"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    },
+    {
+      "text": "Phạm Ngọc Liêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Yên Mô",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Thị Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Văn Tiễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Thực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Văn Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Xin",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bùi Xin",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1849",
+      "label": "DATE"
+    },
+    {
+      "text": "2000",
+      "label": "DATE"
+    },
+    {
+      "text": "2005",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Hữu Thấu",
+      "tail": "Phạm Thị Ký",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Hữu Thấu",
+      "tail": "Phạm Thị Hoạt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Văn Hồng",
+      "tail": "Phạm Văn Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Thị Ký",
+      "tail": "Phạm Huy Lục",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Ký",
+      "tail": "Phạm Xuân Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Huy Lục",
+      "tail": "Phạm Xuân Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Thị Hoạt",
+      "tail": "Vũ Đình Cánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Hữu Thấu",
+      "tail": "Phạm Thị Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Thị Mai",
+      "tail": "Trịnh Đình Trấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Thị Tư",
+      "tail": "Phạm Văn Tiễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Tư",
+      "tail": "Phạm Khương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Văn Tiễn",
+      "tail": "Phạm Khương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Thị Thực",
+      "tail": "Phạm Văn Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Thực",
+      "tail": "Phạm Xin",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Văn Hồng",
+      "tail": "Phạm Xin",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

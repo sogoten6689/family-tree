@@ -1,0 +1,87 @@
+{
+  "doc_id": "vgp_1540",
+  "tree_id": 1540,
+  "title": "NGUYỄN VĂN (Nam Trung-Nam Đàn-Nghệ An) - Nghệ An",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1540/pha_ky_gia_su.html",
+  "text": "I. LỜI MỞ ĐẦU:\nHọ Nguyễn Văn-Gốc làng Dương Liễu, nay là xã Nam Trung- Nam Đàn- Nghệ An.Có gia phả bằng chữ nho và đã dịch ra chữ Quốc ngữ, nhưng do trận lụt năm 1978, bị vỡ đê nên nhà cửa bi trôi sạch.Vậy gia phả cũng bị trôi theo. Con cháu bận công tác nên đến năm 2007 mới ghi lại gia phả của họ.Do những người lớn tuổi đã qua đời nên biết phần nào ghi phần ấy, để lại cho con cháu sau này.Người nhớ và đọc là Ông Nguyễn Văn Quảng( Tộc trưởng), người viết là Bà Nguyễn Thị Tâm (Vợ tộc trưởng) và Ông Nguyễn Thanh Tùng (con trai tộc trưởng),có bổ sung thêm ý kiến của Anh em trong họ tộc.\nII. HỌ TỘC NGUYỄN VĂN:\nHọ Nguyễn Văn hiện nay chính gốc là họ Nguyễn Duy. Gồm có 4 Chi.Theo lời kể trước đây, do phần nhiều bị tuyệt tự cho nên họp họ đã thống nhất đổi từ họ Nguyễn Duy sang họ Nguyễn Văn.\n- Chi 1: Đổi sang họ Nguyễn Văn.\n- Chi 2 : Vẫn để họ Nguyễn Duy.\n- Chi 3: Đổi sang họ Nguyễn Văn.\n- Chi 4: Theo Công Giáo.\nIII. PHẦN LĂNG MỘ:\nMộ tập trung hiện nay nằm trong Lăng đặt tại núi Đổng Sơn- Làng Dương Liễu- Xã Nam Trung- Nam Đàn- Nghệ An.\nCác ngôi mộ trong Lăng gồm có:\n- Ngôi mộ các Cụ Tổ.\n- Các ngôi mộ của Chi 1.",
+  "entities": [
+    {
+      "start": 38,
+      "end": 48,
+      "label": "LOC",
+      "text": "Dương Liễu"
+    },
+    {
+      "start": 60,
+      "end": 69,
+      "label": "LOC",
+      "text": "Nam Trung"
+    },
+    {
+      "start": 71,
+      "end": 78,
+      "label": "LOC",
+      "text": "Nam Đàn"
+    },
+    {
+      "start": 80,
+      "end": 87,
+      "label": "LOC",
+      "text": "Nghệ An"
+    },
+    {
+      "start": 158,
+      "end": 166,
+      "label": "DATE",
+      "text": "năm 1978"
+    },
+    {
+      "start": 263,
+      "end": 271,
+      "label": "DATE",
+      "text": "năm 2007"
+    },
+    {
+      "start": 417,
+      "end": 433,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Quảng"
+    },
+    {
+      "start": 465,
+      "end": 479,
+      "label": "PER_NAME",
+      "text": "Nguyễn Thị Tâm"
+    },
+    {
+      "start": 503,
+      "end": 520,
+      "label": "PER_NAME",
+      "text": "Nguyễn Thanh Tùng"
+    },
+    {
+      "start": 988,
+      "end": 996,
+      "label": "LOC",
+      "text": "Đổng Sơn"
+    },
+    {
+      "start": 1092,
+      "end": 1097,
+      "label": "PER_NAME",
+      "text": "Cụ Tổ"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 8
+    },
+    {
+      "type": "SPOUSE",
+      "head": 6,
+      "tail": 7
+    }
+  ]
+}

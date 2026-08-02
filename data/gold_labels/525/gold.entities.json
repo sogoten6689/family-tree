@@ -1,0 +1,169 @@
+{
+  "entities": [
+    {
+      "text": "Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Hồ Chí Minh",
+      "label": "LOC"
+    },
+    {
+      "text": "Đồng Nai",
+      "label": "LOC"
+    },
+    {
+      "text": "Tây Ninh",
+      "label": "LOC"
+    },
+    {
+      "text": "Rạch Giá",
+      "label": "LOC"
+    },
+    {
+      "text": "Canada",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức",
+      "label": "LOC"
+    },
+    {
+      "text": "Pháp",
+      "label": "LOC"
+    },
+    {
+      "text": "Mỹ",
+      "label": "LOC"
+    },
+    {
+      "text": "Việt Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Công Yết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Trần VănThiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "119 Đinh Tiên Hoàng, phường Đakao, quận 1, thành phố Hồ Chí Minh",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Vỉ",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Hồng",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Yên Tử",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Khang Kiện",
+      "label": "LOC"
+    },
+    {
+      "text": "hương Tức Mạc",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Thiên Trường",
+      "label": "LOC"
+    },
+    {
+      "text": "lộ Sơn Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Tức Mạc",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Lộc Vượng",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thái Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thăng Long",
+      "label": "LOC"
+    },
+    {
+      "text": "1225-1400",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Án",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thiếu Đế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1398-1400",
+      "label": "DATE"
+    },
+    {
+      "text": "Hồ Quý Ly",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1400-1401",
+      "label": "DATE"
+    },
+    {
+      "text": "Thiên Bản",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Đào",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hiển Khánh",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Vụ Bản",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Nam Định",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

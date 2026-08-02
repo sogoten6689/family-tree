@@ -1,0 +1,197 @@
+{
+  "entities": [
+    {
+      "text": "xóm Chùa",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Thượng Tứ",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Bùi Xá",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Đức Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Hà Tĩnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghi Hợp",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghi Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Xí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "12 tháng 5 năm Quang Thuận thứ 3-1462",
+      "label": "DATE"
+    },
+    {
+      "text": "Lý Tĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Kinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tào Bàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Xóm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vĩ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "15/5/2004",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Vanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Hạp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 2004",
+      "label": "DATE"
+    },
+    {
+      "text": "Thượng Xá",
+      "label": "LOC"
+    },
+    {
+      "text": "đời 01",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 07",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Thế Truyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đức Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Đình Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1937 - 1938",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1987",
+      "label": "DATE"
+    },
+    {
+      "text": "con thứ 3",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Thế Gia",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1462",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Lý Tĩnh",
+      "tail": "Kinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lý Tĩnh",
+      "tail": "Nghiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tào Bàn",
+      "tail": "Xóm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tào Bàn",
+      "tail": "Vĩ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Thế Gia",
+      "tail": "Nguyễn Đình Tương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,7430 @@
+{
+  "entities": [
+    {
+      "text": "NGUYỄN-LÊ (LÀO-TÁO--CỦ-CHI) - Sài Gòn",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NAM (CHẾT NHỎ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN SỰ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN KIÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NỮ (CHẾT NHỎ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ CƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ KIÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN KEO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ TÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN HÒI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CHUẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THỨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ CHUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ XUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN MÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÒA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MÍT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN NI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CÙ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MÁNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ RỐ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ RÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN BẰNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN THÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ XIỆC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NHỆN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN SUÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ LẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ ẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ PHỤ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ NHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN VĂN ĐEM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LỘI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN KẾNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CHINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN RINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ RỊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ BẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ ĐẢNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN LUÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐẸP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN TRẺ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MẪN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ ÚT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỰC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ SUA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN LONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN HOÀNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN DÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN SÁNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ VĨNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ VIỄN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỨC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ TUYẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MỸ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN TÍN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN VÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN CHĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN RẰNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ TUYẾT TRINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ ĐIỆP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HỒNG PHONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NE",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ THEN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NGUYỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MỸ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HÙNG QUỐC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HÙNG HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN ĐỨC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ LỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ ĐÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THANH SƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THANH LÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THANH DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ TÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ TUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THANH CHIẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ CẦU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN TRẦM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ ĐẰM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ PHON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MÓN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN BỬU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN ÚT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN XƯỚNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MUỐN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HUỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN RỠ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ RÁO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THẲNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN BỤNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN BỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGỌC ẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HỒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN VUI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN TO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ BON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HUỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN VŨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ CU-XÊ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông PHAN THỊ ÚT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN TÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ BÉ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ THÚY NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ THÚY HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐÌNH DANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐÌNH TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐÌNH HIẾU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐÌNH SĨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ PHƯỢNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ KIM ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐÌNH NHỨT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LỘC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ HIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LIỄU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUỐC CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUỐC TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU SƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THANH ĐÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN TRUNG DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU VÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THANH SANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU HỒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ ĐIỆP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN PHÚC THÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG PHÚC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN PHƯỚC TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG YÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông ĐẶNG TRƯỜNG PHÚ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông ĐẶNG TRƯỜNG QUÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ NGỌC CHÂU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HỒNG HÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LŨY KIM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐẠI CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUÝ BÌNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUÝ TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ TÚ ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUÝ BẢO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NGỌC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ TÙNG KHƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ DUY LUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỂN LÊ DUY KHANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ DUY PHƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ DUY THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HOÀNG NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MỘNG THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MỘNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUỐC THÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HOÀI THÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HOÀI TRỌNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ TRỌNG NGHĨA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ TRÚC MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VIỆT NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ANH THƯ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông PHÙNG HOÀNG TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông PHÙNG MAI THI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ QUỐC VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HOÀNG YẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ TƯỜNG VY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ DIỄM MI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ YẾN NHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGUYÊN THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGUYÊN THỦ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN HẢI ĐĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN HẢI ĐẢO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN CHƠN TỪ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC QUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC TRINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ KIM TRANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ TẤN PHÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ TẤN LỢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THANH KIỀU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ KIỀU MY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN NHỰT HÀO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THANH NGỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THANH HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HOÀNG DƯ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LAN THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN MỸ LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THANH MÃO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ MỸ HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ MỸ HIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THANH PHONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ MỸ DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ MỸ CHÂU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ THU MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN KHỎE",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ LÝ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN LUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ THỊ KIỀU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ VÂN LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HOÀNG OANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN ÁNH TUYẾT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 33",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN HOÀNG VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN MINH TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN ĐẠO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ LỆ THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN ĐẠT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông HUỲNH THỊ MỸ HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông HUỲNH THỊ MỸ DUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông HUỲNH TẤN TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN HOÀI NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ TỐ QUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN TRUNG THIỆN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ KHÁNH UYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN THỊ THANH TUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN DUY KHANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN MINH TOÀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỤY HỒNG HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN MINH VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN MINH TRANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN MINH TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN PHÚC TRỌNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông PHẠM NGUYỄN TRUNG KIÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông PHẠM KIM NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông QUÁCH NGHI QUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông QUÁCH DỤC MINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐẶNG PHƯƠNG ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ ĐẶNG PHƯƠNG UYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN CHÍ HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN CHÍ HIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông TRẦN SƯA UY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ HÙNG NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ ÁI LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄ THỊ TRÙC LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VIỆT NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông PHAN ĐINH TUẤN KIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ DUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ BẢO TRÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN HỒNG NGÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN HỒNG QUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN QUANG HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGỌC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGÔ LÊ KHOA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ TRƯỜNG SƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông NGUYỄN LÊ HOÀNG SƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGÔ THANH DUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ NGÔ TƯỜNG VI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NAM (CHẾT NHỎ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ RỐ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ RÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CỤ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN BẰNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN THÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ TÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ TÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ XIỆC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ TÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NHỆN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ TÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN SUÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ LẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ ẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ PHỤ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ NHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HẴN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN VĂN ĐEM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN HÒI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÒI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LỘI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HÒI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN KẾNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CHUẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CHUẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CHINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CHUẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN RINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CHUẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ RỊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ BẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ĐẢNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN LUÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ĐẸP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN TRẺ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MỬNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN SỰ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN SỰ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THỨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THỨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN SỰ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ THU THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN ĐẠT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ THU SƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU SƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "HUỲNH THỊ MỸ HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU SƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "HUỲNH THỊ MỸ DUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU SƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "HUỲNH TẤN TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THANH ĐÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THANH ĐÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN HOÀI NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN TRUNG DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN TRUNG DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ TỐ QUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN TRUNG DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN TRUNG THIỆN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN TRUNG DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ KHÁNH UYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ THANH TUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ THU VÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THỊ THU VÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN TÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THANH SANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông TRẦN THANH SANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN DUY KHANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THUẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ THU HỒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ ĐIỆP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HỒNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN MINH TOÀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỤY HỒNG HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN MINH VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HỒNG THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN MINH TRANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN MINH TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN PHÚC THÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN PHÚC THÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN PHÚC TRỌNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HỒNG NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHẠM NGUYỄN TRUNG KIÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ HỒNG NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHẠM KIM NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HỒNG PHÚC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN PHƯỚC TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ĐẶNG THỊ PHƯƠNG YÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG YÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "QUÁCH NGHI QUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG YÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "QUÁCH DỤC MINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ĐẶNG THỊ PHƯƠNG LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐẶNG PHƯƠNG ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐẶNG PHƯƠNG UYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ĐẶNG THỊ PHƯƠNG MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN CHÍ HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN CHÍ HIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN SƯA UY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ĐẶNG TRƯỜNG PHÚ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ĐẶNG TRƯỜNG QUÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ĐẶNG THỊ NGỌC CHÂU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MẪN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ÚT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN SỰ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ĐỰC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỰC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HỒNG HÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HỒNG HÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HÙNG NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỰC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LŨY KIM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐẠI CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUÝ BÌNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUÝ TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ TÚ ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUÝ BẢO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NGỌC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NGỌC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ ÁI LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN THỊ NGỌC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄ THỊ TRÙC LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ TÙNG KHƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ DUY LUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỂN LÊ DUY KHANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ DUY PHƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ DUY THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HOÀNG NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MỘNG THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MỘNG LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN TUẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUỐC THÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN THÌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HOÀI THÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HOÀI TRỌNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TRỌNG NGHĨA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ TRÚC MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN KIÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN KIÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ SUA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN LONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN HOÀNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN DÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN SÁNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN KIÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ CHUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ VĨNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ VIỄN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN KIÊU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ĐỨC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ TUYẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MỸ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN PHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN TÍN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NỮ (CHẾT NHỎ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN VÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VIỆT NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VIỆT NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VIỆT NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ANH THƯ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ ANH THƯ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHAN ĐINH TUẤN KIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CHĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN RẰNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TUYẾT TRINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ TUYẾT TRINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHÙNG HOÀNG TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ TUYẾT TRINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHÙNG MAI THI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ĐIỆP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CẨM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HỒNG PHONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NE",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ THEN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NGUYỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MỸ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HÙNG QUỐC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG QUỐC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUỐC VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG QUỐC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HOÀNG YẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG QUỐC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TƯỜNG VY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG BI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HÙNG HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ DIỄM MI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ HÙNG HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ YẾN NHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ XUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN ĐỨC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ CƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN MÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN MÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ LỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN MÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN MÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN HÒA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÒA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN NAM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN HÒA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ KIÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KIÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN XĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HÀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ ĐÔNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THANH SƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THANH LÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KIÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THANH HÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THANH DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ TÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ TUYỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN VĂN XÊNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THANH CHIẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN KEO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN KEO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ CẦU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN TRẦM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ĐẰM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ PHON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MÓN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN BỬU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN HON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ÚT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN KEO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN XƯỚNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MUỐN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HUỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN RỠ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông HUỲNH THỊ CHỒN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MÍT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÍT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ RÁO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ MÍT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THẲNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN NGUYÊN THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGUYÊN THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ DUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGUYÊN THỦY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ BẢO TRÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN NGUYÊN THỦ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGUYÊN THỦ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN HỒNG NGÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN NGUYÊN THỦ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN HỒNG QUÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN HẢI ĐĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN HẢI ĐĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN QUANG HUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN HẢI ĐẢO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN HẢI ĐẢO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN NGỌC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ GÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYỄN CHƠN TỪ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGUYỄN CHƠN TỪ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGÔ LÊ KHOA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN BỤNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN BỤNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ TRƯỜNG SƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN LÊ HOÀNG SƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN BỤNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC QUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC QUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGÔ THANH DUY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ NGỌC QUYÊN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGÔ TƯỜNG VI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN BỤNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC TRINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN BỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN BỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ KIM TRANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN BỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TẤN PHÁT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN BỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TẤN LỢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGỌC ẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGỌC ẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THANH KIỀU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ NGỌC ẨN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ KIỀU MY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HỒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ HỒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN NHỰT HÀO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THANH NGỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THANH CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THANH HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HOÀNG DƯ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LAN THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN NI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN NI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN MỸ LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THANH MÃO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ MỸ HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ MỸ HIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THANH PHONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ CHẮN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ MỸ DUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN NI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN VUI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VUI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ MỸ CHÂU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VUI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THU MAI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VUI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN KHỎE",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN VUI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ XINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN NI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ LẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LÝ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ LẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN LUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ LẮM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ KIỀU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN TO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ BON",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HUỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN VŨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ CU-XÊ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ XẤU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHAN THỊ ÚT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ VÂN LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HOÀNG OANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN ÁNH TUYẾT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN HOÀNG VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông NGUYỄN TIẾN DŨNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN MINH TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ NƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN TÂM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ HUỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ BÉ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN THANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ THÚY NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ THÚY HẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN XÁI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CÙ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CÙ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CÙ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ THẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN ĐẠO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN ĐỨC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ THẠNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ LỆ THU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐÌNH DANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐÌNH TRUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐÌNH HIẾU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐÌNH SĨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ PHƯỢNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ KIM ANH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ THỊ KỲ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐÌNH NHỨT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LỘC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ HIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LÀNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LIỀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN CỤC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ LIỄU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN GẮNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN MÁNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MÁNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUỐC CƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN MÁNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUỐC TUẤN",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "NAM (CHẾT NHỎ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ THỊ HUYỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HUYỀN",
+      "tail": "LÊ VĂN HÀNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÀNH",
+      "tail": "LÊ THỊ RỐ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÀNH",
+      "tail": "LÊ THỊ RÔ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÀNH",
+      "tail": "LÊ VĂN CỤ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÀNH",
+      "tail": "LÊ VĂN BẰNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÀNH",
+      "tail": "LÊ VĂN THÊU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HUYỀN",
+      "tail": "LÊ THỊ TÔN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ TÔN",
+      "tail": "NGUYỄN THỊ XIỆC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ TÔN",
+      "tail": "NGUYỄN THỊ NHỆN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ TÔN",
+      "tail": "NGUYỄN VĂN SUÔNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HUYỀN",
+      "tail": "LÊ THỊ HẴN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HẴN",
+      "tail": "TRẦN THỊ LẤU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HẴN",
+      "tail": "TRẦN THỊ ẤU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HẴN",
+      "tail": "TRẦN THỊ PHỤ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HẴN",
+      "tail": "TRẦN THỊ NHẮN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HẴN",
+      "tail": "TRẦN VĂN ĐEM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HUYỀN",
+      "tail": "LÊ VĂN HÒI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÒI",
+      "tail": "LÊ THỊ LỘI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HÒI",
+      "tail": "LÊ VĂN KẾNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HUYỀN",
+      "tail": "LÊ VĂN CHUẨN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CHUẨN",
+      "tail": "LÊ VĂN CHINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CHUẨN",
+      "tail": "LÊ VĂN RINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CHUẨN",
+      "tail": "LÊ THỊ RỊNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HUYỀN",
+      "tail": "LÊ VĂN MỬNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ THỊ BẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ THỊ ĐẢNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ THỊ GÁI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ VĂN LUÔN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ VĂN ĐẸP",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ VĂN TRẺ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MỬNG",
+      "tail": "LÊ THỊ THUẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ VĂN SỰ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN SỰ",
+      "tail": "LÊ THỊ THỨ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THỨ",
+      "tail": "LÊ THỊ HƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN SỰ",
+      "tail": "LÊ VĂN THÔN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ THỊ THUẦN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THỊ THU THỦY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THỊ THU THỦY",
+      "tail": "NGUYỄN VĂN ĐẠT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THỊ THU SƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THỊ THU SƯƠNG",
+      "tail": "HUỲNH THỊ MỸ HẠNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THỊ THU SƯƠNG",
+      "tail": "HUỲNH THỊ MỸ DUYÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THỊ THU SƯƠNG",
+      "tail": "HUỲNH TẤN TRUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THANH ĐÔNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THANH ĐÔNG",
+      "tail": "TRẦN HOÀI NAM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN TRUNG DŨNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN TRUNG DŨNG",
+      "tail": "TRẦN THỊ TỐ QUYÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN TRUNG DŨNG",
+      "tail": "TRẦN TRUNG THIỆN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN TRUNG DŨNG",
+      "tail": "TRẦN THỊ KHÁNH UYÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THANH CƯỜNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THANH CƯỜNG",
+      "tail": "TRẦN THỊ THANH TUYỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THỊ THU VÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THỊ THU VÂN",
+      "tail": "NGUYỄN VĂN TÂM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THANH SANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông TRẦN THANH SANG",
+      "tail": "TRẦN DUY KHANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THUẦN",
+      "tail": "TRẦN THỊ THU HỒNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ THỊ NGƯNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN THỊ ĐIỆP",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN THỊ HỒNG LAN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG LAN",
+      "tail": "NGUYỄN MINH TOÀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG LAN",
+      "tail": "NGUYỄN THỤY HỒNG HẠNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG LAN",
+      "tail": "NGUYỄN MINH VIỆT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN THỊ HỒNG THU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG THU",
+      "tail": "NGUYỄN MINH TRANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG THU",
+      "tail": "NGUYỄN MINH TRUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN PHÚC THÀNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN PHÚC THÀNH",
+      "tail": "NGUYỄN PHÚC TRỌNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN THỊ HỒNG NGỌC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG NGỌC",
+      "tail": "PHẠM NGUYỄN TRUNG KIÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ HỒNG NGỌC",
+      "tail": "PHẠM KIM NGỌC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN THỊ HỒNG PHÚC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGƯNG",
+      "tail": "NGUYỄN PHƯỚC TRÍ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ VĂN MINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ THỊ MÁT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÁT",
+      "tail": "ĐẶNG THỊ PHƯƠNG YÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG YÊN",
+      "tail": "QUÁCH NGHI QUÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG YÊN",
+      "tail": "QUÁCH DỤC MINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÁT",
+      "tail": "ĐẶNG THỊ PHƯƠNG LINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG LINH",
+      "tail": "LÊ ĐẶNG PHƯƠNG ANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG LINH",
+      "tail": "LÊ ĐẶNG PHƯƠNG UYÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÁT",
+      "tail": "ĐẶNG THỊ PHƯƠNG MAI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "tail": "TRẦN CHÍ HÙNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "tail": "TRẦN CHÍ HIỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông ĐẶNG THỊ PHƯƠNG MAI",
+      "tail": "TRẦN SƯA UY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÁT",
+      "tail": "ĐẶNG TRƯỜNG PHÚ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÁT",
+      "tail": "ĐẶNG TRƯỜNG QUÍ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÁT",
+      "tail": "ĐẶNG THỊ NGỌC CHÂU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ VĂN MẪN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ THỊ MIỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÔN",
+      "tail": "LÊ THỊ ÚT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN SỰ",
+      "tail": "LÊ VĂN THÌ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "LÊ VĂN ĐỰC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN ĐỰC",
+      "tail": "LÊ HỒNG HÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HỒNG HÂN",
+      "tail": "LÊ HÙNG NHÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN ĐỰC",
+      "tail": "LÊ THỊ LŨY KIM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "LÊ VĂN VỀ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VỀ",
+      "tail": "LÊ ĐẠI CƯỜNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VỀ",
+      "tail": "LÊ QUÝ BÌNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VỀ",
+      "tail": "LÊ QUÝ TRÍ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VỀ",
+      "tail": "LÊ THỊ TÚ ANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VỀ",
+      "tail": "LÊ QUÝ BẢO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "LÊ THỊ NGHI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "LÊ THỊ NGỌC NGA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGỌC NGA",
+      "tail": "NGUYỄN THỊ NGỌC AN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ NGỌC AN",
+      "tail": "NGUYỄN THỊ ÁI LINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN THỊ NGỌC AN",
+      "tail": "NGUYỄ THỊ TRÙC LINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "NGUYỄN VĂN HÙNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÙNG",
+      "tail": "NGUYỄN LÊ TÙNG KHƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÙNG",
+      "tail": "NGUYỄN LÊ DUY LUÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÙNG",
+      "tail": "NGUYỂN LÊ DUY KHANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÙNG",
+      "tail": "NGUYỄN LÊ DUY PHƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÙNG",
+      "tail": "NGUYỄN LÊ DUY THANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "LÊ VĂN TUẤN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN TUẤN",
+      "tail": "LÊ HOÀNG NAM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN TUẤN",
+      "tail": "LÊ THỊ MỘNG THU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN TUẤN",
+      "tail": "LÊ THỊ MỘNG LAN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN TUẤN",
+      "tail": "LÊ QUỐC THÁI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN THÌ",
+      "tail": "LÊ THANH HÙNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THANH HÙNG",
+      "tail": "LÊ HOÀI THÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THANH HÙNG",
+      "tail": "LÊ HOÀI TRỌNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THANH HÙNG",
+      "tail": "LÊ TRỌNG NGHĨA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THANH HÙNG",
+      "tail": "LÊ THỊ TRÚC MAI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ VĂN KIÊU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN KIÊU",
+      "tail": "LÊ VĂN HUY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HUY",
+      "tail": "LÊ THỊ SUA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HUY",
+      "tail": "LÊ VĂN MÔ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HUY",
+      "tail": "LÊ VĂN LONG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HUY",
+      "tail": "LÊ VĂN HOÀNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HUY",
+      "tail": "LÊ VĂN DÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HUY",
+      "tail": "LÊ VĂN SÁNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN KIÊU",
+      "tail": "LÊ THỊ CHUYỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHUYỀN",
+      "tail": "NGUYỄN THỊ VĨNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHUYỀN",
+      "tail": "NGUYỄN THỊ VIỄN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN KIÊU",
+      "tail": "LÊ VĂN PHI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN PHI",
+      "tail": "LÊ VĂN ĐỨC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN PHI",
+      "tail": "LÊ THỊ HẢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN PHI",
+      "tail": "LÊ THỊ THANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN PHI",
+      "tail": "LÊ THỊ TUYẾN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN PHI",
+      "tail": "LÊ VĂN MỸ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN PHI",
+      "tail": "LÊ VĂN TÍN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "NỮ (CHẾT NHỎ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ VĂN ĐỀ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN ĐỀ",
+      "tail": "LÊ VĂN CẨM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CẨM",
+      "tail": "LÊ VĂN VÔ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VÔ",
+      "tail": "LÊ VIỆT NAM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VIỆT NAM",
+      "tail": "LÊ VIỆT NHÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VÔ",
+      "tail": "LÊ ANH THƯ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ ANH THƯ",
+      "tail": "PHAN ĐINH TUẤN KIỆT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CẨM",
+      "tail": "LÊ VĂN CHĂNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CẨM",
+      "tail": "LÊ VĂN RẰNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CẨM",
+      "tail": "LÊ TUYẾT TRINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ TUYẾT TRINH",
+      "tail": "PHÙNG HOÀNG TRUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ TUYẾT TRINH",
+      "tail": "PHÙNG MAI THI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CẨM",
+      "tail": "LÊ THỊ ĐIỆP",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CẨM",
+      "tail": "LÊ HỒNG PHONG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN ĐỀ",
+      "tail": "LÊ THỊ NGẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGẬN",
+      "tail": "NGUYỄN THỊ NE",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGẬN",
+      "tail": "NGUYỄN THỊ THEN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGẬN",
+      "tail": "NGUYỄN THỊ NGUYỆT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN ĐỀ",
+      "tail": "LÊ HÙNG BI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG BI",
+      "tail": "LÊ THỊ XINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG BI",
+      "tail": "LÊ THỊ ANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG BI",
+      "tail": "LÊ THỊ NỮ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG BI",
+      "tail": "LÊ THỊ MỸ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG BI",
+      "tail": "LÊ HÙNG QUỐC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG QUỐC",
+      "tail": "LÊ QUỐC VIỆT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG QUỐC",
+      "tail": "LÊ HOÀNG YẾN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG QUỐC",
+      "tail": "LÊ TƯỜNG VY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG BI",
+      "tail": "LÊ HÙNG HẢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG HẢI",
+      "tail": "LÊ THỊ DIỄM MI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ HÙNG HẢI",
+      "tail": "LÊ THỊ YẾN NHI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN ĐỀ",
+      "tail": "LÊ THỊ XUÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XUÂN",
+      "tail": "NGUYỄN THỊ THU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XUÂN",
+      "tail": "NGUYỄN THỊ NGA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XUÂN",
+      "tail": "NGUYỄN VĂN ĐỨC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ THỊ CƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CƯƠNG",
+      "tail": "NGUYỄN VĂN MÀ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN MÀ",
+      "tail": "NGUYỄN THỊ LỆ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN MÀ",
+      "tail": "NGUYỄN VĂN NHÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN MÀ",
+      "tail": "NGUYỄN VĂN DŨNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CƯƠNG",
+      "tail": "NGUYỄN VĂN HÒA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÒA",
+      "tail": "NGUYỄN VĂN NAM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN HÒA",
+      "tail": "NGUYỄN THỊ NỮ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ THỊ KIÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KIÊN",
+      "tail": "NGUYỄN VĂN XĂNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XĂNG",
+      "tail": "NGUYỄN THỊ HÀ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XĂNG",
+      "tail": "NGUYỄN THỊ ĐÔNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XĂNG",
+      "tail": "NGUYỄN THANH SƠN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XĂNG",
+      "tail": "NGUYỄN THANH LÂM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KIÊN",
+      "tail": "NGUYỄN VĂN XÊNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THANH HÙNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THANH DŨNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THỊ DUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THỊ HẠNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THỊ TÂM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THỊ TUYỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN VĂN XÊNH",
+      "tail": "NGUYỄN THANH CHIẾN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ VĂN KEO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN KEO",
+      "tail": "LÊ VĂN HON",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ THỊ CẦU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ VĂN TRẦM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ THỊ ĐẰM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ THỊ THẮM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ THỊ PHON",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ THỊ MAI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ THỊ MÓN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ VĂN BỬU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN HON",
+      "tail": "LÊ VĂN ÚT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN KEO",
+      "tail": "LÊ VĂN XINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ VĂN XƯỚNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ THỊ MUỐN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ VĂN AN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ THỊ HUỆ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ VĂN MAI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ VĂN ANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XINH",
+      "tail": "LÊ VĂN RỠ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông HUỲNH THỊ CHỒN",
+      "tail": "LÊ VĂN GẮNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ THỊ MÍT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÍT",
+      "tail": "LÊ THỊ RÁO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ MÍT",
+      "tail": "LÊ THỊ THẲNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ VĂN GHI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ THỊ GÁI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ GÁI",
+      "tail": "LÊ NGUYỄN NGUYÊN THỦY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN NGUYÊN THỦY",
+      "tail": "NGUYỄN LÊ DUY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN NGUYÊN THỦY",
+      "tail": "NGUYỄN LÊ BẢO TRÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ GÁI",
+      "tail": "LÊ NGUYỄN NGUYÊN THỦ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN NGUYÊN THỦ",
+      "tail": "LÊ NGUYỄN HỒNG NGÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN NGUYÊN THỦ",
+      "tail": "LÊ NGUYỄN HỒNG QUÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ GÁI",
+      "tail": "LÊ NGUYỄN HẢI ĐĂNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN HẢI ĐĂNG",
+      "tail": "LÊ NGUYỄN QUANG HUY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ GÁI",
+      "tail": "LÊ NGUYỄN HẢI ĐẢO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN HẢI ĐẢO",
+      "tail": "LÊ NGUYỄN NGỌC AN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ GÁI",
+      "tail": "LÊ NGUYỄN CHƠN TỪ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGUYỄN CHƠN TỪ",
+      "tail": "NGÔ LÊ KHOA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ VĂN BỤNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN BỤNG",
+      "tail": "LÊ THỊ NGỌC DUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGỌC DUNG",
+      "tail": "NGUYỄN LÊ TRƯỜNG SƠN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGỌC DUNG",
+      "tail": "NGUYỄN LÊ HOÀNG SƠN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN BỤNG",
+      "tail": "LÊ THỊ NGỌC QUYÊN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGỌC QUYÊN",
+      "tail": "LÊ NGÔ THANH DUY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ NGỌC QUYÊN",
+      "tail": "LÊ NGÔ TƯỜNG VI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN BỤNG",
+      "tail": "LÊ THỊ NGỌC TRINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ VĂN BỘ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN BỘ",
+      "tail": "LÊ THỊ KIM TRANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN BỘ",
+      "tail": "LÊ TẤN PHÁT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN BỘ",
+      "tail": "LÊ TẤN LỢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ NGỌC ẨN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGỌC ẨN",
+      "tail": "LÊ THỊ THANH KIỀU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ NGỌC ẨN",
+      "tail": "LÊ THỊ KIỀU MY",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ THỊ HỒNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ HỒNG",
+      "tail": "TRẦN NHỰT HÀO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ THANH CƯỜNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THANH CƯỜNG",
+      "tail": "LÊ THANH NGỮ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THANH CƯỜNG",
+      "tail": "LÊ THANH HẢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GHI",
+      "tail": "LÊ THỊ LAN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ LAN",
+      "tail": "LÊ HOÀNG DƯ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ LAN",
+      "tail": "LÊ THỊ LAN THANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ VĂN NI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN NI",
+      "tail": "LÊ THỊ CHẮN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHẮN",
+      "tail": "TRẦN MỸ LINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHẮN",
+      "tail": "TRẦN THANH MÃO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHẮN",
+      "tail": "TRẦN THỊ MỸ HẠNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHẮN",
+      "tail": "TRẦN THỊ MỸ HIỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHẮN",
+      "tail": "TRẦN THANH PHONG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ CHẮN",
+      "tail": "TRẦN THỊ MỸ DUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN NI",
+      "tail": "LÊ VĂN VUI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VUI",
+      "tail": "LÊ THỊ MỸ CHÂU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VUI",
+      "tail": "LÊ THỊ THU MAI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VUI",
+      "tail": "LÊ VĂN KHỎE",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN VUI",
+      "tail": "LÊ THỊ XINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN NI",
+      "tail": "LÊ THỊ LẮM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ LẮM",
+      "tail": "LÊ THỊ LÝ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ LẮM",
+      "tail": "LÊ VĂN LUẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ LẮM",
+      "tail": "LÊ THỊ KIỀU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ THỊ XẤU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "NGUYỄN VĂN HẢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "NGUYỄN VĂN TO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "NGUYỄN THỊ BON",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "NGUYỄN THỊ HUỆ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "NGUYỄN VĂN VŨ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "NGUYỄN THỊ CU-XÊ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ XẤU",
+      "tail": "PHAN THỊ ÚT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ VĂN XÁI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN TIẾN DŨNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN TIẾN DŨNG",
+      "tail": "NGUYỄN THỊ VÂN LINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN TIẾN DŨNG",
+      "tail": "NGUYỄN THỊ HOÀNG OANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN TIẾN DŨNG",
+      "tail": "NGUYỄN ÁNH TUYẾT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN TIẾN DŨNG",
+      "tail": "NGUYỄN HOÀNG VIỆT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông NGUYỄN TIẾN DŨNG",
+      "tail": "NGUYỄN MINH TRÍ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN THỊ NƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN VĂN TÂM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN THỊ HUỆ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN THỊ BÉ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN VĂN THANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN THỊ THÚY NGA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN THỊ THÚY HẠNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN XÁI",
+      "tail": "NGUYỄN VĂN NHÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ VĂN CÙ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CÙ",
+      "tail": "LÊ VĂN NHÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CÙ",
+      "tail": "LÊ THỊ THẠNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THẠNH",
+      "tail": "NGUYỄN VĂN ĐẠO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THẠNH",
+      "tail": "NGUYỄN VĂN ĐỨC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ THẠNH",
+      "tail": "NGUYỄN THỊ LỆ THU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ THỊ KỲ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ ĐÌNH DANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ ĐÌNH TRUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ ĐÌNH HIẾU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ ĐÌNH SĨ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ THỊ NỮ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ THỊ PHƯỢNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ THỊ KIM ANH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ THỊ KỲ",
+      "tail": "LÊ ĐÌNH NHỨT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ VĂN CỤC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ LỘC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ LAN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ LỆ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ HIỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ LÀNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ LIỀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN CỤC",
+      "tail": "LÊ THỊ LIỄU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN GẮNG",
+      "tail": "LÊ VĂN MÁNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MÁNH",
+      "tail": "LÊ QUỐC CƯỜNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN MÁNH",
+      "tail": "LÊ QUỐC TUẤN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

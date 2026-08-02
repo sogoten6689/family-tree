@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {
+      "text": "Đinh Như Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "làng Đồng Di",
+      "label": "LOC"
+    },
+    {
+      "text": "Xã Phú Hồ",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Phú Vang",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Thừa Thiên Huế",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ ba",
+      "label": "GENERATION"
+    },
+    {
+      "text": "xứ Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "xứ Quỳnh Hồng",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "15 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thôn Đồng Di Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "Đồng di Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Đồng Di Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "thị trấn Hồ Xá",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Quảng Trị",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

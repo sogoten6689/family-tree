@@ -1,0 +1,93 @@
+{
+  "entities": [
+    {
+      "text": "đầu thế kỷ thứ XIX",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Huy Nghệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "làng Mai Hương",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Mỹ Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Xuân Trường",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Xanh",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Duyên Linh",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Phù cừ",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Hưng Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "cánh đồng Giàu",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Duyên Linh",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Đình Cao",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "năm Qúi dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "1993",
+      "label": "DATE"
+    },
+    {
+      "text": "25 tháng 2 năm Giáp tuất",
+      "label": "DATE"
+    },
+    {
+      "text": "05/04/1994",
+      "label": "DATE"
+    },
+    {
+      "text": "Hưng yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Phòng",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

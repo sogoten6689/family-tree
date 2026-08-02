@@ -1,0 +1,540 @@
+Phả ký (tổng hợp từ sơ đồ phả hệ): Nguyễn Hoàng - Hà Nam
+
+Đời thứ 1: 
+Người con thứ nhất: Ông Hoàng Quý Công. 
+Đời thứ 2: 
+Người con thứ ba: Ông chi 1. 
+Người con thứ tư: Ông Nguyễn Quý Công. 
+Người con thứ năm: Ông chi 2. 
+Đời thứ 3: 
+Đời thứ 4: 
+Người con thứ bảy: Ông Nguyễn Thị Hiền. 
+Người con thứ tám: Ông Nguyễn Thị Hiểu. 
+Người con thứ chín: Ông Nguyễn Thị Ốc. 
+Người con thứ chín: Ông Nguyễn Thị Trắc. 
+Người con thứ 11: Ông Nguyễn Thị Giộp. 
+Người con thứ 12: Ông Nguyễn Thị Cấp. 
+Người con thứ 13: Ông Nguyễn Thị Trữ. 
+Người con thứ 14: Ông Nguyễn Hữu Lộc. 
+Người con thứ 15: Ông Nguyễn Văn Mịch. 
+Người con thứ 16: Ông Nguyễn Văn Mỹ. 
+Người con thứ 17: Ông Nguyễn Thị Nữ. 
+Người con thứ chín: Ông Nguyễn Văn Lang. 
+Người con thứ mười: Ông Nguyễn Thị Riêu. 
+Đời thứ 5: 
+Người con thứ 18: Ông Nguyễn Đức Hoành. 
+Người con thứ 19: Ông Nguyễn Văn Uyển. 
+Người con thứ 20: Ông Nguyễn Thị San. 
+Người con thứ 21: Ông Nguyễn Thị Thường. 
+Người con thứ 22: Ông Nguyễn Thị Huyền. 
+Người con thứ 18: Ông Nguyễn Thị Quyến. 
+Người con thứ 19: Ông Nguyễn Văn Sông. 
+Người con thứ 20: Ông Nguyễn Thị Khuyến. 
+Người con thứ 21: Ông Nguyễn Thị Suyến. 
+Người con thứ 22: Ông Nguyễn Văn Khí. 
+Người con thứ 23: Ông Nguyễn Văn Tiến. 
+Người con thứ 24: Ông Nguyễn Văn Cưỡng. 
+Người con thứ 18: Ông Nguyễn Văn Khánh. 
+Người con thứ 19: Ông Nguyễn Thị Phạm. 
+Người con thứ 20: Ông Nguyễn Thị Phiên. 
+Người con thứ 22: Ông Nguyễn Thị Kiêm. 
+Người con thứ 23: Ông Nguyễn Thị Tiêm. 
+Người con thứ 24: Ông Nguyễn Thị Tất. 
+Người con thứ 18: Ông Nguyễn Văn Kính. 
+Người con thứ 19: Ông Nguyễn Văn Minh. 
+Người con thứ 20: Ông Nguyễn Văn Hổ. 
+Người con thứ 21: Ông Nguyễn Thị Tý. 
+Người con thứ 22: Ông Nguyễn Thị Luận. 
+Người con thứ 18: Ông Sản. 
+Người con thứ 19: Ông Điềm. 
+Người con thứ 20: Ông Thiếp. 
+Đời thứ 6: 
+Người con thứ 23: Ông Nguyễn Văn Tung. 
+Người con thứ 24: Ông Nguyễn Thị Hoà. 
+Người con thứ 25: Ông Nguyễn Thị Đinh. 
+Người con thứ 26: Ông Nguyễn Văn Chúc. 
+Người con thứ 27: Ông Nguyễn Thị Linh. 
+Người con thứ 28: Ông Nguyễn Thị Kinh. 
+Người con thứ 25: Ông Nguyễn Văn Côn. 
+Người con thứ 26: Ông Nguyễn Văn Việt. 
+Người con thứ 27: Ông Nguyễn Thị Hán. 
+Người con thứ 28: Ông Nguyễn Thị Hồ. 
+Người con thứ 29: Ông Nguyền Hoàng Cúc. 
+Người con thứ 25: Ông Nguyễn Thị Viển. 
+Người con thứ 26: Ông Nguyễn Văn Viện. 
+Người con thứ 27: Ông Nguyễn Thị Kiên. 
+Người con thứ 28: Ông Nguyễn Văn Mã. 
+Người con thứ 25: Ông Nguyễn Thị Nhương. 
+Người con thứ 26: Ông Nguyễn Thị Lượng. 
+Người con thứ 27: Ông Nguyễn Thị Cỏn. 
+Người con thứ 28: Ông Nguyễn Văn Hường. 
+Người con thứ 29: Ông Nguyễn Văn Hưởng. 
+Người con thứ 30: Ông Nguyễn Văn Thưởng. 
+Người con thứ 31: Ông Nguyễn Thị Tuấn. 
+Người con thứ 25: Ông Nguyễn Văn Quỳnh. 
+Người con thứ 26: Ông Nguyễn Thị Nhan. 
+Người con thứ 27: Ông Nguyễn Văn Vạn. 
+Người con thứ 28: Ông Nguyễn Quý Tộ. 
+Người con thứ 29: Ông Nguyễn Khắc Thường. 
+Người con thứ 23: Ông Nguyễn Thị Bạch. 
+Người con thứ 24: Ông Nguyễn Văn Kế. 
+Người con thứ 25: Ông Nguyễn Thị Hường. 
+Người con thứ 26: Ông Nguyễn Thị Xích. 
+Người con thứ 23: Ông Nguyễn Văn Nhâm. 
+Người con thứ 24: Ông Nguyễn Thị Lân. 
+Người con thứ 25: Ông Nguyễn Văn Thi. 
+Người con thứ 26: Ông Nguyễn Thị Lan. 
+Đời thứ 7: 
+Người con thứ 29: Ông Nguyễn Thị Vững. 
+Người con thứ 30: Ông Nguyễn Văn Vàng. 
+Người con thứ 31: Ông Nguyễn Văn Vang. 
+Người con thứ 32: Ông Nguyễn Thị Vĩnh. 
+Người con thứ 33: Ông Nguyễn Văn Phượng. 
+Người con thứ 34: Ông Nguyễn Văn Hồng. 
+Người con thứ 30: Ông Nguyền Hoàng Bá. 
+Người con thứ 31: Ông Nguyễn Thị Đích. 
+Người con thứ 32: Ông Nguyễn Thị Bích. 
+Người con thứ 30: Ông Nguyễn Văn Phú. 
+Người con thứ 31: Ông ?. 
+Người con thứ 29: Ông Nguyễn Thị Vịnh. 
+Người con thứ 30: Ông Nguyền Hoàng Uyên. 
+Người con thứ 31: Ông Nguyền Hoàng Quyền. 
+Người con thứ 32: Ông Nguyền Hoàng Nguyên. 
+Người con thứ 33: Ông Nguyễn Thị Tứ. 
+Người con thứ 34: Ông Nguyền Hoàng Khiêm. 
+Người con thứ 35: Ông Nguyễn Thị Thanh. 
+Người con thứ 36: Ông Nguyền Hoàng Kiêm. 
+Người con thứ 37: Ông Nguyền Hoàng Toàn. 
+Người con thứ 38: Ông Nguyền Hoàng Thìn. 
+Người con thứ 29: Ông Nguyễn Thị Đào. 
+Người con thứ 30: Ông Nguyền Hoàng Oanh. 
+Người con thứ 31: Ông Nguyễn Thị Nụ. 
+Người con thứ 32: Ông Nguyễn Thị Bình. 
+Người con thứ 33: Ông Nguyền Hoàng Phúc. 
+Người con thứ 32: Ông Nguyễn Hoàng Điệp. 
+Người con thứ 33: Ông Nguyễn Thị Trâm. 
+Người con thứ 34: Ông Nguyễn Văn Thăng. 
+Người con thứ 35: Ông Nguyễn Thị Hằng. 
+Người con thứ 36: Ông Nguyễn Thị Nga. 
+Người con thứ 37: Ông Nguyễn Văn Bích. 
+Người con thứ 38: Ông Nguyễn Văn Quế. 
+Người con thứ 39: Ông Nguyễn Thị Tuyết. 
+Người con thứ 32: Ông Nguyễn Thị Thư. 
+Người con thứ 33: Ông Nguyễn Hoàng Thăng. 
+Người con thứ 34: Ông Nguyễn Thị Lợi. 
+Người con thứ 35: Ông Nguyễn Hoàng Nam. 
+Người con thứ 38: Ông Nguyễn Thị Thu. 
+Người con thứ 30: Ông Nguyễn Khắc Đài. 
+Người con thứ 31: Ông Nguyễn Sơn Đông. 
+Người con thứ 32: Ông Nguyễn Thị Đỗ. 
+Người con thứ 33: Ông Nguyễn Thị Yến. 
+Người con thứ 34: Ông Nguyễn Tam Tỉnh. 
+Người con thứ 35: Ông Nguyễn Thị Xuân. 
+Người con thứ 36: Ông Nguyễn Thị Thủy. 
+Người con thứ 30: Ông Nguyễn Thị Vân. 
+Người con thứ 31: Ông Nguyễn Thái Sơn. 
+Người con thứ 32: Ông Nguyễn Thị Thơ. 
+Người con thứ 33: Ông Nguyễn Thị Thọ. 
+Người con thứ 34: Ông Nguyễn Hoàng Vinh. 
+Người con thứ 35: Ông Nguyễn Thị Ninh. 
+Người con thứ 36: Ông Nguyễn Thị Thì. 
+Người con thứ 30: Ông Nguyễn Hoàng Trứ. 
+Người con thứ 31: Ông Nguyễn Thị Quý. 
+Người con thứ 32: Ông Nguyễn Hoàng Trí. 
+Người con thứ 33: Ông Nguyễn Thị Kim Thoa. 
+Người con thứ 34: Ông Nguyễn Kim Oanh. 
+Người con thứ 30: Ông Nguyễn Văn Cao. 
+Người con thứ 31: Ông Nguyễn Hải Đăng. 
+Người con thứ 32: Ông Nguyễn Văn Lộc. 
+Người con thứ 27: Ông Nguyễn Thị Hoa. 
+Người con thứ 28: Ông Nguyễn Thị Bùi. 
+Người con thứ 29: Ông Nguyễn Hoàng Đông. 
+Người con thứ 30: Ông Nguyễn Thị Sinh. 
+Người con thứ 31: Ông Nguyễn Hoàng Hải. 
+Người con thứ 27: Ông Nguyễn Thị Thu Hà. 
+Người con thứ 28: Ông Nguyễn Thị Chi. 
+Người con thứ 29: Ông Nguyễn Thị Lược. 
+Người con thứ 30: Ông Nguyễn Mộng Quân. 
+Người con thứ 31: Ông Nguyễn Thị Xuân Hương. 
+Người con thứ 32: Ông Nguyễn Thị Thơm. 
+Người con thứ 33: Ông Nguyễn Mộng Nhân. 
+Người con thứ 34: Ông Nguyễn Thị Quế. 
+Người con thứ 35: Ông Nguyễn Thị Huệ. 
+Người con thứ 27: Ông Nguyễn Hoàng Thu. 
+Người con thứ 29: Ông Nguyễn Hoàng Thương. 
+Người con thứ 30: Ông Nguyễn Hoàng Thưởng. 
+Đời thứ 8: 
+Người con thứ 35: Ông Nguyễn Thị Sâm. 
+Người con thứ 36: Ông Nguyễn Hoàng Ngọc. 
+Người con thứ 35: Ông Nguyễn Ngọc Hoan. 
+Người con thứ 36: Ông Nguyễn Thị Liên. 
+Người con thứ 36: Ông Nguyễn Bình. 
+Người con thứ 37: Ông Nguyễn Thị Nhung. 
+Người con thứ 33: Ông Nguyễn Hoàng Bảo. 
+Người con thứ 35: Ông Nguyễn Thị Ngà. 
+Người con thứ 36: Ông Nguyễn Hoàng Quang. 
+Người con thứ 37: Ông Nguyễn Hoàng Huy. 
+Người con thứ 38: Ông Nguyễn Hoàng Chương. 
+Người con thứ 39: Ông Nguyễn Hoàng Cường. 
+Người con thứ 39: Ông Nguyền Hoàng An. 
+Người con thứ 40: Ông Nguyền Hoàng Tiền. 
+Người con thứ 41: Ông Nguyền Hoàng Giang. 
+Người con thứ 39: Ông Nguyền Hoàng Tuấn. 
+Người con thứ 40: Ông Nguyền Hoàng Dũng. 
+Người con thứ 39: Ông Nguyền Hoàng Tùng. 
+Người con thứ 42: Ông Nguyễn Thị Nhã. 
+Người con thứ 43: Ông Nguyền Hoàng Nhân. 
+Người con thứ 39: Ông Nguyền Hoàng Hà. 
+Người con thứ 40: Ông Nguyền Thái Hà. 
+Người con thứ 39: Ông Nguyền Hoàng Vũ. 
+Người con thứ 40: Ông Nguyền Hoàng Thuật. 
+Người con thứ 39: Ông Nguyền Hoàng Diệu. 
+Người con thứ 40: Ông Nguyen Thái Kỳ. 
+Người con thứ 39: Ông Nguyền Hoàng Đạt. 
+Người con thứ 40: Ông Nguyen Thái Đức. 
+Người con thứ 34: Ông Nguyền Hoàng Anh. 
+Người con thứ 36: Ông Nguyễn Thị Phương. 
+Người con thứ 37: Ông Nguyễn Thị Hải. 
+Người con thứ 38: Ông Nguyền Hoàng Hùng. 
+Người con thứ 34: Ông Nguyen Thuỳ Trang. 
+Người con thứ 35: Ông Nguyen Chí Trung. 
+Người con thứ 41: Ông Nguyễn Văn Thanh. 
+Người con thứ 42: Ông Nguyễn Văn Thuỷ. 
+Người con thứ 43: Ông Nguyễn Văn Quân. 
+Người con thứ 40: Ông Nguyễn Văn Đức. 
+Người con thứ 41: Ông Nguyễn Văn Đạo. 
+Người con thứ 40: Ông Nguyễn Văn Tâm. 
+Người con thứ 41: Ông Nguyễn Văn Trí. 
+Người con thứ 40: Ông Nguyễn Hoàng Thành. 
+Người con thứ 40: Ông Nguyễn Thị Thuý Lan. 
+Người con thứ 41: Ông Nguyễn Thị Thuý Linh. 
+Người con thứ 37: Ông Nguyễn Thị Thìn. 
+Người con thứ 41: Ông Nguyễn Hoàng Anh. 
+Người con thứ 42: Ông Nguyễn Thị Dung. 
+Người con thứ 37: Ông Nguyễn Sơn Tùng. 
+Người con thứ 38: Ông Nguyễn Sơn Hà. 
+Người con thứ 39: Ông Nguyễn Sơn Hải. 
+Người con thứ 40: Ông Nguyễn Sơn Trung. 
+Người con thứ 41: Ông Nguyễn Thu Hồng. 
+Người con thứ 42: Ông Nguyễn Thị Kiều Dung. 
+Người con thứ 43: Ông Nguyễn Sơn Thanh. 
+Người con thứ 44: Ông Nguyễn Sơn Quang. 
+Người con thứ 37: Ông Nguyễn Quang Tuấn. 
+Người con thứ 38: Ông Nguyễn Thanh Tú. 
+Người con thứ 39: Ông Nguyễn Quang Cường. 
+Người con thứ 38: Ông Nguyễn Thu Hương. 
+Người con thứ 39: Ông Nguyễn Thụy Thảo. 
+Người con thứ 40: Ông Nguyễn Văn Cầu. 
+Người con thứ 38: Ông Nguyễn Hoàng Đức. 
+Người con thứ 39: Ông Nguyễn Thị Phượng. 
+Người con thứ 35: Ông Nguyễn Thị Lan Anh. 
+Người con thứ 35: Ông Nguyễn Hoàng Trường. 
+Người con thứ 35: Ông Nguyễn Thị Hạnh. 
+Người con thứ 33: Ông Nguyễn Thị Hương. 
+Người con thứ 34: Ông Nguyễn Hùng Sơn. 
+Người con thứ 36: Ông Nguyễn Khắc Cường. 
+Người con thứ 34: Ông Nguyễn Văn Đạt. 
+Người con thứ 33: Ông Nguyễn Hoàng Hùng. 
+Đời thứ 9: 
+Người con thứ 45: Ông Nguyễn Sơn Ngọc Chiêu. 
+Người con thứ 46: Ông Nguyễn Sơn Hoàng Chương. 
+Người con thứ 45: Ông Nguyễn Sơn Trường Giang. 
+Người con thứ 46: Ông Nguyễn Sơn Thục Hà. 
+Người con thứ 47: Ông Nguyễn Sơn Ngân Giang. 
+Người con thứ 45: Ông Nguyễn Sơn Liêm. 
+Người con thứ 46: Ông Nguyễn Thị Mai. 
+Người con thứ 45: Ông Nguyễn Thị Xuân Trang. 
+Người con thứ 46: Ông Nguyễn Thị Bích Thuận. 
+Người con thứ 45: Ông Trịnh Thu Hiền. 
+Người con thứ 46: Ông Trịnh Thục Hòa. 
+Người con thứ 47: Ông Trịnh Thu Hảo. 
+Người con thứ 48: Ông Trịnh Thủy Tiên. 
+Người con thứ 45: Ông Nguyễn Quốc Huy. 
+Người con thứ 46: Ông Nguyễn Quốc Việt. 
+Người con thứ 45: Ông Nguyễn Cẩm Nhi. 
+Người con thứ 46: Ông Nguyễn Sơn Phi. 
+Đời thứ 10: 
+Người con thứ 47: Ông Nguyễn Ngọc Mai Khanh. 
+Người con thứ 48: Ông Nguyễn Duy Khang. 
+Người con thứ 48: Ông Hùynh Thục Đan. 
+
+Quan hệ cha/mẹ — con: 
+Ông Hoàng Quý Công hạ sinh chi 1. 
+Ông Hoàng Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Hiền. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Hiểu. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Ốc. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Trắc. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Đức Hoành. 
+Ông Nguyễn Đức Hoành hạ sinh Nguyễn Văn Tung. 
+Ông Nguyễn Đức Hoành hạ sinh Nguyễn Thị Hoà. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Văn Uyển. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị San. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Thường. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Huyền. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Giộp. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Cấp. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Trữ. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Hữu Lộc. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Thị Quyến. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Văn Sông. 
+Ông Nguyễn Văn Sông hạ sinh Nguyễn Thị Đinh. 
+Ông Nguyễn Văn Sông hạ sinh Nguyễn Văn Chúc. 
+Ông Nguyễn Văn Chúc hạ sinh Nguyễn Thị Vững. 
+Ông Nguyễn Văn Chúc hạ sinh Nguyễn Văn Vàng. 
+Ông Nguyễn Văn Vàng hạ sinh Nguyễn Thị Sâm. 
+Ông Nguyễn Văn Vàng hạ sinh Nguyễn Hoàng Ngọc. 
+Ông Nguyễn Văn Chúc hạ sinh Nguyễn Văn Vang. 
+Ông Nguyễn Văn Vang hạ sinh Nguyễn Ngọc Hoan. 
+Ông Nguyễn Văn Vang hạ sinh Nguyễn Thị Liên. 
+Ông Nguyễn Văn Chúc hạ sinh Nguyễn Thị Vĩnh. 
+Ông Nguyễn Văn Chúc hạ sinh Nguyễn Văn Phượng. 
+Ông Nguyễn Văn Phượng hạ sinh ?. 
+Ông Nguyễn Văn Phượng hạ sinh Nguyễn Bình. 
+Ông Nguyễn Văn Phượng hạ sinh Nguyễn Thị Nhung. 
+Ông Nguyễn Văn Chúc hạ sinh Nguyễn Văn Hồng. 
+Ông Nguyễn Văn Sông hạ sinh Nguyễn Thị Linh. 
+Ông Nguyễn Văn Sông hạ sinh Nguyễn Thị Kinh. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Thị Khuyến. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Thị Suyến. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Văn Khí. 
+Ông Nguyễn Văn Khí hạ sinh Nguyễn Văn Côn. 
+Ông Nguyễn Văn Côn hạ sinh Nguyền Hoàng Bá. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Hoàng Bảo. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Hoàng Ngọc. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Thị Ngà. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Hoàng Quang. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Hoàng Huy. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Hoàng Chương. 
+Ông Nguyền Hoàng Bá hạ sinh Nguyễn Hoàng Cường. 
+Ông Nguyễn Văn Côn hạ sinh Nguyễn Thị Đích. 
+Ông Nguyễn Văn Côn hạ sinh Nguyễn Thị Bích. 
+Ông Nguyễn Văn Khí hạ sinh Nguyễn Văn Việt. 
+Ông Nguyễn Văn Việt hạ sinh Nguyễn Văn Phú. 
+Ông Nguyễn Văn Việt hạ sinh ?. 
+Ông Nguyễn Văn Khí hạ sinh Nguyễn Thị Hán. 
+Ông Nguyễn Văn Khí hạ sinh Nguyễn Thị Hồ. 
+Ông Nguyễn Văn Khí hạ sinh Nguyền Hoàng Cúc. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Văn Tiến. 
+Ông Nguyễn Văn Tiến hạ sinh Nguyễn Thị Viển. 
+Ông Nguyễn Văn Tiến hạ sinh Nguyễn Văn Viện. 
+Ông Nguyễn Văn Viện hạ sinh Nguyễn Thị Vịnh. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Uyên. 
+Ông Nguyền Hoàng Uyên hạ sinh Nguyền Hoàng An. 
+Ông Nguyền Hoàng Uyên hạ sinh Nguyền Hoàng Tiền. 
+Ông Nguyền Hoàng Uyên hạ sinh Nguyền Hoàng Giang. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Quyền. 
+Ông Nguyền Hoàng Quyền hạ sinh Nguyền Hoàng Tuấn. 
+Ông Nguyền Hoàng Quyền hạ sinh Nguyền Hoàng Dũng. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Nguyên. 
+Ông Nguyền Hoàng Nguyên hạ sinh Nguyền Hoàng Tùng. 
+Ông Nguyền Hoàng Nguyên hạ sinh Nguyễn Thị Nhung. 
+Ông Nguyền Hoàng Nguyên hạ sinh Nguyễn Thị Linh. 
+Ông Nguyền Hoàng Nguyên hạ sinh Nguyễn Thị Nhã. 
+Ông Nguyền Hoàng Nguyên hạ sinh Nguyền Hoàng Nhân. 
+Ông Nguyễn Văn Viện hạ sinh Nguyễn Thị Tứ. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Khiêm. 
+Ông Nguyền Hoàng Khiêm hạ sinh Nguyền Hoàng Hà. 
+Ông Nguyền Hoàng Khiêm hạ sinh Nguyền Thái Hà. 
+Ông Nguyễn Văn Viện hạ sinh Nguyễn Thị Thanh. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Kiêm. 
+Ông Nguyền Hoàng Kiêm hạ sinh Nguyền Hoàng Vũ. 
+Ông Nguyền Hoàng Kiêm hạ sinh Nguyền Hoàng Thuật. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Toàn. 
+Ông Nguyền Hoàng Toàn hạ sinh Nguyền Hoàng Diệu. 
+Ông Nguyền Hoàng Toàn hạ sinh Nguyen Thái Kỳ. 
+Ông Nguyễn Văn Viện hạ sinh Nguyền Hoàng Thìn. 
+Ông Nguyền Hoàng Thìn hạ sinh Nguyền Hoàng Đạt. 
+Ông Nguyền Hoàng Thìn hạ sinh Nguyen Thái Đức. 
+Ông Nguyễn Văn Tiến hạ sinh Nguyễn Thị Kiên. 
+Ông Nguyễn Văn Tiến hạ sinh Nguyễn Văn Mã. 
+Ông Nguyễn Văn Mã hạ sinh Nguyễn Thị Đào. 
+Ông Nguyễn Văn Mã hạ sinh Nguyền Hoàng Oanh. 
+Ông Nguyền Hoàng Oanh hạ sinh Nguyền Hoàng Anh. 
+Ông Nguyền Hoàng Oanh hạ sinh Nguyễn Thị Nga. 
+Ông Nguyền Hoàng Oanh hạ sinh Nguyễn Thị Phương. 
+Ông Nguyền Hoàng Oanh hạ sinh Nguyễn Thị Hải. 
+Ông Nguyền Hoàng Oanh hạ sinh Nguyền Hoàng Hùng. 
+Ông Nguyễn Văn Mã hạ sinh Nguyễn Thị Nụ. 
+Ông Nguyễn Văn Mã hạ sinh Nguyễn Thị Bình. 
+Ông Nguyễn Văn Mã hạ sinh Nguyền Hoàng Phúc. 
+Ông Nguyền Hoàng Phúc hạ sinh Nguyen Thuỳ Trang. 
+Ông Nguyền Hoàng Phúc hạ sinh Nguyen Chí Trung. 
+Ông Nguyễn Hữu Lộc hạ sinh Nguyễn Văn Cưỡng. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Thị Nhương. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Thị Lượng. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Thị Cỏn. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Văn Hường. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Hoàng Điệp. 
+Ông Nguyễn Hoàng Điệp hạ sinh Nguyễn Văn Hồng. 
+Ông Nguyễn Hoàng Điệp hạ sinh Nguyễn Văn Thanh. 
+Ông Nguyễn Hoàng Điệp hạ sinh Nguyễn Văn Thuỷ. 
+Ông Nguyễn Hoàng Điệp hạ sinh Nguyễn Văn Quân. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Thị Trâm. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Văn Thăng. 
+Ông Nguyễn Văn Thăng hạ sinh Nguyễn Văn Thăng. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Thị Hằng. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Thị Nga. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Văn Bích. 
+Ông Nguyễn Văn Bích hạ sinh Nguyễn Văn Đức. 
+Ông Nguyễn Văn Bích hạ sinh Nguyễn Văn Đạo. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Văn Quế. 
+Ông Nguyễn Văn Quế hạ sinh Nguyễn Văn Tâm. 
+Ông Nguyễn Văn Quế hạ sinh Nguyễn Văn Trí. 
+Ông Nguyễn Văn Hường hạ sinh Nguyễn Thị Tuyết. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Văn Hưởng. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Thị Thư. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Hoàng Thăng. 
+Ông Nguyễn Hoàng Thăng hạ sinh Nguyễn Hoàng Thành. 
+Ông Nguyễn Hoàng Thăng hạ sinh Nguyễn Hoàng Thương. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Thị Lợi. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Hoàng Nam. 
+Ông Nguyễn Hoàng Nam hạ sinh Nguyễn Thị Thuý Lan. 
+Ông Nguyễn Hoàng Nam hạ sinh Nguyễn Thị Thuý Linh. 
+Ông Nguyễn Hoàng Nam hạ sinh Nguyễn Thị Phương. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Thị Hiền. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Thị Tuyết. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Thị Thu. 
+Ông Nguyễn Văn Hưởng hạ sinh Nguyễn Thị Thanh. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Văn Thưởng. 
+Ông Nguyễn Văn Cưỡng hạ sinh Nguyễn Thị Tuấn. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Văn Mịch. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Văn Khánh. 
+Ông Nguyễn Văn Khánh hạ sinh Nguyễn Văn Quỳnh. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Khắc Đài. 
+Ông Nguyễn Khắc Đài hạ sinh Nguyễn Thị Thìn. 
+Ông Nguyễn Khắc Đài hạ sinh Nguyễn Hoàng Ngọc. 
+Ông Nguyễn Khắc Đài hạ sinh Nguyễn Thị Lan. 
+Ông Nguyễn Khắc Đài hạ sinh Nguyễn Thị Huệ. 
+Ông Nguyễn Khắc Đài hạ sinh Nguyễn Hoàng Anh. 
+Ông Nguyễn Khắc Đài hạ sinh Nguyễn Thị Dung. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Sơn Đông. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Sơn Tùng. 
+Ông Nguyễn Sơn Tùng hạ sinh Nguyễn Sơn Ngọc Chiêu. 
+Ông Nguyễn Sơn Ngọc Chiêu hạ sinh Nguyễn Ngọc Mai Khanh. 
+Ông Nguyễn Sơn Tùng hạ sinh Nguyễn Sơn Hoàng Chương. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Sơn Hà. 
+Ông Nguyễn Sơn Hà hạ sinh Nguyễn Sơn Trường Giang. 
+Ông Nguyễn Sơn Trường Giang hạ sinh Nguyễn Duy Khang. 
+Ông Nguyễn Sơn Hà hạ sinh Nguyễn Sơn Thục Hà. 
+Ông Nguyễn Sơn Thục Hà hạ sinh Hùynh Thục Đan. 
+Ông Nguyễn Sơn Hà hạ sinh Nguyễn Sơn Ngân Giang. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Sơn Hải. 
+Ông Nguyễn Sơn Hải hạ sinh Nguyễn Sơn Liêm. 
+Ông Nguyễn Sơn Hải hạ sinh Nguyễn Thị Mai. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Sơn Trung. 
+Ông Nguyễn Sơn Trung hạ sinh Nguyễn Thị Xuân Trang. 
+Ông Nguyễn Sơn Trung hạ sinh Nguyễn Thị Bích Thuận. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Thu Hồng. 
+Ông Nguyễn Thu Hồng hạ sinh Trịnh Thu Hiền. 
+Ông Nguyễn Thu Hồng hạ sinh Trịnh Thục Hòa. 
+Ông Nguyễn Thu Hồng hạ sinh Trịnh Thu Hảo. 
+Ông Nguyễn Thu Hồng hạ sinh Trịnh Thủy Tiên. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Thị Kiều Dung. 
+Ông Nguyễn Thị Kiều Dung hạ sinh Nguyễn Quốc Huy. 
+Ông Nguyễn Thị Kiều Dung hạ sinh Nguyễn Quốc Việt. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Sơn Thanh. 
+Ông Nguyễn Sơn Thanh hạ sinh Nguyễn Cẩm Nhi. 
+Ông Nguyễn Sơn Thanh hạ sinh Nguyễn Sơn Phi. 
+Ông Nguyễn Sơn Đông hạ sinh Nguyễn Sơn Quang. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Thị Đỗ. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Thị Yến. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Tam Tỉnh. 
+Ông Nguyễn Tam Tỉnh hạ sinh Nguyễn Quang Tuấn. 
+Ông Nguyễn Tam Tỉnh hạ sinh Nguyễn Thanh Tú. 
+Ông Nguyễn Tam Tỉnh hạ sinh Nguyễn Quang Cường. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Thị Xuân. 
+Ông Nguyễn Văn Quỳnh hạ sinh Nguyễn Thị Thủy. 
+Ông Nguyễn Văn Khánh hạ sinh Nguyễn Thị Nhan. 
+Ông Nguyễn Văn Khánh hạ sinh Nguyễn Văn Vạn. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thị Vân. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thái Sơn. 
+Ông Nguyễn Thái Sơn hạ sinh Nguyễn Thu Hương. 
+Ông Nguyễn Thái Sơn hạ sinh Nguyễn Thụy Thảo. 
+Ông Nguyễn Thái Sơn hạ sinh Nguyễn Văn Cầu. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thị Thơ. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thị Thọ. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Hoàng Vinh. 
+Ông Nguyễn Hoàng Vinh hạ sinh Nguyễn Hoàng Đức. 
+Ông Nguyễn Hoàng Vinh hạ sinh Nguyễn Thị Phượng. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thị Ninh. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thị Thì. 
+Ông Nguyễn Văn Vạn hạ sinh Nguyễn Thị Nga. 
+Ông Nguyễn Văn Khánh hạ sinh Nguyễn Quý Tộ. 
+Ông Nguyễn Quý Tộ hạ sinh Nguyễn Hoàng Trứ. 
+Ông Nguyễn Hoàng Trứ hạ sinh Nguyễn Thị Lan Anh. 
+Ông Nguyễn Quý Tộ hạ sinh Nguyễn Thị Quý. 
+Ông Nguyễn Quý Tộ hạ sinh Nguyễn Hoàng Trí. 
+Ông Nguyễn Hoàng Trí hạ sinh Nguyễn Hoàng Trường. 
+Ông Nguyễn Quý Tộ hạ sinh Nguyễn Thị Kim Thoa. 
+Ông Nguyễn Quý Tộ hạ sinh Nguyễn Kim Oanh. 
+Ông Nguyễn Văn Khánh hạ sinh Nguyễn Khắc Thường. 
+Ông Nguyễn Khắc Thường hạ sinh Nguyễn Văn Cao. 
+Ông Nguyễn Văn Cao hạ sinh Nguyễn Thị Yến. 
+Ông Nguyễn Văn Cao hạ sinh Nguyễn Thị Dung. 
+Ông Nguyễn Văn Cao hạ sinh Nguyễn Thị Hạnh. 
+Ông Nguyễn Khắc Thường hạ sinh Nguyễn Hải Đăng. 
+Ông Nguyễn Hải Đăng hạ sinh Nguyễn Thị Hương. 
+Ông Nguyễn Hải Đăng hạ sinh Nguyễn Hùng Sơn. 
+Ông Nguyễn Hải Đăng hạ sinh Nguyễn Thị Bình. 
+Ông Nguyễn Hải Đăng hạ sinh Nguyễn Khắc Cường. 
+Ông Nguyễn Khắc Thường hạ sinh Nguyễn Văn Lộc. 
+Ông Nguyễn Văn Lộc hạ sinh Nguyễn Thị Liên. 
+Ông Nguyễn Văn Lộc hạ sinh Nguyễn Văn Đạt. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Thị Phạm. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Thị Phiên. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Thị Phiên. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Thị Kiêm. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Thị Tiêm. 
+Ông Nguyễn Văn Mịch hạ sinh Nguyễn Thị Tất. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Văn Mỹ. 
+Ông Nguyễn Văn Mỹ hạ sinh Nguyễn Văn Kính. 
+Ông Nguyễn Văn Kính hạ sinh Nguyễn Thị Bạch. 
+Ông Nguyễn Văn Kính hạ sinh Nguyễn Văn Kế. 
+Ông Nguyễn Văn Kế hạ sinh Nguyễn Thị Hoa. 
+Ông Nguyễn Văn Kế hạ sinh Nguyễn Thị Bùi. 
+Ông Nguyễn Văn Kế hạ sinh Nguyễn Hoàng Đông. 
+Ông Nguyễn Hoàng Đông hạ sinh Nguyễn Hoàng Hùng. 
+Ông Nguyễn Văn Kế hạ sinh Nguyễn Thị Sinh. 
+Ông Nguyễn Văn Kế hạ sinh Nguyễn Hoàng Hải. 
+Ông Nguyễn Văn Kế hạ sinh Nguyễn Thị Thanh. 
+Ông Nguyễn Văn Kính hạ sinh Nguyễn Thị Hường. 
+Ông Nguyễn Văn Kính hạ sinh Nguyễn Thị Xích. 
+Ông Nguyễn Văn Mỹ hạ sinh Nguyễn Văn Minh. 
+Ông Nguyễn Văn Minh hạ sinh Nguyễn Văn Nhâm. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Thu Hà. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Chi. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Lược. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Mộng Quân. 
+Ông Nguyễn Mộng Quân hạ sinh Nguyễn Thị Dung. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Xuân Hương. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Thơm. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Mộng Nhân. 
+Ông Nguyễn Mộng Nhân hạ sinh Nguyễn Thị Phương. 
+Ông Nguyễn Mộng Nhân hạ sinh Nguyễn Thị Phượng. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Quế. 
+Ông Nguyễn Văn Nhâm hạ sinh Nguyễn Thị Huệ. 
+Ông Nguyễn Văn Minh hạ sinh Nguyễn Thị Lân. 
+Ông Nguyễn Văn Minh hạ sinh Nguyễn Văn Thi. 
+Ông Nguyễn Văn Thi hạ sinh Nguyễn Hoàng Thu. 
+Ông Nguyễn Văn Thi hạ sinh Nguyễn Hoàng Thu. 
+Ông Nguyễn Văn Thi hạ sinh Nguyễn Hoàng Thương. 
+Ông Nguyễn Văn Thi hạ sinh Nguyễn Hoàng Thưởng. 
+Ông Nguyễn Văn Minh hạ sinh Nguyễn Thị Lan. 
+Ông Nguyễn Văn Mỹ hạ sinh Nguyễn Văn Hổ. 
+Ông Nguyễn Văn Mỹ hạ sinh Nguyễn Thị Tý. 
+Ông Nguyễn Văn Mỹ hạ sinh Nguyễn Thị Luận. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Nữ. 
+Ông Nguyễn Thị Nữ hạ sinh Sản. 
+Ông Nguyễn Thị Nữ hạ sinh Điềm. 
+Ông Nguyễn Thị Nữ hạ sinh Thiếp. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Văn Lang. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Thị Riêu. 
+Ông Nguyễn Quý Công hạ sinh Nguyễn Quý Công. 
+Ông Hoàng Quý Công hạ sinh chi 2. 
+

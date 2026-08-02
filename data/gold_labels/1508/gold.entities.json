@@ -1,0 +1,92 @@
+{
+  "entities": [
+    {
+      "text": "Xóm tê thôn xã hoằng đạo",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện hoằng hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Tỉnh thanh hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Viết Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "16 tháng 01 năm 1936 Âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Thị Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cao Thị Nhì",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Dụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Ấm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Tường",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Viết Lộc",
+      "tail": "Lê Thị Quân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Viết Lộc",
+      "tail": "Cao Thị Nhì",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Lộc",
+      "tail": "Nguyễn Viết Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Lộc",
+      "tail": "Nguyễn Viết Dụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Lộc",
+      "tail": "Nguyễn Thị Ấm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Lộc",
+      "tail": "Nguyễn Viết Tường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

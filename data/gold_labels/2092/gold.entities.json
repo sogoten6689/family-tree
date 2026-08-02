@@ -1,0 +1,238 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Phúc Chu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xóm Phú Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Thành Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Hậu Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "1979",
+      "label": "DATE"
+    },
+    {
+      "text": "Dực Đông trang",
+      "label": "LOC"
+    },
+    {
+      "text": "Dực Đông xã",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Thuần Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Hà Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Do Hạ",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Thịnh Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Do Hạ",
+      "label": "LOC"
+    },
+    {
+      "text": "Phú Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn - hiệu Từ Đường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phúc Trực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hoa Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Phú Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Từ Đường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ hai",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Từ Cận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ ba",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Đăng Đệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Từ Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ tư",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Đăng Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Từ Tính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hữu Trản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Lương Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Lành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Nhạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con Trai đầu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Lam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Danh Lam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1979",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Phúc Chu",
+      "tail": "Nguyễn - hiệu Từ Đường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Phúc Chu",
+      "tail": "Nguyễn Phúc Trực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn - hiệu Từ Đường",
+      "tail": "Nguyễn Phúc Trực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Phúc Chu",
+      "tail": "Nguyễn Từ Đường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Phúc Trực",
+      "tail": "Nguyễn Từ Cận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Đăng Đệ",
+      "tail": "Trần Từ Trân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Đăng Tam",
+      "tail": "Nguyễn Từ Tính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hữu Trản",
+      "tail": "Nguyễn Lam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "entities": [
+    {
+      "text": "Đầm Dơi",
+      "label": "LOC"
+    },
+    {
+      "text": "cà Mau",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

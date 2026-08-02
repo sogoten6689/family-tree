@@ -1,0 +1,33 @@
+{
+  "entities": [
+    {
+      "text": "Cẩm Bào",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoàng Văn Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Việt Đức",
+      "label": "LOC"
+    },
+    {
+      "text": "Phố Cò",
+      "label": "LOC"
+    },
+    {
+      "text": "TP Sông Công",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoàng Văn",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

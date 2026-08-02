@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {
+      "text": "Giáp Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Văn Giai",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hoa\nỔ",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Nam Đường",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Thanh Khai",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Chương",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "khoảng những năm 1400",
+      "label": "DATE"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Hương Khê",
+      "label": "LOC"
+    },
+    {
+      "text": "người anh cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "chú em út",
+      "label": "ORDER"
+    },
+    {
+      "text": "thôn Đa cương",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Ngọ xá",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

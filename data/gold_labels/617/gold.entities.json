@@ -1,0 +1,149 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Văn Bùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý Hệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Ngãi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Nghì",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Nén",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Sén",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Bảo Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Thanh Châu",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Thanh Liêm",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Hà Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "đời x",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Lê Thị Thắm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Lý Hệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Nguyễn Văn Ngãi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Nguyễn Thị Nghì",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Lân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Nguyễn Thị Nén",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Bùng",
+      "tail": "Nguyễn Thị Sén",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Thắm",
+      "tail": "Lý Hệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Thắm",
+      "tail": "Nguyễn Văn Ngãi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Thắm",
+      "tail": "Nguyễn Thị Nghì",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Thắm",
+      "tail": "Lân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Thắm",
+      "tail": "Nguyễn Thị Nén",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Lê Thị Thắm",
+      "tail": "Nguyễn Thị Sén",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

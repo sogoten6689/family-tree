@@ -1,0 +1,81 @@
+{
+  "entities": [
+    {
+      "text": "thôn Trung Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Xã Ngũ Lão",
+      "label": "LOC"
+    },
+    {
+      "text": "Thủy Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Phòng",
+      "label": "LOC"
+    },
+    {
+      "text": "13 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Vĩnh Phú",
+      "label": "LOC"
+    },
+    {
+      "text": "Bắc Ninh",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Mạnh Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "năm Tự Đức thứ 20",
+      "label": "DATE"
+    },
+    {
+      "text": "1867",
+      "label": "DATE"
+    },
+    {
+      "text": "Đồng Khánh Nguyên Niên",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thế kỷ 20",
+      "label": "DATE"
+    },
+    {
+      "text": "Duy Tân",
+      "label": "DATE"
+    },
+    {
+      "text": "Khải Định",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Đình Đệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời C",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

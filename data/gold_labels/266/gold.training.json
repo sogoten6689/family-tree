@@ -1,0 +1,172 @@
+{
+  "doc_id": "vgp_266",
+  "tree_id": 266,
+  "title": "Nguyễn Thành ( Miếu Bông, Hòa Phước, Hòa Vang,) - Đà Nẵng",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/266/pha_ky_gia_su.html",
+  "text": "Cây phải có gốc mới sinh ra lắm tượt nhiều cành,\nNước phải có nguồn mới sinh ra trăm sông nghìn lạch.\nThế thì, dòng họ con cháu bởi Tổ Tông, một thiên Tộc sử ta cần phải tưởng niệm ghi chép để để lại đời sau!\nKính nhớ lại ngày xưa ,Đấng Thuỷ Thuỷ Tổ Nguyễn Quý Công, vị Tiền hiền của làng ta là dòng dõi ở Châu Hoan vậy \"tức Nghệ An bây giờ\". Trong thời kỳ niên hiệu Hồng Đức, ngài theo Vua Lê Thánh Tôn triều Lê vào Nam mở đất \"lúc đánh Chiêm Thành\". Ngài bèn chọn nơi phía nam Cẩm gian (tức Cẩm Lệ ) thuộc Phủ Điện bàn ngày trước thuộc Châu Quảng \"tức Quảng Nam\", một giãi bằng phẳng, nước bao đất tốt rạch bờ cõi, định mẫu sào, chuyên về nông nghiệp. Tốt đẹp thay! Kinh Thi có câu: Phơi phới hoa màu lúa nép mưa dầu chan rưới thấm nhuần. Công cán của Ngài vỡ đất làm nông, có tính cách như Ông Tuân Bá đời nhà Châu ngày xưa vậy. Nhân đó đặt tên là làng Miếu Bông, hiện nay thần vị của Ngài sắp hàng phía tả, phía trái của Chùa Làng, dân chúng thờ phụng. Đủ thấy vị Tiền Hiền Thuỷ Tổ của chúng ta đã dày công với dân chúng lắm, đến nay hơn năm trăm năm. Đời người ngày càng giàu sang đông đúc, Văn thì có Hàng Uyển Cần Cung, Hàn lâm Học sanh, Võ thì có Dịch thừa Hiệu Uý, Thừa trạm Đội Lệ, nối đời dòng dõi trâm anh, đầy thềm cỏ chi cỏ ngọc (chi lang ngọc thọ). May mắn thay! Quả phúc được đâm chồi nứt tượt vậy, theo trước đây nhà thờ được xây cất trên khuôn đất đã chọn ở phía tả của ngôi chùa, trong vườn phía Nam của làng, trước cảnh dòng nước Giáng Thuỷ (Quá Giáng) bao quanh bọc ôm gò đất, xa trông nước đẹp non xanh, rồng đan cọp núp, cái cảnh thiên nhiên đã gom góp tinh thần tốt đẹp, phước ấm dồi dào. Nhớ lại cái công siêng năng xây dựng ngày xưa, mà mừng thay sự nghiệp được mở mang sắp tới, đất linh người giỏi nối tiếp bền lâu, khí tượng vẽ vang, ngâm khúc mùa màng thêm được dập dìu, người yên vật đủ, ca vang lừng lẫy cả muôn ngàn. Vậy ghi mấy lời vào bia đá để lại con cháu đời sau trông thấy đấy mà biết được nguồn gốc sự nghiệp của Tổ Tông bởi đâu mà có. Ấy là một điều rất trông mong đời sau con cháu hiểu biết vậy.\nPHỤNG LỤC NGUYÊN TIỀN TRIỀU GIA LONG NHỊ NIÊN, TAM NGUYỆT, THẬP NGŨ NHẬT (Tức Rằm tháng Ba năm 1803)\nMIẾU BÔNG XÃ, NGUYỄN THÀNH TỘC CUNG PHỤNG KÊ.\nKính làm lời tựa, Mùa Xuân năm Nhâm Thân, niên hiệu Bảo Đại thứ 17 (tức năm 1932), Ba phái trong tộc Nguyễn Thành làng Miếu Bông, đồng kính ghi.\nCác cháu đời thứ 13 kính cẩn thể theo nguyên văn dịch thuật.\nMiếu Bông ngày 15 tháng 10 năm Đinh Mùi (nhằm ngày 16-11-1967)\nVIỆT NAM QUỐC, QUẢNG NAM TỈNH, HÒA VANG QUẬN, HÒA PHƯỚC XÃ, MIẾU BÔNG THÔN.\nNGUYỄN THÀNH TỘC,\nĐỆ TAM PHÁI, ĐỆ NHẤT CHI Tự tôn Nguyễn Sanh, Nguyễn Hoàng, Nguyễn Thuyên, Nguyễn Trung, Nguyễn Thiều hiệp toàn bổn chi đẳng Thành kính Tổ tiên Phụng Thừa chỉnh tu Phổ chí Lưu chiếu tương lai tử tôn kỷ niệm.",
+  "entities": [
+    {
+      "start": 250,
+      "end": 265,
+      "label": "PER_NAME",
+      "text": "Nguyễn Quý Công"
+    },
+    {
+      "start": 306,
+      "end": 315,
+      "label": "LOC",
+      "text": "Châu Hoan"
+    },
+    {
+      "start": 325,
+      "end": 332,
+      "label": "LOC",
+      "text": "Nghệ An"
+    },
+    {
+      "start": 367,
+      "end": 375,
+      "label": "DATE",
+      "text": "Hồng Đức"
+    },
+    {
+      "start": 391,
+      "end": 403,
+      "label": "PER_NAME",
+      "text": "Lê Thánh Tôn"
+    },
+    {
+      "start": 479,
+      "end": 487,
+      "label": "LOC",
+      "text": "Cẩm gian"
+    },
+    {
+      "start": 493,
+      "end": 499,
+      "label": "LOC",
+      "text": "Cẩm Lệ"
+    },
+    {
+      "start": 508,
+      "end": 520,
+      "label": "LOC",
+      "text": "Phủ Điện bàn"
+    },
+    {
+      "start": 538,
+      "end": 548,
+      "label": "LOC",
+      "text": "Châu Quảng"
+    },
+    {
+      "start": 554,
+      "end": 563,
+      "label": "LOC",
+      "text": "Quảng Nam"
+    },
+    {
+      "start": 1450,
+      "end": 1460,
+      "label": "LOC",
+      "text": "Giáng Thuỷ"
+    },
+    {
+      "start": 1462,
+      "end": 1471,
+      "label": "LOC",
+      "text": "Quá Giáng"
+    },
+    {
+      "start": 2115,
+      "end": 2136,
+      "label": "DATE",
+      "text": "Rằm tháng Ba năm 1803"
+    },
+    {
+      "start": 2202,
+      "end": 2250,
+      "label": "DATE",
+      "text": "Mùa Xuân năm Nhâm Thân, niên hiệu Bảo Đại thứ 17"
+    },
+    {
+      "start": 2256,
+      "end": 2264,
+      "label": "DATE",
+      "text": "năm 1932"
+    },
+    {
+      "start": 2338,
+      "end": 2348,
+      "label": "GENERATION",
+      "text": "đời thứ 13"
+    },
+    {
+      "start": 2400,
+      "end": 2429,
+      "label": "DATE",
+      "text": "ngày 15 tháng 10 năm Đinh Mùi"
+    },
+    {
+      "start": 2436,
+      "end": 2451,
+      "label": "DATE",
+      "text": "ngày 16-11-1967"
+    },
+    {
+      "start": 2468,
+      "end": 2482,
+      "label": "LOC",
+      "text": "QUẢNG NAM TỈNH"
+    },
+    {
+      "start": 2484,
+      "end": 2497,
+      "label": "LOC",
+      "text": "HÒA VANG QUẬN"
+    },
+    {
+      "start": 2499,
+      "end": 2511,
+      "label": "LOC",
+      "text": "HÒA PHƯỚC XÃ"
+    },
+    {
+      "start": 2513,
+      "end": 2527,
+      "label": "LOC",
+      "text": "MIẾU BÔNG THÔN"
+    },
+    {
+      "start": 2579,
+      "end": 2590,
+      "label": "PER_NAME",
+      "text": "Nguyễn Sanh"
+    },
+    {
+      "start": 2592,
+      "end": 2604,
+      "label": "PER_NAME",
+      "text": "Nguyễn Hoàng"
+    },
+    {
+      "start": 2606,
+      "end": 2619,
+      "label": "PER_NAME",
+      "text": "Nguyễn Thuyên"
+    },
+    {
+      "start": 2621,
+      "end": 2633,
+      "label": "PER_NAME",
+      "text": "Nguyễn Trung"
+    },
+    {
+      "start": 2635,
+      "end": 2647,
+      "label": "PER_NAME",
+      "text": "Nguyễn Thiều"
+    }
+  ],
+  "relations": []
+}

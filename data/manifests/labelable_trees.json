@@ -1,0 +1,1770 @@
+{
+  "source": "assess_pha_ky",
+  "selected_tree_ids": [
+    101,
+    105,
+    120,
+    122,
+    145,
+    229,
+    243,
+    255,
+    266,
+    277,
+    286,
+    303,
+    310,
+    321,
+    364,
+    367,
+    369,
+    386,
+    392,
+    396,
+    410,
+    423,
+    433
+  ],
+  "selected_count": 23,
+  "assessments": {
+    "101": {
+      "tree_id": 101,
+      "suitable": true,
+      "score": 99.3,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 1635,
+        "sentence_count": 16,
+        "relation_cue_hits": 18,
+        "generation_cue_hits": 1,
+        "labeled_sentence_count": 12,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 95,
+        "diagram_overlap": {
+          "diagram_name_count": 189,
+          "matched_name_count": 152,
+          "overlap_ratio": 0.8042,
+          "matched_sample": [
+            "2.2 . . dòng họ vũ - nhánh thái bình . . .",
+            "vũ đình điền",
+            "9.86 vũ thị hạ",
+            "vũ gia lâm",
+            "vũ thị như thăng",
+            "7.25 vũ đình trân",
+            "vũ thị thọ",
+            "10.67 vũ thị ánh dương",
+            "vũ thị sâm",
+            "vũ thị niên",
+            "vũ thị rung",
+            "vũ đình ngoạn",
+            "8.44 vũ đình nghiễn",
+            "vũ đình liễn",
+            "vũ đình nghĩa"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 96.5,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Dòng họ Vũ (gốc An Bài - Đông Động - Đông Hưng - Thái Bình) - Thái Bình"
+      }
+    },
+    "102": {
+      "tree_id": 102,
+      "suitable": false,
+      "score": 50.1,
+      "skip_reasons": [
+        "relation_cues_insufficient:0<1",
+        "labeled_sentences_insufficient:0<1"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 863,
+        "sentence_count": 21,
+        "relation_cue_hits": 0,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 0,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 2,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "1.1 đinh đức tuyên",
+            "đinh đức tuyên"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 0.0,
+          "labeled_sentences": 0.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "Đinh Tộc Kiên Lao - Nam Định"
+      }
+    },
+    "105": {
+      "tree_id": 105,
+      "suitable": true,
+      "score": 79.51,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 442,
+        "sentence_count": 5,
+        "relation_cue_hits": 7,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 4,
+        "boilerplate_line_ratio": 0.3333,
+        "pha_he_node_count": 29,
+        "diagram_overlap": {
+          "diagram_name_count": 58,
+          "matched_name_count": 20,
+          "overlap_ratio": 0.3448,
+          "matched_sample": [
+            "martinô vũ hà minh thắng",
+            "giuse vũ minh hiếu",
+            "5.22 phaolô vũ hoàng minh anh",
+            "3.18 giuse vũ minh hiếu",
+            "4.32 têrêxa vũ trần minh thư",
+            "giuse vũ hà minh thảo",
+            "phaolô vũ hoàng minh anh",
+            "3.27 lucia vũ thị kim liên",
+            "thông",
+            "phêrô vũ minh toàn",
+            "3.31 phêrô vũ minh toàn",
+            "vũ trần minh tú",
+            "têrêxa vũ trần minh thư",
+            "4.33 vũ trần minh tú",
+            "2.7 ông thông"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 41.38,
+          "boilerplate": 33.33,
+          "diagram_size": 58.0
+        },
+        "lineage_name": "VŨ - Ninh Bình"
+      }
+    },
+    "120": {
+      "tree_id": 120,
+      "suitable": true,
+      "score": 92.68,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 1091,
+        "sentence_count": 14,
+        "relation_cue_hits": 14,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 4,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 142,
+        "diagram_overlap": {
+          "diagram_name_count": 284,
+          "matched_name_count": 150,
+          "overlap_ratio": 0.5282,
+          "matched_sample": [
+            "nguyễn thị hồi",
+            "5.51 mai văn chứa",
+            "nguyễn ...nhái",
+            "2.138 nguyễn thị phàng",
+            "4.41 nguyễn văn xinh",
+            "6.98 nguyễn ...nhái",
+            "2.2 nguyễn thị tự",
+            "6.61 nguyễn bích thuận",
+            "5.46 nguyễn văn khê",
+            "nguyễn văn khánh",
+            "nguyễn ...khai",
+            "nguyễn quốc cường",
+            "nguyễn thanh mai",
+            "nguyễn thị tự",
+            "nguyễn thị phàng"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 63.38,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "NGUYỄN - Long An"
+      }
+    },
+    "122": {
+      "tree_id": 122,
+      "suitable": true,
+      "score": 98.2,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 4044,
+        "sentence_count": 43,
+        "relation_cue_hits": 80,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 26,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 74,
+        "diagram_overlap": {
+          "diagram_name_count": 178,
+          "matched_name_count": 135,
+          "overlap_ratio": 0.7584,
+          "matched_sample": [
+            "võ thị tâm an",
+            "võ thị liên",
+            "4.15 võ an huy",
+            "3.14 võ thị xuân",
+            "võ thị thìn",
+            "võ thị nhung",
+            "võ kính",
+            "võ thị giang",
+            "võ an huy",
+            "5.62 võ thị hương",
+            "võ thị xuân",
+            "võ trung hưng",
+            "cố võ đào",
+            "3.6 vỗ thành",
+            "quế thị bảy"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 91.01,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Họ Võ tại Tây Hồ - Diễn Phong - Diễ - Nghệ An"
+      }
+    },
+    "145": {
+      "tree_id": 145,
+      "suitable": true,
+      "score": 59.24,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 468,
+        "sentence_count": 3,
+        "relation_cue_hits": 2,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 2,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 339,
+        "diagram_overlap": {
+          "diagram_name_count": 663,
+          "matched_name_count": 117,
+          "overlap_ratio": 0.1765,
+          "matched_sample": [
+            "10.66 lê đình minh b",
+            "10.102 lê nguyễn gia linh",
+            "lê long thành",
+            "10.129 chưa biết tên",
+            "9.57 lưu lê hồng anh",
+            "8.295 thạch mai anh",
+            "lưu lê huỳnh anh",
+            "6.105 lê đình minh",
+            "lê đình minh b",
+            "lê đình song anh",
+            "nguyễn thành tài",
+            "10.78 nguyễn lưu minh thư",
+            "5.314 trần thị trước",
+            "9.73 lê thành đông",
+            "huỳnh thế đang"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 40.0,
+          "labeled_sentences": 50.0,
+          "diagram_overlap": 21.18,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Lê Đình - Bến Tre"
+      }
+    },
+    "166": {
+      "tree_id": 166,
+      "suitable": false,
+      "score": 45.22,
+      "skip_reasons": [
+        "relation_cues_insufficient:0<1",
+        "labeled_sentences_insufficient:0<1"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 287,
+        "sentence_count": 1,
+        "relation_cue_hits": 0,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 0,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 20,
+        "diagram_overlap": {
+          "diagram_name_count": 40,
+          "matched_name_count": 40,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "3.9 thân phước bá",
+            "4.12 thân phước trinh",
+            "4.11 thân phước hựu",
+            "3.8 thân phước văn",
+            "1.1 thân phước cẩm",
+            "thân t tối",
+            "thân phước trạch",
+            "thân vĩnh tự",
+            "4.20 thân t tối",
+            "thân phước thường",
+            "4.19 thân thị sớm",
+            "thân phước văn",
+            "thân phước triều",
+            "thân thị sớm",
+            "3.7 thân phước thọ"
+          ]
+        },
+        "score_breakdown": {
+          "length": 66.1,
+          "relation_cues": 0.0,
+          "labeled_sentences": 0.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 40.0
+        },
+        "lineage_name": "Thân - Bắc Giang"
+      }
+    },
+    "185": {
+      "tree_id": 185,
+      "suitable": false,
+      "score": 30.08,
+      "skip_reasons": [
+        "score_below_min:30.08<45.0"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 233,
+        "sentence_count": 3,
+        "relation_cue_hits": 1,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 1,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 49.9,
+          "relation_cues": 20.0,
+          "labeled_sentences": 25.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "PHAN - Khánh Hòa"
+      }
+    },
+    "229": {
+      "tree_id": 229,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 5485,
+        "sentence_count": 44,
+        "relation_cue_hits": 28,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 13,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1436,
+        "diagram_overlap": {
+          "diagram_name_count": 2403,
+          "matched_name_count": 2373,
+          "overlap_ratio": 0.9875,
+          "matched_sample": [
+            "21.63 ông thị hưu",
+            "21.62 ông thị nữa",
+            "thị bích liên",
+            "18.35 ông thế đính",
+            "21.61 ông thị dậu",
+            "21.70 ông hoàng văn anh tuấn",
+            "21.64 ông thị túc",
+            "21.68 ông văn đãnh",
+            "văn tãi",
+            "văn tỵ",
+            "18.38 ông chánh giãng",
+            "thị ỷ",
+            "thị đồng",
+            "21.68 ông thị ai",
+            "21.67 ông văn khoa"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Ông 翁 - Đà Nẵng"
+      }
+    },
+    "231": {
+      "tree_id": 231,
+      "suitable": false,
+      "score": 80.0,
+      "skip_reasons": [
+        "pha_ky_too_long:18165>12000"
+      ],
+      "warnings": [],
+      "metrics": {
+        "char_count": 18165,
+        "sentence_count": 248,
+        "relation_cue_hits": 94,
+        "generation_cue_hits": 2,
+        "labeled_sentence_count": 69,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 126,
+        "diagram_overlap": {
+          "diagram_name_count": 252,
+          "matched_name_count": 252,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "ngô hữu cội",
+            "6.16 ngô hữu cẩn",
+            "2.5 ngô hữu kiên",
+            "6.14 ngô hữu chiến",
+            "ngô hữu khả",
+            "6.13 ngô hữu viên",
+            "4.9 ngô hữu bộ",
+            "ngô hữu lương",
+            "ngô hữu ky",
+            "6.11 ngô hữu tiệm",
+            "5.11 ngô hữu tập",
+            "ngô hữu sinh",
+            "ngô hữu ruệ",
+            "5.12 ngô hữu lật",
+            "5.14 ngô hữu sừng"
+          ]
+        },
+        "score_breakdown": {
+          "length": 0.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Ngô Hữu Thôn Gang - Thái Bình"
+      }
+    },
+    "232": {
+      "tree_id": 232,
+      "suitable": false,
+      "score": 80.0,
+      "skip_reasons": [
+        "pha_ky_too_long:25719>12000"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 25719,
+        "sentence_count": 433,
+        "relation_cue_hits": 140,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 93,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 52,
+        "diagram_overlap": {
+          "diagram_name_count": 104,
+          "matched_name_count": 102,
+          "overlap_ratio": 0.9808,
+          "matched_sample": [
+            "ngô ký",
+            "ngô khắc cung",
+            "21.28 ngô vĩnh",
+            "ngô đình thực",
+            "ngô thiết",
+            "ngô hộ",
+            "17.50 ngô thị ngọc vĩ.",
+            "ngô rô",
+            "3.3 ngô đình thực",
+            "ngô ma lư",
+            "8.10 ngô tử ân",
+            "ngô nhật dụ",
+            "17.47 ngô thị ngọc điệp",
+            "ngô tính",
+            "ngô ứng"
+          ]
+        },
+        "score_breakdown": {
+          "length": 0.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Ngô, Phan Ngô - Thái Bình"
+      }
+    },
+    "243": {
+      "tree_id": 243,
+      "suitable": true,
+      "score": 86.66,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 1884,
+        "sentence_count": 18,
+        "relation_cue_hits": 5,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 2,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 333,
+        "diagram_overlap": {
+          "diagram_name_count": 664,
+          "matched_name_count": 461,
+          "overlap_ratio": 0.6943,
+          "matched_sample": [
+            "cao thị ngọc trắc",
+            "8.41 tạ hoàng vũ",
+            "5.14 trần thị lai",
+            "7.31 nguyễn thị ngọc trang",
+            "võ văn nhẫn",
+            "7.30 nguyễn thị tường vy",
+            "nguyễn thị y phụng",
+            "8.33 trần thị thanh vy",
+            "võ thị thu hà",
+            "nguyễn thị dạ thảo",
+            "3.11 võ văn dương",
+            "võ thị kim liên",
+            "6.27 võ thị mỹ kim",
+            "võ thị mỹ kim",
+            "võ thị quyên quyên"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 50.0,
+          "diagram_overlap": 83.32,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Võ (Tuy Phước, Bình Định) - Bình Định"
+      }
+    },
+    "245": {
+      "tree_id": 245,
+      "suitable": false,
+      "score": 18.16,
+      "skip_reasons": [
+        "relation_cues_insufficient:0<1",
+        "labeled_sentences_insufficient:0<1"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 201,
+        "sentence_count": 2,
+        "relation_cue_hits": 0,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 0,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 40.3,
+          "relation_cues": 0.0,
+          "labeled_sentences": 0.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "Chi tộc họ Ngô - Bắc Giang - Bắc Giang"
+      }
+    },
+    "255": {
+      "tree_id": 255,
+      "suitable": true,
+      "score": 98.97,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 2411,
+        "sentence_count": 39,
+        "relation_cue_hits": 28,
+        "generation_cue_hits": 1,
+        "labeled_sentence_count": 14,
+        "boilerplate_line_ratio": 0.0513,
+        "pha_he_node_count": 144,
+        "diagram_overlap": {
+          "diagram_name_count": 246,
+          "matched_name_count": 242,
+          "overlap_ratio": 0.9837,
+          "matched_sample": [
+            "nguyễn bình phương",
+            "nguyễn tám",
+            "nguyễn thị thu",
+            "6.62 nguyễn đăng khoa",
+            "4.52 nguyễn thị a",
+            "nguyễn thị liên",
+            "nguyễn thị nhàn",
+            "7.72 nguyễn minh kiên",
+            "2.38 nguyễn một",
+            "3.36 nguyễn thị lan",
+            "nguyen thi a",
+            "5.31 nguyễn tấn chức",
+            "3.46 nguyễn thị hồng",
+            "nguyễn doãn",
+            "5.54 nguyễn thị cẩm vân"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 89.74,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "NGUYỄN XUYẾN - Quảng Ngãi"
+      }
+    },
+    "263": {
+      "tree_id": 263,
+      "suitable": false,
+      "score": 51.2,
+      "skip_reasons": [
+        "relation_cues_insufficient:0<1",
+        "labeled_sentences_insufficient:0<1"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 659,
+        "sentence_count": 2,
+        "relation_cue_hits": 0,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 0,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 12,
+        "diagram_overlap": {
+          "diagram_name_count": 22,
+          "matched_name_count": 22,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "lê công bao",
+            "lê công biên",
+            "lê công nhơn",
+            "lê công tống",
+            "4.5 lê công tống",
+            "lê công đồng",
+            "2.2 lê công nên",
+            "lê công bằng",
+            "lê công tùng",
+            "5.5 lê công nhơn",
+            "lê công kỷ",
+            "4.9 lê công lạp",
+            "6.6 lê công tín",
+            "8.8 lê công biên",
+            "7.7 lê công tùng"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 0.0,
+          "labeled_sentences": 0.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 24.0
+        },
+        "lineage_name": "Lê Công - Quảng Trị"
+      }
+    },
+    "266": {
+      "tree_id": 266,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 2753,
+        "sentence_count": 25,
+        "relation_cue_hits": 7,
+        "generation_cue_hits": 1,
+        "labeled_sentence_count": 7,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1034,
+        "diagram_overlap": {
+          "diagram_name_count": 1884,
+          "matched_name_count": 1873,
+          "overlap_ratio": 0.9942,
+          "matched_sample": [
+            "nguyễn thị mau",
+            "nguyễn ngọc vinh",
+            "17.1005 nguyễn thành trung hậu",
+            "nguyễn tấn chiến",
+            "nguyễn thành cáo",
+            "13.58 nguyễn thị thường",
+            "nguyễn thành huy cường",
+            "15.1214 nguyễn hồng tiến",
+            "nguyễn thanh việt",
+            "13.225 nguyễn thị xuân",
+            "14.272 nguyễn thành bê",
+            "12.214 nguyễn thị năm",
+            "nguyễn trung anh",
+            "nguyễn thanh bảo lâm",
+            "nguyễn thành thiệt"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Nguyễn Thành ( Miếu Bông, Hòa Phước, Hòa Vang,) - Đà Nẵng"
+      }
+    },
+    "277": {
+      "tree_id": 277,
+      "suitable": true,
+      "score": 95.9,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 4941,
+        "sentence_count": 129,
+        "relation_cue_hits": 19,
+        "generation_cue_hits": 8,
+        "labeled_sentence_count": 17,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 9,
+        "diagram_overlap": {
+          "diagram_name_count": 18,
+          "matched_name_count": 18,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "5.12 nguyễn cảnh chiêu",
+            "2.4 nguyễn cảnh luật",
+            "nguyễn cảnh luật",
+            "nguyễn cảnh hân",
+            "5.10 nguyễn cảnh hân",
+            "nguyễn cảnh vạn",
+            "4.6 nguyễn cảnh huy",
+            "nguyễn cảnh hoan",
+            "nguyễn cảnh chiêu",
+            "3.5 nguyễn cảnh cảnh",
+            "1.1 nguyễn cảnh lữ",
+            "5.8 nguyễn cảnh noãn",
+            "5.11 nguyễn cảnh vạn",
+            "5.9 nguyễn cảnh hoan",
+            "nguyễn cảnh huy"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 18.0
+        },
+        "lineage_name": "NGUYỄN CẢNH - Nghệ An"
+      }
+    },
+    "281": {
+      "tree_id": 281,
+      "suitable": false,
+      "score": 55.68,
+      "skip_reasons": [
+        "diagram_name_overlap_low:0.03<0.08"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 587,
+        "sentence_count": 1,
+        "relation_cue_hits": 3,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 1,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 777,
+        "diagram_overlap": {
+          "diagram_name_count": 1447,
+          "matched_name_count": 41,
+          "overlap_ratio": 0.0283,
+          "matched_sample": [
+            "16.212 lê thu trang",
+            "13.518 lê thị hảo",
+            "lê viết tính",
+            "lê thị nhị",
+            "lê lệnh quân",
+            "15.76 lê thị nhật",
+            "lê lệnh sinh",
+            "16.665 lê lệnh sinh",
+            "lê thị hảo",
+            "lê lệnh nhật",
+            "15.737 lê lệnh thủy",
+            "15.582 lê lệnh nhị",
+            "15.192 bùi tiến quân",
+            "10.463 lê thị nhị",
+            "lê thị tường"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 60.0,
+          "labeled_sentences": 25.0,
+          "diagram_overlap": 3.4,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "LÊ LỆNH - Thanh Hóa"
+      }
+    },
+    "286": {
+      "tree_id": 286,
+      "suitable": true,
+      "score": 70.0,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 574,
+        "sentence_count": 9,
+        "relation_cue_hits": 2,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 1,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 168,
+        "diagram_overlap": {
+          "diagram_name_count": 316,
+          "matched_name_count": 314,
+          "overlap_ratio": 0.9937,
+          "matched_sample": [
+            "đặng viết khả",
+            "19.34 đặng viết sự",
+            "đặng thị lương",
+            "đặng phúc phiến",
+            "17.28 đặng viết kích",
+            "19.33 đặng viết sơn",
+            "đặng viết thọ",
+            "20.37 đặng thị ngân",
+            "17.29 đặng viết thước",
+            "15.23 không biết",
+            "19.37 đặng viết hùng",
+            "19.33 đặng thị thuận",
+            "đặng viết trọng",
+            "18.35 đặng viết luận",
+            "17.30 đặng viết bải"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 40.0,
+          "labeled_sentences": 25.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "ĐẶNG - Thanh Hóa"
+      }
+    },
+    "293": {
+      "tree_id": 293,
+      "suitable": false,
+      "score": 80.0,
+      "skip_reasons": [
+        "pha_ky_too_long:18587>12000"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 18587,
+        "sentence_count": 280,
+        "relation_cue_hits": 95,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 71,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 111,
+        "diagram_overlap": {
+          "diagram_name_count": 220,
+          "matched_name_count": 216,
+          "overlap_ratio": 0.9818,
+          "matched_sample": [
+            "trần văn viên",
+            "3.88 trần văn lâm",
+            "nguyễn văn sây",
+            "nguyễn văn bơ",
+            "4.106 trần thị út",
+            "6.20 lê nguyễn nguyên thủ",
+            "nguyễn lê duy",
+            "5.15 lê văn phước",
+            "3.13 lê văn chuyền",
+            "lê trúc xuân my",
+            "lê nguyễn hải đăng",
+            "nguyễn thị nan",
+            "nguyễn lê bảo trân",
+            "nguyễn văn đàn",
+            "lê văn ngọn"
+          ]
+        },
+        "score_breakdown": {
+          "length": 0.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "LÊ NGUYỄN (CỦ-CHI) - Sài Gòn"
+      }
+    },
+    "303": {
+      "tree_id": 303,
+      "suitable": true,
+      "score": 98.81,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 1987,
+        "sentence_count": 31,
+        "relation_cue_hits": 16,
+        "generation_cue_hits": 1,
+        "labeled_sentence_count": 6,
+        "boilerplate_line_ratio": 0.037,
+        "pha_he_node_count": 54,
+        "diagram_overlap": {
+          "diagram_name_count": 108,
+          "matched_name_count": 88,
+          "overlap_ratio": 0.8148,
+          "matched_sample": [
+            "14.33 võ huy",
+            "võ thị liên",
+            "võ quỳnh như",
+            "6.7 võ văn lộc",
+            "9.10 võ văn đắc",
+            "8.9 võ văn cách",
+            "10.11 võ văn lựu",
+            "võ văn duyên",
+            "12.21 võ thị cuốc",
+            "14.34 võ anh tuấn",
+            "võ huy",
+            "võ thanh minh",
+            "13.26 võ thị trường",
+            "võ thanh cường",
+            "võ anh tuấn"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 97.78,
+          "boilerplate": 92.59,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "VÕ VĂN ( phái 3, chi 3, nhánh 4 ) - Quảng Nam"
+      }
+    },
+    "310": {
+      "tree_id": 310,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 1701,
+        "sentence_count": 19,
+        "relation_cue_hits": 21,
+        "generation_cue_hits": 15,
+        "labeled_sentence_count": 7,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1183,
+        "diagram_overlap": {
+          "diagram_name_count": 2058,
+          "matched_name_count": 1756,
+          "overlap_ratio": 0.8533,
+          "matched_sample": [
+            "10.805 nguyễn thị thọ",
+            "12.884 con 1",
+            "nguỹen ngọc thụ",
+            "nguyễn bích hải",
+            "11.387 phạm đình minh",
+            "phạm ngọc quát",
+            "12.1009 nguyễn thị dy",
+            "12.359 nguyễn thuỷ linh",
+            "10.476 nguyễn văn trưởng",
+            "nguyễn hoàng anh",
+            "nguyễn văn khánh",
+            "11.381 phạm ngọc quát",
+            "võ ngọc tuấn",
+            "nguyễn thị hoàng oanh",
+            "9.67 nguuyẽn văn giá"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Nguyễn Văn Lai Xá - Hà Tây"
+      }
+    },
+    "321": {
+      "tree_id": 321,
+      "suitable": true,
+      "score": 75.1,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 619,
+        "sentence_count": 10,
+        "relation_cue_hits": 20,
+        "generation_cue_hits": 1,
+        "labeled_sentence_count": 9,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "Thái - Đồng Tháp"
+      }
+    },
+    "364": {
+      "tree_id": 364,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 2841,
+        "sentence_count": 62,
+        "relation_cue_hits": 25,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 15,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 144,
+        "diagram_overlap": {
+          "diagram_name_count": 283,
+          "matched_name_count": 283,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "phan thị nhàn",
+            "phan nghị",
+            "phan thị thường",
+            "phan tửu",
+            "phan đinh đức",
+            "4.19 phan quyển",
+            "6.31 phan thị tịnh",
+            "phan đình hoàng",
+            "phan thị chúng",
+            "phan đình bản",
+            "6.32 phan hồng trường",
+            "6.28 phan bảy",
+            "4.20 phan đình huẫn",
+            "phan trung đề",
+            "5.24 phan đình phú"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Phan tộc - Quảng Ngãi"
+      }
+    },
+    "367": {
+      "tree_id": 367,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 4814,
+        "sentence_count": 50,
+        "relation_cue_hits": 29,
+        "generation_cue_hits": 4,
+        "labeled_sentence_count": 12,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1028,
+        "diagram_overlap": {
+          "diagram_name_count": 1874,
+          "matched_name_count": 1854,
+          "overlap_ratio": 0.9893,
+          "matched_sample": [
+            "34.145 trần thị lộc",
+            "33.136 trần ly",
+            "32.676 trần như",
+            "trân đăng khoa",
+            "32.702 trần thị cường",
+            "36.620 trần phước tính",
+            "trần thị dậu",
+            "trần thị thùy hương",
+            "trần thị dứa",
+            "28.92 trần phước ca",
+            "trần phước diệp",
+            "trần đăng khoa",
+            "trần thị hài",
+            "25.66 trần phước thông",
+            "trần phúc thiện"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Trần Phước (陳 福 - 富霑) - Quảng Nam"
+      }
+    },
+    "369": {
+      "tree_id": 369,
+      "suitable": true,
+      "score": 99.6,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 1286,
+        "sentence_count": 16,
+        "relation_cue_hits": 10,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 5,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 46,
+        "diagram_overlap": {
+          "diagram_name_count": 90,
+          "matched_name_count": 90,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "5.10 huỳnh văn hòa",
+            "huỳnh thị tấn",
+            "3.6 huỳnh văn tuân",
+            "6.17 huỳnh văn điền",
+            "7.31 huỳnh thị lắm",
+            "huỳnh văn sở",
+            "huỳnh thị ba",
+            "huỳnh thị kỳ",
+            "7.22 huỳnh thị liên",
+            "huỳnh văn xứ",
+            "5.10 huỳnh thị kỳ",
+            "huỳnh thị tiệp",
+            "huỳnh văn uyên",
+            "6.19 huỳnh văn canh",
+            "huỳnh thị khối"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 92.0
+        },
+        "lineage_name": "HUỲNH TỘC (PHÁI II) ẤP NAM ĐỊNH,QNA - Quảng Nam"
+      }
+    },
+    "373": {
+      "tree_id": 373,
+      "suitable": false,
+      "score": 30.5,
+      "skip_reasons": [
+        "relation_cues_insufficient:0<1",
+        "labeled_sentences_insufficient:0<1",
+        "diagram_name_overlap_low:0.00<0.08"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 768,
+        "sentence_count": 1,
+        "relation_cue_hits": 0,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 0,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 5,
+        "diagram_overlap": {
+          "diagram_name_count": 10,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 0.0,
+          "labeled_sentences": 0.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 100.0,
+          "diagram_size": 10.0
+        },
+        "lineage_name": "Trần Minh - Cần Thơ"
+      }
+    },
+    "383": {
+      "tree_id": 383,
+      "suitable": false,
+      "score": 80.0,
+      "skip_reasons": [
+        "pha_ky_too_long:13107>12000"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 13107,
+        "sentence_count": 126,
+        "relation_cue_hits": 111,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 54,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 378,
+        "diagram_overlap": {
+          "diagram_name_count": 693,
+          "matched_name_count": 693,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "10.98 nguyễn thị dư",
+            "nguyễn văn thung",
+            "nguyễn văn trần",
+            "nguyễn văn sáng",
+            "nguyễn thị nghi",
+            "nguyễn văn kích",
+            "nguyễn thị bắc",
+            "13.155 nguyễn thị mộng",
+            "nguyễn văn hoá",
+            "nguyễn thị sâm",
+            "nguyễn thị kiểu",
+            "nguyễn thị trung",
+            "nguyễn văn phương",
+            "nguyễn thị hải",
+            "nguyễn văn tích"
+          ]
+        },
+        "score_breakdown": {
+          "length": 0.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "NGUYỄN_HÀ TRỮ_PHÚ VANG_HUẾ - Thừa Thiên Huế"
+      }
+    },
+    "386": {
+      "tree_id": 386,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 3030,
+        "sentence_count": 33,
+        "relation_cue_hits": 27,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 16,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 618,
+        "diagram_overlap": {
+          "diagram_name_count": 1143,
+          "matched_name_count": 1143,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "nguyễn đức lộc",
+            "7.25 nguyễn thị hòa",
+            "nguyễn kỹ",
+            "nguyễn anh tuấn",
+            "nguyễn công bằng",
+            "10.39 nguyễn đức huy",
+            "9.35 nguyễn đức lương",
+            "9.31 nguyễn nhu",
+            "nguyễn thị chinh",
+            "10.46 nguyễn thị lê",
+            "nguyễn thị nghi",
+            "10.37 nguyễn thị tám",
+            "nguyễn đức cứ",
+            "9.30 nguyễn thanh dũng",
+            "8.37 nguyễn thị ú"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "NGUYỄN ĐỨC - Bình Định"
+      }
+    },
+    "391": {
+      "tree_id": 391,
+      "suitable": false,
+      "score": 80.0,
+      "skip_reasons": [
+        "pha_ky_too_long:47571>12000"
+      ],
+      "warnings": [],
+      "metrics": {
+        "char_count": 47571,
+        "sentence_count": 908,
+        "relation_cue_hits": 324,
+        "generation_cue_hits": 26,
+        "labeled_sentence_count": 234,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 5485,
+        "diagram_overlap": {
+          "diagram_name_count": 7560,
+          "matched_name_count": 7554,
+          "overlap_ratio": 0.9992,
+          "matched_sample": [
+            "14.46 lê phước tản",
+            "lê thị xuyến",
+            "15.38 lê thị mai",
+            "16.54 lê phước dần",
+            "lê phước anh quang",
+            "lê phước trĩ",
+            "17.74 lê thị để",
+            "15.42 lê phước cận",
+            "17.53 lê phuóc thanh",
+            "16.67 lê phước mẹo",
+            "16.60 lê thị tỏa",
+            "15.57 lê thị hợi",
+            "17.81 lê thị huề",
+            "15.66 lê phước sắt",
+            "19.79 lê thị thu thủy"
+          ]
+        },
+        "score_breakdown": {
+          "length": 0.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "LÊ PHƯỚC 黎 福 族 - Quảng Nam"
+      }
+    },
+    "392": {
+      "tree_id": 392,
+      "suitable": true,
+      "score": 100.0,
+      "skip_reasons": [],
+      "warnings": [],
+      "metrics": {
+        "char_count": 2408,
+        "sentence_count": 12,
+        "relation_cue_hits": 7,
+        "generation_cue_hits": 1,
+        "labeled_sentence_count": 5,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 892,
+        "diagram_overlap": {
+          "diagram_name_count": 1663,
+          "matched_name_count": 1657,
+          "overlap_ratio": 0.9964,
+          "matched_sample": [
+            "nguyễn thị mau",
+            "nguyễn ngọc vinh",
+            "nguyễn văn dần.",
+            "10.755 nguyễn thị quế",
+            "10.477 nguyễn thị lành",
+            "9.598 nguyễn văn an.",
+            "9.394 nguyễn thị hảo",
+            "9.736 nguyễn thị luận",
+            "nguyễn thị lợi",
+            "nguyễn thị điền",
+            "7.179 nguyễn văn lự",
+            "9.749 nguyễn thị mỹ",
+            "nguyễn thị hiếu",
+            "nguyễn văn phương",
+            "nguyễn thị trung"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "Nguyễn Tộc Phú Triêm - Quảng Nam"
+      }
+    },
+    "396": {
+      "tree_id": 396,
+      "suitable": true,
+      "score": 95.1,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 2734,
+        "sentence_count": 27,
+        "relation_cue_hits": 13,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 6,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 2,
+          "overlap_ratio": 1.0,
+          "matched_sample": [
+            "1.1 nguyễn phúc óanh",
+            "nguyễn phúc óanh"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "Nguyễn Phúc - Hải Dương"
+      }
+    },
+    "410": {
+      "tree_id": 410,
+      "suitable": true,
+      "score": 83.19,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 442,
+        "sentence_count": 8,
+        "relation_cue_hits": 9,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 5,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 597,
+        "diagram_overlap": {
+          "diagram_name_count": 919,
+          "matched_name_count": 122,
+          "overlap_ratio": 0.1328,
+          "matched_sample": [
+            "5.5 ông phúc hữu",
+            "16.32 văn sinh",
+            "17.34 văn phúc",
+            "17.33 văn thành",
+            "đình kha",
+            "18.30 văn long",
+            "17.30 phương anh",
+            "18.30 văn anh",
+            "đình mạnh",
+            "17.36 văn long",
+            "văn uyển",
+            "16.33 văn thông",
+            "16.33 đình mạnh",
+            "đình mai",
+            "17.29 thế anh"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 15.94,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "TRẦN TỘC ĐAI TÔN - Nghệ An"
+      }
+    },
+    "422": {
+      "tree_id": 422,
+      "suitable": false,
+      "score": 80.0,
+      "skip_reasons": [
+        "pha_ky_too_long:17288>12000"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 17288,
+        "sentence_count": 192,
+        "relation_cue_hits": 168,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 67,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1045,
+        "diagram_overlap": {
+          "diagram_name_count": 2017,
+          "matched_name_count": 1968,
+          "overlap_ratio": 0.9757,
+          "matched_sample": [
+            "5.268 lê văn hơi",
+            "5.311 lê thị tuyết",
+            "5.301 lê thị sen",
+            "6.829 lê văn đành",
+            "tạ thị mỹ ngọc",
+            "4.501 lê thị biệu",
+            "5.818 phạm văn lái",
+            "6.327 lê thị mỹ lệ",
+            "lê văn tám",
+            "5.999 huỳnh thị lũi",
+            "5.528 huỳnhthị khoẻ",
+            "5.862 huỳnh thị xần",
+            "đào văn thành",
+            "bùi thị yến",
+            "lê thị lịch"
+          ]
+        },
+        "score_breakdown": {
+          "length": 0.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 100.0
+        },
+        "lineage_name": "NGÔ-LÊ (CỦ-CHI) - Sài Gòn"
+      }
+    },
+    "423": {
+      "tree_id": 423,
+      "suitable": true,
+      "score": 99.5,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 3538,
+        "sentence_count": 40,
+        "relation_cue_hits": 10,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 8,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 45,
+        "diagram_overlap": {
+          "diagram_name_count": 90,
+          "matched_name_count": 80,
+          "overlap_ratio": 0.8889,
+          "matched_sample": [
+            "6.16 tạ đăng liêm",
+            "tạ đăng vọng",
+            "tạ đăng nhai",
+            "3.9 cao tổ đạo toàn",
+            "tạ đăng vực",
+            "cao cao cao tổ thiện tình",
+            "14.40 tạ đăng lẫm",
+            "7.21 tạ đăng phụ",
+            "11.32 tạ đăng sầm",
+            "8.25 tạ đăng viên",
+            "13.37 tạ đăng minh",
+            "tạ đăng đạt",
+            "10.31 tạ đăng đặng",
+            "tạ đăng ngạn",
+            "4.9 tằng tổ phúc hoằng"
+          ]
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 100.0,
+          "labeled_sentences": 100.0,
+          "diagram_overlap": 100.0,
+          "boilerplate": 100.0,
+          "diagram_size": 90.0
+        },
+        "lineage_name": "TẠ ÐĂNG - Hà Tây"
+      }
+    },
+    "425": {
+      "tree_id": 425,
+      "suitable": false,
+      "score": 26.82,
+      "skip_reasons": [
+        "relation_cues_insufficient:0<1",
+        "labeled_sentences_insufficient:0<1"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 387,
+        "sentence_count": 8,
+        "relation_cue_hits": 0,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 0,
+        "boilerplate_line_ratio": 0.125,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 96.1,
+          "relation_cues": 0.0,
+          "labeled_sentences": 0.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 75.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "Lý Trần - Hà Nam"
+      }
+    },
+    "430": {
+      "tree_id": 430,
+      "suitable": false,
+      "score": 29.3,
+      "skip_reasons": [
+        "score_below_min:29.3<45.0"
+      ],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 220,
+        "sentence_count": 4,
+        "relation_cue_hits": 1,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 1,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 46.0,
+          "relation_cues": 20.0,
+          "labeled_sentences": 25.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "Họ Thân làng khê thượng - Hà Tây"
+      }
+    },
+    "433": {
+      "tree_id": 433,
+      "suitable": true,
+      "score": 55.1,
+      "skip_reasons": [],
+      "warnings": [
+        "no_generation_cue"
+      ],
+      "metrics": {
+        "char_count": 546,
+        "sentence_count": 11,
+        "relation_cue_hits": 3,
+        "generation_cue_hits": 0,
+        "labeled_sentence_count": 2,
+        "boilerplate_line_ratio": 0.0,
+        "pha_he_node_count": 1,
+        "diagram_overlap": {
+          "diagram_name_count": 2,
+          "matched_name_count": 0,
+          "overlap_ratio": 0.0,
+          "matched_sample": []
+        },
+        "score_breakdown": {
+          "length": 100.0,
+          "relation_cues": 60.0,
+          "labeled_sentences": 50.0,
+          "diagram_overlap": 0.0,
+          "boilerplate": 100.0,
+          "diagram_size": 2.0
+        },
+        "lineage_name": "NGUYỄN TỘC ĐIỆN DƯƠNG - Quảng Nam"
+      }
+    }
+  }
+}

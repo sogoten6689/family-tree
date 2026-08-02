@@ -1,0 +1,89 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Nội Lưu",
+      "label": "LOC"
+    },
+    {
+      "text": "Lưu Hoàng",
+      "label": "LOC"
+    },
+    {
+      "text": "Ứng Hoà",
+      "label": "LOC"
+    },
+    {
+      "text": "T.P Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "cuối thế kỷ 18",
+      "label": "DATE"
+    },
+    {
+      "text": "9 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Cáp Hoàng",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Văn Hiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Khoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ sáu",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Chi thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Căm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chi thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Phúc Chiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Mùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

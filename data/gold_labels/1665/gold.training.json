@@ -1,0 +1,70 @@
+{
+  "doc_id": "vgp_1665",
+  "tree_id": 1665,
+  "title": "Trần Văn - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1665/pha_ky_gia_su.html",
+  "text": "Nước có Sử, nhà có Phả. Chim có tổ, người có tông. Con người ta sinh ra ai cũng có nguồn cội. Cha mẹ tổ tiên để lại cho con cháu niềm tự hào về dòng tộc của mình, là gương sáng cho con cháu noi theo. Quốc gia thường có sổ vàng để ghi chép lại những mốc son lịch sử của dân tộc và những con người có công với đất nước. Gia đình, dòng tộc có gia phả để ghi lại gốc tích ông cha mình, lưu giữ lại quá trình phát triển, những bước thăng trầm của dòng tộc để con cháu tự hào về ông cha mình, để con cháu biết yêu thương, đoàn kết, đùm bọc nhau, giữ gìn nền nếp gia phong dòng tộc, gìn giữ bản sắc dân tộc mình. Gia phả tộc Trần Văn tại Nga Sơn, Thanh Hóa không ngoài mong muốn chung của muôn dòng tộc người Việt Nam. Tộc Trần Văn tại Nga Sơn có nguồn gốc từ dòng họ Trần ở Trà Lũ (Nam Định) vào khoảng cuối thế kỷ XIX. Song do điều kiện cuộc sống, các cụ phởi dời cư đến sinh sống tại Nga Sơn, Thanh Hóa (không rõ năm nào) nên Gia phả này chỉ ghi chép được từ đời Cụ Trần Văn Mẫn - khi cuộc sống đã tạm ổn định ở quê hương mới. Với mong muốn nhỏ bé, ông Trần Xuân Tích- cháu nội hai Cụ và anh Trần Công Định- Chắt nội hai Cụ đã thu lượm thông tin từ họ hàng nội, ngoại để ghi chép lại và lưu giữ tại trang website này.Chắc chắn ghi chép còn nhiều thiếu sót, rất mong con cháu dòng tộc và bạn bè thân hữu gần xa lưu tâm và bổ sung cho Gia phả tộc Trần Văn ngày càng hoàn thiện. Xin trân trọng cảm ơn !Nga Sơn, Xuân Mậu Tý- 2008. Mọi thông tin xin liên hệ điện thoại 0918052398 hoặc 0888657141. Email : dinhthuykien@gmail.com",
+  "entities": [
+    {
+      "start": 631,
+      "end": 638,
+      "label": "LOC",
+      "text": "Nga Sơn"
+    },
+    {
+      "start": 640,
+      "end": 649,
+      "label": "LOC",
+      "text": "Thanh Hóa"
+    },
+    {
+      "start": 768,
+      "end": 774,
+      "label": "LOC",
+      "text": "Trà Lũ"
+    },
+    {
+      "start": 776,
+      "end": 784,
+      "label": "LOC",
+      "text": "Nam Định"
+    },
+    {
+      "start": 797,
+      "end": 812,
+      "label": "DATE",
+      "text": "cuối thế kỷ XIX"
+    },
+    {
+      "start": 962,
+      "end": 974,
+      "label": "PER_NAME",
+      "text": "Trần Văn Mẫn"
+    },
+    {
+      "start": 1049,
+      "end": 1063,
+      "label": "PER_NAME",
+      "text": "Trần Xuân Tích"
+    },
+    {
+      "start": 1088,
+      "end": 1102,
+      "label": "PER_NAME",
+      "text": "Trần Công Định"
+    },
+    {
+      "start": 1404,
+      "end": 1421,
+      "label": "DATE",
+      "text": "Xuân Mậu Tý- 2008"
+    },
+    {
+      "start": 955,
+      "end": 960,
+      "label": "GENERATION",
+      "text": "đời C"
+    }
+  ],
+  "relations": []
+}

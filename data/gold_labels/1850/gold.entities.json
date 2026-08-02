@@ -1,0 +1,113 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Trạc Yên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Trạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Tử Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Tổng Bình Lăng",
+      "label": "LOC"
+    },
+    {
+      "text": "Phủ Thường Tín",
+      "label": "LOC"
+    },
+    {
+      "text": "Tỉnh Hà Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "Xã Tô Hiệu",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Thường Tín",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Thôn Hoa Ngư",
+      "label": "LOC"
+    },
+    {
+      "text": "chợ Cửa Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Tổng Tiêm Nghiêm",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Thọ Xương",
+      "label": "LOC"
+    },
+    {
+      "text": "Phủ Hoài Đức",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Nam Ngư",
+      "label": "LOC"
+    },
+    {
+      "text": "Phố Nam Ngư",
+      "label": "LOC"
+    },
+    {
+      "text": "đường Nam Bộ",
+      "label": "LOC"
+    },
+    {
+      "text": "Phường Cửa Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Quận Hoàn Kiếm",
+      "label": "LOC"
+    },
+    {
+      "text": "đình Nam Ngư",
+      "label": "LOC"
+    },
+    {
+      "text": "48 phố Nam Ngư",
+      "label": "LOC"
+    },
+    {
+      "text": "chùa Tiên tích",
+      "label": "LOC"
+    },
+    {
+      "text": "104 Phố Nam Bộ",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

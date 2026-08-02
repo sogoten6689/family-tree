@@ -1,0 +1,165 @@
+{
+  "entities": [
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "những năm 1829",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Phúc\nHồng\nNhậm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vua Tự Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vua Minh Mạng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 19 tháng giêng âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Dạ lê Thượng",
+      "label": "LOC"
+    },
+    {
+      "text": "Thuỷ Phương",
+      "label": "LOC"
+    },
+    {
+      "text": "Hương Thuỷ",
+      "label": "LOC"
+    },
+    {
+      "text": "Thừa Thiên Huế",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 13 tháng 4 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngài Nguyễn Thanh Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Ngài Cao Cao Tổ\nNguyễn Hồng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngài Nguyễn Hồng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con\ntrai thứ\n11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài Nguyễn Hồng Hạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Nên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngài Hồng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "vua Thiệu\nTrị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nam\nĐịnh",
+      "label": "LOC"
+    },
+    {
+      "text": "những năm 1976 - 1977",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Thanh Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Việt Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Thanh Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huế",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 21 tháng 7 năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Hồng Hạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ\n11",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hồng Hạ",
+      "tail": "Nguyễn Hồng Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hồng Hạnh",
+      "tail": "Nguyễn Thanh Việt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngài Nguyễn Hồng Hạ",
+      "tail": "Ngài Nguyễn Hồng Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Nên",
+      "tail": "Ngài Nguyễn Hồng Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Ngài Nguyễn Hồng Hạ",
+      "tail": "Nguyễn Thị Nên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

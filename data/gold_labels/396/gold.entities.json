@@ -1,0 +1,180 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Phúc Oánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thuỵ Trà",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Sách",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Bặc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "924-979",
+      "label": "DATE"
+    },
+    {
+      "text": "Đinh Bộ Lĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Tiên Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "968-979",
+      "label": "DATE"
+    },
+    {
+      "text": "979",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Thích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vệ Vương Đinh Tuệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Gia Miêu ngoại trang",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phúc Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1563-1635",
+      "label": "DATE"
+    },
+    {
+      "text": "1613-1635",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Nộn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "?-1229",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Kim",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1468-1545",
+      "label": "DATE"
+    },
+    {
+      "text": "1525-1613",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Phúc Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1620-1687",
+      "label": "DATE"
+    },
+    {
+      "text": "1648-1687",
+      "label": "DATE"
+    },
+    {
+      "text": "1802",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Phúc Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Gia Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1802-1819",
+      "label": "DATE"
+    },
+    {
+      "text": "Phú Xuân",
+      "label": "LOC"
+    },
+    {
+      "text": "Lạng Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Cà Mau",
+      "label": "LOC"
+    },
+    {
+      "text": "Minh Mạng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1820-1840",
+      "label": "DATE"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Bảo Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1925-1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Huế",
+      "label": "LOC"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Đinh Tiên Hoàng",
+      "tail": "Vệ Vương Đinh Tuệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hoàng",
+      "tail": "Nguyễn Phúc Nguyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

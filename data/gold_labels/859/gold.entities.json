@@ -1,0 +1,49 @@
+{
+  "entities": [
+    {
+      "text": "Tết Bính Tuấn 2006",
+      "label": "DATE"
+    },
+    {
+      "text": "Tuy Lai",
+      "label": "LOC"
+    },
+    {
+      "text": "Minh Khai",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Hữu Bồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Lê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Từ Liêm",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "0989",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,1301 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Quý Công Nguyễn Văn Cử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1993",
+      "label": "DATE"
+    },
+    {
+      "text": "Quý Công Nguyễ Quang Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quang phổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thành Thái thứ 8",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng 11",
+      "label": "DATE"
+    },
+    {
+      "text": "Tự Đức thứ 26",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng giêng",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Hữu Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Như Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Hưu kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quang Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Như Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Khoan Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại Từ",
+      "label": "LOC"
+    },
+    {
+      "text": "Văn lang",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hội Xá tổng",
+      "label": "LOC"
+    },
+    {
+      "text": "Hội Xá xã",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Tổng Hội xá",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Hội Xá",
+      "label": "LOC"
+    },
+    {
+      "text": "Gia Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "10/8",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Thị Hàng Nhất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Từ Nhẫn Phu Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "4-5 Âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Như Bàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "12 tháng giêng",
+      "label": "DATE"
+    },
+    {
+      "text": "Phạm Thị ...",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Từ Huệ phu nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "13 tháng giêng",
+      "label": "DATE"
+    },
+    {
+      "text": "Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "trưởng nam",
+      "label": "ORDER"
+    },
+    {
+      "text": "Bảy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Như Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trung Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hữu Đẩu Phủ Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Làng Xuân Thành",
+      "label": "LOC"
+    },
+    {
+      "text": "Phát Diệm",
+      "label": "LOC"
+    },
+    {
+      "text": "Kim Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Ninh Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Bính Thìn",
+      "label": "DATE"
+    },
+    {
+      "text": "Kỉ Dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "24/10",
+      "label": "DATE"
+    },
+    {
+      "text": "Xuân Thành",
+      "label": "LOC"
+    },
+    {
+      "text": "Phạm Thị Điểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Từ Đức phu nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "7/4",
+      "label": "DATE"
+    },
+    {
+      "text": "Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ 2",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Vạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thứ 3",
+      "label": "ORDER"
+    },
+    {
+      "text": "Hữu Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Hợi",
+      "label": "DATE"
+    },
+    {
+      "text": "Mậu Thìn",
+      "label": "DATE"
+    },
+    {
+      "text": "20/2",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Thị hàng tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tròn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Tròn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Từ Mẫn phu nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tân Mùi",
+      "label": "DATE"
+    },
+    {
+      "text": "Ất Tỵ",
+      "label": "DATE"
+    },
+    {
+      "text": "7/7",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Mễ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngoạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Truy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Gia Mô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lập",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hợp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thế Tưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Định Tiết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ất Sửu",
+      "label": "DATE"
+    },
+    {
+      "text": "1/7",
+      "label": "DATE"
+    },
+    {
+      "text": "Xuân Đài - Nga Thuỷ",
+      "label": "LOC"
+    },
+    {
+      "text": "Thành Thái thứ 9",
+      "label": "DATE"
+    },
+    {
+      "text": "Xuân Đài",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Tam tổng",
+      "label": "LOC"
+    },
+    {
+      "text": "Nga Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn 2 Nga Thuỷ",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Thị Thục",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Diệu Thảo phu nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Công Ngũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tự Tân",
+      "label": "LOC"
+    },
+    {
+      "text": "Đinh Sửu",
+      "label": "DATE"
+    },
+    {
+      "text": "Kỉ Tỵ",
+      "label": "DATE"
+    },
+    {
+      "text": "26/4",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Trưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Pháp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Vèo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thế Trưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bính Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "8/3",
+      "label": "DATE"
+    },
+    {
+      "text": "Hoả Thị Tuy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lợi Nhân",
+      "label": "LOC"
+    },
+    {
+      "text": "Nga Nhân",
+      "label": "LOC"
+    },
+    {
+      "text": "Giáp Tuất",
+      "label": "DATE"
+    },
+    {
+      "text": "3/9/1994",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Văn Cử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Ưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Dụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Thất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quang Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bính Tuất",
+      "label": "DATE"
+    },
+    {
+      "text": "Nhâm Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "26/7",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghĩ Hải",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghĩa Hưng",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Văn Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Vượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quang Pháp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Minh Hoá",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cà Mau",
+      "label": "LOC"
+    },
+    {
+      "text": "1994",
+      "label": "DATE"
+    },
+    {
+      "text": "29/2",
+      "label": "DATE"
+    },
+    {
+      "text": "Phạm Thị Lí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Trạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Lam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Nhuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1924",
+      "label": "DATE"
+    },
+    {
+      "text": "1986",
+      "label": "DATE"
+    },
+    {
+      "text": "28/10",
+      "label": "DATE"
+    },
+    {
+      "text": "Trịnh Thị Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Diên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Diễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Vận",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Thế Trưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Quang Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Quang Pháp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Quý Công",
+      "tail": "Nguyễn Thị Hàng Nhất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý Công",
+      "tail": "Như Bàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Hàng Nhất",
+      "tail": "Như Bàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Quý Công",
+      "tail": "Phạm Thị ...",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý Công",
+      "tail": "Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý Công",
+      "tail": "Bảy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý Công",
+      "tail": "Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị ...",
+      "tail": "Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị ...",
+      "tail": "Bảy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị ...",
+      "tail": "Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Như Tùng",
+      "tail": "Phạm Thị Điểm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Như Tùng",
+      "tail": "Kiểm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Như Tùng",
+      "tail": "Bách",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Như Tùng",
+      "tail": "Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Như Tùng",
+      "tail": "Bân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Như Tùng",
+      "tail": "Trinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Điểm",
+      "tail": "Kiểm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Điểm",
+      "tail": "Bách",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Điểm",
+      "tail": "Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Điểm",
+      "tail": "Bân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Điểm",
+      "tail": "Trinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bách",
+      "tail": "Nguyễn Vạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Vạn",
+      "tail": "Nguyễn Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Vạn",
+      "tail": "Nguyễn Cư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Ngọc",
+      "tail": "Nguyễn Thị Tròn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngọc",
+      "tail": "Nguyễn Bính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngọc",
+      "tail": "Nguyễn Mễ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngọc",
+      "tail": "Nguyễn Ngoạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngọc",
+      "tail": "Nguyễn Thị Truy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Tròn",
+      "tail": "Nguyễn Bính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Tròn",
+      "tail": "Nguyễn Mễ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Tròn",
+      "tail": "Nguyễn Ngoạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Tròn",
+      "tail": "Nguyễn Thị Truy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bính",
+      "tail": "Nguyễn Gia Mô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Xước",
+      "tail": "Lâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Xước",
+      "tail": "Lập",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Xước",
+      "tail": "Sinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Thế Tưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Công Ngũ",
+      "tail": "Nguyễn Thị Thục",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Thị Thục",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Trưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Pháp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Vèo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Ngoạn",
+      "tail": "Nguyễn Trị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thục",
+      "tail": "Nguyễn Trưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thục",
+      "tail": "Nguyễn Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thục",
+      "tail": "Nguyễn Pháp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thục",
+      "tail": "Nguyễn Vèo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Thục",
+      "tail": "Nguyễn Trị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Thế Trưng",
+      "tail": "Hoả Thị Tuy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Thế Trưng",
+      "tail": "Nguyễn Văn Cử",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Thế Trưng",
+      "tail": "Nguyễn Văn Ưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Thế Trưng",
+      "tail": "Nguyễn Văn Dụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Thế Trưng",
+      "tail": "Nguyễn Thị Thất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Hoả Thị Tuy",
+      "tail": "Nguyễn Văn Cử",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Hoả Thị Tuy",
+      "tail": "Nguyễn Văn Ưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Hoả Thị Tuy",
+      "tail": "Nguyễn Văn Dụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Hoả Thị Tuy",
+      "tail": "Nguyễn Thị Thất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quang Huỳnh",
+      "tail": "Nguyễn Văn Cung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quang Huỳnh",
+      "tail": "Nguyễn Thị Vượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quang Pháp",
+      "tail": "Nguyễn Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quang Pháp",
+      "tail": "Nguyễn Thị Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quang Pháp",
+      "tail": "Nguyễn Minh Hoá",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Văn Cử",
+      "tail": "Phạm Thị Lí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cử",
+      "tail": "Nguyễn Văn Trạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cử",
+      "tail": "Nguyễn Thị Lam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cử",
+      "tail": "Nguyễn Văn Nhuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cử",
+      "tail": "Nguyễn Thị Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cử",
+      "tail": "Nguyễn Văn Toản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Lí",
+      "tail": "Nguyễn Văn Trạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Lí",
+      "tail": "Nguyễn Thị Lam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Lí",
+      "tail": "Nguyễn Văn Nhuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Lí",
+      "tail": "Nguyễn Thị Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Lí",
+      "tail": "Nguyễn Văn Toản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Trịnh Thị Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Diên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Diễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Khiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Quyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Thuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Ưng",
+      "tail": "Nguyễn Vận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Diên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Diễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Khiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Quyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Thuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Tư",
+      "tail": "Nguyễn Vận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

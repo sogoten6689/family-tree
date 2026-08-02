@@ -1,0 +1,93 @@
+{
+  "entities": [
+    {
+      "text": "Chung Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "1341",
+      "label": "DATE"
+    },
+    {
+      "text": "núi Hương",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Hậu",
+      "label": "LOC"
+    },
+    {
+      "text": "Tiến Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "1951",
+      "label": "DATE"
+    },
+    {
+      "text": "1952",
+      "label": "DATE"
+    },
+    {
+      "text": "1954",
+      "label": "DATE"
+    },
+    {
+      "text": "làng Hương",
+      "label": "LOC"
+    },
+    {
+      "text": "1903",
+      "label": "DATE"
+    },
+    {
+      "text": "Đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1961",
+      "label": "DATE"
+    },
+    {
+      "text": "1986",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Văn Khoát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Văn Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Ư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Thai",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

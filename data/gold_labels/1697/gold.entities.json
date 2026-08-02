@@ -1,0 +1,589 @@
+{
+  "entities": [
+    {
+      "text": "VŨ HIỆP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1998",
+      "label": "DATE"
+    },
+    {
+      "text": "1727",
+      "label": "DATE"
+    },
+    {
+      "text": "1785",
+      "label": "DATE"
+    },
+    {
+      "text": "Hà Hoàng",
+      "label": "LOC"
+    },
+    {
+      "text": "Thạch Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ Tĩnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoa Đường",
+      "label": "LOC"
+    },
+    {
+      "text": "Đường An",
+      "label": "LOC"
+    },
+    {
+      "text": "Thượng Hồng",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Trịnh Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Thái Phi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mộ Trạch",
+      "label": "LOC"
+    },
+    {
+      "text": "Vũ Công Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Thị Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mạn Nhuế",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Thị Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Hồn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Khả Mộ",
+      "label": "LOC"
+    },
+    {
+      "text": "Điền Hồng Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Điền tảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vương Khởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vương Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "tổ thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Gia Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "hoàng tử thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Minh Mạng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "trưởng nam",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn-Phúc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Mỹ Thùy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Qua",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Út",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ÍCH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1176",
+      "label": "DATE"
+    },
+    {
+      "text": "1724",
+      "label": "DATE"
+    },
+    {
+      "text": "1729",
+      "label": "DATE"
+    },
+    {
+      "text": "1225",
+      "label": "DATE"
+    },
+    {
+      "text": "1919",
+      "label": "DATE"
+    },
+    {
+      "text": "1706",
+      "label": "DATE"
+    },
+    {
+      "text": "1731",
+      "label": "DATE"
+    },
+    {
+      "text": "1733",
+      "label": "DATE"
+    },
+    {
+      "text": "1732",
+      "label": "DATE"
+    },
+    {
+      "text": "1735",
+      "label": "DATE"
+    },
+    {
+      "text": "1736",
+      "label": "DATE"
+    },
+    {
+      "text": "1740",
+      "label": "DATE"
+    },
+    {
+      "text": "1739",
+      "label": "DATE"
+    },
+    {
+      "text": "1752",
+      "label": "DATE"
+    },
+    {
+      "text": "1767",
+      "label": "DATE"
+    },
+    {
+      "text": "1754",
+      "label": "DATE"
+    },
+    {
+      "text": "1757",
+      "label": "DATE"
+    },
+    {
+      "text": "1763",
+      "label": "DATE"
+    },
+    {
+      "text": "1786",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1763",
+      "label": "DATE"
+    },
+    {
+      "text": "1766",
+      "label": "DATE"
+    },
+    {
+      "text": "1772",
+      "label": "DATE"
+    },
+    {
+      "text": "1776",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1977",
+      "label": "DATE"
+    },
+    {
+      "text": "1779",
+      "label": "DATE"
+    },
+    {
+      "text": "1781",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1727",
+      "label": "DATE"
+    },
+    {
+      "text": "1572",
+      "label": "DATE"
+    },
+    {
+      "text": "1787",
+      "label": "DATE"
+    },
+    {
+      "text": "1858",
+      "label": "DATE"
+    },
+    {
+      "text": "1887",
+      "label": "DATE"
+    },
+    {
+      "text": "1909",
+      "label": "DATE"
+    },
+    {
+      "text": "1924",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1994",
+      "label": "DATE"
+    },
+    {
+      "text": "1802",
+      "label": "DATE"
+    },
+    {
+      "text": "1819",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1930",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1937",
+      "label": "DATE"
+    },
+    {
+      "text": "1314",
+      "label": "DATE"
+    },
+    {
+      "text": "1329",
+      "label": "DATE"
+    },
+    {
+      "text": "1653",
+      "label": "DATE"
+    },
+    {
+      "text": "1661",
+      "label": "DATE"
+    },
+    {
+      "text": "1755",
+      "label": "DATE"
+    },
+    {
+      "text": "1672",
+      "label": "DATE"
+    },
+    {
+      "text": "1673",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1767",
+      "label": "DATE"
+    },
+    {
+      "text": "1769",
+      "label": "DATE"
+    },
+    {
+      "text": "3132",
+      "label": "DATE"
+    },
+    {
+      "text": "1920",
+      "label": "DATE"
+    },
+    {
+      "text": "1833",
+      "label": "DATE"
+    },
+    {
+      "text": "1820",
+      "label": "DATE"
+    },
+    {
+      "text": "1840",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1679",
+      "label": "DATE"
+    },
+    {
+      "text": "1652",
+      "label": "DATE"
+    },
+    {
+      "text": "1603",
+      "label": "DATE"
+    },
+    {
+      "text": "1679",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1681",
+      "label": "DATE"
+    },
+    {
+      "text": "1932",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1932",
+      "label": "DATE"
+    },
+    {
+      "text": "2002",
+      "label": "DATE"
+    },
+    {
+      "text": "1972",
+      "label": "DATE"
+    },
+    {
+      "text": "1960",
+      "label": "DATE"
+    },
+    {
+      "text": "2001",
+      "label": "DATE"
+    },
+    {
+      "text": "1985",
+      "label": "DATE"
+    },
+    {
+      "text": "2000",
+      "label": "DATE"
+    },
+    {
+      "text": "1997",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1872",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2852",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1026",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1959",
+      "label": "DATE"
+    },
+    {
+      "text": "1232",
+      "label": "DATE"
+    },
+    {
+      "text": "1511",
+      "label": "DATE"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "1613",
+      "label": "DATE"
+    },
+    {
+      "text": "1635",
+      "label": "DATE"
+    },
+    {
+      "text": "1841",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1848",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1823",
+      "label": "DATE"
+    },
+    {
+      "text": "1962",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1069",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1693",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1759",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1865",
+      "label": "DATE"
+    },
+    {
+      "text": "1832",
+      "label": "DATE"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    },
+    {
+      "text": "đời x",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời L",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời li",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Trịnh Cương",
+      "tail": "Vũ Thái Phi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Vũ Công Huy",
+      "tail": "Lưu Thị Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Vũ Công Huy",
+      "tail": "Nguyễn Thị Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vũ Công Huy",
+      "tail": "Vũ Hồn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đức",
+      "tail": "Vũ Hồn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Điền Hồng Chính",
+      "tail": "Điền tảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Khởi",
+      "tail": "Vương Thức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Gia Long",
+      "tail": "Minh Mạng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn-Phúc Cảnh",
+      "tail": "Mỹ Thùy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

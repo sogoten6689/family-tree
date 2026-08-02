@@ -1,0 +1,113 @@
+{
+  "entities": [
+    {
+      "text": "Làng Nếnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Thôn Ninh Thôn",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoà Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Kênh Chữ",
+      "label": "LOC"
+    },
+    {
+      "text": "Mĩ Thịnh",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Mải",
+      "label": "LOC"
+    },
+    {
+      "text": "Ninh Thôn",
+      "label": "LOC"
+    },
+    {
+      "text": "Kênh Thôn",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Kênh",
+      "label": "LOC"
+    },
+    {
+      "text": "Đoàn Đình Thống",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hàn Thống",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "8-9 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Hải Hưng",
+      "label": "LOC"
+    },
+    {
+      "text": "Lai Châu",
+      "label": "LOC"
+    },
+    {
+      "text": "Điện Biên",
+      "label": "LOC"
+    },
+    {
+      "text": "Sơn La",
+      "label": "LOC"
+    },
+    {
+      "text": "Tp Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Tp. HCM",
+      "label": "LOC"
+    },
+    {
+      "text": "Long An",
+      "label": "LOC"
+    },
+    {
+      "text": "Phú Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "Tuyên Quang",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đoàn Đình Thống (Hàn Thống)",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

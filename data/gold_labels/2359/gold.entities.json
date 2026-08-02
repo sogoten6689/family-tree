@@ -1,0 +1,244 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Đạo Tính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "An Phú",
+      "label": "LOC"
+    },
+    {
+      "text": "An Thái",
+      "label": "LOC"
+    },
+    {
+      "text": "Vũ Đoài",
+      "label": "LOC"
+    },
+    {
+      "text": "Vũ Thư",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "mười bốn đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "bốn trăm năm",
+      "label": "DATE"
+    },
+    {
+      "text": "Đạo Tính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "hệ thứ ba",
+      "label": "GENERATION"
+    },
+    {
+      "text": "hệ thứ tư",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Viết Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cháu sáu đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Cảnh Hưng thứ 43",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Hiển Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nhâm Dần 1782",
+      "label": "DATE"
+    },
+    {
+      "text": "Thành Thái thứ 17",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Bửu Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ất tỵ 1905",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Tự Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cháu chín đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Ất Dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "Canh Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "1980",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Đức Hoằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Nhụ Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cháu mười đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thập kỷ 50",
+      "label": "DATE"
+    },
+    {
+      "text": "Kỷ Dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "1969",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Thương Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "hệ thứ sáu",
+      "label": "GENERATION"
+    },
+    {
+      "text": "hệ thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Tân Mùi",
+      "label": "DATE"
+    },
+    {
+      "text": "1991",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Lương Phớt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tự Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "10 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Văn Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trung Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Hứa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đắc Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "11 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Lương Phó",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thị xã Buôn Ma Thuột",
+      "label": "LOC"
+    },
+    {
+      "text": "1992",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Tự Cường",
+      "tail": "Nguyễn Đức Hoằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đức Hoằng",
+      "tail": "Nguyễn Lương Phó",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Tự Cường",
+      "tail": "Nguyễn Lương Phớt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tự Cường",
+      "tail": "Nguyễn Lương Phớt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trung Hậu",
+      "tail": "Nguyễn Văn Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đắc Tường",
+      "tail": "Nguyễn Văn Hứa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

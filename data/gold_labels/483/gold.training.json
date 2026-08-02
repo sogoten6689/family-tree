@@ -1,0 +1,58 @@
+{
+  "doc_id": "vgp_483",
+  "tree_id": 483,
+  "title": "Hoàng - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/483/pha_ky_gia_su.html",
+  "text": "Công đức huy hoàng lưu thế phả\nKhoa danh sáng lạng chốn tông đường\nHọ Hoàng nhà ta sinh sống tại làng Phong Lạc từ bao giờ không rõ. Cũng không biết tại sao một số người con trai lại mang họ Lê Văn còn con gái là Lê Thị, việc này chỉ các bậc tiền nhân mới rõ. Trước đây có quan hệ giữa nhà ta với họ Lê Đình và họ Lê Viết cùng làng nhưng chỉ là quan hệ tình cảm, ân nghĩa chứ không phải quan hệ họ hàng, các bậc tiền nhân 2 họ Lê này trước đây ở làng Phong Lạc là địa chủ còn cụ đời thứ 4 nhà mình một thời đi làm thuê cho họ, nhưng quan hệ rất tốt nên mới lưu truyền lại đời sau.\nCác bậc tiền nhân thì đã mất chỉ còn mộ táng và khẩu truyền lại ngày giỗ vị trí ngôi mộ của từng người tại khu Bản Phủ làng Phong Lạc. Ngôn truyền rằng khu này thời kỳ phong kiến chỉ được chôn vua quan phong kiến, còn lại dân thường thì phải chôn sau tháp bút, theo cụ đời thứ 4 thì khu mộ nhà ta thời đó chỉ có 1 mộ được chôn tại đây là mộ ông Hoàng Văn Cầu đời thứ 2, sau ngày cải cách cụ mới mang toàn bộ lên đây và cách sắp xếp các ngôi mộ cũng thật khó hiểu hoàn toàn khác khu mộ các dòng họ khác.\nChúng ta là con cháu trong nhà nhưng không phải ai cũng biết nguồn gốc tổ tiên, quan hệ anh em như thế nào, nhất là có rất nhiều người đi làm ăn sinh sống xa quê hương. Tục ngữ Việt Nam có câu.\nGiấy rách phải giữ lấy lề\nDù ta xa xứ, chẳng hề quên tông\nĐể mỗi khi hội ngộ, hay các dịp giỗ tết anh em gặp gỡ cư xử xưng hô cho tiện, cũng là biết được họ hàng thân quyến nhà mình để giúp đỡ nhau trong cuộc sống. Từ trước đến nay mọi quan hệ đều khẩu truyền từ các bậc tiền nhân. Vậy nên tôi chép lại tất cả những thông tin về dòng tộc nhà mình vào cuốn gia phả này, không tránh khỏi sai sót đề nghị mọi người cho ý kiến xây dựng.\nMượn bút pháp viết dòng tiểu sử\nĐể tỏ lòng các cụ ngàn xưa\nGọi là công quả đơn sơ\nCủa người con cháu tôn thờ tổ tiên\nTháng chạp năm Giáp Thân\nCháu đích tôn đời thứ 6:\nHoàng Ngọc Anh",
+  "entities": [
+    {
+      "start": 97,
+      "end": 111,
+      "label": "LOC",
+      "text": "làng Phong Lạc"
+    },
+    {
+      "start": 479,
+      "end": 488,
+      "label": "GENERATION",
+      "text": "đời thứ 4"
+    },
+    {
+      "start": 692,
+      "end": 699,
+      "label": "LOC",
+      "text": "Bản Phủ"
+    },
+    {
+      "start": 926,
+      "end": 939,
+      "label": "PER_NAME",
+      "text": "Hoàng Văn Cầu"
+    },
+    {
+      "start": 940,
+      "end": 949,
+      "label": "GENERATION",
+      "text": "đời thứ 2"
+    },
+    {
+      "start": 1828,
+      "end": 1852,
+      "label": "DATE",
+      "text": "Tháng chạp năm Giáp Thân"
+    },
+    {
+      "start": 1867,
+      "end": 1876,
+      "label": "GENERATION",
+      "text": "đời thứ 6"
+    },
+    {
+      "start": 1878,
+      "end": 1892,
+      "label": "PER_NAME",
+      "text": "Hoàng Ngọc Anh"
+    }
+  ],
+  "relations": []
+}

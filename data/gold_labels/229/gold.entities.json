@@ -1,0 +1,145 @@
+{
+  "entities": [
+    {
+      "text": "con trưởng",
+      "label": "ORDER"
+    },
+    {
+      "text": "UNG VĂN LÀO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ÔNG VĂN ĐỢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "10 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "năm Kỹ Dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "Tự Đức thứ II",
+      "label": "DATE"
+    },
+    {
+      "text": "1848",
+      "label": "DATE"
+    },
+    {
+      "text": "ÔNG VĂN YỄN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ năm",
+      "label": "GENERATION"
+    },
+    {
+      "text": "UNG THỊ THẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHAN HỮU NHUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lổ Đông",
+      "label": "LOC"
+    },
+    {
+      "text": "Đà Ly Phong Lệ",
+      "label": "LOC"
+    },
+    {
+      "text": "thế kỷ 14",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1975 – 1976",
+      "label": "DATE"
+    },
+    {
+      "text": "năm Ất Tỵ",
+      "label": "DATE"
+    },
+    {
+      "text": "năm Bính Ngọ",
+      "label": "DATE"
+    },
+    {
+      "text": "1849",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1991 – 1992",
+      "label": "DATE"
+    },
+    {
+      "text": "năm Tân Mùi",
+      "label": "DATE"
+    },
+    {
+      "text": "năm Nhâm Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "ÔNG ÍCH LIỄN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ÔNG ÍCH TRƯNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 15 tháng 8 năm Nhâm Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 11 tháng 8 năm Nhâm Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 11 tháng 9 năm 1992",
+      "label": "DATE"
+    },
+    {
+      "text": "Phong Lệ",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 22 – 4 – 1992",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 20 tháng 3 năm Nhâm Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "ÔNG VĂN Y",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ÔNG VĂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1975",
+      "label": "DATE"
+    },
+    {
+      "text": "1976",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "UNG THỊ THẬN",
+      "tail": "PHAN HỮU NHUẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

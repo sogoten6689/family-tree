@@ -1,0 +1,65 @@
+{
+  "entities": [
+    {
+      "text": "Văn Công Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "miền Bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "những năm 1700, 1800",
+      "label": "DATE"
+    },
+    {
+      "text": "rạch Nàng Chưng",
+      "label": "LOC"
+    },
+    {
+      "text": "kinh 12",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Mỹ Hạnh Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện CaiLậy",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh MỹTho",
+      "label": "LOC"
+    },
+    {
+      "text": "Tiền-Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ năm",
+      "label": "GENERATION"
+    },
+    {
+      "text": "23.08.2007",
+      "label": "DATE"
+    },
+    {
+      "text": "11.07 năm Đinh Hợi",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Thị Tỵ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Diệu Phước",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

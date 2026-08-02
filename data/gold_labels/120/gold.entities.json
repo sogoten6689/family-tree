@@ -1,0 +1,9 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Quốc Tuấn",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

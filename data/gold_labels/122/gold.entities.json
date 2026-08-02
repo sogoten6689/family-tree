@@ -1,0 +1,510 @@
+{
+  "entities": [
+    {
+      "text": "Võ Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tây Hồ",
+      "label": "LOC"
+    },
+    {
+      "text": "Diễn Phong",
+      "label": "LOC"
+    },
+    {
+      "text": "Diễn Châu",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Chợ Và",
+      "label": "LOC"
+    },
+    {
+      "text": "Quỳnh Hội",
+      "label": "LOC"
+    },
+    {
+      "text": "Quỳnh Côi",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Quỳnh Phụ",
+      "label": "LOC"
+    },
+    {
+      "text": "đầu thế kỷ 20",
+      "label": "DATE"
+    },
+    {
+      "text": "1905",
+      "label": "DATE"
+    },
+    {
+      "text": "Trường Thịnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Trường Thịnh thôn",
+      "label": "LOC"
+    },
+    {
+      "text": "Đồng Câu xã",
+      "label": "LOC"
+    },
+    {
+      "text": "Vạn phần tổng",
+      "label": "LOC"
+    },
+    {
+      "text": "Đồng Thanh huyện",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An tỉnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Xóm tây Hồ",
+      "label": "LOC"
+    },
+    {
+      "text": "tháng 8 năm 1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Thãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ 3",
+      "label": "ORDER"
+    },
+    {
+      "text": "Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chú Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chợ\nVà Vịt",
+      "label": "LOC"
+    },
+    {
+      "text": "1954",
+      "label": "DATE"
+    },
+    {
+      "text": "Quế Thị Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Cố Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con gái đầu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Cụ Quế Huề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Huề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Huyến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ô Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ô Phiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Truyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ô Phố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Soan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tấu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Bạng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hạp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ông Hợp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Khuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Thược",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Yết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Yết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chú Mài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chú Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chú Bùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chú Hướng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Bệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Võ Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Võ Thị Diễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Võ Thãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "6 tháng 10 năm 1992",
+      "label": "DATE"
+    },
+    {
+      "text": "Võ Kính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ An Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con trưởng",
+      "label": "ORDER"
+    },
+    {
+      "text": "Võ An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1945",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Võ Đào",
+      "tail": "Quế Thị Thưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Cụ Quế Huề",
+      "tail": "Bà Huề",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cụ Quế Huề",
+      "tail": "Bà Cố Thưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà Huề",
+      "tail": "Bà Cố Thưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà Huyến",
+      "tail": "Ô Huấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Bà Huyến",
+      "tail": "Ô Phiên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Ông Lĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lĩnh",
+      "tail": "Ô Phố",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lĩnh",
+      "tail": "Soan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lĩnh",
+      "tail": "Lĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Ông Tấu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tấu",
+      "tail": "Ông Nam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Ông Bạng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Bạng",
+      "tail": "Thâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Ông Hạp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hạp",
+      "tail": "ông Hợp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Bà Khuông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Bà Thược",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Truyện",
+      "tail": "Bà Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Yết",
+      "tail": "Bà Yết",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Yết",
+      "tail": "Chú Mài",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Yết",
+      "tail": "Chú Mão",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Yết",
+      "tail": "Chú Bùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huần",
+      "tail": "Ông Chiên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huần",
+      "tail": "Chú Hướng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đào",
+      "tail": "Võ Khuê",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Quế Thị Thưởng",
+      "tail": "Võ Khuê",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đào",
+      "tail": "Võ Thị Diễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Quế Thị Thưởng",
+      "tail": "Võ Thị Diễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đào",
+      "tail": "Võ Thãnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Quế Thị Thưởng",
+      "tail": "Võ Thãnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Kính",
+      "tail": "Võ An Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

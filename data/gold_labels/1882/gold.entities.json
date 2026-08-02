@@ -1,0 +1,204 @@
+{
+  "entities": [
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thái Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Án",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thiếu Đế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hồ Quý Ly",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "04/6/Bính dần (1916)",
+      "label": "DATE"
+    },
+    {
+      "text": "Phước Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "An Thành Hạ",
+      "label": "LOC"
+    },
+    {
+      "text": "Lễ Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Thăng Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "1054",
+      "label": "DATE"
+    },
+    {
+      "text": "Trung Nhĩ",
+      "label": "LOC"
+    },
+    {
+      "text": "Minh Linh",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Thuận Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "TRẦN CÔNG VÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thăng Hoa",
+      "label": "LOC"
+    },
+    {
+      "text": "Tân An",
+      "label": "LOC"
+    },
+    {
+      "text": "Duy Xuyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Thôn Tân An",
+      "label": "LOC"
+    },
+    {
+      "text": "Bình Minh",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Phước Long",
+      "label": "LOC"
+    },
+    {
+      "text": "Bình Đào",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ VII",
+      "label": "GENERATION"
+    },
+    {
+      "text": "TRẦN CÔNG HỆ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN CÔNG ĐÁNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hoà Duân",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Hoà Duân",
+      "label": "LOC"
+    },
+    {
+      "text": "Đại Nghĩa",
+      "label": "LOC"
+    },
+    {
+      "text": "Đại Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "TRẦN CÔNG TRÁNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phái Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "Phú Nhuận",
+      "label": "LOC"
+    },
+    {
+      "text": "Duy Tân",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Công Chẫn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "15 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "8 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Thái Thuỷ Tổ Trần Công Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Công Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1225",
+      "label": "DATE"
+    },
+    {
+      "text": "1400",
+      "label": "DATE"
+    },
+    {
+      "text": "1398",
+      "label": "DATE"
+    },
+    {
+      "text": "1401",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "TRẦN CÔNG HỆ",
+      "tail": "Trần Công Tráng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "TRẦN CÔNG HỆ",
+      "tail": "TRẦN CÔNG ĐÁNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

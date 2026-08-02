@@ -1,0 +1,34 @@
+{
+  "doc_id": "vgp_688",
+  "tree_id": 688,
+  "title": "Trần Ngọc làng Phù Tải - Hà Nam",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/688/pha_ky_gia_su.html",
+  "text": "Lời Mở Đầu\nCây có gốc, nước có nguồn, người ta ai cũng có Tổ Tiên .\nVì vậy ta cần phải biết Tổ Tiên ta , dòng dõi ra sao, thăng trầm hiển đạt thế nào .\nNgày xưa, họ ta đã có gia phả do chính cụ Tổ viết bằng chữ nho để tại nhà thờ họ ở Phù Tải , con cháu cứ kế tiếp ghi chép thêm vào .\nCho mãi đến đời thứ 10, không biết vì lý do nào hay biến cố gì, quyển gia phả chính đã bị thất lạc .\nHiện nay chỉ còn lại các bản sao bằng chữ nho ở các chi họ còn giữ được, nhưng con cháu ít người được biết .\nNăm 1965, quyển gia phả đầu tiên bằng tiếng Việt đã được soạn thảo và phổ biến trong họ, nhưng chưa được đầy đủ .\nNay căn cứ vào gia phả họ ta bằng chữ nho và có thêm nhiều tài liệu ghi chép về cụ Tổ ta trong các sử sách để ở thư viện trong nước, được bổ túc thêm vào cho đầy đủ và hoàn hảo hơn .\nViết lại quyển gia phả này, không ngoài mục đích là để cho anh em bà con trong họ ta được biết rõ dòng dõi, gốc tích, sự nghiệp của Tổ Tiên ta và cũng để cho mối tình liên lạc giữa chú, bác, anh em họ hàng trở nên đằm thắm, biết thương yêu đoàn kết lẫn nhau, vì rằng \"một giọt máu đào hơn ao nước lã\"\nMùa Xuân năm Canh Ngọ (1990)\nThập Nhị Đại Tôn phụng soạn",
+  "entities": [
+    {
+      "start": 235,
+      "end": 242,
+      "label": "LOC",
+      "text": "Phù Tải"
+    },
+    {
+      "start": 297,
+      "end": 307,
+      "label": "GENERATION",
+      "text": "đời thứ 10"
+    },
+    {
+      "start": 495,
+      "end": 503,
+      "label": "DATE",
+      "text": "Năm 1965"
+    },
+    {
+      "start": 1093,
+      "end": 1121,
+      "label": "DATE",
+      "text": "Mùa Xuân năm Canh Ngọ (1990)"
+    }
+  ],
+  "relations": []
+}

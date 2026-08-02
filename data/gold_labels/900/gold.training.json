@@ -1,0 +1,124 @@
+{
+  "doc_id": "vgp_900",
+  "tree_id": 900,
+  "title": "TRẦN TRỌNG - Cổ Am, Vĩnh bảo, HP - Hải Phòng",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/900/pha_ky_gia_su.html",
+  "text": "GIA PHẢ\n *****\n Dòng họ TRẦN PHÚC - TRẦN TRỌNG\n\n LỜI NÓI ĐẦU\n\n Nước có Quốc sử, dòng họ có gia phả. Sử của Quốc gia ghi lại sự hình thành và truyền thống của dân tộc, những bậc tiền bối qua các thời kỳ.\n\n Gia phả của dòng họ, ghi lại cội nguồn và sự phát triển của dòng họ, từ Cụ Tổ đến các con, cháu, chắt tiếp theo.\n\n Trong họ có ngành, có chi. Có ngành trên ngành dưới, chi trên chi dưới.\n Họ Trần Trọng ta, kể từ Cụ Tổ Trần Phúc Định đến nay đã có 415 năm (1587 ), đã qua 13 - 14 thế hệ (đời).\n Tất cả người họ Trần Trọng, dù trai hay gái, đều có chung đặc điểm: hiền lành , chịu khó, thương người, sống hoà thuận, kính trên, nhường dưới, ăn ở có trước có sau, có tôn ty trật tự. Đó là truyền thống tốt đẹp của họ Trần Trọng ta từ bao đời nay.\n Gia phả họ Trần Trọng dịch theo văn bản chữ Hán của các Cụ đời trước để lại. Đến đời Cụ Trần Trọng Ngoạn (đời thứ 10) Cụ đã biên soạn tiếp và có bổ xung.\n Năm 1978, dưới sự chỉ đạo của Cụ Trần Trọng Chi (đời Thứ 10) mời Cụ Đào Trọng Thâu dịch và thành lập ban biên soạn gia phả.\nBan biên soạn gồm có: \n Cụ Trần Trọng Chi (đời thứ 10) làm trưởng ban, cùng các Ông trong ban là: Ông Trần Trọng Đàm (đời thứ 11), Ông Trần Trọng Oanh (đời thứ 11), Ông Trần Trọng Lung (đời thứ 11).\n Ban biên soạn có nhiệm vụ dịch gia phả cũ từ chữ Hán sang chữ Quốc ngữ, đồng thời hoàn chỉnh bổ sung thêm danh sách trai, gái, dâu họ Trần Trọng từ đời thứ 11, 12, 13, 14.\n Cách làm phần bổ sung theo phương pháp: từng ngành, từng chi tự kê khai thống kê, rồi gửi danh sách lên ban biên soạn tổng hợp.\n Tóm lại cuốn gia phả này, dựa theo bản gốc của dòng họ Trần Phúc, Trần Trọng và có 2 lần bổ sung, ghi đời kế tiếp. Đây là chính sử của họ Trần Trọng.\nCăn cứ gia phả này, để xác định truyền thống và các mối quan hệ trong dòng họ.\n Mong rằng các thế hệ kế tiếp sau này, nối chí Cha Ông, làm nên sự nghiệp, làm rạng rỡ cho họ Trần Trọng ta và tiếp tục viết bổ sung vào gia phả.\n\n Cổ Am ngày 5 tháng 10 năm Quý mùi 2003\n Ban biên soạn gia phả\n_________\nThông tin về Người đưa phả ký:\nHọ Tên: Trần Bình\nĐịa chỉ: Số 189C, Phố Đội cấn, Quận Ba đình, Hà nội\nSố điện thoại: 04.8435796 và 0989613248\nemail:",
+  "entities": [
+    {
+      "start": 423,
+      "end": 437,
+      "label": "PER_NAME",
+      "text": "Trần Phúc Định"
+    },
+    {
+      "start": 461,
+      "end": 465,
+      "label": "DATE",
+      "text": "1587"
+    },
+    {
+      "start": 837,
+      "end": 853,
+      "label": "PER_NAME",
+      "text": "Trần Trọng Ngoạn"
+    },
+    {
+      "start": 855,
+      "end": 865,
+      "label": "GENERATION",
+      "text": "đời thứ 10"
+    },
+    {
+      "start": 908,
+      "end": 912,
+      "label": "DATE",
+      "text": "1978"
+    },
+    {
+      "start": 937,
+      "end": 951,
+      "label": "PER_NAME",
+      "text": "Trần Trọng Chi"
+    },
+    {
+      "start": 972,
+      "end": 986,
+      "label": "PER_NAME",
+      "text": "Đào Trọng Thâu"
+    },
+    {
+      "start": 1130,
+      "end": 1144,
+      "label": "PER_NAME",
+      "text": "Trần Trọng Đàm"
+    },
+    {
+      "start": 1146,
+      "end": 1156,
+      "label": "GENERATION",
+      "text": "đời thứ 11"
+    },
+    {
+      "start": 1163,
+      "end": 1178,
+      "label": "PER_NAME",
+      "text": "Trần Trọng Oanh"
+    },
+    {
+      "start": 1197,
+      "end": 1212,
+      "label": "PER_NAME",
+      "text": "Trần Trọng Lung"
+    },
+    {
+      "start": 1907,
+      "end": 1912,
+      "label": "LOC",
+      "text": "Cổ Am"
+    },
+    {
+      "start": 1913,
+      "end": 1945,
+      "label": "DATE",
+      "text": "ngày 5 tháng 10 năm Quý mùi 2003"
+    },
+    {
+      "start": 2018,
+      "end": 2027,
+      "label": "PER_NAME",
+      "text": "Trần Bình"
+    },
+    {
+      "start": 2046,
+      "end": 2057,
+      "label": "LOC",
+      "text": "Phố Đội cấn"
+    },
+    {
+      "start": 2059,
+      "end": 2071,
+      "label": "LOC",
+      "text": "Quận Ba đình"
+    },
+    {
+      "start": 2073,
+      "end": 2079,
+      "label": "LOC",
+      "text": "Hà nội"
+    },
+    {
+      "start": 1585,
+      "end": 1594,
+      "label": "PER_NAME",
+      "text": "Trần Phúc"
+    },
+    {
+      "start": 830,
+      "end": 835,
+      "label": "GENERATION",
+      "text": "đời C"
+    }
+  ],
+  "relations": []
+}

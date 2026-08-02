@@ -1,0 +1,163 @@
+{
+  "job_id": "2e60d34de3a645a78cbd20e04438a3fd",
+  "status": "done",
+  "type": "nom_import",
+  "params": {
+    "collection_id": 2,
+    "volume_id": 208,
+    "delay_seconds": 0.3,
+    "max_pages": 100,
+    "image_variant": "large",
+    "page_start": 1,
+    "page_end": 10,
+    "save_to_system": true,
+    "crawl_only": false,
+    "attach_only": false,
+    "background": true,
+    "run_ocr": true,
+    "run_analyze": true,
+    "tree_id": null,
+    "tree_name": null,
+    "sync_pipeline": true,
+    "force_documents": false,
+    "link_tree_id": null,
+    "resolved_tree_id": "nom-208"
+  },
+  "progress": {},
+  "result": {
+    "collection_id": 2,
+    "volume_id": 208,
+    "page_start": 1,
+    "page_end": 10,
+    "downloaded_pages": [
+      "001.jpg",
+      "002.jpg",
+      "003.jpg",
+      "004.jpg",
+      "005.jpg",
+      "006.jpg",
+      "007.jpg",
+      "008.jpg",
+      "009.jpg",
+      "010.jpg"
+    ],
+    "skipped_pages": [],
+    "errors": [],
+    "title": "Đông Trù Đoàn tộc phả",
+    "catalog_slug": "nlvnpf-0155",
+    "metadata_path": "/app/data/nomfoundation/volumes/208/metadata.json",
+    "manifest_path": "/app/data/nomfoundation/volumes/208/manifest.json",
+    "page_count": 10,
+    "image_variant": "large",
+    "job_id": "2e60d34de3a645a78cbd20e04438a3fd",
+    "tree_id": "nom-208",
+    "tree_name": "Đông Trù Đoàn tộc phả",
+    "tree": {
+      "id": "nom-208",
+      "name": "Đông Trù Đoàn tộc phả",
+      "description": "Nguồn Nom Foundation — collection 2, volume 208. NLVNPF-0155",
+      "created_at": "2026-07-12T16:42:18.767614+00:00",
+      "updated_at": "2026-07-12T16:42:18.767614+00:00",
+      "nodes": [],
+      "external_url": "https://lib.nomfoundation.org/collection/2/volume/208/",
+      "has_source_document": true,
+      "has_hannom_text": true,
+      "user_id": null,
+      "is_public": false
+    },
+    "images_document": {
+      "family_tree_id": "nom-208",
+      "attached": true,
+      "document_id": 15,
+      "file_count": 10,
+      "uploaded_count": 10,
+      "file_names": [
+        "001.jpg",
+        "002.jpg",
+        "003.jpg",
+        "004.jpg",
+        "005.jpg",
+        "006.jpg",
+        "007.jpg",
+        "008.jpg",
+        "009.jpg",
+        "010.jpg"
+      ]
+    },
+    "metadata_document": {
+      "family_tree_id": "nom-208",
+      "attached": true,
+      "document_id": 16,
+      "file_count": 1
+    },
+    "ocr_result": {
+      "source_document_id": 15,
+      "processed": 0,
+      "skipped": 0,
+      "results": [],
+      "errors": [
+        {
+          "file_id": 323,
+          "file_name": "001.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 324,
+          "file_name": "002.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 325,
+          "file_name": "003.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 326,
+          "file_name": "004.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 327,
+          "file_name": "005.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 328,
+          "file_name": "006.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 329,
+          "file_name": "007.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 330,
+          "file_name": "008.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 331,
+          "file_name": "009.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        },
+        {
+          "file_id": 332,
+          "file_name": "010.jpg",
+          "error": "HANNOM_API_TOKEN chưa được cấu hình. Gọi POST /api/developer/hannom/fetch-token hoặc thiết lập biến môi trường."
+        }
+      ],
+      "combined_transcription_text": "",
+      "merged_page_count": 0
+    },
+    "analyze_result": {
+      "node_count": 0,
+      "gemini_error": "Không có text phiên âm để phân tích.",
+      "balkan_nodes": []
+    },
+    "pipeline_synced": true
+  },
+  "error": null,
+  "created_at": "2026-07-12T16:41:40.881420+00:00",
+  "updated_at": "2026-07-12T16:42:19.102713+00:00"
+}

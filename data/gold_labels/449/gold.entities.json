@@ -1,0 +1,41 @@
+{
+  "entities": [
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Vân Tường",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Tuy Viễn",
+      "label": "LOC"
+    },
+    {
+      "text": "Tây Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Bình Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Minh Tinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ sáu",
+      "label": "GENERATION"
+    },
+    {
+      "text": "TP Hồ Chí Minh",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Minh Phúc",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

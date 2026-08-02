@@ -1,0 +1,435 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quý công tự Phúc Ích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phúc Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thị An Công Chúa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô khëi tæ «ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cô khëi tæ bµ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn Quý c«ng – tù huyÒn ®øc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô th­îng th­îng tæ Bµ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thiÖn an c«ng chóa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc ®øc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô th­îng tæ Bµ phóc ®øc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc C«ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô th­îng tæ Bµ Phóc C«ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô th­îng tæ Bµ Phóc Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc hËu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô th­îng tæ Bµ Phóc HËu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc TÝnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô tiªn tæ Bµ Phóc TÝnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc T­¬ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô tiªn tæ Bµ Phóc T­¬ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc l­¬ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô tiªn tæ Bµ Phóc L­¬ng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc Huých",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc ChØ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô cao cao tæ bµ Phóc ChØ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc Ng©n",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc Ch©u",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc Ngäc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô cao tæ bµ c¶",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cô cao tæ bµ 2",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NguyÔn quý c«ng tù phóc GÊm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cụ tổ 4 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "người con gái",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ba người con trai thứ",
+      "label": "ORDER"
+    },
+    {
+      "text": "một người con gái",
+      "label": "ORDER"
+    },
+    {
+      "text": "thế kỷ thứ 16",
+      "label": "DATE"
+    },
+    {
+      "text": "thế kỷ thứ 17",
+      "label": "DATE"
+    },
+    {
+      "text": "1771",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1802",
+      "label": "DATE"
+    },
+    {
+      "text": "24 tháng 5",
+      "label": "DATE"
+    },
+    {
+      "text": "25 tháng 11",
+      "label": "DATE"
+    },
+    {
+      "text": "24 TH¸NG 5",
+      "label": "DATE"
+    },
+    {
+      "text": "25 TH¸NG 11",
+      "label": "DATE"
+    },
+    {
+      "text": "4 th¸ng 8",
+      "label": "DATE"
+    },
+    {
+      "text": "27 TH¸NG 5",
+      "label": "DATE"
+    },
+    {
+      "text": "12 TH¸NG 4",
+      "label": "DATE"
+    },
+    {
+      "text": "15 TH¸NG 8",
+      "label": "DATE"
+    },
+    {
+      "text": "25 TH¸NG 4",
+      "label": "DATE"
+    },
+    {
+      "text": "7 th¸ng 11",
+      "label": "DATE"
+    },
+    {
+      "text": "23 th¸ng 4",
+      "label": "DATE"
+    },
+    {
+      "text": "23 th¸ng 5",
+      "label": "DATE"
+    },
+    {
+      "text": "9 th¸ng 2",
+      "label": "DATE"
+    },
+    {
+      "text": "Thái Lão",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Hưng Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Tây Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Bình Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Thôn An Lại",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Nhân Hoà",
+      "label": "LOC"
+    },
+    {
+      "text": "tổng Thanh Khê",
+      "label": "LOC"
+    },
+    {
+      "text": "Phủ Nghĩa Hưng",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Yên Nhân",
+      "label": "LOC"
+    },
+    {
+      "text": "Ý Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Phủ Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "tổng Sen",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Yên Giáo",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Đột",
+      "label": "LOC"
+    },
+    {
+      "text": "Minh Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Hậu Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý công tự Phúc Ích",
+      "tail": "Nguyễn Phúc Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý công tự Phúc Ích",
+      "tail": "Thị An Công Chúa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Cô khëi tæ «ng",
+      "tail": "cô khëi tæ bµ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn Quý c«ng – tù huyÒn ®øc",
+      "tail": "Cô th­îng th­îng tæ Bµ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc ®øc",
+      "tail": "Cô th­îng tæ Bµ phóc ®øc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc C«ng",
+      "tail": "Cô th­îng tæ Bµ Phóc C«ng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc Quang",
+      "tail": "Cô th­îng tæ Bµ Phóc Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc hËu",
+      "tail": "Cô th­îng tæ Bµ Phóc HËu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc TÝnh",
+      "tail": "Cô tiªn tæ Bµ Phóc TÝnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc T­¬ng",
+      "tail": "Cô tiªn tæ Bµ Phóc T­¬ng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc l­¬ng",
+      "tail": "Cô tiªn tæ Bµ Phóc L­¬ng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NguyÔn quý c«ng tù phóc T­¬ng",
+      "tail": "NguyÔn quý c«ng tù phóc ChØ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc ChØ",
+      "tail": "Cô cao cao tæ bµ Phóc ChØ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NguyÔn quý c«ng tù phóc ChØ",
+      "tail": "NguyÔn quý c«ng tù phóc Ng©n",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NguyÔn quý c«ng tù phóc ChØ",
+      "tail": "NguyÔn quý c«ng tù phóc Ch©u",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NguyÔn quý c«ng tù phóc ChØ",
+      "tail": "NguyÔn quý c«ng tù phóc Ngäc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NguyÔn quý c«ng tù phóc ChØ",
+      "tail": "NguyÔn quý c«ng tù phóc GÊm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc Ngäc",
+      "tail": "Cô cao tæ bµ c¶",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NguyÔn quý c«ng tù phóc Ngäc",
+      "tail": "Cô cao tæ bµ 2",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

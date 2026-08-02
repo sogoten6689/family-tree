@@ -1,0 +1,281 @@
+{
+  "entities": [
+    {
+      "text": "Đàm Hòa Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Bộ Lĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm thị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý cao Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Dĩ Mông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái hậu Đàm thị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý huệ Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý Chiêu Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Uy Mục",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Văn Lễ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Phúc Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Phúc Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Phúc Lương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Chính Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Huệ Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Bản Tính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đàm Thị Thoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ I",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ II",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ III",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ IV",
+      "label": "GENERATION"
+    },
+    {
+      "text": "17 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "19 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nhất nam",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngành cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngành hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngành ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngành tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "1175 đến 1225",
+      "label": "DATE"
+    },
+    {
+      "text": "1418-1427",
+      "label": "DATE"
+    },
+    {
+      "text": "1428",
+      "label": "DATE"
+    },
+    {
+      "text": "1505-1509",
+      "label": "DATE"
+    },
+    {
+      "text": "1500 - 1530",
+      "label": "DATE"
+    },
+    {
+      "text": "1533 - 1788",
+      "label": "DATE"
+    },
+    {
+      "text": "1527",
+      "label": "DATE"
+    },
+    {
+      "text": "1573-1599",
+      "label": "DATE"
+    },
+    {
+      "text": "1592",
+      "label": "DATE"
+    },
+    {
+      "text": "2008",
+      "label": "DATE"
+    },
+    {
+      "text": "Thôn Xối Trì",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Long",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Dịch Diệp",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Trực Chính",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Trực Ninh",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Nam Long",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Nam Trực",
+      "label": "LOC"
+    },
+    {
+      "text": "Dịch Diệp",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Hậu",
+      "label": "LOC"
+    },
+    {
+      "text": "Phúc yên Vĩnh Phúc",
+      "label": "LOC"
+    },
+    {
+      "text": "năm 1295",
+      "label": "DATE"
+    },
+    {
+      "text": "đời V",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "MOTHER_OF",
+      "head": "Đàm thị",
+      "tail": "Đinh Bộ Lĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Lý cao Tông",
+      "tail": "Đàm thị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Thái hậu Đàm thị",
+      "tail": "Lý huệ Tông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đàm Phúc Toàn",
+      "tail": "Đàm Phúc Lương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đàm Phúc Lương",
+      "tail": "Đàm Chính Nghĩa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đàm Chính Nghĩa",
+      "tail": "Đàm Huệ Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đàm Chính Nghĩa",
+      "tail": "Đàm Phúc Khôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đàm Chính Nghĩa",
+      "tail": "Đàm Bản Tính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đàm Chính Nghĩa",
+      "tail": "Đàm Thị Thoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

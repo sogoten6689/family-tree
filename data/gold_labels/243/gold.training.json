@@ -1,0 +1,58 @@
+{
+  "doc_id": "vgp_243",
+  "tree_id": 243,
+  "title": "Võ (Tuy Phước, Bình Định) - Bình Định",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/243/pha_ky_gia_su.html",
+  "text": "Phủ Tuy Phước, Nhân Ân tổng, Hưng Nghĩa thôn.\nVõ Diêu vi cung lục tộc phổ tự.\nVăn chi thuỷ bất sóc kỳ nguyên vu lưu vạn phái bất tri kỳ sở thủy. Mộc bất tầm kỳ bản tắc thiên chi vạn phái bất tri kỳ sở khỉ. Tộc bất hệ kỳ phổ kỳ thiên nhi vạn tộc bất tri kỳ sở. Thế thứ phù phổ giã hối hệ giã kế giã phổ dĩ thứ kỳ bản chi kế giữ tự kỳ chiêu mục bản chi thứ tắc viên thân, cận thân đắc dĩ tiên kỳ tình chiêu mục tự tắc đại tôn, tiểu tôn đắc dĩ định kỳ phân mục tôn chi đạo. Mạc tiên ư thứ thế nhơn mỗi hốt nhiên nhi bất cứu, hoặc hữu dị cập tứ ngũ đợi giai nhi nguyên bản chi bất tri kỳ sở xuất thân chi hữu lập giai việc tự. Tục tích xưng thân quyến đồ vi nhi bất tri thục đồng tôn, nhi thất tự kỳ hức tệ duyệt bất suyển hỉ. Ngô vi thử cu mỗi hốc độ ư thị lục diên.\nHoàng triều Bảo Đại lục niên quạt sơ lục nhất.\nThân Võ Diêu cẩn thơ.\nThân đệ Võ Tuyên trai khiết kính lục.\nPhủ Tuy Phước, tổng Nhơn Ân, thôn Hưng Nghĩa.\nTa Võ Diêu cùng em Võ Tuyên phụng lục Võ tộc gia phả theo thứ tự giềng mối căn nguyên tôn tộc luân thường tự cổ chí kim như cây có gốc, nước có nguồn. Gốc rễ đượm cành lá sum suê tươi tốt, nguồn nước thạnh sông suối thông. Gia phả để thuật lại căn nguyên tôn tộc lưu lại cho con cháu hậu thế biết được giòng họ bà con nội ngoại xa gần, phài lớn, phái nhỏ để niệm tình thân ái ngày tương lai khỏi sai lạc, biết rõ công đức của tiền nhân đã lưu lại mà ra sức xây dựng tài bồi tôn tộc.\nViệc phối hợp vợ chồng nêu rõ tính danh, địa chỉ, tử trần, mai táng ghi rõ tên gò địa danh, ngày tháng sanh, kỵ lạp, sanh hạ ít nhiều, mất còn hiện hữu chép chu đáo để lưu lại cho con cháu.\nNgày 16 tháng 6 năm bảo Đại thứ 6 (1931)",
+  "entities": [
+    {
+      "start": 0,
+      "end": 15,
+      "label": "LOC",
+      "text": "Phủ Tuy Phước"
+    },
+    {
+      "start": 17,
+      "end": 24,
+      "label": "LOC",
+      "text": "Nhân Ân"
+    },
+    {
+      "start": 32,
+      "end": 43,
+      "label": "LOC",
+      "text": "Hưng Nghĩa"
+    },
+    {
+      "start": 50,
+      "end": 58,
+      "label": "PER_NAME",
+      "text": "Võ Diêu"
+    },
+    {
+      "start": 890,
+      "end": 943,
+      "label": "DATE",
+      "text": "Hoàng triều Bảo Đại lục niên quạt sơ lục nhất"
+    },
+    {
+      "start": 978,
+      "end": 987,
+      "label": "PER_NAME",
+      "text": "Võ Tuyên"
+    },
+    {
+      "start": 1035,
+      "end": 1042,
+      "label": "LOC",
+      "text": "Nhơn Ân"
+    },
+    {
+      "start": 1839,
+      "end": 1884,
+      "label": "DATE",
+      "text": "Ngày 16 tháng 6 năm bảo Đại thứ 6 (1931)"
+    }
+  ],
+  "relations": []
+}

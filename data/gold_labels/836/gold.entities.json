@@ -1,0 +1,161 @@
+{
+  "entities": [
+    {
+      "text": "Phạm Phú Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Phú Trưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Phú Luông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hai Đây",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Phú Sau",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hương Én",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bốn Nhự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hai Trợ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ba Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thủ Bán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chu Cẩm Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Kiều Văn Lũy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 2005",
+      "label": "DATE"
+    },
+    {
+      "text": "03/11/2011",
+      "label": "DATE"
+    },
+    {
+      "text": "1964",
+      "label": "DATE"
+    },
+    {
+      "text": "1968",
+      "label": "DATE"
+    },
+    {
+      "text": "1969",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng 10/2011",
+      "label": "DATE"
+    },
+    {
+      "text": "Cỏ Mân",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Cái",
+      "label": "LOC"
+    },
+    {
+      "text": "Cửa Hàn",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Trường Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Thủy Tú",
+      "label": "LOC"
+    },
+    {
+      "text": "Vân Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưởng Phước",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoà Liên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoà Vang",
+      "label": "LOC"
+    },
+    {
+      "text": "Cẩm Lệ",
+      "label": "LOC"
+    },
+    {
+      "text": "Hòa Đa",
+      "label": "LOC"
+    },
+    {
+      "text": "Tùng Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "Liêm Lạc",
+      "label": "LOC"
+    },
+    {
+      "text": "sông Quá Giáng",
+      "label": "LOC"
+    },
+    {
+      "text": "Lổ Giáng",
+      "label": "LOC"
+    },
+    {
+      "text": "Đà Nẵng",
+      "label": "LOC"
+    },
+    {
+      "text": "Hòa Xuân",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

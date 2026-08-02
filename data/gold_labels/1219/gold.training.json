@@ -1,0 +1,136 @@
+{
+  "doc_id": "vgp_1219",
+  "tree_id": 1219,
+  "title": "NGUYỄN VĂN - Bình Cách - Yên Thọ - Ý Yên - Nam Định",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1219/pha_ky_gia_su.html",
+  "text": "Ông Tổ Phường gốc tích sinh quán Thôn Nhuộng, xã Yên Trung, huyện Ý Yên, tỉnh Nam Định. Cụ có 5 người anh em giai, mọi người đều không biết rõ cụ là người con thứ mấy trong gia đình.\nChỉ biết ông cụ thân sinh ra cụ Phường mất ngày 23 tháng 12 Âm lịch, nên họ ta thường ra Nhuộng để ăn giỗ cụ Tổ là thế.\nKhi cụ Phường mất, anh em mang hài cốt về táng tại đất ruộng riêng của tổ tiên.\nCụ Phường có nghề bắt lươn, lân la cụ kết bạn với cụ bà người làng Bình Cách, xã Yên Thọ, huyện Ý Yên, tỉnh Nam Định. Thế là cụ ngụ cư trong ta bấy giờ không về Nhuộng nữa.\nTại sao cụ cụ trở nên giàu có? Gia phả kể lại là cụ đi bắt lươn trong vùng lân cận, một hôm cụ sâm thấy mấy cong hoặc chum tiền đồng, Cụ lập cách lấy dần về, Cụ về nhà làm một cái thùng chấu thật rộng; cụ bà hỏi: ông làm gì mà làm rộng thế? Cụ đáp rằng: Làm ruộng thì để chứa rơm rạ tránh hỏa hoạn, kỳ thực ý của cụ là để dấu số tiền đồng kia. Làm xong thùng trấu, cụ tìm cách mang dần tiền đồng về cho bằng hết.\nGặp năm đói kém người ta phải cậy vách lấy chấu mà ăn, một thùng thóc đổi được một tấm vườn... Nhân dịp đó, cụ bỏ số tiền ra mua rất nhiều ruộng đất. Cụ trở nên giàu có lắm.\nCụ Phường sinh ra được 3 người con: Người con trai cả Ông Sử Phố, thứ hai là Ông Tổng Đống, người con thứ ba là Bà Xim. Bà Xim không có con, chỉ có một người con gái nuôi gả cho ông Hậu Nhị. Nên sau này có ruộng hậu để lại cho họ ta cấy lượt hảo.\nĐến đời thứ 2, Ông Sử Phố sinh được 4 người con giai. Người con giai út không nhớ rõ tên là gì, năm 17 tuổi ông bắt được con cá rô rồi rơ lên mồm, chẳng may cá nảy ngay vào mồm, bị hóc chết./.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 13,
+      "label": "PER_NAME",
+      "text": "Ông Tổ Phường"
+    },
+    {
+      "start": 33,
+      "end": 44,
+      "label": "LOC",
+      "text": "Thôn Nhuộng"
+    },
+    {
+      "start": 46,
+      "end": 58,
+      "label": "LOC",
+      "text": "xã Yên Trung"
+    },
+    {
+      "start": 60,
+      "end": 71,
+      "label": "LOC",
+      "text": "huyện Ý Yên"
+    },
+    {
+      "start": 73,
+      "end": 86,
+      "label": "LOC",
+      "text": "tỉnh Nam Định"
+    },
+    {
+      "start": 212,
+      "end": 221,
+      "label": "PER_NAME",
+      "text": "cụ Phường"
+    },
+    {
+      "start": 226,
+      "end": 250,
+      "label": "DATE",
+      "text": "ngày 23 tháng 12 Âm lịch"
+    },
+    {
+      "start": 433,
+      "end": 438,
+      "label": "PER_NAME",
+      "text": "cụ bà"
+    },
+    {
+      "start": 450,
+      "end": 459,
+      "label": "LOC",
+      "text": "Bình Cách"
+    },
+    {
+      "start": 461,
+      "end": 471,
+      "label": "LOC",
+      "text": "xã Yên Thọ"
+    },
+    {
+      "start": 1194,
+      "end": 1196,
+      "label": "ORDER",
+      "text": "cả"
+    },
+    {
+      "start": 1197,
+      "end": 1207,
+      "label": "PER_NAME",
+      "text": "Ông Sử Phố"
+    },
+    {
+      "start": 1209,
+      "end": 1216,
+      "label": "ORDER",
+      "text": "thứ hai"
+    },
+    {
+      "start": 1220,
+      "end": 1233,
+      "label": "PER_NAME",
+      "text": "Ông Tổng Đống"
+    },
+    {
+      "start": 1245,
+      "end": 1251,
+      "label": "ORDER",
+      "text": "thứ ba"
+    },
+    {
+      "start": 1255,
+      "end": 1261,
+      "label": "PER_NAME",
+      "text": "Bà Xim"
+    },
+    {
+      "start": 1321,
+      "end": 1332,
+      "label": "PER_NAME",
+      "text": "ông Hậu Nhị"
+    },
+    {
+      "start": 1394,
+      "end": 1403,
+      "label": "GENERATION",
+      "text": "đời thứ 2"
+    },
+    {
+      "start": 1459,
+      "end": 1461,
+      "label": "ORDER",
+      "text": "út"
+    },
+    {
+      "start": 1405,
+      "end": 1411,
+      "label": "PER_NAME",
+      "text": "Ông Sử"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": 5,
+      "tail": 7
+    }
+  ]
+}

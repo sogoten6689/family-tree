@@ -1,0 +1,7724 @@
+{
+  "entities": [
+    {
+      "text": "Lê Đình - Bến Tre",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phước Nở",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Le Phước Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Truật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Hượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 308",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 204",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Vạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 205",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Trạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 206",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 310",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thành Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 328",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Đệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 329",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Phuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 330",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 311",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 312",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 313",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Cúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 314",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Trước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 315",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Đô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 316",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Ty",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 317",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 318",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Tước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 319",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 320",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Mạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 321",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Tiếng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 322",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Nhương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 323",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 324",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Chín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 325",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 326",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Út",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 327",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Cửu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 309",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Quảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 296",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Dực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 333",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Tiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 334",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Phối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 335",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ngõ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 336",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Môn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 337",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Xứng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hấng (Nguyễn Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Dung (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 104",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 105",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Minh (Văn Thị Chiêu)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 173",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 175",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 203",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Tư Mẫn (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 209",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Sáu (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 210",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 331",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Cát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 297",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Phì",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 298",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 300",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Đởm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 338",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 339",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 340",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Huống",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 341",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 342",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Xáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 343",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 344",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Lấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 345",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Tế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 346",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Đắc Quốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 347",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Phố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 348",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Út",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 349",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Truyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 350",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Thái Thị Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 107",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 144",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đoàn Thị Luccy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Đáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 82",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hồng Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 90",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 145",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 146",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 147",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 148",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 149",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 211",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Phương (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 212",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Kim Nguyệt (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 213",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 214",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Khiêm (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 227",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Ngân Hoa (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 228",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 229",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Thành (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 230",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 231",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 232",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Hoàng (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 242",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Chánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 243",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 244",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 245",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 246",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 247",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 248",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 255",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 256",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Tần Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 257",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 258",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 332",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Trầm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 301",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 302",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Đạo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 303",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Bồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 304",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 108",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Kim Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 110",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 111",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 112",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hồng Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 113",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Sanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 114",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 115",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 176",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Bê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 177",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Ba - Huỳnh Thanh Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 178",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 179",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Kim Huôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 180",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thanh Liêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 196",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thanh Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 197",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thanh Bạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 35",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 36",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Ngọc Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 37",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 38",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Bổn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 39",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tuyết Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 40",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thanh Phượng - Phan Văn Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Mai Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Hoàng Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 33",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Hoàng Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 91",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Văn Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 92",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Văn Sớm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 93",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Văn Ưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 94",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Thị Thúy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 150",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Diệp Thị Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 151",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thế Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 152",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Anh Bé 3",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 153",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Chị Nhị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 154",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Chị Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 155",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thế Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 156",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Chánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 157",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 158",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 159",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Cang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 160",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 161",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Xuân Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 162",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Hồng Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 163",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Huỳnh Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 164",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Văn Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 165",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 166",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 167",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 168",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 169",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 170",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Huê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 215",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Kim Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 216",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Đức Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 217",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Đức Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 218",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 233",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phúc Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 234",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Ngọc Mỹ Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 235",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Ngọc Thanh Trúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 236",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Ngọc Trúc Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 237",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 238",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Ngọc Trúc Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 239",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Ngọc Quỳnh Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 240",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Đình Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 241",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Đình Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 249",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Khương Đỗ Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 250",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Khương Đỗ An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 251",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Đức Trọng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 252",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Đức Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 253",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Thị Thùy Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 254",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Quốc Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 259",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Mỹ Xuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 260",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Mỹ Nương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 261",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Đình Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 262",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Vũ Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 263",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Điền Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 264",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Duy Ấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 273",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 274",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 275",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Đức Duy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 276",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Hữu Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 282",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 283",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Hồng Thắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 284",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Thắm Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 285",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Hồng Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 286",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Lan Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 294",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Vân Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 295",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Thạch Mai Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 305",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Rum",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 306",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 307",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 109",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 116",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hoàng Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 117",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hoàng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 133",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phương Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 118",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 119",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu Hùng Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 120",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu Bảo Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 123",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Như Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 124",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 121",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Việt Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 122",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Dũng Bon",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 140",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 181",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thanh Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 182",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thanh Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 188",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Hoàng Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 189",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Thu Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 194",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Hoàng Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 198",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thanh Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 200",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Hòa Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 201",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Xuân Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 50",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Long Thới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 51",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Long Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 52",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Anh Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 53",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Kiều Tiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 54",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thanh Tuyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 44",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Minh Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 45",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ngọc Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 46",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ngọc Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 47",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hồng Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 48",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Song Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 56",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu Lê Quang Thoại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 57",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu Lê Hồng Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 58",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu Lê Huỳnh Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 42",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phạm Đình Vĩnh Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 71",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phạm Thụy Thanh Trúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 72",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phạm Thị Phương Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 73",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thành Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 74",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phạm Thị Thủy Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 41",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Lê Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 69",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Yến Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 85",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Diễm Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 88",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Khánh Vy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 59",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Nguyễn Hoàng Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 80",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Thị Thu Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 60",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trọng Thường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 61",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Nguyễn Bá Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 141",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Văn Lãm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 142",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Đặng Bảo Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 208",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Đặng Đoàn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 143",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Thị Kim Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 207",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đỗ Thị Xuân Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 95",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Xuân Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 96",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Duy Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 171",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 172",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Trung Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 219",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Trang Như Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 220",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Tuấn Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 221",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Khánh Vy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 222",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thị Ngọc Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 223",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Đức Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 224",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Ngọc Thanh Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 225",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Đoàn Gia Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 226",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Đoàn Gia Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 265",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 266",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Thảo Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 267",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Hạ Đông Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 268",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Hạ Quang Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 269",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Huyền Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 270",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Bảo Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 271",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Hoài Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 272",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Huỳnh Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 277",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Tấn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 278",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Anh Kiệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 280",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Đức Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 281",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Thanh Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 287",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trương Thị Ngọc Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 288",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Hữu Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 289",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Hữu Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 290",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Hoàng Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 291",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đức Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 292",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Võ Văn Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 293",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Võ Văn Hậu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 125",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Việt Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 128",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 183",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Việt Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 184",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Trúc Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 202",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Hoàng Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 55",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Phước Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 97",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Nguyễn Bảo Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 98",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tường Vi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 99",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Anh Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 100",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Hữu Nhơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 83",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Thị Kiều Nhi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 101",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phạm Lê Thúy Vi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 102",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Nguyễn Gia Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 65",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Minh A",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 66",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Minh B",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 67",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Minh C",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 49",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Lê Hiếu Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 81",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Văn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 68",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Song A",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 103",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Bảo Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 77",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lưu Huỳnh Nguyễn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 78",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lưu Minh Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 79",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lưu Anh Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 43",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Uy Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 76",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Bảo Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 84",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 75",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Minh Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 126",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Minh Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 89",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Bảo Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 70",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Nguyễn Lê Huỳnh AA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 62",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Thái Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 63",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Hân Ny",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 185",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Thị Quyên Như",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 186",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Huỳnh Hải Hưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 187",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Trần Quang Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 64",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn A",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Phước Nở",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Le Phước Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Le Phước Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Dực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Phì",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Đởm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Đởm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Đởm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Đạo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Đởm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Bồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Đởm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Rum",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Tiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Huống",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Phối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Phối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Xáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Phối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Phối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Lấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ngõ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Ngõ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Tế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Ngõ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Đắc Quốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Môn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Môn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Phố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Môn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Út",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Môn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Truyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Xứng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Xứng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Thị Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hấng (Nguyễn Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Hấng (Nguyễn Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Kim Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Thị Kim Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hoàng Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hoàng Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hoàng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hoàng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hoàng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Phương Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hồng Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hồng Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hồng Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Hùng Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hồng Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Bảo Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Sanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Sanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Như Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Thị Như Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Sanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Việt Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Việt Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Việt Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Việt Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Dũng Bon",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Dũng Bon",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Dũng Bon",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Dũng Bon",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quang Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Dung (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Dung (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đoàn Thị Luccy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Bê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Ba - Huỳnh Thanh Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Ba - Huỳnh Thanh Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thanh Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thanh Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Việt Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Việt Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Quyên Như",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Việt Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Hải Hưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thanh Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Trúc Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Trúc Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Ba - Huỳnh Thanh Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thanh Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hoàng Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Hoàng Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hoàng Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Thu Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Thu Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hoàng Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Hoàng Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưa Biết Tên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Kim Huôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thanh Liêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thanh Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thanh Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thanh Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thanh Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hòa Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thanh Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Xuân Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Muôn (CN)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thanh Bạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Long Thới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Long Thới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Phước Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Phước Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn A",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Long Thới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Nguyễn Bảo Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Long Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Long Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tường Vi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Anh Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Anh Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Anh Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Anh Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hữu Nhơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Kiều Tiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Kiều Tiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Kiều Nhi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Kiều Tiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Lê Thúy Vi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Thêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thanh Tuyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thanh Tuyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Nguyễn Gia Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Minh Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Minh Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Minh A",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Minh Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Minh B",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Minh Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Minh C",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ngọc Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Ngọc Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Lê Hiếu Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ngọc Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Ngọc Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hồng Đào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Nghiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Song Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Song Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Song A",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Song Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Bảo Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Ngọc Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Lê Quang Thoại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lưu Lê Quang Thoại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Huỳnh Nguyễn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Lê Hồng Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lưu Lê Hồng Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lưu Minh Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lưu Lê Hồng Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lưu Anh Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Ngọc Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lưu Lê Huỳnh Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Phạm Đình Vĩnh Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Phạm Đình Vĩnh Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Uy Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Phạm Đình Vĩnh Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Bảo Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Phạm Thụy Thanh Trúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Phạm Thụy Thanh Trúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Phạm Thị Phương Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thành Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thành Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Minh Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thành Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Minh Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Phạm Thị Thủy Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Phạm Thị Thủy Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bảo Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Bổn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tuyết Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Tuyết Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lê Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Tuyết Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Yến Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Ngoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thanh Phượng - Phan Văn Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thanh Phượng - Phan Văn Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Diễm Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thanh Phượng - Phan Văn Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Khánh Vy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Nguyễn Hoàng Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Lê Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Lê Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Thu Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Lê Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Thường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trọng Thường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Huỳnh AA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Mai Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Mai Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyễn Bá Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Nguyễn Bá Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thái Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Nguyễn Bá Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hân Ny",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Hoàng Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Hoàng Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Đáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hồng Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Màng (Nguyễn Thị Tiến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Văn Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Văn Chí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Văn Lãm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Văn Sớm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Văn Sớm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Đặng Bảo Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Văn Sớm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Đặng Đoàn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Văn Ưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Văn Ưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Thị Kim Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Văn Ưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Thị Xuân Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Thị Thúy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Thị Thúy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xuân Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đỗ Thị Thúy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Duy Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Diệp Thị Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thế Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Anh Bé 3",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chị Nhị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chị Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thế Đang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thế Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Chánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Cang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trung Cang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trung Cang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Xuân Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồng Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Sáu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Huỳnh Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Văn Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huỳnh Thị Tân (Cô 9)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Huê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Minh (Văn Thị Chiêu)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Phương (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Kim Nguyệt (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Kim Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Kim Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Trang Như Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Kim Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Tuấn Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đức Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Đức Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Khánh Vy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Đức Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Ngọc Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đức Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Đức Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đức Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Đức Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Ngọc Thanh Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đoàn Gia Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đoàn Gia Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Khiêm (Phan Thị Bông)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Ngân Hoa (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Ngân Hoa (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Phúc Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Mỹ Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Thanh Trúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Trúc Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Thành (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Trung Thành (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Trúc Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Quỳnh Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Đình Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Đình Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Hoàng (Ngô Thị Huệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Chánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Khương Đỗ Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Khương Đỗ An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Đức Trọng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Đức Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Thùy Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Thị Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Quốc Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Tư Mẫn (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Sáu (Lê Thị Vị)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Mỹ Xuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Mỹ Xuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Mỹ Xuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huỳnh Thị Thảo Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Mỹ Nương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Mỹ Nương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hạ Đông Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Mỹ Nương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hạ Quang Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Đình Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Đình Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Huyền Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Đình Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Bảo Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Vũ Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Vũ Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Hoài Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Điền Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Điền Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Huỳnh Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Thố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Duy Ấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Tần Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tần Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Tấn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Anh Kiệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tần Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tần Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đức Duy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Đức Duy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đức Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tần Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hữu Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Hữu Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lê Thanh Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Ngọc Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Hồng Thắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Hồng Thắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hữu Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Hồng Thắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hữu Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Thắm Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Thắm Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hoàng Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Hồng Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Hồng Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đức Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Tấn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Lan Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Lan Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Văn Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Lan Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Văn Hậu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trương Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Vân Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trương Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thạch Mai Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Thạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thành Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Đệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Phuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Cúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Trước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Đô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Ty",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Tước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thị Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Mạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Tiếng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Văn Nhương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Truật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Truật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Truật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Chín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Truật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Truật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Út",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Hượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Hượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Cửu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Quảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Quảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Cát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Cát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Trầm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Le Phước Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Vạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Trạch",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Phước Nở",
+      "tail": "Le Phước Nghị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Le Phước Nghị",
+      "tail": "Lê Đình Khương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Đình Sương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Sương",
+      "tail": "Lê Đình Phát",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Phát",
+      "tail": "Lê Đình Dực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dực",
+      "tail": "Lê Đình Phì",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dực",
+      "tail": "Lê Thị Ảnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dực",
+      "tail": "Lê Đình Đởm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Đởm",
+      "tail": "Lê Thị Tô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Đởm",
+      "tail": "Lê Đình Đạo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Đởm",
+      "tail": "Lê Đình Bồ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Đởm",
+      "tail": "Lê Đình Tần",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tần",
+      "tail": "Lê Đình Rum",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tần",
+      "tail": "Lê Đình Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tần",
+      "tail": "Lê Đình Ân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Sương",
+      "tail": "Lê Đình Chí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chí",
+      "tail": "Lê Đình Tiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tiệp",
+      "tail": "Lê Đình Thưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tiệp",
+      "tail": "Lê Đình Thể",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tiệp",
+      "tail": "Lê Đình Huống",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tiệp",
+      "tail": "Lê Đình Trinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chí",
+      "tail": "Lê Đình Phối",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Phối",
+      "tail": "Lê Đình Xáng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Phối",
+      "tail": "Lê Đình Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Phối",
+      "tail": "Lê Đình Lấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chí",
+      "tail": "Lê Thị Ngõ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Ngõ",
+      "tail": "Phan Thị Tế",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Ngõ",
+      "tail": "Phan Đắc Quốc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chí",
+      "tail": "Lê Thị Môn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Môn",
+      "tail": "Lê Thị Phố",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Môn",
+      "tail": "Lê Văn Út",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Môn",
+      "tail": "Lê Thị Truyện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chí",
+      "tail": "Lê Thị Xứng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Xứng",
+      "tail": "Thái Thị Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Sương",
+      "tail": "Lê Đình Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Lê Thị Hấng (Nguyễn Thị Mận)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Hấng (Nguyễn Thị Mận)",
+      "tail": "Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Thị Kim Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Thị Kim Quang",
+      "tail": "Đặng Quang Định",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Định",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Quang Điền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Điền",
+      "tail": "Đặng Hoàng Oanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hoàng Oanh",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chưa Biết Tên",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Điền",
+      "tail": "Đặng Hoàng Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hoàng Long",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hoàng Long",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Thị Sáu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Thị Sáu",
+      "tail": "Nguyễn Thị Phương Chi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Hồng Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hồng Châu",
+      "tail": "Lưu An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hồng Châu",
+      "tail": "Lưu Hùng Dân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hồng Châu",
+      "tail": "Lưu Bảo Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Quang Sanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Sanh",
+      "tail": "Đặng Thị Như Quỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Thị Như Quỳnh",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Sanh",
+      "tail": "Đặng Quang Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Anh",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Anh",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Quang Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Đức",
+      "tail": "Đặng Việt Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Việt Dũng",
+      "tail": "Đặng Việt Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Việt Dũng",
+      "tail": "Đặng Việt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Đức",
+      "tail": "Đặng Dũng Bon",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Dũng Bon",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Dũng Bon",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Dũng Bon",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Phiếu (Cô 2 Giáo)",
+      "tail": "Đặng Quang Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quang Thắng",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Lê Thị Dung (Phan Thị Mận)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Dung (Phan Thị Mận)",
+      "tail": "Đoàn Thị Luccy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Lê Đình Hân (Nguyễn Thị Tồn)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Nguyễn Thị Muôn (CN)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Thị Bê",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Thị Ba - Huỳnh Thanh Bùi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Ba - Huỳnh Thanh Bùi",
+      "tail": "Huỳnh Thanh Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thanh Sơn",
+      "tail": "Huỳnh Việt Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Việt Hải",
+      "tail": "Huỳnh Thị Quyên Như",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Việt Hải",
+      "tail": "Huỳnh Hải Hưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thanh Sơn",
+      "tail": "Huỳnh Thị Trúc Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Trúc Hiền",
+      "tail": "Trần Quang Đạt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Ba - Huỳnh Thanh Bùi",
+      "tail": "Huỳnh Thanh Đào",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Văn Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Văn Thanh",
+      "tail": "Trần Hoàng Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Hoàng Dũng",
+      "tail": "Trần Hoàng Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Văn Thanh",
+      "tail": "Trần Thị Thu Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Thu Thủy",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Văn Thanh",
+      "tail": "Trần Hoàng Vũ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Hoàng Vũ",
+      "tail": "Chưa Biết Tên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Kim Huôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Thanh Liêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Thanh Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thanh Minh",
+      "tail": "Trần Thanh Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thanh Minh",
+      "tail": "Trần Hòa Nghĩa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thanh Minh",
+      "tail": "Trần Xuân Đào",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Muôn (CN)",
+      "tail": "Trần Thanh Bạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Lê Đình Ngoan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Ngọc Thêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Thêu",
+      "tail": "Lê Long Thới",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Long Thới",
+      "tail": "Lê Phước Nguyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Phước Nguyên",
+      "tail": "Lê Văn A",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Long Thới",
+      "tail": "Lê Nguyễn Bảo Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Thêu",
+      "tail": "Lê Long Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Long Thành",
+      "tail": "Lê Thị Tường Vi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Thêu",
+      "tail": "Lê Anh Thảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Anh Thảo",
+      "tail": "Lê Anh Thiện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Anh Thảo",
+      "tail": "Lê Hữu Nhơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Thêu",
+      "tail": "Lê Thị Kiều Tiên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Kiều Tiên",
+      "tail": "Phạm Thị Kiều Nhi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Kiều Tiên",
+      "tail": "Phạm Lê Thúy Vi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Thêu",
+      "tail": "Lê Thanh Tuyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thanh Tuyền",
+      "tail": "Lê Nguyễn Gia Linh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Đình Nghiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Nghiệp",
+      "tail": "Lê Đình Minh Toàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Minh Toàn",
+      "tail": "Lê Đình Minh A",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Minh Toàn",
+      "tail": "Lê Đình Minh B",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Minh Toàn",
+      "tail": "Lê Đình Minh C",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Nghiệp",
+      "tail": "Lê Thị Ngọc Toàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Ngọc Toàn",
+      "tail": "Huỳnh Lê Hiếu Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Nghiệp",
+      "tail": "Lê Thị Ngọc Đào",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Ngọc Đào",
+      "tail": "Trần Văn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Nghiệp",
+      "tail": "Lê Thị Hồng Đào",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Nghiệp",
+      "tail": "Lê Đình Song Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Song Anh",
+      "tail": "Lê Đình Song A",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Song Anh",
+      "tail": "Lê Bảo Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Ngọc Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Hồng",
+      "tail": "Lưu Lê Quang Thoại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lưu Lê Quang Thoại",
+      "tail": "Lưu Huỳnh Nguyễn Khôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Hồng",
+      "tail": "Lưu Lê Hồng Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lưu Lê Hồng Anh",
+      "tail": "Nguyễn Lưu Minh Thư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lưu Lê Hồng Anh",
+      "tail": "Nguyễn Lưu Anh Thư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Ngọc Hồng",
+      "tail": "Lưu Lê Huỳnh Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Đình Chúng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chúng",
+      "tail": "Lê Phạm Đình Vĩnh Nghi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Phạm Đình Vĩnh Nghi",
+      "tail": "Lê Đình Uy Nghi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Phạm Đình Vĩnh Nghi",
+      "tail": "Lê Đình Bảo Nghi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chúng",
+      "tail": "Lê Phạm Thụy Thanh Trúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Phạm Thụy Thanh Trúc",
+      "tail": "Nguyễn Lê Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chúng",
+      "tail": "Lê Phạm Thị Phương Chi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chúng",
+      "tail": "Lê Thành Đông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thành Đông",
+      "tail": "Lê Minh Quân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thành Đông",
+      "tail": "Lê Minh Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Chúng",
+      "tail": "Lê Phạm Thị Thủy Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Phạm Thị Thủy Thanh",
+      "tail": "Nguyễn Bảo Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Đình Bổn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Thị Tuyết Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Tuyết Hồng",
+      "tail": "Trần Lê Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Tuyết Hồng",
+      "tail": "Trần Thị Yến Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Ngoan",
+      "tail": "Lê Thanh Phượng - Phan Văn Lộc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thanh Phượng - Phan Văn Lộc",
+      "tail": "Phan Diễm Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thanh Phượng - Phan Văn Lộc",
+      "tail": "Phan Khánh Vy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Lê Đình Lắm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Lắm",
+      "tail": "Lê Đình Nghĩa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Nghĩa",
+      "tail": "Lê Nguyễn Hoàng Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Lắm",
+      "tail": "Lê Thị Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Lê Thị Năm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Năm",
+      "tail": "Nguyễn Lê Hoàng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Lê Hoàng",
+      "tail": "Nguyễn Lê Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Lê Hoàng",
+      "tail": "Nguyễn Thị Thu Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Năm",
+      "tail": "Nguyễn Lê Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Lê Hùng",
+      "tail": "Nguyễn Trọng Thường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trọng Thường",
+      "tail": "Nguyễn Lê Huỳnh AA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Năm",
+      "tail": "Nguyễn Thị Mai Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Mai Hồng",
+      "tail": "Trần Nguyễn Bá Toàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Nguyễn Bá Toàn",
+      "tail": "Trần Thái Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Nguyễn Bá Toàn",
+      "tail": "Trần Hân Ny",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Năm",
+      "tail": "Nguyễn Thị Hoàng Oanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Năm",
+      "tail": "Nguyễn Thị Hoàng Yến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Lê Đình Đáng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Lê Thị Hồng Vân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hân (Nguyễn Thị Tồn)",
+      "tail": "Lê Thị Màng (Nguyễn Thị Tiến)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "tail": "Đỗ Văn Chí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Văn Chí",
+      "tail": "Đỗ Văn Lãm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "tail": "Đỗ Văn Sớm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Văn Sớm",
+      "tail": "Đỗ Đặng Bảo Ngân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Văn Sớm",
+      "tail": "Đỗ Đặng Đoàn Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "tail": "Đỗ Văn Ưa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Văn Ưa",
+      "tail": "Đỗ Thị Kim Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Văn Ưa",
+      "tail": "Đỗ Thị Xuân Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Màng (Nguyễn Thị Tiến)",
+      "tail": "Đỗ Thị Thúy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Thị Thúy",
+      "tail": "Nguyễn Xuân Bách",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đỗ Thị Thúy",
+      "tail": "Nguyễn Duy Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Lê Thị Khuyến (Phan Thị Mận)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "tail": "Huỳnh Thị Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Anh",
+      "tail": "Diệp Thị Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "tail": "Huỳnh Thị Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "tail": "Huỳnh Thế Đang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thế Đang",
+      "tail": "Huỳnh Thế Khương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thế Đang",
+      "tail": "Anh Bé 3",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thế Đang",
+      "tail": "Chị Nhị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thế Đang",
+      "tail": "Chị Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thế Đang",
+      "tail": "Huỳnh Thế Nghĩa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "tail": "Huỳnh Thị Sáu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Trung Chánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Trung Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Trung Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Trung Cang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trung Cang",
+      "tail": "Nguyễn Trung Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trung Cang",
+      "tail": "Nguyễn Trung Nhân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Trung Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Thị Xuân Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Hồng Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Sáu",
+      "tail": "Nguyễn Thị Huỳnh Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Khuyến (Phan Thị Mận)",
+      "tail": "Huỳnh Thị Tân (Cô 9)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phạm Văn Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phan Văn Thông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phan Thị Duyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phan Văn Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phan Văn Ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phan Văn Lộc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Huỳnh Thị Tân (Cô 9)",
+      "tail": "Phan Thị Huê",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Lê Đình Minh (Văn Thị Chiêu)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Trung Phương (Phan Thị Bông)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Thị Kim Nguyệt (Phan Thị Bông)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "tail": "Trần Thị Kim Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Kim Hằng",
+      "tail": "Lê Trang Như Quỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Kim Hằng",
+      "tail": "Lê Tuấn Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "tail": "Trần Đức Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đức Hải",
+      "tail": "Trần Thị Khánh Vy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đức Hải",
+      "tail": "Trần Thị Ngọc Thảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "tail": "Trần Đức Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đức Hiền",
+      "tail": "Trần Đức Trí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đức Hiền",
+      "tail": "Trần Ngọc Thanh Ngân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Kim Vân (Phan Thị Bông)",
+      "tail": "Trần Đức Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đức Hậu",
+      "tail": "Trần Đoàn Gia Bảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Đức Hậu",
+      "tail": "Trần Đoàn Gia Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Trung Khiêm (Phan Thị Bông)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Thị Ngân Hoa (Ngô Thị Huệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Ngân Hoa (Ngô Thị Huệ)",
+      "tail": "Lê Phúc Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "tail": "Nguyễn Ngọc Mỹ Chi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "tail": "Nguyễn Ngọc Thanh Trúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trung Nhân (Ngô Thị Huệ)",
+      "tail": "Nguyễn Ngọc Trúc Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Trung Thành (Ngô Thị Huệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Trung Thành (Ngô Thị Huệ)",
+      "tail": "Nguyễn Trung Quân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "tail": "Nguyễn Ngọc Trúc Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thành Tài (Ngô Thị Huệ)",
+      "tail": "Nguyễn Ngọc Quỳnh Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "tail": "Nguyễn Lê Đình Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thanh Phong (Ngô Thị Huệ)",
+      "tail": "Nguyễn Lê Đình Khôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn (Lê Đình) Trung Tính (Lê Thị Vị)",
+      "tail": "Nguyễn Thị Hoàng (Ngô Thị Huệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Nguyễn Thị Bảy (Lê Thị Vị)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Văn Chánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Thị Liễu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Văn Trị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Thị Nhàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Nhàn",
+      "tail": "Nguyễn Khương Đỗ Trí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Nhàn",
+      "tail": "Nguyễn Khương Đỗ An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Thị Yến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Thị Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Trang",
+      "tail": "Phạm Đức Trọng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Trang",
+      "tail": "Phạm Đức Thịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Trang",
+      "tail": "Phạm Thị Thùy Vân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Bảy (Lê Thị Vị)",
+      "tail": "Trần Thị Nghiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trần Thị Nghiêm",
+      "tail": "Phạm Quốc Bảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Nguyễn Tư Mẫn (Lê Thị Vị)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Nguyễn Thị Sáu (Lê Thị Vị)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Tâm",
+      "tail": "Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "tail": "Trương Văn Thố",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Thố",
+      "tail": "Trương Thị Mỹ Xuyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Mỹ Xuyên",
+      "tail": "Huỳnh Văn Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Mỹ Xuyên",
+      "tail": "Huỳnh Thị Thảo Nguyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Thố",
+      "tail": "Trương Thị Mỹ Nương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Mỹ Nương",
+      "tail": "Hạ Đông Thảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Mỹ Nương",
+      "tail": "Hạ Quang Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Thố",
+      "tail": "Trương Đình Vũ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Đình Vũ",
+      "tail": "Trương Thị Huyền Trân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Đình Vũ",
+      "tail": "Trương Thị Bảo Trân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Thố",
+      "tail": "Trương Vũ Điền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Vũ Điền",
+      "tail": "Trương Hoài Phong",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Thố",
+      "tail": "Trương Điền Khoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Điền Khoa",
+      "tail": "Trương Thị Huỳnh Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Thố",
+      "tail": "Trương Duy Ấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "tail": "Trương Tần Nghiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tần Nghiêm",
+      "tail": "Nguyễn Văn Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Dũng",
+      "tail": "Nguyễn Tấn Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Dũng",
+      "tail": "Nguyễn Anh Kiệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tần Nghiêm",
+      "tail": "Nguyễn Thị Tuyết",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Thị Tuyết",
+      "tail": "Nguyễn Thị Tuyết",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tần Nghiêm",
+      "tail": "Nguyễn Đức Duy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Đức Duy",
+      "tail": "Nguyễn Đức Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tần Nghiêm",
+      "tail": "Nguyễn Hữu Nghị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Hữu Nghị",
+      "tail": "Nguyễn Lê Thanh Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "tail": "Trương Tấn Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tấn Hải",
+      "tail": "Trương Văn Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Văn Hùng",
+      "tail": "Trương Thị Ngọc Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tấn Hải",
+      "tail": "Trương Thị Hồng Thắm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Hồng Thắm",
+      "tail": "Nguyễn Hữu Tình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Hồng Thắm",
+      "tail": "Nguyễn Hữu Nghĩa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tấn Hải",
+      "tail": "Trương Thị Thắm Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Thắm Hồng",
+      "tail": "Nguyễn Hoàng Nhân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tấn Hải",
+      "tail": "Trương Thị Hồng Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Hồng Lan",
+      "tail": "Lê Đức Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Tấn Hải",
+      "tail": "Trương Thị Lan Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Lan Hồng",
+      "tail": "Võ Văn Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Lan Hồng",
+      "tail": "Võ Văn Hậu Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhạn (Nguyễn Thị Xứng)",
+      "tail": "Trương Thị Yến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Yến",
+      "tail": "Nguyễn Thị Vân Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trương Thị Yến",
+      "tail": "Thạch Mai Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Sương",
+      "tail": "Lê Đình Mão",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Sương",
+      "tail": "Lê Thị Kiểm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Sương",
+      "tail": "Lê Đình Linh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Thị Thạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Thạch",
+      "tail": "Trần Thành Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Đình Giao",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Giao",
+      "tail": "Lê Thị Đệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Giao",
+      "tail": "Lê Đình Phuông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Giao",
+      "tail": "Lê Đình Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Thị Cơ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Thị Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Thị Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Thị Cúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Thị Trước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Đô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Ty",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Quyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Tước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Thị Giao",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Mạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Tiếng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Cơ",
+      "tail": "Trần Văn Nhương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Đình Truật",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Truật",
+      "tail": "Lê Đình Lực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Truật",
+      "tail": "Lê Thị Chín",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Truật",
+      "tail": "Lê Thị Ân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Truật",
+      "tail": "Lê Thị Út",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Đình Hượt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Hượt",
+      "tail": "Lê Thị Cửu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Khương",
+      "tail": "Lê Đình Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Cường",
+      "tail": "Lê Đình Quảng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Quảng",
+      "tail": "Lê Đình Cát",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Cát",
+      "tail": "Lê Thị Trầm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Le Phước Nghị",
+      "tail": "Lê Đình Lượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Lượng",
+      "tail": "Lê Thị Vạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Lượng",
+      "tail": "Lê Đình Trạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

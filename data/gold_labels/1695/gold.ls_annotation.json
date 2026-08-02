@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "id": "ent_1a510e1cdeaa",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 75,
+        "end": 85,
+        "text": "Thiều Chửu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

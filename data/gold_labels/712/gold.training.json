@@ -1,0 +1,94 @@
+{
+  "doc_id": "vgp_712",
+  "tree_id": 712,
+  "title": "Mạc - Nghệ An",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/712/pha_ky_gia_su.html",
+  "text": "Mạc tộc trà sơn căn viễn cổ\nThái gia yên địa tại thời kim\nThanh\nYên Quỳnh\nDiễn Đô Huynh Đệ\nPhan Phạm Thái Hoàng Nguyễn Tử Tôn\nNhư con chim có tổ, con người có tông. Bất cứ ai sinh ra ở trên đời cũng đều xuất thân từ một dòng họ, mang tính huyết thống của mình. Mạc tộc của chúng ta phát tích từ làng Lũng động huyện Chí linh tỉnh Hải dương.\nTrong các chặng đường lịch sử hào hùng của dân tộc Việt Nam, con cháu họ mạc qua các triều đại lịch sử dân tộc đã có nhiều đóng góp to lớn trong việc xây dựng đất nước phồn vinh.\nĐể thể hiện Cây gia hệ họ Mạc, chúng tôi chỉ có tham vọng trích ra từ thời Lưỡng quốc trạng nguyên Mạc Đĩnh Chi và coi đó là đời thứ nhất của dòng Mạc tộc.\nTừ đời thứ 12 đến đời thứ 16 là thời kỳ làm vua của nhà Mạc. Trải qua 150 năm trị vì đất nước, rồi sau đó do hoàn cảnh biến cố của lịch sử, nhà Mạc thất thế, con cháu nhà Mạc phải thay tên đổi họ, dấu hình ẩn tích.\nMạc Đăng Bình, con thứ 16 của vua Phúc Nguyên đã về đất Nghệ an lập ra chi nhánh họ Thái Doãn, chúng tôi chỉ có khả năng đi sâu nghiên cứu chi nhánh họ Thái Doãn mà thôi.\nLịch sử Mạc tộc của chúng ta là một tài liệu vô cùng quý báu lưu truyền mãi mãi cho con cháu mai sau.\nTrong hoàn cảnh lịch sử, kinh tế, chính trị, xã hội. Do yêu cầu của Cách mạng mà con cháu họ Mạc đã đi khắp mọi miền đất nước và rồi đất lành chim đậu. Do đó việc nghiên cứu, thu thập, bổ sung cho bản tộc phả của dòng họ mình, chúng tôi đã gặp phải rất nhiều khó khăn, nên không thể thoả mãn được yêu cầu của mọi người trong dòng họ.\nVậy trách nhiệm này là của chúng ta, những ai trong dòng Mạc tộc qua các đời kế tiếp.\nChúng tôi mong rằng với tinh thần hướng về cội nguồn của Mạc tộc, động viên con cháu tiếp tục bổ sung thêm cho cây gia hệ Mạc tộc của chúng ta ngày càng xum xuê, đâm cành nảy lộc.",
+  "entities": [
+    {
+      "start": 300,
+      "end": 309,
+      "label": "LOC",
+      "text": "Lũng động"
+    },
+    {
+      "start": 316,
+      "end": 324,
+      "label": "LOC",
+      "text": "Chí linh"
+    },
+    {
+      "start": 330,
+      "end": 339,
+      "label": "LOC",
+      "text": "Hải dương"
+    },
+    {
+      "start": 619,
+      "end": 631,
+      "label": "PER_NAME",
+      "text": "Mạc Đĩnh Chi"
+    },
+    {
+      "start": 645,
+      "end": 657,
+      "label": "GENERATION",
+      "text": "đời thứ nhất"
+    },
+    {
+      "start": 679,
+      "end": 689,
+      "label": "GENERATION",
+      "text": "đời thứ 12"
+    },
+    {
+      "start": 694,
+      "end": 704,
+      "label": "GENERATION",
+      "text": "đời thứ 16"
+    },
+    {
+      "start": 746,
+      "end": 753,
+      "label": "DATE",
+      "text": "150 năm"
+    },
+    {
+      "start": 891,
+      "end": 904,
+      "label": "PER_NAME",
+      "text": "Mạc Đăng Bình"
+    },
+    {
+      "start": 906,
+      "end": 916,
+      "label": "ORDER",
+      "text": "con thứ 16"
+    },
+    {
+      "start": 925,
+      "end": 936,
+      "label": "PER_NAME",
+      "text": "Phúc Nguyên"
+    },
+    {
+      "start": 947,
+      "end": 954,
+      "label": "LOC",
+      "text": "Nghệ an"
+    },
+    {
+      "start": 190,
+      "end": 195,
+      "label": "GENERATION",
+      "text": "đời c"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 8
+    }
+  ]
+}

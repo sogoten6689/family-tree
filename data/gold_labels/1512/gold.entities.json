@@ -1,0 +1,53 @@
+{
+  "entities": [
+    {
+      "text": "Làng Phú Khê",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Hoàng Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Tỉnh Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hoằng Quý",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Hoằng Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "năm 1789",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Phấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Văn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Căn",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

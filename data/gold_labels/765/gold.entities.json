@@ -1,0 +1,105 @@
+{
+  "entities": [
+    {
+      "text": "làng Vân dương",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hòa liên",
+      "label": "LOC"
+    },
+    {
+      "text": "01\ntháng 10 năm 1997",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 01 tháng 09 năm Đinh Sửu",
+      "label": "DATE"
+    },
+    {
+      "text": "đất Bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "năm Gia long thứ 13 (1814)",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Lê Văn Tạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm Tự đức 36",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Lê Văn Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm Bảo Đại thứ 11, ngày 6 tháng 3 Nhuận",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Lê Văn Kiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm Bảo Đại thứ 12",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Văn Vỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Cầm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Lê Thành Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Kiều",
+      "tail": "Lê Văn Cầm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

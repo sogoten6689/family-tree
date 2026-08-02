@@ -1,0 +1,305 @@
+{
+  "doc_id": "vgp_1084",
+  "tree_id": 1084,
+  "title": "ĐOÀN - Lương Hòa Lạc - Chợ Gạo - Tiền Giang",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1084/pha_ky_gia_su.html",
+  "text": "Khoảng hơn 250 năm trước (1756), ông Đoàn Văn Viễn từ Phú Yên vào Nam khẩn hoang và định cư tại Bến tranh (nay là Xã Lương Hòa Lạc huyện Chợ Gạo tỉnh Tiền Giang). Ông ấy sinh ra những người con trai.3 người con trai và 2 người con gái.Ông cho 2 người con trai lớn về quê để phụng sự ông bà ở quê.\nNgười con trai ở lại là ông Đoàn Văn Du. Ông có 5 người con trai và 2 người con gái. Hai người con trai không có con. Ba người con trai là Đoàn Văn Tang (nhánh Ông Mười Châu), Đoàn Văn Tựu (nhánh Ông Mười Đạt, Ba Ý, Hai Diệp), Đoàn Văn Tú (nhánh ông Ba Nhượng, Bảy Sỏi)\nKhu mộ dòng họ thủy tổ họ Đoàn nằm ở Ao Xương Rồng (Ấp Lươnh Phú C) gồm khoảng 14 mộ nằm cạnh nhau trên gò đất cao giữa ruộng lúa. Hàng năm vào 24 AL đều có lễ tả mộ và cúng tại nhà Ông Mười Châu.\nÔng ĐOÀN VĂN TỰU có 5 người con trai là Đoàn Văn Bút, Đoàn Văn Đô, Đoàn Văn Huỳnh, Đoàn Văn Điển (Ông Cố tôi), Đoàn Văn Thuần và 3 người con gái là Đoàn Thị Lũy, Đoàn Thị Sung, Đoàn Thị Chín. Mộ Ông tại Ấp Lương Phú C (gần đất Ông Mười Châu). Tôi gọi Ông TỰU là Ông Sơ (Cha của Ông Cố).\nMộ vợ ông Tựu vừa được cháu chắt tu sửa lại nhân dịp thanh minh 2010. Mộ nằm tại Ấp An lạc A (đất tôi thừa kế).\nNăm 1930, Ông Đoàn Văn Điển cất một ngôi nhà gỗ 3 căn 2 chái cột căm xe, nhà dưới cột thau lau. Qua hơn 80 năm ngôi nhà ấy vẫn còn gần như nguyên vẹn. Mấy chục đứa con cháu đã ít nhiều trưởng thành từ ngôi nhà ấy. Ngôi nhà tọa lạc tại ấp An lạc A, Xã lương hòa lạc, Huyện chợ gạo, Tiền giang. Mộ bà sơ tôi (vợ ông Tựu) cũng nằm trong phần đất hương quả cạnh ngôi nhà đó.\nÔng Đòan Văn Điển có người con trai tên Đòan Văn Năm.\nÔng Đòan Văn Năm có con trai tên Đòan Hữu Hạnh (5 Oanh).",
+  "entities": [
+    {
+      "start": 26,
+      "end": 30,
+      "label": "DATE",
+      "text": "1756"
+    },
+    {
+      "start": 37,
+      "end": 50,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Viễn"
+    },
+    {
+      "start": 54,
+      "end": 61,
+      "label": "LOC",
+      "text": "Phú Yên"
+    },
+    {
+      "start": 96,
+      "end": 105,
+      "label": "LOC",
+      "text": "Bến tranh"
+    },
+    {
+      "start": 114,
+      "end": 130,
+      "label": "LOC",
+      "text": "Xã Lương Hòa Lạc"
+    },
+    {
+      "start": 131,
+      "end": 144,
+      "label": "LOC",
+      "text": "huyện Chợ Gạo"
+    },
+    {
+      "start": 145,
+      "end": 160,
+      "label": "LOC",
+      "text": "tỉnh Tiền Giang"
+    },
+    {
+      "start": 325,
+      "end": 336,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Du"
+    },
+    {
+      "start": 436,
+      "end": 449,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Tang"
+    },
+    {
+      "start": 457,
+      "end": 470,
+      "label": "PER_NAME",
+      "text": "Ông Mười Châu"
+    },
+    {
+      "start": 473,
+      "end": 485,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Tựu"
+    },
+    {
+      "start": 493,
+      "end": 505,
+      "label": "PER_NAME",
+      "text": "Ông Mười Đạt"
+    },
+    {
+      "start": 507,
+      "end": 511,
+      "label": "PER_NAME",
+      "text": "Ba Ý"
+    },
+    {
+      "start": 513,
+      "end": 521,
+      "label": "PER_NAME",
+      "text": "Hai Diệp"
+    },
+    {
+      "start": 524,
+      "end": 535,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Tú"
+    },
+    {
+      "start": 543,
+      "end": 556,
+      "label": "PER_NAME",
+      "text": "ông Ba Nhượng"
+    },
+    {
+      "start": 558,
+      "end": 565,
+      "label": "PER_NAME",
+      "text": "Bảy Sỏi"
+    },
+    {
+      "start": 604,
+      "end": 617,
+      "label": "LOC",
+      "text": "Ao Xương Rồng"
+    },
+    {
+      "start": 619,
+      "end": 633,
+      "label": "LOC",
+      "text": "Ấp Lươnh Phú C"
+    },
+    {
+      "start": 711,
+      "end": 716,
+      "label": "DATE",
+      "text": "24 AL"
+    },
+    {
+      "start": 804,
+      "end": 816,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Bút"
+    },
+    {
+      "start": 818,
+      "end": 829,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Đô"
+    },
+    {
+      "start": 831,
+      "end": 845,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Huỳnh"
+    },
+    {
+      "start": 847,
+      "end": 860,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Điển"
+    },
+    {
+      "start": 875,
+      "end": 889,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn Thuần"
+    },
+    {
+      "start": 912,
+      "end": 924,
+      "label": "PER_NAME",
+      "text": "Đoàn Thị Lũy"
+    },
+    {
+      "start": 926,
+      "end": 939,
+      "label": "PER_NAME",
+      "text": "Đoàn Thị Sung"
+    },
+    {
+      "start": 941,
+      "end": 954,
+      "label": "PER_NAME",
+      "text": "Đoàn Thị Chín"
+    },
+    {
+      "start": 967,
+      "end": 981,
+      "label": "LOC",
+      "text": "Ấp Lương Phú C"
+    },
+    {
+      "start": 777,
+      "end": 780,
+      "label": "PER_NAME",
+      "text": "TỰU"
+    },
+    {
+      "start": 1115,
+      "end": 1119,
+      "label": "DATE",
+      "text": "2010"
+    },
+    {
+      "start": 1132,
+      "end": 1143,
+      "label": "LOC",
+      "text": "Ấp An lạc A"
+    },
+    {
+      "start": 1167,
+      "end": 1171,
+      "label": "DATE",
+      "text": "1930"
+    },
+    {
+      "start": 1444,
+      "end": 1454,
+      "label": "LOC",
+      "text": "Tiền giang"
+    },
+    {
+      "start": 1538,
+      "end": 1551,
+      "label": "PER_NAME",
+      "text": "Đòan Văn Điển"
+    },
+    {
+      "start": 1574,
+      "end": 1586,
+      "label": "PER_NAME",
+      "text": "Đòan Văn Năm"
+    },
+    {
+      "start": 1621,
+      "end": 1634,
+      "label": "PER_NAME",
+      "text": "Đòan Hữu Hạnh"
+    },
+    {
+      "start": 1636,
+      "end": 1642,
+      "label": "PER_NAME",
+      "text": "5 Oanh"
+    },
+    {
+      "start": 1177,
+      "end": 1185,
+      "label": "PER_NAME",
+      "text": "Đoàn Văn"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 7,
+      "tail": 8
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 7,
+      "tail": 10
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 20
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 25
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 21
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 22
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 23
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 24
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 7,
+      "tail": 14
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 1,
+      "tail": 7
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 34,
+      "tail": 35
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 35,
+      "tail": 36
+    }
+  ]
+}

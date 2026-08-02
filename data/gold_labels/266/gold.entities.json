@@ -1,0 +1,113 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Châu Hoan",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Hồng Đức",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Thánh Tôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cẩm gian",
+      "label": "LOC"
+    },
+    {
+      "text": "Cẩm Lệ",
+      "label": "LOC"
+    },
+    {
+      "text": "Phủ Điện bàn",
+      "label": "LOC"
+    },
+    {
+      "text": "Châu Quảng",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Giáng Thuỷ",
+      "label": "LOC"
+    },
+    {
+      "text": "Quá Giáng",
+      "label": "LOC"
+    },
+    {
+      "text": "Rằm tháng Ba năm 1803",
+      "label": "DATE"
+    },
+    {
+      "text": "Mùa Xuân năm Nhâm Thân, niên hiệu Bảo Đại thứ 17",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1932",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ngày 15 tháng 10 năm Đinh Mùi",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 16-11-1967",
+      "label": "DATE"
+    },
+    {
+      "text": "QUẢNG NAM TỈNH",
+      "label": "LOC"
+    },
+    {
+      "text": "HÒA VANG QUẬN",
+      "label": "LOC"
+    },
+    {
+      "text": "HÒA PHƯỚC XÃ",
+      "label": "LOC"
+    },
+    {
+      "text": "MIẾU BÔNG THÔN",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Sanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thiều",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

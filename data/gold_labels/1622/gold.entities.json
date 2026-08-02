@@ -1,0 +1,125 @@
+{
+  "entities": [
+    {
+      "text": "Cao An - Cẩm Giàng - Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời I",
+      "label": "GENERATION"
+    },
+    {
+      "text": "anh cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "đời II",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời III",
+      "label": "GENERATION"
+    },
+    {
+      "text": "bà Ngó",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cụ Tin",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Hoàng Húy Tức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bính Tuất (1886)",
+      "label": "DATE"
+    },
+    {
+      "text": "10 tháng 03 năm Kỷ Dậu (1969)",
+      "label": "DATE"
+    },
+    {
+      "text": "Phạm Thị Còi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ất Dậu (1885)",
+      "label": "DATE"
+    },
+    {
+      "text": "26 tháng 02 năm Nhâm Dần (1962)",
+      "label": "DATE"
+    },
+    {
+      "text": "Đời 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Hoàng Văn Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Sáo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1913",
+      "label": "DATE"
+    },
+    {
+      "text": "26 tháng 01 năm 2001",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Hoàng Húy Tức",
+      "tail": "Hoàng Văn Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "cụ Tin",
+      "tail": "Tức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Thị Còi",
+      "tail": "Hoàng Húy Tức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Còi",
+      "tail": "Hoàng Văn Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Thị Sáo",
+      "tail": "Hoàng Văn Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

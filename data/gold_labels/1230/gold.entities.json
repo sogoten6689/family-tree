@@ -1,0 +1,236 @@
+{
+  "entities": [
+    {
+      "text": "1870",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Huy Uyển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Công Thân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đồ Giáp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1880",
+      "label": "DATE"
+    },
+    {
+      "text": "Đội Dư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Dư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1900 - 1909",
+      "label": "DATE"
+    },
+    {
+      "text": "Thành Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giáo Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Đức Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Công Phan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Công Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1960",
+      "label": "DATE"
+    },
+    {
+      "text": "1971",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Công Sảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "1992 - 1993",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 21 tháng 01 năm ất Hợi",
+      "label": "DATE"
+    },
+    {
+      "text": "1995",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Công Yên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Phùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Công Điềm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ\nHuy Sang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Thoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Công Thăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Công Sắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Vy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Khái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Chuyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Rào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đô Huy Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thủy Tổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 14 - 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ngày 26 tháng 03 năm ất Hợi",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 02 tháng 07 năm Bính Tý",
+      "label": "DATE"
+    },
+    {
+      "text": "1996",
+      "label": "DATE"
+    },
+    {
+      "text": "Tạo Sỹ Minh Thông Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy Dinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "La Ngạn",
+      "label": "LOC"
+    },
+    {
+      "text": "0 1 tháng 07 năm 1996",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Công Pha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ\nHuy San",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Huy",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Công Sắc",
+      "tail": "Đỗ Công Sảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Huy Phùng",
+      "tail": "Đỗ\nHuy San",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "entities": [
+    {
+      "text": "NGUYỄN NGỌC DƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN NGỌC PHÁC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Trọng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Nhơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Cảm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Đỗ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Bổn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Bò",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THÊ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN VẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Cảm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Uẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Lự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Xâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Cậy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Mụt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Chồi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Mọt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Thêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mười lăm đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1558",
+      "label": "DATE"
+    },
+    {
+      "text": "1669",
+      "label": "DATE"
+    },
+    {
+      "text": "1697",
+      "label": "DATE"
+    },
+    {
+      "text": "1797",
+      "label": "DATE"
+    },
+    {
+      "text": "9-11-1937",
+      "label": "DATE"
+    },
+    {
+      "text": "14-9-1999",
+      "label": "DATE"
+    },
+    {
+      "text": "1539",
+      "label": "DATE"
+    },
+    {
+      "text": "1540",
+      "label": "DATE"
+    },
+    {
+      "text": "1546",
+      "label": "DATE"
+    },
+    {
+      "text": "1545",
+      "label": "DATE"
+    },
+    {
+      "text": "1627",
+      "label": "DATE"
+    },
+    {
+      "text": "1672",
+      "label": "DATE"
+    },
+    {
+      "text": "1666",
+      "label": "DATE"
+    },
+    {
+      "text": "1674",
+      "label": "DATE"
+    },
+    {
+      "text": "1953",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngài thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ngài thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ấp Hà Trữ",
+      "label": "LOC"
+    },
+    {
+      "text": "tổng Sử Lộ",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Phú Vang",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Thừa Thiên",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Đan Chế",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Thạch Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Hà Hoa",
+      "label": "LOC"
+    },
+    {
+      "text": "Thừa Tuyên Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "châu Ô",
+      "label": "LOC"
+    },
+    {
+      "text": "Thuận Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Tư Vinh",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Triệu Phong",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Hà Trữ",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Hà Hồng",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Diêm Tụ",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Đan Chế",
+      "label": "LOC"
+    },
+    {
+      "text": "Tông Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Đan Hoạt",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nhuận",
+      "label": "LOC"
+    },
+    {
+      "text": "Mộc Trụ",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghĩa Lập",
+      "label": "LOC"
+    },
+    {
+      "text": "xóm Nghị Chương",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Văn Thê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1627",
+      "label": "DATE"
+    },
+    {
+      "text": "đời l",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Trọng",
+      "tail": "NGUYỄN NGỌC DƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cảm",
+      "tail": "Nguyễn Viết Nhân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cảm",
+      "tail": "Nguyễn Viết Nghĩa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Cảm",
+      "tail": "Nguyễn Viết Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Nghĩa",
+      "tail": "Nguyễn Viết Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Nghĩa",
+      "tail": "Nguyễn Viết Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Nghĩa",
+      "tail": "Nguyễn Viết Ninh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Nghĩa",
+      "tail": "Nguyễn Viết Thọ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Nghĩa",
+      "tail": "Nguyễn Viết Khương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Viết Nghĩa",
+      "tail": "Nguyễn Thị Đồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Uẩn",
+      "tail": "Nguyễn Văn Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Uẩn",
+      "tail": "Nguyễn Văn Lự",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Thanh",
+      "tail": "Nguyễn Văn Xâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Xâm",
+      "tail": "Nguyễn Văn Huấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Huấn",
+      "tail": "Nguyễn Văn Cơ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Huấn",
+      "tail": "Nguyễn Văn Cậy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Huấn",
+      "tail": "Nguyễn Văn Mụt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Huấn",
+      "tail": "Nguyễn Văn Chồi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Huấn",
+      "tail": "Nguyễn Văn Mọt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Huấn",
+      "tail": "Nguyễn Văn Thêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

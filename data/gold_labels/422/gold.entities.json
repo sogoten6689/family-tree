@@ -1,0 +1,355 @@
+{
+  "entities": [
+    {
+      "text": "Ấp Bàu Điều",
+      "label": "LOC"
+    },
+    {
+      "text": "Phước Thạnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Củ Chi",
+      "label": "LOC"
+    },
+    {
+      "text": "Thành phố HỒ CHÍ MINH",
+      "label": "LOC"
+    },
+    {
+      "text": "1880",
+      "label": "DATE"
+    },
+    {
+      "text": "Ông Vện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGÔ VĂN LINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cố Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Cố Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1956",
+      "label": "DATE"
+    },
+    {
+      "text": "LÊ VĂN TÁM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGÔ VĂN KÍNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tám THỨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    },
+    {
+      "text": "1976",
+      "label": "DATE"
+    },
+    {
+      "text": "2003",
+      "label": "DATE"
+    },
+    {
+      "text": "LÊ VĂN THAO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Giỡn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ sáu",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Lê Văn Nghiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "2004",
+      "label": "DATE"
+    },
+    {
+      "text": "NGÔ VĂN VỆN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ PHẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Bà Cao Huyền Cố Tổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nghĩa Mẫu Cố Tổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Sóc Lào",
+      "label": "LOC"
+    },
+    {
+      "text": "04/04/2004",
+      "label": "DATE"
+    },
+    {
+      "text": "người con trai thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "đời thứ hai",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ ba",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ tư",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ năm",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ VĂN LỜN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Lê Văn Dưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN LẦM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thứ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN XI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con út",
+      "label": "ORDER"
+    },
+    {
+      "text": "Lê Văn Giờ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN KHOÁ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN VĂN BỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CHẦM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN QUYẾT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN VĂN LỊA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN TRẠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ĐÂY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN BẪY",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN TỊCH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN ĐẰNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN NƯỚC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1956",
+      "label": "DATE"
+    },
+    {
+      "text": "1820",
+      "label": "DATE"
+    },
+    {
+      "text": "1840",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2004",
+      "label": "DATE"
+    },
+    {
+      "text": "2007",
+      "label": "DATE"
+    },
+    {
+      "text": "2010",
+      "label": "DATE"
+    },
+    {
+      "text": "2013",
+      "label": "DATE"
+    },
+    {
+      "text": "2016",
+      "label": "DATE"
+    },
+    {
+      "text": "8929",
+      "label": "DATE"
+    },
+    {
+      "text": "7910",
+      "label": "DATE"
+    },
+    {
+      "text": "7194",
+      "label": "DATE"
+    },
+    {
+      "text": "con thứ 10",
+      "label": "ORDER"
+    },
+    {
+      "text": "người thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "người thứ tư",
+      "label": "ORDER"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "NGÔ VĂN VỆN",
+      "tail": "Lê Văn Nghiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Nghiêm",
+      "tail": "Lê Văn Thảnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Thảnh",
+      "tail": "Lê Văn Giờ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Giờ",
+      "tail": "LÊ VĂN XI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Nghiêm",
+      "tail": "Lê Văn Dưa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Dưa",
+      "tail": "LÊ VĂN LỜN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "NGÔ VĂN VỆN",
+      "tail": "Lê Văn Thứ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Thứ",
+      "tail": "Lê Văn Nguyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Nguyên",
+      "tail": "LÊ VĂN LẦM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lê Văn Giỡn",
+      "tail": "LÊ VĂN THAO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "NGÔ VĂN VỆN",
+      "tail": "LÊ THỊ PHẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

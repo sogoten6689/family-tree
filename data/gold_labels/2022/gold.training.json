@@ -1,0 +1,100 @@
+{
+  "doc_id": "vgp_2022",
+  "tree_id": 2022,
+  "title": "Văn Công (kinh 12 Cailậy Tiền Giang) - Tiền Giang",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/2022/pha_ky_gia_su.html",
+  "text": "Qua lời kể của cha mẹ, ông bà thì ông tổ có tên Văn Công Khoa. Không biết vì lí do gì ông đã rời bỏ quê hương ở miền Bắc vào Nam lập nghiệp. Ông đi với một số người khác bằng xe trâu kéo. Ông nguyện, đến nơi nào cộ trâu bị đứt thì ở lại nơi đó sinh sống. Thời gian Ông đi, đến không còn ai biết, chỉ biết khoảng những năm 1700, 1800 dương lịch. Khi xe trâu Ông đi đến rạch Nàng Chưng thuộc kinh 12 xã Mỹ Hạnh Trung, huyện CaiLậy tỉnh MỹTho nay có tên gọi Tiền-Giang thì đứt cộ. Nơi đây cũng là quê hương mới của Ông và con cháu truyền đời. Đến đời thứ năm tức đời tía má chúng tôi con cháu Ông đã quá đông. Nhiều người đã rời quê hương lưu lạc khắp nơi vì chiến tranh thực dân … hay những lí do khác mà có người không còn biết nhau nữa. Sinh thời tía chúng tôi mong muốn có gia phả để con cháu biết nhau hầu tránh những điều không hay . Ngày 23.08.2007 tức 11.07 năm Đinh Hợi má chúng tôi tức bà Lê Thị Tỵ pháp danh Diệu Phước qua đời, hưởng thượng thọ trăm tuổi. Để tưởng nhớ tấm gương hiền đức cũng như công ơn của bà đã nuôi dạy chúng tôi, con cháu nên người mặc cho bao gian nan khổ cực…qua đó bà vô tình hay hửu í tạo cho con cháu được hạnh phúc ngày nay. Chúng tôi kính xin phép các bậc tiền bối, các cô chú bác, các dì dượng, cô cậu, các chị anh em… ghi lại gia phả nầy hầu biết được phần nào mối liên hệ huyết thống của chúng ta trước để tri ân bà, sau giúp mọi người\ntránh điều đáng tiếc. Chắc chắn chúng tôi có sai sót nên xin tất cả mọi câu hỏi, đề nghị sửa chửa, bổ xung v.v. xin liên lạc với địa chỉ e-mail\ntaonguyenv@gmail.com\nXin chân thành cảm tạ và tri ân.",
+  "entities": [
+    {
+      "start": 48,
+      "end": 61,
+      "label": "PER_NAME",
+      "text": "Văn Công Khoa"
+    },
+    {
+      "start": 112,
+      "end": 120,
+      "label": "LOC",
+      "text": "miền Bắc"
+    },
+    {
+      "start": 125,
+      "end": 128,
+      "label": "LOC",
+      "text": "Nam"
+    },
+    {
+      "start": 312,
+      "end": 332,
+      "label": "DATE",
+      "text": "những năm 1700, 1800"
+    },
+    {
+      "start": 368,
+      "end": 383,
+      "label": "LOC",
+      "text": "rạch Nàng Chưng"
+    },
+    {
+      "start": 390,
+      "end": 397,
+      "label": "LOC",
+      "text": "kinh 12"
+    },
+    {
+      "start": 398,
+      "end": 414,
+      "label": "LOC",
+      "text": "xã Mỹ Hạnh Trung"
+    },
+    {
+      "start": 416,
+      "end": 428,
+      "label": "LOC",
+      "text": "huyện CaiLậy"
+    },
+    {
+      "start": 429,
+      "end": 439,
+      "label": "LOC",
+      "text": "tỉnh MỹTho"
+    },
+    {
+      "start": 455,
+      "end": 465,
+      "label": "LOC",
+      "text": "Tiền-Giang"
+    },
+    {
+      "start": 544,
+      "end": 555,
+      "label": "GENERATION",
+      "text": "đời thứ năm"
+    },
+    {
+      "start": 842,
+      "end": 852,
+      "label": "DATE",
+      "text": "23.08.2007"
+    },
+    {
+      "start": 857,
+      "end": 875,
+      "label": "DATE",
+      "text": "11.07 năm Đinh Hợi"
+    },
+    {
+      "start": 896,
+      "end": 905,
+      "label": "PER_NAME",
+      "text": "Lê Thị Tỵ"
+    },
+    {
+      "start": 916,
+      "end": 926,
+      "label": "PER_NAME",
+      "text": "Diệu Phước"
+    }
+  ],
+  "relations": []
+}

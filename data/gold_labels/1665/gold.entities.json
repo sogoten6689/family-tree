@@ -1,0 +1,45 @@
+{
+  "entities": [
+    {
+      "text": "Nga Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Trà Lũ",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "cuối thế kỷ XIX",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Văn Mẫn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Xuân Tích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Công Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Xuân Mậu Tý- 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "đời C",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

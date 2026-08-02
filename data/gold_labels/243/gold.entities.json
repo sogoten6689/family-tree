@@ -1,0 +1,37 @@
+{
+  "entities": [
+    {
+      "text": "Phủ Tuy Phước",
+      "label": "LOC"
+    },
+    {
+      "text": "Nhân Ân",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Nghĩa",
+      "label": "LOC"
+    },
+    {
+      "text": "Võ Diêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hoàng triều Bảo Đại lục niên quạt sơ lục nhất",
+      "label": "DATE"
+    },
+    {
+      "text": "Võ Tuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nhơn Ân",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngày 16 tháng 6 năm bảo Đại thứ 6 (1931)",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

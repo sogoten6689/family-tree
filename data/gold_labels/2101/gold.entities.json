@@ -1,0 +1,832 @@
+{
+  "entities": [
+    {
+      "text": "Bồng Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Viên Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "tổ đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "năm 1397",
+      "label": "DATE"
+    },
+    {
+      "text": "1463 - 1733",
+      "label": "DATE"
+    },
+    {
+      "text": "17/1 Âm lịch năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "23/02/2008",
+      "label": "DATE"
+    },
+    {
+      "text": "Vĩnh Tân",
+      "label": "LOC"
+    },
+    {
+      "text": "Vĩnh lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Bồng Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Vĩnh Tân",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Vĩnh Lộc",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Thiện Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1659",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Cảnh Thạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Tử Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Tử Kiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Thiên Độc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Lễ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Nguyên Thạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Tỉnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lào",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lam Kinh",
+      "label": "LOC"
+    },
+    {
+      "text": "Biện Thượng",
+      "label": "LOC"
+    },
+    {
+      "text": "Bồng Thượng",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1463 đến 1733",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Hân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Đỗ Viên Đạo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Thị Tăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Cao Ly",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Thanh Miện",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "1463",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Nhuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Kim Hoa",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Mê Linh",
+      "label": "LOC"
+    },
+    {
+      "text": "Vĩnh Phúc",
+      "label": "LOC"
+    },
+    {
+      "text": "1466",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Thuần Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1472",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1475",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Bá Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1481",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Duy Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1490",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Công Cẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Nhân Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1493",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Toại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1496",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Hoằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Túc Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Nhạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Viên Tể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Đài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Lại ốc",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Văn Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Tổng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1529",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Tấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1535",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Trực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1580",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Lý Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Viên Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Ngoại Lãng",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Thư Trì",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "1499",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1508",
+      "label": "DATE"
+    },
+    {
+      "text": "1505",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Bá Huân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1514",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Quỳnh Phụ",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Văn Hãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Viên Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Mễ Trì",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Từ Liêm",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Văn Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thư ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Đỗ Viên Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Yên Ninh",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Yên Dũng",
+      "label": "LOC"
+    },
+    {
+      "text": "Kinh Bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "1520",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Thị Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Quảng Bị",
+      "label": "LOC"
+    },
+    {
+      "text": "1518",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Tam Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1523",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Uông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con trai cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "Đỗ Viên Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Đoan Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "1556",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Hiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1574",
+      "label": "DATE"
+    },
+    {
+      "text": "trại Ngọc Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Phi Tán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Cổ Đôi",
+      "label": "LOC"
+    },
+    {
+      "text": "1544",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1568",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Tất Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Tế Mỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1565",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Công Liêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1670",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Văn Tổng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Viên Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Thượng Yên Quyết",
+      "label": "LOC"
+    },
+    {
+      "text": "1640",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con trai thứ",
+      "label": "ORDER"
+    },
+    {
+      "text": "Đỗ Công Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1683",
+      "label": "DATE"
+    },
+    {
+      "text": "Sơn Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Đỗ Công Bật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Viên Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "huyện Gia Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "1685",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Công Đĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1760",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Huy Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1731",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Công Trấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "xã Quách Thư",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Thanh Oai",
+      "label": "LOC"
+    },
+    {
+      "text": "1728",
+      "label": "DATE"
+    },
+    {
+      "text": "Thăng Long",
+      "label": "LOC"
+    },
+    {
+      "text": "năm 1475",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1490",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1496",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1505",
+      "label": "DATE"
+    },
+    {
+      "text": "NĂM 1998",
+      "label": "DATE"
+    },
+    {
+      "text": "đời L",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Phú",
+      "tail": "Đỗ Viên Thịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Đạo",
+      "tail": "Đỗ Hân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Vũ Thị Tăng",
+      "tail": "Đỗ Hân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Đỗ Viên Đạo",
+      "tail": "Vũ Thị Tăng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Đạo",
+      "tail": "Đỗ Nhuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Tể",
+      "tail": "Đỗ Nhân Cương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đài",
+      "tail": "Đỗ Nhân Cương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Đỗ Viên Tể",
+      "tail": "Nguyễn Thị Đài",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Nhạc",
+      "tail": "Đỗ Tổng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Nhạc",
+      "tail": "Đỗ Tấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Nhạc",
+      "tail": "Đỗ Trực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Đức",
+      "tail": "Đỗ Lý Khiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Đức",
+      "tail": "Đỗ Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Viên Phúc",
+      "tail": "Đỗ Văn Hãng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Ngạn",
+      "tail": "Đỗ Văn Quýnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Đỗ Dương",
+      "tail": "Vũ Thị Chi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Trinh",
+      "tail": "Đỗ Uông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Văn Lan",
+      "tail": "Đỗ An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Phi Tán",
+      "tail": "Đỗ Tất Đại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Phi Tán",
+      "tail": "Đỗ Tế Mỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Tế Mỹ",
+      "tail": "Đỗ Công Liêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Khang",
+      "tail": "Đỗ Văn Tổng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Văn Tổng",
+      "tail": "Đỗ Văn Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Văn Tổng",
+      "tail": "Đỗ Công Toản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Viên Thành",
+      "tail": "Đỗ Công Bật",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Công Bật",
+      "tail": "Đỗ Công Đĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

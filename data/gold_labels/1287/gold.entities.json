@@ -1,0 +1,114 @@
+{
+  "entities": [
+    {
+      "text": "Đỗ Huy Bích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Hữu Thuần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "Đỗ Mạnh Hiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Giáp Nhất, xã Nhân Chính, huyện Từ Liêm, thành phố Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "phường Nhân Chính, quận Thanh Xuân, thành phố Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Đình Thử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "làng Châu Khê",
+      "label": "LOC"
+    },
+    {
+      "text": "phố Hàng Bạc - Hàng Mắm - Mã Mây",
+      "label": "LOC"
+    },
+    {
+      "text": "đình Trung Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "số 2 ngõ Trung Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Lê Thị Mại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "20/10 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "21/02 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "30/08 năm Quý Mão",
+      "label": "DATE"
+    },
+    {
+      "text": "28/09/1848",
+      "label": "DATE"
+    },
+    {
+      "text": "con trai đầu",
+      "label": "ORDER"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Thử",
+      "tail": "Đỗ Huy Bích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Huy Bích",
+      "tail": "Đỗ Hữu Thuần",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đỗ Hữu Thuần",
+      "tail": "Đỗ Mạnh Hiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Đình Thử",
+      "tail": "Lê Thị Mại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

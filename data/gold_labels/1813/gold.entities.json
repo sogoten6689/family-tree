@@ -1,0 +1,350 @@
+{
+  "entities": [
+    {
+      "text": "Giáp Thừa Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1010",
+      "label": "DATE"
+    },
+    {
+      "text": "Lý Thái Tổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lạng Châu",
+      "label": "LOC"
+    },
+    {
+      "text": "Thân Thiệu Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Thừa Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1029",
+      "label": "DATE"
+    },
+    {
+      "text": "Công chúa Bình Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý Thái Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Cảnh Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1066",
+      "label": "DATE"
+    },
+    {
+      "text": "Công chúa Thiên Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý Thánh Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hà Bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "ải Chi Lăng",
+      "label": "LOC"
+    },
+    {
+      "text": "Lạng Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Thăng Long",
+      "label": "LOC"
+    },
+    {
+      "text": "1076-1077",
+      "label": "DATE"
+    },
+    {
+      "text": "Bắc Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "Năm 1306",
+      "label": "DATE"
+    },
+    {
+      "text": "Thân Đại Lang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quảng Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Trị",
+      "label": "LOC"
+    },
+    {
+      "text": "Thừa Thiên",
+      "label": "LOC"
+    },
+    {
+      "text": "Thừa Thiên - Huế",
+      "label": "LOC"
+    },
+    {
+      "text": "Năm 1470",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Thánh Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quảng Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Đà Nẵng",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "Bình Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Thân Phước Cẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Văn Ngôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Công Tài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Văn Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Gia Định",
+      "label": "LOC"
+    },
+    {
+      "text": "Cai Lậy",
+      "label": "LOC"
+    },
+    {
+      "text": "Tiền Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "Thân Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Gia Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Đỗ Ngạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hà Tiên",
+      "label": "LOC"
+    },
+    {
+      "text": "Thân Văn Di",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tôn Thất Thuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hàm Nghi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Năm 1884",
+      "label": "DATE"
+    },
+    {
+      "text": "Thân Bá Phức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hoàng Hoa Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vĩnh Phúc",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoàng Đình Kinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Yên Thế",
+      "label": "LOC"
+    },
+    {
+      "text": "Lương Văn Nắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đề Nắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đề Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Đức Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thống Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1945-1975",
+      "label": "DATE"
+    },
+    {
+      "text": "Thân Trọng Một",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Ngọc Sang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thân Nhân Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1418-1499",
+      "label": "DATE"
+    },
+    {
+      "text": "1010",
+      "label": "DATE"
+    },
+    {
+      "text": "7 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1800",
+      "label": "DATE"
+    },
+    {
+      "text": "Lục Ngạn",
+      "label": "LOC"
+    },
+    {
+      "text": "2005",
+      "label": "DATE"
+    },
+    {
+      "text": "2010",
+      "label": "DATE"
+    },
+    {
+      "text": "1000",
+      "label": "DATE"
+    },
+    {
+      "text": "đời vi",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Thân Thừa Quý",
+      "tail": "Thân Thiệu Thái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Thân Thiệu Thái",
+      "tail": "Công chúa Bình Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lý Thái Tông",
+      "tail": "Công chúa Bình Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thân Thiệu Thái",
+      "tail": "Thân Cảnh Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Công chúa Bình Dương",
+      "tail": "Thân Cảnh Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Thân Cảnh Phúc",
+      "tail": "Công chúa Thiên Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Lý Thánh Tông",
+      "tail": "Công chúa Thiên Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thân Đồng",
+      "tail": "Thân Đỗ Ngạc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

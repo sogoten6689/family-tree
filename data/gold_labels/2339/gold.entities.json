@@ -1,0 +1,81 @@
+{
+  "entities": [
+    {
+      "text": "Ngọ Cầu",
+      "label": "LOC"
+    },
+    {
+      "text": "An Xuyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Như Kinh",
+      "label": "LOC"
+    },
+    {
+      "text": "Kinh Bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "Minh Khai",
+      "label": "LOC"
+    },
+    {
+      "text": "Như Quỳnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Văn Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đại Đồng",
+      "label": "LOC"
+    },
+    {
+      "text": "Bát Tràng",
+      "label": "LOC"
+    },
+    {
+      "text": "Đa Tốn",
+      "label": "LOC"
+    },
+    {
+      "text": "Gia Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Thụy Vân",
+      "label": "LOC"
+    },
+    {
+      "text": "Việt Trì",
+      "label": "LOC"
+    },
+    {
+      "text": "Phú Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 19 tháng 08 năm 2009",
+      "label": "DATE"
+    },
+    {
+      "text": "Phùng Việt Dũng",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,37 @@
+{
+  "entities": [
+    {
+      "text": "trung hoa",
+      "label": "LOC"
+    },
+    {
+      "text": "anh cả",
+      "label": "ORDER"
+    },
+    {
+      "text": "sài gòn gia định",
+      "label": "LOC"
+    },
+    {
+      "text": "anh hai",
+      "label": "ORDER"
+    },
+    {
+      "text": "hà tây",
+      "label": "LOC"
+    },
+    {
+      "text": "anh ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "hà bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "khê thượng",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

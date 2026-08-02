@@ -1,0 +1,21 @@
+{
+  "entities": [
+    {
+      "text": "Phù Tải",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Năm 1965",
+      "label": "DATE"
+    },
+    {
+      "text": "Mùa Xuân năm Canh Ngọ (1990)",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

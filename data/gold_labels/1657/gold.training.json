@@ -1,0 +1,86 @@
+{
+  "doc_id": "vgp_1657",
+  "tree_id": 1657,
+  "title": "Hồ Gia Tộc - Tiền Giang",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1657/pha_ky_gia_su.html",
+  "text": "gia tộc gồm 4 đời :\nthứ I: Ông : Hồ Văn nghĩa\nthứ II: \n 1: Ông Hồ Văn Hai\n 2: Ông Hồ Văn Ba\n 3: Ông Hồ Văn Bảy\nsSS SKS KSCK kc ks cks CKC K CKS C SC K CK CK CKCKSWUB J F\nKWIN J JUEF2E W BSHD S Uffgs fqefr q ffr\nsSS SKS KSCK kc ks cks CKC K CKS C SC K CK CK CKCKSWUB J F\nKWIN J JUEF2E W BSHD S Uffgs fqefr q ffr\nsSS SKS KSCK kc ks cks CKC K CKS C SC K CK CK CKCKSWUB J F\nKWIN J JUEF2E W BSHD S Uffgs fqefr q ffr\nsSS SKS KSCK kc ks cks CKC K CKS C SC K CK CK CKCKSWUB J F\nKWIN J JUEF2E W BSHD S Uffgs fqefr q ffr",
+  "entities": [
+    {
+      "start": 12,
+      "end": 17,
+      "label": "GENERATION",
+      "text": "4 đời"
+    },
+    {
+      "start": 20,
+      "end": 25,
+      "label": "GENERATION",
+      "text": "thứ I"
+    },
+    {
+      "start": 33,
+      "end": 45,
+      "label": "PER_NAME",
+      "text": "Hồ Văn nghĩa"
+    },
+    {
+      "start": 46,
+      "end": 52,
+      "label": "GENERATION",
+      "text": "thứ II"
+    },
+    {
+      "start": 56,
+      "end": 57,
+      "label": "ORDER",
+      "text": "1"
+    },
+    {
+      "start": 63,
+      "end": 73,
+      "label": "PER_NAME",
+      "text": "Hồ Văn Hai"
+    },
+    {
+      "start": 75,
+      "end": 76,
+      "label": "ORDER",
+      "text": "2"
+    },
+    {
+      "start": 82,
+      "end": 91,
+      "label": "PER_NAME",
+      "text": "Hồ Văn Ba"
+    },
+    {
+      "start": 93,
+      "end": 94,
+      "label": "ORDER",
+      "text": "3"
+    },
+    {
+      "start": 100,
+      "end": 110,
+      "label": "PER_NAME",
+      "text": "Hồ Văn Bảy"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 5
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 7
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 9
+    }
+  ]
+}

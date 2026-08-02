@@ -1,0 +1,349 @@
+{
+  "entities": [
+    {
+      "text": "Khổng Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Tĩnh",
+      "label": "LOC"
+    },
+    {
+      "text": "năm 2000",
+      "label": "DATE"
+    },
+    {
+      "text": "15 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nghiêm Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vĩnh Khánh",
+      "label": "LOC"
+    },
+    {
+      "text": "Đức Trường",
+      "label": "LOC"
+    },
+    {
+      "text": "Năm 1853",
+      "label": "DATE"
+    },
+    {
+      "text": "Tự Đức thứ 6",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Hữu Học",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Hữu Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Văn Tiêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Năm 1974",
+      "label": "DATE"
+    },
+    {
+      "text": "năm Giáp Dần",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Ký",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Bân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Hoá",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Sửu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 03 tháng 03 năm 1974",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 10 tháng 02 năm Giáp Dần",
+      "label": "DATE"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghiêm Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đầu năm 2001",
+      "label": "DATE"
+    },
+    {
+      "text": "Tân Tỵ",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "mùa hạ năm Ất Dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "2005",
+      "label": "DATE"
+    },
+    {
+      "text": "đời 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "năm 2006",
+      "label": "DATE"
+    },
+    {
+      "text": "Bính Tuất",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Hoà Xá",
+      "label": "LOC"
+    },
+    {
+      "text": "Ứng Hoà",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "Tây Mỗ",
+      "label": "LOC"
+    },
+    {
+      "text": "Từ Liêm",
+      "label": "LOC"
+    },
+    {
+      "text": "Yên Phụ",
+      "label": "LOC"
+    },
+    {
+      "text": "Yên Phong",
+      "label": "LOC"
+    },
+    {
+      "text": "Bắc Ninh",
+      "label": "LOC"
+    },
+    {
+      "text": "Năm 2005",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Thị Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghiêm Đình Thản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Yên Ngưu",
+      "label": "LOC"
+    },
+    {
+      "text": "Tam Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Trì",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghiêm Văn Lương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghệ Tĩnh",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Ngày 14 tháng 01 năm 2006",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Sỹ Thất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại Nghĩa",
+      "label": "LOC"
+    },
+    {
+      "text": "Lâm Đồng",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghiêm Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 01",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thứ 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đà Lạt",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngày 03 tháng 02 năm 2006",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 16 tháng Giêng năm Bính Tuất",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Sĩ Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "chi thứ 4",
+      "label": "ORDER"
+    },
+    {
+      "text": "năm 2007",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 22 tháng 02 năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 16 tháng Giêng năm\nMậu Tý",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 15 tháng 6 năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 12 tháng Năm năm Mậu Tý",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 27 tháng 7 năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 25 tháng Sáu năm Mậu Tý",
+      "label": "DATE"
+    },
+    {
+      "text": "6/2022",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 2021",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Hồng Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "tháng 12 năm 2020",
+      "label": "DATE"
+    },
+    {
+      "text": "Nghiêm Đình Gối",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nghiêm Du",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nghiêm Trương",
+      "tail": "Nghiêm Huyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

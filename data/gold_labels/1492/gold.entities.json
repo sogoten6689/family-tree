@@ -1,0 +1,99 @@
+{
+  "entities": [
+    {
+      "text": "làng Long Hòa",
+      "label": "LOC"
+    },
+    {
+      "text": "tổng Thạnh Quang",
+      "label": "LOC"
+    },
+    {
+      "text": "Thạnh Quơn",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Kiến Hòa",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Kiến An",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Định Tường",
+      "label": "LOC"
+    },
+    {
+      "text": "ấp Long Hòa A",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Lương Hòa Lạc",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Chợ Gạo",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Tiền Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "Phạm Cao Tổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cao Mẫu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Năm Tự Đức thứ 32",
+      "label": "DATE"
+    },
+    {
+      "text": "thôn Phú An",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Phú Kiết",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ hai",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Phạm văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Định Tường",
+      "label": "LOC"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Phạm Cao Tổ",
+      "tail": "Nguyễn Cao Mẫu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Cao Tổ",
+      "tail": "Phạm văn Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Cao Mẫu",
+      "tail": "Phạm văn Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

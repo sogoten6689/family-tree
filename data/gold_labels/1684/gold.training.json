@@ -1,0 +1,230 @@
+{
+  "doc_id": "vgp_1684",
+  "tree_id": 1684,
+  "title": "Ngô - Tây Ninh",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1684/pha_ky_gia_su.html",
+  "text": "Tộc Ngô ở làng Trường Đà được biết cách đây từ 5 đến 6 đời. Chỉ biết rằng ba của ông Ngô Văn Luận là ông Ngô Văn Đức từ Láng The (huyện Củ Chi) lên Trường Đà lập nghiệp. Ông Ngô Văn Luận sinh ra các con trong đó chỉ có 2 người trai là ông Ngô Văn Hoa (tự Lựa) và ông Ngô Tích Hiền. Ngày nay, con cháu của ông Ngô Tích Hiền muốn lập lại Gia phả tộc Ngô để đời sau nhìn vào mà biết lai lịch xuất xứ của dòng họ mình. Về xa hơn nữa, có lẻ phải qua Việt Nam Gia Phả để nối kết tìm lại những điểm nút giữa các tộc Ngô với nhau trên mọi miền đất nước. Có như thế, may ra gia phả được biết đến từ nhiều đời và đó là cơ may để mọi người biết mà tìm về với nhau. Ông Ngô Tích Hiền sinh được các người con sau đây:\n1. Ông Ngô Ngọc Ấn\n2. Bà Ngô Thị Thức\n3. Ông Ngô Ngọc Kiết\n4. Bà Ngô Thị Thì\n5. Ông Ngô Ngọc Khoái\n6. Ông Ngô Đạt Chí\n7. Bà Ngô Thị Tể\n8. Ông Ngô Khắc Mẩng\n9. Ông Ngô Đình Thục\n10.Bà Ngô Kim Sơn\n11.Ông Ngô Ngọc Thủy.\nNgười con thứ tư và người con thứ chín mất. Ngoài ra ông Ngô Tích Hiền còn có một người con dòng thứ 2 tên là Xuân.",
+  "entities": [
+    {
+      "start": 15,
+      "end": 24,
+      "label": "LOC",
+      "text": "Trường Đà"
+    },
+    {
+      "start": 47,
+      "end": 58,
+      "label": "GENERATION",
+      "text": "5 đến 6 đời"
+    },
+    {
+      "start": 85,
+      "end": 97,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Luận"
+    },
+    {
+      "start": 105,
+      "end": 116,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Đức"
+    },
+    {
+      "start": 120,
+      "end": 128,
+      "label": "LOC",
+      "text": "Láng The"
+    },
+    {
+      "start": 130,
+      "end": 142,
+      "label": "LOC",
+      "text": "huyện Củ Chi"
+    },
+    {
+      "start": 239,
+      "end": 250,
+      "label": "PER_NAME",
+      "text": "Ngô Văn Hoa"
+    },
+    {
+      "start": 255,
+      "end": 258,
+      "label": "PER_NAME",
+      "text": "Lựa"
+    },
+    {
+      "start": 267,
+      "end": 280,
+      "label": "PER_NAME",
+      "text": "Ngô Tích Hiền"
+    },
+    {
+      "start": 712,
+      "end": 723,
+      "label": "PER_NAME",
+      "text": "Ngô Ngọc Ấn"
+    },
+    {
+      "start": 730,
+      "end": 742,
+      "label": "PER_NAME",
+      "text": "Ngô Thị Thức"
+    },
+    {
+      "start": 750,
+      "end": 763,
+      "label": "PER_NAME",
+      "text": "Ngô Ngọc Kiết"
+    },
+    {
+      "start": 770,
+      "end": 781,
+      "label": "PER_NAME",
+      "text": "Ngô Thị Thì"
+    },
+    {
+      "start": 789,
+      "end": 803,
+      "label": "PER_NAME",
+      "text": "Ngô Ngọc Khoái"
+    },
+    {
+      "start": 811,
+      "end": 822,
+      "label": "PER_NAME",
+      "text": "Ngô Đạt Chí"
+    },
+    {
+      "start": 829,
+      "end": 839,
+      "label": "PER_NAME",
+      "text": "Ngô Thị Tể"
+    },
+    {
+      "start": 847,
+      "end": 860,
+      "label": "PER_NAME",
+      "text": "Ngô Khắc Mẩng"
+    },
+    {
+      "start": 868,
+      "end": 881,
+      "label": "PER_NAME",
+      "text": "Ngô Đình Thục"
+    },
+    {
+      "start": 888,
+      "end": 899,
+      "label": "PER_NAME",
+      "text": "Ngô Kim Sơn"
+    },
+    {
+      "start": 907,
+      "end": 920,
+      "label": "PER_NAME",
+      "text": "Ngô Ngọc Thủy"
+    },
+    {
+      "start": 928,
+      "end": 938,
+      "label": "ORDER",
+      "text": "con thứ tư"
+    },
+    {
+      "start": 948,
+      "end": 960,
+      "label": "ORDER",
+      "text": "con thứ chín"
+    },
+    {
+      "start": 1032,
+      "end": 1036,
+      "label": "PER_NAME",
+      "text": "Xuân"
+    },
+    {
+      "start": 596,
+      "end": 601,
+      "label": "GENERATION",
+      "text": "đời v"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 3,
+      "tail": 2
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 6
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 8
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 9
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 10
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 11
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 12
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 13
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 14
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 15
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 16
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 17
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 18
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 19
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 22
+    }
+  ]
+}

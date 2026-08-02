@@ -1,0 +1,765 @@
+Phả ký (tổng hợp từ sơ đồ phả hệ): Họ Vũ ở Hà Ngoại, An Ðổ - Hà Nam
+
+Đời thứ 1: 
+Người con thứ nhất: Ông Cụ Vũ Văn Hạng. 
+Đời thứ 2: 
+Người con thứ nhì: Ông Cụ Thính. 
+Người con thứ ba: Ông Cụ Thỉnh. 
+Người con thứ tư: Ông Cụ Vệ. 
+Người con thứ năm: Ông Cụ Cựu. 
+Người con thứ sáu: Ông Cụ Sách. 
+Người con thứ bảy: Ông Cụ San. 
+Người con thứ tám: Ông Cụ Đắc Tài. 
+Người con thứ chín: Ông Cụ Đắc Lộc. 
+Đời thứ 3: 
+Người con thứ mười: Ông Cụ Tư. 
+Người con thứ 11: Ông Cụ Trùm Nhớ. 
+Người con thứ mười: Ông Cụ Xã. 
+Người con thứ 11: Ông Cụ Đĩnh. 
+Người con thứ 12: Ông Cụ Mễ. 
+Người con thứ 13: Ông Cụ Luyện. 
+Người con thứ 14: Ông Cụ Miêng. 
+Người con thứ sáu: Ông Cụ Vũ Xuân Mai. 
+Người con thứ bảy: Ông Cụ Đội Phước. 
+Đời thứ 4: 
+Người con thứ 12: Ông Cụ Vũ Thế Gia. 
+Người con thứ 15: Ông Cụ Bộ Quế. 
+Người con thứ 16: Ông Cụ Trùm Khuông. 
+Người con thứ 15: Ông Cụ Đặc. 
+Người con thứ 15: Ông Cụ Vũ Văn Thuấn. 
+Người con thứ 16: Ông Cụ Vũ Văn Giản. 
+Người con thứ 17: Ông Cụ Vũ Văn Mão. 
+Người con thứ 18: Ông Cụ Vũ Văn Quặc. 
+Người con thứ 15: Ông Cụ Vũ Văn Mãn. 
+Người con thứ 16: Ông Cụ Vũ Đức Minh. 
+Người con thứ bảy: Ông Cụ bà Bá Bồ. 
+Người con thứ tám: Ông Cụ bà Lý Bảng. 
+Người con thứ mười: Ông Cụ Cửu Thông. 
+Người con thứ 11: Ông Cụ Bát Thanh. 
+Người con thứ 12: Ông Cụ Nhiêu Giới. 
+Người con thứ 13: Ông Cụ Phó Thụ. 
+Người con thứ 14: Ông Cụ Vũ Văn Bách. 
+Người con thứ 15: Ông Cụ Vũ Xuân Trà. 
+Người con thứ 16: Ông Cụ Vũ Xuân Đồng. 
+Người con thứ 18: Ông Cụ bà Nhớn. 
+Người con thứ 19: Ông Cụ Nhiêu Nam. 
+Người con thứ 20: Ông Cụ Vũ Thị Di. 
+Người con thứ 21: Ông Cụ E. 
+Người con thứ tám: Ông Cụ Kình. 
+Đời thứ 5: 
+Người con thứ 13: Ông Cụ Vũ Văn Thiện. 
+Người con thứ 14: Ông Cụ Vũ Thế Khoan. 
+Người con thứ 15: Ông Cụ Quyền. 
+Người con thứ 16: Ông Cụ Vũ Thế Hoàng. 
+Người con thứ 17: Ông Cụ Năm. 
+Người con thứ 17: Ông Cụ Vũ Xuân Hoè. 
+Người con thứ 18: Ông Cụ Vũ Văn Đệ. 
+Người con thứ 17: Ông Cụ Vũ Văn Hiển. 
+Người con thứ 18: Ông Cụ Vũ Văn Chuyên. 
+Người con thứ 19: Ông Cụ Vũ Văn Lung. 
+Người con thứ 20: Ông Cụ Vũ Văn Đăng. 
+Người con thứ 21: Ông Cụ Vũ Năm Hồ. 
+Người con thứ 16: Ông Cụ Vũ Văn Đạc. 
+Người con thứ 17: Ông Cụ Vũ Văn Đắc. 
+Người con thứ 17: Ông Cụ Vũ Văn Mè. 
+Người con thứ 18: Ông Cụ Vũ Văn Tuynh. 
+Người con thứ 19: Ông Cụ Vũ Văn Tuỵnh. 
+Người con thứ 20: Ông Cụ Vũ Văn Tuỳnh. 
+Người con thứ 19: Ông Cụ Vũ Văn Tụ. 
+Người con thứ 20: Ông Cụ Vũ Văn Tụy. 
+Người con thứ 21: Ông Cụ Vũ Văn Túy. 
+Người con thứ 22: Ông Cụ Vũ Văn Quý. 
+Người con thứ 19: Ông Cụ Vũ Văn Úc. 
+Người con thứ 20: Ông Cụ Vũ Văn Ích. 
+Người con thứ 21: Ông Cụ Vũ Văn Đô. 
+Người con thứ 22: Ông Cụ Vũ Văn Thanh. 
+Người con thứ 17: Ông Cụ Vũ Văn Triều. 
+Người con thứ 18: Ông Cụ Vũ Văn Trào. 
+Người con thứ 19: Ông Cụ Vũ Ngọc Loan. 
+Người con thứ 20: Ông Cụ Vũ Văn Phượng. 
+Người con thứ 17: Ông Cụ Vũ Văn Lưu. 
+Người con thứ mười: Ông Cụ Chúc. 
+Người con thứ 11: Ông Cụ Đáp. 
+Người con thứ 12: Ông Cụ Quạch. 
+Người con thứ 13: Ông Cụ Đép. 
+Người con thứ 14: Ông Cụ Cận. 
+Người con thứ 15: Ông Cụ Trượng. 
+Người con thứ 16: Ông Cụ bà Chắc. 
+Người con thứ 17: Ông Cụ bà Hợp. 
+Người con thứ 22: Ông Cụ Vũ Thị Trinh. 
+Người con thứ 23: Ông Cụ Vũ Thị Trình. 
+Người con thứ 24: Ông Cụ Vũ Thị Nghiêm. 
+Người con thứ 25: Ông Cụ Vũ Thị Hoàn. 
+Người con thứ 26: Ông Cụ Vũ Thị Nhàn. 
+Người con thứ 22: Ông Cụ Nhung. 
+Người con thứ 23: Ông Cụ Ngã. 
+Người con thứ 13: Ông Cụ Vũ Thị Chánh. 
+Người con thứ 14: Ông Cụ Vũ Văn Khoát. 
+Người con thứ 15: Ông Cụ Vũ Văn Bát. 
+Người con thứ 16: Ông Cụ Vũ Thị Y. 
+Người con thứ 17: Ông Cụ Vũ Ngọc Chỉ. 
+Người con thứ 18: Ông Cụ Vũ Thị Nguyên. 
+Người con thứ chín: Ông Cụ bà Càng. 
+Người con thứ mười: Ông Cụ Vũ Văn Ngạc. 
+Đời thứ 6: 
+Người con thứ 18: Ông Ông Vũ Thế Cư. 
+Người con thứ 19: Ông Ông Vũ Đắc Điềm. 
+Người con thứ 18: Ông Ông Vũ Vi Hùng. 
+Người con thứ 19: Ông Ông Vũ Văn Thư. 
+Người con thứ 18: Ông Ông Vũ Sinh Tài. 
+Người con thứ 19: Ông Ông Vũ Văn Chính. 
+Người con thứ 20: Ông Ông Vũ Trọng Hiền. 
+Người con thứ 21: Ông Ông Vũ Tam Hinh. 
+Người con thứ 22: Ông Ông Vũ Huy Bốn. 
+Người con thứ 23: Ông Ông Vũ Năm Phụng. 
+Người con thứ 19: Ông Ông Vũ Văn Hương. 
+Người con thứ 20: Ông Ông Đuệ. 
+Người con thứ 21: Ông Ông Khuê. 
+Người con thứ 18: Ông Ông Vũ Trọng Bằng. 
+Người con thứ 19: Ông Ông Vũ Huy Văn. 
+Người con thứ 20: Ông Ông Vũ Văn Sâng. 
+Người con thứ 19: Ông Ông Vũ Văn Ân. 
+Người con thứ 20: Ông Ông Vũ Văn Uy. 
+Người con thứ 21: Ông Ông Vũ Văn Quỳ. 
+Người con thứ 22: Ông Ông Vũ Quang Huân. 
+Người con thứ 23: Ông Ông Vũ Văn Kính. 
+Người con thứ 24: Ông Ông Vũ Văn Khánh. 
+Người con thứ 22: Ông Ông Vũ Duy Dương. 
+Người con thứ 23: Ông Ông Vũ Văn Uyển. 
+Người con thứ 22: Ông Ông Vũ Văn Chén. 
+Người con thứ 23: Ông Ông Vũ Hồng Phấn. 
+Người con thứ 18: Ông Ông Vũ Văn Kiềm. 
+Người con thứ 19: Ông Ông Vũ Kim Oa. 
+Người con thứ 19: Ông Ông Vũ Văn Giáp. 
+Người con thứ 20: Ông Ông Vũ Văn Mẫn. 
+Người con thứ 21: Ông Ông Vũ Văn Đa. 
+Người con thứ 23: Ông Ông Vũ Văn Tuyết. 
+Người con thứ 23: Ông Ông Vũ Văn Hùng. 
+Người con thứ 23: Ông Ông Vũ Văn Nhật. 
+Người con thứ 24: Ông Ông Vũ Văn Mỹ. 
+Người con thứ 25: Ông Ông Vũ Văn Đức. 
+Người con thứ 20: Ông Ông Tuất. 
+Người con thứ 21: Ông Ông Sơn. 
+Người con thứ 22: Ông Ông Hợi. 
+Người con thứ 23: Ông Ông Phúc. 
+Người con thứ 24: Ông Ông Trí. 
+Người con thứ 25: Ông Ông Thìn. 
+Người con thứ 26: Ông Ông Mười. 
+Người con thứ 27: Ông Ông Nhất. 
+Người con thứ 22: Ông Ông Dự. 
+Người con thứ 23: Ông Ông Quyết. 
+Người con thứ 24: Ông Ông Tâm. 
+Người con thứ 25: Ông Ông Thắng. 
+Người con thứ 26: Ông Ông Lợi. 
+Người con thứ 27: Ông Ông Tiến. 
+Người con thứ 23: Ông Ông Niên. 
+Người con thứ 24: Ông Ông Ly. 
+Người con thứ 25: Ông Ông Vượng. 
+Người con thứ 26: Ông Ông Thân. 
+Người con thứ 27: Ông Ông Tân. 
+Người con thứ 28: Ông Ông Dần. 
+Người con thứ 29: Ông Ông Bình. 
+Người con thứ 18: Ông Ông Vũ Đức. 
+Người con thứ 19: Ông Ông Vũ Văn Năng. 
+Người con thứ 20: Ông Ông Vũ Văn Na. 
+Người con thứ 21: Ông Ông Vũ Quốc Phong. 
+Người con thứ 21: Ông Ông Canh. 
+Người con thứ 22: Ông Ông Huy. 
+Người con thứ 11: Ông Ông Vũ Bá Lâu. 
+Người con thứ 24: Ông Bà Giao. 
+Người con thứ 25: Ông Bà Năm. 
+Người con thứ 24: Ông Bà Đỡ. 
+Người con thứ 25: Ông Bà Hồng. 
+Người con thứ 26: Ông Bà Mọi. 
+Người con thứ 27: Ông Ông Vinh. 
+Người con thứ 28: Ông Ông Hiển. 
+Người con thứ 29: Ông Bà Nội. 
+Người con thứ 19: Ông Bà Vũ Thị Lan. 
+Người con thứ 20: Ông Ông Vũ Ngọc Đại. 
+Người con thứ 21: Ông Ông Vũ Ngọc Đang. 
+Người con thứ 22: Ông Bà Độ. 
+Người con thứ 23: Ông Bà Vũ Thị Định. 
+Người con thứ 24: Ông Bà Vũ Thị Liệu. 
+Người con thứ 25: Ông Bà Vũ Thị Bảy. 
+Người con thứ 26: Ông Ông Vũ Ngọc San. 
+Người con thứ 27: Ông Bà Vũ Thị Cúc. 
+Người con thứ 28: Ông Ông Sẻ. 
+Người con thứ 19: Ông Ông Vũ Văn Tiên. 
+Người con thứ 20: Ông Bà Vũ Thị Hiền. 
+Người con thứ 21: Ông Bà Vũ Thị Lành. 
+Người con thứ 22: Ông Bà Vũ Thị Quá. 
+Người con thứ 23: Ông Ông Vũ Văn Thể. 
+Người con thứ 24: Ông Bà Vũ Thị Thái. 
+Người con thứ 19: Ông Ông Vũ Ngọc Ban. 
+Người con thứ 20: Ông Ông Vũ Đức Bằng. 
+Người con thứ 21: Ông Ông Vũ Đức Thành. 
+Người con thứ 22: Ông Bà Vũ Ngọc Thanh. 
+Người con thứ 11: Ông Ông Vũ Kim Thành. 
+Người con thứ 12: Ông Ông Vũ Kim Chung. 
+Người con thứ 13: Ông Bà Vũ Tuyết. 
+Người con thứ 14: Ông Ông Vũ Xuân Thuỷ. 
+Đời thứ 7: 
+Người con thứ 20: Ông Vũ Tuấn Anh. 
+Người con thứ 21: Ông Vũ Hà Sơn. 
+Người con thứ 22: Ông Vũ Thanh Nghị. 
+Người con thứ 20: Ông Vũ Văn Sơn. 
+Người con thứ 21: Ông Vũ Hòa Hiệp. 
+Người con thứ 20: Ông Vũ Văn Thái. 
+Người con thứ 21: Ông Vũ Văn Tuấn. 
+Người con thứ 22: Ông Vũ Văn Trường. 
+Người con thứ 23: Ông Vũ Văn Thông. 
+Người con thứ 19: Ông Vũ Minh. 
+Người con thứ 20: Ông Vũ Thông. 
+Người con thứ 21: Ông Vũ Hiền. 
+Người con thứ 24: Ông Vũ Bá Hùng. 
+Người con thứ 25: Ông Vũ Văn Huấn. 
+Người con thứ 26: Ông Vũ Văn Hứa. 
+Người con thứ 24: Ông Vũ Kiến Hòa. 
+Người con thứ 25: Ông Vũ Giao Quỳnh. 
+Người con thứ 24: Ông Vũ Văn Khoa. 
+Người con thứ 24: Ông Vũ Văn Báu. 
+Người con thứ 25: Ông Vũ Văn Châu. 
+Người con thứ 26: Ông Vũ Văn Trân. 
+Người con thứ 24: Ông Vũ Văn Phán. 
+Người con thứ 20: Ông Vũ Xuân Lai. 
+Người con thứ 21: Ông Vũ Đình Phú. 
+Người con thứ 22: Ông Vũ Đình Lộc. 
+Người con thứ 19: Ông Vũ Văn Khôi. 
+Người con thứ 20: Ông Vũ Văn Bỉnh. 
+Người con thứ 21: Ông Vũ Văn Bảo. 
+Người con thứ 20: Ông Vũ Văn Oánh. 
+Người con thứ 21: Ông Vũ Văn Bắc. 
+Người con thứ 20: Ông Vũ Ngọc Liễn. 
+Người con thứ 21: Ông Vũ Ngọc Cẩn. 
+Người con thứ 23: Ông Vũ Văn Thịnh. 
+Người con thứ 25: Ông Vũ Văn Bình. 
+Người con thứ 26: Ông Vũ Văn Thành. 
+Người con thứ 24: Ông Vũ Văn Thuần. 
+Người con thứ 25: Ông Vũ Văn Thắng. 
+Người con thứ 26: Ông Vũ Văn Mỹ. 
+Người con thứ 25: Ông Vũ Văn Hùng. 
+Người con thứ 24: Ông Vũ Duy Nhật. 
+Người con thứ 25: Ông Vũ Duy Chinh. 
+Người con thứ 26: Ông Vũ Duy Quang. 
+Người con thứ 24: Ông Vũ Văn Vĩnh. 
+Người con thứ 25: Ông Vũ Văn Linh. 
+Người con thứ 25: Ông Vũ Văn Doan. 
+Người con thứ 24: Ông Vũ Văn Cương. 
+Người con thứ 25: Ông Vũ Văn Lĩnh. 
+Người con thứ 19: Ông Vũ Ngọc Lê. 
+Người con thứ 20: Ông Vũ Ngọc Lan. 
+Người con thứ 21: Ông Vũ Văn Huệ. 
+Người con thứ 22: Ông Vũ Văn Khuê. 
+Người con thứ 20: Ông Vũ Kim Thanh. 
+Người con thứ 21: Ông Vũ Kim Trường. 
+Người con thứ 20: Ông Vũ Văn Tiến. 
+Người con thứ 22: Ông Vũ Văn Vượng. 
+Người con thứ 23: Ông Vũ Văn Chín. 
+Người con thứ 21: Ông Vũ Văn Dương. 
+Người con thứ 22: Ông Vũ Văn Lý. 
+Người con thứ 23: Ông Vũ Văn Đường. 
+Người con thứ 24: Ông Vũ Văn Long. 
+Người con thứ 24: Ông Vũ Thiên Phú. 
+Người con thứ 25: Ông Vũ Thiên Vinh. 
+Người con thứ 26: Ông Vũ Thiên Quang. 
+Người con thứ 27: Ông Vũ Thiên Nhân. 
+Người con thứ 23: Ông Vũ Bình. 
+Người con thứ 24: Ông Vũ Văn Diên. 
+Người con thứ 25: Ông Vũ Văn Diển. 
+Người con thứ 25: Ông Vũ Dậu. 
+Người con thứ 26: Ông Vũ Đức. 
+Người con thứ 27: Ông Vũ Thìn. 
+Người con thứ 27: Ông Vũ Thuyết. 
+Người con thứ 28: Ông Vũ Tuấn. 
+Người con thứ 30: Ông Vũ Trung. 
+Người con thứ 31: Ông Vũ Thưởng. 
+Người con thứ 19: Ông Vũ Châu. 
+Người con thứ 20: Ông Vũ Cương. 
+Người con thứ 21: Ông Vũ Văn Nha. 
+Người con thứ 22: Ông Vũ Văn Giá. 
+Người con thứ 22: Ông Vũ Văn Phú. 
+Người con thứ 23: Ông Vũ Văn Hữu. 
+Người con thứ 23: Ông Vũ Báu. 
+Người con thứ 24: Ông Vũ Quý. 
+Người con thứ 25: Ông Vũ Thảng. 
+Người con thứ 26: Ông Vũ Thống. 
+Người con thứ 27: Ông Vũ Luật. 
+Người con thứ 28: Ông Vũ Lâm. 
+Người con thứ 23: Ông Vũ Dũng. 
+Người con thứ 24: Ông Vũ Hùng. 
+Người con thứ 12: Ông Vũ Trọng Đài. 
+Người con thứ 13: Ông Vũ Thị Tràng An. 
+Người con thứ 14: Ông Vũ Thị An Khang. 
+Người con thứ 15: Ông Vũ Thị Khang Ninh. 
+Người con thứ 16: Ông Vũ Trường Sơn. 
+Người con thứ 17: Ông Vũ Sơn Thủy. 
+Người con thứ 18: Ông Vũ Mạnh Cường. 
+Người con thứ 30: Ông Vũ Quang. 
+Người con thứ 31: Ông Vũ Tuyết. 
+Người con thứ 32: Ông Vũ Hoàn. 
+Người con thứ 33: Ông Vũ Lan. 
+Người con thứ 29: Ông Vũ Ngọc Thọ. 
+Người con thứ 30: Ông Vũ Ngọc Quyết (I). 
+Người con thứ 31: Ông Vũ Thị Khánh. 
+Người con thứ 32: Ông Vũ Thị Yến. 
+Người con thứ 33: Ông Vũ Thị Tâm. 
+Người con thứ 34: Ông Vũ Thị Huyền. 
+Người con thứ 35: Ông Vũ Ngọc Quyết (II). 
+Người con thứ 36: Ông Vũ Ngọc Tiến. 
+Người con thứ 37: Ông Vũ Ngọc Hùng. 
+Người con thứ 29: Ông Vũ Ngọc Vinh. 
+Người con thứ 30: Ông Vũ Thị Lệ Dung. 
+Người con thứ 31: Ông Vũ Thị Thanh Vân. 
+Người con thứ 32: Ông Vũ Ngọc Quang. 
+Người con thứ 33: Ông Vũ Ngọc Khanh. 
+Người con thứ 34: Ông Vũ Ngọc Long. 
+Người con thứ 35: Ông Vũ Thị Kim Liên. 
+Người con thứ 36: Ông Vũ Thị Kim Loan. 
+Người con thứ 25: Ông Vũ Văn Thư. 
+Người con thứ 23: Ông Vũ Thiện Trí. 
+Người con thứ 24: Ông Vũ Quỳnh Trang. 
+Người con thứ 23: Ông Vũ Mạnh Hùng. 
+Người con thứ 24: Ông Vũ Quang Trung. 
+Đời thứ 8: 
+Người con thứ 23: Ông Vũ Phương. 
+Người con thứ 24: Ông Vũ Vương. 
+Người con thứ 23: Ông Vũ Tùng. 
+Người con thứ 25: Ông Vũ Văn Cường. 
+Người con thứ 27: Ông Vũ Văn Tùng. 
+Người con thứ 28: Ông Vũ Văn Tình. 
+Người con thứ 26: Ông Vũ Công Khanh. 
+Người con thứ 27: Ông Vũ Văn Tuyến. 
+Người con thứ 28: Ông Vũ Văn Sinh. 
+Người con thứ 29: Ông Vũ Văn Ngạn. 
+Người con thứ 30: Ông Vũ Văn Côn. 
+Người con thứ 26: Ông Vũ Văn Nam. 
+Người con thứ 28: Ông Vũ Văn Đông. 
+Người con thứ 29: Ông Vũ Văn Tây. 
+Người con thứ 25: Ông Vũ Quốc Học. 
+Người con thứ 26: Ông Vũ Quốc Huỳnh. 
+Người con thứ 25: Ông Vũ Ngọc Hoàng. 
+Người con thứ 21: Ông Vũ Văn Hoàn. 
+Người con thứ 22: Ông Vũ Văn Minh. 
+Người con thứ 23: Ông Vũ Văn Diệp. 
+Người con thứ 22: Ông Vũ Văn Toàn. 
+Người con thứ 23: Ông Vũ Văn Hiệp. 
+Người con thứ 24: Ông Vũ Văn Kiên. 
+Người con thứ 22: Ông Vũ Văn Doanh. 
+Người con thứ 23: Ông Vũ Văn Tuyền. 
+Người con thứ 24: Ông Vũ Văn Thăng. 
+Người con thứ 22: Ông Vũ Văn Hoành. 
+Người con thứ 23: Ông Vũ Văn Mạnh. 
+Người con thứ 24: Ông Vũ Văn Nghiêm. 
+Người con thứ 25: Ông Vũ Văn Chỉnh. 
+Người con thứ 24: Ông Vũ Văn Phức. 
+Người con thứ 25: Ông Vũ Hồng Nhật. 
+Người con thứ 24: Ông Vũ Hà. 
+Người con thứ 25: Ông Vũ Hải. 
+Người con thứ 24: Ông Vũ Tấn. 
+Người con thứ 25: Ông Vũ Tiến. 
+Người con thứ 13: Ông Vũ Anh Tú. 
+Người con thứ 14: Ông Vũ Bích Ngọc. 
+Người con thứ 19: Ông Vũ Giang. 
+Người con thứ 20: Ông Vũ Kiều Anh. 
+Người con thứ 31: Ông Vũ Thanh. 
+Người con thứ 33: Ông Vũ Quân. 
+Người con thứ 34: Ông Vũ Khương. 
+Người con thứ 37: Ông Vũ Ngọc Huy. 
+Người con thứ 38: Ông Vũ Ngọc Phúc. 
+Người con thứ 39: Ông Vũ Ngọc Đức. 
+Người con thứ 40: Ông Vũ Ngọc Giang. 
+Người con thứ 41: Ông Vũ Ngọc Sơn. 
+Người con thứ 42: Ông Vũ Kim Anh. 
+Người con thứ 37: Ông Vũ Trâm. 
+Người con thứ 38: Ông Vũ Trang. 
+Người con thứ 27: Ông Vũ Thị Thanh Hà. 
+Người con thứ 28: Ông Vũ Tiến Dũng. 
+Người con thứ 25: Ông Vũ Đức Long. 
+Người con thứ 26: Ông Vũ Mạnh Quân. 
+Đời thứ 9: 
+Người con thứ 29: Ông Vũ Tuấn Kiệt. 
+Người con thứ 29: Ông Vũ Hồng Ân. 
+
+Quan hệ cha/mẹ — con: 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Thính. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Thỉnh. 
+Ông Cụ Thỉnh hạ sinh Cụ Tư. 
+Ông Cụ Tư hạ sinh Cụ Vũ Thế Gia. 
+Ông Cụ Vũ Thế Gia hạ sinh Cụ Vũ Văn Thiện. 
+Ông Cụ Vũ Văn Thiện hạ sinh Ông Vũ Thế Cư. 
+Ông Cụ Vũ Văn Thiện hạ sinh Ông Vũ Đắc Điềm. 
+Ông Ông Vũ Đắc Điềm hạ sinh Vũ Tuấn Anh. 
+Ông Vũ Tuấn Anh hạ sinh Vũ Phương. 
+Ông Vũ Tuấn Anh hạ sinh Vũ Vương. 
+Ông Ông Vũ Đắc Điềm hạ sinh Vũ Hà Sơn. 
+Ông Ông Vũ Đắc Điềm hạ sinh Vũ Thanh Nghị. 
+Ông Vũ Thanh Nghị hạ sinh Vũ Tùng. 
+Ông Vũ Thanh Nghị hạ sinh Vũ Trung. 
+Ông Cụ Vũ Thế Gia hạ sinh Cụ Vũ Thế Khoan. 
+Ông Cụ Vũ Thế Khoan hạ sinh Ông Vũ Vi Hùng. 
+Ông Ông Vũ Vi Hùng hạ sinh Vũ Văn Sơn. 
+Ông Ông Vũ Vi Hùng hạ sinh Vũ Hòa Hiệp. 
+Ông Cụ Vũ Thế Khoan hạ sinh Ông Vũ Văn Thư. 
+Ông Ông Vũ Văn Thư hạ sinh Vũ Văn Thái. 
+Ông Ông Vũ Văn Thư hạ sinh Vũ Văn Tuấn. 
+Ông Ông Vũ Văn Thư hạ sinh Vũ Văn Trường. 
+Ông Ông Vũ Văn Thư hạ sinh Vũ Văn Thông. 
+Ông Cụ Vũ Thế Gia hạ sinh Cụ Quyền. 
+Ông Cụ Vũ Thế Gia hạ sinh Cụ Vũ Thế Hoàng. 
+Ông Cụ Vũ Thế Hoàng hạ sinh Ông Vũ Sinh Tài. 
+Ông Ông Vũ Sinh Tài hạ sinh Vũ Minh. 
+Ông Ông Vũ Sinh Tài hạ sinh Vũ Thông. 
+Ông Ông Vũ Sinh Tài hạ sinh Vũ Hiền. 
+Ông Cụ Vũ Thế Gia hạ sinh Cụ Năm. 
+Ông Cụ Thỉnh hạ sinh Cụ Trùm Nhớ. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Vệ. 
+Ông Cụ Vệ hạ sinh Cụ Xã. 
+Ông Cụ Xã hạ sinh Cụ Bộ Quế. 
+Ông Cụ Bộ Quế hạ sinh Cụ Vũ Xuân Hoè. 
+Ông Cụ Vũ Xuân Hoè hạ sinh Ông Vũ Văn Chính. 
+Ông Ông Vũ Văn Chính hạ sinh Vũ Bá Hùng. 
+Ông Vũ Bá Hùng hạ sinh Vũ Văn Cường. 
+Ông Vũ Bá Hùng hạ sinh Vũ Văn Sơn. 
+Ông Vũ Bá Hùng hạ sinh Vũ Văn Tùng. 
+Ông Vũ Bá Hùng hạ sinh Vũ Văn Tình. 
+Ông Ông Vũ Văn Chính hạ sinh Vũ Văn Huấn. 
+Ông Ông Vũ Văn Chính hạ sinh Vũ Văn Hứa. 
+Ông Cụ Vũ Xuân Hoè hạ sinh Ông Vũ Trọng Hiền. 
+Ông Ông Vũ Trọng Hiền hạ sinh Vũ Kiến Hòa. 
+Ông Vũ Kiến Hòa hạ sinh Vũ Công Khanh. 
+Ông Vũ Kiến Hòa hạ sinh Vũ Văn Tuyến. 
+Ông Vũ Kiến Hòa hạ sinh Vũ Văn Sinh. 
+Ông Vũ Kiến Hòa hạ sinh Vũ Văn Ngạn. 
+Ông Vũ Kiến Hòa hạ sinh Vũ Văn Côn. 
+Ông Ông Vũ Trọng Hiền hạ sinh Vũ Giao Quỳnh. 
+Ông Vũ Giao Quỳnh hạ sinh Vũ Văn Nam. 
+Ông Vũ Giao Quỳnh hạ sinh Vũ Văn Tuấn. 
+Ông Vũ Giao Quỳnh hạ sinh Vũ Văn Đông. 
+Ông Vũ Giao Quỳnh hạ sinh Vũ Văn Tây. 
+Ông Cụ Vũ Xuân Hoè hạ sinh Ông Vũ Tam Hinh. 
+Ông Ông Vũ Tam Hinh hạ sinh Vũ Văn Khoa. 
+Ông Vũ Văn Khoa hạ sinh Vũ Quốc Học. 
+Ông Vũ Văn Khoa hạ sinh Vũ Quốc Huỳnh. 
+Ông Cụ Vũ Xuân Hoè hạ sinh Ông Vũ Huy Bốn. 
+Ông Ông Vũ Huy Bốn hạ sinh Vũ Văn Báu. 
+Ông Ông Vũ Huy Bốn hạ sinh Vũ Văn Châu. 
+Ông Ông Vũ Huy Bốn hạ sinh Vũ Văn Trân. 
+Ông Cụ Vũ Xuân Hoè hạ sinh Ông Vũ Năm Phụng. 
+Ông Ông Vũ Năm Phụng hạ sinh Vũ Văn Phán. 
+Ông Vũ Văn Phán hạ sinh Vũ Ngọc Hoàng. 
+Ông Cụ Bộ Quế hạ sinh Cụ Vũ Văn Đệ. 
+Ông Cụ Vũ Văn Đệ hạ sinh Ông Vũ Văn Hương. 
+Ông Ông Vũ Văn Hương hạ sinh Vũ Xuân Lai. 
+Ông Ông Vũ Văn Hương hạ sinh Vũ Đình Phú. 
+Ông Ông Vũ Văn Hương hạ sinh Vũ Đình Lộc. 
+Ông Cụ Vũ Văn Đệ hạ sinh Ông Đuệ. 
+Ông Cụ Vũ Văn Đệ hạ sinh Ông Khuê. 
+Ông Cụ Xã hạ sinh Cụ Trùm Khuông. 
+Ông Cụ Trùm Khuông hạ sinh Cụ Vũ Văn Hiển. 
+Ông Cụ Vũ Văn Hiển hạ sinh Ông Vũ Trọng Bằng. 
+Ông Ông Vũ Trọng Bằng hạ sinh Vũ Văn Khôi. 
+Ông Ông Vũ Trọng Bằng hạ sinh Vũ Văn Bỉnh. 
+Ông Ông Vũ Trọng Bằng hạ sinh Vũ Văn Bảo. 
+Ông Cụ Vũ Văn Hiển hạ sinh Ông Vũ Huy Văn. 
+Ông Ông Vũ Huy Văn hạ sinh Vũ Văn Oánh. 
+Ông Cụ Vũ Văn Hiển hạ sinh Ông Vũ Văn Sâng. 
+Ông Ông Vũ Văn Sâng hạ sinh Vũ Văn Bắc. 
+Ông Cụ Trùm Khuông hạ sinh Cụ Vũ Văn Chuyên. 
+Ông Cụ Vũ Văn Chuyên hạ sinh Ông Vũ Văn Ân. 
+Ông Ông Vũ Văn Ân hạ sinh Vũ Ngọc Liễn. 
+Ông Vũ Ngọc Liễn hạ sinh Vũ Văn Hoàn. 
+Ông Vũ Ngọc Liễn hạ sinh Vũ Văn Minh. 
+Ông Vũ Ngọc Liễn hạ sinh Vũ Văn Diệp. 
+Ông Ông Vũ Văn Ân hạ sinh Vũ Ngọc Cẩn. 
+Ông Vũ Ngọc Cẩn hạ sinh Vũ Văn Toàn. 
+Ông Vũ Ngọc Cẩn hạ sinh Vũ Văn Hiệp. 
+Ông Cụ Vũ Văn Chuyên hạ sinh Ông Vũ Văn Uy. 
+Ông Cụ Vũ Văn Chuyên hạ sinh Ông Vũ Văn Quỳ. 
+Ông Cụ Vũ Văn Chuyên hạ sinh Ông Vũ Quang Huân. 
+Ông Ông Vũ Quang Huân hạ sinh Vũ Văn Thịnh. 
+Ông Ông Vũ Quang Huân hạ sinh Vũ Văn Tuấn. 
+Ông Ông Vũ Quang Huân hạ sinh Vũ Văn Bình. 
+Ông Ông Vũ Quang Huân hạ sinh Vũ Văn Thành. 
+Ông Cụ Vũ Văn Chuyên hạ sinh Ông Vũ Văn Kính. 
+Ông Ông Vũ Văn Kính hạ sinh Vũ Văn Thuần. 
+Ông Ông Vũ Văn Kính hạ sinh Vũ Văn Thắng. 
+Ông Ông Vũ Văn Kính hạ sinh Vũ Văn Mỹ. 
+Ông Cụ Vũ Văn Chuyên hạ sinh Ông Vũ Văn Khánh. 
+Ông Ông Vũ Văn Khánh hạ sinh Vũ Văn Hùng. 
+Ông Cụ Trùm Khuông hạ sinh Cụ Vũ Văn Lung. 
+Ông Cụ Trùm Khuông hạ sinh Cụ Vũ Văn Đăng. 
+Ông Cụ Vũ Văn Đăng hạ sinh Ông Vũ Duy Dương. 
+Ông Ông Vũ Duy Dương hạ sinh Vũ Duy Nhật. 
+Ông Ông Vũ Duy Dương hạ sinh Vũ Duy Chinh. 
+Ông Ông Vũ Duy Dương hạ sinh Vũ Duy Quang. 
+Ông Cụ Vũ Văn Đăng hạ sinh Ông Vũ Văn Uyển. 
+Ông Ông Vũ Văn Uyển hạ sinh Vũ Văn Vĩnh. 
+Ông Ông Vũ Văn Uyển hạ sinh Vũ Văn Linh. 
+Ông Cụ Trùm Khuông hạ sinh Cụ Vũ Năm Hồ. 
+Ông Cụ Vũ Năm Hồ hạ sinh Ông Vũ Văn Chén. 
+Ông Ông Vũ Văn Chén hạ sinh Vũ Văn Hùng. 
+Ông Vũ Văn Hùng hạ sinh Vũ Văn Kiên. 
+Ông Ông Vũ Văn Chén hạ sinh Vũ Văn Tuấn. 
+Ông Ông Vũ Văn Chén hạ sinh Vũ Văn Doan. 
+Ông Cụ Vũ Năm Hồ hạ sinh Ông Vũ Hồng Phấn. 
+Ông Ông Vũ Hồng Phấn hạ sinh Vũ Văn Cương. 
+Ông Ông Vũ Hồng Phấn hạ sinh Vũ Văn Lĩnh. 
+Ông Cụ Vệ hạ sinh Cụ Đĩnh. 
+Ông Cụ Đĩnh hạ sinh Cụ Đặc. 
+Ông Cụ Đặc hạ sinh Cụ Vũ Văn Đạc. 
+Ông Cụ Vũ Văn Đạc hạ sinh Ông Vũ Văn Kiềm. 
+Ông Ông Vũ Văn Kiềm hạ sinh Vũ Ngọc Lê. 
+Ông Ông Vũ Văn Kiềm hạ sinh Vũ Ngọc Lan. 
+Ông Ông Vũ Văn Kiềm hạ sinh Vũ Văn Huệ. 
+Ông Ông Vũ Văn Kiềm hạ sinh Vũ Văn Khuê. 
+Ông Ông Vũ Văn Kiềm hạ sinh Vũ Văn Bắc. 
+Ông Cụ Vũ Văn Đạc hạ sinh Ông Vũ Kim Oa. 
+Ông Ông Vũ Kim Oa hạ sinh Vũ Kim Thanh. 
+Ông Vũ Kim Thanh hạ sinh Vũ Văn Doanh. 
+Ông Vũ Kim Thanh hạ sinh Vũ Văn Tuyền. 
+Ông Vũ Kim Thanh hạ sinh Vũ Văn Thăng. 
+Ông Ông Vũ Kim Oa hạ sinh Vũ Kim Trường. 
+Ông Vũ Kim Trường hạ sinh Vũ Văn Hoành. 
+Ông Vũ Kim Trường hạ sinh Vũ Văn Mạnh. 
+Ông Vũ Kim Trường hạ sinh Vũ Văn Nghiêm. 
+Ông Vũ Kim Trường hạ sinh Vũ Văn Chỉnh. 
+Ông Cụ Đặc hạ sinh Cụ Vũ Văn Đắc. 
+Ông Cụ Vệ hạ sinh Cụ Mễ. 
+Ông Cụ Mễ hạ sinh Cụ Vũ Văn Thuấn. 
+Ông Cụ Mễ hạ sinh Cụ Vũ Văn Giản. 
+Ông Cụ Vũ Văn Giản hạ sinh Cụ Vũ Văn Mè. 
+Ông Cụ Vũ Văn Giản hạ sinh Cụ Vũ Văn Tuynh. 
+Ông Cụ Vũ Văn Tuynh hạ sinh Ông Vũ Văn Giáp. 
+Ông Ông Vũ Văn Giáp hạ sinh Vũ Văn Tiến. 
+Ông Ông Vũ Văn Giáp hạ sinh Vũ Văn Thịnh. 
+Ông Ông Vũ Văn Giáp hạ sinh Vũ Văn Vượng. 
+Ông Ông Vũ Văn Giáp hạ sinh Vũ Văn Chín. 
+Ông Cụ Vũ Văn Giản hạ sinh Cụ Vũ Văn Tuỵnh. 
+Ông Cụ Vũ Văn Tuỵnh hạ sinh Ông Vũ Văn Mẫn. 
+Ông Ông Vũ Văn Mẫn hạ sinh Vũ Văn Dương. 
+Ông Ông Vũ Văn Mẫn hạ sinh Vũ Văn Lý. 
+Ông Ông Vũ Văn Mẫn hạ sinh Vũ Văn Đường. 
+Ông Ông Vũ Văn Mẫn hạ sinh Vũ Văn Long. 
+Ông Cụ Vũ Văn Giản hạ sinh Cụ Vũ Văn Tuỳnh. 
+Ông Cụ Vũ Văn Tuỳnh hạ sinh Ông Vũ Văn Đa. 
+Ông Cụ Mễ hạ sinh Cụ Vũ Văn Mão. 
+Ông Cụ Vũ Văn Mão hạ sinh Cụ Vũ Văn Tụ. 
+Ông Cụ Vũ Văn Mão hạ sinh Cụ Vũ Văn Tụy. 
+Ông Cụ Vũ Văn Tụy hạ sinh Ông Vũ Văn Tuyết. 
+Ông Ông Vũ Văn Tuyết hạ sinh Vũ Thiên Phú. 
+Ông Ông Vũ Văn Tuyết hạ sinh Vũ Thiên Vinh. 
+Ông Ông Vũ Văn Tuyết hạ sinh Vũ Thiên Quang. 
+Ông Ông Vũ Văn Tuyết hạ sinh Vũ Thiên Nhân. 
+Ông Cụ Vũ Văn Mão hạ sinh Cụ Vũ Văn Túy. 
+Ông Cụ Vũ Văn Túy hạ sinh Ông Vũ Văn Hùng. 
+Ông Cụ Vũ Văn Mão hạ sinh Cụ Vũ Văn Quý. 
+Ông Cụ Vũ Văn Quý hạ sinh Ông Vũ Văn Nhật. 
+Ông Cụ Vũ Văn Quý hạ sinh Ông Vũ Văn Mỹ. 
+Ông Cụ Vũ Văn Quý hạ sinh Ông Vũ Văn Đức. 
+Ông Cụ Mễ hạ sinh Cụ Vũ Văn Quặc. 
+Ông Cụ Vũ Văn Quặc hạ sinh Cụ Vũ Văn Úc. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Tuất. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Sơn. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Hợi. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Phúc. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Trí. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Thìn. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Mười. 
+Ông Cụ Vũ Văn Úc hạ sinh Ông Nhất. 
+Ông Cụ Vũ Văn Quặc hạ sinh Cụ Vũ Văn Ích. 
+Ông Cụ Vũ Văn Quặc hạ sinh Cụ Vũ Văn Đô. 
+Ông Cụ Vũ Văn Đô hạ sinh Ông Dự. 
+Ông Ông Dự hạ sinh Vũ Bình. 
+Ông Cụ Vũ Văn Đô hạ sinh Ông Quyết. 
+Ông Cụ Vũ Văn Đô hạ sinh Ông Tâm. 
+Ông Cụ Vũ Văn Đô hạ sinh Ông Thắng. 
+Ông Cụ Vũ Văn Đô hạ sinh Ông Lợi. 
+Ông Cụ Vũ Văn Đô hạ sinh Ông Tiến. 
+Ông Cụ Vũ Văn Quặc hạ sinh Cụ Vũ Văn Thanh. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Niên. 
+Ông Ông Niên hạ sinh Vũ Văn Diên. 
+Ông Ông Niên hạ sinh Vũ Văn Diển. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Ly. 
+Ông Ông Ly hạ sinh Vũ Dậu. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Vượng. 
+Ông Ông Vượng hạ sinh Vũ Đức. 
+Ông Ông Vượng hạ sinh Vũ Thìn. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Thân. 
+Ông Ông Thân hạ sinh Vũ Thuyết. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Tân. 
+Ông Ông Tân hạ sinh Vũ Tuấn. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Dần. 
+Ông Cụ Vũ Văn Thanh hạ sinh Ông Bình. 
+Ông Ông Bình hạ sinh Vũ Trung. 
+Ông Ông Bình hạ sinh Vũ Thưởng. 
+Ông Cụ Vệ hạ sinh Cụ Luyện. 
+Ông Cụ Vệ hạ sinh Cụ Miêng. 
+Ông Cụ Miêng hạ sinh Cụ Vũ Văn Mãn. 
+Ông Cụ Vũ Văn Mãn hạ sinh Cụ Vũ Văn Triều. 
+Ông Cụ Vũ Văn Triều hạ sinh Ông Vũ Đức. 
+Ông Ông Vũ Đức hạ sinh Vũ Châu. 
+Ông Ông Vũ Đức hạ sinh Vũ Cương. 
+Ông Cụ Vũ Văn Mãn hạ sinh Cụ Vũ Văn Trào. 
+Ông Cụ Vũ Văn Trào hạ sinh Ông Vũ Văn Năng. 
+Ông Cụ Vũ Văn Trào hạ sinh Ông Vũ Văn Na. 
+Ông Ông Vũ Văn Na hạ sinh Vũ Văn Nha. 
+Ông Ông Vũ Văn Na hạ sinh Vũ Văn Giá. 
+Ông Cụ Vũ Văn Trào hạ sinh Ông Vũ Quốc Phong. 
+Ông Ông Vũ Quốc Phong hạ sinh Vũ Văn Phú. 
+Ông Vũ Văn Phú hạ sinh Vũ Văn Phức. 
+Ông Vũ Văn Phú hạ sinh Vũ Hồng Nhật. 
+Ông Ông Vũ Quốc Phong hạ sinh Vũ Văn Hữu. 
+Ông Vũ Văn Hữu hạ sinh Vũ Hà. 
+Ông Vũ Văn Hữu hạ sinh Vũ Hải. 
+Ông Cụ Vũ Văn Mãn hạ sinh Cụ Vũ Ngọc Loan. 
+Ông Cụ Vũ Ngọc Loan hạ sinh Ông Canh. 
+Ông Ông Canh hạ sinh Vũ Báu. 
+Ông Vũ Báu hạ sinh Vũ Tấn. 
+Ông Vũ Báu hạ sinh Vũ Tiến. 
+Ông Ông Canh hạ sinh Vũ Quý. 
+Ông Ông Canh hạ sinh Vũ Thảng. 
+Ông Ông Canh hạ sinh Vũ Thống. 
+Ông Ông Canh hạ sinh Vũ Luật. 
+Ông Ông Canh hạ sinh Vũ Lâm. 
+Ông Cụ Vũ Ngọc Loan hạ sinh Ông Huy. 
+Ông Ông Huy hạ sinh Vũ Dũng. 
+Ông Ông Huy hạ sinh Vũ Hùng. 
+Ông Cụ Vũ Văn Mãn hạ sinh Cụ Vũ Văn Phượng. 
+Ông Cụ Miêng hạ sinh Cụ Vũ Đức Minh. 
+Ông Cụ Vũ Đức Minh hạ sinh Cụ Vũ Văn Lưu. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Cựu. 
+Ông Cụ Cựu hạ sinh Cụ Vũ Xuân Mai. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ bà Bá Bồ. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ bà Lý Bảng. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Cửu Thông. 
+Ông Cụ Cửu Thông hạ sinh Cụ Chúc. 
+Ông Cụ Chúc hạ sinh Ông Vũ Bá Lâu. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Trọng Đài. 
+Ông Vũ Trọng Đài hạ sinh Vũ Anh Tú. 
+Ông Vũ Trọng Đài hạ sinh Vũ Bích Ngọc. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Thị Tràng An. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Thị An Khang. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Thị Khang Ninh. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Trường Sơn. 
+Ông Vũ Trường Sơn hạ sinh Vũ Giang. 
+Ông Vũ Trường Sơn hạ sinh Vũ Tùng. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Sơn Thủy. 
+Ông Vũ Sơn Thủy hạ sinh Vũ Tiến. 
+Ông Vũ Sơn Thủy hạ sinh Vũ Kiều Anh. 
+Ông Ông Vũ Bá Lâu hạ sinh Vũ Mạnh Cường. 
+Ông Cụ Cửu Thông hạ sinh Cụ Đáp. 
+Ông Cụ Cửu Thông hạ sinh Cụ Quạch. 
+Ông Cụ Cửu Thông hạ sinh Cụ Đép. 
+Ông Cụ Cửu Thông hạ sinh Cụ Cận. 
+Ông Cụ Cửu Thông hạ sinh Cụ Trượng. 
+Ông Cụ Cửu Thông hạ sinh Cụ bà Chắc. 
+Ông Cụ Cửu Thông hạ sinh Cụ bà Hợp. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Bát Thanh. 
+Ông Cụ Bát Thanh hạ sinh Cụ Vũ Thị Trinh. 
+Ông Cụ Bát Thanh hạ sinh Cụ Vũ Thị Trình. 
+Ông Cụ Bát Thanh hạ sinh Cụ Vũ Thị Nghiêm. 
+Ông Cụ Bát Thanh hạ sinh Cụ Vũ Thị Hoàn. 
+Ông Cụ Bát Thanh hạ sinh Cụ Vũ Thị Nhàn. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Nhiêu Giới. 
+Ông Cụ Nhiêu Giới hạ sinh Cụ Nhung. 
+Ông Cụ Nhung hạ sinh Bà Giao. 
+Ông Cụ Nhung hạ sinh Bà Năm. 
+Ông Cụ Nhiêu Giới hạ sinh Cụ Ngã. 
+Ông Cụ Ngã hạ sinh Bà Đỡ. 
+Ông Cụ Ngã hạ sinh Bà Hồng. 
+Ông Cụ Ngã hạ sinh Bà Mọi. 
+Ông Cụ Ngã hạ sinh Ông Vinh. 
+Ông Ông Vinh hạ sinh Vũ Quang. 
+Ông Vũ Quang hạ sinh Vũ Thanh. 
+Ông Vũ Quang hạ sinh Vũ Tuyết. 
+Ông Vũ Quang hạ sinh Vũ Quân. 
+Ông Ông Vinh hạ sinh Vũ Tuyết. 
+Ông Ông Vinh hạ sinh Vũ Hoàn. 
+Ông Vũ Hoàn hạ sinh Vũ Khương. 
+Ông Ông Vinh hạ sinh Vũ Lan. 
+Ông Cụ Ngã hạ sinh Ông Hiển. 
+Ông Cụ Ngã hạ sinh Bà Nội. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Phó Thụ. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Vũ Văn Bách. 
+Ông Cụ Vũ Văn Bách hạ sinh Cụ Vũ Thị Chánh. 
+Ông Cụ Vũ Văn Bách hạ sinh Cụ Vũ Văn Khoát. 
+Ông Cụ Vũ Văn Khoát hạ sinh Bà Vũ Thị Lan. 
+Ông Cụ Vũ Văn Khoát hạ sinh Ông Vũ Ngọc Đại. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Ngọc Thọ. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Ngọc Quyết (I). 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Thị Khánh. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Thị Yến. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Thị Tâm. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Thị Huyền. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Ngọc Quyết (II). 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Ngọc Tiến. 
+Ông Ông Vũ Ngọc Đại hạ sinh Vũ Ngọc Hùng. 
+Ông Cụ Vũ Văn Khoát hạ sinh Ông Vũ Ngọc Đang. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Ngọc Vinh. 
+Ông Vũ Ngọc Vinh hạ sinh Vũ Ngọc Huy. 
+Ông Vũ Ngọc Vinh hạ sinh Vũ Ngọc Phúc. 
+Ông Vũ Ngọc Vinh hạ sinh Vũ Ngọc Đức. 
+Ông Vũ Ngọc Vinh hạ sinh Vũ Ngọc Giang. 
+Ông Vũ Ngọc Vinh hạ sinh Vũ Ngọc Sơn. 
+Ông Vũ Ngọc Vinh hạ sinh Vũ Kim Anh. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Thị Lệ Dung. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Thị Thanh Vân. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Ngọc Quang. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Ngọc Khanh. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Ngọc Long. 
+Ông Vũ Ngọc Long hạ sinh Vũ Trâm. 
+Ông Vũ Ngọc Long hạ sinh Vũ Trang. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Thị Kim Liên. 
+Ông Ông Vũ Ngọc Đang hạ sinh Vũ Thị Kim Loan. 
+Ông Cụ Vũ Văn Khoát hạ sinh Bà Độ. 
+Ông Cụ Vũ Văn Khoát hạ sinh Bà Vũ Thị Định. 
+Ông Cụ Vũ Văn Khoát hạ sinh Bà Vũ Thị Liệu. 
+Ông Cụ Vũ Văn Khoát hạ sinh Bà Vũ Thị Bảy. 
+Ông Cụ Vũ Văn Khoát hạ sinh Ông Vũ Ngọc San. 
+Ông Cụ Vũ Văn Khoát hạ sinh Bà Vũ Thị Cúc. 
+Ông Cụ Vũ Văn Khoát hạ sinh Ông Sẻ. 
+Ông Cụ Vũ Văn Bách hạ sinh Cụ Vũ Văn Bát. 
+Ông Cụ Vũ Văn Bát hạ sinh Ông Vũ Văn Tiên. 
+Ông Ông Vũ Văn Tiên hạ sinh Vũ Văn Thư. 
+Ông Vũ Văn Thư hạ sinh Vũ Quang Trung. 
+Ông Vũ Quang Trung hạ sinh Vũ Tuấn Kiệt. 
+Ông Vũ Văn Thư hạ sinh Vũ Thị Thanh Hà. 
+Ông Vũ Văn Thư hạ sinh Vũ Tiến Dũng. 
+Ông Vũ Tiến Dũng hạ sinh Vũ Hồng Ân. 
+Ông Cụ Vũ Văn Bát hạ sinh Bà Vũ Thị Hiền. 
+Ông Cụ Vũ Văn Bát hạ sinh Bà Vũ Thị Lành. 
+Ông Cụ Vũ Văn Bát hạ sinh Bà Vũ Thị Quá. 
+Ông Cụ Vũ Văn Bát hạ sinh Ông Vũ Văn Thể. 
+Ông Cụ Vũ Văn Bát hạ sinh Bà Vũ Thị Thái. 
+Ông Cụ Vũ Văn Bách hạ sinh Cụ Vũ Thị Y. 
+Ông Cụ Vũ Văn Bách hạ sinh Cụ Vũ Ngọc Chỉ. 
+Ông Cụ Vũ Ngọc Chỉ hạ sinh Ông Vũ Ngọc Ban. 
+Ông Ông Vũ Ngọc Ban hạ sinh Vũ Thiện Trí. 
+Ông Ông Vũ Ngọc Ban hạ sinh Vũ Quỳnh Trang. 
+Ông Cụ Vũ Ngọc Chỉ hạ sinh Ông Vũ Đức Bằng. 
+Ông Ông Vũ Đức Bằng hạ sinh Vũ Mạnh Hùng. 
+Ông Vũ Mạnh Hùng hạ sinh Vũ Đức Long. 
+Ông Vũ Mạnh Hùng hạ sinh Vũ Mạnh Quân. 
+Ông Ông Vũ Đức Bằng hạ sinh Vũ Quang Trung. 
+Ông Cụ Vũ Ngọc Chỉ hạ sinh Ông Vũ Đức Thành. 
+Ông Cụ Vũ Ngọc Chỉ hạ sinh Bà Vũ Ngọc Thanh. 
+Ông Cụ Vũ Văn Bách hạ sinh Cụ Vũ Thị Nguyên. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Vũ Xuân Trà. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Vũ Xuân Đồng. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ bà Nhớn. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Nhiêu Nam. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ Vũ Thị Di. 
+Ông Cụ Vũ Xuân Mai hạ sinh Cụ E. 
+Ông Cụ Cựu hạ sinh Cụ Đội Phước. 
+Ông Cụ Đội Phước hạ sinh Cụ Kình. 
+Ông Cụ Kình hạ sinh Cụ bà Càng. 
+Ông Cụ Kình hạ sinh Cụ Vũ Văn Ngạc. 
+Ông Cụ Vũ Văn Ngạc hạ sinh Ông Vũ Kim Thành. 
+Ông Cụ Vũ Văn Ngạc hạ sinh Ông Vũ Kim Chung. 
+Ông Cụ Vũ Văn Ngạc hạ sinh Bà Vũ Tuyết. 
+Ông Cụ Vũ Văn Ngạc hạ sinh Ông Vũ Xuân Thuỷ. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Sách. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ San. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Đắc Tài. 
+Ông Cụ Vũ Văn Hạng hạ sinh Cụ Đắc Lộc. 
+

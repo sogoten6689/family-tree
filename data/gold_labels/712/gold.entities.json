@@ -1,0 +1,65 @@
+{
+  "entities": [
+    {
+      "text": "Lũng động",
+      "label": "LOC"
+    },
+    {
+      "text": "Chí linh",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Mạc Đĩnh Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "150 năm",
+      "label": "DATE"
+    },
+    {
+      "text": "Mạc Đăng Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Phúc Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nghệ an",
+      "label": "LOC"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Phúc Nguyên",
+      "tail": "Mạc Đăng Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

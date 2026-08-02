@@ -1,0 +1,13 @@
+{
+  "entities": [
+    {
+      "text": "ngày 27 và 28 tháng 11 năm 2004",
+      "label": "DATE"
+    },
+    {
+      "text": "Việt Nam",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

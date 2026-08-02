@@ -1,0 +1,245 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Đăng Huân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mai Đà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con đầu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Chiêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Con thứ",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Lân Đính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân Giốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đăng An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Hữu Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Mạnh Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hương Ngải",
+      "label": "LOC"
+    },
+    {
+      "text": "Thạch Thất",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Tự Đức",
+      "label": "DATE"
+    },
+    {
+      "text": "1304",
+      "label": "DATE"
+    },
+    {
+      "text": "Hưng Long",
+      "label": "DATE"
+    },
+    {
+      "text": "Mạc Đĩnh Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mạc Hiển Tích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hưng Long 12",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Trần Đăng Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đăng Tích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Triền Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Chí Linh",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "1127",
+      "label": "DATE"
+    },
+    {
+      "text": "Bảo ứng",
+      "label": "DATE"
+    },
+    {
+      "text": "Lý Nhân Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nhữ Thính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1146",
+      "label": "DATE"
+    },
+    {
+      "text": "Kiến Trung",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Thái Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Văn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đĩnh Tiết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cổ Trai",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghi Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Kiến An",
+      "label": "LOC"
+    },
+    {
+      "text": "Trực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con trưởng",
+      "label": "ORDER"
+    },
+    {
+      "text": "Cao Bằng",
+      "label": "LOC"
+    },
+    {
+      "text": "Kính Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Kính Vũ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phúc Tín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phúc Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hát Môn",
+      "label": "LOC"
+    },
+    {
+      "text": "Phúc Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "1593",
+      "label": "DATE"
+    },
+    {
+      "text": "15/01/2009",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đăng Huân",
+      "tail": "Mai Đà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đăng Huân",
+      "tail": "Chiêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hữu Khải",
+      "tail": "Nguyễn Mạnh Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Đăng Nguyên",
+      "tail": "Nhữ Thính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đĩnh Tiết",
+      "tail": "Trực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

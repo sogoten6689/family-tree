@@ -1,0 +1,267 @@
+{
+  "entities": [
+    {
+      "text": "Ấp Ðông Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Thôn Bình An",
+      "label": "LOC"
+    },
+    {
+      "text": "Tổng Bình Thượng",
+      "label": "LOC"
+    },
+    {
+      "text": "Phủ Bình Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Tỉnh Quảng Nghĩa",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngày 11 tháng 2 năm Giáp Tý",
+      "label": "DATE"
+    },
+    {
+      "text": "niên hiệu Khải Định năm thứ chín",
+      "label": "DATE"
+    },
+    {
+      "text": "Ngày 16, tháng 3, năm 1924",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Trung Đóa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1869",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ chín",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Ngày 18 tháng 7 năm 2001",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 28 tháng 5 năm Tân Tỵ",
+      "label": "DATE"
+    },
+    {
+      "text": "Thôn Bình Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Xã Bình Khương",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Bình Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Tỉnh Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Trung Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Trung Đình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Tri",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Trung Tấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Công Khanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thi Đặng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1954",
+      "label": "DATE"
+    },
+    {
+      "text": "13 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1732",
+      "label": "DATE"
+    },
+    {
+      "text": "Thủy Tổ Khảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thủy Tổ Tỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ mười",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Trung Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1963",
+      "label": "DATE"
+    },
+    {
+      "text": "Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "1968",
+      "label": "DATE"
+    },
+    {
+      "text": "Tết Mậu Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    },
+    {
+      "text": "1983",
+      "label": "DATE"
+    },
+    {
+      "text": "thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Nguyễn Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1924",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2001",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ c",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời l",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trung Trinh",
+      "tail": "Nguyễn Trung Đóa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trung Thắng",
+      "tail": "Nguyễn Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trung Thắng",
+      "tail": "Nguyễn Trung Đình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trung Thắng",
+      "tail": "Nguyễn Trung Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Công Khanh",
+      "tail": "Nguyễn Thi Đặng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Thủy Tổ Khảo",
+      "tail": "Thủy Tổ Tỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trung Trinh",
+      "tail": "Nguyễn Trung Liễu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

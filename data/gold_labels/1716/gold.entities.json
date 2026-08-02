@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1846",
+      "label": "DATE"
+    },
+    {
+      "text": "Thôn Triều",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hương",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Liêm",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 03 tháng 1 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Thị Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 25 tháng 5 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Hồng Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đồng Thung",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "tháng 3 âm lịch năm 2008",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Thanh",
+      "tail": "Trần Thị Độ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

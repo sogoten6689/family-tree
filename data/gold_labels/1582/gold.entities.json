@@ -1,0 +1,89 @@
+{
+  "entities": [
+    {
+      "text": "Leâ Uy Truïc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1503 – 1509",
+      "label": "DATE"
+    },
+    {
+      "text": "Leâ Tröông Döïc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1509 – 1516",
+      "label": "DATE"
+    },
+    {
+      "text": "Leâ Chieâu Thoáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1516 – 1522",
+      "label": "DATE"
+    },
+    {
+      "text": "1527",
+      "label": "DATE"
+    },
+    {
+      "text": "1537 – 1597",
+      "label": "DATE"
+    },
+    {
+      "text": "HOÀ NHAÁT COÂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vieân Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "huyeän Chöông Ñöùc",
+      "label": "LOC"
+    },
+    {
+      "text": "thoân Giang",
+      "label": "LOC"
+    },
+    {
+      "text": "xaõ Vieân noäi",
+      "label": "LOC"
+    },
+    {
+      "text": "huyeän ÖÙng hoaø",
+      "label": "LOC"
+    },
+    {
+      "text": "tænh Haø taây",
+      "label": "LOC"
+    },
+    {
+      "text": "moät ngöôøi con",
+      "label": "ORDER"
+    },
+    {
+      "text": "Hoà Coâng Khaûi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xöù nhaø Trieàng",
+      "label": "LOC"
+    },
+    {
+      "text": "18 thaùng chaïp",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "HOÀ NHAÁT COÂNG",
+      "tail": "Hoà Coâng Khaûi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,389 @@
+{
+  "entities": [
+    {
+      "text": "Làng Hiếu Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Hảo Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "tổng Hạ Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện An Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Quốc Oai",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Sơn Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "1802-1945",
+      "label": "DATE"
+    },
+    {
+      "text": "sông Đáy",
+      "label": "LOC"
+    },
+    {
+      "text": "Hát giang",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Ninh Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Hiếu Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Liên Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Phúc Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Hà Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Hoàng Đạo Đại Vương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hai Bà Trưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 40 – 43 sau công nguyên",
+      "label": "DATE"
+    },
+    {
+      "text": "Sơn Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "Hát Môn",
+      "label": "LOC"
+    },
+    {
+      "text": "Quán Hạ",
+      "label": "LOC"
+    },
+    {
+      "text": "xóm 9 thôn Hạ Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "quán Hiếu",
+      "label": "LOC"
+    },
+    {
+      "text": "Đình Hạ Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 12/3 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Hiếu Hiệp",
+      "label": "LOC"
+    },
+    {
+      "text": "năm 1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Đội Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Năm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phó Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trưởng Mại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bá Diễm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cửu Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lịch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Vượng Đỉnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1940 và 1927",
+      "label": "DATE"
+    },
+    {
+      "text": "Hiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Chấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Tố",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Sửu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Kim",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Sảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Đức Chung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Đống",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Thiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Sự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "7/2000",
+      "label": "DATE"
+    },
+    {
+      "text": "tháng 6/2000",
+      "label": "DATE"
+    },
+    {
+      "text": "Giang Văn Chiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày giỗ tổ 14/7 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "mồng 7 tết",
+      "label": "DATE"
+    },
+    {
+      "text": "15 đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Giang Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hiệu Thị Khuyến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hiệu Thị Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hiệu Lương Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 2/2 âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "ngày 11/4/âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Đỗ Thị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 23/chạp/âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Giang Văn Lềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 27/9/âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Quý Thị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "ngày 6/4/ âm lịch",
+      "label": "DATE"
+    },
+    {
+      "text": "Giang Văn Lư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Giang Văn Thuỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Giang Quý Công",
+      "tail": "Hiệu Thị Khuyến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Giang Quý Công",
+      "tail": "Hiệu Thị Đán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Giang Quý Công",
+      "tail": "Hiệu Lương Thiện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Giang Quý Công",
+      "tail": "Đỗ Thị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Giang Quý Công",
+      "tail": "Nguyễn Quý Thị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

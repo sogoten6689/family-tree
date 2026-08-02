@@ -1,0 +1,285 @@
+{
+  "entities": [
+    {
+      "text": "Hồng Nhân công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "làng Thông khê",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Đồng Đội",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Thiên Bản",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Thiện Vịnh",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Cộng hòa",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Vụ bản",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Nam định",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyền Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trình xuyên",
+      "label": "LOC"
+    },
+    {
+      "text": "1516-1522",
+      "label": "DATE"
+    },
+    {
+      "text": "vua Quang Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Mạc Đăng Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Kinh bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "người con gái",
+      "label": "ORDER"
+    },
+    {
+      "text": "Trịnh Tạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần thị Ngọc Đài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô Đình Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "làng Đồng đội",
+      "label": "LOC"
+    },
+    {
+      "text": "Ngọc Đài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trịnh Sâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngô đình Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngo đình Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trịnh Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Dương lai",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ an",
+      "label": "LOC"
+    },
+    {
+      "text": "Quả linh",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Trình xuyên",
+      "label": "LOC"
+    },
+    {
+      "text": "1622",
+      "label": "DATE"
+    },
+    {
+      "text": "xã quả linh",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1522 đến 1622",
+      "label": "DATE"
+    },
+    {
+      "text": "Đời Thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Khắc Đỗ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Văn vỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xứ phụng hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Siêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xứ Cà xám",
+      "label": "LOC"
+    },
+    {
+      "text": "Từ Chấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đoàn Văn Thìn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đoàn Hồng Chương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đãi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đoàn Thanh Hà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cụ Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Văn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phi",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Trần thị Ngọc Đài",
+      "tail": "Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần thị Ngọc Đài",
+      "tail": "Ngô Đình Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần thị Ngọc Đài",
+      "tail": "Trịnh Tạc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trần thị Ngọc Đài",
+      "tail": "Trịnh Sâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ngo đình Nga",
+      "tail": "Ngô đình Nguyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

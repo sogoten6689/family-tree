@@ -1,0 +1,64 @@
+{
+  "entities": [
+    {
+      "text": "Dương Liễu",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Đàn",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "năm 1978",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2007",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Văn Quảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thanh Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đổng Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Cụ Tổ",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Văn Quảng",
+      "tail": "Nguyễn Thanh Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Nguyễn Văn Quảng",
+      "tail": "Nguyễn Thị Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "doc_id": "vgp_286",
+  "tree_id": 286,
+  "title": "ĐẶNG - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/286/pha_ky_gia_su.html",
+  "text": "Thiết nghĩ rằng: cây thường có muôn vàn cành lá, xanh tươi vì gốc rễ vun trồng, Họ phải có gia phả, Tôn đồ. Để hiểu biết Tôn công, Tổ đức.\nNay con cháu muốn nối theo dòng tộc để ghi tường thế hệ mai sau. kể từ đời tiên tổ cao cao. Bao thế kỷ vẫn còn di tích. Đời Thịnh Đức thời Vĩnh Thọ có sắc phong để lại lưu truyền.\n\nPHỤNG SAO SẮC PHONG\n\nSắc võ huân, tướng quân diện, tiền do hậu điểm, ty tả hiệu điểm, Mậu kiêm hầu thưởng kinh xa uy trung trận Đặng Vĩnh An. Vi phụng Đại nguyên soái, thống lĩnh quân kiêm phủ trị Nghệ An xứ nhậm quốc phó Đô tướng đại báo phúc quận công.",
+  "entities": [
+    {
+      "start": 263,
+      "end": 272,
+      "label": "DATE",
+      "text": "Thịnh Đức"
+    },
+    {
+      "start": 278,
+      "end": 286,
+      "label": "DATE",
+      "text": "Vĩnh Thọ"
+    },
+    {
+      "start": 448,
+      "end": 460,
+      "label": "PER_NAME",
+      "text": "Đặng Vĩnh An"
+    },
+    {
+      "start": 517,
+      "end": 527,
+      "label": "LOC",
+      "text": "Nghệ An xứ"
+    }
+  ],
+  "relations": []
+}

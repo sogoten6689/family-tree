@@ -1,0 +1,5554 @@
+{
+  "entities": [
+    {
+      "text": "Đặng Xuân - Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 143",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Văn Tín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 145",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Ngọc Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Mao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Viết Liêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng viết Tề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 142",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Noạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 139",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 140",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Nhẫn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 141",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Bái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 137",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng viết Hàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 138",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 134",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng tôn Thuẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 135",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Đội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 136",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Tỏi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 73",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 84",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Mậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 85",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 131",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 132",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Văn Đoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 74",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 86",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 111",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 118",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 130",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 59",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 71",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 72",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 75",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 80",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 83",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 87",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 95",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 99",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 105",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 110",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Diệng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 112",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Phụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 114",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 115",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 116",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 117",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 119",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 125",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 129",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Thuy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 36",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 60",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Bảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 61",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 62",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 63",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 64",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Khẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 65",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Yêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 66",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 67",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 68",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Bích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 69",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Ất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 70",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Tuất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 76",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Mượi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 77",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 78",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 81",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 82",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Nữ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 88",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 89",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 90",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Làn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 91",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Táng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 92",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Sử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 96",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Tự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 97",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 98",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Nghoéc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 100",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 101",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 102",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 103",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 106",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng văn Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 107",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng văn Hai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 108",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 109",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đậng thị Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 113",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng danh Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 120",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 121",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hữu Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 122",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 123",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thi Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 124",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Tiu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 127",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 128",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 17",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Lô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 33",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng hữu Phổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 35",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Lệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 37",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 44",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 49",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 53",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 56",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 57",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Lam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 58",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Dật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 18",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 38",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Vịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 39",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thi Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 40",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 41",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 42",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 43",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 45",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Đức An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 46",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị thúy Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 47",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Xuân Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 48",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị My Hòe",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 50",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng xuân Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 51",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Cẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 52",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 54",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 55",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 170",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Chính Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 171",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Hào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 172",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 173",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 175",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng xuân Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 176",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Minh Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 177",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Thị Minh Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 178",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Minh Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 180",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 181",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Xuân Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 182",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng Quang Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 183",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Đặng thị Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Mao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Viết Liêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng viết Tề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Noạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tỏi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tỏi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Thuy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Lô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Phổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Lệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Vịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thi Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đức An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị thúy Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Xuân Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị My Hòe",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng xuân Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Cẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Lam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Dật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Bảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Khẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Yêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Bích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Tuất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Mượi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Nữ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Mậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Làn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Táng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Sử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Tự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Nghoéc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Hai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đậng thị Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Diệng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Phụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Phụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng danh Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thi Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Tiu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Văn Đoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng tôn Thuẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng viết Hàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Nhẫn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Bái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Văn Tín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Văn Tín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Quý Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Ngọc Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Mao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ông Dân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Viết Liêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng viết Tề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Noạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tỏi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tỏi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Thuy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Chính Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Hào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng xuân Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Minh Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Minh Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Minh Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Quang Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Lô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Phổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Lệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Vịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thi Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng thế Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đức An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị thúy Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Xuân Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị My Hòe",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng xuân Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Cẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng xuân Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Xuân Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Lam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Xuân Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Dật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Bảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Khẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Yêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Bích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Võ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Tuất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Toản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Mượi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Chuông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Đương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Nữ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Dờn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Mậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Làn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Táng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Sử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Trương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Tự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Nghoéc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Hai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Sáng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đậng thị Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Ngọc Diệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Diệng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Phụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng hữu Phụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng danh Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Đỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Cơ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng hữu Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thi Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng thị Tiu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Cháu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Em",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Hữu Ngưỡng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng văn Thụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng ngọc Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Miên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Văn Đoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Viết Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Tôn Lẫm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng tôn Thuẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Đội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng viết Hàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Tôn Lỏn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Thị Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Nhẫn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng tôn Sỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Bái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Đặng Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đặng Hữu Chính",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ông Dân",
+      "tail": "Đặng Mao",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ông Dân",
+      "tail": "Đặng Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ông Dân",
+      "tail": "Đặng Đàm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng Viết Liêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng viết Tề",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng Tôn Lẫm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lẫm",
+      "tail": "Đặng Noạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lẫm",
+      "tail": "Đặng thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lẫm",
+      "tail": "Đặng tôn Sỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Hiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Tôn Lỏn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng Tôn Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Viết Nhâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Viết Nhâm",
+      "tail": "Đặng Tôn Miên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Tỏi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tỏi",
+      "tail": "Đặng văn Ngạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng Hữu Dưỡng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dưỡng",
+      "tail": "Đặng thị Thuy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dưỡng",
+      "tail": "Đặng Xuân Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Liên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Huệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Địch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Lô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng hữu Phổ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng thị Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng thị Lệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dưỡng",
+      "tail": "Đặng Xuân Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thế Kỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng Xuân Vịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thi Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Vân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng Xuân Đạm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng Đức An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng thị thúy Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng thị Xuân Hòa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng thị My Hòe",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng Xuân Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Hồng",
+      "tail": "Đặng xuân Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Hồng",
+      "tail": "Đặng thị Cẩm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Hồng",
+      "tail": "Đặng thị Oanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng xuân Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng xuân Sơn",
+      "tail": "Đặng Xuân Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng xuân Sơn",
+      "tail": "Đặng Xuân Kỳ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thị Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thị Lam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thị Dật",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng Hữu Võ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Bảng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hồ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Xuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Khẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Yêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Hợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng thị Bích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng thị Ất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng thị Tuất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng thị Thông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng thị Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Toản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Toản",
+      "tail": "Đặng Hữu Dờn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dờn",
+      "tail": "Đặng hữu Chuông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng Hữu Mượi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng thị Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng thị Ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dờn",
+      "tail": "Đặng Hữu Đương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Đương",
+      "tail": "Đặng Miên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Đương",
+      "tail": "Đặng thị Nữ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dờn",
+      "tail": "Đặng Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Mậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng ngọc Cảnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng Ngọc Diệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng Hữu Trương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Thức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Làn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Táng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Sử",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng thị Ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng Hữu Quýnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Quýnh",
+      "tail": "Đặng Hữu Tự",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Quýnh",
+      "tail": "Đặng Hữu Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Quýnh",
+      "tail": "Đặng Thị Nghoéc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng hữu Sinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Hưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Hữu Lợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng hữu Sáng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đặng văn Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đặng văn Hai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đặng thị Lý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đậng thị Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng thị Diệng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng văn Tương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng hữu Phụng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Phụng",
+      "tail": "Đặng danh Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng hữu Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng thị Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng Hàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng văn Thụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Thụ",
+      "tail": "Đặng Hữu Chước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng Hữu Cơ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng Hữu Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng hữu Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng thi Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng thị Tiu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Thụ",
+      "tail": "Đặng Hữu Ngưỡng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Ngưỡng",
+      "tail": "Đặng Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Ngưỡng",
+      "tail": "Đặng Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Ngưỡng",
+      "tail": "Đặng Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Thụ",
+      "tail": "Đặng Hên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng Thị Định",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Hữu Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Văn Đoàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Viết Nhâm",
+      "tail": "Đặng Tôn Lẫm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng tôn Thuẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Đội",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Thám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng viết Hàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng Thị Phán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Ý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Nhẫn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Bái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng Hữu Chính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quý Công",
+      "tail": "Đặng Văn Tín",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Văn Tín",
+      "tail": "Đặng Quý Công",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Quý Công",
+      "tail": "Đặng Ngọc Thiệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Thiệu",
+      "tail": "Đặng Ông Dân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ông Dân",
+      "tail": "Đặng Mao",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ông Dân",
+      "tail": "Đặng Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ông Dân",
+      "tail": "Đặng Đàm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng Viết Liêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng viết Tề",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng Tôn Lẫm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lẫm",
+      "tail": "Đặng Noạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lẫm",
+      "tail": "Đặng thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lẫm",
+      "tail": "Đặng tôn Sỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Hiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Tôn Lỏn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng Tôn Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Viết Nhâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Viết Nhâm",
+      "tail": "Đặng Tôn Miên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Tỏi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tỏi",
+      "tail": "Đặng văn Ngạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng Hữu Dưỡng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dưỡng",
+      "tail": "Đặng thị Thuy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dưỡng",
+      "tail": "Đặng Xuân Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Liên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Liên",
+      "tail": "Đặng Chính Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Liên",
+      "tail": "Đặng Quang Hào",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Liên",
+      "tail": "Đặng Thị Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Liên",
+      "tail": "Đặng Thị Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Huệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Huệ",
+      "tail": "Đặng xuân Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Huệ",
+      "tail": "Đặng thị Minh Ngân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Huệ",
+      "tail": "Đặng Thị Minh Nhân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Huệ",
+      "tail": "Đặng thị Minh Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Địch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Địch",
+      "tail": "Đặng Xuân Nam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Địch",
+      "tail": "Đặng Xuân Phong",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Địch",
+      "tail": "Đặng Quang Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Địch",
+      "tail": "Đặng thị Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng Xuân Lô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng hữu Phổ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng thị Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Lan",
+      "tail": "Đặng thị Lệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dưỡng",
+      "tail": "Đặng Xuân Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thế Kỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng Xuân Vịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thi Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Vân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng thế Kỷ",
+      "tail": "Đặng thị Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng Xuân Đạm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng Đức An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng thị thúy Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng thị Xuân Hòa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Đạm",
+      "tail": "Đặng thị My Hòe",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng Xuân Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Hồng",
+      "tail": "Đặng xuân Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Hồng",
+      "tail": "Đặng thị Cẩm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Hồng",
+      "tail": "Đặng thị Oanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng xuân Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng xuân Sơn",
+      "tail": "Đặng Xuân Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng xuân Sơn",
+      "tail": "Đặng Xuân Kỳ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thị Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thị Lam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Xuân Mai",
+      "tail": "Đặng thị Dật",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng Hữu Võ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Bảng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hồ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Xuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Khẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Yêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Hữu Hợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng thị Bích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng thị Ất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Võ",
+      "tail": "Đặng thị Tuất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng thị Thông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Ngạn",
+      "tail": "Đặng thị Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Toản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Toản",
+      "tail": "Đặng Hữu Dờn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dờn",
+      "tail": "Đặng hữu Chuông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng Hữu Mượi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng thị Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng thị Ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Chuông",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dờn",
+      "tail": "Đặng Hữu Đương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Đương",
+      "tail": "Đặng Miên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Đương",
+      "tail": "Đặng thị Nữ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Dờn",
+      "tail": "Đặng Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Mậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng ngọc Cảnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng Ngọc Diệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng Hữu Trương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Thức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Làn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Táng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng Sử",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng thị Ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Trương",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng Hữu Quýnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Quýnh",
+      "tail": "Đặng Hữu Tự",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Quýnh",
+      "tail": "Đặng Hữu Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Quýnh",
+      "tail": "Đặng Thị Nghoéc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng hữu Sinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Hưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng Hữu Lợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sinh",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng hữu Sáng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đặng văn Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đặng văn Hai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đặng thị Lý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Sáng",
+      "tail": "Đậng thị Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Ngọc Diệu",
+      "tail": "Đặng thị Diệng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng văn Tương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng hữu Phụng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng hữu Phụng",
+      "tail": "Đặng danh Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng hữu Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng thị Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng thị Đỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Tương",
+      "tail": "Đặng Hàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng văn Thụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Thụ",
+      "tail": "Đặng Hữu Chước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng Hữu Cơ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng Hữu Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng hữu Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng thi Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Chước",
+      "tail": "Đặng thị Tiu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Thụ",
+      "tail": "Đặng Hữu Ngưỡng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Ngưỡng",
+      "tail": "Đặng Cháu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Ngưỡng",
+      "tail": "Đặng Em",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Hữu Ngưỡng",
+      "tail": "Đặng Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng văn Thụ",
+      "tail": "Đặng Hên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng ngọc Cảnh",
+      "tail": "Đặng Thị Định",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Hữu Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Miên",
+      "tail": "Đặng Văn Đoàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Viết Nhâm",
+      "tail": "Đặng Tôn Lẫm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng tôn Thuẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Đội",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Tuấn",
+      "tail": "Đặng Thám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng viết Hàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Tôn Lỏn",
+      "tail": "Đặng Thị Phán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Ý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Nhẫn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng tôn Sỹ",
+      "tail": "Đặng Bái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Đặng Đàm",
+      "tail": "Đặng Hữu Chính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

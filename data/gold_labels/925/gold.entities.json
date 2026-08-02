@@ -1,0 +1,232 @@
+{
+  "entities": [
+    {
+      "text": "Vương Đình Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1809",
+      "label": "DATE"
+    },
+    {
+      "text": "1838",
+      "label": "DATE"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Trung Quốc",
+      "label": "LOC"
+    },
+    {
+      "text": "Việt\nNam",
+      "label": "LOC"
+    },
+    {
+      "text": "Vương Duy Trinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Ninh Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Văn Nham",
+      "label": "LOC"
+    },
+    {
+      "text": "cháu năm đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Vương Đình Bỉnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vương Đình Hường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "cháu đích tôn",
+      "label": "ORDER"
+    },
+    {
+      "text": "Vương Đình Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vương Đình Địch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vương Đình Hựu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "con út",
+      "label": "ORDER"
+    },
+    {
+      "text": "Vương Đình Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Vương Bảo Lạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1888",
+      "label": "DATE"
+    },
+    {
+      "text": "Vương Đình Thản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trịnh Thị Đoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "làng Cát Khánh, xã Cẩm Vân, huyện Cẩm Thủy",
+      "label": "LOC"
+    },
+    {
+      "text": "Phạm Đình Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Đình Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Quốc Bào",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tháng 4/2009",
+      "label": "DATE"
+    },
+    {
+      "text": "1837",
+      "label": "DATE"
+    },
+    {
+      "text": "1842",
+      "label": "DATE"
+    },
+    {
+      "text": "Phạm Đình Yên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Đình Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngày 30/4/2009",
+      "label": "DATE"
+    },
+    {
+      "text": "mồng 6 tháng tư năm Kỉ Sửu",
+      "label": "DATE"
+    },
+    {
+      "text": "mồng 2 tháng 5 năm 2009",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1838",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Trị",
+      "tail": "Vương Đình Địch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Địch",
+      "tail": "Vương Đình Chiểu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Chiểu",
+      "tail": "Vương Đình Bỉnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Nhâm",
+      "tail": "Vương Đình Hường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Nhâm",
+      "tail": "Vương Đình Hựu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Bỉnh",
+      "tail": "Vương Đình Thản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Vương Đình Thản",
+      "tail": "Trịnh Thị Đoàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vương Đình Thản",
+      "tail": "Vương Đình Nhâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Trịnh Thị Đoàn",
+      "tail": "Vương Đình Nhâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Phạm Đình Yên",
+      "tail": "Phạm Đình Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

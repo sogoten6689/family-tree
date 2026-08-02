@@ -1,0 +1,22 @@
+{
+  "doc_id": "vgp_730",
+  "tree_id": 730,
+  "title": "Dương - Cà Mau",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/730/pha_ky_gia_su.html",
+  "text": "Họ Dương này xuất xử không rỏ, do các thế hệ trước đây không lưu lại, hiện người lập gia phả chỉ biết từ đời ông cố mà thôi, nên không thể khái quát hếy được gia tộc. Tuy nhiên nếu không viết lưu lại sau này càng thất truyền, nên tôi mạo mụi soạn cắt ngang gia phả này, hy vọng bà con gần xa khi xem có thể bổ sung thêm và dòng tộc họ Dương sẽ có nhiều bổ sung để cho gia phả này ngày càng hoàn chỉnh hơn. góp phần lưu lại cho các đời sau con cháu. \n đây là lần đầu được tìm hiểu và kham khảo về gia phả nên khi viết không tránh khỏi những sai sót, rất mong được sự góp ý của bạn đọc gần xa, đặc biệt là dòng tộc họ dương tại Đầm Dơi, cà Mau",
+  "entities": [
+    {
+      "start": 626,
+      "end": 633,
+      "label": "LOC",
+      "text": "Đầm Dơi"
+    },
+    {
+      "start": 635,
+      "end": 641,
+      "label": "LOC",
+      "text": "cà Mau"
+    }
+  ],
+  "relations": []
+}

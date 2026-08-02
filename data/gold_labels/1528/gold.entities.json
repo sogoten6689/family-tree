@@ -1,0 +1,264 @@
+{
+  "entities": [
+    {
+      "text": "Trần Nguyên Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "16-01-1967",
+      "label": "DATE"
+    },
+    {
+      "text": "Tịnh Thọ",
+      "label": "LOC"
+    },
+    {
+      "text": "Sơn Tịnh",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Ngãi",
+      "label": "LOC"
+    },
+    {
+      "text": "238 B Nguyễn Thị Minh Khai",
+      "label": "LOC"
+    },
+    {
+      "text": "Qui Nhơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Bình Định",
+      "label": "LOC"
+    },
+    {
+      "text": "16/03/2007",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Cao Thinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1921",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Thị Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1933",
+      "label": "DATE"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "Trần Vinh Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1968",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1970",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần T Bích Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1972",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Hữu Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1974",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Sơn Kiệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1953",
+      "label": "DATE"
+    },
+    {
+      "text": "Võ T Thanh Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1971",
+      "label": "DATE"
+    },
+    {
+      "text": "Khánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "2004",
+      "label": "DATE"
+    },
+    {
+      "text": "Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "2006",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cao Thinh",
+      "tail": "Trần Nguyên Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đại",
+      "tail": "Trần Nguyên Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần Cao Thinh",
+      "tail": "Nguyễn Thị Đại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cao Thinh",
+      "tail": "Trần Vinh Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cao Thinh",
+      "tail": "Trần Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cao Thinh",
+      "tail": "Trần T Bích Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cao Thinh",
+      "tail": "Trần Hữu Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cao Thinh",
+      "tail": "Trần Sơn Kiệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đại",
+      "tail": "Trần Vinh Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đại",
+      "tail": "Trần Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đại",
+      "tail": "Trần T Bích Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đại",
+      "tail": "Trần Hữu Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Nguyễn Thị Đại",
+      "tail": "Trần Sơn Kiệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Trần Nguyên Hồng",
+      "tail": "Võ T Thanh Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nguyên Hồng",
+      "tail": "Khánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nguyên Hồng",
+      "tail": "Huyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Võ T Thanh Tâm",
+      "tail": "Khánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Võ T Thanh Tâm",
+      "tail": "Huyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

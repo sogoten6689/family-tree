@@ -1,0 +1,5761 @@
+{
+  "entities": [
+    {
+      "text": "Dòng Họ Phan Văn - Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Doanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Nho",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Nhã",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Duyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan văn Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hiệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Sự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Mọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Bản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Bẻm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Chịu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ngải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Dần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Mùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị In",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Thẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Thậm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Chiêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Tý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Tám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Chín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Mậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hạp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Cuội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Cẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Sam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Gái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Cọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Xiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Điểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Cún",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Vít",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hốt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hợp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Miến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Nguyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Ẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Hường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Mỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Mít",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Yên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Tuyển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Kim",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Dụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Cầm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chuốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Các",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Mại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đáp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Âu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ca",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Khe",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Núi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Sưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Táo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Vải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Sợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đặng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chuyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Xạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thơm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Trọng Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Bá Khoát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Ngọc Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Ngọc Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Quốc Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Bạch Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Bạch Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Bạch Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Bạch Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Mai Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thanh Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thanh Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ năm",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Ngà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thị Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ bảy",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thanh Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tám",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thanh Giải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Mỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Trịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thùy Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tùng Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn quốc Khánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Linh Đan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Anh Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Duy Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Hà Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thanh Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Thanh Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Tới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Chiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Hà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Kiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Thế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Phan Văn Đăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Doanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Duyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan văn Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan văn Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Chắt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Miến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Nguyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Ẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Chịu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Hường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Trọng Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trọng Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thùy Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trọng Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tùng Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bá Khoát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bá Khoát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn quốc Khánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bá Khoát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Duệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Mỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ngải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Mít",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Yên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Ngọc Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Ngọc Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan văn Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan văn Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Dần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Tuyển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Kim",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Là",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị In",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan văn Thưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Quốc Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Bạch Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Bạch Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Bạch Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Bạch Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Mai Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chiểu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Dụng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Thẩm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Thậm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thanh Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Thanh Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Linh Đan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Thanh Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Anh Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thanh Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Ngà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thanh Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Duy Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Hà Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Chiêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Tý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Tám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Chín",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Mậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hiệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Sự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cầm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mão",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thể",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chuốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chuốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hạp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hạp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Các",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Các",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thanh Giải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Thanh Giải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thanh Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Thanh Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Thanh Giải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thanh Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cuội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Cuội",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Mạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Kiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đáp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Kiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Âu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Âu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Âu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Mỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Rô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ca",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bách",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Khe",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Núi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Cẩu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Sam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Sam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Sưa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Sam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Táo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Sam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Sam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Trụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Doanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Doanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Doanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Vải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Doanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Sợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Gái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đặng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Gái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Kiểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Cọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Xiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Chuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Trịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Điểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Điểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Chuyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Điểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Điểm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Cún",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Thị Vít",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Đa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Đa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bẻm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bẻm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hốt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hốt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Xạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Kỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Xạ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hốt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thơm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thơm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thơm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hốt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Bẻm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hợp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hợp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hợp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Hoạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Ơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Nho",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phan Văn Nho",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phan Văn Nhã",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Doanh",
+      "tail": "Phan Văn Ơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ơn",
+      "tail": "Phan Văn Hinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hinh",
+      "tail": "Phan Văn Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hinh",
+      "tail": "Phan Văn Lân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hinh",
+      "tail": "Phan Văn Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phượng",
+      "tail": "Phan Văn Duyệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phượng",
+      "tail": "Phan văn Thưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan văn Thưởng",
+      "tail": "Phan Văn Luận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Thị Chắt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Văn Tuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tuận",
+      "tail": "Phan Thị Miến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Văn Hợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hợi",
+      "tail": "Phan Thị Nguyệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Văn Ân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ân",
+      "tail": "Phan Thị Ẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Thị Chịu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Văn Duệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Duệ",
+      "tail": "Phan Thị Hường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Duệ",
+      "tail": "Phan Văn Huệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Huệ",
+      "tail": "Phan Văn Thông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thông",
+      "tail": "Phan Văn Khôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khôi",
+      "tail": "Phan Văn Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khôi",
+      "tail": "Phan Văn Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Huệ",
+      "tail": "Phan thị Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Huệ",
+      "tail": "Phan Văn Trọng Đạt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trọng Đạt",
+      "tail": "Phan Thùy Linh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trọng Đạt",
+      "tail": "Phan Văn Tùng Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Huệ",
+      "tail": "Phan Văn Bá Khoát",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bá Khoát",
+      "tail": "Phan Văn quốc Khánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bá Khoát",
+      "tail": "Phan Văn Thịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Huệ",
+      "tail": "Phan Văn Hoạt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Huệ",
+      "tail": "Phan Thị Chúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Duệ",
+      "tail": "Phan Văn Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hương",
+      "tail": "Phan Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hương",
+      "tail": "Phan Thị Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hương",
+      "tail": "Phan Văn Nam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hương",
+      "tail": "Phan Văn Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hương",
+      "tail": "Phan Văn An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Duệ",
+      "tail": "Phan Văn Hội",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Duệ",
+      "tail": "Phan Thị Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Duệ",
+      "tail": "Phan Thị Mỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luận",
+      "tail": "Phan Văn Ngải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngải",
+      "tail": "Phan Thị Mít",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngải",
+      "tail": "Phan Thị Yên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngải",
+      "tail": "Phan Văn Tĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngải",
+      "tail": "Phan Văn Mạc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mạc",
+      "tail": "Phan Thị Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mạc",
+      "tail": "Phan Văn Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mạc",
+      "tail": "Phan Văn Tú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mạc",
+      "tail": "Phan Ngọc Quỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mạc",
+      "tail": "Phan Ngọc Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan văn Thưởng",
+      "tail": "Phan Thị Duyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan văn Thưởng",
+      "tail": "Phan Văn Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luân",
+      "tail": "Phan Thị Chính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luân",
+      "tail": "Phan Văn Dần",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dần",
+      "tail": "Phan Thị Liễu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luân",
+      "tail": "Phan Văn Mùi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mùi",
+      "tail": "Phan Thị Ninh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luân",
+      "tail": "Phan Văn Là",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Văn Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trường",
+      "tail": "Phan Văn Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Văn Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Tuyển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Liên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Tuyết",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Kim",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Là",
+      "tail": "Phan Thị Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luân",
+      "tail": "Phan Thị Yến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Luân",
+      "tail": "Phan Thị In",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan văn Thưởng",
+      "tail": "Phan Văn Đẩu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Văn Chiểu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chiểu",
+      "tail": "Phan Văn Ninh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Văn Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Văn Quốc Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Văn Quốc Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Bạch Yến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Bạch Tuyết",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Bạch Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Bạch Liên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ninh",
+      "tail": "Phan Mai Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chiểu",
+      "tail": "Phan Văn Dụng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Thẩm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Thậm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Văn Triệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Triệu",
+      "tail": "Phan Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thanh Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Thanh Hiền",
+      "tail": "Phan Linh Đan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Thanh Hiền",
+      "tail": "Phan Anh Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thị Hòa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thanh Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thị Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thị Ngà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thị Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thanh Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Minh",
+      "tail": "Phan Duy Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Minh",
+      "tail": "Phan Hà Linh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thành",
+      "tail": "Phan Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Triệu",
+      "tail": "Phan Thị Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Chiêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Tý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Tám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Chín",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đẩu",
+      "tail": "Phan Thị Mậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phượng",
+      "tail": "Phan Văn Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phượng",
+      "tail": "Phan Văn Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phượng",
+      "tail": "Phan Văn Hiệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ơn",
+      "tail": "Phan Văn Hính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hính",
+      "tail": "Phan Văn Khải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khải",
+      "tail": "Phan Văn Khởi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khởi",
+      "tail": "Phan Văn Sự",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khởi",
+      "tail": "Phan Văn Khai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khai",
+      "tail": "Phan Văn Thể",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thể",
+      "tail": "Phan Văn Cầm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thể",
+      "tail": "Phan Văn Mão",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mão",
+      "tail": "Phan Văn Khích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khích",
+      "tail": "Phan Văn Thuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mão",
+      "tail": "Phan Văn Cương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Cương",
+      "tail": "Phan Văn Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Cương",
+      "tail": "Phan Văn An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thể",
+      "tail": "Phan Văn Chuốc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chuốc",
+      "tail": "Phan Văn Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khai",
+      "tail": "Phan Văn Hạp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hạp",
+      "tail": "Phan Văn Các",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Các",
+      "tail": "Phan Thanh Giải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Thanh Giải",
+      "tail": "Phan Thanh Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Thanh Thủy",
+      "tail": "Phan Văn Đăng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Thanh Giải",
+      "tail": "Phan Thanh Lâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khởi",
+      "tail": "Phan Văn Ích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ích",
+      "tail": "Phan Văn Cuội",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Cuội",
+      "tail": "Phan Văn Mại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mại",
+      "tail": "Phan Văn Chức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chức",
+      "tail": "Phan Văn Tới",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chức",
+      "tail": "Phan Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mại",
+      "tail": "Phan Văn Ngạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngạn",
+      "tail": "Phan Văn Hiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngạn",
+      "tail": "Phan Văn Hiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngạn",
+      "tail": "Phan Văn Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngạn",
+      "tail": "Phan Văn Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khải",
+      "tail": "Phan Văn Nguyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Nguyên",
+      "tail": "Phan Văn Mọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mọc",
+      "tail": "Phan Văn Mạc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Mạc",
+      "tail": "Phan Văn Chước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chước",
+      "tail": "Phan Văn Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dung",
+      "tail": "Phan Văn Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bình",
+      "tail": "Phan Văn Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dung",
+      "tail": "Phan Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dung",
+      "tail": "Phan Văn Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chước",
+      "tail": "Phan Văn Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thắng",
+      "tail": "Phan Văn Chiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hính",
+      "tail": "Phan Văn Hoàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hoàn",
+      "tail": "Phan Văn Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tùng",
+      "tail": "Phan Văn Bách",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bách",
+      "tail": "Phan Văn Kiều",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Kiều",
+      "tail": "Phan Văn Đáp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Kiều",
+      "tail": "Phan Văn Đôn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đôn",
+      "tail": "Phan Văn Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đôn",
+      "tail": "Phan Văn Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bách",
+      "tail": "Phan Văn Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dương",
+      "tail": "Phan Văn Thê",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dương",
+      "tail": "Phan Văn Âu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Âu",
+      "tail": "Phan Văn Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Âu",
+      "tail": "Phan Văn Mỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dương",
+      "tail": "Phan Văn Rô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Rô",
+      "tail": "Phan Văn Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Rô",
+      "tail": "Phan Văn Đông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Rô",
+      "tail": "Phan Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Rô",
+      "tail": "Phan Văn Tích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Dương",
+      "tail": "Phan Văn Ca",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bách",
+      "tail": "Phan Văn Tạc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tạc",
+      "tail": "Phan Văn Kha",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tạc",
+      "tail": "Phan Thị Khe",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tạc",
+      "tail": "Phan Thị Núi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tùng",
+      "tail": "Phan Văn Bản",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tùng",
+      "tail": "Phan Văn Trụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trụ",
+      "tail": "Phan Văn Cẩu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Cẩu",
+      "tail": "Phan Văn Quyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Quyền",
+      "tail": "Phan Văn Quyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trụ",
+      "tail": "Phan Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trụ",
+      "tail": "Phan Văn Sam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Sam",
+      "tail": "Phan Văn Sưa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Sam",
+      "tail": "Phan Văn Táo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Sam",
+      "tail": "Phan Văn Công",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Sam",
+      "tail": "Phan Văn Thung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Trụ",
+      "tail": "Phan Văn Tráng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tráng",
+      "tail": "Phan Văn Kiện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tùng",
+      "tail": "Phan Văn Đồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đồng",
+      "tail": "Phan Văn Doanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Doanh",
+      "tail": "Phan Văn Thôn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thôn",
+      "tail": "Phan Văn Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngọc",
+      "tail": "Phan Văn Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ngọc",
+      "tail": "Phan Văn Hà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Doanh",
+      "tail": "Phan Thị Vải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Doanh",
+      "tail": "Phan Thị Sợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đồng",
+      "tail": "Phan Thị Gái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ơn",
+      "tail": "Phan Văn Hảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hảo",
+      "tail": "Phan Văn Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đức",
+      "tail": "Phan Văn Tú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đức",
+      "tail": "Phan Văn Phước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phước",
+      "tail": "Phan Văn Chu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chu",
+      "tail": "Phan Văn Đắc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đắc",
+      "tail": "Phan Văn Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đắc",
+      "tail": "Phan Văn Đặng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chu",
+      "tail": "Phan Thị Gái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phước",
+      "tail": "Phan Văn Kỳ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Kỳ",
+      "tail": "Phan Văn Kiểm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Kiểm",
+      "tail": "Phan Văn Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Kỳ",
+      "tail": "Phan Thị Cọ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phước",
+      "tail": "Phan Văn Vấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Vấn",
+      "tail": "Phan Văn Xiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xiển",
+      "tail": "Phan Văn Chuyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chuyên",
+      "tail": "Phan Văn Chiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Chuyên",
+      "tail": "Phan Văn Trịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xiển",
+      "tail": "Phan Văn Khoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khoa",
+      "tail": "Phan Văn Quỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Quỳnh",
+      "tail": "Phan Văn Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Quỳnh",
+      "tail": "Phan Văn Kiên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xiển",
+      "tail": "Phan Văn Khôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khôi",
+      "tail": "Phan Văn Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khôi",
+      "tail": "Phan Văn Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xiển",
+      "tail": "Phan Văn Khiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khiêm",
+      "tail": "Phan Văn Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Khiêm",
+      "tail": "Phan Văn Phong",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Vấn",
+      "tail": "Phan Văn Điểm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Điểm",
+      "tail": "Phan Văn Chuyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Điểm",
+      "tail": "Phan Văn Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thanh",
+      "tail": "Phan Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Điểm",
+      "tail": "Phan Văn Cung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Cung",
+      "tail": "Phan Văn Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Cung",
+      "tail": "Phan Văn Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Vấn",
+      "tail": "Phan Thị Cún",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Vấn",
+      "tail": "Phan Thị Vít",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hảo",
+      "tail": "Phan Văn Độ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Độ",
+      "tail": "Phan Văn Đa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Đa",
+      "tail": "Phan Văn Bẻm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bẻm",
+      "tail": "Phan Văn Hốt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hốt",
+      "tail": "Phan Văn Xạ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xạ",
+      "tail": "Phan Văn Kỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Kỷ",
+      "tail": "Phan Văn Thế",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xạ",
+      "tail": "Phan Văn Thông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thông",
+      "tail": "Phan Văn Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Xạ",
+      "tail": "Phan Văn Bính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bính",
+      "tail": "Phan Văn Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bính",
+      "tail": "Phan Văn An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hốt",
+      "tail": "Phan Văn Thơm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thơm",
+      "tail": "Phan Văn Tình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Tình",
+      "tail": "Phan Văn Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thơm",
+      "tail": "Phan Văn Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Thắng",
+      "tail": "Phan Văn Khôi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hốt",
+      "tail": "Phan Văn Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Bẻm",
+      "tail": "Phan Văn Hợp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hợp",
+      "tail": "Phan Văn Hòa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hợp",
+      "tail": "Phan Văn Hoạt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hoạt",
+      "tail": "Phan Văn Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hùng",
+      "tail": "Phan Văn Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Hoạt",
+      "tail": "Phan Văn Phúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Phúc",
+      "tail": "Phan Văn Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Ơn",
+      "tail": "Phan Văn Nho",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Phan Văn Nho",
+      "tail": "Phan Văn Nhã",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

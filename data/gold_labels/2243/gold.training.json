@@ -1,0 +1,88 @@
+{
+  "doc_id": "vgp_2243",
+  "tree_id": 2243,
+  "title": "Đỗ - Ninh Bình",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/2243/pha_ky_gia_su.html",
+  "text": "Theo dòng lịch sử của Việt Nam, với biết bao thăng trầm và biến cố. Dòng họ Đỗ vẫn hiện diện như bao dòng họ khác trên mảnh đất Việt Nam này. Tuy nhiên, trong bài viết này chúng tôi chỉ đề cập đến họ Đỗ ở làng Bình Sa, xã Lai Thành, huyện Kim Sơn, tỉnh Ninh Bình.\n\nĐể đánh dấu một cột mốc thời gian và không gian cho bài viết này thật là khó vì suốt một thời gian dài không có sự ghi chép và lưu truyền cho con cháu. Ngoài ra, còn có 3 biến cố quan trọng của đất nước đã ảnh hưởng không nhỏ tới sự kế thừa này.\nNăm đói 1945: Trong dòng họ rất nhiều người chết đói, mỗi chi tộc mỗi gia đình đều có người chết không ít thì nhiều. Đặc biệt trong đó có những ông bà lớn tuổi mất đi mà không kịp dặn dò, truyền gia phả lại cho con cháu.\nNăm 1954 ( năm di cư ): Trong dòng tộc có sự phân chia, kẻ đi vào Nam người ở lại quê hương nên sự gián đoạn thông tin, mất liên lạc của các chi tộc là điều khó tránh khỏi. Sau khi di cư vào miền Nam, các chi tộc đi định cư ở các vùng miền khác nhau. Tình hình lúc đó do thiếu điều kiện liên lạc nên sự gặp gỡ, qua lại bị gián đoạn. \nNăm 1975 ( năm đất nước thống nhất ) các chi tộc lại có sự di trú về các vùng kinh tế, lập nghiệp. Ngoài ra kinh tế các gia đình rất khó khăn nên việc đi lại càng khó khăn hơn.\nDo đó hôm nay ngày 12/02/2008 ( nhằm ngày 12 tháng Giêng năm Mậu Tý ) tôi người viết bài này tên là Đỗ Văn Minh, 52 tuổi cháu cố 5 đời của ông cố Ky viết lại những lời này chỉ mong được các ông các bà các cô các chú và mọi nguời giúp đỡ để gia phả của dòng họ Đỗ được liền lạc từ đời ông cố Ky đến nay để lưu truyền cho các thế hệ kế tiếp biết và giữ gìn, phát huy những tốt đẹp của dòng họ. Ngoài ra do dòng họ thì lớn mà các chi tộc lại định cư ở nhiều vùng miền nên sự kiện con cháu đến tuổi lập gia đình dể lẫn lộn là điều cần phải tránh.\nNhững lời ghi chép lại trên đây dựa theo những lời kể của các bậc cao niên nên sự thiếu sót là khó tránh khỏi. Vậy kính mong các ông bà cô chú cần bổ cứu thêm xin cứ cho ý kiến để gia phả dòng họ Đỗ làng Bình Sa được hoàn chỉnh.\n\nNguyện xin Chúa chúc lành cho chúng con.\nNguyện xin ông bà tổ tiên chúc phúc chúng con để chúng con hoàn thành tâm nguyện này.",
+  "entities": [
+    {
+      "start": 22,
+      "end": 30,
+      "label": "LOC",
+      "text": "Việt Nam"
+    },
+    {
+      "start": 205,
+      "end": 217,
+      "label": "LOC",
+      "text": "làng Bình Sa"
+    },
+    {
+      "start": 219,
+      "end": 231,
+      "label": "LOC",
+      "text": "xã Lai Thành"
+    },
+    {
+      "start": 233,
+      "end": 246,
+      "label": "LOC",
+      "text": "huyện Kim Sơn"
+    },
+    {
+      "start": 248,
+      "end": 262,
+      "label": "LOC",
+      "text": "tỉnh Ninh Bình"
+    },
+    {
+      "start": 519,
+      "end": 523,
+      "label": "DATE",
+      "text": "1945"
+    },
+    {
+      "start": 736,
+      "end": 740,
+      "label": "DATE",
+      "text": "1954"
+    },
+    {
+      "start": 1070,
+      "end": 1074,
+      "label": "DATE",
+      "text": "1975"
+    },
+    {
+      "start": 1262,
+      "end": 1272,
+      "label": "DATE",
+      "text": "12/02/2008"
+    },
+    {
+      "start": 1280,
+      "end": 1310,
+      "label": "DATE",
+      "text": "ngày 12 tháng Giêng năm Mậu Tý"
+    },
+    {
+      "start": 1343,
+      "end": 1354,
+      "label": "PER_NAME",
+      "text": "Đỗ Văn Minh"
+    },
+    {
+      "start": 1372,
+      "end": 1377,
+      "label": "GENERATION",
+      "text": "5 đời"
+    },
+    {
+      "start": 1389,
+      "end": 1391,
+      "label": "PER_NAME",
+      "text": "Ky"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,21 @@
+{
+  "entities": [
+    {
+      "text": "12 tháng Chạp (ÂL)",
+      "label": "DATE"
+    },
+    {
+      "text": "Âu - Lạc",
+      "label": "LOC"
+    },
+    {
+      "text": "Việt Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "đời l",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

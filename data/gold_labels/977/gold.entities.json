@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {
+      "text": "Tế sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Đồng lạc",
+      "label": "LOC"
+    },
+    {
+      "text": "Chí linh",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải dương",
+      "label": "LOC"
+    },
+    {
+      "text": "năm Đinh sửu",
+      "label": "DATE"
+    },
+    {
+      "text": "Tự Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1877",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Bảo Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1926",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thôn Tế sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Đồng lạc",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Chí linh",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Hải dương",
+      "label": "LOC"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

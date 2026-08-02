@@ -1,0 +1,57 @@
+{
+  "entities": [
+    {
+      "text": "Việt Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Võ Thanh Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Võ Văn Khẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "làng Hương An",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Quế Phú",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Quế Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Quãng Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Chicopee",
+      "label": "LOC"
+    },
+    {
+      "text": "ngày 01/10/2004",
+      "label": "DATE"
+    },
+    {
+      "text": "18 tháng 8 năm Giáp Thân",
+      "label": "DATE"
+    },
+    {
+      "text": "Thiện Hà VÕ THANH HẢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "5467",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

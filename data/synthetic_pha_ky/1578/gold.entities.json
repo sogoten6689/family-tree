@@ -1,0 +1,5750 @@
+{
+  "entities": [
+    {
+      "text": "Họ Lê Văn - Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhất",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LÊ VĂN TÍNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ nhì",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ ba",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Quế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ sáu",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Hữu Dùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Hữu Dếnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Vượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Xây",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Loạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Lềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Chềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Xếnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hầu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Quy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Vỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Liện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Doán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tuyển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nghiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Đường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Dính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Phới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ mười",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 11",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 12",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thơi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Vưn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Dển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Đển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Trạy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nhềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 13",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 14",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Dợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 15",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nhợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nở",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Lỡi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Mùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Lải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nhán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Trấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Cử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Xuân Đới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 16",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Cẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 17",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê THị Thận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Mừng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Khươm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Phậy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Khoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Sen",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tổng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thặm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Trọng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thuỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Minh Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thế Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Kim Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thành Đô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Vang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Nguyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Chường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 18",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 19",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đình Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Khuyến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Khích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Huân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông LêThị Thuý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thuần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nguyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Chung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Bằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thu Hoài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Quỳng Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Đức Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Kim Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thuý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Sỹ Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Hồng Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thanh Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thanh Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thanh Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thanh Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 22",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thìn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tỉnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Minh Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 25",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Mận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Giáp Thùy Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 20",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Hồng Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 21",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Hùng Vương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Minh Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 23",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Anh Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 24",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thu Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thảm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thúy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Thực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 28",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 27",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 26",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 119",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 36",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Bắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 35",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Lan Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Tiến Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 32",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Bé",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 30",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 31",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 35",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 36",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 34",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 35",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Văn Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Người con thứ 29",
+      "label": "ORDER"
+    },
+    {
+      "text": "Ông Lê Thị Thuý Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông LÊ VĂN TÍNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Quế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Quế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hữu Dùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Quế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hữu Dếnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Vưn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Khươm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Sương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Châu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nguyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Phậy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lan Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tiến Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thuỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Chung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Duân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trọng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Dển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Đển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Đượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hoàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Sen",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Bằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thu Hoài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Quỳng Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đức Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tiển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Kim Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Vượt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Xây",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thuý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Quân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Bé",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Sỹ Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hồng Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thanh Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thanh Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thanh Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thanh Nhàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Khoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Liên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Sen",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thìn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tỉnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tổng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Minh Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thặm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thặm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Mận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thặm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thặm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Trạy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Giáp Thùy Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trọng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thuỷ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Loạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Lềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nhềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Lềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Linh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Chềnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Xếnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Dợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nhợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Lợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Minh Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Minh Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hồng Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Minh Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Hùng Vương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thế Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thế Vinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Minh Tú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Kim Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Ngợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thành Đô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thành Đô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Anh Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thành Đô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thu Trang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nởi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nở",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lỡi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Mùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Quỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Lải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Khương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Vang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Nguyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hầu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hầu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hòa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thảm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thúy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thủy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Chường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Chường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Chường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Chường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Phượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thuý Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hời",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Quy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huynh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Vỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Vỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Đình Dậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đình Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Liện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Liện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nhán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Khuyến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Thị Nhán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Khích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Trấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Cử",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Huân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LêThị Thuý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thuần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thuần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Bắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Thuần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Huấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Xuân Đới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Duyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Doán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Tuyển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Nghiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Đường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Dính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Phới",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Khưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Cần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Hợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Ý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Hâng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Thám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Giám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Văn Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Cẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê THị Thận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Phán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Mừng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Lê Văn Xưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thị Thơi",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông LÊ VĂN TÍNH",
+      "tail": "Lê Văn Cần",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Cần",
+      "tail": "Lê Thị Quế",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Quế",
+      "tail": "Lê Hữu Dùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Quế",
+      "tail": "Lê Hữu Dếnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Cần",
+      "tail": "Lê Văn Ngởi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngởi",
+      "tail": "Lê Văn Đượt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đượt",
+      "tail": "Lê Thị Vưn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đượt",
+      "tail": "Lê Văn Duân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Thị Khươm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Thị Yến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Văn Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Bình",
+      "tail": "Lê Thị Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nga",
+      "tail": "Lê Thị Sương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Bình",
+      "tail": "Lê Thị Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Ngọc",
+      "tail": "Lê Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Bình",
+      "tail": "Lê Văn Châu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Bình",
+      "tail": "Lê Thị Nguyệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Thị Phậy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Thị Thịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Thị Nghị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Văn Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thắng",
+      "tail": "Lê Văn Tân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thắng",
+      "tail": "Lê Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thành",
+      "tail": "Lê Thị Lan Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thành",
+      "tail": "Lê Văn Tiến Dũng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thắng",
+      "tail": "Lê Thị Thuỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thắng",
+      "tail": "Lê Thị Chung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Duân",
+      "tail": "Lê Văn Đại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đại",
+      "tail": "Lê Thị Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đại",
+      "tail": "Lê Văn Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đại",
+      "tail": "Lê Văn Trọng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đượt",
+      "tail": "Lê Thị Dển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đượt",
+      "tail": "Lê Văn Đển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Đượt",
+      "tail": "Lê Văn Tiển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Thị Hoàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Văn Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thanh",
+      "tail": "Lê Thị Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thanh",
+      "tail": "Lê Thị Sen",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thanh",
+      "tail": "Lê Văn Bằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Văn Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Văn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Văn Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Thị Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Thị Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Thị Linh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Văn Tiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiến",
+      "tail": "Lê Thị Thu Hoài",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiến",
+      "tail": "Lê Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiến",
+      "tail": "Lê Thị Hường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Văn Tới",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tới",
+      "tail": "Lê Thị Quỳng Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tới",
+      "tail": "Lê Đức Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tiển",
+      "tail": "Lê Văn Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hạnh",
+      "tail": "Lê Văn Hoà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hạnh",
+      "tail": "Lê Văn Thức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hạnh",
+      "tail": "Lê Thị Kim Chi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngởi",
+      "tail": "Lê Thị Vượt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngởi",
+      "tail": "Lê Thị Xây",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngởi",
+      "tail": "Lê Văn Vân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Vân",
+      "tail": "Lê Văn Thiệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Văn Xuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xuân",
+      "tail": "Lê Thị Thuý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xuân",
+      "tail": "Lê Văn Tuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tuân",
+      "tail": "Lê Thị Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tuân",
+      "tail": "Lê Văn Quân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tuân",
+      "tail": "Lê Văn Bé",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xuân",
+      "tail": "Lê Thị Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xuân",
+      "tail": "Lê Thị Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xuân",
+      "tail": "Lê Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xuân",
+      "tail": "Lê Thị Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Văn Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lan",
+      "tail": "Lê Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lan",
+      "tail": "Lê Sỹ Lượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lan",
+      "tail": "Lê Hồng Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lan",
+      "tail": "Lê Thị Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Văn Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Thị Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Văn Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Dương",
+      "tail": "Lê Thị Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Dương",
+      "tail": "Lê Văn Hoàng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Dương",
+      "tail": "Lê Văn Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Dương",
+      "tail": "Lê Văn Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Thị Hường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Sơn",
+      "tail": "Lê Thị Hảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Văn Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Long",
+      "tail": "Lê Thị Thanh Huyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Long",
+      "tail": "Lê Thị Thanh Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Long",
+      "tail": "Lê Thị Thanh Ngọc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Long",
+      "tail": "Lê Thị Thanh Nhàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Thị Khoan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Thị Liên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệu",
+      "tail": "Lê Thị Sen",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Vân",
+      "tail": "Lê Văn Trợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Văn Thông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thông",
+      "tail": "Lê Thị Luận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thông",
+      "tail": "Lê Thị Lân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thông",
+      "tail": "Lê Văn Thìn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thông",
+      "tail": "Lê Thị Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thông",
+      "tail": "Lê Văn Tỉnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Thị Tổng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Thị Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thành",
+      "tail": "Lê Thị Hải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thành",
+      "tail": "Lê Minh Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Thị Thường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Văn Thặm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thặm",
+      "tail": "Lê Văn Mận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thặm",
+      "tail": "Lê Thị Nụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thặm",
+      "tail": "Lê Thị Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Văn Tình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tình",
+      "tail": "Lê Thị Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tình",
+      "tail": "Lê Văn Quang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Tình",
+      "tail": "Lê Văn Giám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trợi",
+      "tail": "Lê Thị Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Vân",
+      "tail": "Lê Thị Trạy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Vân",
+      "tail": "Lê Văn Trị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trị",
+      "tail": "Lê Thị Hà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trị",
+      "tail": "Lê Thị Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Vân",
+      "tail": "Lê Văn Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Văn Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khang",
+      "tail": "Lê Giáp Thùy Ngân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Văn Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trường",
+      "tail": "Lê Thị Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Văn Trọng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Thị Thanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Thị Thuỷ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Văn Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trang",
+      "tail": "Lê Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngởi",
+      "tail": "Lê Văn Loạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Cần",
+      "tail": "Lê Văn Huynh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Văn Lềnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lềnh",
+      "tail": "Lê Thị Nhềnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lềnh",
+      "tail": "Lê Văn Hạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Lềnh",
+      "tail": "Lê Văn Linh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Thị Chềnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Thị Xếnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Văn Quỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Văn Dậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Thị Dợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Thị Nhợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Văn Lợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Văn Ngợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngợi",
+      "tail": "Lê Thị Thịnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngợi",
+      "tail": "Lê Minh Giám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Minh Giám",
+      "tail": "Lê Hồng Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Minh Giám",
+      "tail": "Lê Hùng Vương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngợi",
+      "tail": "Lê Thế Vinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thế Vinh",
+      "tail": "Lê Minh Tú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngợi",
+      "tail": "Lê Thị Kim Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Ngợi",
+      "tail": "Lê Thành Đô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thành Đô",
+      "tail": "Lê Anh Thư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thành Đô",
+      "tail": "Lê Thu Trang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Thị Nởi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Thị Nở",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Thị Lỡi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Thị Mùi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Quỳnh",
+      "tail": "Lê Văn Lải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Văn Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hồng",
+      "tail": "Lê Văn Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Phương",
+      "tail": "Lê Thị Hưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hồng",
+      "tail": "Lê Thị Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Quý",
+      "tail": "Lê Thị Khương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Quý",
+      "tail": "Lê Văn Vang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Quý",
+      "tail": "Lê Văn Nguyện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Quý",
+      "tail": "Lê Thị Tình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Văn Hầu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hầu",
+      "tail": "Lê Văn Hời",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Văn Thời",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Văn Thiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệp",
+      "tail": "Lê Thị Thuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệp",
+      "tail": "Lê Thị Hòa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thiệp",
+      "tail": "Lê Văn Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Thị Thảm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Thị Thúy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Thị Thu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Thị Thủy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thành",
+      "tail": "Lê Văn Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thành",
+      "tail": "Lê Văn Độ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Văn Thực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thời",
+      "tail": "Lê Thị Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Thị Thọ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Văn Chường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Chường",
+      "tail": "Lê Thị Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Chường",
+      "tail": "Lê Thị Tiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Chường",
+      "tail": "Lê Thị Hiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Văn Mạnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Mạnh",
+      "tail": "Lê Thị Phượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Mạnh",
+      "tail": "Lê Văn Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Cường",
+      "tail": "Lê Thị Thuý Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Mạnh",
+      "tail": "Lê Văn Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Văn Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hương",
+      "tail": "Lê Thị Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hương",
+      "tail": "Lê Văn Hiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hời",
+      "tail": "Lê Thị Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Văn Quy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huynh",
+      "tail": "Lê Thị Vỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Vỹ",
+      "tail": "Lê Đình Dậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dậu",
+      "tail": "Lê Thị Chúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dậu",
+      "tail": "Lê Đình Thọ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dậu",
+      "tail": "Lê Thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dậu",
+      "tail": "Lê Thị Xuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dậu",
+      "tail": "Lê Thị Thu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Đình Dậu",
+      "tail": "Lê Đình Thiện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Cần",
+      "tail": "Lê Văn Khưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Văn Liện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Liện",
+      "tail": "Lê Thị Nhán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhán",
+      "tail": "Lê Văn Hân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhán",
+      "tail": "Lê Thị Hoà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhán",
+      "tail": "Lê Thị Khuyến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Thị Nhán",
+      "tail": "Lê Văn Khích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Văn Triệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Thị Thú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Thị Tấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Thị Trấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Văn Cử",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Văn Huấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Thị Huân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Thị Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Văn Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trường",
+      "tail": "Lê Văn Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trường",
+      "tail": "Lê Văn Tiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Trường",
+      "tail": "Lê Văn Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Thị Lý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "LêThị Thuý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Văn Thuần",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thuần",
+      "tail": "Lê Thị Bắc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Thuần",
+      "tail": "Lê Thị Nam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Văn Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Thị Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Huấn",
+      "tail": "Lê Thị Lâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Xuân Đới",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Triệu",
+      "tail": "Lê Thị Duyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Văn Doán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Thị Tuyển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Thị Nghiện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Thị Đường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Thị Dính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Thị Huyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Văn Phới",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Khưởng",
+      "tail": "Lê Thị Thú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Cần",
+      "tail": "Lê Văn Xưởng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Thị Lượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Thị Hợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Văn Hâng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hâng",
+      "tail": "Lê Thị Thưng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hâng",
+      "tail": "Lê Thị Thu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hâng",
+      "tail": "Lê Thị Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hâng",
+      "tail": "Lê Thị Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hâng",
+      "tail": "Lê Văn Ý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Hâng",
+      "tail": "Lê Văn Lý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Văn Thám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Văn Giám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Văn Phán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Phán",
+      "tail": "Lê Thị Cẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Phán",
+      "tail": "Lê THị Thận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Phán",
+      "tail": "Lê Thị Mừng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Lê Văn Xưởng",
+      "tail": "Lê Thị Thơi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

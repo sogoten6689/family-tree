@@ -1,0 +1,315 @@
+{
+  "doc_id": "vgp_2092",
+  "tree_id": 2092,
+  "title": "Nguyễn (VŨ HỒNG HÀ) - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/2092/pha_ky_gia_su.html",
+  "text": "Ông Nguyễn Phúc Chu là ông Thuỷ tổ của họ Nguyễn ở xóm Phú Đông, xã Thành Lộc, huyện Hậu Lộc tỉnh Thanh Hoá ngày nay (từ năm 1979). Ngày xưa mới lập ấp tên là Dực Đông trang và Dực Đông xã, huyện Thuần Lộc thuộc phủ Hà Trung, tỉnh Thanh Hoá.\n Ông Nguyễn Phúc Chu là người sinh trưởng của Họ Nguyễn ở thôn Do Hạ thuộc xã Thịnh Lộc, huyện Hậu Lộc, tỉnh Thanh Hoá ngày nay. Xuất phát từ tình hình nào đó hoặc bỏ hư hỏng hoặc không chú ý đến ghi chép thành hệ thống gia phả tộc thuộc có lưu truyền bỏ thất lạc gia phả, cho nên ngày nay gặp khó khăn khi sưu tầm di tích lịch sử. Hiện nay, không rõ ràng họ còn để lại ở Do Hạ anh em cành phái trên dưới tộc thuộc giữa họ Nguyễn ở Phú Đông và Do Hạ.\n Ông Nguyễn Phúc Chu, vợ là bà Nguyễn - hiệu Từ Đường sinh ra ông Nguyễn Phúc Trực, xây dựng thành cơ sở phồng thịnh giàu đẹp giao lại cho ông Trực. Khi đó hai ông bà tuổi già trên 70 tuổi trở về quê hương cũ ở Do Hạ thờ phụng tổ tiên, đến khi từ trần hai ông bà để mai táng hài cốt ở đất làng Do Hạ. Nơi yên táng mộ phần ở khu bái cồn cao ở gần làng Do Hạ đê đường số 5 giáp địa Hoa Lộc và Phú Lộc ngày nay.\nLưu ý : Phần thờ chung của Họ\n- Đời thứ nhất : Ông Thủy tổ là Nguyễn Phúc Chu, vợ là bà Nguyễn Từ Đường\n- Đời thứ hai : Ông Nguyễn Phúc Trực, vợ là bà Nguyễn Từ Cận.\n- Đời thứ ba : Ông Nguyễn Đăng Đệ, vợ bà Trần Từ Trân.\n- Đời thứ tư : Ông Nguyễn Đăng Tam, vợ bà Nguyễn Từ Tính.\nBốn đời về trước từ Ông Nguyễn Phúc Chu đến ông Nguyễn Đăng Tam, gia phả khi chạy loạn đời văn thân chống Pháp bỏ cháy mất. Từ ấy mất gia phả của cả họ, mất truyền cả hệ thống tộc thuộc ở Do Hạ và cả liên quan đến bên ngoại về các thời đại trước. Từ năm 1979 Gia phả họ Nguyễn được ông Nguyễn Hữu Trản tìm hiểu, nghiên cứu, sưu tầm ghi chép để lưu truyền cho các thế hệ sau : Ông đã sưu tầm thấy hệ thống nguồn gốc ở năm cành của Chi Giáp, Ất, Bính, Đinh, Mậu để theo tuần tự sau :\n- Chi thứ nhất : Ông Nguyễn Phúc Chí (đầu cành)\n- Chi thứ hai : Ông Nguyễn Phúc Chiểu (đầu cành)\n- Chi thứ ba : Ông Nguyễn Lương Thiện (đầu cành)\n- Chi thứ tư : Ông Nguyễn Phúc Lành (đầu cành)\n- Chi thứ năm : Ông Nguyễn Phúc Nhạ (đầu cành)\nTiếp sau Ông Nguyễn Hữu Trản là con Trai đầu Nguyễn Lam (tức Vũ Danh Lam), tiếp tục thừa kế chép Gia Phả họ Nguyễn từ Chi thứ hai do ông Nguyễn Phúc Chiểu (đầu cành) một cách có hệ thống, cụ thể để lưu truyền cho các thế hệ sau. Con cháu trong họ hãy ghi nhớ câu nói của Họ: \n\"Chim có tổ, người có tông.\nUống nước nhớ nguồn\"",
+  "entities": [
+    {
+      "start": 4,
+      "end": 19,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Chu"
+    },
+    {
+      "start": 51,
+      "end": 63,
+      "label": "LOC",
+      "text": "xóm Phú Đông"
+    },
+    {
+      "start": 65,
+      "end": 77,
+      "label": "LOC",
+      "text": "xã Thành Lộc"
+    },
+    {
+      "start": 79,
+      "end": 92,
+      "label": "LOC",
+      "text": "huyện Hậu Lộc"
+    },
+    {
+      "start": 93,
+      "end": 107,
+      "label": "LOC",
+      "text": "tỉnh Thanh Hoá"
+    },
+    {
+      "start": 125,
+      "end": 129,
+      "label": "DATE",
+      "text": "1979"
+    },
+    {
+      "start": 159,
+      "end": 173,
+      "label": "LOC",
+      "text": "Dực Đông trang"
+    },
+    {
+      "start": 177,
+      "end": 188,
+      "label": "LOC",
+      "text": "Dực Đông xã"
+    },
+    {
+      "start": 190,
+      "end": 205,
+      "label": "LOC",
+      "text": "huyện Thuần Lộc"
+    },
+    {
+      "start": 212,
+      "end": 224,
+      "label": "LOC",
+      "text": "phủ Hà Trung"
+    },
+    {
+      "start": 300,
+      "end": 310,
+      "label": "LOC",
+      "text": "thôn Do Hạ"
+    },
+    {
+      "start": 317,
+      "end": 329,
+      "label": "LOC",
+      "text": "xã Thịnh Lộc"
+    },
+    {
+      "start": 614,
+      "end": 619,
+      "label": "LOC",
+      "text": "Do Hạ"
+    },
+    {
+      "start": 674,
+      "end": 682,
+      "label": "LOC",
+      "text": "Phú Đông"
+    },
+    {
+      "start": 724,
+      "end": 746,
+      "label": "PER_NAME",
+      "text": "Nguyễn - hiệu Từ Đường"
+    },
+    {
+      "start": 759,
+      "end": 775,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Trực"
+    },
+    {
+      "start": 1073,
+      "end": 1080,
+      "label": "LOC",
+      "text": "Hoa Lộc"
+    },
+    {
+      "start": 1084,
+      "end": 1091,
+      "label": "LOC",
+      "text": "Phú Lộc"
+    },
+    {
+      "start": 1134,
+      "end": 1146,
+      "label": "GENERATION",
+      "text": "Đời thứ nhất"
+    },
+    {
+      "start": 1190,
+      "end": 1205,
+      "label": "PER_NAME",
+      "text": "Nguyễn Từ Đường"
+    },
+    {
+      "start": 1208,
+      "end": 1219,
+      "label": "GENERATION",
+      "text": "Đời thứ hai"
+    },
+    {
+      "start": 1253,
+      "end": 1266,
+      "label": "PER_NAME",
+      "text": "Nguyễn Từ Cận"
+    },
+    {
+      "start": 1270,
+      "end": 1280,
+      "label": "GENERATION",
+      "text": "Đời thứ ba"
+    },
+    {
+      "start": 1287,
+      "end": 1301,
+      "label": "PER_NAME",
+      "text": "Nguyễn Đăng Đệ"
+    },
+    {
+      "start": 1309,
+      "end": 1321,
+      "label": "PER_NAME",
+      "text": "Trần Từ Trân"
+    },
+    {
+      "start": 1325,
+      "end": 1335,
+      "label": "GENERATION",
+      "text": "Đời thứ tư"
+    },
+    {
+      "start": 1342,
+      "end": 1357,
+      "label": "PER_NAME",
+      "text": "Nguyễn Đăng Tam"
+    },
+    {
+      "start": 1365,
+      "end": 1379,
+      "label": "PER_NAME",
+      "text": "Nguyễn Từ Tính"
+    },
+    {
+      "start": 1667,
+      "end": 1682,
+      "label": "PER_NAME",
+      "text": "Nguyễn Hữu Trản"
+    },
+    {
+      "start": 1865,
+      "end": 1877,
+      "label": "ORDER",
+      "text": "Chi thứ nhất"
+    },
+    {
+      "start": 1884,
+      "end": 1899,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Chí"
+    },
+    {
+      "start": 1913,
+      "end": 1924,
+      "label": "ORDER",
+      "text": "Chi thứ hai"
+    },
+    {
+      "start": 1931,
+      "end": 1948,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Chiểu"
+    },
+    {
+      "start": 1962,
+      "end": 1972,
+      "label": "ORDER",
+      "text": "Chi thứ ba"
+    },
+    {
+      "start": 1979,
+      "end": 1997,
+      "label": "PER_NAME",
+      "text": "Nguyễn Lương Thiện"
+    },
+    {
+      "start": 2011,
+      "end": 2021,
+      "label": "ORDER",
+      "text": "Chi thứ tư"
+    },
+    {
+      "start": 2028,
+      "end": 2044,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Lành"
+    },
+    {
+      "start": 2058,
+      "end": 2069,
+      "label": "ORDER",
+      "text": "Chi thứ năm"
+    },
+    {
+      "start": 2076,
+      "end": 2091,
+      "label": "PER_NAME",
+      "text": "Nguyễn Phúc Nhạ"
+    },
+    {
+      "start": 2135,
+      "end": 2147,
+      "label": "ORDER",
+      "text": "con Trai đầu"
+    },
+    {
+      "start": 2148,
+      "end": 2158,
+      "label": "PER_NAME",
+      "text": "Nguyễn Lam"
+    },
+    {
+      "start": 2164,
+      "end": 2175,
+      "label": "PER_NAME",
+      "text": "Vũ Danh Lam"
+    },
+    {
+      "start": 1631,
+      "end": 1639,
+      "label": "DATE",
+      "text": "năm 1979"
+    },
+    {
+      "start": 1385,
+      "end": 1390,
+      "label": "GENERATION",
+      "text": "đời v"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": 0,
+      "tail": 14
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 0,
+      "tail": 15
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": 14,
+      "tail": 15
+    },
+    {
+      "type": "SPOUSE",
+      "head": 0,
+      "tail": 19
+    },
+    {
+      "type": "SPOUSE",
+      "head": 15,
+      "tail": 21
+    },
+    {
+      "type": "SPOUSE",
+      "head": 23,
+      "tail": 24
+    },
+    {
+      "type": "SPOUSE",
+      "head": 26,
+      "tail": 27
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 28,
+      "tail": 40
+    }
+  ]
+}

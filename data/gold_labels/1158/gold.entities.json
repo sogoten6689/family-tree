@@ -1,0 +1,213 @@
+{
+  "entities": [
+    {
+      "text": "Ấp Hà Trữ",
+      "label": "LOC"
+    },
+    {
+      "text": "tổng Sử Lộ",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Phú Vang",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Thừa Thiên",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Ngọc Dương (Phan)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VIẾT TRỌNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Nghĩa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Đan Chế",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện Thạch Hà",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Hà Hoa",
+      "label": "LOC"
+    },
+    {
+      "text": "Thừa Tuyên Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "châu Ô",
+      "label": "LOC"
+    },
+    {
+      "text": "Thuận Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "phủ Triệu Phong",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Tư Vinh",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Hà Trữ",
+      "label": "LOC"
+    },
+    {
+      "text": "Thịnh Đức thứ 6",
+      "label": "DATE"
+    },
+    {
+      "text": "Kỷ Dậu",
+      "label": "DATE"
+    },
+    {
+      "text": "Cảnh Trị năm thứ 7",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Viết Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Đồ (Việt)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Thọ (Thu)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Hà Hồng",
+      "label": "LOC"
+    },
+    {
+      "text": "Mạnh Nguyễn Viết Bổn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyên Nguyễn Viết Bò",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Diêm Tụ",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Viết Thanh (Xuân)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Minh (Hào)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Đan Chế",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ An",
+      "label": "LOC"
+    },
+    {
+      "text": "Đinh Sửu",
+      "label": "DATE"
+    },
+    {
+      "text": "Đinh Thìn Vĩnh Thịnh thứ 8",
+      "label": "DATE"
+    },
+    {
+      "text": "Định Tỵ",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Viết Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Kỷ Mão",
+      "label": "DATE"
+    },
+    {
+      "text": "Bảo Đại thứ 13",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "NGUYỄN VĂN VẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN KIẾM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN BỐI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN LỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN TRỰC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN KIỆM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN VĂN LÙNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời X",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời l",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "NGUYỄN VIẾT TRỌNG",
+      "tail": "Nguyễn Ngọc Dương (Phan)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "doc_id": "vgp_1988",
+  "tree_id": 1988,
+  "title": "VĂN - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1988/pha_ky_gia_su.html",
+  "text": "Họ Văn ta vốn ở Giáp Đông, thôn Văn Giai, xã Hoa\nỔ\n, huyện Nam Đường (\nNay là xã Thanh Khai – Thanh Chương – Nghệ An\n) . Các thế hệ đó xa xăm lắm nên không ghi chép được rõ ràng .\nTừng trải truyền miệng ( khoảng những năm 1400 ) có 3 anh em họ Văn, gia tư nghèo nàn, ở tại xứ Thanh Hóa, phủ tổng chưa rõ; Gặp phải sự việc khác thường, bỏ nhà ra đi, trải đến bản huyện, anh em cùng ở, mới được gần 1 năm, chú em dắt vợ con đi ở huyện Hương Khê ( Về sau này con cháu đông đúc, đời đời chức võ, tài nghệ vượt người ). Còn lại người anh cả với chú em út ở nhờ địa phận thôn Đa cương xã Ngọ xá làm thuê làm mướn qua ngày rồi bắt đầu quen xin ghi tên vào sổ hộ tịch cùng bản giáp chịu việc phục dịch. Từ đó vận nhà dần dà tiến lên, số đinh dần đông, trải đến đời thứ 5, dần có văn học, lại có chức sắc, tuần tự như thế, nối đời văn võ, nhiều lần đội ơn vua được ban quan tước .....",
+  "entities": [
+    {
+      "start": 16,
+      "end": 25,
+      "label": "LOC",
+      "text": "Giáp Đông"
+    },
+    {
+      "start": 27,
+      "end": 40,
+      "label": "LOC",
+      "text": "thôn Văn Giai"
+    },
+    {
+      "start": 42,
+      "end": 50,
+      "label": "LOC",
+      "text": "xã Hoa\nỔ"
+    },
+    {
+      "start": 53,
+      "end": 68,
+      "label": "LOC",
+      "text": "huyện Nam Đường"
+    },
+    {
+      "start": 78,
+      "end": 91,
+      "label": "LOC",
+      "text": "xã Thanh Khai"
+    },
+    {
+      "start": 94,
+      "end": 106,
+      "label": "LOC",
+      "text": "Thanh Chương"
+    },
+    {
+      "start": 109,
+      "end": 116,
+      "label": "LOC",
+      "text": "Nghệ An"
+    },
+    {
+      "start": 205,
+      "end": 226,
+      "label": "DATE",
+      "text": "khoảng những năm 1400"
+    },
+    {
+      "start": 276,
+      "end": 285,
+      "label": "LOC",
+      "text": "Thanh Hóa"
+    },
+    {
+      "start": 427,
+      "end": 442,
+      "label": "LOC",
+      "text": "huyện Hương Khê"
+    },
+    {
+      "start": 523,
+      "end": 535,
+      "label": "ORDER",
+      "text": "người anh cả"
+    },
+    {
+      "start": 540,
+      "end": 549,
+      "label": "ORDER",
+      "text": "chú em út"
+    },
+    {
+      "start": 565,
+      "end": 578,
+      "label": "LOC",
+      "text": "thôn Đa cương"
+    },
+    {
+      "start": 579,
+      "end": 588,
+      "label": "LOC",
+      "text": "xã Ngọ xá"
+    },
+    {
+      "start": 753,
+      "end": 762,
+      "label": "GENERATION",
+      "text": "đời thứ 5"
+    },
+    {
+      "start": 479,
+      "end": 484,
+      "label": "GENERATION",
+      "text": "đời c"
+    },
+    {
+      "start": 818,
+      "end": 823,
+      "label": "GENERATION",
+      "text": "đời v"
+    }
+  ],
+  "relations": []
+}

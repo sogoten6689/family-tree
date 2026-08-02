@@ -1,0 +1,1273 @@
+{
+  "entities": [
+    {
+      "text": "LÊ ĐỘT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thủy tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ LỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đệ nhị tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ MỊCH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đệ tam tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐẶNG THỊ SEN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LUYẾN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HOÀN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Đại Hành hoàng đế",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đệ tứ tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "DƯƠNG VÂN NGA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG THÂU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG TÍCH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG VIỆT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG ĐINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG ĐĨNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG CÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG TUNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG TƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG CẢNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG MANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LONG ĐỀ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ MINH XƯỞNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TÔNG THUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đệ lục tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ ĐẠC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đệ thất tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ KIẾM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đệ bát tổ",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ THƯỚC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ MỖI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lê Thứ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đinh Thị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HỐI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "NGUYỄN THỊ NGỌC LỘC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THINH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "NGUYỄN THỊ LÀNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TÒNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ KHOÁNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "TRỊNH THỊ NGỌC THƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRẦN THỊ NGỌC DUẪN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ TRỪ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ THỊ LĂNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ LỢI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "PHẠM NGỌC TRẦN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "TRỊNH THỊ NGỌC LỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THẠCH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHÚC AN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC LỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC NGHĨA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ HỮU LANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tư Tề",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ NGUYÊN LONG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ĐÀO NỮ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC CHÂU",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ KHÔI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ KHANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ KHIÊM",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "LÊ THỊ NGỌC LOAN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐẠO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THẬP",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ CÔNG QUẬN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "NGUYỄN THỊ THÁI DƯƠNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ VĂN CẢNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ CẢNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC THÔI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THÔI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "PHONG THỊ AN NHƠN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUANG THIÊNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THIÊNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THƯỜNG TIẾT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ DŨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỌ VỰC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ QUẾ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ ĐƯỜNG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC ĐẠI LANG",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "SƠ TỔ : LÊ PHƯỚC THÔI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Quảng Nam",
+      "label": "LOC"
+    },
+    {
+      "text": "Điện Bàn",
+      "label": "LOC"
+    },
+    {
+      "text": "Lam Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "1418",
+      "label": "DATE"
+    },
+    {
+      "text": "1428",
+      "label": "DATE"
+    },
+    {
+      "text": "1470",
+      "label": "DATE"
+    },
+    {
+      "text": "con trưởng",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ 2",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ 3",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ 4",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ",
+      "label": "ORDER"
+    },
+    {
+      "text": "LÊ PHƯỚC TRÍ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC TA",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC NGHI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ ĐÀO",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC\nTHỈ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC TỨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC ĐỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC CHẤN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ NGỌ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC NGŨ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC THÔ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC ĐẠI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC HỘ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC NHÂN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ THỊ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC DIỆN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC KÍNH",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC MẪN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC CHẤT",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC ĐỐI",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC NHƯ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC LÝ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC NHỊ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC THÔN",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "LÊ PHƯỚC",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1005",
+      "label": "DATE"
+    },
+    {
+      "text": "1005",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1004",
+      "label": "DATE"
+    },
+    {
+      "text": "1009",
+      "label": "DATE"
+    },
+    {
+      "text": "1007",
+      "label": "DATE"
+    },
+    {
+      "text": "1008",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1036",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1063",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1418",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1421",
+      "label": "DATE"
+    },
+    {
+      "text": "1385",
+      "label": "DATE"
+    },
+    {
+      "text": "1427",
+      "label": "DATE"
+    },
+    {
+      "text": "1433",
+      "label": "DATE"
+    },
+    {
+      "text": "1423",
+      "label": "DATE"
+    },
+    {
+      "text": "1425",
+      "label": "DATE"
+    },
+    {
+      "text": "1429",
+      "label": "DATE"
+    },
+    {
+      "text": "1432",
+      "label": "DATE"
+    },
+    {
+      "text": "1434",
+      "label": "DATE"
+    },
+    {
+      "text": "1437",
+      "label": "DATE"
+    },
+    {
+      "text": "1435",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1436",
+      "label": "DATE"
+    },
+    {
+      "text": "1454",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1470",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1428",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1424",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1427",
+      "label": "DATE"
+    },
+    {
+      "text": "3000",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1430",
+      "label": "DATE"
+    },
+    {
+      "text": "1443",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1446",
+      "label": "DATE"
+    },
+    {
+      "text": "1460",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1419",
+      "label": "DATE"
+    },
+    {
+      "text": "1471",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1471",
+      "label": "DATE"
+    },
+    {
+      "text": "ĐỜI 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 14",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 17",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 18",
+      "label": "GENERATION"
+    },
+    {
+      "text": "ĐỜI 19",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời L",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 22",
+      "label": "GENERATION"
+    },
+    {
+      "text": "con thứ 6",
+      "label": "ORDER"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ PHƯỚC DIỆN",
+      "tail": "LÊ PHƯỚC KÍNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ PHƯỚC KÍNH",
+      "tail": "LÊ PHƯỚC MẪN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ PHƯỚC NHƯ",
+      "tail": "LÊ PHƯỚC LÝ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ ĐỘT",
+      "tail": "LÊ LỘ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ LỘ",
+      "tail": "LÊ MỊCH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ MỊCH",
+      "tail": "ĐẶNG THỊ SEN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ MỊCH",
+      "tail": "LÊ HOÀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "ĐẶNG THỊ SEN",
+      "tail": "LÊ HOÀN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ HOÀN",
+      "tail": "DƯƠNG VÂN NGA",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG THÂU",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG TÍCH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG VIỆT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG ĐINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG ĐĨNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG CÂN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG TUNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG TƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG CẢNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG MANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ LONG ĐỀ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HOÀN",
+      "tail": "LÊ MINH XƯỞNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ LONG ĐINH",
+      "tail": "LÊ TÔNG THUẬN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ TÔNG THUẬN",
+      "tail": "LÊ ĐẠC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ ĐẠC",
+      "tail": "LÊ KIẾM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ ĐẠC",
+      "tail": "LÊ THƯỚC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ MỖI",
+      "tail": "Đinh Thị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ MỖI",
+      "tail": "LÊ HỐI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Đinh Thị",
+      "tail": "LÊ HỐI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ HỐI",
+      "tail": "NGUYỄN THỊ NGỌC LỘC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HỐI",
+      "tail": "LÊ THINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "NGUYỄN THỊ NGỌC LỘC",
+      "tail": "LÊ THINH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ THINH",
+      "tail": "NGUYỄN THỊ LÀNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ THINH",
+      "tail": "LÊ TÒNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ THINH",
+      "tail": "LÊ KHOÁNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "NGUYỄN THỊ LÀNG",
+      "tail": "LÊ TÒNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "NGUYỄN THỊ LÀNG",
+      "tail": "LÊ KHOÁNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ KHOÁNG",
+      "tail": "TRỊNH THỊ NGỌC THƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHOÁNG",
+      "tail": "LÊ HỌC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHOÁNG",
+      "tail": "LÊ TRỪ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHOÁNG",
+      "tail": "LÊ LỢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "TRỊNH THỊ NGỌC THƯƠNG",
+      "tail": "LÊ HỌC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "TRỊNH THỊ NGỌC THƯƠNG",
+      "tail": "LÊ TRỪ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "TRỊNH THỊ NGỌC THƯƠNG",
+      "tail": "LÊ LỢI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ HỌC",
+      "tail": "TRẦN THỊ NGỌC DUẪN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HỌC",
+      "tail": "LÊ THẠCH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ HỌC",
+      "tail": "LÊ PHÚC AN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "TRẦN THỊ NGỌC DUẪN",
+      "tail": "LÊ THẠCH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "TRẦN THỊ NGỌC DUẪN",
+      "tail": "LÊ PHÚC AN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ TRỪ",
+      "tail": "LÊ THỊ LĂNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ TRỪ",
+      "tail": "LÊ KHÔI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ TRỪ",
+      "tail": "LÊ KHANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ TRỪ",
+      "tail": "LÊ KHIÊM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ TRỪ",
+      "tail": "LÊ ĐẠO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ LĂNG",
+      "tail": "LÊ KHÔI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ LĂNG",
+      "tail": "LÊ KHANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ LĂNG",
+      "tail": "LÊ KHIÊM",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ LĂNG",
+      "tail": "LÊ ĐẠO",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ LỢI",
+      "tail": "PHẠM NGỌC TRẦN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ LỢI",
+      "tail": "TRỊNH THỊ NGỌC LỮ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ LỢI",
+      "tail": "LÊ NGUYÊN LONG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "PHẠM NGỌC TRẦN",
+      "tail": "LÊ NGUYÊN LONG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ LỢI",
+      "tail": "LÊ HỮU LANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "TRỊNH THỊ NGỌC LỮ",
+      "tail": "LÊ HỮU LANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHÔI",
+      "tail": "LÊ THƯỜNG TIẾT",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHÔI",
+      "tail": "LÊ DŨ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHÔI",
+      "tail": "LÊ THỌ VỰC",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHANG",
+      "tail": "LÊ THỌ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHANG",
+      "tail": "LÊ QUẾ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHANG",
+      "tail": "LÊ ĐƯỜNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ KHIÊM",
+      "tail": "LÊ THỊ NGỌC LOAN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHIÊM",
+      "tail": "LÊ THẬP",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHIÊM",
+      "tail": "LÊ VĂN CẢNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHIÊM",
+      "tail": "LÊ PHƯỚC THÔI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ KHIÊM",
+      "tail": "LÊ QUANG THIÊNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ NGỌC LOAN",
+      "tail": "LÊ THẬP",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ NGỌC LOAN",
+      "tail": "LÊ VĂN CẢNH",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ NGỌC LOAN",
+      "tail": "LÊ PHƯỚC THÔI",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "LÊ THỊ NGỌC LOAN",
+      "tail": "LÊ QUANG THIÊNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ THẬP",
+      "tail": "NGUYỄN THỊ THÁI DƯƠNG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "LÊ PHƯỚC THÔI",
+      "tail": "PHONG THỊ AN NHƠN",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "LÊ PHƯỚC THÔI",
+      "tail": "LÊ PHƯỚC ĐẠI LANG",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

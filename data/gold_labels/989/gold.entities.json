@@ -1,0 +1,57 @@
+{
+  "entities": [
+    {
+      "text": "Thuỷ tổ Phúc-Tiên công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 10",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Phủ Lâm Thao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thuấn Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đời thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Vân Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngọc Dường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phi Thức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại đạo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "đời thứ 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Thuỷ tổ",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ngọc Dường",
+      "tail": "Trần Phi Thức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

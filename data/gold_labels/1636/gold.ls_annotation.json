@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "id": "ent_ad36d3338564",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1133,
+        "end": 1143,
+        "text": "Thôn Xã Vĩ",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

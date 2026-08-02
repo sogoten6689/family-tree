@@ -1,0 +1,16 @@
+{
+  "doc_id": "vgp_120",
+  "tree_id": 120,
+  "title": "NGUYỄN - Long An",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/120/pha_ky_gia_su.html",
+  "text": "Phả ký\n\nVài ý kiến của cháu Nguyễn Quốc Tuấn.\nDo phần mềm làm gia phả này tự động điền tên cháu vào chổ : Người biên soạn.\nCó lẽ gọi cháu là người đưa gia phả này lên Internet thì đúng hơn.\n\nQua việc đưa gia phả này lên Internet cháu thấy có một và ý kiến như sau:\n1/Có thể cháu sẽ gửi User và Pass cho các Cậu ở các CHI-NHÁNH khác...để có thể cập nhật thêm các họ hàng trong họ tộc mình vào cho đầy đủ.\n2/ Các Ông bà,dì cậu xem chổ nào có sai,thì bảo cháu để cháu sửa lại.\n3/Nếu được thì mong gia đình bổ sung thêm \nVới người đã mất thì bổ sung Năm sinh,ngày tháng mất (Giỗ kỵ),nơi an táng,cũng như tên họ đầy đủ.\nNgười còn sống thì thêm địa chỉ và Điện thoại có lẻ sẽ cần thiết.\nVì cháu chép lại nên có những Ông bà cháu không biết ai là Ông,ai là Bà (Phái Nam/Nữ) ,cũng như không biết tên họ người phối ngẫu.\nVà theo tìm hiểu,Gia phả chỉ ghi chép tiếp tục theo các Ông (Nội tộc) ,còn các bà thì chỉ ghi thêm chồng và các con thì kết thúc (Vì nếu con các bà có cùng họ thì cũng thuộc Gia Phả khác)\nEmail và điện thoại của cháu có trên trang bìa Gia phả. (Cháu có sử dụng Viber và Facebook)",
+  "entities": [
+    {
+      "start": 28,
+      "end": 44,
+      "label": "PER_NAME",
+      "text": "Nguyễn Quốc Tuấn"
+    }
+  ],
+  "relations": []
+}

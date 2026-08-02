@@ -1,0 +1,69 @@
+{
+  "entities": [
+    {
+      "text": "thôn Dưỡng Thông",
+      "label": "LOC"
+    },
+    {
+      "text": "Rãng Thông",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Thượng Hiền",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Kiến Xương",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Thaí Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hoá",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "sáu đời đầu tiên",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ bảy",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Trần Đức Song",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Canh Tý",
+      "label": "DATE"
+    },
+    {
+      "text": "1960",
+      "label": "DATE"
+    },
+    {
+      "text": "Trần Đức Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tháng 8 năm 1993",
+      "label": "DATE"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Đức Song",
+      "tail": "Trần Đức Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "entities": [
+    {
+      "text": "bốn đời",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Minh Mạng nhị thập niên",
+      "label": "DATE"
+    },
+    {
+      "text": "1839",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Quang Hưng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đức Ban",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thế hệ thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Sính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tịnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Dự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thế hệ thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thế hệ thứ nhất",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1614",
+      "label": "DATE"
+    },
+    {
+      "text": "đầu thế kỷ 17",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Văn Thạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thế hệ thứ 12",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Nguyễn Văn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nho Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "Nguyễn Đức Huân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "0914",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}
