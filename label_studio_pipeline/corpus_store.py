@@ -65,6 +65,10 @@ def save_tree_corpus(
         json.dumps(meta_out, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+    (out_dir / "metadata.json").write_text(
+        json.dumps(meta_out, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     (out_dir / "pha_ky.txt").write_text(pha_ky_text, encoding="utf-8")
     (out_dir / "pha_he.json").write_text(
         json.dumps(pha_he_payload, ensure_ascii=False, indent=2) + "\n",

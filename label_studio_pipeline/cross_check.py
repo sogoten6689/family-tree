@@ -9,6 +9,16 @@ from typing import Any
 from label_studio_pipeline.gemini_extractor import ExtractionResult
 
 
+def normalize_person_name(value: str) -> str:
+    """Normalize a person name for overlap checks."""
+    return _normalize_name(value)
+
+
+def collect_diagram_names(pha_he: dict[str, Any]) -> set[str]:
+    """Collect normalized person names from a pha_he payload."""
+    return _collect_diagram_names(pha_he)
+
+
 def _normalize_name(value: str) -> str:
     text = unicodedata.normalize("NFC", value.lower().strip())
     text = re.sub(r"\s+", " ", text)

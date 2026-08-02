@@ -8,5 +8,6 @@ nlp_family_extractor/data/
 
 # Label Studio pipeline artifacts
 data/vgp_corpus/
+data/gia_pha/
 data/gemini_labels/
 label_studio_pipeline/.env
