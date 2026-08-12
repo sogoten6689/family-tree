@@ -1,0 +1,16 @@
+{
+  "tree_id": 2346,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "NGUYỄN VĂN - HOÀ VANG - Đà Nẵng",
+  "generated_at": "2026-08-10T08:05:00.437523+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/2346/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/2346/pha_he.html",
+  "real_pha_ky_char_count": 4957,
+  "char_count": 6626,
+  "entity_count": 134,
+  "relation_count": 54,
+  "sentence_count": 80,
+  "missing_name_count": 54,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 1.0
+}

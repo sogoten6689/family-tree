@@ -1,0 +1,37 @@
+{
+  "result": [
+    {
+      "id": "ent_a71f64491866",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 0,
+        "end": 9,
+        "text": "Đời thứ 1",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_0b531daca8a1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 12,
+        "end": 19,
+        "text": "Thuỷ tổ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

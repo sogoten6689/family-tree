@@ -1,0 +1,33 @@
+{
+  "entities": [
+    {
+      "text": "đời l",
+      "label": "GENERATION"
+    },
+    {
+      "text": "tổ tiên từ cao xuống thấp",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ tiên",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ chức công việc này sao cho gọn mà đầy đủ",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ quốc",
+      "label": "LOC"
+    },
+    {
+      "text": "xã hội Việt Nam văn minh",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện ông bà kể lại",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

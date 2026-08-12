@@ -1,0 +1,194 @@
+{
+  "result": [
+    {
+      "id": "ent_c33cd91ce07e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 572,
+        "end": 587,
+        "text": "Nguyễn Đại Công",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3e7aee3c38be",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 646,
+        "end": 660,
+        "text": "Nguyễn Đắc Đạo",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e074e6ffd42b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 277,
+        "end": 290,
+        "text": "Nguyễn Bá Thọ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_76bfcb900add",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1164,
+        "end": 1172,
+        "text": "năm 1428",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_98773054a2f4",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1186,
+        "end": 1190,
+        "text": "1380",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d52655d15550",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1191,
+        "end": 1195,
+        "text": "1442",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2f84d173d831",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1340,
+        "end": 1348,
+        "text": "năm 1460",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_4bbc1e9b8e34",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1408,
+        "end": 1412,
+        "text": "1460",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d7380af426f8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1421,
+        "end": 1425,
+        "text": "1497",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_32a2bf8dfa9f",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1427,
+        "end": 1435,
+        "text": "Năm 1462",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_06e2403d9473",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1846,
+        "end": 1854,
+        "text": "năm 1470",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_c33cd91ce07e",
+      "to_id": "ent_3e7aee3c38be"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_c33cd91ce07e",
+      "to_id": "ent_e074e6ffd42b"
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

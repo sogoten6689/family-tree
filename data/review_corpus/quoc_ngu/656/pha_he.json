@@ -1,0 +1,21 @@
+{
+  "tree_id": 656,
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/656/pha_he.html",
+  "lineage_name": "Lê - Bình Định",
+  "parser_mode": "tree_view",
+  "node_count": 1,
+  "relationship_count": 0,
+  "nodes": [
+    {
+      "tree_id": 656,
+      "node_id": 284831,
+      "label": "1.1 Thuỷ tổ",
+      "name": "Thuỷ tổ",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": null,
+      "is_spouse_row": false
+    }
+  ],
+  "relationships": []
+}

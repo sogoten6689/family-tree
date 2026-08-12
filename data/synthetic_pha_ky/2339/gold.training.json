@@ -1,0 +1,23 @@
+{
+  "doc_id": "vgp_2339",
+  "tree_id": 2339,
+  "title": "Phùng - Hưng Yên",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/2339/pha_he.html",
+  "text": "Đời thứ 1: \nThuỷ tổ.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 9,
+      "label": "GENERATION",
+      "text": "Đời thứ 1"
+    },
+    {
+      "start": 12,
+      "end": 19,
+      "label": "PER_NAME",
+      "text": "Thuỷ tổ"
+    }
+  ],
+  "relations": [],
+  "source": "synthetic_supplement_v2"
+}

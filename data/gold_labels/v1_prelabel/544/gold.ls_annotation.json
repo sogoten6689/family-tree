@@ -1,0 +1,247 @@
+{
+  "result": [
+    {
+      "id": "ent_8253c6c27a11",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1309,
+        "end": 1326,
+        "text": "Nguyễn Đình Tương",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b165446f78ef",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3082,
+        "end": 3097,
+        "text": "Nguyễn Văn Vanh",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5f224b581b5d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3099,
+        "end": 3113,
+        "text": "Nguyễn Văn Hạp",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c5039375f675",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 344,
+        "end": 348,
+        "text": "1462",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d91bcb5a63d7",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1248,
+        "end": 1257,
+        "text": "15/5/2004",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_6a76dec9fdd0",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3153,
+        "end": 3161,
+        "text": "năm 2004",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a54dad1fa0bd",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3983,
+        "end": 3987,
+        "text": "1937",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9908336bc11a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3990,
+        "end": 3994,
+        "text": "1938",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_64a9a99a5c0b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 4247,
+        "end": 4255,
+        "text": "năm 1987",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_518eae322850",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3475,
+        "end": 3481,
+        "text": "đời 01",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_fdf2b586b5e1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3486,
+        "end": 3496,
+        "text": "đời thứ 07",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3bf4c7e90542",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3583,
+        "end": 3592,
+        "text": "đời thứ 8",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_bdd17a129556",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3749,
+        "end": 3759,
+        "text": "đời thứ 10",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_14f8d453594c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3794,
+        "end": 3803,
+        "text": "đời thứ 3",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5e9ad7967994",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 4903,
+        "end": 4908,
+        "text": "đời v",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f467039e22f0",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 5048,
+        "end": 5057,
+        "text": "con thứ 3",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

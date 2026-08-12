@@ -1,0 +1,41 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Văn Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Yến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Đá",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Giảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Văn Nghĩ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1969",
+      "label": "DATE"
+    },
+    {
+      "text": "1558",
+      "label": "DATE"
+    },
+    {
+      "text": "1648",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

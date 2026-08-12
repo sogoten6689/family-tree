@@ -1,0 +1,237 @@
+{
+  "entities": [
+    {
+      "text": "Cụ Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngọc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Văn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1516",
+      "label": "DATE"
+    },
+    {
+      "text": "1522",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1622",
+      "label": "DATE"
+    },
+    {
+      "text": "1622",
+      "label": "DATE"
+    },
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời Thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời 13",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Siêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đoài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nhân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Xuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Từ Chấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đãi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "san",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bản",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần cũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "tổ con người có tông\nThủy tổ Hồng Nhân công vốn người họ Phùng tương truyền là người Tàu di cư",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ ta lánh nạn về quê ngoại Kinh bắc",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ sinh hạ được 4 người con 3 trai 1 con gái",
+      "label": "LOC"
+    },
+    {
+      "text": "quận Công Ngô Đình Nga gặp cảm mến lấy làm thiếp",
+      "label": "LOC"
+    },
+    {
+      "text": "Quận Công tử trận",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Đồng đội làm lụng nuôi con\nViệc bà thành phi của chúa Trịnh Tạc có 2 thuyết\n - thứ nhất",
+      "label": "LOC"
+    },
+    {
+      "text": "bình định",
+      "label": "LOC"
+    },
+    {
+      "text": "Tổ nhưng tìm đến thì biết Thủy Tổ đã mất mới tiến cử bà Ngọc Đài là người kế tục vốn âm nhạc của Thủy Tổ",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Đồng đội thấy người con gái cắt cỏ",
+      "label": "LOC"
+    },
+    {
+      "text": "quận công Ngo đình Nga",
+      "label": "LOC"
+    },
+    {
+      "text": "Nghệ an",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Dương lai",
+      "label": "LOC"
+    },
+    {
+      "text": "xã quả linh lại loạn li một lần nữa nên không ghi chép được mấy đời",
+      "label": "LOC"
+    },
+    {
+      "text": "Tổ Huyền minh tính là đời thứ nhất\nNhư vậy họ ta lưu lạc về Trình xuyên trong khoảng 1522 đến 1622 kể cũng đã được 500 năm \nHọ Ta là dòng họ lớn trong làng",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Trình Xuyên",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ ta là cụ Hồng Nhân Công",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

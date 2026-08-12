@@ -1,0 +1,898 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Đình Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Can",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Cường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Tương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Can",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Chúng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Can",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Can",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Tiếu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Can",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đình Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Thận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Thận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Thận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kính Phu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Mân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trinh Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Mân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Mân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cầm (1895-1930)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Lân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xuân Quán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phỉ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bùi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trinh Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trinh Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Yêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trinh Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trinh Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cầm (1895-1930)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cầm (1895-1930)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Luyện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Tuyển",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Lình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Kình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Bành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Trình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Bình",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Tiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xuân Quán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xuân Quán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ngọc Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Xuân Thìn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Tuất",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Tý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thanh Dần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Nhâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Trọng Ngụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Yêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Yêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Yêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Dy",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Tương",
+      "tail": "Nguyễn Đình Can",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Tương",
+      "tail": "Nguyễn Đình Cường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Can",
+      "tail": "Nguyễn Đình Chúng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Can",
+      "tail": "Nguyễn Đình Tiếu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Can",
+      "tail": "Nguyễn Đình Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đình Hằng",
+      "tail": "Nguyễn Kính Thận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kính Thận",
+      "tail": "Nguyễn Kính Phu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kính Phu",
+      "tail": "Nguyễn Lắm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kính Phu",
+      "tail": "Nguyễn Giao",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kính Phu",
+      "tail": "Nguyễn Lơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kính Phu",
+      "tail": "Ông Nguyễn Văn Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kính Phu",
+      "tail": "Nguyễn Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Lắm",
+      "tail": "Nguyễn Mân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Giao",
+      "tail": "Nguyễn Bính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Lơn",
+      "tail": "Nguyễn Lân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Dương",
+      "tail": "Nguyễn Hoan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Minh",
+      "tail": "Nguyễn Trinh Tường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Phát",
+      "tail": "Nguyễn Liễu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Mân",
+      "tail": "Nguyễn Cầm (1895-1930)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bính",
+      "tail": "Nguyễn Hồ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Lân",
+      "tail": "Ông Nguyễn Văn Cận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Lân",
+      "tail": "Nguyễn Trọng Tiến",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Lân",
+      "tail": "Nguyễn Toàn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Lân",
+      "tail": "Nguyễn Xuân Quán",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bùi",
+      "tail": "Nguyễn Phỉ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bùi",
+      "tail": "Nguyễn Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bùi",
+      "tail": "Nguyễn Phú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trinh Tường",
+      "tail": "Nguyễn Yêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trinh Tường",
+      "tail": "Nguyễn Hy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trinh Tường",
+      "tail": "Nguyễn Kỳ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Liễu",
+      "tail": "Nguyễn Viện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cầm (1895-1930)",
+      "tail": "Nguyễn Huyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hồ",
+      "tail": "Nguyễn Luyện",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hồ",
+      "tail": "Ông Nguyễn Văn Tuyển",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Cận",
+      "tail": "Ông Nguyễn Văn Lình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Cận",
+      "tail": "Ông Nguyễn Văn Kình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Cận",
+      "tail": "Ông Nguyễn Văn Bành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trọng Tiến",
+      "tail": "Ông Nguyễn Văn Trình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trọng Tiến",
+      "tail": "Ông Nguyễn Văn Bình",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Trọng Tiến",
+      "tail": "Ông Nguyễn Văn Phong",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Xuân Quán",
+      "tail": "Nguyễn Ngọc Trân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Huy",
+      "tail": "Nguyễn Xuân Thìn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Huy",
+      "tail": "Ông Nguyễn Văn Tuất",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Huy",
+      "tail": "Ông Nguyễn Văn Tý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Huy",
+      "tail": "Nguyễn Thanh Dần",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Huy",
+      "tail": "Ông Nguyễn Văn Nhâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Quý",
+      "tail": "Ông Nguyễn Văn Cang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Phú",
+      "tail": "Nguyễn Trọng Ngụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Yêm",
+      "tail": "Ông Nguyễn Văn Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Yêm",
+      "tail": "Ông Nguyễn Văn Cung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Hy",
+      "tail": "Nguyễn Cát",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Kỳ",
+      "tail": "Ông Nguyễn Văn Dy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

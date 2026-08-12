@@ -1,0 +1,640 @@
+{
+  "doc_id": "vgp_423",
+  "tree_id": 423,
+  "title": "TẠ ÐĂNG - Hà Tây",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/423/pha_he.html",
+  "text": "Cao cao cao tổ Thiện Tình có 4 người con: Cao cao tổ Phúc Tính, Cao cao tổ Tảo Thanh, Cao cao tổ Thanh Tiết, Cao cao tổ Từ Dĩ.\nCao cao cao tổ Thiện Tình sinh được Cao cao tổ Tảo Thanh.\nCao cao cao tổ Thiện Tình hạ sinh Cao cao tổ Thanh Tiết.\nCao cao tổ Từ Dĩ là con của Cao cao cao tổ Thiện Tình.\nCao cao tổ Phúc Tính có 2 người con: Cao tổ Đạo Toàn, Cao tổ Tảo Hoá.\nCao cao tổ Phúc Tính hạ sinh Cao tổ Tảo Hoá.\nCao tổ Đạo Toàn có 4 người con: Tằng tổ Phúc Hoằng, Tằng tổ Mãnh Tảo Trực, Tằng tổ cô Dung Thịnh, Tằng tổ cô Xuân Hoa.\nTằng tổ Mãnh Tảo Trực là con của Cao tổ Đạo Toàn.\nCao tổ Đạo Toàn sinh được Tằng tổ cô Dung Thịnh.\nCao tổ Đạo Toàn sinh được Tằng tổ cô Xuân Hoa.\nTổ Tạ Đăng Đệ có 6 người con: Bà Tạ Thị Sâm, Tạ Đăng Liêm, Bà Tạ Thị Toà, Tạ Thiên Phú, Tạ Đăng Vọng, Bà Tạ Thị Dù.\nBà Tạ Thị Sâm là con của Tổ Tạ Đăng Đệ.\nTổ Tạ Đăng Đệ sinh được Tạ Đăng Liêm.\nBà Tạ Thị Toà là con của Tổ Tạ Đăng Đệ.\nTổ Tạ Đăng Đệ hạ sinh Bà Tạ Thị Dù.\nTạ Đăng Vọng sinh được 2 người con, gồm: Tạ Đăng Huân, Tạ Đăng Đạt.\nTạ Đăng Vọng sinh được Tạ Đăng Huân.\nTạ Đăng Đạt sinh được 4 người con, gồm: Tạ Đăng Chấn, Tạ Đăng Cơ, Tạ Đăng Viên, Tạ Đăng Nghiệp.\nTạ Đăng Đạt sinh được Tạ Đăng Chấn.\nTạ Đăng Đạt hạ sinh Tạ Đăng Viên.\nTạ Đăng Cơ sinh được 1 người con, gồm: Tạ Đăng Dực.\nTạ Đăng Cơ hạ sinh Tạ Đăng Dực.\nTạ Đăng Dực sinh được 4 người con, gồm: Tạ Đăng Nghị, Tạ Đăng Tháp, Tạ Đăng Bạn, Tạ Đăng Đặng.\nTạ Đăng Dực sinh được Tạ Đăng Nghị.\nTạ Đăng Dực sinh được Tạ Đăng Tháp.\nTạ Đăng Dực hạ sinh Tạ Đăng Bạn.\nTạ Đăng Đặng là con của Tạ Đăng Dực.\nTạ Đăng Tháp có 3 người con: Tạ Đăng Sầm, Tạ Đăng Vực, Tạ Đăng Tiến.\nTạ Đăng Tháp hạ sinh Tạ Đăng Sầm.\nTạ Đăng Tháp hạ sinh Tạ Đăng Vực.\nTạ Đăng Sầm sinh được 1 người con, gồm: Tạ Đăng Đảng.\nTạ Đăng Sầm hạ sinh Tạ Đăng Đảng.\nTạ Đăng Đảng sinh được 4 người con, gồm: Tạ Đăng Lượng, Tạ Đăng Minh, Tạ Đăng Còm, Tạ Đăng Oánh.\nTạ Đăng Đảng hạ sinh Tạ Đăng Lượng.\nTạ Đăng Đảng sinh được Tạ Đăng Còm.\nTạ Đăng Oánh là con của Tạ Đăng Đảng.\nTạ Đăng Lượng sinh được 1 người con, gồm: Tạ Đăng Lẫm.\nTạ Đăng Lượng hạ sinh Tạ Đăng Lẫm.\nTạ Đăng Lẫm có 1 người con: Tạ Đăng Loan.\nTạ Đăng Lẫm hạ sinh Tạ Đăng Loan.\nTạ Đăng Loan sinh được 5 người con, gồm: Tạ Đăng Ngạn, Tạ Đăng Đỗng, Tạ Đăng Nhai, Tạ Đăng Thuyên, Bà Tạ Thị Diễm.\nTạ Đăng Ngạn là con của Tạ Đăng Loan.\nTạ Đăng Loan sinh được Tạ Đăng Đỗng.\nTạ Đăng Loan hạ sinh Tạ Đăng Nhai.\nTạ Đăng Thuyên là con của Tạ Đăng Loan.\nTạ Đăng Loan hạ sinh Bà Tạ Thị Diễm.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 25,
+      "label": "PER_NAME",
+      "text": "Cao cao cao tổ Thiện Tình"
+    },
+    {
+      "start": 0,
+      "end": 25,
+      "label": "PER_NAME",
+      "text": "Cao cao cao tổ Thiện Tình"
+    },
+    {
+      "start": 64,
+      "end": 84,
+      "label": "PER_NAME",
+      "text": "Cao cao tổ Tảo Thanh"
+    },
+    {
+      "start": 0,
+      "end": 25,
+      "label": "PER_NAME",
+      "text": "Cao cao cao tổ Thiện Tình"
+    },
+    {
+      "start": 86,
+      "end": 107,
+      "label": "PER_NAME",
+      "text": "Cao cao tổ Thanh Tiết"
+    },
+    {
+      "start": 109,
+      "end": 125,
+      "label": "PER_NAME",
+      "text": "Cao cao tổ Từ Dĩ"
+    },
+    {
+      "start": 0,
+      "end": 25,
+      "label": "PER_NAME",
+      "text": "Cao cao cao tổ Thiện Tình"
+    },
+    {
+      "start": 42,
+      "end": 62,
+      "label": "PER_NAME",
+      "text": "Cao cao tổ Phúc Tính"
+    },
+    {
+      "start": 42,
+      "end": 62,
+      "label": "PER_NAME",
+      "text": "Cao cao tổ Phúc Tính"
+    },
+    {
+      "start": 351,
+      "end": 365,
+      "label": "PER_NAME",
+      "text": "Cao tổ Tảo Hoá"
+    },
+    {
+      "start": 334,
+      "end": 349,
+      "label": "PER_NAME",
+      "text": "Cao tổ Đạo Toàn"
+    },
+    {
+      "start": 464,
+      "end": 485,
+      "label": "PER_NAME",
+      "text": "Tằng tổ Mãnh Tảo Trực"
+    },
+    {
+      "start": 334,
+      "end": 349,
+      "label": "PER_NAME",
+      "text": "Cao tổ Đạo Toàn"
+    },
+    {
+      "start": 334,
+      "end": 349,
+      "label": "PER_NAME",
+      "text": "Cao tổ Đạo Toàn"
+    },
+    {
+      "start": 487,
+      "end": 508,
+      "label": "PER_NAME",
+      "text": "Tằng tổ cô Dung Thịnh"
+    },
+    {
+      "start": 334,
+      "end": 349,
+      "label": "PER_NAME",
+      "text": "Cao tổ Đạo Toàn"
+    },
+    {
+      "start": 510,
+      "end": 529,
+      "label": "PER_NAME",
+      "text": "Tằng tổ cô Xuân Hoa"
+    },
+    {
+      "start": 677,
+      "end": 690,
+      "label": "PER_NAME",
+      "text": "Tổ Tạ Đăng Đệ"
+    },
+    {
+      "start": 707,
+      "end": 720,
+      "label": "PER_NAME",
+      "text": "Bà Tạ Thị Sâm"
+    },
+    {
+      "start": 677,
+      "end": 690,
+      "label": "PER_NAME",
+      "text": "Tổ Tạ Đăng Đệ"
+    },
+    {
+      "start": 677,
+      "end": 690,
+      "label": "PER_NAME",
+      "text": "Tổ Tạ Đăng Đệ"
+    },
+    {
+      "start": 722,
+      "end": 734,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Liêm"
+    },
+    {
+      "start": 736,
+      "end": 749,
+      "label": "PER_NAME",
+      "text": "Bà Tạ Thị Toà"
+    },
+    {
+      "start": 677,
+      "end": 690,
+      "label": "PER_NAME",
+      "text": "Tổ Tạ Đăng Đệ"
+    },
+    {
+      "start": 677,
+      "end": 690,
+      "label": "PER_NAME",
+      "text": "Tổ Tạ Đăng Đệ"
+    },
+    {
+      "start": 779,
+      "end": 791,
+      "label": "PER_NAME",
+      "text": "Bà Tạ Thị Dù"
+    },
+    {
+      "start": 765,
+      "end": 777,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Vọng"
+    },
+    {
+      "start": 765,
+      "end": 777,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Vọng"
+    },
+    {
+      "start": 988,
+      "end": 1000,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Huân"
+    },
+    {
+      "start": 1002,
+      "end": 1013,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đạt"
+    },
+    {
+      "start": 1002,
+      "end": 1013,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đạt"
+    },
+    {
+      "start": 1092,
+      "end": 1104,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Chấn"
+    },
+    {
+      "start": 1002,
+      "end": 1013,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đạt"
+    },
+    {
+      "start": 1118,
+      "end": 1130,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Viên"
+    },
+    {
+      "start": 1106,
+      "end": 1116,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Cơ"
+    },
+    {
+      "start": 1106,
+      "end": 1116,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Cơ"
+    },
+    {
+      "start": 1257,
+      "end": 1268,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Dực"
+    },
+    {
+      "start": 1257,
+      "end": 1268,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Dực"
+    },
+    {
+      "start": 1257,
+      "end": 1268,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Dực"
+    },
+    {
+      "start": 1342,
+      "end": 1354,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Nghị"
+    },
+    {
+      "start": 1257,
+      "end": 1268,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Dực"
+    },
+    {
+      "start": 1356,
+      "end": 1368,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Tháp"
+    },
+    {
+      "start": 1257,
+      "end": 1268,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Dực"
+    },
+    {
+      "start": 1370,
+      "end": 1381,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Bạn"
+    },
+    {
+      "start": 1383,
+      "end": 1395,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đặng"
+    },
+    {
+      "start": 1257,
+      "end": 1268,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Dực"
+    },
+    {
+      "start": 1356,
+      "end": 1368,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Tháp"
+    },
+    {
+      "start": 1356,
+      "end": 1368,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Tháp"
+    },
+    {
+      "start": 1568,
+      "end": 1579,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Sầm"
+    },
+    {
+      "start": 1356,
+      "end": 1368,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Tháp"
+    },
+    {
+      "start": 1581,
+      "end": 1592,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Vực"
+    },
+    {
+      "start": 1568,
+      "end": 1579,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Sầm"
+    },
+    {
+      "start": 1568,
+      "end": 1579,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Sầm"
+    },
+    {
+      "start": 1716,
+      "end": 1728,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đảng"
+    },
+    {
+      "start": 1716,
+      "end": 1728,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đảng"
+    },
+    {
+      "start": 1716,
+      "end": 1728,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đảng"
+    },
+    {
+      "start": 1805,
+      "end": 1818,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Lượng"
+    },
+    {
+      "start": 1716,
+      "end": 1728,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đảng"
+    },
+    {
+      "start": 1834,
+      "end": 1845,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Còm"
+    },
+    {
+      "start": 1847,
+      "end": 1859,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Oánh"
+    },
+    {
+      "start": 1716,
+      "end": 1728,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đảng"
+    },
+    {
+      "start": 1805,
+      "end": 1818,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Lượng"
+    },
+    {
+      "start": 1805,
+      "end": 1818,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Lượng"
+    },
+    {
+      "start": 2013,
+      "end": 2024,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Lẫm"
+    },
+    {
+      "start": 2013,
+      "end": 2024,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Lẫm"
+    },
+    {
+      "start": 2013,
+      "end": 2024,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Lẫm"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2178,
+      "end": 2190,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Ngạn"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2192,
+      "end": 2204,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Đỗng"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2206,
+      "end": 2218,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Nhai"
+    },
+    {
+      "start": 2220,
+      "end": 2234,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Thuyên"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2089,
+      "end": 2101,
+      "label": "PER_NAME",
+      "text": "Tạ Đăng Loan"
+    },
+    {
+      "start": 2236,
+      "end": 2250,
+      "label": "PER_NAME",
+      "text": "Bà Tạ Thị Diễm"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 2
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 4
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 5
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 8,
+      "tail": 9
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 11
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 14
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 16
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 24,
+      "tail": 18
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 24,
+      "tail": 21
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 24,
+      "tail": 22
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 24,
+      "tail": 25
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 27,
+      "tail": 28
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 32,
+      "tail": 31
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 32,
+      "tail": 33
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 35,
+      "tail": 45
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 45,
+      "tail": 39
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 45,
+      "tail": 49
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 45,
+      "tail": 43
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 45,
+      "tail": 44
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 49,
+      "tail": 52
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 49,
+      "tail": 50
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 52,
+      "tail": 60
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 60,
+      "tail": 62
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 60,
+      "tail": 58
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 60,
+      "tail": 59
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 62,
+      "tail": 65
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 65,
+      "tail": 76
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 76,
+      "tail": 68
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 76,
+      "tail": 71
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 76,
+      "tail": 73
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 76,
+      "tail": 74
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 76,
+      "tail": 77
+    }
+  ],
+  "source": "synthetic_supplement_v2"
+}

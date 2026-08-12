@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "protocol": "document_level_80_20_v1",
+  "split": "train",
+  "locked": false,
+  "created_at": "2026-08-10T03:03:08.075366+00:00",
+  "ratio_target": "80/20",
+  "doc_count": 20,
+  "tree_ids": [
+    122,
+    1684,
+    367,
+    321,
+    310,
+    1630,
+    277,
+    1508,
+    1537,
+    1550,
+    1546,
+    255,
+    396,
+    1716,
+    423,
+    617,
+    656,
+    844,
+    1107,
+    2339
+  ],
+  "note": "Train set — expand to 40 doc per labeled_corpus_collection_plan.md"
+}

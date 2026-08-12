@@ -1,0 +1,16 @@
+{
+  "tree_id": 1630,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "HỌ - Nam Định",
+  "generated_at": "2026-08-10T08:04:59.474757+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/1630/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/1630/pha_he.html",
+  "real_pha_ky_char_count": 3473,
+  "char_count": 3162,
+  "entity_count": 132,
+  "relation_count": 52,
+  "sentence_count": 80,
+  "missing_name_count": 52,
+  "generation_mode": "full",
+  "diagram_overlap_ratio": 0.4132
+}

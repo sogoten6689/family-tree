@@ -1,0 +1,1019 @@
+{
+  "entities": [
+    {
+      "text": "Ông Võ Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Bùi Thị Khuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Ban",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Quế Thị Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vỗ Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Tám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Đặng Thị Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Bách Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Thìn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Võ Ban",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Đặng Thị Nghiễm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Quýnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Hoá",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Chí Quyết (Mất )",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Phương Nam (Mất )",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Đạt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ An Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ An Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Thu Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ An Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Tâm An",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ An Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Anh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Thu Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "võ Đúc Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Tài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Hậu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Tuyết Ngân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Ngô Thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Vân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Kim Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đức Thắng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Kha",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị QuỳnhThương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Tám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Tám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Khánh Tùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Tám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thuận Phong",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Bách Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Bách Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Bảy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Xuân Khánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Bách Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Bách Khoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Oanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Quyền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Tuyết",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Thuận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Loan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Lực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Quế Thị Bảy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Võ Thị Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Sơn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Võ Đông",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Ông Võ Khuê",
+      "tail": "Bà Bùi Thị Khuyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Khuê",
+      "tail": "Ông Võ Giai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Khuê",
+      "tail": "Ông Võ Ban",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Thãnh",
+      "tail": "Vỗ Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Thãnh",
+      "tail": "Võ Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Thãnh",
+      "tail": "Bà Võ Thị Xuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Vỗ Thành",
+      "tail": "Bà Quế Thị Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vỗ Thành",
+      "tail": "Bà Võ Thị Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vỗ Thành",
+      "tail": "Võ Thảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vỗ Thành",
+      "tail": "Bà Võ Thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vỗ Thành",
+      "tail": "Bà Võ Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vỗ Thành",
+      "tail": "Võ Kha",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vỗ Thành",
+      "tail": "Võ Tám",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Ông Võ Giai",
+      "tail": "Bà Đặng Thị Định",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Giai",
+      "tail": "Võ Bách Khoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Giai",
+      "tail": "Bà Võ Thị Thìn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Giai",
+      "tail": "Bà Võ Thị Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Giai",
+      "tail": "Võ Quyền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Võ Giai",
+      "tail": "Võ Lực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Ông Võ Ban",
+      "tail": "Bà Đặng Thị Nghiễm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Kính",
+      "tail": "Bà Nguyễn Thị Liễu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Kính",
+      "tail": "Võ Đức Hoàng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Kính",
+      "tail": "Võ Đức Hậu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Quý",
+      "tail": "Bà Trần Thị Quýnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Quý",
+      "tail": "Bà Võ Thị Hoá",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Quý",
+      "tail": "Võ Chí Quyết (Mất )",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Quý",
+      "tail": "Võ Phương Nam (Mất )",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Quý",
+      "tail": "Bà Võ Thị Đạt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ An Huy",
+      "tail": "Bà Trần Thị Thu Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ An Huy",
+      "tail": "Bà Võ Thị Tâm An",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ An Huy",
+      "tail": "Võ Đức Anh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đức Hoàng",
+      "tail": "Bà Võ Thị Thu Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đức Hoàng",
+      "tail": "võ Đúc Lộc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Đức Hậu",
+      "tail": "Bà Nguyễn Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đức Hậu",
+      "tail": "Võ Đức Tài",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đức Hậu",
+      "tail": "Võ Tuyết Ngân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Thảo",
+      "tail": "Bà Ngô Thị Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Thảo",
+      "tail": "Bà Võ Thị Vân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Thảo",
+      "tail": "Bà Võ Thị Kim Oanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Kha",
+      "tail": "Võ Đức Thắng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Kha",
+      "tail": "Bà Võ Thị QuỳnhThương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Tám",
+      "tail": "Bà Trần Thị Khánh Tùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Tám",
+      "tail": "Võ Thuận Phong",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Bách Khoa",
+      "tail": "Bà Trần Thị Bảy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Bách Khoa",
+      "tail": "Võ Xuân Khánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Bách Khoa",
+      "tail": "Bà Võ Thị Oanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Quyền",
+      "tail": "Bà Nguyễn Thị Luận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Quyền",
+      "tail": "Bà Võ Thị Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Quyền",
+      "tail": "Võ Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Lực",
+      "tail": "Bà Võ Thị Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Lực",
+      "tail": "Bà Võ Thị Tuyết",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Lực",
+      "tail": "Võ Thuận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Lực",
+      "tail": "Bà Võ Thị Loan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Lực",
+      "tail": "Bà Võ Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Đồng",
+      "tail": "Bà (Nguyễn Thị Mỹ &Trần Thị Thanh)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đồng",
+      "tail": "Bà Võ Thị Nga",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đồng",
+      "tail": "Bà Võ Thị Hương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đồng",
+      "tail": "Bà Võ Thị Giang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đồng",
+      "tail": "Bà Võ Thị Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đồng",
+      "tail": "Bà Võ Thị Hiền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Võ Đông",
+      "tail": "Bà Quế Thị Bảy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đông",
+      "tail": "Bà Võ Thị Phương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Võ Đông",
+      "tail": "Võ Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

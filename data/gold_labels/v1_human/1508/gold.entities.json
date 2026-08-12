@@ -1,0 +1,41 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Viết Dụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1936",
+      "label": "DATE"
+    },
+    {
+      "text": "Lê Thị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Thị Ấm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Tường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn xã hoằng đạo",
+      "label": "LOC"
+    },
+    {
+      "text": "Huyện hoằng hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "Tỉnh thanh hóa\nNGUỒN GỐC\nCố nội",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

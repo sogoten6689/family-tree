@@ -1,0 +1,17 @@
+{
+  "entities": [
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ chín",
+      "label": "ORDER"
+    }
+  ],
+  "relations": []
+}

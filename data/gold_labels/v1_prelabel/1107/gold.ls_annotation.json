@@ -1,0 +1,82 @@
+{
+  "result": [
+    {
+      "id": "ent_2622d7cf4102",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 677,
+        "end": 681,
+        "text": "1867",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7800015b2165",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 72,
+        "end": 77,
+        "text": "đời C",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_76204dd1dfe2",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 489,
+        "end": 499,
+        "text": "đời thứ 11",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_febbf2be86f3",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 832,
+        "end": 841,
+        "text": "đời thứ 2",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c00e2fa1eb1a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1554,
+        "end": 1563,
+        "text": "đời thứ 8",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

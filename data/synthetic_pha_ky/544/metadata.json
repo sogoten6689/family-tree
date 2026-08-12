@@ -1,0 +1,16 @@
+{
+  "tree_id": 544,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "Nguyễn Đình - Hà Tĩnh",
+  "generated_at": "2026-08-10T08:05:00.044773+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/544/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/544/pha_he.html",
+  "real_pha_ky_char_count": 5121,
+  "char_count": 4133,
+  "entity_count": 132,
+  "relation_count": 52,
+  "sentence_count": 80,
+  "missing_name_count": 52,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 1.0
+}

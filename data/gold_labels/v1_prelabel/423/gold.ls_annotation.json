@@ -1,0 +1,153 @@
+{
+  "result": [
+    {
+      "id": "ent_a40a7f484fc1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2570,
+        "end": 2582,
+        "text": "Tạ Đăng Vọng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_04a4a3bf5060",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2537,
+        "end": 2548,
+        "text": "Tạ Đăng Đạt",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_33e4c1784ade",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 475,
+        "end": 479,
+        "text": "1372",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2ff55ef17241",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1632,
+        "end": 1636,
+        "text": "1950",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f4329586c05e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3261,
+        "end": 3265,
+        "text": "1997",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d22ac3a68cb1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 451,
+        "end": 456,
+        "text": "đời v",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_43838de9f99b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1087,
+        "end": 1092,
+        "text": "đời L",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2160a1d92731",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2170,
+        "end": 2175,
+        "text": "đời x",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f059936cad3e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2550,
+        "end": 2561,
+        "text": "con thứ hai",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_a40a7f484fc1",
+      "to_id": "ent_04a4a3bf5060"
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

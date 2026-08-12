@@ -1,0 +1,21 @@
+{
+  "tree_id": 321,
+  "lineage_name": "Thái - Đồng Tháp",
+  "title": "Gia phả: Thái - Đồng Tháp",
+  "location": "Sài Gòn",
+  "stats": {
+    "pha_ky_char_count": 631,
+    "pha_he_node_count": 1
+  },
+  "content_hash": "cf62070aa04250c147ce59a8c7ccab2b4147bcd6f3915d504f1c840a9165b1b2",
+  "source_updated_at": "2026-08-02T08:22:31.303295+00:00",
+  "exported_at": "2026-08-10T05:05:01.395297+00:00",
+  "review": {
+    "doc_id": "vgp_321",
+    "stratum": "S1",
+    "split": "train",
+    "review_priority": 1,
+    "double_annotation": false,
+    "gold_source": "auto_gold_pending_review"
+  }
+}

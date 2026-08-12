@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from label_studio_pipeline.corpus_store import load_json, tree_dir
 from label_studio_pipeline.gold_builder import build_gold_extraction, build_gold_ls_result, to_training_record
 from label_studio_pipeline.ls_importer import LabelStudioConfig, get_or_create_client, get_or_create_project, sdk_response_to_dict
+from label_studio_pipeline.pilot_file import resolve_tree_ids
 
 DEFAULT_CORPUS_DIR = Path("data/vgp_corpus")
 DEFAULT_LABELS_DIR = Path("data/gemini_labels")
@@ -50,16 +51,18 @@ def _read_pha_ky_text(corpus_dir: Path, tree_id: int, pha_ky_file: str | None) -
 
 
 def _resolve_tree_ids(
+    *,
+    corpus_dir: Path,
     labels_dir: Path,
     tree_ids: list[int] | None,
     limit: int | None,
     pilot_file: Path | None,
+    no_gemini: bool,
 ) -> list[int]:
     if tree_ids:
         resolved = tree_ids
     elif pilot_file and pilot_file.is_file():
-        data = load_json(pilot_file) or {}
-        resolved = [int(x) for x in data.get("selected_tree_ids", [])]
+        resolved = resolve_tree_ids(corpus_dir=corpus_dir, pilot_file=pilot_file)
     else:
         resolved = sorted(
             int(path.name)
@@ -93,6 +96,7 @@ def run_submit_gold(
     dry_run: bool,
     pha_ky_file: str | None = None,
     skip_existing_annotations: bool = False,
+    no_gemini: bool = False,
 ) -> dict:
     log = logging.getLogger(__name__)
     summary: dict = {"trees": [], "submitted": [], "skipped": [], "errors": []}
@@ -119,12 +123,14 @@ def run_submit_gold(
     for tree_id in tree_ids:
         log.info("Building gold for tree_id=%s", tree_id)
         try:
-            gemini_path = labels_dir / str(tree_id) / "pha_ky.entities.json"
-            if not gemini_path.is_file():
-                summary["skipped"].append({"tree_id": tree_id, "reason": "missing_gemini_entities"})
-                continue
-
-            gemini_extraction = json.loads(gemini_path.read_text(encoding="utf-8"))
+            if no_gemini:
+                gemini_extraction: dict = {"entities": [], "relations": []}
+            else:
+                gemini_path = labels_dir / str(tree_id) / "pha_ky.entities.json"
+                if not gemini_path.is_file():
+                    summary["skipped"].append({"tree_id": tree_id, "reason": "missing_gemini_entities"})
+                    continue
+                gemini_extraction = json.loads(gemini_path.read_text(encoding="utf-8"))
             text = _read_pha_ky_text(corpus_dir, tree_id, pha_ky_file if tree_ids == [tree_id] else None)
             meta = load_json(tree_dir(corpus_dir, tree_id) / "meta.json") or {}
             pha_he = load_json(tree_dir(corpus_dir, tree_id) / "pha_he.json") or {}
@@ -240,6 +246,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--limit", type=int, default=10, help="Max trees when --tree-id not set (default: 10).")
     parser.add_argument("--all", action="store_true", help="Process all trees with Gemini labels.")
+    parser.add_argument(
+        "--no-gemini",
+        action="store_true",
+        help="Build gold from pha_he diagram + regex rules only (skip Gemini JSON).",
+    )
     parser.add_argument("--submit-ls", action="store_true", help="Submit gold annotations to Label Studio.")
     parser.add_argument(
         "--skip-existing",
@@ -263,8 +274,15 @@ def main() -> None:
     _configure_logging(args.verbose)
     _load_env(args.env_file)
 
-    limit = None if args.all or args.pilot_file else args.limit
-    tree_ids = _resolve_tree_ids(args.labels_dir, args.tree_ids, limit, args.pilot_file)
+    limit = None if args.all or args.pilot_file or args.no_gemini else args.limit
+    tree_ids = _resolve_tree_ids(
+        corpus_dir=args.corpus_dir,
+        labels_dir=args.labels_dir,
+        tree_ids=args.tree_ids,
+        limit=limit,
+        pilot_file=args.pilot_file,
+        no_gemini=args.no_gemini,
+    )
     if not tree_ids:
         print("No tree_ids to process.", file=sys.stderr)
         sys.exit(2)
@@ -282,6 +300,7 @@ def main() -> None:
             dry_run=args.dry_run,
             pha_ky_file=str(args.pha_ky_file) if args.pha_ky_file else None,
             skip_existing_annotations=args.skip_existing,
+            no_gemini=args.no_gemini,
         )
     except Exception as exc:
         logging.getLogger(__name__).exception("submit_gold failed: %s", exc)

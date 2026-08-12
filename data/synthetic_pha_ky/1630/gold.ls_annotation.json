@@ -1,0 +1,1449 @@
+{
+  "result": [
+    {
+      "id": "ent_fd2218a71e2e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 0,
+        "end": 23,
+        "text": "Tổ Khảo Viêm Công Chi 2",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_4050a8209ae7",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 40,
+        "end": 45,
+        "text": "Cụ Mỗ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5763ae7c4860",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 89,
+        "end": 112,
+        "text": "Tổ Khảo Long Công chi 3",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_bbccea4526e8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 141,
+        "end": 148,
+        "text": "Cụ Trực",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2eccefcc5b0b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 218,
+        "end": 225,
+        "text": "Cụ Tuân",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f6b7dcb0cbd8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 227,
+        "end": 235,
+        "text": "Cụ Chủng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d670e898f645",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 294,
+        "end": 303,
+        "text": "Cụ Văn Vỹ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_bff50783493a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 320,
+        "end": 327,
+        "text": "Cụ Tuấn",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_16aeb4a9239f",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 347,
+        "end": 353,
+        "text": "Cụ Thể",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_443f380ab954",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 355,
+        "end": 362,
+        "text": "Cụ Phác",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7a21fa557b70",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 483,
+        "end": 490,
+        "text": "Cụ Thụy",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3aa7c8f94d42",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 492,
+        "end": 500,
+        "text": "Cụ Lượng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_46260070a5c7",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 581,
+        "end": 587,
+        "text": "Cụ Bảo",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3fc96526662d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 589,
+        "end": 595,
+        "text": "Cụ Tân",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9fccb215e7d9",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 597,
+        "end": 614,
+        "text": "Cụ Tố (không con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_1cb249db9ba4",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 730,
+        "end": 747,
+        "text": "Cụ Thiệp (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3d22ad6499bc",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 758,
+        "end": 764,
+        "text": "Cụ Hào",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c69191c99c08",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 329,
+        "end": 336,
+        "text": "Cụ Thái",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5e784235962c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 881,
+        "end": 897,
+        "text": "Cụ Canh (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e495dbd4cd14",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 899,
+        "end": 905,
+        "text": "Cụ Nạp",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_efa39a57d095",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 338,
+        "end": 345,
+        "text": "Cụ Siêu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5419b381c4f5",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1004,
+        "end": 1012,
+        "text": "Cụ Đường",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7d642f91872c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1014,
+        "end": 1028,
+        "text": "Cụ Hy (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2192cd43c195",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1030,
+        "end": 1038,
+        "text": "Cụ Thuần",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_013ad1416eea",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1040,
+        "end": 1058,
+        "text": "Cụ Nhường (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b8471edd5a42",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1060,
+        "end": 1076,
+        "text": "Cụ Sùng (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2d551fdbae4d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1078,
+        "end": 1087,
+        "text": "Cụ Thường",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_35481bb6d336",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1299,
+        "end": 1307,
+        "text": "Cụ Nhiệm",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d9d065473277",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1309,
+        "end": 1327,
+        "text": "Cụ Hựu (không con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3a8629dcc0ee",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1425,
+        "end": 1442,
+        "text": "Cụ Tỷ (không con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_883b03e4dfa8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1518,
+        "end": 1525,
+        "text": "Cụ Viên",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_32fc2aa9f17c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1591,
+        "end": 1598,
+        "text": "Cụ Ngẫu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5f2779979b92",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1649,
+        "end": 1656,
+        "text": "Cụ Xưng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_cbb1e1d3dd99",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1658,
+        "end": 1664,
+        "text": "Cụ Bùi",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3fb5da6cb391",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1742,
+        "end": 1748,
+        "text": "Cụ Cửu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9b88c324187e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1750,
+        "end": 1757,
+        "text": "Cụ Thập",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ac660e3bd685",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1759,
+        "end": 1765,
+        "text": "Cụ Lục",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d78f3b650343",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1865,
+        "end": 1873,
+        "text": "Cụ Thoại",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_96e89103e09e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1875,
+        "end": 1882,
+        "text": "Cụ Khải",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_13c52a92c1ab",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1962,
+        "end": 1970,
+        "text": "Cụ Nghĩa",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b166fb73b555",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2034,
+        "end": 2043,
+        "text": "Cụ Trương",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_8bbac32c919f",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2110,
+        "end": 2118,
+        "text": "Cụ Triệu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7f3e68ad78ce",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2120,
+        "end": 2128,
+        "text": "Cụ Phiêu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a4fd24d5a5ec",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2239,
+        "end": 2247,
+        "text": "Cụ Trạch",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_bdf8a22a761d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2265,
+        "end": 2280,
+        "text": "Cụ Trí (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7c73d66cf7f1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2417,
+        "end": 2424,
+        "text": "Cụ Diệu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e8195b7c17e8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2426,
+        "end": 2431,
+        "text": "Cụ Sĩ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3a0b75228d19",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2486,
+        "end": 2496,
+        "text": "Cụ Từ Chấn",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9c905f2c2c32",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2513,
+        "end": 2525,
+        "text": "Cụ Binh Chấn",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5fd74703dd63",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2596,
+        "end": 2603,
+        "text": "Cụ Đằng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_dc42a72d2404",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2605,
+        "end": 2611,
+        "text": "Cụ Vân",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c398f4b304ca",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2696,
+        "end": 2702,
+        "text": "Cụ Ngữ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7c9ce515ecf5",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2713,
+        "end": 2732,
+        "text": "Cụ Bính (không con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_fcaca3becf94",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2842,
+        "end": 2849,
+        "text": "Cụ Điển",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_0a9ef526d264",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2902,
+        "end": 2909,
+        "text": "Cụ Nghị",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_39828cfad3f0",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2973,
+        "end": 2989,
+        "text": "Cụ Toan (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_672e616c1cdb",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3054,
+        "end": 3059,
+        "text": "Cụ Lễ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_1ffd1ee12ce4",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3076,
+        "end": 3092,
+        "text": "Cụ Duân (ko con)",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_fd2218a71e2e",
+      "to_id": "ent_4050a8209ae7"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_5763ae7c4860",
+      "to_id": "ent_bbccea4526e8"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_bbccea4526e8",
+      "to_id": "ent_2eccefcc5b0b"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_bbccea4526e8",
+      "to_id": "ent_f6b7dcb0cbd8"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_d670e898f645",
+      "to_id": "ent_bff50783493a"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_d670e898f645",
+      "to_id": "ent_16aeb4a9239f"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_d670e898f645",
+      "to_id": "ent_443f380ab954"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2eccefcc5b0b",
+      "to_id": "ent_7a21fa557b70"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2eccefcc5b0b",
+      "to_id": "ent_3aa7c8f94d42"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_f6b7dcb0cbd8",
+      "to_id": "ent_46260070a5c7"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_f6b7dcb0cbd8",
+      "to_id": "ent_3fc96526662d"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_f6b7dcb0cbd8",
+      "to_id": "ent_9fccb215e7d9"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_bff50783493a",
+      "to_id": "ent_1cb249db9ba4"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_bff50783493a",
+      "to_id": "ent_3d22ad6499bc"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_c69191c99c08",
+      "to_id": "ent_5e784235962c"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_c69191c99c08",
+      "to_id": "ent_e495dbd4cd14"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_efa39a57d095",
+      "to_id": "ent_5419b381c4f5"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_efa39a57d095",
+      "to_id": "ent_7d642f91872c"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_efa39a57d095",
+      "to_id": "ent_2192cd43c195"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_efa39a57d095",
+      "to_id": "ent_013ad1416eea"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_efa39a57d095",
+      "to_id": "ent_b8471edd5a42"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_efa39a57d095",
+      "to_id": "ent_2d551fdbae4d"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_16aeb4a9239f",
+      "to_id": "ent_35481bb6d336"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_16aeb4a9239f",
+      "to_id": "ent_d9d065473277"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_443f380ab954",
+      "to_id": "ent_3a8629dcc0ee"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_7a21fa557b70",
+      "to_id": "ent_883b03e4dfa8"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3aa7c8f94d42",
+      "to_id": "ent_32fc2aa9f17c"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_46260070a5c7",
+      "to_id": "ent_5f2779979b92"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_46260070a5c7",
+      "to_id": "ent_cbb1e1d3dd99"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3fc96526662d",
+      "to_id": "ent_3fb5da6cb391"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3fc96526662d",
+      "to_id": "ent_9b88c324187e"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3fc96526662d",
+      "to_id": "ent_ac660e3bd685"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3d22ad6499bc",
+      "to_id": "ent_d78f3b650343"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3d22ad6499bc",
+      "to_id": "ent_96e89103e09e"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_e495dbd4cd14",
+      "to_id": "ent_13c52a92c1ab"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_5419b381c4f5",
+      "to_id": "ent_b166fb73b555"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2192cd43c195",
+      "to_id": "ent_96e89103e09e"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2192cd43c195",
+      "to_id": "ent_8bbac32c919f"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2192cd43c195",
+      "to_id": "ent_7f3e68ad78ce"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2d551fdbae4d",
+      "to_id": "ent_a4fd24d5a5ec"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_2d551fdbae4d",
+      "to_id": "ent_bdf8a22a761d"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_35481bb6d336",
+      "to_id": "ent_7c73d66cf7f1"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_35481bb6d336",
+      "to_id": "ent_e8195b7c17e8"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3a0b75228d19",
+      "to_id": "ent_9c905f2c2c32"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_883b03e4dfa8",
+      "to_id": "ent_5fd74703dd63"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_883b03e4dfa8",
+      "to_id": "ent_dc42a72d2404"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_32fc2aa9f17c",
+      "to_id": "ent_c398f4b304ca"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_32fc2aa9f17c",
+      "to_id": "ent_7c9ce515ecf5"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_5f2779979b92",
+      "to_id": "ent_fcaca3becf94"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_cbb1e1d3dd99",
+      "to_id": "ent_0a9ef526d264"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_3fb5da6cb391",
+      "to_id": "ent_39828cfad3f0"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_672e616c1cdb",
+      "to_id": "ent_1ffd1ee12ce4"
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

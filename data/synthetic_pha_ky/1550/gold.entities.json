@@ -1,0 +1,78 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Đắc Đạo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đắc Đạo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hữu Tài",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bá Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bá Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bá Thọ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đăng Doanh",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Đắc Đạo",
+      "tail": "Nguyễn Hữu Tài",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bá Thọ",
+      "tail": "Ông Nguyễn Văn Đức",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Bá Thọ",
+      "tail": "Ông Nguyễn Văn Hoa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Tân",
+      "tail": "Nguyễn Đăng Doanh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

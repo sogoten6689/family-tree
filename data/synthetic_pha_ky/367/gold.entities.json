@@ -1,0 +1,986 @@
+{
+  "entities": [
+    {
+      "text": "Trần Quốc Kinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Kinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hấp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Kinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "trần?",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hấp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hấp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Dung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Tam Nương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lễ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hoàng Nghi (Trần Thủ Huy)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần An Bang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hoàng Nghi (Trần Thủ Huy)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thủ Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hoàng Nghi (Trần Thủ Huy)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thúy Ba",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nhật Hiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ngoạn Thiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thừa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Bá Liệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thủ Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thủ Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phó Duyệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phụng Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thủ Độ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Doãn (Tung)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Liễu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Thiều (Thiên Cảnh)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Hoảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Ích Tắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nhật Duật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thiều Dương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thuỵ Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Bá Liệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Bá Liệt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Nghiễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hưng Hồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Quyên Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Thủy Tiên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Hoảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Hoảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thiên Thuỵ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Hoảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Khâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đạo Tái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Quỳnh Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Quỳnh Tư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Quỳnh Bảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quang Khải",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Quỳnh Thái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Ích Tắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Ích Tắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hữu Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nhật Duật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nhật Duật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Văn Hiền Hầu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Trực Định",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nhật Duật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Trực Ninh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nhật Duật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Khâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Khâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thuyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Khâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Chấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Huyền Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Thái Tử Khâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đạo Tái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đạo Tái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trần Văn Bích",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Trần Thị Thuận Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Quốc Tảng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hữu Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đình Nhậm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hữu Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hữu Lượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Lý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyên Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyên Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mộng Dư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyên Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thúc Giao",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyên Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thúc Huỳnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần thị Thai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyên Đán",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Vượng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Trác",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Thiên Trạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Nguyên Thạch",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Mạnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Hạo",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Kinh",
+      "tail": "Trần Hấp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Kinh",
+      "tail": "trần?",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Hấp",
+      "tail": "Trần Lý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Lý",
+      "tail": "Trần Thừa",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Lý",
+      "tail": "Bà Trần Thị Dung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Lý",
+      "tail": "Bà Trần Thị Tam Nương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Lý",
+      "tail": "Trần Lễ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Hoàng Nghi (Trần Thủ Huy)",
+      "tail": "Trần An Bang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Hoàng Nghi (Trần Thủ Huy)",
+      "tail": "Trần Thủ Độ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thừa",
+      "tail": "Trần Liễu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thừa",
+      "tail": "Thúy Ba",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thừa",
+      "tail": "Trần Nhật Hiệu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thừa",
+      "tail": "Ngoạn Thiên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thừa",
+      "tail": "Trần Bá Liệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thủ Độ",
+      "tail": "Trần Phó Duyệt",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Thủ Độ",
+      "tail": "Trần Phụng Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Liễu",
+      "tail": "Trần Doãn (Tung)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Liễu",
+      "tail": "Trần Quốc Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Liễu",
+      "tail": "Bà Trần Thị Thiều (Thiên Cảnh)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Thái Tử Hoảng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Trần Quang Khải",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Trần Ích Tắc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Trần Nhật Duật",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Thiều Dương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Thuỵ Bảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Cảnh",
+      "tail": "Trần Quốc Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Bá Liệt",
+      "tail": "Trần Quốc Tuấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Tuấn",
+      "tail": "Trần Quốc Nghiễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Tuấn",
+      "tail": "Trần Quốc Tảng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Tuấn",
+      "tail": "Trần Hưng Hồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Tuấn",
+      "tail": "Bà Trần Thị Quyên Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Tuấn",
+      "tail": "Bà Trần Thị Thủy Tiên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thái Tử Hoảng",
+      "tail": "Thiên Thuỵ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thái Tử Hoảng",
+      "tail": "Thái Tử Khâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quang Khải",
+      "tail": "Trần Đạo Tái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quang Khải",
+      "tail": "Bà Trần Thị Quỳnh Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quang Khải",
+      "tail": "Bà Trần Thị Quỳnh Tư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quang Khải",
+      "tail": "Bà Trần Thị Quỳnh Bảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quang Khải",
+      "tail": "Bà Trần Thị Quỳnh Thái",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Ích Tắc",
+      "tail": "Trần Hữu Lượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nhật Duật",
+      "tail": "Ông Văn Hiền Hầu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nhật Duật",
+      "tail": "Trần Trực Định",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nhật Duật",
+      "tail": "Trần Trực Ninh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thái Tử Khâm",
+      "tail": "Trần Thuyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thái Tử Khâm",
+      "tail": "Trần Quốc Chấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Thái Tử Khâm",
+      "tail": "Bà Trần Thị Huyền Trân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Đạo Tái",
+      "tail": "Ông Trần Văn Bích",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Quốc Tảng",
+      "tail": "Bà Trần Thị Thuận Thành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Hữu Lượng",
+      "tail": "Trần Đình Nhậm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Hữu Lượng",
+      "tail": "Trần Lý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nguyên Đán",
+      "tail": "Trần Mộng Dư",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nguyên Đán",
+      "tail": "Trần Thúc Giao",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nguyên Đán",
+      "tail": "Trần Thúc Huỳnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Nguyên Đán",
+      "tail": "Trần thị Thai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Mạnh",
+      "tail": "Trần Đực",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Mạnh",
+      "tail": "Trần Vượng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Mạnh",
+      "tail": "Trần Trác",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Mạnh",
+      "tail": "Trần Thiên Trạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Mạnh",
+      "tail": "Trần Nguyên Thạch",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Mạnh",
+      "tail": "Trần Hạo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

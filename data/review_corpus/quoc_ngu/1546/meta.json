@@ -1,0 +1,21 @@
+{
+  "tree_id": 1546,
+  "lineage_name": "Văn Đình - Phái Nhì - Chi Nhất - Thừa Thiên Huế",
+  "title": "Gia phả: Văn Đình - Phái Nhì - Chi Nhất - Thừa Thiên Huế",
+  "location": "An Bằng",
+  "stats": {
+    "pha_ky_char_count": 3445,
+    "pha_he_node_count": 1
+  },
+  "content_hash": "3b85ef141aa3f6fe06d149e84fc66e87d1bd010d5526a1aaac252a4092b75c6f",
+  "source_updated_at": "2026-08-02T08:47:18.924492+00:00",
+  "exported_at": "2026-08-10T05:05:01.866017+00:00",
+  "review": {
+    "doc_id": "vgp_1546",
+    "stratum": "S2",
+    "split": "train",
+    "review_priority": 2,
+    "double_annotation": false,
+    "gold_source": "auto_gold_pending_review"
+  }
+}

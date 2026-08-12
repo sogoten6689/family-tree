@@ -1,0 +1,920 @@
+{
+  "entities": [
+    {
+      "text": "Ông Dương Oai Hầu Nguyễn Văn Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Dương Oai Hầu Nguyễn Văn Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Dương Oai Hầu Nguyễn Văn Tráng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Phó Tướng Nguyễn Văn Lan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Đội Nguyễn Văn Trân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Phấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Nơm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trấn Biên Quan Nguyễn Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Trấn Biên Quan Nguyễn Văn Thành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chủ Sự Nguyễn Văn Nai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chỉ Huy Sứ Nguyễn Phước Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Công",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trung Lễ Hầu Nguyễn Phước Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chủ Sự Nguyễn Văn Nai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chủ Sự Nguyễn Văn Nai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Đấu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chủ Sự Nguyễn Văn Nai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Luân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Chủ Sự Nguyễn Văn Nai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Đợi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chỉ Huy Sứ Nguyễn Phước Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chỉ Huy Sứ Nguyễn Phước Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Khê Bá Nguyễn Phước Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trung Lễ Hầu Nguyễn Phước Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trung Lễ Hầu Nguyễn Phước Trí",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Hữu Thị Lang Nguyễn Phước Bồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Khê Bá Nguyễn Phước Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Khê Bá Nguyễn Phước Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Đội Nguyễn Phước Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Hữu Thị Lang Nguyễn Phước Bồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Hữu Thị Lang Nguyễn Phước Bồng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại Phu Nguyễn Phước Lành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Dĩ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Voi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Thú",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Đội Nguyễn Phước Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưởng Cơ Nguyễn Phước Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Đội Nguyễn Phước Kỳ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại Phu Nguyễn Phước Lành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đại Phu Nguyễn Phước Lành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Lễ (Thấu)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Thi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Đắc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Lô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưởng Cơ Nguyễn Phước Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưởng Cơ Nguyễn Phước Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tri Phủ Nguyễn Phước Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Lễ (Thấu)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Cai Cơ Nguyễn Phước Lễ (Thấu)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doanh Điền Sứ Nguyễn Phước Đường (Xuyến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Chước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Cò",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Nhỏ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Tam",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Có",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tiết Chế Nguyễn Văn Luận",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Mãi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tri Phủ Nguyễn Phước Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Chưởng Vệ Sự Nguyễn Phước Hiệp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tri Phủ Nguyễn Phước Đôn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doanh Điền Sứ Nguyễn Phước Đường (Xuyến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quản Cơ Nguyễn Phước Cung (Công)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doanh Điền Sứ Nguyễn Phước Đường (Xuyến)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Điền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Ty",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Hãnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quản Cơ Nguyễn Phước Cung (Công)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Quản Cơ Nguyễn Phước Cung (Công)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai cơ Nguyễn Văn Liễn ( Sơn )",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Bộ Nguyễn Văn Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Bộ Nguyễn Văn Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Cảo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai Bộ Nguyễn Văn Hiền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Túc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hương Cống Nguyễn Văn Thái (Thới)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Hương Cống Nguyễn Văn Thái (Thới)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Huấn Đạo Nguyễn Văn Ốt (Chái)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai cơ Nguyễn Văn Liễn ( Sơn )",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Cai cơ Nguyễn Văn Liễn ( Sơn )",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Ký Lục Nguyễn Văn Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Khinh Xa Đô Uý Nguyễn Văn Quý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Ký Lục Nguyễn Văn Việt",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Thiếu Bảo Nguyễn Văn Trấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Thiếu Bảo Nguyễn Văn Trấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Tri Phủ Nguyễn Văn Liêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Giang ( Vang)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Thắm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Hoà",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Ông Nguyễn Văn Mai",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Nguyễn Thị Sơn",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Dương Oai Hầu Nguyễn Văn Tráng",
+      "tail": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Dương Oai Hầu Nguyễn Văn Tráng",
+      "tail": "Ông Phó Tướng Nguyễn Văn Lan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "tail": "Ông Cai Đội Nguyễn Văn Trân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "tail": "Cai Cơ Nguyễn Phước Công",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "tail": "Bà Nguyễn Thị Phấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chưởng Cơ Nguyễn Văn Giai",
+      "tail": "Bà Nguyễn Thị Nơm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Trấn Biên Quan Nguyễn Văn Thành",
+      "tail": "Ông Chủ Sự Nguyễn Văn Nai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cai Cơ Nguyễn Phước Công",
+      "tail": "Chỉ Huy Sứ Nguyễn Phước Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cai Cơ Nguyễn Phước Công",
+      "tail": "Trung Lễ Hầu Nguyễn Phước Trí",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chủ Sự Nguyễn Văn Nai",
+      "tail": "Ông Nguyễn Văn Đấu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chủ Sự Nguyễn Văn Nai",
+      "tail": "Ông Nguyễn Văn Luân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Chủ Sự Nguyễn Văn Nai",
+      "tail": "Bà Nguyễn Thị Đợi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Chỉ Huy Sứ Nguyễn Phước Tam",
+      "tail": "Vũ Khê Bá Nguyễn Phước Chính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Trung Lễ Hầu Nguyễn Phước Trí",
+      "tail": "Bà Hữu Thị Lang Nguyễn Phước Bồng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Vũ Khê Bá Nguyễn Phước Chính",
+      "tail": "Cai Đội Nguyễn Phước Kỳ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Bà Hữu Thị Lang Nguyễn Phước Bồng",
+      "tail": "Đại Phu Nguyễn Phước Lành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "tail": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "tail": "Bà Nguyễn Thị Dĩ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "tail": "Ông Nguyễn Văn Voi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hữu Tướng Nguyễn Văn Câu",
+      "tail": "Bà Nguyễn Thị Thú",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cai Đội Nguyễn Phước Kỳ",
+      "tail": "Chưởng Cơ Nguyễn Phước Trung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Đại Phu Nguyễn Phước Lành",
+      "tail": "Cai Cơ Nguyễn Phước Lễ (Thấu)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "tail": "Ông Tiết Chế Nguyễn Văn Luận",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "tail": "Ông Nguyễn Văn Tân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "tail": "Ông Nguyễn Văn Cân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "tail": "Bà Nguyễn Thị Thi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "tail": "Bà Nguyễn Thị Đắc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Cơ Nguyễn Văn Lãng",
+      "tail": "Bà Nguyễn Thị Lô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Chưởng Cơ Nguyễn Phước Trung",
+      "tail": "Tri Phủ Nguyễn Phước Đôn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Cai Cơ Nguyễn Phước Lễ (Thấu)",
+      "tail": "Doanh Điền Sứ Nguyễn Phước Đường (Xuyến)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Bà Nguyễn Thị Minh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Ông Nguyễn Văn Chước",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Bà Nguyễn Thị Cò",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Bà Nguyễn Thị Nhỏ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Bà Nguyễn Thị Tam",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Bà Nguyễn Thị Có",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Tiết Chế Nguyễn Văn Luận",
+      "tail": "Bà Nguyễn Thị Mãi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Tri Phủ Nguyễn Phước Đôn",
+      "tail": "Chưởng Vệ Sự Nguyễn Phước Hiệp",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doanh Điền Sứ Nguyễn Phước Đường (Xuyến)",
+      "tail": "Quản Cơ Nguyễn Phước Cung (Công)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "tail": "Ông Nguyễn Văn Điền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "tail": "Ông Nguyễn Văn Ty",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hùng Thắng Hầu Nguyễn Văn Quyên",
+      "tail": "Ông Nguyễn Văn Hãnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Quản Cơ Nguyễn Phước Cung (Công)",
+      "tail": "Ông Cai cơ Nguyễn Văn Liễn ( Sơn )",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Bộ Nguyễn Văn Hiền",
+      "tail": "Ông Nguyễn Văn Cảo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai Bộ Nguyễn Văn Hiền",
+      "tail": "Ông Nguyễn Văn Túc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Hương Cống Nguyễn Văn Thái (Thới)",
+      "tail": "Ông Huấn Đạo Nguyễn Văn Ốt (Chái)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Cai cơ Nguyễn Văn Liễn ( Sơn )",
+      "tail": "Ông Nguyễn Văn Mai",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Ký Lục Nguyễn Văn Việt",
+      "tail": "Ông Khinh Xa Đô Uý Nguyễn Văn Quý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Thiếu Bảo Nguyễn Văn Trấn",
+      "tail": "Ông Tri Phủ Nguyễn Văn Liêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Mai",
+      "tail": "Ông Nguyễn Văn Giang ( Vang)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Mai",
+      "tail": "Bà Nguyễn Thị Thắm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Mai",
+      "tail": "Bà Nguyễn Thị Hoà",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Ông Nguyễn Văn Mai",
+      "tail": "Bà Nguyễn Thị Sơn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tree_id": 367,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "Trần Phước (陳 福 - 富霑) - Quảng Nam",
+  "generated_at": "2026-08-10T08:04:58.436532+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/367/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/367/pha_he.html",
+  "real_pha_ky_char_count": 4814,
+  "char_count": 4189,
+  "entity_count": 140,
+  "relation_count": 60,
+  "sentence_count": 80,
+  "missing_name_count": 60,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 0.9893
+}

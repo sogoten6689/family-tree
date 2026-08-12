@@ -1,0 +1,80 @@
+Doãn Thự sinh được 5 người con, gồm: Doãn Duyện [trưởng tộc đời thứ 2], Doãn Án ( Doãn Thai), Doãn Đình Dụng (Doãn Đình Tấn), Doãn Đình Triệu, Doãn Phác (Doãn Đình Đệ).
+Doãn Đình Dụng (Doãn Đình Tấn) là con của Doãn Thự.
+Doãn Thự hạ sinh Doãn Phác (Doãn Đình Đệ).
+Doãn Án ( Doãn Thai) sinh được 4 người con, gồm: Doãn Đình Long, Bà Doãn Thị Thiêm, Bà Doãn Thị Tiềm, Bà Doãn Thị Hiên.
+Doãn Án ( Doãn Thai) hạ sinh Doãn Đình Long.
+Doãn Án ( Doãn Thai) sinh được Bà Doãn Thị Thiêm.
+Doãn Án ( Doãn Thai) sinh được Bà Doãn Thị Tiềm.
+Doãn Đình Triệu sinh được 4 người con, gồm: Doãn Đình Hổ, Doãn Đình Báo (Bỉnh), Doãn Đình Bưu, Doãn Đình Hùng.
+Doãn Đình Triệu sinh được Doãn Đình Báo (Bỉnh).
+Doãn Đình Triệu hạ sinh Doãn Đình Bưu.
+Doãn Đình Triệu sinh được Doãn Đình Hùng.
+Doãn Phác (Doãn Đình Đệ) có 4 người con: Doãn Khuê, Doãn Đình Lữ, Doãn Đình Đạc, Doãn Trọng Lộc.
+Doãn Phác (Doãn Đình Đệ) sinh được Doãn Đình Lữ.
+Doãn Phác (Doãn Đình Đệ) hạ sinh Doãn Đình Đạc.
+Doãn Phác (Doãn Đình Đệ) hạ sinh Doãn Trọng Lộc.
+Doãn Ôn (Doãn Uẩn) có 5 người con: Doãn Chính [trưởng tộc đời thứ 4.1], Doãn Trực [trường tộc đời thứ 4.2], Doãn Xuân, Doãn Hanh, Doãn Cát.
+Doãn Ôn (Doãn Uẩn) sinh được Doãn Chính [trưởng tộc đời thứ 4.1].
+Doãn Ôn (Doãn Uẩn) hạ sinh Doãn Trực [trường tộc đời thứ 4.2].
+Doãn Ôn (Doãn Uẩn) hạ sinh Doãn Xuân.
+Doãn Cát là con của Doãn Ôn (Doãn Uẩn).
+Doãn Khuê có 8 người con: Doãn Chi, Doãn Giốc, Bà Doãn Thị Diệm, Bà Doãn Thị Nhu, Bà Doãn Thị Từ, Bà Doãn Thị Huệ, Doãn Vị, Doãn Tâm.
+Doãn Giốc là con của Doãn Khuê.
+Bà Doãn Thị Diệm là con của Doãn Khuê.
+Doãn Khuê sinh được Bà Doãn Thị Nhu.
+Bà Doãn Thị Huệ là con của Doãn Khuê.
+Doãn Khuê hạ sinh Doãn Tâm.
+Doãn Đình Long có 4 người con: Doãn Đình Thiều, Bà Doãn Thị Tinh, Bà Doãn Thị Túc, Bà Doãn Thị Hữu.
+Doãn Đình Long hạ sinh Bà Doãn Thị Tinh.
+Bà Doãn Thị Túc là con của Doãn Đình Long.
+Doãn Đình Long sinh được Bà Doãn Thị Hữu.
+Doãn Đình Hổ có 3 người con: Doãn Đĩnh, Doãn Đình Dĩnh, Doãn Đình Tân.
+Doãn Đình Hổ sinh được Doãn Đĩnh.
+Doãn Đình Hổ sinh được Doãn Đình Dĩnh.
+Doãn Trọng Lộc có 3 người con: Doãn Duẩn, Bà Doãn Thị Tuân, Bà Doãn Thị Hậu.
+Doãn Trọng Lộc sinh được Doãn Duẩn.
+Doãn Trọng Lộc hạ sinh Bà Doãn Thị Tuân.
+Doãn Đình Báo (Bỉnh) sinh được 3 người con, gồm: Doãn Trứ, Doãn Lô, Doãn Viêm.
+Doãn Đình Báo (Bỉnh) hạ sinh Doãn Trứ.
+Doãn Lô là con của Doãn Đình Báo (Bỉnh).
+Doãn Đình Hùng sinh được 2 người con, gồm: Doãn Quang Chúc, Doãn Gia Trưng (Doãn Trừng).
+Doãn Đình Hùng sinh được Doãn Quang Chúc.
+Doãn Đình Hùng sinh được Doãn Gia Trưng (Doãn Trừng).
+Doãn Chính [trưởng tộc đời thứ 4.1] có 1 người con: Doãn Kế [trưởng tộc đời thứ 5.2].
+Doãn Chính [trưởng tộc đời thứ 4.1] sinh được Doãn Kế [trưởng tộc đời thứ 5.2].
+Doãn Trực [trường tộc đời thứ 4.2] sinh được 4 người con, gồm: Bà Doãn Thị Cúc, Doãn Nguyên [trưởng tộc đời 5.1], Bà Doãn Thị Miễn, Bà Doãn Thị Nghiễm.
+Doãn Trực [trường tộc đời thứ 4.2] sinh được Bà Doãn Thị Cúc.
+Doãn Trực [trường tộc đời thứ 4.2] sinh được Doãn Nguyên [trưởng tộc đời 5.1].
+Bà Doãn Thị Miễn là con của Doãn Trực [trường tộc đời thứ 4.2].
+Bà Doãn Thị Nghiễm là con của Doãn Trực [trường tộc đời thứ 4.2].
+Doãn Đĩnh sinh được 6 người con, gồm: Doãn Thượng Trung, Doãn Thượng Chí, Doãn Thượng Đức, Doãn Thượng Hữu, Ông Doãn Thượng Văn, Doãn Hồng Cương.
+Doãn Đĩnh hạ sinh Doãn Thượng Hữu.
+Doãn Hồng Cương là con của Doãn Đĩnh.
+Doãn Duẩn có 5 người con: Bà Doãn Thị Doành, Doãn Giáp, Bà Doãn Thị Nhữ, Doãn Châm, Bà Doãn Thị Tý.
+Bà Doãn Thị Doành là con của Doãn Duẩn.
+Doãn Duẩn hạ sinh Doãn Châm.
+Bà Doãn Thị Tý là con của Doãn Duẩn.
+Doãn Đình Thiều có 5 người con: Doãn Trác Hán, Doãn Trác Phủ, Bà Doãn Thị Nữ, Bà Doãn Thị Nhung, Bà Doãn Thị Gấm.
+Doãn Đình Thiều hạ sinh Bà Doãn Thị Nữ.
+Bà Doãn Thị Nhung là con của Doãn Đình Thiều.
+Doãn Đình Thiều sinh được Bà Doãn Thị Gấm.
+Doãn Đình Tân sinh được 3 người con, gồm: Doãn Tư Kính, Doãn Tư Nghiã, Doãn Tư Vấn.
+Doãn Tư Kính là con của Doãn Đình Tân.
+Doãn Đình Tân sinh được Doãn Tư Nghiã.
+Doãn Tư Vấn là con của Doãn Đình Tân.
+Doãn Quang Chúc có 2 người con: Doãn Khang, Doãn Toại.
+Doãn Khang là con của Doãn Quang Chúc.
+Doãn Quang Chúc hạ sinh Doãn Toại.
+Doãn Viêm sinh được 1 người con, gồm: Doãn Vỹ.
+Doãn Viêm hạ sinh Doãn Vỹ.
+Doãn Vị sinh được 5 người con, gồm: Doãn Thanh Đạm, Doãn Phương Lễ, Bà Doãn Thị Hoa, Doãn Đức Uông, Bà Doãn Thị Hằng.
+Doãn Vị hạ sinh Doãn Thanh Đạm.
+Doãn Vị sinh được Doãn Phương Lễ.
+Doãn Vị hạ sinh Doãn Đức Uông.
+Bà Doãn Thị Hằng là con của Doãn Vị.
+Doãn Thượng Trung có 5 người con: Doãn Nhật Tự, Doãn Nhật Trường, Doãn Nhật Chu, Doãn Nhật Phụ, Doãn Nhật Sâm.
+Doãn Nhật Tự là con của Doãn Thượng Trung.
+Doãn Thượng Trung hạ sinh Doãn Nhật Trường.
+Doãn Nhật Chu là con của Doãn Thượng Trung.
+Doãn Nhật Phụ là con của Doãn Thượng Trung.
+Doãn Thượng Trung hạ sinh Doãn Nhật Sâm.

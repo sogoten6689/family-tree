@@ -1,0 +1,114 @@
+{
+  "entities": [
+    {
+      "text": "Cao An",
+      "label": "LOC"
+    },
+    {
+      "text": "Cẩm Giàng",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Dương",
+      "label": "LOC"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời I",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời II",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời III",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "1886",
+      "label": "DATE"
+    },
+    {
+      "text": "1969",
+      "label": "DATE"
+    },
+    {
+      "text": "1885",
+      "label": "DATE"
+    },
+    {
+      "text": "1962",
+      "label": "DATE"
+    },
+    {
+      "text": "1913",
+      "label": "DATE"
+    },
+    {
+      "text": "2001",
+      "label": "DATE"
+    },
+    {
+      "text": "Hoàng Húy Tức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Còi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Hoàng Văn Ánh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Thị Sáo",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Tức",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "SPOUSE",
+      "head": "Hoàng Húy Tức",
+      "tail": "Phạm Thị Còi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Hoàng Húy Tức",
+      "tail": "Hoàng Văn Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "MOTHER_OF",
+      "head": "Phạm Thị Còi",
+      "tail": "Hoàng Văn Ánh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "SPOUSE",
+      "head": "Hoàng Văn Ánh",
+      "tail": "Phạm Thị Sáo",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

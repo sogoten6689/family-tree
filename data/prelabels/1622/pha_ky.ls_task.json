@@ -1,0 +1,238 @@
+{
+  "data": {
+    "text": "Gia phả họ HOÀNG\nQuê quán: Cao An - Cẩm Giàng - Hải Dương\nTheo gia phả, mình thuộc đời thứ 7 trong dòng họ. Kỵ tổ mình (đời I) sinh được hai người con trai. Ông anh cả (đời II) có ba người con (đời III): bà Ngó mất năm 18 tuổi, một cụ mất năm 29 tuổi và cụ Tin (có con trai tên là Tức).\nĐời 4\n:\n*\nHoàng Húy Tức\n+ Sinh năm Bính Tuất (1886)\n+ Mất ngày 10 tháng 03 năm Kỷ Dậu (1969), thọ 83 tuổi\n*\nPhạm Thị Còi\n: vợ ông Hoàng Húy Tức\n+ Sinh năm Ất Dậu (1885)\n+ Mất ngày 26 tháng 02 năm Nhâm Dần (1962), thọ 78 tuổi\nĐời 5\n:\n*\nHoàng Văn Ánh\n: con ông Hoàng Húy Tức và bà Phạm Thị Còi\n*\nPhạm Thị Sáo\n: vợ thứ 2 ông Hoàng Văn Ánh\n+ Sinh năm 1913\n+ Mất ngày 26 tháng 01 năm 2001 (Âm lịch)",
+    "source_url": "https://vietnamgiapha.com/XemPhaKy/1622/pha_ky_gia_su.html",
+    "title": "HOÀNG - Hải Dương",
+    "tree_id": 1622,
+    "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/1622/pha_he.html"
+  },
+  "predictions": [
+    {
+      "model_version": "prelabel-v1-diagram-rule",
+      "score": 0.85,
+      "result": [
+        {
+          "id": "ent_f14f2583e8ac",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 297,
+            "end": 310,
+            "text": "Hoàng Húy Tức",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_f4741913dc5a",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 522,
+            "end": 535,
+            "text": "Hoàng Văn Ánh",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_0a12c16ec82a",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 333,
+            "end": 337,
+            "text": "1886",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_b8e1f75b8d45",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 374,
+            "end": 378,
+            "text": "1969",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_3489c5a73917",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 450,
+            "end": 454,
+            "text": "1885",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_068494d05e13",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 493,
+            "end": 497,
+            "text": "1962",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_03d7cb459984",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 630,
+            "end": 638,
+            "text": "năm 1913",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_c6b060746dd8",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 662,
+            "end": 670,
+            "text": "năm 2001",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_08330ce80822",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 83,
+            "end": 92,
+            "text": "đời thứ 7",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_45458b4dabe4",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 120,
+            "end": 125,
+            "text": "đời I",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_769c951445f2",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 169,
+            "end": 175,
+            "text": "đời II",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_bc9c096430b7",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 194,
+            "end": 201,
+            "text": "đời III",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_42e32b6b632a",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 287,
+            "end": 292,
+            "text": "Đời 4",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_3838a18ca7de",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 512,
+            "end": 517,
+            "text": "Đời 5",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "from_name": "relation",
+          "to_name": "text",
+          "type": "relation",
+          "direction": "right",
+          "labels": [
+            "FATHER_OF"
+          ],
+          "from_id": "ent_f14f2583e8ac",
+          "to_id": "ent_f4741913dc5a"
+        }
+      ]
+    }
+  ]
+}

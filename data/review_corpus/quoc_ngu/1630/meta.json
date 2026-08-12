@@ -1,0 +1,21 @@
+{
+  "tree_id": 1630,
+  "lineage_name": "HỌ - Nam Định",
+  "title": "Gia phả: HỌ - Nam Định",
+  "location": "Liên bảo Vụ bản Nam định",
+  "stats": {
+    "pha_ky_char_count": 3494,
+    "pha_he_node_count": 485
+  },
+  "content_hash": "db0206218b9200b0d250206c120ec18e6cd489430949c709745b7e124166c3ec",
+  "source_updated_at": "2026-08-02T08:48:18.856672+00:00",
+  "exported_at": "2026-08-10T05:05:01.588174+00:00",
+  "review": {
+    "doc_id": "vgp_1630",
+    "stratum": "S1",
+    "split": "train",
+    "review_priority": 1,
+    "double_annotation": false,
+    "gold_source": "auto_gold_pending_review"
+  }
+}

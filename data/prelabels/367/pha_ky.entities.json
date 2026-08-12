@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {
+      "text": "Trần Chân Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phúc Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phước Biền",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "...",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Phước Thiện",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Trần Đăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1999",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2002",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 20",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 16",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 21",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Trần Phúc Thiện",
+      "tail": "Trần Phước Biền",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "data": {
+    "text": "Dòng họ Nguyễn thôn Bảo Lộc, xã Thanh Châu, huyện Thanh Liêm, tỉnh Hà Nam, truyền từ đời xưa, nay hãy tạm tính bắt đầu từ nhánh của cụ ông Nguyễn Văn Bùng và cụ bà Lê Thị Thắm đến nay.\nCụ ông\nNguyễn Văn Bùng\nCụ Bà\nHai cụ sinh được 6 người con, gồm:\n1, Bà Lý Hệ\n2, Ông Nguyễn Văn Ngãi\n3, Bà Nguyễn Thị Nghì\n4, Bà Lân\n5, Bà Nguyễn Thị Nén\n6, Bà Nguyễn Thị Sén\nHình ảnh lăng mộ họ Nguyễn tại thôn Bảo Lộc, xã Thanh Châu, huyện Thanh Liêm, tỉnh Hà Nam",
+    "source_url": "https://vietnamgiapha.com/XemPhaKy/617/pha_ky_gia_su.html",
+    "title": "Nguyen - Hà Nam",
+    "tree_id": 617,
+    "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/617/pha_he.html"
+  },
+  "predictions": [
+    {
+      "model_version": "prelabel-v1-diagram-rule",
+      "score": 0.85,
+      "result": [
+        {
+          "id": "ent_a4969d1f30b9",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 85,
+            "end": 90,
+            "text": "đời x",
+            "labels": [
+              "GENERATION"
+            ],
+            "score": 0.85
+          }
+        }
+      ]
+    }
+  ]
+}

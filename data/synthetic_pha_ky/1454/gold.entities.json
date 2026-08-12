@@ -1,0 +1,975 @@
+{
+  "entities": [
+    {
+      "text": "Doãn Thự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Dụng (Doãn Đình Tấn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Phác (Doãn Đình Đệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Án ( Doãn Thai)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Án ( Doãn Thai)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Án ( Doãn Thai)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Thiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Án ( Doãn Thai)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Tiềm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Báo (Bỉnh)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Bưu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Triệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Phác (Doãn Đình Đệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Phác (Doãn Đình Đệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Lữ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Phác (Doãn Đình Đệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Đạc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Phác (Doãn Đình Đệ)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trọng Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Ôn (Doãn Uẩn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Ôn (Doãn Uẩn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Chính [trưởng tộc đời thứ 4.1]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Ôn (Doãn Uẩn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Ôn (Doãn Uẩn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Xuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Cát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Ôn (Doãn Uẩn)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Giốc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Diệm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Nhu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Huệ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Tâm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Tinh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Túc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Long",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Hữu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Dĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trọng Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trọng Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Duẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trọng Lộc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Tuân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Báo (Bỉnh)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Báo (Bỉnh)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trứ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Lô",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Báo (Bỉnh)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Quang Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Hùng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Gia Trưng (Doãn Trừng)",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Chính [trưởng tộc đời thứ 4.1]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Chính [trưởng tộc đời thứ 4.1]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Kế [trưởng tộc đời thứ 5.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Cúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Nguyên [trưởng tộc đời 5.1]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Miễn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Nghiễm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Hữu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Hồng Cương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đĩnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Duẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Doành",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Duẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Duẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Châm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Tý",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Duẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Thiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Thiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Nữ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Nhung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Thiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Thiều",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Gấm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Tư Kính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Tư Nghiã",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Tư Vấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Tân",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Quang Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Quang Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Quang Chúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Toại",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Viêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Viêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vỹ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thanh Đạm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Phương Lễ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đức Uông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Bà Doãn Thị Hằng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Nhật Tự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Nhật Trường",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Nhật Chu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Nhật Phụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thượng Trung",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Nhật Sâm",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thự",
+      "tail": "Doãn Đình Dụng (Doãn Đình Tấn)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thự",
+      "tail": "Doãn Phác (Doãn Đình Đệ)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Án ( Doãn Thai)",
+      "tail": "Doãn Đình Long",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Án ( Doãn Thai)",
+      "tail": "Bà Doãn Thị Thiêm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Án ( Doãn Thai)",
+      "tail": "Bà Doãn Thị Tiềm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Triệu",
+      "tail": "Doãn Đình Báo (Bỉnh)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Triệu",
+      "tail": "Doãn Đình Bưu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Triệu",
+      "tail": "Doãn Đình Hùng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Phác (Doãn Đình Đệ)",
+      "tail": "Doãn Đình Lữ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Phác (Doãn Đình Đệ)",
+      "tail": "Doãn Đình Đạc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Phác (Doãn Đình Đệ)",
+      "tail": "Doãn Trọng Lộc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Ôn (Doãn Uẩn)",
+      "tail": "Doãn Chính [trưởng tộc đời thứ 4.1]",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Ôn (Doãn Uẩn)",
+      "tail": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Ôn (Doãn Uẩn)",
+      "tail": "Doãn Xuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Ôn (Doãn Uẩn)",
+      "tail": "Doãn Cát",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Doãn Giốc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Bà Doãn Thị Diệm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Bà Doãn Thị Nhu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Bà Doãn Thị Huệ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Doãn Tâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Long",
+      "tail": "Bà Doãn Thị Tinh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Long",
+      "tail": "Bà Doãn Thị Túc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Long",
+      "tail": "Bà Doãn Thị Hữu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Hổ",
+      "tail": "Doãn Đĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Hổ",
+      "tail": "Doãn Đình Dĩnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Trọng Lộc",
+      "tail": "Doãn Duẩn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Trọng Lộc",
+      "tail": "Bà Doãn Thị Tuân",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Báo (Bỉnh)",
+      "tail": "Doãn Trứ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Báo (Bỉnh)",
+      "tail": "Doãn Lô",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Hùng",
+      "tail": "Doãn Quang Chúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Hùng",
+      "tail": "Doãn Gia Trưng (Doãn Trừng)",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Chính [trưởng tộc đời thứ 4.1]",
+      "tail": "Doãn Kế [trưởng tộc đời thứ 5.2]",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "tail": "Bà Doãn Thị Cúc",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "tail": "Doãn Nguyên [trưởng tộc đời 5.1]",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "tail": "Bà Doãn Thị Miễn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Trực [trường tộc đời thứ 4.2]",
+      "tail": "Bà Doãn Thị Nghiễm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đĩnh",
+      "tail": "Doãn Thượng Hữu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đĩnh",
+      "tail": "Doãn Hồng Cương",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Duẩn",
+      "tail": "Bà Doãn Thị Doành",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Duẩn",
+      "tail": "Doãn Châm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Duẩn",
+      "tail": "Bà Doãn Thị Tý",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Thiều",
+      "tail": "Bà Doãn Thị Nữ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Thiều",
+      "tail": "Bà Doãn Thị Nhung",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Thiều",
+      "tail": "Bà Doãn Thị Gấm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Tân",
+      "tail": "Doãn Tư Kính",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Tân",
+      "tail": "Doãn Tư Nghiã",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Đình Tân",
+      "tail": "Doãn Tư Vấn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Quang Chúc",
+      "tail": "Doãn Khang",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Quang Chúc",
+      "tail": "Doãn Toại",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Viêm",
+      "tail": "Doãn Vỹ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Vị",
+      "tail": "Doãn Thanh Đạm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Vị",
+      "tail": "Doãn Phương Lễ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Vị",
+      "tail": "Doãn Đức Uông",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Vị",
+      "tail": "Bà Doãn Thị Hằng",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thượng Trung",
+      "tail": "Doãn Nhật Tự",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thượng Trung",
+      "tail": "Doãn Nhật Trường",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thượng Trung",
+      "tail": "Doãn Nhật Chu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thượng Trung",
+      "tail": "Doãn Nhật Phụ",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Thượng Trung",
+      "tail": "Doãn Nhật Sâm",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

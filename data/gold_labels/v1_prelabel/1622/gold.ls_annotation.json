@@ -1,0 +1,228 @@
+{
+  "result": [
+    {
+      "id": "ent_ac85d7302688",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 297,
+        "end": 310,
+        "text": "Hoàng Húy Tức",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_8c856e754f51",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 522,
+        "end": 535,
+        "text": "Hoàng Văn Ánh",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c84b05601534",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 333,
+        "end": 337,
+        "text": "1886",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d6a41924ee5b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 374,
+        "end": 378,
+        "text": "1969",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2dfd192be4e0",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 450,
+        "end": 454,
+        "text": "1885",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_57643b807aa2",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 493,
+        "end": 497,
+        "text": "1962",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_440eacb399d3",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 630,
+        "end": 638,
+        "text": "năm 1913",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_37acfa673978",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 662,
+        "end": 670,
+        "text": "năm 2001",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_efadb709b4ec",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 83,
+        "end": 92,
+        "text": "đời thứ 7",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e733deef0947",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 120,
+        "end": 125,
+        "text": "đời I",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9327f91baf3b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 169,
+        "end": 175,
+        "text": "đời II",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_46ca406ffe82",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 194,
+        "end": 201,
+        "text": "đời III",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a2142dd1745c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 287,
+        "end": 292,
+        "text": "Đời 4",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b3f9d2ace3bf",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 512,
+        "end": 517,
+        "text": "Đời 5",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_ac85d7302688",
+      "to_id": "ent_8c856e754f51"
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

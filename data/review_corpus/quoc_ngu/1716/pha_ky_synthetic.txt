@@ -1,0 +1,80 @@
+Ông Nguyễn Văn Thanh có 1 người con: Ông Nguyễn Văn Yến.
+Ông Nguyễn Văn Thanh sinh được Ông Nguyễn Văn Yến.
+Ông Nguyễn Văn Yến có 6 người con: Ông Nguyễn Văn Bột, Bà Nguyễn Thị Giác, Bà Nguyễn Thị Thơ, Ông Nguyễn Văn Ẩm, Ông Nguyễn Văn Phấn, Ông Nguyễn Văn Tố.
+Ông Nguyễn Văn Yến sinh được Ông Nguyễn Văn Bột.
+Ông Nguyễn Văn Yến hạ sinh Bà Nguyễn Thị Giác.
+Ông Nguyễn Văn Yến hạ sinh Bà Nguyễn Thị Thơ.
+Ông Nguyễn Văn Yến hạ sinh Ông Nguyễn Văn Ẩm.
+Ông Nguyễn Văn Yến hạ sinh Ông Nguyễn Văn Phấn.
+Ông Nguyễn Văn Yến hạ sinh Ông Nguyễn Văn Tố.
+Ông Nguyễn Văn Bột sinh được 5 người con, gồm: Ông Nguyễn Văn Nhuận, Ông Nguyễn Văn Đệ, Bà Nguyễn Thị Vĩnh, Nguyễn Chí Tuệ, Nguyễn Quang Khải.
+Ông Nguyễn Văn Nhuận là con của Ông Nguyễn Văn Bột.
+Ông Nguyễn Văn Đệ là con của Ông Nguyễn Văn Bột.
+Ông Nguyễn Văn Bột hạ sinh Bà Nguyễn Thị Vĩnh.
+Ông Nguyễn Văn Bột sinh được Nguyễn Chí Tuệ.
+Nguyễn Quang Khải là con của Ông Nguyễn Văn Bột.
+Ông Nguyễn Văn Phấn sinh được 5 người con, gồm: Ông Nguyễn Văn Sáp, Nguyễn Đình Đàm, Ông Nguyễn Văn Đảm, Bà Nguyễn Thị Đởn, Ông Nguyễn Văn Lượng.
+Ông Nguyễn Văn Phấn sinh được Ông Nguyễn Văn Sáp.
+Ông Nguyễn Văn Phấn hạ sinh Nguyễn Đình Đàm.
+Ông Nguyễn Văn Phấn sinh được Ông Nguyễn Văn Đảm.
+Bà Nguyễn Thị Đởn là con của Ông Nguyễn Văn Phấn.
+Ông Nguyễn Văn Lượng là con của Ông Nguyễn Văn Phấn.
+Ông Nguyễn Văn Tố có 2 người con: Ông Nguyễn Văn Tế, Bà Nguyễn Thị Tự.
+Ông Nguyễn Văn Tố hạ sinh Ông Nguyễn Văn Tế.
+Ông Nguyễn Văn Tố hạ sinh Bà Nguyễn Thị Tự.
+Ông Nguyễn Văn Nhuận sinh được 10 người con, gồm: Nguyễn Hồng Minh, Nguyễn Anh Tuấn, Nguyễn Mạnh Hùng, Nguyễn Mạnh Cường, Nguyễn Công Định, Nguyễn Tiến Thịnh, Bà Nguyễn Thị Thanh Bình, Bà Nguyễn Thị Hoà, Bà Nguyễn Thị Mai, Ông Nguyễn Văn Trung.
+Ông Nguyễn Văn Nhuận sinh được Nguyễn Anh Tuấn.
+Ông Nguyễn Văn Nhuận hạ sinh Nguyễn Mạnh Hùng.
+Ông Nguyễn Văn Nhuận hạ sinh Nguyễn Mạnh Cường.
+Ông Nguyễn Văn Nhuận sinh được Nguyễn Công Định.
+Nguyễn Tiến Thịnh là con của Ông Nguyễn Văn Nhuận.
+Ông Nguyễn Văn Nhuận hạ sinh Bà Nguyễn Thị Thanh Bình.
+Bà Nguyễn Thị Hoà là con của Ông Nguyễn Văn Nhuận.
+Ông Nguyễn Văn Nhuận sinh được Bà Nguyễn Thị Mai.
+Ông Nguyễn Văn Nhuận sinh được Ông Nguyễn Văn Trung.
+Ông Nguyễn Văn Sáp sinh được 6 người con, gồm: Ông Nguyễn Văn Vấn, Ông Nguyễn Văn Tân, Ông Nguyễn Văn Thanh, Bà Nguyễn Thị Liên, Bà Nguyễn Thị Chung, Bà Nguyễn Thị Thu.
+Ông Nguyễn Văn Sáp hạ sinh Ông Nguyễn Văn Vấn.
+Ông Nguyễn Văn Sáp sinh được Ông Nguyễn Văn Tân.
+Ông Nguyễn Văn Sáp sinh được Bà Nguyễn Thị Liên.
+Ông Nguyễn Văn Sáp sinh được Bà Nguyễn Thị Chung.
+Ông Nguyễn Văn Đệ sinh được 9 người con, gồm: Ông Nguyễn Văn Loan, Ông Nguyễn Văn Luân, Bà Nguyễn Thị Thoa, Bà Nguyễn Thị Thuận, Ông Nguyễn Văn Thắng, Bà Nguyễn Thị Lới, Bà Nguyễn Thị Huyền, Bà Nguyễn Thị Hiên, Bà Nguyễn Thị Hiên.
+Ông Nguyễn Văn Đệ hạ sinh Ông Nguyễn Văn Loan.
+Ông Nguyễn Văn Đệ hạ sinh Ông Nguyễn Văn Luân.
+Ông Nguyễn Văn Đệ sinh được Bà Nguyễn Thị Thoa.
+Bà Nguyễn Thị Thuận là con của Ông Nguyễn Văn Đệ.
+Ông Nguyễn Văn Đệ hạ sinh Ông Nguyễn Văn Thắng.
+Bà Nguyễn Thị Lới là con của Ông Nguyễn Văn Đệ.
+Ông Nguyễn Văn Đệ hạ sinh Bà Nguyễn Thị Huyền.
+Ông Nguyễn Văn Đệ sinh được Bà Nguyễn Thị Hiên.
+Nguyễn Đình Đàm sinh được 6 người con, gồm: Nguyễn Đình Khang, Bà Nguyễn Thị Tuyết, Bà Nguyễn Thị Nhung, Bà Nguyễn Thị Hồng, Bà Nguyễn Thị Hà, Nguyễn Đình Việt.
+Nguyễn Đình Đàm hạ sinh Nguyễn Đình Khang.
+Nguyễn Đình Đàm hạ sinh Bà Nguyễn Thị Tuyết.
+Nguyễn Đình Đàm hạ sinh Bà Nguyễn Thị Nhung.
+Nguyễn Đình Đàm sinh được Nguyễn Đình Việt.
+Nguyễn Chí Tuệ có 3 người con: Ông Nguyễn Văn Tuyền, Bà Nguyễn Thị Hương, Ông Nguyễn Văn Dũng.
+Nguyễn Chí Tuệ sinh được Ông Nguyễn Văn Tuyền.
+Nguyễn Chí Tuệ hạ sinh Ông Nguyễn Văn Dũng.
+Nguyễn Quang Khải có 4 người con: Bà Nguyễn Thị Hằng, Nguyễn Trung Tuyến, Nguyễn Quang Tới, Ông Nguyễn Văn Hà.
+Nguyễn Quang Khải sinh được Bà Nguyễn Thị Hằng.
+Nguyễn Quang Khải sinh được Nguyễn Trung Tuyến.
+Nguyễn Quang Khải hạ sinh Nguyễn Quang Tới.
+Ông Nguyễn Văn Lượng sinh được 4 người con, gồm: Ông Nguyễn Văn Lương, Ông Nguyễn Văn Cương, Bà Nguyễn Thị Hoa, Bà Nguyễn Thị Hợp.
+Ông Nguyễn Văn Lượng sinh được Ông Nguyễn Văn Lương.
+Ông Nguyễn Văn Lượng sinh được Ông Nguyễn Văn Cương.
+Ông Nguyễn Văn Lượng sinh được Bà Nguyễn Thị Hoa.
+Ông Nguyễn Văn Lượng sinh được Bà Nguyễn Thị Hợp.
+Nguyễn Hồng Minh sinh được 2 người con, gồm: Nguyễn Ngọc Anh, Bà Nguyễn Thị Thu Hà.
+Nguyễn Ngọc Anh là con của Nguyễn Hồng Minh.
+Nguyễn Anh Tuấn có 3 người con: Nguyễn Thành Nam, Bà Nguyễn Thị Thu, Bà Nguyễn Thị Hường.
+Bà Nguyễn Thị Hường là con của Nguyễn Anh Tuấn.
+Ông Nguyễn Văn Loan có 3 người con: Nguyễn Thanh Hải, Bà Nguyễn Thị Hiền, Bà Nguyễn Thị Hiệp.
+Ông Nguyễn Văn Loan hạ sinh Nguyễn Thanh Hải.
+Ông Nguyễn Văn Loan sinh được Bà Nguyễn Thị Hiền.
+Ông Nguyễn Văn Loan sinh được Bà Nguyễn Thị Hiệp.
+Nguyễn Mạnh Hùng có 2 người con: Ông Nguyễn Văn Dũng, Ông Nguyễn Văn Tú.
+Nguyễn Mạnh Hùng sinh được Ông Nguyễn Văn Dũng.
+Ông Nguyễn Văn Tú là con của Nguyễn Mạnh Hùng.
+Nguyễn Mạnh Cường có 1 người con: Nguyễn Phương Thảo.
+Nguyễn Mạnh Cường sinh được Nguyễn Phương Thảo.
+Bà Nguyễn Thị Thoa có 2 người con: Bà Nguyễn Thị Thảo, Nguyễn Đình Thành.
+Bà Nguyễn Thị Thoa hạ sinh Bà Nguyễn Thị Thảo.

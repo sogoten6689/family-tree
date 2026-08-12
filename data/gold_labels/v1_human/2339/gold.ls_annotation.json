@@ -1,0 +1,218 @@
+{
+  "id": 45,
+  "result": [
+    {
+      "id": "ent_619ba76dd090",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2401,
+        "end": 2409,
+        "text": "năm 2009",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_58dec6903b09",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 223,
+        "end": 233,
+        "text": "đời thứ 15",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d16b28e29fff",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2411,
+        "end": 2426,
+        "text": "Phùng Việt Dũng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a14958e5e35e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 17,
+        "end": 41,
+        "text": "thôn Ngọ Cầu và An Xuyên",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ed5ef6981f88",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 84,
+        "end": 98,
+        "text": "thôn Minh Khai",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a20c1fd8bba6",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 120,
+        "end": 133,
+        "text": "huyện Văn Lâm",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f60adaebbb43",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 135,
+        "end": 170,
+        "text": "tỉnh Hưng Yên gồm 3 dòng riêng biệt",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_8950a319037a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 395,
+        "end": 402,
+        "text": "tổ tiên",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7dbc44b95b8d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 593,
+        "end": 674,
+        "text": "tổ họ Phùng cùng mang một họ đến lập làng tại đây lại không có liên quan đến nhau",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_afdf0254686d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 778,
+        "end": 786,
+        "text": "Hưng Yên",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9139f23f06ae",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 817,
+        "end": 823,
+        "text": "Hà Nội",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_db1b416d61f9",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1325,
+        "end": 1367,
+        "text": "thôn Minh Khai để mọi người cùng tham khảo",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_836008851ce5",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2248,
+        "end": 2284,
+        "text": "tổ mà hiện nay chưa tìm thấy cứ liệu",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "created_username": " sogoten6689@gmail.com, 1",
+  "created_ago": "0 minutes",
+  "completed_by": 1,
+  "was_cancelled": false,
+  "ground_truth": true,
+  "created_at": "2026-08-10T09:32:25.261615Z",
+  "updated_at": "2026-08-10T09:32:25.261668Z",
+  "draft_created_at": null,
+  "lead_time": 180.0,
+  "import_id": null,
+  "last_action": null,
+  "bulk_created": false,
+  "task": 20,
+  "project": 1,
+  "updated_by": 1,
+  "parent_prediction": null,
+  "parent_annotation": null,
+  "last_created_by": null
+}

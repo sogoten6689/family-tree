@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "id": "ent_975ea8fe2191",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 524,
+        "end": 533,
+        "text": "đời thứ 7",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

@@ -1,0 +1,21 @@
+{
+  "tree_id": 1546,
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1546/pha_he.html",
+  "lineage_name": "Văn Đình - Phái Nhì - Chi Nhất - Thừa Thiên Huế",
+  "parser_mode": "tree_view",
+  "node_count": 1,
+  "relationship_count": 0,
+  "nodes": [
+    {
+      "tree_id": 1546,
+      "node_id": 1,
+      "label": "1.1 Văn Đình Ngoạn",
+      "name": "Văn Đình Ngoạn",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": null,
+      "is_spouse_row": false
+    }
+  ],
+  "relationships": []
+}

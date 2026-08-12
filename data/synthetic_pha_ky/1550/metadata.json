@@ -1,0 +1,16 @@
+{
+  "tree_id": 1550,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "Nguyễn Tộc Tứ Phái - Quảng Nam",
+  "generated_at": "2026-08-10T08:04:59.544247+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/1550/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/1550/pha_he.html",
+  "real_pha_ky_char_count": 2266,
+  "char_count": 390,
+  "entity_count": 11,
+  "relation_count": 4,
+  "sentence_count": 7,
+  "missing_name_count": 4,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 1.0
+}

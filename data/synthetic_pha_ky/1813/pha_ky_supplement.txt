@@ -1,0 +1,80 @@
+Thân danh Hân sinh được 10 người con, gồm: Thân danh Lai, Thân danh Dốt, Thân danh Quang, Thân danh Đũng, Thân danh Đối, Thân danh Đáp, Thân danh Nam, Thân danh Vinh, Thân danh Tiết, Thân thị Phèng.
+Thân danh Dốt là con của Thân danh Hân.
+Thân danh Hân hạ sinh Thân danh Đũng.
+Thân danh Đáp là con của Thân danh Hân.
+Thân danh Tiết là con của Thân danh Hân.
+Thân danh Hân sinh được Thân thị Phèng.
+Thân danh Lai sinh được 5 người con, gồm: Thân danh Đãi, Thân danh Thỉnh, Thân danh Giảng, Thân thị, Thân thị La.
+Thân danh Đãi là con của Thân danh Lai.
+Thân danh Thỉnh là con của Thân danh Lai.
+Thân danh Lai hạ sinh Thân danh Giảng.
+Thân danh Lai sinh được Thân thị.
+Thân danh Lai sinh được Thân thị La.
+Thân danh Quang sinh được 6 người con, gồm: Thân thị Bồng, Thân danh Tôn, Thân danh Chung, Thân danh Mừng, Thân thị Thụy, Thân thị Bạ.
+Thân thị Bồng là con của Thân danh Quang.
+Thân danh Chung là con của Thân danh Quang.
+Thân danh Mừng là con của Thân danh Quang.
+Thân danh Quang sinh được Thân thị Thụy.
+Thân danh Quang sinh được Thân thị Bạ.
+Thân danh Đũng có 3 người con: Thân thị Mai, Thân danh Quốc, Thân thị sới.
+Thân thị Mai là con của Thân danh Đũng.
+Thân danh Đũng sinh được Thân thị sới.
+Thân danh Vinh có 6 người con: Thân danh Vương, Thân danh Kình, Thân danh Cường, Thân danh Tráng, Thân danh Lực, Thân danh Lưỡng.
+Thân danh Vinh hạ sinh Thân danh Kình.
+Thân danh Cường là con của Thân danh Vinh.
+Thân danh Vinh hạ sinh Thân danh Tráng.
+Thân danh Vinh sinh được Thân danh Lực.
+Thân danh Vinh hạ sinh Thân danh Lưỡng.
+Thân danh Lai sinh được 1 người con, gồm: Thân danh Dốt.
+Thân danh Lai sinh được Thân danh Dốt.
+Thân danh Đãi sinh được 7 người con, gồm: Thân thị Ngâm, Thân danh Nga, Thân thị Thơ, Thân thị Phú, Thân danh Dê, Thân danh Oanh, Thân danh Oánh.
+Thân danh Đãi sinh được Thân thị Ngâm.
+Thân danh Đãi sinh được Thân danh Nga.
+Thân danh Đãi hạ sinh Thân thị Thơ.
+Thân danh Đãi sinh được Thân thị Phú.
+Thân danh Dê là con của Thân danh Đãi.
+Thân danh Đãi sinh được Thân danh Oanh.
+Thân danh Đãi sinh được Thân danh Oánh.
+Thân danh Vương sinh được 4 người con, gồm: Thân danh Thích, Thân thị Thú, Thân thị Chí, Thân danh Thảo.
+Thân danh Vương hạ sinh Thân danh Thích.
+Thân danh Vương hạ sinh Thân thị Thú.
+Thân danh Vương hạ sinh Thân thị Chí.
+Thân danh Vương hạ sinh Thân danh Thảo.
+Thân danh Thỉnh có 4 người con: Thân danh Túc, Thân danh Dụng, Thân danh Dung, Thân thị Dùng.
+Thân danh Thỉnh hạ sinh Thân danh Túc.
+Thân danh Thỉnh hạ sinh Thân danh Dụng.
+Thân danh Thỉnh sinh được Thân danh Dung.
+Thân danh Thỉnh hạ sinh Thân thị Dùng.
+Thân danh Tôn sinh được 3 người con, gồm: Thân thị Hiền, Thân danh Hậu, Thân danh Hòa.
+Thân danh Tôn hạ sinh Thân thị Hiền.
+Thân danh Tôn sinh được Thân danh Hòa.
+Thân danh Quốc sinh được 6 người con, gồm: Thân thị Lang, Thân danh Tạo, Thân danh Cầu, Thân danh Bầu, Thân thị Du, Thân danh Khánh.
+Thân danh Quốc sinh được Thân thị Lang.
+Thân danh Quốc hạ sinh Thân danh Bầu.
+Thân danh Quốc hạ sinh Thân thị Du.
+Thân danh Quốc sinh được Thân danh Khánh.
+Thân danh Kình có 1 người con: Thân thị Đông.
+Thân thị Đông là con của Thân danh Kình.
+Thân danh Cường sinh được 5 người con, gồm: Thân danh Thế, Thân danh Nỵ, Thân danh Phúc, Thân thị Gái, Thân danh Được.
+Thân danh Cường sinh được Thân danh Nỵ.
+Thân danh Cường hạ sinh Thân thị Gái.
+Thân danh Giảng có 5 người con: Thân thị Ao, Thân danh Cục, Thân danh Tân, Thân danh San, Thân thị Thủy.
+Thân danh Giảng hạ sinh Thân thị Ao.
+Thân danh Giảng sinh được Thân danh Cục.
+Thân danh Tân là con của Thân danh Giảng.
+Thân danh Giảng sinh được Thân thị Thủy.
+Thân danh Lực có 4 người con: Thân danh Nghị, Thân danh Tý, Thân danh Hà, Thân thị Hồng.
+Thân danh Lực sinh được Thân danh Nghị.
+Thân danh Lực hạ sinh Thân danh Tý.
+Thân danh Lực sinh được Thân thị Hồng.
+Thân danh Lưỡng sinh được 2 người con, gồm: Thân danh Hiệp, Thân thị Thuận.
+Thân danh Lưỡng hạ sinh Thân thị Thuận.
+Thân danh Túc có 6 người con: Thân Danh Đa, Thân Thị Bình, Thân danh Phục, Thân danh Thắng, Thân thị Lợi, Thân thị Xót.
+Thân danh Túc sinh được Thân Danh Đa.
+Thân Thị Bình là con của Thân danh Túc.
+Thân danh Phục là con của Thân danh Túc.
+Thân thị Lợi là con của Thân danh Túc.
+Thân danh Túc hạ sinh Thân thị Xót.
+Thân danh Nga có 6 người con: Thân danh Nguyên, Thân danh Ngân, Thân thị Dư, Thân thị Dừ, Thân danh Thanh, Thân danh Tịnh.
+Thân danh Nga hạ sinh Thân danh Ngân.
+Thân thị Dư là con của Thân danh Nga.

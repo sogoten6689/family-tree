@@ -1,0 +1,16 @@
+{
+  "tree_id": 1508,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "NGUYỄN VIẾT - Thanh Hóa",
+  "generated_at": "2026-08-10T08:04:59.501432+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/1508/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/1508/pha_he.html",
+  "real_pha_ky_char_count": 349,
+  "char_count": 172,
+  "entity_count": 5,
+  "relation_count": 1,
+  "sentence_count": 3,
+  "missing_name_count": 2,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 1.0
+}

@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from label_studio_pipeline.corpus_store import load_json, tree_dir
+from label_studio_pipeline.pilot_file import resolve_tree_ids
 from label_studio_pipeline.synthetic_pha_ky import (
     export_synthetic_tree,
     select_synthetic_candidates_from_corpus,
@@ -53,12 +54,15 @@ def run_generate(
                 continue
             pha_he = load_json(pha_he_path) or {}
             meta = load_json(base / "meta.json") or {}
+            pha_ky_path = base / "pha_ky.txt"
+            real_pha_ky = pha_ky_path.read_text(encoding="utf-8") if pha_ky_path.is_file() else ""
             metadata = export_synthetic_tree(
                 tree_id=tree_id,
                 pha_he=pha_he,
                 meta=meta,
                 output_dir=output_dir,
                 max_nodes=max_nodes,
+                real_pha_ky_text=real_pha_ky,
             )
             exported.append(metadata)
         except Exception as exc:
@@ -76,7 +80,7 @@ def run_generate(
 
     dataset = {
         "version": 1,
-        "source": "synthetic_from_pha_he",
+        "source": "synthetic_supplement_v2",
         "generated_at": _now_iso(),
         "doc_count": len(dataset_docs),
         "documents": dataset_docs,
@@ -100,6 +104,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Generate synthetic Phả ký from pha_he diagrams.")
     parser.add_argument("--corpus-dir", type=Path, default=DEFAULT_CORPUS_DIR)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--pilot-file", type=Path, default=None)
     parser.add_argument("--tree-id", type=int, action="append", dest="tree_ids")
     parser.add_argument(
         "--auto-select",
@@ -120,6 +125,11 @@ def main() -> None:
 
     if args.tree_ids:
         tree_ids = args.tree_ids
+    elif args.pilot_file:
+        tree_ids = resolve_tree_ids(
+            corpus_dir=args.corpus_dir,
+            pilot_file=args.pilot_file,
+        )
     else:
         tree_ids = select_synthetic_candidates_from_corpus(
             args.corpus_dir,

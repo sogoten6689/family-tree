@@ -1,0 +1,52 @@
+{
+  "result": [
+    {
+      "id": "ent_d6dec7c10923",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 716,
+        "end": 720,
+        "text": "1993",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c622d8d3ed67",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 804,
+        "end": 814,
+        "text": "05/04/1994",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d8839c0659e8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 672,
+        "end": 681,
+        "text": "đời thứ 5",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

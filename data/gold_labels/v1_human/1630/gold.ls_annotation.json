@@ -1,0 +1,803 @@
+{
+  "id": 31,
+  "result": [
+    {
+      "id": "ent_a0e71eaabde9",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2914,
+        "end": 2921,
+        "text": "Cụ Thái",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_aac66b44b82f",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 337,
+        "end": 340,
+        "text": "Huy",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_15d77c10b1df",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 343,
+        "end": 347,
+        "text": "Minh",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_de96a781feae",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1892,
+        "end": 1898,
+        "text": "Nguyên",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c5b3547ff087",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 518,
+        "end": 523,
+        "text": "Quang",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_0306801ce895",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 280,
+        "end": 283,
+        "text": "Nam",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c16c4893d9e1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 775,
+        "end": 779,
+        "text": "Ngọc",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5bfdde85c882",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2113,
+        "end": 2118,
+        "text": "Dương",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_fdecac205d7c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3332,
+        "end": 3337,
+        "text": "Thanh",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_460d67bd38c6",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2740,
+        "end": 2743,
+        "text": "Văn",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_bd3c354e9fad",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 207,
+        "end": 209,
+        "text": "Độ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c990610f2c55",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2710,
+        "end": 2713,
+        "text": "Lâm",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2a7676418720",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2596,
+        "end": 2602,
+        "text": "Thượng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_85fe269acbb3",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 705,
+        "end": 708,
+        "text": "Phi",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_1378310c0353",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 531,
+        "end": 535,
+        "text": "1516",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ae51bac5425e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 536,
+        "end": 540,
+        "text": "1522",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_748338f0263a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2276,
+        "end": 2284,
+        "text": "năm 1622",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b713682e3017",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2479,
+        "end": 2483,
+        "text": "1622",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_cbb9f4ac8402",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 510,
+        "end": 515,
+        "text": "đời v",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a1a20850bb4e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2658,
+        "end": 2667,
+        "text": "Đời Thứ 5",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3751a0be4fce",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3185,
+        "end": 3195,
+        "text": "đời thứ 11",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9f25baea9f8a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3320,
+        "end": 3326,
+        "text": "đời 13",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a2b5b8942d84",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 434,
+        "end": 436,
+        "text": "Tư",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3744c1de7357",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2928,
+        "end": 2932,
+        "text": "Siêu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_77c55138fb14",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 857,
+        "end": 861,
+        "text": "Công",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a239fa5453ee",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 571,
+        "end": 575,
+        "text": "Dung",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_065fcb14bc40",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2008,
+        "end": 2010,
+        "text": "An",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_309e2e21ec8d",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2635,
+        "end": 2639,
+        "text": "Đoài",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_4e1ec94c72c3",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 46,
+        "end": 50,
+        "text": "Nhân",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9a9f8766b045",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3338,
+        "end": 3340,
+        "text": "Hà",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_da136fe832ff",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2651,
+        "end": 2656,
+        "text": "Xuyên",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_53e19da91d0f",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1346,
+        "end": 1349,
+        "text": "Ngọ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_81a11fe28ebf",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 566,
+        "end": 570,
+        "text": "Đăng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c24546e93052",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3038,
+        "end": 3045,
+        "text": "Từ Chấn",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_67b31b9b58f2",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 846,
+        "end": 851,
+        "text": "Tráng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_036aa82efb11",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 422,
+        "end": 427,
+        "text": "Trình",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c27a7c865dee",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3258,
+        "end": 3261,
+        "text": "Đãi",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2954b6f2f424",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1608,
+        "end": 1611,
+        "text": "san",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b60e63ebc9ec",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 268,
+        "end": 270,
+        "text": "Vụ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_97ab96803ab2",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 223,
+        "end": 226,
+        "text": "Bản",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_fc22eb474df1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1817,
+        "end": 1826,
+        "text": "Trần cũng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f365c4454172",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 592,
+        "end": 628,
+        "text": "tổ ta lánh nạn về quê ngoại Kinh bắc",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_85f27176e79b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 636,
+        "end": 680,
+        "text": "tổ sinh hạ được 4 người con 3 trai 1 con gái",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_2829bc5c5948",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 986,
+        "end": 1003,
+        "text": "Quận Công tử trận",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5d810e12b78b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1023,
+        "end": 1115,
+        "text": "làng Đồng đội làm lụng nuôi con\nViệc bà thành phi của chúa Trịnh Tạc có 2 thuyết\n - thứ nhất",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e4df1f3d7ba3",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1137,
+        "end": 1146,
+        "text": "bình định",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_8a529a5fe027",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1525,
+        "end": 1564,
+        "text": "làng Đồng đội thấy người con gái cắt cỏ",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ef2a9ec5e270",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1904,
+        "end": 1926,
+        "text": "quận công Ngo đình Nga",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_889c25098202",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2084,
+        "end": 2091,
+        "text": "Nghệ an",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a619888ebea3",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2192,
+        "end": 2204,
+        "text": "xã Dương lai",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c67b5ec66e32",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2299,
+        "end": 2366,
+        "text": "xã quả linh lại loạn li một lần nữa nên không ghi chép được mấy đời",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7bad5a3b59da",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3447,
+        "end": 3473,
+        "text": "tổ ta là cụ Hồng Nhân Công",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "created_username": " sogoten6689@gmail.com, 1",
+  "created_ago": "0 minutes",
+  "completed_by": 1,
+  "was_cancelled": false,
+  "ground_truth": true,
+  "created_at": "2026-08-10T09:32:16.845723Z",
+  "updated_at": "2026-08-10T09:32:16.845768Z",
+  "draft_created_at": null,
+  "lead_time": 180.0,
+  "import_id": null,
+  "last_action": null,
+  "bulk_created": false,
+  "task": 6,
+  "project": 1,
+  "updated_by": 1,
+  "parent_prediction": null,
+  "parent_annotation": null,
+  "last_created_by": null
+}

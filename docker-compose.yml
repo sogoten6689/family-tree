@@ -104,6 +104,17 @@ services:
       start_period: 20s
     restart: unless-stopped
 
+  label-studio:
+    image: heartexlabs/label-studio:latest
+    container_name: family-tree-label-studio
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/label_studio:/label-studio/data
+    environment:
+      LABEL_STUDIO_BASE_DATA_DIR: /label-studio/data
+    restart: unless-stopped
+
 volumes:
   mysql_data:
   minio_data:

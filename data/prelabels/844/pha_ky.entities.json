@@ -1,0 +1,17 @@
+{
+  "entities": [
+    {
+      "text": "1993",
+      "label": "DATE"
+    },
+    {
+      "text": "05/04/1994",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

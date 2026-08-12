@@ -1,0 +1,100 @@
+{
+  "doc_id": "vgp_1622",
+  "tree_id": 1622,
+  "title": "HOÀNG - Hải Dương",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1622/pha_ky_gia_su.html",
+  "text": "Gia phả họ HOÀNG\nQuê quán: Cao An - Cẩm Giàng - Hải Dương\nTheo gia phả, mình thuộc đời thứ 7 trong dòng họ. Kỵ tổ mình (đời I) sinh được hai người con trai. Ông anh cả (đời II) có ba người con (đời III): bà Ngó mất năm 18 tuổi, một cụ mất năm 29 tuổi và cụ Tin (có con trai tên là Tức).\nĐời 4\n:\n*\nHoàng Húy Tức\n+ Sinh năm Bính Tuất (1886)\n+ Mất ngày 10 tháng 03 năm Kỷ Dậu (1969), thọ 83 tuổi\n*\nPhạm Thị Còi\n: vợ ông Hoàng Húy Tức\n+ Sinh năm Ất Dậu (1885)\n+ Mất ngày 26 tháng 02 năm Nhâm Dần (1962), thọ 78 tuổi\nĐời 5\n:\n*\nHoàng Văn Ánh\n: con ông Hoàng Húy Tức và bà Phạm Thị Còi\n*\nPhạm Thị Sáo\n: vợ thứ 2 ông Hoàng Văn Ánh\n+ Sinh năm 1913\n+ Mất ngày 26 tháng 01 năm 2001 (Âm lịch)",
+  "entities": [
+    {
+      "start": 297,
+      "end": 310,
+      "label": "PER_NAME",
+      "text": "Hoàng Húy Tức"
+    },
+    {
+      "start": 522,
+      "end": 535,
+      "label": "PER_NAME",
+      "text": "Hoàng Văn Ánh"
+    },
+    {
+      "start": 333,
+      "end": 337,
+      "label": "DATE",
+      "text": "1886"
+    },
+    {
+      "start": 374,
+      "end": 378,
+      "label": "DATE",
+      "text": "1969"
+    },
+    {
+      "start": 450,
+      "end": 454,
+      "label": "DATE",
+      "text": "1885"
+    },
+    {
+      "start": 493,
+      "end": 497,
+      "label": "DATE",
+      "text": "1962"
+    },
+    {
+      "start": 630,
+      "end": 638,
+      "label": "DATE",
+      "text": "năm 1913"
+    },
+    {
+      "start": 662,
+      "end": 670,
+      "label": "DATE",
+      "text": "năm 2001"
+    },
+    {
+      "start": 83,
+      "end": 92,
+      "label": "GENERATION",
+      "text": "đời thứ 7"
+    },
+    {
+      "start": 120,
+      "end": 125,
+      "label": "GENERATION",
+      "text": "đời I"
+    },
+    {
+      "start": 169,
+      "end": 175,
+      "label": "GENERATION",
+      "text": "đời II"
+    },
+    {
+      "start": 194,
+      "end": 201,
+      "label": "GENERATION",
+      "text": "đời III"
+    },
+    {
+      "start": 287,
+      "end": 292,
+      "label": "GENERATION",
+      "text": "Đời 4"
+    },
+    {
+      "start": 512,
+      "end": 517,
+      "label": "GENERATION",
+      "text": "Đời 5"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 0,
+      "tail": 1
+    }
+  ]
+}

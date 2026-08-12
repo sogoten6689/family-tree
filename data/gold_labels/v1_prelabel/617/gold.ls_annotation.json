@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "id": "ent_3d0984dbf410",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 85,
+        "end": 90,
+        "text": "đời x",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

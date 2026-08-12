@@ -1,0 +1,263 @@
+{
+  "id": 36,
+  "result": [
+    {
+      "id": "ent_0332f9e8c7e8",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 16,
+        "end": 20,
+        "text": "2007",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_4c3532fa8e09",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1242,
+        "end": 1246,
+        "text": "2003",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b79ddfacf1ba",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1741,
+        "end": 1745,
+        "text": "1997",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_eb02cc8a3325",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2721,
+        "end": 2729,
+        "text": "năm 1977",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_fd38590746b4",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2799,
+        "end": 2803,
+        "text": "1898",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_d2c84abe94b4",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2808,
+        "end": 2812,
+        "text": "1977",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e0fd779199d4",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1171,
+        "end": 1181,
+        "text": "đời thứ 12",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_03cfa6347317",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2177,
+        "end": 2187,
+        "text": "đời thứ 11",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3f943b79e7fa",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2559,
+        "end": 2568,
+        "text": "đời thứ 9",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_1b1a09366de6",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1559,
+        "end": 1574,
+        "text": "con trai trưởng",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_3784ac837c5f",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 67,
+        "end": 91,
+        "text": "tổ của dòng tộc Văn Đình",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_024116b4a26a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1063,
+        "end": 1077,
+        "text": "tổ tiên phò hộ",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_da4ca0b906a1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1679,
+        "end": 1722,
+        "text": "tổ phụ Văn Đình Lê và bào thúc Văn Đình Hoà",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_f94d04abb6cd",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2101,
+        "end": 2154,
+        "text": "tổ phò hộ cho tập phổ này được lưu truyền đến đời đời",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_49d5b6f10485",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3064,
+        "end": 3083,
+        "text": "tổ chưa được bổ túc",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_5dfa80bd34cd",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 3332,
+        "end": 3356,
+        "text": "tổ tiên của chúng ta vậy",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "created_username": " sogoten6689@gmail.com, 1",
+  "created_ago": "0 minutes",
+  "completed_by": 1,
+  "was_cancelled": false,
+  "ground_truth": true,
+  "created_at": "2026-08-10T09:32:19.299545Z",
+  "updated_at": "2026-08-10T09:32:19.299583Z",
+  "draft_created_at": null,
+  "lead_time": 180.0,
+  "import_id": null,
+  "last_action": null,
+  "bulk_created": false,
+  "task": 11,
+  "project": 1,
+  "updated_by": 1,
+  "parent_prediction": null,
+  "parent_annotation": null,
+  "last_created_by": null
+}

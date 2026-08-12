@@ -1,0 +1,448 @@
+{
+  "entities": [
+    {
+      "text": "Doãn Thự",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thị Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Toàn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đức",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Khuê",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Chi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Vị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thị Vi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thiều Hoa",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm\n1478",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1502",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1571",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1541",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1586",
+      "label": "DATE"
+    },
+    {
+      "text": "1669",
+      "label": "DATE"
+    },
+    {
+      "text": "1724",
+      "label": "DATE"
+    },
+    {
+      "text": "1694",
+      "label": "DATE"
+    },
+    {
+      "text": "1746",
+      "label": "DATE"
+    },
+    {
+      "text": "1728",
+      "label": "DATE"
+    },
+    {
+      "text": "1793",
+      "label": "DATE"
+    },
+    {
+      "text": "1603",
+      "label": "DATE"
+    },
+    {
+      "text": "1684",
+      "label": "DATE"
+    },
+    {
+      "text": "1647",
+      "label": "DATE"
+    },
+    {
+      "text": "1725",
+      "label": "DATE"
+    },
+    {
+      "text": "1895",
+      "label": "DATE"
+    },
+    {
+      "text": "1850",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1845",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1847",
+      "label": "DATE"
+    },
+    {
+      "text": "1813",
+      "label": "DATE"
+    },
+    {
+      "text": "1878",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1838",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1873",
+      "label": "DATE"
+    },
+    {
+      "text": "1874",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1873",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1874",
+      "label": "DATE"
+    },
+    {
+      "text": "1855",
+      "label": "DATE"
+    },
+    {
+      "text": "1910",
+      "label": "DATE"
+    },
+    {
+      "text": "1894",
+      "label": "DATE"
+    },
+    {
+      "text": "1974",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1929",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1986",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1847",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n1507",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n2006",
+      "label": "DATE"
+    },
+    {
+      "text": "năm\n2000",
+      "label": "DATE"
+    },
+    {
+      "text": "đời c",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 9",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Doãn Hoàng Giang",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Vũ Thư",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Mậu Khôi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Đống",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đại Hiệu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Mậu Đàm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Đức Huyên",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Lý Khiêm",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Chẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Sưởng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Đổ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trác",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thăng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Hương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Hộ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Thị Đáp",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Hoành Tuấn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đức Tông",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Nga",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Phả",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Đình Tước",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Uẩn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Tri Phương",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Mậu Kiến",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Phạm Văn Nghị",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đỗ Phát",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Chính",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Trực",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Ái",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Tam Hòe",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Doãn Mậu Khôi đi sứ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "xã Song Lãng",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Ngoại Lãng",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Lạng",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Song Lãng huyện\nVũ Thư\ntỉnh\nThái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Cổ Định Triệu Sơn Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "làng Doãn Xá huyện Đông Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "làng An Duyên xã Tô Hiệu huyện\nThường Tín\ntỉnh\nHà Tây",
+      "label": "LOC"
+    },
+    {
+      "text": "Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ của chi Giáp Song Lãng là cụ Doãn Duệ",
+      "label": "LOC"
+    },
+    {
+      "text": "TỔ CỦA GIA TỘC\nĐời\nHọ tên\nSinh thời\nTên hiệu\nLiên hệ gia tộc\n1\nDoãn Hoành Tuấn",
+      "label": "LOC"
+    },
+    {
+      "text": "bình định",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải phòng",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Thái Bình và Nam Định hiện nay",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh\nThái Nguyên",
+      "label": "LOC"
+    },
+    {
+      "text": "Thái Bình",
+      "label": "LOC"
+    },
+    {
+      "text": "làng xã Nghĩa Thành huyện Nghĩa Hưng tỉnh Nam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Thái Bình đầu thế kỷ 20",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ chức Việt Nam Thanh niên Cách mạng Đồng chí hội do\nNguyễn Ái Quốc\nsáng lập",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Nghĩa Thành\nhuyện\nNghĩa Hưng\ntỉnh\nNam Định",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ họ Doãn Việt Nam",
+      "label": "LOC"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Doãn Chi",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Doãn Khuê",
+      "tail": "Doãn Vị",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

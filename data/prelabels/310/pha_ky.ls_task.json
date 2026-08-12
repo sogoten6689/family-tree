@@ -1,0 +1,384 @@
+{
+  "data": {
+    "text": "Gia phả này là kế thừa phần gia phả được các Cụ nối nhau ghi lại.\nDo hoả hoạn nên đến nay chỉ còn giữ lại bản gia phả gốc cũ nhất, viết bằng Hán nôm đã được 100 năm, do Cụ Nguyễn Văn Học (con cả, bà Cả) và Cụ Nguyễn Ngọc Trấn (con thứ tư, là con cả bà Hai), con Cụ Tổ Điều ghi lại năm 1904-1906. Tiếp đó có nhiều vị khác trong họ đã ghi bổ sung với mức độ khác nhau, mà tiêu biểu là các vị :\n- Chi 1 : Nguyễn Văn Học (thế hệ 1, viết 1904-1906), Nguyễn Văn Chành (thế hệ 2, viết 1981), Nguyễn Hưng Lợi (thế hệ 3, viết 1995)\n- Chi 4 : Nguyễn Ngọc Trấn (thế hệ 1, viết 1904), Nguyễn Ngọc Điệp (thế hệ 2,viết năm 1984), Nguyễn Ngọc Trường (thế hệ 2), Nguyễn Ngọc Hoàn (thế hệ 3, Pais), Nguyễn Kỳ Minh Phượng (thế hệ 3),\n- Chi 7 : Nguyễn Thị Mão (thế hệ 2), Nguyễn Văn Chính (thế hệ 3), Nguyễn Văn Huy (thế hệ 3), Nguyễn Quang Thái (thế hệ 3, viết 1999-2004)\n- Chi 8 : Nguyễn Văn Dũng, Nguyễn Văn Thọ và Dư Trí Dõng (thế hệ 3, viết năm 2000)\n- Chi 11 : Nguyễn Hương Điền (thế hệ 3, viết năm 2004)\n- Chi 12 : Nguyễn Văn Chỉnh (thế hệ 3)\nTrước khi đưa lên INTERNET đã lập quyển sách in Gia phả 2004. Rất mong được các vị liên hệ để hoàn chỉnh, trước khi công bố chính thức. Gia phả gốc chữ hán nôm và gia phả Việt văn được lưu giữ tại nhà thờ họ Lai xá. Theo quyết định của Hội đồng gia tộc ngày 7/11/2004 tại nhà thờ 29 Thuốc Bắc Hà Nội, gia phả mới viết đã được in đầu tháng 12-2004 và đã chính thức được công bố vào ngày lễ chính thức 19/12/2004 (tức 8 tháng 11) này tại Lai xá.\nNgười biên tập chung lần 2004 và đưa lên INERNET\nGiáo sư, Tiến sỹ khoa học (kinh tế) Nguyễn Quang Thái (1941)\n2/42 Liêu Giai, Cống Vị, Ba Đình, Hà Nôi\n(84)903405209/(84-4)-7627612/(84-4)8326826\nthainq@hotmail.com\nthainq@fpt.vn",
+    "source_url": "https://vietnamgiapha.com/XemPhaKy/310/pha_ky_gia_su.html",
+    "title": "Nguyễn Văn Lai Xá - Hà Tây",
+    "tree_id": 310,
+    "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/310/pha_he.html"
+  },
+  "predictions": [
+    {
+      "model_version": "prelabel-v1-diagram-rule",
+      "score": 0.85,
+      "result": [
+        {
+          "id": "ent_5f3392b75c6e",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 172,
+            "end": 186,
+            "text": "Nguyễn Văn Học",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_a9fe4c88a23d",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 445,
+            "end": 461,
+            "text": "Nguyễn Văn Chành",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_1a6478a10c10",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 726,
+            "end": 740,
+            "text": "Nguyễn Thị Mão",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_437d1a630199",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 753,
+            "end": 769,
+            "text": "Nguyễn Văn Chính",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_36e05832e226",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 209,
+            "end": 225,
+            "text": "Nguyễn Ngọc Trấn",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_41b44bf55872",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 616,
+            "end": 634,
+            "text": "Nguyễn Ngọc Trường",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_966edb079183",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 864,
+            "end": 879,
+            "text": "Nguyễn Văn Dũng",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_f077f8ddf6f1",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 881,
+            "end": 895,
+            "text": "Nguyễn Văn Thọ",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_03222434f044",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 394,
+            "end": 397,
+            "text": "Chi",
+            "labels": [
+              "PER_NAME"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_8f461883b246",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 281,
+            "end": 289,
+            "text": "năm 1904",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_1c8a1827885a",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 290,
+            "end": 294,
+            "text": "1906",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_1fa2157f31e5",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 433,
+            "end": 437,
+            "text": "1904",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_14089905700c",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 478,
+            "end": 482,
+            "text": "1981",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_ae6a19c9d805",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 517,
+            "end": 521,
+            "text": "1995",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_3fd265831db9",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 605,
+            "end": 613,
+            "text": "năm 1984",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_5f085c0f21bd",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 843,
+            "end": 847,
+            "text": "1999",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_37333eea9125",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 848,
+            "end": 852,
+            "text": "2004",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_fd2d6112c8f2",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 927,
+            "end": 935,
+            "text": "năm 2000",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_67f39456bc52",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 982,
+            "end": 990,
+            "text": "năm 2004",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_044c69fb3c21",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 1289,
+            "end": 1298,
+            "text": "7/11/2004",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_dd485416042b",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 1431,
+            "end": 1441,
+            "text": "19/12/2004",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_cbf1f939ca7c",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 1579,
+            "end": 1583,
+            "text": "1941",
+            "labels": [
+              "DATE"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "id": "ent_1edb3e57ffc4",
+          "from_name": "label",
+          "to_name": "text",
+          "type": "labels",
+          "value": {
+            "start": 227,
+            "end": 237,
+            "text": "con thứ tư",
+            "labels": [
+              "ORDER"
+            ],
+            "score": 0.85
+          }
+        },
+        {
+          "from_name": "relation",
+          "to_name": "text",
+          "type": "relation",
+          "direction": "right",
+          "labels": [
+            "FATHER_OF"
+          ],
+          "from_id": "ent_5f3392b75c6e",
+          "to_id": "ent_a9fe4c88a23d"
+        },
+        {
+          "from_name": "relation",
+          "to_name": "text",
+          "type": "relation",
+          "direction": "right",
+          "labels": [
+            "FATHER_OF"
+          ],
+          "from_id": "ent_36e05832e226",
+          "to_id": "ent_41b44bf55872"
+        }
+      ]
+    }
+  ]
+}

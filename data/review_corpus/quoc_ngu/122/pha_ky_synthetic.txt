@@ -1,0 +1,80 @@
+Ông Võ Khuê sinh được 3 người con, gồm: Bà Võ Thị Chắt, Ông Võ Giai, Ông Võ Ban.
+Ông Võ Khuê lấy Bà Bùi Thị Khuyên làm vợ.
+Ông Võ Khuê sinh được Ông Võ Giai.
+Ông Võ Ban là con của Ông Võ Khuê.
+Võ Thãnh sinh được 6 người con, gồm: Vỗ Thành, Võ Kính, Bà Võ Thị Lý, Võ Quý, Bà Võ Thị Thanh, Bà Võ Thị Xuân.
+Vỗ Thành là con của Võ Thãnh.
+Võ Thãnh hạ sinh Võ Quý.
+Võ Thãnh sinh được Bà Võ Thị Xuân.
+Vỗ Thành có 9 người con: Bà Võ Thị Liên, Bà Võ Thị Hương, Võ Thảo, Bà Võ Thị Nguyên, Bà Võ Thị Minh, Bà Võ Thị Dung, Võ Kha, Võ Tám, Bà Võ Thị Chín.
+Vỗ Thành lấy Bà Quế Thị Long làm vợ.
+Bà Võ Thị Hương là con của Vỗ Thành.
+Vỗ Thành sinh được Võ Thảo.
+Vỗ Thành hạ sinh Bà Võ Thị Minh.
+Vỗ Thành sinh được Bà Võ Thị Dung.
+Vỗ Thành sinh được Võ Kha.
+Vỗ Thành hạ sinh Võ Tám.
+Ông Võ Giai có 6 người con: Bà Võ Thị Yên, Võ Bách Khoa, Bà Võ Thị Thìn, Bà Võ Thị Tư, Võ Quyền, Võ Lực.
+Ông Võ Giai lấy Bà Đặng Thị Định làm vợ.
+Ông Võ Giai sinh được Võ Bách Khoa.
+Bà Võ Thị Thìn là con của Ông Võ Giai.
+Bà Võ Thị Tư là con của Ông Võ Giai.
+Võ Quyền là con của Ông Võ Giai.
+Ông Võ Giai sinh được Võ Lực.
+Ông Võ Ban lấy Bà Đặng Thị Nghiễm làm vợ.
+Võ Kính sinh được 4 người con, gồm: Võ An Huy, Bà Võ Thị Thu, Võ Đức Hoàng, Võ Đức Hậu.
+Võ Kính lấy Bà Nguyễn Thị Liễu làm vợ.
+Võ Kính sinh được Võ Đức Hoàng.
+Võ Đức Hậu là con của Võ Kính.
+Võ Quý sinh được 5 người con, gồm: Bà Võ Thị Hoá, Võ Chí Quyết (Mất ), Võ Đông, Võ Phương Nam (Mất ), Bà Võ Thị Đạt.
+Võ Quý lấy Bà Trần Thị Quýnh làm vợ.
+Bà Võ Thị Hoá là con của Võ Quý.
+Võ Chí Quyết (Mất ) là con của Võ Quý.
+Võ Phương Nam (Mất ) là con của Võ Quý.
+Võ Quý hạ sinh Bà Võ Thị Đạt.
+Võ An Huy có 2 người con: Bà Võ Thị Tâm An, Võ Đức Anh.
+Võ An Huy lấy Bà Trần Thị Thu Lan làm vợ.
+Võ An Huy sinh được Bà Võ Thị Tâm An.
+Võ An Huy sinh được Võ Đức Anh.
+Võ Đức Hoàng sinh được 2 người con, gồm: Bà Võ Thị Thu Hiền, võ Đúc Lộc.
+Bà Võ Thị Thu Hiền là con của Võ Đức Hoàng.
+Võ Đức Hoàng sinh được võ Đúc Lộc.
+Võ Đức Hậu có 2 người con: Võ Đức Tài, Võ Tuyết Ngân.
+Võ Đức Hậu lấy Bà Nguyễn Thị Dung làm vợ.
+Võ Đức Tài là con của Võ Đức Hậu.
+Võ Đức Hậu hạ sinh Võ Tuyết Ngân.
+Võ Thảo có 3 người con: Bà Võ Thị Vân, Võ Thanh, Bà Võ Thị Kim Oanh.
+Võ Thảo lấy Bà Ngô Thị Nhung làm vợ.
+Võ Thảo hạ sinh Bà Võ Thị Vân.
+Bà Võ Thị Kim Oanh là con của Võ Thảo.
+Võ Kha có 3 người con: Võ Đức Thắng, Bà Võ Thị QuỳnhThương, Bà Võ Thị Thu Huyền.
+Võ Kha sinh được Võ Đức Thắng.
+Võ Kha hạ sinh Bà Võ Thị QuỳnhThương.
+Võ Tám sinh được 1 người con, gồm: Võ Thuận Phong.
+Võ Tám lấy Bà Trần Thị Khánh Tùng làm vợ.
+Võ Tám sinh được Võ Thuận Phong.
+Võ Bách Khoa có 4 người con: Bà Võ Thị Hà, Võ Xuân Khánh, Bà Võ Thị Oanh, Bà Võ Thị Yến.
+Võ Bách Khoa lấy Bà Trần Thị Bảy làm vợ.
+Võ Xuân Khánh là con của Võ Bách Khoa.
+Võ Bách Khoa hạ sinh Bà Võ Thị Oanh.
+Võ Quyền có 4 người con: Võ Anh, Bà Võ Thị Ánh, Võ An, Võ Giang.
+Võ Quyền lấy Bà Nguyễn Thị Luận làm vợ.
+Võ Quyền hạ sinh Bà Võ Thị Ánh.
+Võ Quyền sinh được Võ Giang.
+Võ Lực có 6 người con: Bà Võ Thị Nhung, Bà Võ Thị Tuyết, Võ Thuận, Bà Võ Thị Loan, Bà Võ Thị Dung, Bà Võ Thị Thuỷ.
+Võ Lực sinh được Bà Võ Thị Nhung.
+Võ Lực hạ sinh Bà Võ Thị Tuyết.
+Võ Lực hạ sinh Võ Thuận.
+Bà Võ Thị Loan là con của Võ Lực.
+Võ Lực sinh được Bà Võ Thị Dung.
+Võ Đồng sinh được 7 người con, gồm: Võ Đăng (Mất ), Bà Võ Thị Nga, Bà Võ Thị Hương, Bà Võ Thị Giang, Bà Võ Thị Nhung, Võ Thế Hưng, Bà Võ Thị Hiền.
+Võ Đồng lấy Bà (Nguyễn Thị Mỹ &Trần Thị Thanh) làm vợ.
+Võ Đồng sinh được Bà Võ Thị Nga.
+Võ Đồng sinh được Bà Võ Thị Hương.
+Võ Đồng hạ sinh Bà Võ Thị Giang.
+Bà Võ Thị Nhung là con của Võ Đồng.
+Võ Đồng sinh được Bà Võ Thị Hiền.
+Võ Đông có 2 người con: Bà Võ Thị Phương, Võ Sơn.
+Võ Đông lấy Bà Quế Thị Bảy làm vợ.
+Võ Đông sinh được Bà Võ Thị Phương.
+Võ Sơn là con của Võ Đông.

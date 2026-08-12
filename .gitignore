@@ -11,3 +11,4 @@ data/vgp_corpus/
 data/gia_pha/
 data/gemini_labels/
 label_studio_pipeline/.env
+source_discovery/.env

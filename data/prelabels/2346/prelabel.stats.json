@@ -1,0 +1,11 @@
+{
+  "entity_count": 9,
+  "relation_count": 0,
+  "per_name_count": 5,
+  "diagram_backed_per_name": 5,
+  "gemini_entities_in": 0,
+  "gemini_relations_in": 0,
+  "pha_he_node_matches": 5,
+  "rule_entity_count": 4,
+  "source": "prelabel-v1-diagram-rule"
+}

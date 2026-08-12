@@ -1,0 +1,233 @@
+{
+  "id": 44,
+  "result": [
+    {
+      "id": "ent_74444b450be7",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 677,
+        "end": 681,
+        "text": "1867",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_06ef0a37c8bb",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 72,
+        "end": 77,
+        "text": "đời C",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e5117d0d5f69",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 489,
+        "end": 499,
+        "text": "đời thứ 11",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_8c28fd9dcac1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 832,
+        "end": 841,
+        "text": "đời thứ 2",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_eae8028e3cb9",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1554,
+        "end": 1563,
+        "text": "đời thứ 8",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9f005201c2a9",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 13,
+        "end": 27,
+        "text": "thôn Trung Sơn",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_6e07f497b8dd",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 29,
+        "end": 39,
+        "text": "Xã Ngũ Lão",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_09c7a0b7184e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 54,
+        "end": 63,
+        "text": "Hải Phòng",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_840d73acdf41",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 79,
+        "end": 99,
+        "text": "tổ đến nay là 13 đời",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ca46dfafd6b7",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 143,
+        "end": 231,
+        "text": "tổ bị mất nên đến nay nguồn gốc của dòng họ vẫn là một ẩn số đối với các thế hệ con cháu",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_a48effeab9a2",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 265,
+        "end": 298,
+        "text": "tổ tiên thì nói là quê ở Vĩnh Phú",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ce0b6139c86c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 362,
+        "end": 369,
+        "text": "tổ tiên",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b13e96615637",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 858,
+        "end": 876,
+        "text": "tổ đến đời Ngũ Đại",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_be5e9f65be7c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 1389,
+        "end": 1438,
+        "text": "làng trong đó có nhiều người của dòng họ mắc phải",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "created_username": " sogoten6689@gmail.com, 1",
+  "created_ago": "0 minutes",
+  "completed_by": 1,
+  "was_cancelled": false,
+  "ground_truth": true,
+  "created_at": "2026-08-10T09:32:24.621146Z",
+  "updated_at": "2026-08-10T09:32:24.621206Z",
+  "draft_created_at": null,
+  "lead_time": 180.0,
+  "import_id": null,
+  "last_action": null,
+  "bulk_created": false,
+  "task": 19,
+  "project": 1,
+  "updated_by": 1,
+  "parent_prediction": null,
+  "parent_annotation": null,
+  "last_created_by": null
+}

@@ -1,0 +1,148 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Cảnh Lữ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cảnh Luật",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cảnh Cảnh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cảnh Huy",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cảnh Hoan",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cảnh Vạn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Cảnh Chiêu",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "1406",
+      "label": "DATE"
+    },
+    {
+      "text": "1430",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1672",
+      "label": "DATE"
+    },
+    {
+      "text": "1403",
+      "label": "DATE"
+    },
+    {
+      "text": "1643",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1406",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1995",
+      "label": "DATE"
+    },
+    {
+      "text": "2134",
+      "label": "DATE"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1991",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1994",
+      "label": "DATE"
+    },
+    {
+      "text": "Đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 3",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 4",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 5",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 6",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 7",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đời thứ 8",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cảnh Lữ",
+      "tail": "Nguyễn Cảnh Luật",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cảnh Luật",
+      "tail": "Nguyễn Cảnh Cảnh",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cảnh Cảnh",
+      "tail": "Nguyễn Cảnh Huy",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cảnh Huy",
+      "tail": "Nguyễn Cảnh Hoan",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cảnh Huy",
+      "tail": "Nguyễn Cảnh Vạn",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    },
+    {
+      "type": "FATHER_OF",
+      "head": "Nguyễn Cảnh Huy",
+      "tail": "Nguyễn Cảnh Chiêu",
+      "head_label": "PER_NAME",
+      "tail_label": "PER_NAME"
+    }
+  ]
+}

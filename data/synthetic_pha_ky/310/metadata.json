@@ -1,0 +1,16 @@
+{
+  "tree_id": 310,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "Nguyễn Văn Lai Xá - Hà Tây",
+  "generated_at": "2026-08-10T08:04:59.260292+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/310/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/310/pha_he.html",
+  "real_pha_ky_char_count": 1701,
+  "char_count": 6180,
+  "entity_count": 143,
+  "relation_count": 63,
+  "sentence_count": 80,
+  "missing_name_count": 63,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 0.8533
+}

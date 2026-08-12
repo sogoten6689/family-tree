@@ -1,0 +1,689 @@
+{
+  "collection_id": 2,
+  "volume_id": 207,
+  "catalog_slug": "nlvnpf-0154",
+  "image_variant": "jpeg",
+  "downloaded_at": "2026-08-10T05:38:21.385326+00:00",
+  "pages": [
+    {
+      "page": 1,
+      "file": "001.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-001.jpg",
+      "size": 146758,
+      "sha256": "939410b1b060f371bdafc0392a4648401e244a3ed1576f811aeeed500523deea",
+      "skipped": false
+    },
+    {
+      "page": 2,
+      "file": "002.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-002.jpg",
+      "size": 131621,
+      "sha256": "947d07c5ee4698881b23f5225d421ce41d0c91a8b93434003c98ee998f0ba5ff",
+      "skipped": false
+    },
+    {
+      "page": 3,
+      "file": "003.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-003.jpg",
+      "size": 132726,
+      "sha256": "52b0c6eb7daa5a4781fd831db54785365aee4cb12f2770ec1f8aef4e5b531ecf",
+      "skipped": false
+    },
+    {
+      "page": 4,
+      "file": "004.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-004.jpg",
+      "size": 131559,
+      "sha256": "dc418525a050ccb00cb88c943f4e1f098b097594a22555179573028fd2ebb523",
+      "skipped": false
+    },
+    {
+      "page": 5,
+      "file": "005.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-005.jpg",
+      "size": 104971,
+      "sha256": "ca3bc7aeb3d2dc38b944d0dc5ffe37c09a8562220af9d8fb09e3aa5cebfc103c",
+      "skipped": false
+    },
+    {
+      "page": 6,
+      "file": "006.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-006.jpg",
+      "size": 131660,
+      "sha256": "1b57d40e06e1199a7d82b95f5feaf07d225a62557b5ea74a637c3c2bda5bf953",
+      "skipped": false
+    },
+    {
+      "page": 7,
+      "file": "007.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-007.jpg",
+      "size": 114962,
+      "sha256": "5b2fc3cfb5e0fbc4063249f42f9524f00352027838b2c11cd954a50cc0b34927",
+      "skipped": false
+    },
+    {
+      "page": 8,
+      "file": "008.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-008.jpg",
+      "size": 98619,
+      "sha256": "712e198ecea83b4231d8e48bea19c227887373cb08d192dfc8c662fa9eedc7f9",
+      "skipped": false
+    },
+    {
+      "page": 9,
+      "file": "009.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-009.jpg",
+      "size": 97341,
+      "sha256": "3fde03571e9ac8408de81c5c30459c8f60ae95f916f77748ca5fd3af09d702a5",
+      "skipped": false
+    },
+    {
+      "page": 10,
+      "file": "010.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-010.jpg",
+      "size": 97783,
+      "sha256": "79c56e3bef7e1810292501ac2b4b9bc5e139bafa567c5ba67ab0d77b8fa0cd52",
+      "skipped": false
+    },
+    {
+      "page": 11,
+      "file": "011.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-011.jpg",
+      "size": 96149,
+      "sha256": "5d5ee4fbfce86b5f4fa37089fca8dd08d8bfdbe4e95ef07e972cabf027042386",
+      "skipped": false
+    },
+    {
+      "page": 12,
+      "file": "012.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-012.jpg",
+      "size": 95987,
+      "sha256": "7d419608882d95c37d9e9f1a9d3ffa9f50afcf5770968aca11b0da69385a7359",
+      "skipped": false
+    },
+    {
+      "page": 13,
+      "file": "013.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-013.jpg",
+      "size": 94574,
+      "sha256": "05e0826a669d1d1c8e3151559cf446144f0f64d594b623126db435d066e6961d",
+      "skipped": false
+    },
+    {
+      "page": 14,
+      "file": "014.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-014.jpg",
+      "size": 126329,
+      "sha256": "c692b2486edc1caae2116b44ac0f6d1323bbaf6ca50d1df30d4797ff2229233a",
+      "skipped": false
+    },
+    {
+      "page": 15,
+      "file": "015.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-015.jpg",
+      "size": 140000,
+      "sha256": "79e6e82cf97f4a3412c0816a892af671e9d53e1789ae39e90b5c1c172c38cc6a",
+      "skipped": false
+    },
+    {
+      "page": 16,
+      "file": "016.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-016.jpg",
+      "size": 136894,
+      "sha256": "efa6f948da0f10b7f20d121e18479c79e4c900dbbad73df97a8907e04e1cef24",
+      "skipped": false
+    },
+    {
+      "page": 17,
+      "file": "017.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-017.jpg",
+      "size": 137110,
+      "sha256": "77106cce5f20d91e5642b1e5ab2a9cee8d5ef5e697eeeb0f680ca2ddb3cb00b0",
+      "skipped": false
+    },
+    {
+      "page": 18,
+      "file": "018.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-018.jpg",
+      "size": 140839,
+      "sha256": "503d1003c1ff1286bdc9c1ca8dd5fcb03f30ecd7ee98e672af159e7f61aca673",
+      "skipped": false
+    },
+    {
+      "page": 19,
+      "file": "019.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-019.jpg",
+      "size": 137492,
+      "sha256": "dd5eb2fee9def81a57167a934c7a6c504f82c9107e125222e17a2913c6a55183",
+      "skipped": false
+    },
+    {
+      "page": 20,
+      "file": "020.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-020.jpg",
+      "size": 133316,
+      "sha256": "df1e033da42ccb25acb2bfa12c1912eea0837642d734f6a45a724e954d8532c0",
+      "skipped": false
+    },
+    {
+      "page": 21,
+      "file": "021.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-021.jpg",
+      "size": 139923,
+      "sha256": "e5e21be1d31834c3729ed72c8956908a23f7b871d5cf5045ed7928eaca2e2bc9",
+      "skipped": false
+    },
+    {
+      "page": 22,
+      "file": "022.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-022.jpg",
+      "size": 137951,
+      "sha256": "4e48ca9a7c11de203a93d5b74ae0a3a21826a6c41a5b27df941ab40ccf84d545",
+      "skipped": false
+    },
+    {
+      "page": 23,
+      "file": "023.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-023.jpg",
+      "size": 144355,
+      "sha256": "304cd998aeec666f7e8d2118bd06d88284831fadb02a3e30cfe21d7075b83080",
+      "skipped": false
+    },
+    {
+      "page": 24,
+      "file": "024.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-024.jpg",
+      "size": 122379,
+      "sha256": "8346dc7faf8ee764de196a9913c6ef7bb7faeeeb21d104e3a520fea44d152563",
+      "skipped": false
+    },
+    {
+      "page": 25,
+      "file": "025.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-025.jpg",
+      "size": 140647,
+      "sha256": "147857c973f2f89b782cc36946147c0bb5e663b974bff1d38dceb3530deaec96",
+      "skipped": false
+    },
+    {
+      "page": 26,
+      "file": "026.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-026.jpg",
+      "size": 138978,
+      "sha256": "f5ecacce862b37e72533fec3fa21b3742a4aed9b17474ec4c698c6ad30d45de9",
+      "skipped": false
+    },
+    {
+      "page": 27,
+      "file": "027.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-027.jpg",
+      "size": 142905,
+      "sha256": "e0300975ed4c9e93ce72e36293486dc2bd60fc32becc492922d0f8f70462aff5",
+      "skipped": false
+    },
+    {
+      "page": 28,
+      "file": "028.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-028.jpg",
+      "size": 140372,
+      "sha256": "40be071d8bfa8a154e1f7505c4e061e7162194a8137d0bad29c8211113540448",
+      "skipped": false
+    },
+    {
+      "page": 29,
+      "file": "029.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-029.jpg",
+      "size": 141645,
+      "sha256": "18299b99368182729becc9c4e90f145306e57085bacec1db597035947f383c95",
+      "skipped": false
+    },
+    {
+      "page": 30,
+      "file": "030.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-030.jpg",
+      "size": 149458,
+      "sha256": "4fda6b960d0d1add22c891646a907add301c033e0deb00ad353b5aae8a690ea0",
+      "skipped": false
+    },
+    {
+      "page": 31,
+      "file": "031.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-031.jpg",
+      "size": 144544,
+      "sha256": "6844f801957d4bd694dce7957eda6aaedacf40bf7c48f103ef7c56259538efac",
+      "skipped": false
+    },
+    {
+      "page": 32,
+      "file": "032.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-032.jpg",
+      "size": 138125,
+      "sha256": "8168d3b5b9ea445f8d8da97bfdd4a3cd766020c90c55a7ad0f1f85cc60c32fe2",
+      "skipped": false
+    },
+    {
+      "page": 33,
+      "file": "033.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-033.jpg",
+      "size": 135514,
+      "sha256": "c8db8914e8820150d26ea723f86233f3b156fe55841b2ca4616be69b152aa040",
+      "skipped": false
+    },
+    {
+      "page": 34,
+      "file": "034.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-034.jpg",
+      "size": 138759,
+      "sha256": "cdfd2f50f8ac045d2f8e0ecf4443bf5c9f5357499b538ee8c7ad47ac6bd92ad8",
+      "skipped": false
+    },
+    {
+      "page": 35,
+      "file": "035.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-035.jpg",
+      "size": 117325,
+      "sha256": "dc0e183fee3f309990d80200896463b82419d5fe16330bb4451f89637303dcd9",
+      "skipped": false
+    },
+    {
+      "page": 36,
+      "file": "036.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-036.jpg",
+      "size": 130286,
+      "sha256": "888c8d7053c55da9e7a975300866817f5fb07eddb8795ffb0a7ba29d01cec649",
+      "skipped": false
+    },
+    {
+      "page": 37,
+      "file": "037.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-037.jpg",
+      "size": 133601,
+      "sha256": "f66186808c4a072449d7a86a13d633cfa416b46f97d5b5680e1c868319566f7f",
+      "skipped": false
+    },
+    {
+      "page": 38,
+      "file": "038.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-038.jpg",
+      "size": 139087,
+      "sha256": "a9f5c9d62a03c4407fbb904196256d19488bc66143dd7362b4963174207a5508",
+      "skipped": false
+    },
+    {
+      "page": 39,
+      "file": "039.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-039.jpg",
+      "size": 142209,
+      "sha256": "75c1e3ae6db7c2562bf157713916233e8e27b2e7f5d5973fd1eb4f66c0b7c288",
+      "skipped": false
+    },
+    {
+      "page": 40,
+      "file": "040.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-040.jpg",
+      "size": 136046,
+      "sha256": "92cacfbf34b83d97d5d867fd3e08ab563116c1cfc243a22aae1beb1c5fe420b3",
+      "skipped": false
+    },
+    {
+      "page": 41,
+      "file": "041.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-041.jpg",
+      "size": 143326,
+      "sha256": "b3a50e79b3a93a7ca197839ab8c3cd9525a0872f2e4fcb6adf9857afe8a74691",
+      "skipped": false
+    },
+    {
+      "page": 42,
+      "file": "042.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-042.jpg",
+      "size": 146133,
+      "sha256": "7facd226e01b374d022e77832d2e6344aecfbfa0498c4124d637135023bdb70c",
+      "skipped": false
+    },
+    {
+      "page": 43,
+      "file": "043.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-043.jpg",
+      "size": 144672,
+      "sha256": "16525754ad40b3760d37446f4657bd3907d01b49626c6cc78784cb98123377dc",
+      "skipped": false
+    },
+    {
+      "page": 44,
+      "file": "044.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-044.jpg",
+      "size": 145989,
+      "sha256": "744dac91e0a50674407bbac8cc849b648813e634f79df93b3198e7a11fefd304",
+      "skipped": false
+    },
+    {
+      "page": 45,
+      "file": "045.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-045.jpg",
+      "size": 149342,
+      "sha256": "ce4e155a79ea2ce3466cfa294f0ebb96983f95abd4689357b0308e625bd54692",
+      "skipped": false
+    },
+    {
+      "page": 46,
+      "file": "046.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-046.jpg",
+      "size": 142909,
+      "sha256": "70025efa6a6f71ca06a96d80f0f87a5d18c246415f54e7db5a605d3f0258ca26",
+      "skipped": false
+    },
+    {
+      "page": 47,
+      "file": "047.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-047.jpg",
+      "size": 141201,
+      "sha256": "95a0b4d131f3774b6d811fae9edddfdaaaa635f5ed5f237c74b3c8b42c3ba8f0",
+      "skipped": false
+    },
+    {
+      "page": 48,
+      "file": "048.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-048.jpg",
+      "size": 141323,
+      "sha256": "d1ccc78b4e57c2deb0e7d9632a6bfe5595782c9624f38495b5c28fe5467bfc08",
+      "skipped": false
+    },
+    {
+      "page": 49,
+      "file": "049.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-049.jpg",
+      "size": 136200,
+      "sha256": "ca414bfaac6c572769580e964c975648254f60a72fdcdd690fa73e8f85906a1e",
+      "skipped": false
+    },
+    {
+      "page": 50,
+      "file": "050.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-050.jpg",
+      "size": 141258,
+      "sha256": "d72221d60adf76fba4d73148256c790e4af4d46b34de9bbd350b1d216924b9fc",
+      "skipped": false
+    },
+    {
+      "page": 51,
+      "file": "051.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-051.jpg",
+      "size": 143857,
+      "sha256": "e3977fb2a8561cce549ae5c7a5e26fa7378898ce15d27c6e7e1c9b0adc59c933",
+      "skipped": false
+    },
+    {
+      "page": 52,
+      "file": "052.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-052.jpg",
+      "size": 144089,
+      "sha256": "b1f543c25f30a12adf8b57c8a5959293e3349ede121c6eddcba73be5ea0d6343",
+      "skipped": false
+    },
+    {
+      "page": 53,
+      "file": "053.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-053.jpg",
+      "size": 134994,
+      "sha256": "6e849b66fbc8993786952dc87def1d1501eb9f0817e0c22f4c6e1b1144d7ab4b",
+      "skipped": false
+    },
+    {
+      "page": 54,
+      "file": "054.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-054.jpg",
+      "size": 134506,
+      "sha256": "898db0d7ae88aeceba1f6c7b2b0ede5a271c335441c8691f578a4575de9a7262",
+      "skipped": false
+    },
+    {
+      "page": 55,
+      "file": "055.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-055.jpg",
+      "size": 137252,
+      "sha256": "33d78862fb8b87f8e960303cd0a6c92fad9dc4a7dda608221e46c8836d09ffaf",
+      "skipped": false
+    },
+    {
+      "page": 56,
+      "file": "056.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-056.jpg",
+      "size": 140383,
+      "sha256": "c94b213659687e972d17fb8390598767c7511bd8d9170fe66e57f4cbf46b049f",
+      "skipped": false
+    },
+    {
+      "page": 57,
+      "file": "057.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-057.jpg",
+      "size": 139620,
+      "sha256": "4150a6b4ebfdeed473616e7207a44f71feb5988b73c14a9dd1a437d991386349",
+      "skipped": false
+    },
+    {
+      "page": 58,
+      "file": "058.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-058.jpg",
+      "size": 140589,
+      "sha256": "70c52a5f254c9d23bed28d81d75cb845d35eb31cc49f8bf6062a045fe6ab8a58",
+      "skipped": false
+    },
+    {
+      "page": 59,
+      "file": "059.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-059.jpg",
+      "size": 140196,
+      "sha256": "5aedb427ea8c98b67b0277dc5ecbecfa4b54e8952c4d5d6c67c966df9ffa093a",
+      "skipped": false
+    },
+    {
+      "page": 60,
+      "file": "060.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-060.jpg",
+      "size": 141082,
+      "sha256": "d5be7ab5437751a06b3852516946cc29e187b32ee4d37906b8a7c0b03bfbf766",
+      "skipped": false
+    },
+    {
+      "page": 61,
+      "file": "061.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-061.jpg",
+      "size": 147342,
+      "sha256": "2a8dde3b78fed8f7e75f02b2d752922b244ae7516c7ab3220496e18d61a063ea",
+      "skipped": false
+    },
+    {
+      "page": 62,
+      "file": "062.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-062.jpg",
+      "size": 141587,
+      "sha256": "316ce1059bf40b46db07aadf19a3b17668dad88abd4385f2b78bbb1134b41501",
+      "skipped": false
+    },
+    {
+      "page": 63,
+      "file": "063.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-063.jpg",
+      "size": 140738,
+      "sha256": "20f3fddbe8904ebf2ed773062134e6ca286708cc654a76f6a7955e7c39ccb1a4",
+      "skipped": false
+    },
+    {
+      "page": 64,
+      "file": "064.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-064.jpg",
+      "size": 138611,
+      "sha256": "85977c26df1633c814cab5bc20112db747f1b046d01b4979cca63a0cdd475790",
+      "skipped": false
+    },
+    {
+      "page": 65,
+      "file": "065.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-065.jpg",
+      "size": 141827,
+      "sha256": "d7d01826c124649ebd856bf2d9829f233a8f21e0183686a56ea5316f9e4a8a84",
+      "skipped": false
+    },
+    {
+      "page": 66,
+      "file": "066.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-066.jpg",
+      "size": 133550,
+      "sha256": "e39aeeaa8be514ba305360507366a90c428e9f63fb4bbc79a8ad4f7adfab1ef0",
+      "skipped": false
+    },
+    {
+      "page": 67,
+      "file": "067.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-067.jpg",
+      "size": 120171,
+      "sha256": "bdee27ebbfe2637806023a2ee30e7cf5c9152f201f047f3edccfd38f0c1c1543",
+      "skipped": false
+    },
+    {
+      "page": 68,
+      "file": "068.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-068.jpg",
+      "size": 106427,
+      "sha256": "efb254ca165233f29aa33d1b74acb554d0bcf0d613116276514a7f085465cd3f",
+      "skipped": false
+    },
+    {
+      "page": 69,
+      "file": "069.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-069.jpg",
+      "size": 103521,
+      "sha256": "f4ad4edcf2932d8bed64b7447d99a81b494868e298305638bf320496abc2b496",
+      "skipped": false
+    },
+    {
+      "page": 70,
+      "file": "070.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-070.jpg",
+      "size": 135235,
+      "sha256": "038fb569f4b821a9ad9d9f86b437e8265fec133645b7889b446e47e75d079a1c",
+      "skipped": false
+    },
+    {
+      "page": 71,
+      "file": "071.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-071.jpg",
+      "size": 139800,
+      "sha256": "f059199775006838149b4db6e63683ca0a297a06d02592dba866df809366052d",
+      "skipped": false
+    },
+    {
+      "page": 72,
+      "file": "072.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-072.jpg",
+      "size": 133719,
+      "sha256": "577132506534545d9d25919382ea2e0ebe84adea741bab0dc744b1e6f4035c38",
+      "skipped": false
+    },
+    {
+      "page": 73,
+      "file": "073.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-073.jpg",
+      "size": 134213,
+      "sha256": "9c5f0127f8126737c3ade83ec64b797b45d98ceab9b4dc85edf62c77ae64ded5",
+      "skipped": false
+    },
+    {
+      "page": 74,
+      "file": "074.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-074.jpg",
+      "size": 118836,
+      "sha256": "3ec7e264112106273b3bad9eb636c69c36de58fe213a81a43d6bd9126bff99e5",
+      "skipped": false
+    },
+    {
+      "page": 75,
+      "file": "075.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-075.jpg",
+      "size": 116847,
+      "sha256": "0d9e3f057cbfd9b564a742a7c67d67994de60c3992522c1cfe63d7d5da92239d",
+      "skipped": false
+    },
+    {
+      "page": 76,
+      "file": "076.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-076.jpg",
+      "size": 121334,
+      "sha256": "eb93cbbe9b65f56592800cc917ca6aab98f8499adcb8ac7a787095539da6873a",
+      "skipped": false
+    },
+    {
+      "page": 77,
+      "file": "077.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-077.jpg",
+      "size": 121772,
+      "sha256": "6d135c48d530355096a64b2da6f2f02858bbcd02cb6333903710b66eaa2b3afb",
+      "skipped": false
+    },
+    {
+      "page": 78,
+      "file": "078.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-078.jpg",
+      "size": 115785,
+      "sha256": "947adecdfab87cf3eea5e634aaaa60259023e3338dcb4fdbd2405a20b2b8e902",
+      "skipped": false
+    },
+    {
+      "page": 79,
+      "file": "079.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-079.jpg",
+      "size": 113658,
+      "sha256": "0928dd4020b1191df3d481d4d0727567f8d986da308d7c0952acbb9f965768df",
+      "skipped": false
+    },
+    {
+      "page": 80,
+      "file": "080.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-080.jpg",
+      "size": 92453,
+      "sha256": "103b8dc1ab15174597896bdb915ab468c82497a5c54b568ab48048a50a36b4d2",
+      "skipped": false
+    },
+    {
+      "page": 81,
+      "file": "081.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-081.jpg",
+      "size": 118296,
+      "sha256": "e4173b7442f39c7c5a1183f069311ac602873bee9b4bcad6f47aa154f4b3751f",
+      "skipped": false
+    },
+    {
+      "page": 82,
+      "file": "082.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-082.jpg",
+      "size": 115987,
+      "sha256": "d764bd085e8d1e23e9fd16a54ac80e76d941aa0f807f0539f443bb20666f4660",
+      "skipped": false
+    },
+    {
+      "page": 83,
+      "file": "083.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-083.jpg",
+      "size": 116183,
+      "sha256": "05922adae3a6b54a10c506e2f2c9a65db51d162c3e760e3af318b801af784fb7",
+      "skipped": false
+    },
+    {
+      "page": 84,
+      "file": "084.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-084.jpg",
+      "size": 126314,
+      "sha256": "650c1cf285ef315ac255d80cf4abf65d8070487b18664a7aa387b80d8a5c7aaa",
+      "skipped": false
+    },
+    {
+      "page": 85,
+      "file": "085.jpg",
+      "source_url": "https://lib.nomfoundation.org/site_media/nom/nlvnpf-0154/jpeg/nlvnpf-0154-085.jpg",
+      "size": 87341,
+      "sha256": "df7c1de326e4ffcafee3b6d7e7a7ef28d2dbd23807df69216119f6ffa61ac25a",
+      "skipped": false
+    }
+  ]
+}

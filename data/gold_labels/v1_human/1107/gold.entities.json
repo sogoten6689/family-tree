@@ -1,0 +1,61 @@
+{
+  "entities": [
+    {
+      "text": "1867",
+      "label": "DATE"
+    },
+    {
+      "text": "đời C",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 11",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 2",
+      "label": "GENERATION"
+    },
+    {
+      "text": "đời thứ 8",
+      "label": "GENERATION"
+    },
+    {
+      "text": "thôn Trung Sơn",
+      "label": "LOC"
+    },
+    {
+      "text": "Xã Ngũ Lão",
+      "label": "LOC"
+    },
+    {
+      "text": "Hải Phòng",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ đến nay là 13 đời",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ bị mất nên đến nay nguồn gốc của dòng họ vẫn là một ẩn số đối với các thế hệ con cháu",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ tiên thì nói là quê ở Vĩnh Phú",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ tiên",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ đến đời Ngũ Đại",
+      "label": "LOC"
+    },
+    {
+      "text": "làng trong đó có nhiều người của dòng họ mắc phải",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,130 @@
+{
+  "doc_id": "vgp_1537",
+  "tree_id": 1537,
+  "title": "Nguyễn Văn - Quảng Nam",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1537/pha_ky_gia_su.html",
+  "text": "Tộc Nguyễn Văn (làng Cổ Tháp, xã Duy Hoà ,huyện Duy Xuyên ,tỉnh Quảng Nam ). Nghe ông nội kể lại : Tộc Nguyễn văn này xuất xứ từ Việt An ,Quế Sơn ,Quang Nam ra làm ăn sinh sống tại đây, không rõ là đời ông thứ mấy ,nhưng Gia phả bắt đầu ghi là ông Nguyễn Văn Nghị (đời thứ 3 ).Cùng với tộc nguyễn này có ít nhất 2 tộc Nguyễn Văn cùng sống ở Cổ tháp và không rõ cõ mối quan hệ như thế nào nhưng theo cách xưng hô thì có bà con. Hai tộc Nguyễn : Nguyễn Văn (Đàng Ông Hộ Thân) Nguyễn Văn (Đàng Ông Thủ Diêm) Người viết; Nguyễn Văn Ngô trưởng nam đời thứ 9 Viết ngày 1/3/2007 Tức 30/1/Đinh Hợi\nTộc đã tiến hành tu sữa phần mộ cho tổ tiên 03 đợt :\n+Đợt 1 lập bia cho tất cả các vị mã có tên được ghi rõ ràng trong gia phả (Bia xây bằng gạch ,trát vữa và ghi tên )Thực hiện năm 1992.\n+Đợt 2 xây phần bao quan cho 20 vị ,chất liệu bê tông sỏi ,đường kính 3-3,5 m.Riêng mộ ông Nguyễn Văn Đồng đường kính > 7m,mộ tập thể tại Ấp châu mưu đổ bê tông có hình elip. Khởi công ngày 06 tháng 02 và khánh thành ngày 16 tháng 02 năm Kỷ Sửu(2009)\n+Đợt 3 tiếp tục tu bổ 05 vị ,gồm Ông Thỷ tổ ,Bà thỷ tổ ,ông Nguyễn Văn Luận (con ông Thuỷ tổ ),Ông Cố NGuyễn Văn Toàn và bà Cố (kế thất ) Nguyễn Thị Tiếp, Bao quan đổ bê tông đường kính từ 5-8m Nhà bia lắp ráp bằng đã rửa ,bia đá non nước cao 1m ,ngoài ra đổ bê tông bao quan 02 vị không rõ tên ( vườn bà quới ) gần mộ bà Thỷ tổ .Khởi công vào ngày 10 /02/Canh dần và khánh thành 16 /02 /Canh Dần (2010) .\nRiêng mộ Bà Phạm Thị Hạnh ( Chánh gia Ông Nguyễn Văn Luận )táng tại Phú Nham ( Trà Kiệu -Duy Sơn ) xây và dựng bia năm 2005\nViết ngày 10 /4/2010 ( 26/02/Canh Dần)\n+Năm 2017 xây quanh toàn bộ số mã đất liếp nhau tại Vườn Bà Quới bằng gạch (các mộ này ít nhất trên 7 vị, không rõ họ tên, không thuộc phú ý của tộc Nguyễn Văn) hằng năm tộc Nguyễn Văn luôn tu bổ phần mộ theo lời của ông nội\nChú ý : Các bia mộ đều có ghị tục danh nơi an táng của những người thân trong bia (nếu đã qua đời), để tiện việc con cháu có thể thông qua bia có thể tìm mộ của những người thân tại nơi an táng khác\nNgười viết : Nguyễn Văn Ngô (trưởng nam đời thư 9)",
+  "entities": [
+    {
+      "start": 248,
+      "end": 263,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Nghị"
+    },
+    {
+      "start": 1089,
+      "end": 1104,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Luận"
+    },
+    {
+      "start": 869,
+      "end": 884,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Đồng"
+    },
+    {
+      "start": 517,
+      "end": 531,
+      "label": "PER_NAME",
+      "text": "Nguyễn Văn Ngô"
+    },
+    {
+      "start": 563,
+      "end": 571,
+      "label": "DATE",
+      "text": "1/3/2007"
+    },
+    {
+      "start": 768,
+      "end": 776,
+      "label": "DATE",
+      "text": "năm 1992"
+    },
+    {
+      "start": 1023,
+      "end": 1027,
+      "label": "DATE",
+      "text": "2009"
+    },
+    {
+      "start": 1427,
+      "end": 1431,
+      "label": "DATE",
+      "text": "2010"
+    },
+    {
+      "start": 1550,
+      "end": 1558,
+      "label": "DATE",
+      "text": "năm 2005"
+    },
+    {
+      "start": 1599,
+      "end": 1607,
+      "label": "DATE",
+      "text": "Năm 2017"
+    },
+    {
+      "start": 265,
+      "end": 274,
+      "label": "GENERATION",
+      "text": "đời thứ 3"
+    },
+    {
+      "start": 543,
+      "end": 552,
+      "label": "GENERATION",
+      "text": "đời thứ 9"
+    },
+    {
+      "start": 1131,
+      "end": 1146,
+      "label": "PER_NAME",
+      "text": "NGuyễn Văn Toàn"
+    },
+    {
+      "start": 16,
+      "end": 28,
+      "label": "LOC",
+      "text": "làng Cổ Tháp"
+    },
+    {
+      "start": 30,
+      "end": 40,
+      "label": "LOC",
+      "text": "xã Duy Hoà"
+    },
+    {
+      "start": 42,
+      "end": 57,
+      "label": "LOC",
+      "text": "huyện Duy Xuyên"
+    },
+    {
+      "start": 59,
+      "end": 73,
+      "label": "LOC",
+      "text": "tỉnh Quảng Nam"
+    },
+    {
+      "start": 626,
+      "end": 640,
+      "label": "LOC",
+      "text": "tổ tiên 03 đợt"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 0,
+      "tail": 1
+    }
+  ],
+  "source": "human_reviewed_ls",
+  "stratum": "S2",
+  "split": "train",
+  "annotation_id": 34,
+  "completed_by": 1,
+  "lead_time": 180.0
+}

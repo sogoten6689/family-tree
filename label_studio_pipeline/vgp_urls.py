@@ -19,3 +19,7 @@ def pha_he_url(tree_id: int) -> str:
 
 def pha_he_legacy_url(tree_id: int) -> str:
     return f"{VGP_BASE}/XemPhaHe/{tree_id}/cay_pha_he.html"
+
+
+def hinh_anh_url(tree_id: int) -> str:
+    return f"{VGP_BASE}/XemHinhAnh/{tree_id}/hinh_anh.html"

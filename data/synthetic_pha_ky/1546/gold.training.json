@@ -1,0 +1,23 @@
+{
+  "doc_id": "vgp_1546",
+  "tree_id": 1546,
+  "title": "Văn Đình - Phái Nhì - Chi Nhất - Thừa Thiên Huế",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1546/pha_he.html",
+  "text": "Đời thứ 1: \nÔng Văn Đình Ngoạn.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 9,
+      "label": "GENERATION",
+      "text": "Đời thứ 1"
+    },
+    {
+      "start": 12,
+      "end": 30,
+      "label": "PER_NAME",
+      "text": "Ông Văn Đình Ngoạn"
+    }
+  ],
+  "relations": [],
+  "source": "synthetic_supplement_v2"
+}

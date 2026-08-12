@@ -1,0 +1,28 @@
+{
+  "doc_id": "vgp_1508",
+  "tree_id": 1508,
+  "title": "NGUYỄN VIẾT - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaKy/1508/pha_ky_gia_su.html",
+  "text": "QUÊ QUÁN\nXóm tê thôn xã hoằng đạo, Huyện hoằng hóa, Tỉnh thanh hóa\nNGUỒN GỐC\nCố nội: Nguyễn Viết Lộc\nSinh ngày 16 tháng 01 năm 1936 Âm lịch\nBà cố nội: Lê Thị Quân\nCao Thị Nhì\nÔng cố đẻ được 4 người con là:\n- Nguyễn Viết Phúc\n- Nguyễn Viết Dụ\n- Nguyễn Thị Ấm\n- Nguyễn Viết Tường\nNgười viết gia phả này gọi là Cố và gọi ông Nguyễn Viết Phúc là ông Nội",
+  "entities": [
+    {
+      "start": 227,
+      "end": 241,
+      "label": "PER_NAME",
+      "text": "Nguyễn Viết Dụ"
+    },
+    {
+      "start": 208,
+      "end": 224,
+      "label": "PER_NAME",
+      "text": "Nguyễn Viết Phúc"
+    },
+    {
+      "start": 123,
+      "end": 131,
+      "label": "DATE",
+      "text": "năm 1936"
+    }
+  ],
+  "relations": []
+}

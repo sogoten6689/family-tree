@@ -1,0 +1,25 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Văn Thanh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hồng Minh",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1846",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 2008",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 6",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,21 @@
+{
+  "tree_id": 1107,
+  "lineage_name": "ĐỖ Đức - Hải Phòng",
+  "title": "Gia phả: ĐỖ Đức - Hải Phòng",
+  "location": "thôn Trung Sơn, Xã Ngũ Lão, Huyện Thủy Nguyên",
+  "stats": {
+    "pha_ky_char_count": 1684,
+    "pha_he_node_count": 1
+  },
+  "content_hash": "a2f188c4ee16e490649178d88efd188d1a50d36726eb5a09b992e5d9fcff2e71",
+  "source_updated_at": "2026-08-02T08:28:44.196327+00:00",
+  "exported_at": "2026-08-10T05:05:02.191964+00:00",
+  "review": {
+    "doc_id": "vgp_1107",
+    "stratum": "S3",
+    "split": "train",
+    "review_priority": 3,
+    "double_annotation": false,
+    "gold_source": "auto_gold_pending_review"
+  }
+}

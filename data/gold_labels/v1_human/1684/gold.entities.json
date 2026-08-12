@@ -1,0 +1,25 @@
+{
+  "entities": [
+    {
+      "text": "đời v",
+      "label": "GENERATION"
+    },
+    {
+      "text": "con thứ tư",
+      "label": "ORDER"
+    },
+    {
+      "text": "con thứ chín",
+      "label": "ORDER"
+    },
+    {
+      "text": "làng Trường Đà được biết cách đây từ 5 đến 6 đời",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Củ Chi",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

@@ -1,0 +1,17 @@
+{
+  "entities": [
+    {
+      "text": "Nguyễn Viết Dụ",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Viết Phúc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "năm 1936",
+      "label": "DATE"
+    }
+  ],
+  "relations": []
+}

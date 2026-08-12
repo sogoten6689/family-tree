@@ -1,0 +1,401 @@
+{
+  "doc_id": "vgp_1537",
+  "tree_id": 1537,
+  "title": "Nguyễn Văn - Quảng Nam",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1537/pha_he.html",
+  "text": "Bất thức tánh danh có 1 người con: Bất thức tánh danh.\nBất thức tánh danh là con của Bất thức tánh danh.\nÔng Nguyễn Văn Luận sinh được 3 người con, gồm: Ông Nguyễn Văn Quý, Bà Nguyễn Thị Tiến, Nguyễn bất tánh danh.\nÔng Nguyễn Văn Luận hạ sinh Ông Nguyễn Văn Quý.\nÔng Nguyễn Văn Luận hạ sinh Nguyễn bất tánh danh.\nÔng Nguyễn Văn Quý sinh được 2 người con, gồm: Ông Nguyễn Văn Toàn, Bà Nguyễn Thị Đủ.\nBà Nguyễn Thị Đủ là con của Ông Nguyễn Văn Quý.\nÔng Nguyễn Văn Toàn có 3 người con: Ông Nguyễn Văn Đẩu, Bà Nguyễn Thị Lịch, Ông Nguyễn Văn Khá.\nÔng Nguyễn Văn Toàn sinh được Ông Nguyễn Văn Đẩu.\nBà Nguyễn Thị Lịch là con của Ông Nguyễn Văn Toàn.\nÔng Nguyễn Văn Đẩu có 2 người con: Bà Nguyễn Thị Ruộng, Ông Nguyễn Văn Tịnh.\nBà Nguyễn Thị Ruộng là con của Ông Nguyễn Văn Đẩu.\nÔng Nguyễn Văn Đẩu hạ sinh Ông Nguyễn Văn Tịnh.\nÔng Nguyễn Văn Khá sinh được 7 người con, gồm: Bà Nguyễn Thị Phú, Ông Nguyễn Văn Đồng, Bà Nguyễn Thị Sang, Bà Nguyễn Thị Đến, Ông Nguyễn Văn Nhàn, Ông Nguyễn Văn Chút, Ông Nguyễn Văn Hoành.\nBà Nguyễn Thị Sang là con của Ông Nguyễn Văn Khá.\nÔng Nguyễn Văn Khá hạ sinh Bà Nguyễn Thị Đến.\nÔng Nguyễn Văn Khá sinh được Ông Nguyễn Văn Nhàn.\nÔng Nguyễn Văn Khá hạ sinh Ông Nguyễn Văn Chút.\nÔng Nguyễn Văn Hoành là con của Ông Nguyễn Văn Khá.\nÔng Nguyễn Văn Nhàn sinh được 3 người con, gồm: Ông Nguyễn Văn Khôi, Ông Nguyễn Văn Ngô, Ông Nguyễn Văn Quảng.\nÔng Nguyễn Văn Nhàn hạ sinh Ông Nguyễn Văn Khôi.\nÔng Nguyễn Văn Chút có 1 người con: Bà Nguyễn Thị Nguyện.\nÔng Nguyễn Văn Chút sinh được Bà Nguyễn Thị Nguyện.\nÔng Nguyễn Văn Hoành có 1 người con: Ông Nguyễn Văn Tấn.\nÔng Nguyễn Văn Hoành sinh được Ông Nguyễn Văn Tấn.\nÔng Nguyễn Văn Ngô có 2 người con: Bà Nguyễn Thị Thuý, Bà Nguyễn Thị Thắm.\nBà Nguyễn Thị Thuý là con của Ông Nguyễn Văn Ngô.\nBà Nguyễn Thị Thắm là con của Ông Nguyễn Văn Ngô.\nÔng Nguyễn Văn Quảng có 1 người con: Bà Nguyễn Thị Phương.\nÔng Nguyễn Văn Quảng sinh được Bà Nguyễn Thị Phương.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 18,
+      "label": "PER_NAME",
+      "text": "Bất thức tánh danh"
+    },
+    {
+      "start": 0,
+      "end": 18,
+      "label": "PER_NAME",
+      "text": "Bất thức tánh danh"
+    },
+    {
+      "start": 0,
+      "end": 18,
+      "label": "PER_NAME",
+      "text": "Bất thức tánh danh"
+    },
+    {
+      "start": 105,
+      "end": 124,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Luận"
+    },
+    {
+      "start": 105,
+      "end": 124,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Luận"
+    },
+    {
+      "start": 153,
+      "end": 171,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Quý"
+    },
+    {
+      "start": 105,
+      "end": 124,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Luận"
+    },
+    {
+      "start": 193,
+      "end": 213,
+      "label": "PER_NAME",
+      "text": "Nguyễn bất tánh danh"
+    },
+    {
+      "start": 153,
+      "end": 171,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Quý"
+    },
+    {
+      "start": 381,
+      "end": 397,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Đủ"
+    },
+    {
+      "start": 153,
+      "end": 171,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Quý"
+    },
+    {
+      "start": 360,
+      "end": 379,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Toàn"
+    },
+    {
+      "start": 360,
+      "end": 379,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Toàn"
+    },
+    {
+      "start": 483,
+      "end": 501,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Đẩu"
+    },
+    {
+      "start": 503,
+      "end": 521,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Lịch"
+    },
+    {
+      "start": 360,
+      "end": 379,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Toàn"
+    },
+    {
+      "start": 483,
+      "end": 501,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Đẩu"
+    },
+    {
+      "start": 679,
+      "end": 698,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Ruộng"
+    },
+    {
+      "start": 483,
+      "end": 501,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Đẩu"
+    },
+    {
+      "start": 483,
+      "end": 501,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Đẩu"
+    },
+    {
+      "start": 700,
+      "end": 719,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Tịnh"
+    },
+    {
+      "start": 523,
+      "end": 541,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khá"
+    },
+    {
+      "start": 907,
+      "end": 925,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Sang"
+    },
+    {
+      "start": 523,
+      "end": 541,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khá"
+    },
+    {
+      "start": 523,
+      "end": 541,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khá"
+    },
+    {
+      "start": 927,
+      "end": 944,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Đến"
+    },
+    {
+      "start": 523,
+      "end": 541,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khá"
+    },
+    {
+      "start": 946,
+      "end": 965,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Nhàn"
+    },
+    {
+      "start": 523,
+      "end": 541,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khá"
+    },
+    {
+      "start": 967,
+      "end": 986,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Chút"
+    },
+    {
+      "start": 988,
+      "end": 1008,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Hoành"
+    },
+    {
+      "start": 523,
+      "end": 541,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khá"
+    },
+    {
+      "start": 946,
+      "end": 965,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Nhàn"
+    },
+    {
+      "start": 946,
+      "end": 965,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Nhàn"
+    },
+    {
+      "start": 1304,
+      "end": 1323,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Khôi"
+    },
+    {
+      "start": 967,
+      "end": 986,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Chút"
+    },
+    {
+      "start": 967,
+      "end": 986,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Chút"
+    },
+    {
+      "start": 1452,
+      "end": 1472,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Nguyện"
+    },
+    {
+      "start": 988,
+      "end": 1008,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Hoành"
+    },
+    {
+      "start": 988,
+      "end": 1008,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Hoành"
+    },
+    {
+      "start": 1563,
+      "end": 1581,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Tấn"
+    },
+    {
+      "start": 1325,
+      "end": 1343,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Ngô"
+    },
+    {
+      "start": 1669,
+      "end": 1687,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Thuý"
+    },
+    {
+      "start": 1325,
+      "end": 1343,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Ngô"
+    },
+    {
+      "start": 1689,
+      "end": 1707,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Thắm"
+    },
+    {
+      "start": 1325,
+      "end": 1343,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Ngô"
+    },
+    {
+      "start": 1345,
+      "end": 1365,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Quảng"
+    },
+    {
+      "start": 1345,
+      "end": 1365,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Quảng"
+    },
+    {
+      "start": 1846,
+      "end": 1866,
+      "label": "PER_NAME",
+      "text": "Bà Nguyễn Thị Phương"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 2,
+      "tail": 2
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 10
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 7
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 10,
+      "tail": 9
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 19
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 14
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 19,
+      "tail": 17
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 19,
+      "tail": 20
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 31,
+      "tail": 22
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 31,
+      "tail": 25
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 31,
+      "tail": 33
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 31,
+      "tail": 36
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 31,
+      "tail": 39
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 33,
+      "tail": 34
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 36,
+      "tail": 37
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 39,
+      "tail": 40
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 45,
+      "tail": 42
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 45,
+      "tail": 44
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 47,
+      "tail": 48
+    }
+  ],
+  "source": "synthetic_supplement_v2"
+}

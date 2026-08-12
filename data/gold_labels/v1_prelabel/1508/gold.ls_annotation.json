@@ -1,0 +1,52 @@
+{
+  "result": [
+    {
+      "id": "ent_05a9f03d3682",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 227,
+        "end": 241,
+        "text": "Nguyễn Viết Dụ",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_477b8841b06b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 208,
+        "end": 224,
+        "text": "Nguyễn Viết Phúc",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9e7d3eca1330",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 123,
+        "end": 131,
+        "text": "năm 1936",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

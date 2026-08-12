@@ -1,0 +1,80 @@
+Tổ Khảo Viêm Công Chi 2 có 1 người con: Cụ Mỗ.
+Cụ Mỗ là con của Tổ Khảo Viêm Công Chi 2.
+Tổ Khảo Long Công chi 3 sinh được 1 người con, gồm: Cụ Trực.
+Cụ Trực là con của Tổ Khảo Long Công chi 3.
+Cụ Trực có 2 người con: Cụ Tuân, Cụ Chủng.
+Cụ Tuân là con của Cụ Trực.
+Cụ Chủng là con của Cụ Trực.
+Cụ Văn Vỹ có 6 người con: Cụ Tuấn, Cụ Thái, Cụ Siêu, Cụ Thể, Cụ Phác, Cụ Cà Xám.
+Cụ Văn Vỹ sinh được Cụ Tuấn.
+Cụ Văn Vỹ sinh được Cụ Thể.
+Cụ Văn Vỹ hạ sinh Cụ Phác.
+Cụ Tuân có 2 người con: Cụ Thụy, Cụ Lượng.
+Cụ Thụy là con của Cụ Tuân.
+Cụ Tuân hạ sinh Cụ Lượng.
+Cụ Chủng có 3 người con: Cụ Bảo, Cụ Tân, Cụ Tố (không con).
+Cụ Chủng hạ sinh Cụ Bảo.
+Cụ Chủng sinh được Cụ Tân.
+Cụ Chủng sinh được Cụ Tố (không con).
+Cụ Tuấn có 4 người con: Cụ Thiệp (ko con), Cụ Định, Cụ Hào, Cụ Nhạ (ko con).
+Cụ Tuấn hạ sinh Cụ Thiệp (ko con).
+Cụ Hào là con của Cụ Tuấn.
+Cụ Thái sinh được 2 người con, gồm: Cụ Canh (ko con), Cụ Nạp.
+Cụ Thái hạ sinh Cụ Canh (ko con).
+Cụ Nạp là con của Cụ Thái.
+Cụ Siêu sinh được 6 người con, gồm: Cụ Đường, Cụ Hy (ko con), Cụ Thuần, Cụ Nhường (ko con), Cụ Sùng (ko con), Cụ Thường.
+Cụ Siêu hạ sinh Cụ Đường.
+Cụ Siêu sinh được Cụ Hy (ko con).
+Cụ Siêu hạ sinh Cụ Thuần.
+Cụ Siêu sinh được Cụ Nhường (ko con).
+Cụ Siêu hạ sinh Cụ Sùng (ko con).
+Cụ Siêu sinh được Cụ Thường.
+Cụ Thể có 2 người con: Cụ Nhiệm, Cụ Hựu (không con).
+Cụ Thể hạ sinh Cụ Nhiệm.
+Cụ Thể hạ sinh Cụ Hựu (không con).
+Cụ Phác sinh được 1 người con, gồm: Cụ Tỷ (không con).
+Cụ Tỷ (không con) là con của Cụ Phác.
+Cụ Thụy sinh được 1 người con, gồm: Cụ Viên.
+Cụ Thụy sinh được Cụ Viên.
+Cụ Lượng sinh được 1 người con, gồm: Cụ Ngẫu.
+Cụ Lượng hạ sinh Cụ Ngẫu.
+Cụ Bảo có 2 người con: Cụ Xưng, Cụ Bùi.
+Cụ Xưng là con của Cụ Bảo.
+Cụ Bùi là con của Cụ Bảo.
+Cụ Tân có 3 người con: Cụ Cửu, Cụ Thập, Cụ Lục.
+Cụ Cửu là con của Cụ Tân.
+Cụ Tân hạ sinh Cụ Thập.
+Cụ Tân sinh được Cụ Lục.
+Cụ Hào có 2 người con: Cụ Thoại, Cụ Khải.
+Cụ Thoại là con của Cụ Hào.
+Cụ Khải là con của Cụ Hào.
+Cụ Nạp có 1 người con: Cụ Nghĩa.
+Cụ Nạp hạ sinh Cụ Nghĩa.
+Cụ Đường sinh được 1 người con, gồm: Cụ Trương.
+Cụ Trương là con của Cụ Đường.
+Cụ Thuần có 3 người con: Cụ Khải, Cụ Triệu, Cụ Phiêu.
+Cụ Khải là con của Cụ Thuần.
+Cụ Thuần hạ sinh Cụ Triệu.
+Cụ Thuần hạ sinh Cụ Phiêu.
+Cụ Thường có 4 người con: Cụ Trạch, Cụ Du (ko con), Cụ Trí (ko con), Cụ Độ (Ko con).
+Cụ Thường sinh được Cụ Trạch.
+Cụ Thường hạ sinh Cụ Trí (ko con).
+Cụ Nhiệm sinh được 3 người con, gồm: Cụ Nhân(ko Con), Cụ Diệu, Cụ Sĩ.
+Cụ Nhiệm hạ sinh Cụ Diệu.
+Cụ Sĩ là con của Cụ Nhiệm.
+Cụ Từ Chấn có 1 người con: Cụ Binh Chấn.
+Cụ Từ Chấn hạ sinh Cụ Binh Chấn.
+Cụ Viên sinh được 3 người con, gồm: Cụ Đằng, Cụ Vân, Cụ Vụ.
+Cụ Viên hạ sinh Cụ Đằng.
+Cụ Vân là con của Cụ Viên.
+Cụ Ngẫu có 3 người con: Cụ Ngữ, Cụ Sung, Cụ Bính (không con).
+Cụ Ngẫu hạ sinh Cụ Ngữ.
+Cụ Bính (không con) là con của Cụ Ngẫu.
+Cụ Xưng có 2 người con: Cụ Hảo (không con), Cụ Điển.
+Cụ Điển là con của Cụ Xưng.
+Cụ Bùi có 1 người con: Cụ Nghị.
+Cụ Nghị là con của Cụ Bùi.
+Cụ Cửu sinh được 3 người con, gồm: Cụ Toan (ko con), Cụ Tôn, Cụ Nguyên (ko con).
+Cụ Cửu sinh được Cụ Toan (ko con).
+Cụ Lễ có 3 người con: Cụ Duân (ko con), Cụ Bào (ko con), Cụ Nhạc (ko con).
+Cụ Lễ sinh được Cụ Duân (ko con).

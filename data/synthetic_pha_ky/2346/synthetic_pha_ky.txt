@@ -1,0 +1,80 @@
+Ông Dương Oai Hầu Nguyễn Văn Tráng có 2 người con: Ông Chưởng Cơ Nguyễn Văn Giai, Ông Phó Tướng Nguyễn Văn Lan.
+Ông Dương Oai Hầu Nguyễn Văn Tráng hạ sinh Ông Chưởng Cơ Nguyễn Văn Giai.
+Ông Dương Oai Hầu Nguyễn Văn Tráng hạ sinh Ông Phó Tướng Nguyễn Văn Lan.
+Ông Chưởng Cơ Nguyễn Văn Giai có 8 người con: Ông Trấn Biên Quan Nguyễn Văn Thành, Ông Cai Đội Nguyễn Văn Trân, Cai Cơ Nguyễn Phước Công, Quản Cơ Nguyễn Đình Công, Tuần Phủ Nguyễn Viết Công, Bà Hữu Thị Lang Nguyễn Hữu Công, Bà Nguyễn Thị Phấn, Bà Nguyễn Thị Nơm.
+Ông Chưởng Cơ Nguyễn Văn Giai sinh được Ông Cai Đội Nguyễn Văn Trân.
+Ông Chưởng Cơ Nguyễn Văn Giai hạ sinh Cai Cơ Nguyễn Phước Công.
+Ông Chưởng Cơ Nguyễn Văn Giai hạ sinh Bà Nguyễn Thị Phấn.
+Ông Chưởng Cơ Nguyễn Văn Giai hạ sinh Bà Nguyễn Thị Nơm.
+Ông Trấn Biên Quan Nguyễn Văn Thành có 2 người con: Ông Chủ Sự Nguyễn Văn Nai, Ông Nguyễn Văn Thuận.
+Ông Trấn Biên Quan Nguyễn Văn Thành sinh được Ông Chủ Sự Nguyễn Văn Nai.
+Cai Cơ Nguyễn Phước Công sinh được 2 người con, gồm: Chỉ Huy Sứ Nguyễn Phước Tam, Trung Lễ Hầu Nguyễn Phước Trí.
+Cai Cơ Nguyễn Phước Công hạ sinh Chỉ Huy Sứ Nguyễn Phước Tam.
+Cai Cơ Nguyễn Phước Công sinh được Trung Lễ Hầu Nguyễn Phước Trí.
+Ông Chủ Sự Nguyễn Văn Nai sinh được 4 người con, gồm: Ông Nguyễn Văn Đấu, Ông Nguyễn Văn Luân, Ông Hữu Tướng Nguyễn Văn Câu, Bà Nguyễn Thị Đợi.
+Ông Chủ Sự Nguyễn Văn Nai hạ sinh Ông Nguyễn Văn Đấu.
+Ông Chủ Sự Nguyễn Văn Nai hạ sinh Ông Nguyễn Văn Luân.
+Ông Chủ Sự Nguyễn Văn Nai sinh được Bà Nguyễn Thị Đợi.
+Chỉ Huy Sứ Nguyễn Phước Tam sinh được 1 người con, gồm: Vũ Khê Bá Nguyễn Phước Chính.
+Chỉ Huy Sứ Nguyễn Phước Tam sinh được Vũ Khê Bá Nguyễn Phước Chính.
+Trung Lễ Hầu Nguyễn Phước Trí sinh được 1 người con, gồm: Bà Hữu Thị Lang Nguyễn Phước Bồng.
+Trung Lễ Hầu Nguyễn Phước Trí sinh được Bà Hữu Thị Lang Nguyễn Phước Bồng.
+Vũ Khê Bá Nguyễn Phước Chính sinh được 1 người con, gồm: Cai Đội Nguyễn Phước Kỳ.
+Vũ Khê Bá Nguyễn Phước Chính sinh được Cai Đội Nguyễn Phước Kỳ.
+Bà Hữu Thị Lang Nguyễn Phước Bồng sinh được 1 người con, gồm: Đại Phu Nguyễn Phước Lành.
+Bà Hữu Thị Lang Nguyễn Phước Bồng hạ sinh Đại Phu Nguyễn Phước Lành.
+Ông Hữu Tướng Nguyễn Văn Câu sinh được 6 người con, gồm: Ông Cai Cơ Nguyễn Văn Lãng, Ông Nguyễn Văn Ngài, Bà Nguyễn Thị Dĩ, Ông Nguyễn Văn Voi, Ông Nguyễn Văn Ca, Bà Nguyễn Thị Thú.
+Ông Hữu Tướng Nguyễn Văn Câu hạ sinh Ông Cai Cơ Nguyễn Văn Lãng.
+Ông Hữu Tướng Nguyễn Văn Câu sinh được Bà Nguyễn Thị Dĩ.
+Ông Hữu Tướng Nguyễn Văn Câu sinh được Ông Nguyễn Văn Voi.
+Bà Nguyễn Thị Thú là con của Ông Hữu Tướng Nguyễn Văn Câu.
+Cai Đội Nguyễn Phước Kỳ sinh được 1 người con, gồm: Chưởng Cơ Nguyễn Phước Trung.
+Chưởng Cơ Nguyễn Phước Trung là con của Cai Đội Nguyễn Phước Kỳ.
+Đại Phu Nguyễn Phước Lành có 1 người con: Cai Cơ Nguyễn Phước Lễ (Thấu).
+Đại Phu Nguyễn Phước Lành hạ sinh Cai Cơ Nguyễn Phước Lễ (Thấu).
+Ông Cai Cơ Nguyễn Văn Lãng có 7 người con: Ông Tiết Chế Nguyễn Văn Luận, Ông Nguyễn Văn Viên, Ông Nguyễn Văn Tân, Ông Nguyễn Văn Cân, Bà Nguyễn Thị Thi, Bà Nguyễn Thị Đắc, Bà Nguyễn Thị Lô.
+Ông Tiết Chế Nguyễn Văn Luận là con của Ông Cai Cơ Nguyễn Văn Lãng.
+Ông Cai Cơ Nguyễn Văn Lãng hạ sinh Ông Nguyễn Văn Tân.
+Ông Nguyễn Văn Cân là con của Ông Cai Cơ Nguyễn Văn Lãng.
+Bà Nguyễn Thị Thi là con của Ông Cai Cơ Nguyễn Văn Lãng.
+Ông Cai Cơ Nguyễn Văn Lãng sinh được Bà Nguyễn Thị Đắc.
+Ông Cai Cơ Nguyễn Văn Lãng hạ sinh Bà Nguyễn Thị Lô.
+Chưởng Cơ Nguyễn Phước Trung có 1 người con: Tri Phủ Nguyễn Phước Đôn.
+Chưởng Cơ Nguyễn Phước Trung hạ sinh Tri Phủ Nguyễn Phước Đôn.
+Cai Cơ Nguyễn Phước Lễ (Thấu) sinh được 1 người con, gồm: Doanh Điền Sứ Nguyễn Phước Đường (Xuyến).
+Cai Cơ Nguyễn Phước Lễ (Thấu) hạ sinh Doanh Điền Sứ Nguyễn Phước Đường (Xuyến).
+Ông Tiết Chế Nguyễn Văn Luận sinh được 9 người con, gồm: Ông Hùng Thắng Hầu Nguyễn Văn Quyên, Bà Nguyễn Thị Minh, Ông Nguyễn Văn Chức, Ông Nguyễn Văn Chước, Bà Nguyễn Thị Cò, Bà Nguyễn Thị Nhỏ, Bà Nguyễn Thị Tam, Bà Nguyễn Thị Có, Bà Nguyễn Thị Mãi.
+Ông Tiết Chế Nguyễn Văn Luận hạ sinh Ông Hùng Thắng Hầu Nguyễn Văn Quyên.
+Ông Tiết Chế Nguyễn Văn Luận hạ sinh Bà Nguyễn Thị Minh.
+Ông Tiết Chế Nguyễn Văn Luận hạ sinh Ông Nguyễn Văn Chước.
+Bà Nguyễn Thị Cò là con của Ông Tiết Chế Nguyễn Văn Luận.
+Ông Tiết Chế Nguyễn Văn Luận sinh được Bà Nguyễn Thị Nhỏ.
+Ông Tiết Chế Nguyễn Văn Luận sinh được Bà Nguyễn Thị Tam.
+Ông Tiết Chế Nguyễn Văn Luận sinh được Bà Nguyễn Thị Có.
+Ông Tiết Chế Nguyễn Văn Luận hạ sinh Bà Nguyễn Thị Mãi.
+Tri Phủ Nguyễn Phước Đôn có 1 người con: Chưởng Vệ Sự Nguyễn Phước Hiệp.
+Chưởng Vệ Sự Nguyễn Phước Hiệp là con của Tri Phủ Nguyễn Phước Đôn.
+Doanh Điền Sứ Nguyễn Phước Đường (Xuyến) sinh được 1 người con, gồm: Quản Cơ Nguyễn Phước Cung (Công).
+Quản Cơ Nguyễn Phước Cung (Công) là con của Doanh Điền Sứ Nguyễn Phước Đường (Xuyến).
+Ông Hùng Thắng Hầu Nguyễn Văn Quyên có 5 người con: Ông Cai Bộ Nguyễn Văn Hiền, Ông Nguyễn Văn Hiếu, Ông Nguyễn Văn Điền, Ông Nguyễn Văn Ty, Ông Nguyễn Văn Hãnh.
+Ông Nguyễn Văn Điền là con của Ông Hùng Thắng Hầu Nguyễn Văn Quyên.
+Ông Hùng Thắng Hầu Nguyễn Văn Quyên sinh được Ông Nguyễn Văn Ty.
+Ông Hùng Thắng Hầu Nguyễn Văn Quyên sinh được Ông Nguyễn Văn Hãnh.
+Quản Cơ Nguyễn Phước Cung (Công) có 1 người con: Ông Cai cơ Nguyễn Văn Liễn ( Sơn ).
+Quản Cơ Nguyễn Phước Cung (Công) hạ sinh Ông Cai cơ Nguyễn Văn Liễn ( Sơn ).
+Ông Cai Bộ Nguyễn Văn Hiền sinh được 3 người con, gồm: Ông Nguyễn Văn Cảo, Ông Ký Lục Nguyễn Văn Việt, Ông Nguyễn Văn Túc.
+Ông Cai Bộ Nguyễn Văn Hiền hạ sinh Ông Nguyễn Văn Cảo.
+Ông Cai Bộ Nguyễn Văn Hiền hạ sinh Ông Nguyễn Văn Túc.
+Ông Hương Cống Nguyễn Văn Thái (Thới) sinh được 2 người con, gồm: Ông Thiếu Bảo Nguyễn Văn Trấn, Ông Huấn Đạo Nguyễn Văn Ốt (Chái).
+Ông Hương Cống Nguyễn Văn Thái (Thới) sinh được Ông Huấn Đạo Nguyễn Văn Ốt (Chái).
+Ông Cai cơ Nguyễn Văn Liễn ( Sơn ) sinh được 1 người con, gồm: Ông Nguyễn Văn Mai.
+Ông Cai cơ Nguyễn Văn Liễn ( Sơn ) sinh được Ông Nguyễn Văn Mai.
+Ông Ký Lục Nguyễn Văn Việt có 4 người con: Ông Nguyễn Văn Tri, Ông Nguyễn Văn Giáo, Ông Khinh Xa Đô Uý Nguyễn Văn Quý, Ông Nguyễn Văn Công.
+Ông Khinh Xa Đô Uý Nguyễn Văn Quý là con của Ông Ký Lục Nguyễn Văn Việt.
+Ông Thiếu Bảo Nguyễn Văn Trấn sinh được 1 người con, gồm: Ông Tri Phủ Nguyễn Văn Liêm.
+Ông Thiếu Bảo Nguyễn Văn Trấn sinh được Ông Tri Phủ Nguyễn Văn Liêm.
+Ông Nguyễn Văn Mai sinh được 7 người con, gồm: Ông Nguyễn Văn Giang ( Vang), Bà Nguyễn Thị Thắm, Bà Nguyễn Thị Hoà, Bà Nguyễn Thị Sơn, Bà Nguyễn Thị Phê, Ông Nguyễn Văn Du, Ông Đề Đốc Nguyễn Văn Tài (An).
+Ông Nguyễn Văn Mai hạ sinh Ông Nguyễn Văn Giang ( Vang).
+Bà Nguyễn Thị Thắm là con của Ông Nguyễn Văn Mai.
+Ông Nguyễn Văn Mai hạ sinh Bà Nguyễn Thị Hoà.
+Ông Nguyễn Văn Mai hạ sinh Bà Nguyễn Thị Sơn.

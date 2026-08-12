@@ -1,0 +1,23 @@
+{
+  "doc_id": "vgp_1107",
+  "tree_id": 1107,
+  "title": "ĐỖ Đức - Hải Phòng",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1107/pha_he.html",
+  "text": "Đời thứ 1: \nĐỗ Khắc Thiếu (Thiệu).",
+  "entities": [
+    {
+      "start": 0,
+      "end": 9,
+      "label": "GENERATION",
+      "text": "Đời thứ 1"
+    },
+    {
+      "start": 12,
+      "end": 33,
+      "label": "PER_NAME",
+      "text": "Đỗ Khắc Thiếu (Thiệu)"
+    }
+  ],
+  "relations": [],
+  "source": "synthetic_supplement_v2"
+}

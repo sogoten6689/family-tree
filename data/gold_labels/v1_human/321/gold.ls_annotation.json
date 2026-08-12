@@ -1,0 +1,343 @@
+{
+  "id": 29,
+  "result": [
+    {
+      "id": "ent_63a173d586d5",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 41,
+        "end": 50,
+        "text": "Đồng Tháp",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_db3bc4114c17",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 524,
+        "end": 533,
+        "text": "đời thứ 7",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_c4ce41dc3788",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 358,
+        "end": 364,
+        "text": "con cả",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_07c4653811ae",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 126,
+        "end": 138,
+        "text": "Thái Văn keo",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_92862cf6e09e",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 177,
+        "end": 189,
+        "text": "Thái Văn Lâu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ebfe787a62c5",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 203,
+        "end": 214,
+        "text": "Thái Văn Tô",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_6d888c9c58e6",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 294,
+        "end": 306,
+        "text": "Thái Văn Hữu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_62fa2762a159",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 308,
+        "end": 321,
+        "text": "Thái Văn Ngãi",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_7d0923b3a780",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 323,
+        "end": 336,
+        "text": "Thái Văn Xiêm",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_93e711f4e982",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 372,
+        "end": 386,
+        "text": "Thái Văn Lương",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_9d129b1745a7",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 422,
+        "end": 435,
+        "text": "Thái Văn Nhân",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_b2edfdcc9f13",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 468,
+        "end": 481,
+        "text": "Thái Văn Hưng",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_84f8f4c2713b",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 484,
+        "end": 495,
+        "text": "Thái Văn Đê",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_65e8d476513c",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 497,
+        "end": 512,
+        "text": "Thái Thị Hồ Thu",
+        "labels": [
+          "PER_NAME"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_07c4653811ae",
+      "to_id": "ent_92862cf6e09e"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_07c4653811ae",
+      "to_id": "ent_ebfe787a62c5"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_ebfe787a62c5",
+      "to_id": "ent_6d888c9c58e6"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_ebfe787a62c5",
+      "to_id": "ent_62fa2762a159"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_ebfe787a62c5",
+      "to_id": "ent_7d0923b3a780"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_6d888c9c58e6",
+      "to_id": "ent_93e711f4e982"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_62fa2762a159",
+      "to_id": "ent_9d129b1745a7"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_7d0923b3a780",
+      "to_id": "ent_b2edfdcc9f13"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_7d0923b3a780",
+      "to_id": "ent_84f8f4c2713b"
+    },
+    {
+      "from_name": "relation",
+      "to_name": "text",
+      "type": "relation",
+      "direction": "right",
+      "labels": [
+        "FATHER_OF"
+      ],
+      "from_id": "ent_7d0923b3a780",
+      "to_id": "ent_65e8d476513c"
+    }
+  ],
+  "created_username": " sogoten6689@gmail.com, 1",
+  "created_ago": "0 minutes",
+  "completed_by": 1,
+  "was_cancelled": false,
+  "ground_truth": true,
+  "created_at": "2026-08-10T09:32:13.712557Z",
+  "updated_at": "2026-08-10T09:32:13.712592Z",
+  "draft_created_at": null,
+  "lead_time": 180.0,
+  "import_id": null,
+  "last_action": null,
+  "bulk_created": false,
+  "task": 4,
+  "project": 1,
+  "updated_by": 1,
+  "parent_prediction": null,
+  "parent_annotation": null,
+  "last_created_by": null
+}

@@ -1,0 +1,16 @@
+{
+  "tree_id": 277,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "NGUYỄN CẢNH - Nghệ An",
+  "generated_at": "2026-08-10T08:04:59.490799+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/277/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/277/pha_he.html",
+  "real_pha_ky_char_count": 4941,
+  "char_count": 164,
+  "entity_count": 3,
+  "relation_count": 1,
+  "sentence_count": 2,
+  "missing_name_count": 1,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 1.0
+}

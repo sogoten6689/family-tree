@@ -1,0 +1,13 @@
+{
+  "entities": [
+    {
+      "text": "Đời thứ 1",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Đỗ Khắc Thiếu (Thiệu)",
+      "label": "PER_NAME"
+    }
+  ],
+  "relations": []
+}

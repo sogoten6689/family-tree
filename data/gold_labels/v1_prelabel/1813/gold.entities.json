@@ -1,0 +1,77 @@
+{
+  "entities": [
+    {
+      "text": "năm 1010",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1029",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1066",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1076",
+      "label": "DATE"
+    },
+    {
+      "text": "1077",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1306",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1470",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1884",
+      "label": "DATE"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "1975",
+      "label": "DATE"
+    },
+    {
+      "text": "1418",
+      "label": "DATE"
+    },
+    {
+      "text": "1499",
+      "label": "DATE"
+    },
+    {
+      "text": "1010",
+      "label": "DATE"
+    },
+    {
+      "text": "1800",
+      "label": "DATE"
+    },
+    {
+      "text": "1000",
+      "label": "DATE"
+    },
+    {
+      "text": "2005",
+      "label": "DATE"
+    },
+    {
+      "text": "2010",
+      "label": "DATE"
+    },
+    {
+      "text": "đời vi",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

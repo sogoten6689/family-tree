@@ -1,9 +1,11 @@
 # Hướng dẫn gán nhãn — Gia phả NER + Relation Extraction
 
 > **Dự án:** HCMUS Family Tree / Label Studio pipeline  
-> **Cập nhật:** 2026-08-02  
+> **Cập nhật:** 2026-08-10  
 > **Công cụ:** [Label Studio](http://localhost:8080) — project **Family Tree NER+RE**  
-> **Thống kê corpus:** [THONG_KE.md](./THONG_KE.md) · **Plan:** [label_studio_pipeline_plan.md](../planning/label_studio_pipeline_plan.md)
+> **Thống kê corpus:** [THONG_KE.md](./THONG_KE.md) · **Plan:** [label_studio_pipeline_plan.md](../planning/label_studio_pipeline_plan.md)  
+> **Quy trình chi tiết trong 1 Task (NER + RE):** [QUY_TRINH_GAN_NHAN_TRONG_TASK.md](./QUY_TRINH_GAN_NHAN_TRONG_TASK.md)  
+> **Danh sách Entity & Relationship:** [ENTITY_RELATIONSHIP_LIST.md](./ENTITY_RELATIONSHIP_LIST.md)
 
 ---
 

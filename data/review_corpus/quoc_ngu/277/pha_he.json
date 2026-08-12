@@ -1,0 +1,166 @@
+{
+  "tree_id": 277,
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/277/pha_he.html",
+  "lineage_name": "NGUYỄN CẢNH - Nghệ An",
+  "parser_mode": "tree_view",
+  "node_count": 9,
+  "relationship_count": 8,
+  "nodes": [
+    {
+      "tree_id": 277,
+      "node_id": 2,
+      "label": "1.1 NGUYỄN CẢNH LỮ",
+      "name": "NGUYỄN CẢNH LỮ",
+      "generation": 1,
+      "order_in_generation": 1,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 5,
+      "label": "2.4 NGUYỄN CẢNH LUẬT",
+      "name": "NGUYỄN CẢNH LUẬT",
+      "generation": 2,
+      "order_in_generation": 4,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 6,
+      "label": "3.5 NGUYỄN CẢNH CẢNH",
+      "name": "NGUYỄN CẢNH CẢNH",
+      "generation": 3,
+      "order_in_generation": 5,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 7,
+      "label": "4.6 NGUYỄN CẢNH HUY",
+      "name": "NGUYỄN CẢNH HUY",
+      "generation": 4,
+      "order_in_generation": 6,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 8,
+      "label": "5.8 NGUYỄN CẢNH NOÃN",
+      "name": "NGUYỄN CẢNH NOÃN",
+      "generation": 5,
+      "order_in_generation": 8,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 10,
+      "label": "5.9 NGUYỄN CẢNH HOAN",
+      "name": "NGUYỄN CẢNH HOAN",
+      "generation": 5,
+      "order_in_generation": 9,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 12,
+      "label": "5.10 NGUYỄN CẢNH HÂN",
+      "name": "NGUYỄN CẢNH HÂN",
+      "generation": 5,
+      "order_in_generation": 10,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 13,
+      "label": "5.11 NGUYỄN CẢNH VẠN",
+      "name": "NGUYỄN CẢNH VẠN",
+      "generation": 5,
+      "order_in_generation": 11,
+      "gender": null,
+      "is_spouse_row": false
+    },
+    {
+      "tree_id": 277,
+      "node_id": 14,
+      "label": "5.12 NGUYỄN CẢNH CHIÊU",
+      "name": "NGUYỄN CẢNH CHIÊU",
+      "generation": 5,
+      "order_in_generation": 12,
+      "gender": null,
+      "is_spouse_row": false
+    }
+  ],
+  "relationships": [
+    {
+      "type": "parent_of",
+      "from_id": 2,
+      "to_id": 5,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 5,
+      "to_id": 6,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 6,
+      "to_id": 7,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 8,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 10,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 12,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 13,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    },
+    {
+      "type": "parent_of",
+      "from_id": 7,
+      "to_id": 14,
+      "side": "fid",
+      "confidence": 0.65,
+      "rule": "generation_stack"
+    }
+  ]
+}

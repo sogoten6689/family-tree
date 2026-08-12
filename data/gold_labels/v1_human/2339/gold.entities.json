@@ -1,0 +1,57 @@
+{
+  "entities": [
+    {
+      "text": "năm 2009",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    },
+    {
+      "text": "Phùng Việt Dũng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "thôn Ngọ Cầu và An Xuyên",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Minh Khai",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Văn Lâm",
+      "label": "LOC"
+    },
+    {
+      "text": "tỉnh Hưng Yên gồm 3 dòng riêng biệt",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ tiên",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ họ Phùng cùng mang một họ đến lập làng tại đây lại không có liên quan đến nhau",
+      "label": "LOC"
+    },
+    {
+      "text": "Hưng Yên",
+      "label": "LOC"
+    },
+    {
+      "text": "Hà Nội",
+      "label": "LOC"
+    },
+    {
+      "text": "thôn Minh Khai để mọi người cùng tham khảo",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ mà hiện nay chưa tìm thấy cứ liệu",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

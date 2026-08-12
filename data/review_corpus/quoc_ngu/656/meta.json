@@ -1,0 +1,21 @@
+{
+  "tree_id": 656,
+  "lineage_name": "Lê - Bình Định",
+  "title": "Gia phả: Lê - Bình Định",
+  "location": "xã Cát Hanh, huyện Phù Cát",
+  "stats": {
+    "pha_ky_char_count": 2507,
+    "pha_he_node_count": 1
+  },
+  "content_hash": "45b85d8a7f2134428a65c53922ed0df8b1494356d195a5de2ab5c520c3a5e61a",
+  "source_updated_at": "2026-08-02T08:25:13.143927+00:00",
+  "exported_at": "2026-08-10T05:05:02.110371+00:00",
+  "review": {
+    "doc_id": "vgp_656",
+    "stratum": "S3",
+    "split": "train",
+    "review_priority": 3,
+    "double_annotation": false,
+    "gold_source": "auto_gold_pending_review"
+  }
+}

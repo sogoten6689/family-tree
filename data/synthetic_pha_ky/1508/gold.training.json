@@ -1,0 +1,47 @@
+{
+  "doc_id": "vgp_1508",
+  "tree_id": 1508,
+  "title": "NGUYỄN VIẾT - Thanh Hóa",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1508/pha_he.html",
+  "text": "Nguyễn Viết Phúc sinh được 1 người con, gồm: Gia phả bị lỗi rồi_bấm vào đọc tiếp.\nNguyễn Viết Phúc hạ sinh Gia phả bị lỗi rồi_bấm vào đọc tiếp.\nĐời thứ 1: \nNguyễn Viết Loc.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 16,
+      "label": "PER_NAME",
+      "text": "Nguyễn Viết Phúc"
+    },
+    {
+      "start": 0,
+      "end": 16,
+      "label": "PER_NAME",
+      "text": "Nguyễn Viết Phúc"
+    },
+    {
+      "start": 45,
+      "end": 80,
+      "label": "PER_NAME",
+      "text": "Gia phả bị lỗi rồi_bấm vào đọc tiếp"
+    },
+    {
+      "start": 144,
+      "end": 153,
+      "label": "GENERATION",
+      "text": "Đời thứ 1"
+    },
+    {
+      "start": 156,
+      "end": 171,
+      "label": "PER_NAME",
+      "text": "Nguyễn Viết Loc"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 1,
+      "tail": 2
+    }
+  ],
+  "source": "synthetic_supplement_v2"
+}

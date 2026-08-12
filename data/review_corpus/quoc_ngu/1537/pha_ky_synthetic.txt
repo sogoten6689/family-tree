@@ -1,0 +1,30 @@
+Bất thức tánh danh có 1 người con: Bất thức tánh danh.
+Bất thức tánh danh là con của Bất thức tánh danh.
+Ông Nguyễn Văn Luận sinh được 3 người con, gồm: Ông Nguyễn Văn Quý, Bà Nguyễn Thị Tiến, Nguyễn bất tánh danh.
+Ông Nguyễn Văn Luận hạ sinh Ông Nguyễn Văn Quý.
+Ông Nguyễn Văn Luận hạ sinh Nguyễn bất tánh danh.
+Ông Nguyễn Văn Quý sinh được 2 người con, gồm: Ông Nguyễn Văn Toàn, Bà Nguyễn Thị Đủ.
+Bà Nguyễn Thị Đủ là con của Ông Nguyễn Văn Quý.
+Ông Nguyễn Văn Toàn có 3 người con: Ông Nguyễn Văn Đẩu, Bà Nguyễn Thị Lịch, Ông Nguyễn Văn Khá.
+Ông Nguyễn Văn Toàn sinh được Ông Nguyễn Văn Đẩu.
+Bà Nguyễn Thị Lịch là con của Ông Nguyễn Văn Toàn.
+Ông Nguyễn Văn Đẩu có 2 người con: Bà Nguyễn Thị Ruộng, Ông Nguyễn Văn Tịnh.
+Bà Nguyễn Thị Ruộng là con của Ông Nguyễn Văn Đẩu.
+Ông Nguyễn Văn Đẩu hạ sinh Ông Nguyễn Văn Tịnh.
+Ông Nguyễn Văn Khá sinh được 7 người con, gồm: Bà Nguyễn Thị Phú, Ông Nguyễn Văn Đồng, Bà Nguyễn Thị Sang, Bà Nguyễn Thị Đến, Ông Nguyễn Văn Nhàn, Ông Nguyễn Văn Chút, Ông Nguyễn Văn Hoành.
+Bà Nguyễn Thị Sang là con của Ông Nguyễn Văn Khá.
+Ông Nguyễn Văn Khá hạ sinh Bà Nguyễn Thị Đến.
+Ông Nguyễn Văn Khá sinh được Ông Nguyễn Văn Nhàn.
+Ông Nguyễn Văn Khá hạ sinh Ông Nguyễn Văn Chút.
+Ông Nguyễn Văn Hoành là con của Ông Nguyễn Văn Khá.
+Ông Nguyễn Văn Nhàn sinh được 3 người con, gồm: Ông Nguyễn Văn Khôi, Ông Nguyễn Văn Ngô, Ông Nguyễn Văn Quảng.
+Ông Nguyễn Văn Nhàn hạ sinh Ông Nguyễn Văn Khôi.
+Ông Nguyễn Văn Chút có 1 người con: Bà Nguyễn Thị Nguyện.
+Ông Nguyễn Văn Chút sinh được Bà Nguyễn Thị Nguyện.
+Ông Nguyễn Văn Hoành có 1 người con: Ông Nguyễn Văn Tấn.
+Ông Nguyễn Văn Hoành sinh được Ông Nguyễn Văn Tấn.
+Ông Nguyễn Văn Ngô có 2 người con: Bà Nguyễn Thị Thuý, Bà Nguyễn Thị Thắm.
+Bà Nguyễn Thị Thuý là con của Ông Nguyễn Văn Ngô.
+Bà Nguyễn Thị Thắm là con của Ông Nguyễn Văn Ngô.
+Ông Nguyễn Văn Quảng có 1 người con: Bà Nguyễn Thị Phương.
+Ông Nguyễn Văn Quảng sinh được Bà Nguyễn Thị Phương.

@@ -1,0 +1,16 @@
+{
+  "tree_id": 1454,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "Doãn 尹 (nhánh Doãn Uẩn, Doãn Khuê) - Thái Bình",
+  "generated_at": "2026-08-10T08:04:59.967755+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/1454/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/1454/pha_he.html",
+  "real_pha_ky_char_count": 5979,
+  "char_count": 4772,
+  "entity_count": 139,
+  "relation_count": 59,
+  "sentence_count": 80,
+  "missing_name_count": 59,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 0.99
+}

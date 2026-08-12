@@ -1,0 +1,11 @@
+{
+  "tree_id": 1550,
+  "status": "imported",
+  "imported_at": "2026-08-10T09:12:30.278037+00:00",
+  "project_id": 1,
+  "content_hash": "77ad180d79c37b88d00eccda92542f3d523a9abe287e08692876412a722ed546",
+  "source": "generate_prelabel",
+  "ls_task_ids": [
+    10
+  ]
+}

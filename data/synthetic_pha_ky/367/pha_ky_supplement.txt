@@ -1,0 +1,80 @@
+Trần Quốc Kinh có 3 người con: Trần Hấp, Trần Quả (Trần Tự Duy), trần?.
+Trần Quốc Kinh hạ sinh Trần Hấp.
+Trần Quốc Kinh sinh được trần?.
+Trần Hấp sinh được 1 người con, gồm: Trần Lý.
+Trần Lý là con của Trần Hấp.
+Trần Lý có 5 người con: Trần Tự Khánh, Trần Thừa, Bà Trần Thị Dung, Bà Trần Thị Tam Nương, Trần Lễ.
+Trần Lý sinh được Trần Thừa.
+Trần Lý hạ sinh Bà Trần Thị Dung.
+Bà Trần Thị Tam Nương là con của Trần Lý.
+Trần Lý hạ sinh Trần Lễ.
+Trần Hoàng Nghi (Trần Thủ Huy) có 3 người con: Trần An Quốc (Trần Thẩm), Trần An Bang, Trần Thủ Độ.
+Trần An Bang là con của Trần Hoàng Nghi (Trần Thủ Huy).
+Trần Thủ Độ là con của Trần Hoàng Nghi (Trần Thủ Huy).
+Trần Thừa có 8 người con: Trần Liễu, Thúy Ba, Trần Cảnh, Trần Nhật Hiệu, Trần Di Ái, Ngoạn Thiên, Thiên Thành, Trần Bá Liệt.
+Trần Liễu là con của Trần Thừa.
+Thúy Ba là con của Trần Thừa.
+Trần Thừa hạ sinh Trần Nhật Hiệu.
+Trần Thừa sinh được Ngoạn Thiên.
+Trần Thừa sinh được Trần Bá Liệt.
+Trần Thủ Độ sinh được 2 người con, gồm: Trần Phó Duyệt, Trần Phụng Dương.
+Trần Thủ Độ hạ sinh Trần Phó Duyệt.
+Trần Phụng Dương là con của Trần Thủ Độ.
+Trần Liễu có 3 người con: Trần Doãn (Tung), Trần Quốc Tuấn, Bà Trần Thị Thiều (Thiên Cảnh).
+Trần Doãn (Tung) là con của Trần Liễu.
+Trần Liễu sinh được Trần Quốc Tuấn.
+Trần Liễu sinh được Bà Trần Thị Thiều (Thiên Cảnh).
+Trần Cảnh có 8 người con: Thái Tử Hoảng, Trần Quang Khải, Trần Ích Tắc, Trần Nhật Duật, Thiều Dương, Thuỵ Bảo, An Tư, Trần Quốc Khang.
+Trần Cảnh hạ sinh Thái Tử Hoảng.
+Trần Cảnh hạ sinh Trần Quang Khải.
+Trần Ích Tắc là con của Trần Cảnh.
+Trần Nhật Duật là con của Trần Cảnh.
+Trần Cảnh hạ sinh Thiều Dương.
+Trần Cảnh hạ sinh Thuỵ Bảo.
+Trần Cảnh hạ sinh Trần Quốc Khang.
+Trần Bá Liệt sinh được 1 người con, gồm: Trần Quốc Tuấn.
+Trần Bá Liệt hạ sinh Trần Quốc Tuấn.
+Trần Quốc Tuấn có 7 người con: Trần Quốc Nghiễn, Trần Quốc Uy, Trần Quốc Tảng, Trần Quốc Hiệu, Trần Hưng Hồng, Bà Trần Thị Quyên Thành, Bà Trần Thị Thủy Tiên.
+Trần Quốc Tuấn sinh được Trần Quốc Nghiễn.
+Trần Quốc Tuấn sinh được Trần Quốc Tảng.
+Trần Hưng Hồng là con của Trần Quốc Tuấn.
+Trần Quốc Tuấn sinh được Bà Trần Thị Quyên Thành.
+Trần Quốc Tuấn hạ sinh Bà Trần Thị Thủy Tiên.
+Thái Tử Hoảng có 3 người con: Thiên Thuỵ, Thái Tử Khâm, Trần Đức Hiệp.
+Thái Tử Hoảng sinh được Thiên Thuỵ.
+Thái Tử Hoảng sinh được Thái Tử Khâm.
+Trần Quang Khải có 6 người con: Trần Đạo Tái, Trần Đạo ..., Bà Trần Thị Quỳnh Huy, Bà Trần Thị Quỳnh Tư, Bà Trần Thị Quỳnh Bảo, Bà Trần Thị Quỳnh Thái.
+Trần Đạo Tái là con của Trần Quang Khải.
+Trần Quang Khải sinh được Bà Trần Thị Quỳnh Huy.
+Trần Quang Khải sinh được Bà Trần Thị Quỳnh Tư.
+Bà Trần Thị Quỳnh Bảo là con của Trần Quang Khải.
+Trần Quang Khải hạ sinh Bà Trần Thị Quỳnh Thái.
+Trần Ích Tắc sinh được 1 người con, gồm: Trần Hữu Lượng.
+Trần Ích Tắc sinh được Trần Hữu Lượng.
+Trần Nhật Duật có 3 người con: Ông Văn Hiền Hầu, Trần Trực Định, Trần Trực Ninh.
+Trần Nhật Duật sinh được Ông Văn Hiền Hầu.
+Trần Trực Định là con của Trần Nhật Duật.
+Trần Trực Ninh là con của Trần Nhật Duật.
+Thái Tử Khâm có 3 người con: Trần Thuyên, Trần Quốc Chấn, Bà Trần Thị Huyền Trân.
+Thái Tử Khâm sinh được Trần Thuyên.
+Thái Tử Khâm sinh được Trần Quốc Chấn.
+Bà Trần Thị Huyền Trân là con của Thái Tử Khâm.
+Trần Đạo Tái có 1 người con: Ông Trần Văn Bích.
+Trần Đạo Tái sinh được Ông Trần Văn Bích.
+Trần Quốc Tảng có 1 người con: Bà Trần Thị Thuận Thành.
+Bà Trần Thị Thuận Thành là con của Trần Quốc Tảng.
+Trần Hữu Lượng có 2 người con: Trần Đình Nhậm, Trần Lý.
+Trần Đình Nhậm là con của Trần Hữu Lượng.
+Trần Hữu Lượng sinh được Trần Lý.
+Trần Nguyên Đán có 5 người con: Trần Mộng Dư, Trần Thúc Giao, Trần Thúc Huỳnh, Bà Trần Thị Thái, Trần thị Thai.
+Trần Nguyên Đán sinh được Trần Mộng Dư.
+Trần Nguyên Đán sinh được Trần Thúc Giao.
+Trần Nguyên Đán hạ sinh Trần Thúc Huỳnh.
+Trần thị Thai là con của Trần Nguyên Đán.
+Trần Mạnh sinh được 11 người con, gồm: Trần Đực, Trần Vượng, Trần Phủ, Trần Trác, Trần Thiên Trạch, Trần Nguyên Hú, Trần Nguyên Thạch, Trần Hạo, Trần Kinh, Trần Thiên Ninh, Trần Huy Ninh.
+Trần Mạnh hạ sinh Trần Đực.
+Trần Mạnh sinh được Trần Vượng.
+Trần Mạnh sinh được Trần Trác.
+Trần Mạnh sinh được Trần Thiên Trạch.
+Trần Nguyên Thạch là con của Trần Mạnh.
+Trần Mạnh sinh được Trần Hạo.

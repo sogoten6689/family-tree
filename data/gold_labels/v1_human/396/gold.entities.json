@@ -1,0 +1,133 @@
+{
+  "entities": [
+    {
+      "text": "1563",
+      "label": "DATE"
+    },
+    {
+      "text": "1635",
+      "label": "DATE"
+    },
+    {
+      "text": "1613",
+      "label": "DATE"
+    },
+    {
+      "text": "1229",
+      "label": "DATE"
+    },
+    {
+      "text": "1468",
+      "label": "DATE"
+    },
+    {
+      "text": "1545",
+      "label": "DATE"
+    },
+    {
+      "text": "1525",
+      "label": "DATE"
+    },
+    {
+      "text": "1620",
+      "label": "DATE"
+    },
+    {
+      "text": "1687",
+      "label": "DATE"
+    },
+    {
+      "text": "1648",
+      "label": "DATE"
+    },
+    {
+      "text": "năm 1802",
+      "label": "DATE"
+    },
+    {
+      "text": "1802",
+      "label": "DATE"
+    },
+    {
+      "text": "1819",
+      "label": "DATE"
+    },
+    {
+      "text": "1820",
+      "label": "DATE"
+    },
+    {
+      "text": "1840",
+      "label": "DATE"
+    },
+    {
+      "text": "Năm 1945",
+      "label": "DATE"
+    },
+    {
+      "text": "1925",
+      "label": "DATE"
+    },
+    {
+      "text": "1945",
+      "label": "DATE"
+    },
+    {
+      "text": "Nguyễn Bặc",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Tiên Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Đinh Tiên Hoàng bị ám",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Bặc chống đồi",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Nộn",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Kim",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Hoàng",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "Nguyễn Phúc Tần",
+      "label": "PER_NAME"
+    },
+    {
+      "text": "tổ của họ Nguyễn Phúc ở làng Thuỵ Trà",
+      "label": "LOC"
+    },
+    {
+      "text": "xã Nam Trung",
+      "label": "LOC"
+    },
+    {
+      "text": "huyện Nam Sách có thể là con cháu của\nNguyễn Bặc",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ của dòng họ Nguyễn Phúc",
+      "label": "LOC"
+    },
+    {
+      "text": "Thanh Hóa",
+      "label": "LOC"
+    },
+    {
+      "text": "tổ tiên mình",
+      "label": "LOC"
+    }
+  ],
+  "relations": []
+}

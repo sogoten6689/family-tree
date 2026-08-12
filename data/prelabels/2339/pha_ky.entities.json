@@ -1,0 +1,13 @@
+{
+  "entities": [
+    {
+      "text": "năm 2009",
+      "label": "DATE"
+    },
+    {
+      "text": "đời thứ 15",
+      "label": "GENERATION"
+    }
+  ],
+  "relations": []
+}

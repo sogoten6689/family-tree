@@ -1,0 +1,98 @@
+{
+  "id": 27,
+  "result": [
+    {
+      "id": "ent_90d29b83b773",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 596,
+        "end": 601,
+        "text": "đời v",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_913ff8f740d1",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 928,
+        "end": 938,
+        "text": "con thứ tư",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_836867bf7cb2",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 948,
+        "end": 960,
+        "text": "con thứ chín",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_ac9c510f4b76",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 10,
+        "end": 58,
+        "text": "làng Trường Đà được biết cách đây từ 5 đến 6 đời",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_976e4a286d68",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 130,
+        "end": 142,
+        "text": "huyện Củ Chi",
+        "labels": [
+          "LOC"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "created_username": " sogoten6689@gmail.com, 1",
+  "created_ago": "0 minutes",
+  "completed_by": 1,
+  "was_cancelled": false,
+  "ground_truth": true,
+  "created_at": "2026-08-10T09:32:10.189685Z",
+  "updated_at": "2026-08-10T09:32:10.189717Z",
+  "draft_created_at": null,
+  "lead_time": 180.0,
+  "import_id": null,
+  "last_action": null,
+  "bulk_created": false,
+  "task": 2,
+  "project": 1,
+  "updated_by": 1,
+  "parent_prediction": null,
+  "parent_annotation": null,
+  "last_created_by": null
+}

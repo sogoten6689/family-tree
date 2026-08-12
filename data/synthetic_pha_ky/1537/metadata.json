@@ -1,0 +1,16 @@
+{
+  "tree_id": 1537,
+  "source": "synthetic_supplement_v2",
+  "lineage_name": "Nguyễn Văn - Quảng Nam",
+  "generated_at": "2026-08-10T08:04:59.531086+00:00",
+  "real_pha_ky_url": "https://vietnamgiapha.com/XemPhaKy/1537/pha_ky_gia_su.html",
+  "pha_he_url": "https://vietnamgiapha.com/XemPhaHe/1537/pha_he.html",
+  "real_pha_ky_char_count": 2072,
+  "char_count": 1920,
+  "entity_count": 49,
+  "relation_count": 19,
+  "sentence_count": 30,
+  "missing_name_count": 19,
+  "generation_mode": "supplement",
+  "diagram_overlap_ratio": 1.0
+}

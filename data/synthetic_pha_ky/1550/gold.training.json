@@ -1,0 +1,98 @@
+{
+  "doc_id": "vgp_1550",
+  "tree_id": 1550,
+  "title": "Nguyễn Tộc Tứ Phái - Quảng Nam",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1550/pha_he.html",
+  "text": "Nguyễn Đắc Đạo sinh được 1 người con, gồm: Nguyễn Hữu Tài.\nNguyễn Đắc Đạo hạ sinh Nguyễn Hữu Tài.\nNguyễn Bá Thọ sinh được 3 người con, gồm: Ông Nguyễn Văn Tân, Ông Nguyễn Văn Đức, Ông Nguyễn Văn Hoa.\nÔng Nguyễn Văn Đức là con của Nguyễn Bá Thọ.\nNguyễn Bá Thọ sinh được Ông Nguyễn Văn Hoa.\nÔng Nguyễn Văn Tân có 1 người con: Nguyễn Đăng Doanh.\nÔng Nguyễn Văn Tân sinh được Nguyễn Đăng Doanh.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 14,
+      "label": "PER_NAME",
+      "text": "Nguyễn Đắc Đạo"
+    },
+    {
+      "start": 0,
+      "end": 14,
+      "label": "PER_NAME",
+      "text": "Nguyễn Đắc Đạo"
+    },
+    {
+      "start": 43,
+      "end": 57,
+      "label": "PER_NAME",
+      "text": "Nguyễn Hữu Tài"
+    },
+    {
+      "start": 98,
+      "end": 111,
+      "label": "PER_NAME",
+      "text": "Nguyễn Bá Thọ"
+    },
+    {
+      "start": 160,
+      "end": 178,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Đức"
+    },
+    {
+      "start": 98,
+      "end": 111,
+      "label": "PER_NAME",
+      "text": "Nguyễn Bá Thọ"
+    },
+    {
+      "start": 98,
+      "end": 111,
+      "label": "PER_NAME",
+      "text": "Nguyễn Bá Thọ"
+    },
+    {
+      "start": 180,
+      "end": 198,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Hoa"
+    },
+    {
+      "start": 140,
+      "end": 158,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Tân"
+    },
+    {
+      "start": 140,
+      "end": 158,
+      "label": "PER_NAME",
+      "text": "Ông Nguyễn Văn Tân"
+    },
+    {
+      "start": 324,
+      "end": 341,
+      "label": "PER_NAME",
+      "text": "Nguyễn Đăng Doanh"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 1,
+      "tail": 2
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 4
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 7
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 9,
+      "tail": 10
+    }
+  ],
+  "source": "synthetic_supplement_v2"
+}

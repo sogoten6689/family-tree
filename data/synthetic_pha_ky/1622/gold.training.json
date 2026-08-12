@@ -1,0 +1,212 @@
+{
+  "doc_id": "vgp_1622",
+  "tree_id": 1622,
+  "title": "HOÀNG - Hải Dương",
+  "source_url": "https://vietnamgiapha.com/XemPhaHe/1622/pha_he.html",
+  "text": "Hoàng Húy Tức có 3 người con: Ông Hoàng Văn Ánh, Bà Hoàng Thị Niểu, Ông Hoàng Văn Nhiên.\nHoàng Húy Tức sinh được Bà Hoàng Thị Niểu.\nÔng Hoàng Văn Nhiên là con của Hoàng Húy Tức.\nÔng Hoàng Văn Ánh có 1 người con: Hoàng Trung Chánh.\nÔng Hoàng Văn Ánh sinh được Hoàng Trung Chánh.\nÔng Hoàng Văn Nhiên sinh được 4 người con, gồm: Bà Hoàng Thị Hiền, Hoàng Mạnh Hiển, Bà Hoàng Thị Hưởng, Bà Hoàng Thị Hảo.\nÔng Hoàng Văn Nhiên sinh được Bà Hoàng Thị Hiền.\nÔng Hoàng Văn Nhiên sinh được Hoàng Mạnh Hiển.\nBà Hoàng Thị Hưởng là con của Ông Hoàng Văn Nhiên.\nÔng Hoàng Văn Nhiên sinh được Bà Hoàng Thị Hảo.\nHoàng Trung Chánh sinh được 2 người con, gồm: Hoàng Trung Khánh, Hoàng Thu Hương.\nHoàng Trung Chánh hạ sinh Hoàng Trung Khánh.\nHoàng Thu Hương là con của Hoàng Trung Chánh.\nHoàng Trung Khánh sinh được 1 người con, gồm: Hoàng Bảo Châu.\nHoàng Trung Khánh sinh được Hoàng Bảo Châu.",
+  "entities": [
+    {
+      "start": 0,
+      "end": 13,
+      "label": "PER_NAME",
+      "text": "Hoàng Húy Tức"
+    },
+    {
+      "start": 0,
+      "end": 13,
+      "label": "PER_NAME",
+      "text": "Hoàng Húy Tức"
+    },
+    {
+      "start": 49,
+      "end": 66,
+      "label": "PER_NAME",
+      "text": "Bà Hoàng Thị Niểu"
+    },
+    {
+      "start": 68,
+      "end": 87,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Nhiên"
+    },
+    {
+      "start": 0,
+      "end": 13,
+      "label": "PER_NAME",
+      "text": "Hoàng Húy Tức"
+    },
+    {
+      "start": 30,
+      "end": 47,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Ánh"
+    },
+    {
+      "start": 30,
+      "end": 47,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Ánh"
+    },
+    {
+      "start": 212,
+      "end": 229,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Chánh"
+    },
+    {
+      "start": 68,
+      "end": 87,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Nhiên"
+    },
+    {
+      "start": 68,
+      "end": 87,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Nhiên"
+    },
+    {
+      "start": 326,
+      "end": 343,
+      "label": "PER_NAME",
+      "text": "Bà Hoàng Thị Hiền"
+    },
+    {
+      "start": 68,
+      "end": 87,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Nhiên"
+    },
+    {
+      "start": 345,
+      "end": 360,
+      "label": "PER_NAME",
+      "text": "Hoàng Mạnh Hiển"
+    },
+    {
+      "start": 362,
+      "end": 380,
+      "label": "PER_NAME",
+      "text": "Bà Hoàng Thị Hưởng"
+    },
+    {
+      "start": 68,
+      "end": 87,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Nhiên"
+    },
+    {
+      "start": 68,
+      "end": 87,
+      "label": "PER_NAME",
+      "text": "Ông Hoàng Văn Nhiên"
+    },
+    {
+      "start": 382,
+      "end": 398,
+      "label": "PER_NAME",
+      "text": "Bà Hoàng Thị Hảo"
+    },
+    {
+      "start": 212,
+      "end": 229,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Chánh"
+    },
+    {
+      "start": 212,
+      "end": 229,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Chánh"
+    },
+    {
+      "start": 641,
+      "end": 658,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Khánh"
+    },
+    {
+      "start": 660,
+      "end": 675,
+      "label": "PER_NAME",
+      "text": "Hoàng Thu Hương"
+    },
+    {
+      "start": 212,
+      "end": 229,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Chánh"
+    },
+    {
+      "start": 641,
+      "end": 658,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Khánh"
+    },
+    {
+      "start": 641,
+      "end": 658,
+      "label": "PER_NAME",
+      "text": "Hoàng Trung Khánh"
+    },
+    {
+      "start": 814,
+      "end": 828,
+      "label": "PER_NAME",
+      "text": "Hoàng Bảo Châu"
+    }
+  ],
+  "relations": [
+    {
+      "type": "FATHER_OF",
+      "head": 4,
+      "tail": 2
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 4,
+      "tail": 15
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 6,
+      "tail": 21
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 10
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 12
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 13
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 15,
+      "tail": 16
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 21,
+      "tail": 23
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 21,
+      "tail": 20
+    },
+    {
+      "type": "FATHER_OF",
+      "head": 23,
+      "tail": 24
+    }
+  ],
+  "source": "synthetic_supplement_v2"
+}

@@ -1,0 +1,37 @@
+{
+  "result": [
+    {
+      "id": "ent_0014a77f5a23",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 2401,
+        "end": 2409,
+        "text": "năm 2009",
+        "labels": [
+          "DATE"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_373f26541b6a",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 223,
+        "end": 233,
+        "text": "đời thứ 15",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}

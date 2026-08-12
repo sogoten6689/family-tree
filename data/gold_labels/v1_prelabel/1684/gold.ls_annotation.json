@@ -1,0 +1,52 @@
+{
+  "result": [
+    {
+      "id": "ent_fc42133887da",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 596,
+        "end": 601,
+        "text": "đời v",
+        "labels": [
+          "GENERATION"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_839cded417a6",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 928,
+        "end": 938,
+        "text": "con thứ tư",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    },
+    {
+      "id": "ent_e1e2b76c4b57",
+      "from_name": "label",
+      "to_name": "text",
+      "type": "labels",
+      "value": {
+        "start": 948,
+        "end": 960,
+        "text": "con thứ chín",
+        "labels": [
+          "ORDER"
+        ],
+        "score": 0.85
+      }
+    }
+  ],
+  "ground_truth": true,
+  "was_cancelled": false,
+  "lead_time": 0.0
+}
