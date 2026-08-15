@@ -1,9 +1,0 @@
-{
-  "corpus_dir": "data/review_corpus",
-  "quoc_ngu_dir": "data/review_corpus/quoc_ngu",
-  "hannom_dir": "data/review_corpus/hannom",
-  "tree_count": 25,
-  "synthetic_merged_count": 25,
-  "hannom_volume_count": 15,
-  "generated_at": "2026-08-10T08:05:25.871972+00:00"
-}

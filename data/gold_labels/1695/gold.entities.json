@@ -1,9 +1,0 @@
-{
-  "entities": [
-    {
-      "text": "Thiều Chửu",
-      "label": "PER_NAME"
-    }
-  ],
-  "relations": []
-}

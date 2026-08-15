@@ -1,7 +1,0 @@
-Nguyễn Đắc Đạo sinh được 1 người con, gồm: Nguyễn Hữu Tài.
-Nguyễn Đắc Đạo hạ sinh Nguyễn Hữu Tài.
-Nguyễn Bá Thọ sinh được 3 người con, gồm: Ông Nguyễn Văn Tân, Ông Nguyễn Văn Đức, Ông Nguyễn Văn Hoa.
-Ông Nguyễn Văn Đức là con của Nguyễn Bá Thọ.
-Nguyễn Bá Thọ sinh được Ông Nguyễn Văn Hoa.
-Ông Nguyễn Văn Tân có 1 người con: Nguyễn Đăng Doanh.
-Ông Nguyễn Văn Tân sinh được Nguyễn Đăng Doanh.
