@@ -3,6 +3,8 @@ nlp_family_extractor/.env
 
 .venv/
 .venv/lib/
+.venv-paddleocr/
+.paddlex-cache/
 nlp_family_extractor/data/nomfoundation/volumes/
 nlp_family_extractor/data/
 

@@ -1,0 +1,5 @@
+# Isolated PP-OCRv6 runtime. Do not merge into FastAPI requirements.txt.
+# macOS x86 only has paddlepaddle 3.0.0 on PyPI; PP-OCRv6 static graphs need onnxruntime.
+paddlepaddle>=3.0.0,<3.3
+paddleocr>=3.2.0
+onnxruntime>=1.19.0

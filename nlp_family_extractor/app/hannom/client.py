@@ -215,6 +215,30 @@ def run_image_ocr(
     epitaph: int = 0,
     tag: str | None = None,
 ) -> list[str]:
+    payload = run_image_ocr_payload(
+        client,
+        temp_file_name=temp_file_name,
+        ocr_id=ocr_id,
+        lang_type=lang_type,
+        epitaph=epitaph,
+        tag=tag,
+    )
+    texts = _coerce_text_list(payload, keys=("result_ocr_text", "ocr_text", "text"))
+    if not texts:
+        raise HannomApiError("OCR không trả về văn bản nào.")
+    return texts
+
+
+def run_image_ocr_payload(
+    client: httpx.Client,
+    *,
+    temp_file_name: str,
+    ocr_id: int | None = None,
+    lang_type: int | None = None,
+    epitaph: int = 0,
+    tag: str | None = None,
+) -> dict[str, Any]:
+    """Full image-ocr `data` object, including result_bbox when the API sends it."""
     body = {
         "ocr_id": ocr_id if ocr_id is not None else int(os.getenv("HANNOM_OCR_ID", "1")),
         "lang_type": lang_type if lang_type is not None else int(os.getenv("HANNOM_OCR_LANG_TYPE", "0")),
@@ -228,11 +252,10 @@ def run_image_ocr(
         "/api/web/clc-sinonom/image-ocr",
         json_body=body,
     )
-
+    if isinstance(payload, dict):
+        return payload
     texts = _coerce_text_list(payload, keys=("result_ocr_text", "ocr_text", "text"))
-    if not texts:
-        raise HannomApiError("OCR không trả về văn bản nào.")
-    return texts
+    return {"result_ocr_text": texts, "result_bbox": []}
 
 
 def run_transliteration(
