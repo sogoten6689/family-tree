@@ -86,7 +86,7 @@ def pages_dir_for(book: dict[str, Any], repo: Path) -> Path | None:
         if path.is_dir():
             return path
     if book.get("source") == "tong_pho_pdf":
-        rendered = repo / "data/du_lieu_han_nom_moi/13_8_2026" / book["book_id"] / "pages"
+        rendered = repo / "data/00_raw/du_lieu_han_nom_moi/13_8_2026" / book["book_id"] / "pages"
         if rendered.is_dir():
             return rendered
     return None

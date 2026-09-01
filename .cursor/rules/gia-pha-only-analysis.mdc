@@ -1,0 +1,25 @@
+---
+description: Chỉ phân tích / pipeline tài liệu gia phả — không kế ước, tế văn, hành chính
+alwaysApply: true
+---
+
+# Phạm vi phân tích = gia phả
+
+Từ 2026-08-31: **không** phân tích, dịch, extract cây, hay mixing OCR→nghĩa trên tài liệu **không phải gia phả**.
+
+## Được
+
+Tộc phả, tông phả, thế phả, chi phả, hộ phả, phả ký, phả hệ, phả đồ (Hán-Nôm hoặc Quốc ngữ in).
+
+## Không (trừ khi user nói rõ làm đúng file đó)
+
+| Loại | Ví dụ trong kho |
+|------|-----------------|
+| Kế ước / văn khế / bằng khoán | `Nguyễn Kế Hán Nôm/` — giữ OCR đã có, **đừng** dịch / Qwen / cây từ khế |
+| Tế văn, sắc phong, chiếu | `24_08_2026/test/` tế văn |
+| Phó ý cúng (tách khỏi phả) | khối phó ý trong Word Phạm |
+| Sách lý thuyết gia phả *học* | `04_external/sach/` — không OCR, không cây |
+
+Lô lẫn (Hương: khế + gia phả in): **chỉ làm nhánh gia phả**. Khế để nguyên artifact.
+
+Plan: `docs/planning/mix_translate_family_tree_plan.md`.

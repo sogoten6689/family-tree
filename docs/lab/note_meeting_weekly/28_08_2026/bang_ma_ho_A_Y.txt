@@ -1,0 +1,61 @@
+Bảng mã họ gia phả
+25 họ phổ biến = A → Y,  Z = các họ còn lại
+
+Mẫu: 2.152 cây VietnamGiaPha
+Đơn vị: 1 cây = 1 gia phả (không đếm người)
+A = họ nhiều cây nhất. Z = mọi họ không thuộc 25 họ dưới.
+A–Y phủ 83% (1.787 cây). Z ~ 17% (365 cây).
+
+Công thức ID tài liệu:
+  F - {A…Y | Z} - {NNN}
+
+Ví dụ:
+  F-A-001  = gia phả họ Nguyễn, tài liệu 01
+  F-Z-004  = họ ngoài 25 họ A–Y
+
+Không gộp Hoàng/Huỳnh, Vũ/Võ (giữ đúng chữ trên phả).
+Mã này xếp kho tài liệu, không thay nhãn NER (PER_NAME, FATHER_OF).
+
+Ma   Ho              So cay     %
+----------------------------------------
+A    Nguyễn            574    26,7%
+B    Trần              177     8,2%
+C    Lê                154     7,2%
+D    Phạm              114     5,3%
+E    Vũ                 73     3,4%
+F    Phan               70     3,3%
+G    Hoàng              66     3,1%
+H    Bùi                66     3,1%
+I    Ngô                53     2,5%
+J    Đỗ                 53     2,5%
+K    Đặng               49     2,3%
+L    Trương             46     2,1%
+M    Huỳnh              41     1,9%
+N    Đoàn               36     1,7%
+O    Đinh               36     1,7%
+P    Võ                 32     1,5%
+Q    Dương              25     1,2%
+R    Mai                20     0,9%
+S    Đào                19     0,9%
+T    Hà                 17     0,8%
+U    Lương              16     0,7%
+V    Trịnh              14     0,7%
+W    Lưu                12     0,6%
+X    Lâm                12     0,6%
+Y    Hồ                 12     0,6%
+Z    các họ còn lại    365    17,0%
+----------------------------------------
+
+Z (thường gặp hơn, không đủ suất A–Y):
+  Cao 12, Lý 11, Tạ 10, Chu/Tô 9, Kiều/Thái 7,
+  Thân/Vương/Phùng 6, Doãn, Văn Đình, Tôn Thất, Ông, Nghiêm, …
+
+Ghi chú Y:
+  Lưu / Lâm / Cao / Hồ cùng ~12 cây.
+  Y = Hồ (đúng list 9 họ thầy đưa trước); Cao vào Z.
+  Thầy muốn đổi Y <-> Cao thì chỉnh được, độ phủ gần như không đổi.
+
+Không nhầm hai «25»:
+  25 họ A–Y     = mã kho tài liệu
+  25 cây gold   = mẫu gán nhãn NER
+  (Thái, Tạ, Thân trong gold vẫn mang mã Z)

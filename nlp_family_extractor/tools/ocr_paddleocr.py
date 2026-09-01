@@ -9,7 +9,7 @@ Examples (from repo root, paddle venv active):
   python nlp_family_extractor/tools/ocr_paddleocr.py --help
 
   python nlp_family_extractor/tools/ocr_paddleocr.py \\
-    --input data/du_lieu_han_nom_moi/gia_pha_chi \\
+    --input data/00_raw/du_lieu_han_nom_moi/gia_pha_chi \\
     --pages 11-16
 """
 
@@ -273,7 +273,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--input",
         type=Path,
-        default=_repo_root() / "data/du_lieu_han_nom_moi/gia_pha_chi",
+        default=_repo_root() / "data/00_raw/du_lieu_han_nom_moi/gia_pha_chi",
         help="Thư mục chứa 0.jpg, 1.jpg, …",
     )
     parser.add_argument(

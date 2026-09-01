@@ -9,9 +9,10 @@ Trước khi sửa code, đọc đúng tài liệu theo loại task:
 
 | Loại task | Đọc trước |
 |-----------|-----------|
-| **Sơ đồ / renderer / tab visual** | `planning/visual_tree_ui_info_task.md` |
-| **Format dữ liệu, export, SSOT, pipeline UI** | `planning/output_formats_and_ui_plan.md` (§2 taxonomy, Phụ lục C free-only) |
-| **Tổng quan repo, route, API** | `PROJECT.md` |
+| **Sơ đồ / renderer / tab visual** | `docs/planning/visual_tree_ui_info_task.md` |
+| **Format dữ liệu, export, SSOT, pipeline UI** | `docs/planning/output_formats_and_ui_plan.md` (§2 taxonomy, Phụ lục C free-only) |
+| **Tổng quan repo, route, API** | `docs/product/PROJECT.md` |
+| **Tổng quan / thống kê corpus** | `data/DATA_INVENTORY.md` (+ `data/README.md` tầng) |
 | **Backend family tree / nodes** | `nlp_family_extractor/app/balkan_node.py`, `family_tree_store.py` |
 | **FE types & API client** | `family-saga-io/src/lib/familyTreeApi.ts`, `familyTreeUtils.ts` |
 
@@ -19,8 +20,10 @@ Trước khi sửa code, đọc đúng tài liệu theo loại task:
 
 - `family-saga-io/` — React + Vite frontend
 - `nlp_family_extractor/` — FastAPI backend
-- `planning/` — task & architecture plans (ưu tiên đọc trước khi implement)
-- `schemas/balkan-node.schema.json` — JSON schema SSOT node
+- `research/` — gán nhãn + tìm nguồn (`PYTHONPATH=research`)
+- `docs/` — luận văn, kiến trúc, spec, sổ lab, task (`docs/README.md`)
+- `data/` — corpus (`00_raw` … `05_ops`); **tổng quan sống** `data/DATA_INVENTORY.md`
+- `docs/schemas/balkan-node.schema.json` — JSON schema SSOT node
 
 ## Nguyên tắc chung
 
@@ -29,11 +32,12 @@ Trước khi sửa code, đọc đúng tài liệu theo loại task:
 3. **Free-only** — không thêm dependency visualization/export có license thương mại hoặc trial-only.
 4. **i18n** — mọi label UI mới thêm vào `vi.json` và `en.json` (prefix `familyTree.*`).
 5. **Scope nhỏ** — sửa đúng file task; không refactor ngoài phạm vi.
+6. **Chỉ gia phả** — không phân tích kế ước / tế văn / sách lý thuyết (rule `gia-pha-only-analysis.mdc`).
 
 ## Trạng thái visual UI (2026-07)
 
 - Admin tab「Sơ đồ」: `FamilyTreeVisualPanel` — MVP ✅ `dom-classic`, `table`.
-- Backlog task: `planning/visual_tree_ui_info_task.md` — **P7** zoom (DOM chưa +/−), **P8** in fit/chia phần.
+- Backlog task: `docs/planning/visual_tree_ui_info_task.md` — **P7** zoom (DOM chưa +/−), **P8** in fit/chia phần.
 - Registry: `family-saga-io/src/components/family-tree/familyTreeRenderers.ts`.
 - Preference: `localStorage` key `ft.visual.v1` — **không** lưu renderer vào `nodes_json`.
 - `BalkanFamilyTreeView` = legacy; không thêm vào catalog dropdown mới.

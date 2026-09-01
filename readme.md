@@ -1,5 +1,7 @@
 # Family Tree — Hướng dẫn Build & Deploy
 
+Bản đồ repo: [docs/REPO_MAP.md](./docs/REPO_MAP.md) · Tài liệu: [docs/README.md](./docs/README.md) · Gán nhãn: [research/](./research/)
+
 ## Yêu cầu
 
 | Công cụ | Phiên bản tối thiểu |
@@ -112,49 +114,57 @@ Các script trong thư mục `scripts/` giúp build Docker image nhanh, tự dù
 
 | Script | Mô tả |
 |--------|--------|
-| `scripts/build-backend.sh` | Build image backend (`nlp_family_extractor`) |
-| `scripts/build-frontend.sh` | Build image frontend (`family-saga-io`) |
-| `scripts/build-all.sh` | Build cả backend và frontend |
+| `infra/scripts/build-backend.sh` | Build image backend (`nlp_family_extractor`) |
+| `infra/scripts/build-frontend.sh` | Build image frontend (`family-saga-io`) |
+| `infra/scripts/build-all.sh` | Build cả backend và frontend |
 
 Chạy từ thư mục gốc repo:
 
 ```bash
 # Chỉ build image
-./scripts/build-backend.sh
-./scripts/build-frontend.sh
+./infra/scripts/build-backend.sh
+./infra/scripts/build-frontend.sh
 
 # Build xong và restart container tương ứng
-./scripts/build-backend.sh --up
-./scripts/build-frontend.sh --up
+./infra/scripts/build-backend.sh --up
+./infra/scripts/build-frontend.sh --up
 
 # Build cả hai + restart backend & frontend
-./scripts/build-all.sh --up
+./infra/scripts/build-all.sh --up
 ```
 
 Xem thêm tùy chọn:
 
 ```bash
-./scripts/build-backend.sh --help
-./scripts/build-frontend.sh --help
-./scripts/build-all.sh --help
+./infra/scripts/build-backend.sh --help
+./infra/scripts/build-frontend.sh --help
+./infra/scripts/build-all.sh --help
 ```
 
 Nếu Docker báo lỗi quyền, thử chạy với `sudo`:
 
 ```bash
-sudo ./scripts/build-frontend.sh --up
+sudo ./infra/scripts/build-frontend.sh --up
 ```
 
-> **Lưu ý:** Flag `--up` (hoặc `-u`) sẽ chạy `docker compose up -d --force-recreate` cho service tương ứng sau khi build xong.
+> **Lưu ý:** Flag `--up` (hoặc `-u`) sẽ chạy `./infra/scripts/compose.sh up -d --force-recreate` cho service tương ứng sau khi build xong.
 
 ---
 
 ## Production (Docker Compose)
 
+File compose: `infra/docker-compose.yml`. Từ root repo dùng wrapper (giữ `.env` và path build ở gốc):
+
+```bash
+./infra/scripts/compose.sh up -d --build
+```
+
+Tương đương: `docker compose -f infra/docker-compose.yml --project-directory . …`
+
 ### Build & chạy toàn bộ stack
 
 ```bash
-docker compose up -d --build
+./infra/scripts/compose.sh up -d --build
 ```
 
 ### Chỉ rebuild một service
@@ -162,62 +172,62 @@ docker compose up -d --build
 **Cách 1 — dùng script (khuyến nghị):**
 
 ```bash
-./scripts/build-backend.sh --up
-./scripts/build-frontend.sh --up
+./infra/scripts/build-backend.sh --up
+./infra/scripts/build-frontend.sh --up
 ```
 
-**Cách 2 — docker compose trực tiếp:**
+**Cách 2 — compose trực tiếp:**
 
 ```bash
 # Rebuild frontend
-docker compose up -d --build frontend
+./infra/scripts/compose.sh up -d --build frontend
 
 # Rebuild backend
-docker compose up -d --build backend
+./infra/scripts/compose.sh up -d --build backend
 ```
 
 Nếu gặp lỗi buildx, thêm biến môi trường:
 
 ```bash
-DOCKER_BUILDKIT=0 docker compose build frontend
-DOCKER_BUILDKIT=0 docker compose up -d --force-recreate frontend
+DOCKER_BUILDKIT=0 ./infra/scripts/compose.sh build frontend
+DOCKER_BUILDKIT=0 ./infra/scripts/compose.sh up -d --force-recreate frontend
 ```
 
 ### Xem trạng thái containers
 
 ```bash
-docker compose ps -a
+./infra/scripts/compose.sh ps -a
 ```
 
 ### Xem logs
 
 ```bash
 # Toàn bộ
-docker compose logs -f
+./infra/scripts/compose.sh logs -f
 
 # Riêng từng service
-docker compose logs -f backend
-docker compose logs -f frontend
-docker compose logs -f nginx
+./infra/scripts/compose.sh logs -f backend
+./infra/scripts/compose.sh logs -f frontend
+./infra/scripts/compose.sh logs -f nginx
 ```
 
 ### Dừng stack
 
 ```bash
-docker compose down
+./infra/scripts/compose.sh down
 ```
 
 ### Dừng và xoá volume (reset DB)
 
 ```bash
-docker compose down -v
+./infra/scripts/compose.sh down -v
 ```
 
 ---
 
 ## Nginx Reverse Proxy
 
-Config: `nginx/conf.d/giapha.kimtudien.com.vn.conf`
+Config: `infra/nginx/conf.d/giapha.kimtudien.com.vn.conf`
 
 | Pattern URL | Route đến |
 |-------------|-----------|
@@ -260,31 +270,31 @@ curl -s http://localhost:87/health | jq
 | `object_storage` | Ý nghĩa | Cách xử lý |
 |------------------|---------|------------|
 | `ok` | MinIO + bucket OK | Lỗi có thể do nginx giới hạn upload |
-| `disabled` | Thiếu `MINIO_*` | Kiểm tra env backend trong `docker compose` |
-| `error` | Backend không gọi được MinIO | `docker compose logs minio backend` |
+| `disabled` | Thiếu `MINIO_*` | Kiểm tra env backend trong compose |
+| `error` | Backend không gọi được MinIO | `./infra/scripts/compose.sh logs minio backend` |
 
 ### 2. Nginx chặn file lớn (hay gặp nhất)
 
 Mặc định nginx **1MB**. Upload ảnh gia phả thường > 1MB → lỗi **413 Request Entity Too Large**.
 
-**Đã fix trong** `nginx/conf.d/giapha.kimtudien.com.vn.conf`: `client_max_body_size 55m`.
+**Đã fix trong** `infra/nginx/conf.d/giapha.kimtudien.com.vn.conf`: `client_max_body_size 55m`.
 
 Sau khi pull code mới trên VPS:
 
 ```bash
-docker compose up -d --build nginx backend
+./infra/scripts/compose.sh up -d --build nginx backend
 ```
 
 ### 3. `MINIO_PUBLIC_ENDPOINT` sai trên VPS
 
-`docker-compose.yml` mặc định `localhost:9002` — **chỉ đúng trên máy dev**.
+`infra/docker-compose.yml` mặc định `localhost:9002` — **chỉ đúng trên máy dev**.
 
 Trên VPS, tạo file `.env` ở thư mục gốc repo:
 
 ```bash
-cp .env.production.example .env
+cp infra/.env.production.example .env
 # Sửa MINIO_PUBLIC_ENDPOINT=http://giapha.kimtudien.com.vn/minio
-docker compose up -d --build backend nginx
+./infra/scripts/compose.sh up -d --build backend nginx
 ```
 
 Nginx proxy MinIO tại path `/minio/` → presigned URL tải file qua cùng domain.
@@ -292,12 +302,12 @@ Nginx proxy MinIO tại path `/minio/` → presigned URL tải file qua cùng do
 ### 4. Container MinIO không chạy
 
 ```bash
-docker compose ps minio
-docker compose logs --tail=50 minio
+./infra/scripts/compose.sh ps minio
+./infra/scripts/compose.sh logs --tail=50 minio
 ```
 
 ```bash
-docker compose up -d minio backend
+./infra/scripts/compose.sh up -d minio backend
 ```
 
 ### 5. Quyền ghi thư mục `data/` (crawl Nom)

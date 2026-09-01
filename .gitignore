@@ -10,5 +10,5 @@ nlp_family_extractor/data/
 
 # Dataset corpus — tracked in a separate git repo under data/
 data/
-label_studio_pipeline/.env
-source_discovery/.env
+research/label_studio_pipeline/.env
+research/source_discovery/.env

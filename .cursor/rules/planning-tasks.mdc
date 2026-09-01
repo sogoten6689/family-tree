@@ -1,6 +1,6 @@
 ---
-description: Cách viết và đọc task trong planning/
-globs: planning/**
+description: Cách viết và đọc task trong docs/planning/
+globs: docs/planning/**
 alwaysApply: false
 ---
 
@@ -8,13 +8,13 @@ alwaysApply: false
 
 ## Khi nhận task mới từ user
 
-1. Kiểm tra `planning/` đã có task tương tự chưa — **cập nhật** thay vì tạo file trùng.
+1. Kiểm tra `docs/planning/` đã có task tương tự chưa — **cập nhật** thay vì tạo file trùng.
 2. Task file nên có: mục tiêu, trạng thái hiện tại, acceptance criteria, checklist file, lộ trình phase.
 3. Tham chiếu SSOT plan: `output_formats_and_ui_plan.md`.
 
 ## Task visual UI chính
 
-`planning/visual_tree_ui_info_task.md` — catalog renderer free, MVP đã implement admin.
+`docs/planning/visual_tree_ui_info_task.md` — catalog renderer free, MVP đã implement admin.
 
 ## Template ngắn cho task mới
 

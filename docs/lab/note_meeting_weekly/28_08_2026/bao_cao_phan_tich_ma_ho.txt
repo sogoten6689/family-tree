@@ -1,0 +1,51 @@
+Xep hang tot cho thong ke — kem cho tra cuu
+
+  A-Y / 01-25 : tot ve bieu do (A = nhieu nhat)
+                kem tra cuu (khong nho A = Nguyen)
+  Chu dau ho  : tot tra cuu NEU khong dung
+                khong noi duoc thu hang
+
+Chi chu cai dau — KHONG THANH
+
+Trong 25 ho, chi 3 ho khong dung chu dau: Bui, Duong, Mai.
+
+  N  Nguyễn / Ngô
+  T  Trần / Trương / Trịnh
+  L  Lê / Lương / Lưu / Lâm
+  P  Phạm / Phan
+  V  Vũ / Võ
+  H  Hoàng / Huỳnh / Hà / Hồ
+  Đ  Đỗ / Đặng / Đoàn / Đinh / Đào
+
+Do la ly do list 9 ho mot chu (D/G/H/N/P/T) khong mo rong duoc.
+
+DE XUAT — HAI LOP, MOT ID
+
+Tach xep hang va tra cuu. Khong nhet ca hai vao mot chu.
+
+  ID noi / mo file:   F - NG - 001
+  Hang (field rieng): 01 … 25 | Z     (chi thong ke / bieu do)
+
+F-NG-001 doc duoc la Nguyen. hang=01 = pho bien nhat.
+F-A-001 giu thu hang nhung mat tra cuu.
+
+Ma tra cuu 2 chu (chu dau khi duoc; them chu 2 khi dung):
+
+Hang  Tra cuu  Ho          Hang  Tra cuu  Ho
+01    NG       Nguyễn      14    DN       Đoàn
+02    TR       Trần        15    DI       Đinh
+03    LE       Lê          16    VO       Võ
+04    PH       Phạm        17    DU       Dương
+05    VU       Vũ          18    MA       Mai
+06    PN       Phan        19    DA       Đào
+07    HA       Hoàng       20    HN       Hà
+08    BU       Bùi         21    LG       Lương
+09    GO       Ngô         22    TI       Trịnh
+10    DO       Đỗ          23    LU       Lưu
+11    DG       Đặng        24    LM       Lâm
+12    TU       Trương      25    HO       Hồ
+13    HY       Huỳnh       --    ZZ       con lai
+
+GO = Ngo (N da dung Nguyen; G nhu nGo).
+PN = Phan (P da dung Pham).
+HN = Ha (HA da dung Hoang).

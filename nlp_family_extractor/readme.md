@@ -25,7 +25,7 @@ uvicorn api:app --reload --host 0.0.0.0 --port 8000
 Từ thư mục gốc dự án `family-tree`:
 
 ```bash
-docker compose up --build -d
+./infra/scripts/compose.sh up --build -d
 ```
 
 Kiểm tra backend:
@@ -37,13 +37,13 @@ curl http://localhost:8000/health
 Dừng toàn bộ service:
 
 ```bash
-docker compose down
+./infra/scripts/compose.sh down
 ```
 
 Xóa luôn dữ liệu MySQL volume:
 
 ```bash
-docker compose down -v
+./infra/scripts/compose.sh down -v
 ```
 
 ### Endpoint phân tích

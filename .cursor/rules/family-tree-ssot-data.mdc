@@ -1,6 +1,6 @@
 ---
 description: SSOT BalkanNode — backend schema, export, validation
-globs: nlp_family_extractor/app/**/*.py,schemas/**,family-saga-io/src/lib/familyTree*.ts,family-saga-io/src/lib/familyTreeUtils.ts
+globs: nlp_family_extractor/app/**/*.py,docs/schemas/**,family-saga-io/src/lib/familyTree*.ts,family-saga-io/src/lib/familyTreeUtils.ts
 alwaysApply: false
 ---
 
@@ -10,7 +10,7 @@ alwaysApply: false
 
 - Table: `family_tree.nodes_json` → mảng `BalkanNode[]`
 - Validate/normalize: `nlp_family_extractor/app/balkan_node.py`
-- Schema: `schemas/balkan-node.schema.json`
+- Schema: `docs/schemas/balkan-node.schema.json`
 - VGP detail mở rộng: `family_tree_node_meta` (không nhét vào `nodes_json`)
 
 ## Trường node chuẩn (core)

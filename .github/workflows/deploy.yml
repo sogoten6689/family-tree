@@ -52,7 +52,7 @@ jobs:
             cd ~/projects/family-tree
             git fetch origin
             git reset --hard origin/master   # hoặc main
-            ./scripts/build-all.sh --up
+            ./infra/scripts/build-all.sh --up
             sleep 5
             curl -fsS http://localhost:87/health
             echo "Deploy OK"

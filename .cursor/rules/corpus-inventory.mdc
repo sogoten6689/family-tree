@@ -1,0 +1,30 @@
+---
+description: Tổng quan corpus sống — DATA_INVENTORY.md khi thêm/sửa dữ liệu
+globs: data/**,research/label_studio_pipeline/build_corpus_inventory.py,nlp_family_extractor/tools/build_hannom_catalog.py
+alwaysApply: false
+---
+
+# Corpus inventory (sống)
+
+SSOT số liệu đĩa: `data/DATA_INVENTORY.md` + `data/03_derived/manifests/corpus_inventory.json`.  
+Chỗ thả file tuần: `data/INCOMING.md`.  
+Catalog cuốn Hán-Nôm: `data/00_raw/hannom/books_catalog.json` (không gồm mọi lô incoming).
+
+## Khi thêm PDF / DOCX / ảnh / list ảnh / cây VGP
+
+1. Đặt vào tầng đúng (`00_raw` gốc, `04_external/sach` lý thuyết). Không sửa nội dung 00.
+2. Inventory **cục bộ** trong thư mục lô (`inventory.md` + `inventory.json`) nếu là gói mới.
+3. Cuốn Hán-Nôm hoặc Word dịch → cập nhật `build_hannom_catalog.py` rồi chạy catalog.
+4. **Luôn** chạy:
+
+```bash
+PYTHONPATH=research python -m label_studio_pipeline.build_corpus_inventory
+```
+
+5. Không cộng JPG với `tree_id` thành một «n». Đơn vị: cây (VGP) · cuốn (`book_id`) · trang nguồn (không preview bbox).
+
+## Không làm
+
+- Sửa tay số trong `DATA_INVENTORY.md` (file sinh).
+- Đếm `review_corpus` + `volumes/` cùng lúc như hai corpus.
+- Trộn `gemini_labels/` vào bảng gold.

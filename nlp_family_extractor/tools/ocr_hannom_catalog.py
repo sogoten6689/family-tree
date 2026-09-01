@@ -34,7 +34,7 @@ def repo_root() -> Path:
 
 
 def load_catalog(repo: Path) -> list[dict[str, Any]]:
-    path = repo / "data/hannom/books_catalog.json"
+    path = repo / "data/00_raw/hannom/books_catalog.json"
     payload = json.loads(path.read_text(encoding="utf-8"))
     return list(payload.get("books") or [])
 
@@ -63,7 +63,7 @@ def render_pdf(pdf_path: Path, pages_dir: Path) -> list[Path]:
 def book_work_root(book: dict[str, Any], repo: Path) -> Path:
     """Per-book folder for paddleocr/ and dich/. PDFs must not share 13_8_2026/."""
     if book.get("source") == "tong_pho_pdf":
-        return repo / "data/du_lieu_han_nom_moi/13_8_2026" / book["book_id"]
+        return repo / "data/00_raw/du_lieu_han_nom_moi/13_8_2026" / book["book_id"]
     rel = (book.get("paths") or {}).get("root") or (book.get("paths") or {}).get("pages")
     if not rel:
         raise ValueError(f"No root for {book.get('book_id')}")
@@ -80,7 +80,7 @@ def page_dir_for(book: dict[str, Any], repo: Path) -> Path | None:
         pdf_path = repo / pdf_rel
         if not pdf_path.is_file():
             return None
-        out = repo / "data/du_lieu_han_nom_moi/13_8_2026" / book["book_id"] / "pages"
+        out = repo / "data/00_raw/du_lieu_han_nom_moi/13_8_2026" / book["book_id"] / "pages"
         print(f"  render PDF → {out.relative_to(repo)}", flush=True)
         render_pdf(pdf_path, out)
         return out

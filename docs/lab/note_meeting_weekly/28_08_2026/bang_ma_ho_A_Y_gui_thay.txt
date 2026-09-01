@@ -1,0 +1,102 @@
+Bảng mã họ gia phả
+25 họ phổ biến = A → Y,  Z = các họ còn lại
+
+Mẫu: 2.152 cây VietnamGiaPha
+Đơn vị: 1 cây = 1 gia phả (không đếm người)
+A = họ nhiều cây nhất. Z = mọi họ không thuộc 25 họ dưới.
+A–Y phủ 83% (1.787 cây). Z ~ 17% (365 cây).
+
+Công thức ID tài liệu:
+  F - {A…Y | Z} - {NNN}
+
+Ví dụ:
+  F-A-001  = gia phả họ Nguyễn, tài liệu 01
+  F-Z-004  = họ ngoài 25 họ A–Y
+
+Không gộp Hoàng/Huỳnh, Vũ/Võ (giữ đúng chữ trên phả).
+Mã này xếp kho tài liệu, không thay nhãn NER (PER_NAME, FATHER_OF).
+
+Ma   Ho              So cay     %
+----------------------------------------
+A    Nguyễn            574    26,7%
+B    Trần              177     8,2%
+C    Lê                154     7,2%
+D    Phạm              114     5,3%
+E    Vũ                 73     3,4%
+F    Phan               70     3,3%
+G    Hoàng              66     3,1%
+H    Bùi                66     3,1%
+I    Ngô                53     2,5%
+J    Đỗ                 53     2,5%
+K    Đặng               49     2,3%
+L    Trương             46     2,1%
+M    Huỳnh              41     1,9%
+N    Đoàn               36     1,7%
+O    Đinh               36     1,7%
+P    Võ                 32     1,5%
+Q    Dương              25     1,2%
+R    Mai                20     0,9%
+S    Đào                19     0,9%
+T    Hà                 17     0,8%
+U    Lương              16     0,7%
+V    Trịnh              14     0,7%
+W    Lưu                12     0,6%
+X    Lâm                12     0,6%
+Y    Hồ                 12     0,6%
+Z    các họ còn lại    365    17,0%
+----------------------------------------
+
+Z (thường gặp hơn, không đủ suất A–Y):
+  Cao 12, Lý 11, Tạ 10, Chu/Tô 9, Kiều/Thái 7,
+  Thân/Vương/Phùng 6, Doãn, Văn Đình, Tôn Thất, Ông, Nghiêm, …
+
+Hai việc tách nhau (đề xuất)
+
+1) Xếp hạng / thống kê: số 01–25 (cột A–Y ở trên). 01 = Nguyễn.
+2) Tra cứu: không dùng số hạng. Dùng mã ngắn theo tên họ.
+
+Chữ cái đầu 1 chữ — trong 25 họ chỉ 3 họ không đụng: Bùi, Dương, Mai.
+Còn lại đụng:
+  N  Nguyễn / Ngô
+  T  Trần / Trương / Trịnh
+  L  Lê / Lương / Lưu / Lâm
+  P  Phạm / Phan
+  V  Vũ / Võ
+  H  Hoàng / Huỳnh / Hà / Hồ
+  Đ  Đỗ / Đặng / Đoàn / Đinh / Đào
+
+Vậy tra cứu = 2 chữ (lấy chữ đầu khi được; thêm chữ 2 khi đụng):
+
+Hang  Tra cuu  Ho
+01    NG       Nguyễn
+02    TR       Trần
+03    LE       Lê
+04    PH       Phạm
+05    VU       Vũ
+06    PN       Phan      (P đã dùng Phạm)
+07    HA       Hoàng
+08    BU       Bùi
+09    GO       Ngô       (N đã dùng Nguyễn; G = nGô)
+10    DO       Đỗ
+11    DG       Đặng
+12    TU       Trương
+13    HY       Huỳnh
+14    DN       Đoàn
+15    DI       Đinh
+16    VO       Võ
+17    DU       Dương
+18    MA       Mai
+19    DA       Đào
+20    HN       Hà        (HA đã dùng Hoàng)
+21    LG       Lương
+22    TI       Trịnh
+23    LU       Lưu
+24    LM       Lâm
+25    HO       Hồ
+--    ZZ       họ còn lại
+
+ID tài liệu (để mở file / nói với nhau):
+  F-NG-001     gia phả họ Nguyễn, tài liệu 01
+  hang = 01    field riêng, chỉ để thống kê / xếp hạng
+
+F-A-001 khó nhớ A là Nguyễn. F-NG-001 đọc được.
