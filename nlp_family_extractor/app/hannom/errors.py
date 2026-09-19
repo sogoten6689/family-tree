@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class HannomApiError(Exception):
     """Raised when Kim Hán Nôm API returns an error or an invalid response."""
 
