@@ -5,6 +5,8 @@
 > **Mục tiêu:** Dùng **Firecrawl** để **tìm nguồn mới**, **đánh giá khả thi**, **thu thập có chọn lọc**, **thống kê tập trung**.  
 > **Liên quan:** [nomfoundation_crawl_plan.md](./nomfoundation_crawl_plan.md), [vietnamgiapha_crawl_v2_plan.md](./vietnamgiapha_crawl_v2_plan.md), [label_studio_data_expansion_analysis.md](./label_studio_data_expansion_analysis.md) §12
 
+> **Cập nhật 2026-09-25 (fact, không phải giả định):** Kiểm tra môi trường Claude Code cloud session — `env | grep -i firecrawl` rỗng, chỉ có `research/source_discovery/.env.example` (không có `.env` thật). → **§11 checklist bước 1 ("Tạo tài khoản Firecrawl + `FIRECRAWL_API_KEY`") vẫn chưa hoàn thành**, đây là điều kiện chặn duy nhất để chạy §6-§9 từ agent (Cursor hoặc Claude). Ưu tiên nguồn gia phả **lâu năm** (gốc sẽ có Hán-Nôm — theo họp 14/9 mục 7, xem `../lab/note_meeting_weekly/14_09_2026/`) khi seed danh sách nguồn ở §2 Track A.
+
 ---
 
 ## 1. Vì sao cần plan này
