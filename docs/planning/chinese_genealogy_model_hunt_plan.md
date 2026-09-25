@@ -122,12 +122,14 @@ pip install -r requirements.txt   # hoặc theo hướng dẫn repo ứng viên
 
 | Task | Trạng thái | Người/agent làm | Ngày cập nhật |
 |------|-----------|-----------------|----------------|
-| T1 | Đang chạy (agent nghiên cứu Claude, phiên 25/9) | Claude (background) | 2026-09-25 |
-| T2 | Đang chạy song song với T1 | Claude (background) | 2026-09-25 |
-| T3 | Chưa bắt đầu | | |
-| T4 | Chờ T3 | | |
+| T1 | ✅ Hoàn tất — 12 ứng viên khảo sát, xem [`research/model_survey/candidates.md`](../../research/model_survey/candidates.md) | Claude (background agent) | 2026-09-25 |
+| T2 | ✅ Hoàn tất — chạy thử `CHAT_models` (kraken OCR), thất bại theo README gốc (bug path + kraken API mismatch), chạy được sau khi tự vá lỗi. guwen-ner/Jiayan không chạy được do HF/Google Drive bị chặn egress proxy trong sandbox. Log thật: [`research/model_survey/trial/`](../../research/model_survey/trial/) | Claude (background agent) | 2026-09-25 |
+| T3 | ✅ Hoàn tất — 0% ký tự đúng trên cả ảnh scan thật lẫn câu tự tạo; 2 giả thuyết H1/H2 chưa phân định (đề xuất test tiếp: `kraken<5`). Xem [`research/model_survey/EVALUATION.md`](../../research/model_survey/EVALUATION.md) | Claude (background agent) | 2026-09-25 |
+| T4 | **Không tiến hành** — điều kiện chưa đạt: effort Trung bình nhưng license CC BY-NC (cấm thương mại) + output 0% chính xác + nguyên nhân gốc chưa phân định. Việc tiếp theo hợp lệ duy nhất: chạy test phân định H1/H2 (`pip install "kraken<5"`, chạy lại 2 ảnh mẫu), KHÔNG viết proposal tích hợp trước khi có kết quả đó | — | 2026-09-25 |
 
-> Ghi chú: một agent Claude đã được giao chạy song song T1+T2 trong phiên 25/9 (kết quả sẽ nối vào `research/model_survey/` khi hoàn tất). Nếu Cursor bắt đầu làm T1 độc lập, kiểm tra `research/model_survey/` trước để tránh làm trùng — cập nhật bảng này thay vì tạo file trùng, theo `.cursor/rules/planning-tasks.mdc`.
+**Phát hiện quan trọng ngoài phạm vi T1-T4 (báo lại giảng viên, không phải kết luận thất bại):** không tìm thấy mô hình/dataset mã nguồn mở nào giải quyết trực tiếp "gia phả Hán TQ → cây gia phả có cấu trúc" qua tìm kiếm có hệ thống (từ khoá Hán + Anh). Khoảng trống này có thể là hướng đóng góp học thuật của luận văn thay vì hạn chế của việc tìm kiếm — xem mục 4 trong `../lab/note_meeting_weekly/25_09_2026/25_09_2026.md`.
+
+**Ràng buộc hạ tầng phát hiện được (ảnh hưởng mọi lần khảo sát mô hình sau này):** sandbox Claude Code cloud chặn egress tới `huggingface.co`, `modelscope.cn`, `drive.google.com`, `zenodo.org` (403 theo chính sách tổ chức) — chỉ `github.com` và `pypi.org` truy cập được. Bất kỳ ứng viên nào phân phối weight qua các host bị chặn sẽ không chạy thử được từ phiên Claude Code cloud; cần chạy ở máy cục bộ hoặc môi trường mạng khác (kể cả Cursor chạy local có thể không bị chặn — cần Cursor tự kiểm tra khi thực thi T1/T2 độc lập).
 
 ## 7. Câu hỏi cần thầy xác nhận (không block T1–T3)
 
