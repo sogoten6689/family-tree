@@ -1,16 +1,18 @@
 # Proposal — Nâng cấp NER/OCR Hán cổ cho pipeline gia phả (T4)
 
 > Nguồn: [`chinese_genealogy_model_hunt_plan.md`](./chinese_genealogy_model_hunt_plan.md) T4.
-> Bằng chứng: [`../../research/model_survey/EVALUATION.md`](../../research/model_survey/EVALUATION.md) (cập nhật 2026-09-26).
+> Bằng chứng: [`../../research/model_survey/EVALUATION.md`](../../research/model_survey/EVALUATION.md) (mục "Tái lập độc lập 27/9", đọc trực tiếp và xác minh bởi Claude 2026-09-28).
 > **Chờ thầy duyệt trước khi implement.**
 
 ## 1. Điều kiện T4 đã đạt
 
 | Ứng viên | Effort | License | Bằng chứng chạy thật |
 |---|---|---|---|
-| guwen-ner | Thấp–Trung bình | Apache-2.0 | 75% tên+chức trên câu mẫu giản thể (`trial/guwen_ner_log.txt`) |
-| Jiayan | Thấp | MIT | CharHMM + POS (`trial/jiayan_log.txt`) |
-| CHAT_models + `kraken==4.3.13` | Trung bình | CC BY-NC 4.0 | OCR demo đọc được (`trial/legacy_kraken_test_log.txt`); **không** đề xuất production thương mại |
+| guwen-ner | Thấp–Trung bình | Apache-2.0 | 3/4 tên+chức (75%) trên câu mẫu giản thể, 0/4 trên phồn thể (`../../research/model_survey/trial/guwen_ner_rerun_log.txt`) |
+| Jiayan | Thấp | MIT | Tách từ đúng ranh giới ở cả phồn/giản thể (`../../research/model_survey/trial/jiayan_rerun_log.txt`) |
+| CHAT_models + `kraken<5` (đã xác nhận `4.3.13`) | Trung bình | CC BY-NC 4.0 | OCR demo đọc được, có nhan đề/tác giả thơ cổ xác minh được (`../../research/model_survey/trial/legacy_kraken_test_rerun_log.txt`); **không** đề xuất production thương mại |
+
+*(Tên file log đã sửa 2026-09-28 để khớp đúng file thật có trong repo — bản 26/9 gốc trích dẫn tên file `*_log.txt` chưa từng được commit.)*
 
 Ưu tiên tích hợp thử nghiệm: **guwen-ner** (đúng gap NER/RE ở mục 2 của plan). CHAT_models chỉ baseline OCR nghiên cứu nếu được phép non-commercial.
 
