@@ -1,0 +1,8 @@
+Hardware accelerator e.g. GPU is available in the environment, but no `device` argument is passed to the `Pipeline` object. Model will be on CPU.
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+started 2026-09-27T11:28:09.275969Z
+TRANSFORMERS 4.46.3 TORCH 2.2.2
+SENT 始祖諱文成官至知府娶阮氏生子一人諱德重
+[]
+SENT 始祖讳文成官至知府娶阮氏生子一人讳德重
+[{"entity_group": "NOUN_OTHER", "score": "0.96727735", "word": "文 成", "start": 3, "end": 5}, {"entity_group": "NOUN_OTHER", "score": "0.8168507", "word": "阮 氏", "start": 10, "end": 12}, {"entity_group": "NOUN_OTHER", "score": "0.9483961", "word": "德 重", "start": 17, "end": 19}]
