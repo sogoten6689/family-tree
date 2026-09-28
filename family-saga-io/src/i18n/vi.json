@@ -473,8 +473,7 @@
     "nextExtract": "Trích xuất quan hệ",
     "continueStep": "Tiếp tục: {{step}}",
     "serverSaved": "Đã lưu trên server",
-    "serverSavedAt": "Tài liệu được lưu lúc {{time}} — an toàn khi đổi trình duyệt.",
-    "serverSavedHint": "Dữ liệu được lưu trên server, không chỉ trên trình duyệt này.",
+    "serverSavedAt": "Đã lưu trên server · {{time}}",
     "treeCreated": "Cây gia phả đã được tạo.",
     "openVisual": "Xem sơ đồ",
     "menu": {

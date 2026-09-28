@@ -11,7 +11,13 @@ export function ServerSavedAlert({ uploadedAt, className }: Props) {
   const { t } = useTranslation();
   const timeLabel =
     uploadedAt != null
-      ? new Date(uploadedAt).toLocaleString("vi-VN")
+      ? new Date(uploadedAt).toLocaleString("vi-VN", {
+          hour: "2-digit",
+          minute: "2-digit",
+          day: "numeric",
+          month: "numeric",
+          year: "numeric",
+        })
       : null;
 
   return (
@@ -20,16 +26,10 @@ export function ServerSavedAlert({ uploadedAt, className }: Props) {
       showIcon
       icon={<CheckCircleOutlined />}
       className={className}
-      message={t("flow.serverSaved", { defaultValue: "Đã lưu trên server" })}
-      description={
+      message={
         timeLabel
-          ? t("flow.serverSavedAt", {
-              defaultValue: "Tài liệu được lưu lúc {{time}} — an toàn khi đổi trình duyệt.",
-              time: timeLabel,
-            })
-          : t("flow.serverSavedHint", {
-              defaultValue: "Dữ liệu được lưu trên server, không chỉ trên trình duyệt này.",
-            })
+          ? t("flow.serverSavedAt", { time: timeLabel })
+          : t("flow.serverSaved")
       }
     />
   );

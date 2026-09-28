@@ -473,8 +473,7 @@
     "nextExtract": "Extract relationships",
     "continueStep": "Continue: {{step}}",
     "serverSaved": "Saved on server",
-    "serverSavedAt": "Saved at {{time}} — safe when switching browsers.",
-    "serverSavedHint": "Data is stored on the server, not only in this browser.",
+    "serverSavedAt": "Saved on server · {{time}}",
     "treeCreated": "Family tree created.",
     "openVisual": "View tree",
     "menu": {
