@@ -47,6 +47,8 @@ type FamilyAnalyzeResponse = {
   balkan_nodes: BalkanNode[];
   gemini_error: string | null;
   ocr_text?: string | null;
+  hannom_text?: string | null;
+  source_file_key?: string | null;
   pages_processed?: number;
   pages_truncated?: boolean;
 };
@@ -536,12 +538,17 @@ const DocumentReaderPage = ({
       let response: Response;
 
       if (isImageLike && activeFile) {
-        // Ảnh/PDF: gửi multipart, backend tự OCR (Kim Hán Nôm) rồi phân tích —
-        // xem POST /api/family-tree/analyze-image trong nlp_family_extractor/api.py.
+        // Ảnh/PDF: gửi multipart, backend tự OCR (Kim Hán Nôm), lưu ảnh gốc
+        // vào MinIO (best-effort) rồi phân tích — xem POST
+        // /api/family-tree/analyze-image trong nlp_family_extractor/api.py.
         const formData = new FormData();
         formData.append("file", activeFile);
+        const query = new URLSearchParams();
+        if (currentScanId != null) {
+          query.set("scan_id", String(currentScanId));
+        }
         response = await fetch(
-          `${backendBaseUrl}/api/family-tree/analyze-image`,
+          `${backendBaseUrl}/api/family-tree/analyze-image?${query.toString()}`,
           {
             method: "POST",
             headers: {
@@ -585,6 +592,8 @@ const DocumentReaderPage = ({
         balkan_nodes: Array.isArray(raw.balkan_nodes) ? raw.balkan_nodes : [],
         gemini_error: raw.gemini_error ?? null,
         ocr_text: raw.ocr_text ?? null,
+        hannom_text: raw.hannom_text ?? null,
+        source_file_key: raw.source_file_key ?? null,
         pages_processed: raw.pages_processed,
         pages_truncated: raw.pages_truncated,
       };
@@ -597,6 +606,7 @@ const DocumentReaderPage = ({
           tree_status: "draft",
           ocr_status: isImageLike ? "completed" : "skipped",
           source_text: isImageLike ? payload.ocr_text ?? undefined : documentText,
+          source_file_key: isImageLike ? payload.source_file_key ?? undefined : undefined,
         });
       }
       fetchHistory();

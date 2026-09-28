@@ -21,6 +21,7 @@ export interface UserScan {
   tree_status: TreeStatus;
   family_tree_id?: string | null;
   request_id?: string | null;
+  source_file_key?: string | null;
 }
 
 export interface UserScanListResponse {
@@ -86,6 +87,7 @@ export async function updateUserDocument(
     family_tree_id: string;
     request_id: string;
     source_text: string;
+    source_file_key: string;
   }>,
 ): Promise<UserScan> {
   return apiRequest<UserScan>(`/api/user/documents/${scanId}`, {

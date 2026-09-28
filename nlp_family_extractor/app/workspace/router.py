@@ -79,6 +79,7 @@ class UserScanResponse(BaseModel):
     tree_status: TreeStatus
     family_tree_id: Optional[str] = None
     request_id: Optional[str] = None
+    source_file_key: Optional[str] = None
 
 
 class UserScanListResponse(BaseModel):
@@ -101,6 +102,7 @@ class UserScanUpdateRequest(BaseModel):
     family_tree_id: Optional[str] = None
     request_id: Optional[str] = None
     source_text: Optional[str] = None
+    source_file_key: Optional[str] = None
 
 
 class UserFamilyTreeCreateRequest(BaseModel):
@@ -267,6 +269,7 @@ def create_workspace_router(
             family_tree_id=payload.family_tree_id,
             request_id=payload.request_id,
             source_text=payload.source_text,
+            source_file_key=payload.source_file_key,
         )
         return UserScanResponse.model_validate(updated)
 

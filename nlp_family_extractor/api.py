@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import io
 import json
 from collections import deque
 from contextlib import asynccontextmanager
@@ -133,6 +134,10 @@ class AnalyzeImageResponse(AnalyzeResponse):
     hannom_text: Optional[str] = Field(
         default=None,
         description="Văn bản Hán-Nôm gốc (trước phiên âm), do bước OCR Kim Hán Nôm trả về — hiển thị cột đối chiếu.",
+    )
+    source_file_key: Optional[str] = Field(
+        default=None,
+        description="Key MinIO của ảnh/PDF gốc đã lưu (None nếu MinIO chưa cấu hình — OCR vẫn chạy bình thường).",
     )
     pages_processed: int = Field(
         default=0,
@@ -1629,6 +1634,10 @@ async def analyze_family_image(
         default=None,
         description="0 = tự động, 1 = Hán, 2 = Nôm (theo HANNOM_OCR_LANG_TYPE của Kim Hán Nôm).",
     ),
+    scan_id: Optional[int] = Query(
+        default=None,
+        description="ID bản ghi user_scans (nếu có) để lưu ảnh gốc dưới đúng namespace của scan đó.",
+    ),
     current_user: OptionalUser = None,
 ) -> AnalyzeImageResponse:
     """
@@ -1637,6 +1646,9 @@ async def analyze_family_image(
     PDF nhiều trang bị giới hạn `MAX_PDF_PAGES_DEFAULT` trang để tránh gọi quá
     nhiều lần API OCR trả phí/rate-limited từ một lần upload nhanh; tài liệu dài
     hơn nên dùng luồng Admin (upload nhiều file + pipeline 7 bước).
+
+    Ảnh/PDF gốc cũng được lưu vào MinIO (best-effort — nếu MinIO chưa cấu
+    hình, OCR vẫn chạy bình thường, chỉ `source_file_key` sẽ là `None`).
     """
     content = await file.read()
     if not content:
@@ -1650,6 +1662,25 @@ async def analyze_family_image(
 
     filename = file.filename or "upload"
     is_pdf = (file.content_type == "application/pdf") or filename.lower().endswith(".pdf")
+
+    source_file_key: Optional[str] = None
+    try:
+        storage = ObjectStorage.from_env()
+        if storage.config.enabled:
+            storage.ensure_bucket()
+            safe_name = "".join(c for c in filename if c.isalnum() or c in "._-") or "upload"
+            namespace = f"scan-{scan_id}" if scan_id is not None else f"anon-{uuid4().hex[:8]}"
+            source_file_key = f"user-scans/{namespace}/{uuid4().hex}_{safe_name}"
+            storage.upload_file(
+                source_file_key,
+                io.BytesIO(content),
+                content_type=file.content_type or "application/octet-stream",
+                size=len(content),
+            )
+    except ObjectStorageError as error:
+        # Lưu ảnh chỉ là best-effort — không chặn OCR/phân tích nếu MinIO lỗi.
+        source_file_key = None
+        print(f"[analyze-image] Không lưu được ảnh gốc vào MinIO: {error}")
 
     hannom_text_parts: List[str] = []
     ocr_text_parts: List[str] = []
@@ -1699,6 +1730,7 @@ async def analyze_family_image(
         **analysis.model_dump(),
         ocr_text=combined_text,
         hannom_text=combined_hannom or None,
+        source_file_key=source_file_key,
         pages_processed=pages_processed,
         pages_truncated=pages_truncated,
     )
