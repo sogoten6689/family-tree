@@ -210,6 +210,10 @@ class FamilyTreeSummary(BaseModel):
     has_hannom_text: bool = False
     user_id: Optional[int] = None
     is_public: bool = False
+    lineage_code: Optional[str] = Field(
+        default=None,
+        description="Mã họ F-{A...Y|Z}-{NNN}, sinh tự động từ tên cây theo bảng mã họ.",
+    )
     generation_count: int = 0
 
 
@@ -230,6 +234,7 @@ class FamilyTreeDocument(BaseModel):
     has_hannom_text: bool = False
     user_id: Optional[int] = None
     is_public: bool = False
+    lineage_code: Optional[str] = None
     generation_count: int = 0
 
 

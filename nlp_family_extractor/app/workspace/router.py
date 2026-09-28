@@ -40,6 +40,7 @@ class WorkspaceTreeSummary(BaseModel):
     has_hannom_text: bool = False
     user_id: Optional[int] = None
     is_public: bool = False
+    lineage_code: Optional[str] = None
     source_document_title: Optional[str] = None
 
 
@@ -127,6 +128,7 @@ def _to_tree_summary(item: Dict[str, Any], *, source_document_title: Optional[st
         has_hannom_text=bool(item.get("has_hannom_text", False)),
         user_id=item.get("user_id"),
         is_public=bool(item.get("is_public", False)),
+        lineage_code=item.get("lineage_code"),
         source_document_title=source_document_title,
     )
 
