@@ -130,6 +130,10 @@ class AnalyzeImageResponse(AnalyzeResponse):
         default=None,
         description="Văn bản Quốc ngữ do OCR + phiên âm Kim Hán Nôm sinh ra, dùng để hiển thị/cho người dùng sửa trước khi lưu.",
     )
+    hannom_text: Optional[str] = Field(
+        default=None,
+        description="Văn bản Hán-Nôm gốc (trước phiên âm), do bước OCR Kim Hán Nôm trả về — hiển thị cột đối chiếu.",
+    )
     pages_processed: int = Field(
         default=0,
         description="Số trang ảnh/PDF đã OCR (PDF nhiều trang bị giới hạn, xem `pages_truncated`).",
@@ -1621,6 +1625,10 @@ def _max_image_upload_bytes() -> int:
 )
 async def analyze_family_image(
     file: UploadFile = File(..., description="Ảnh (jpg/png/webp) hoặc PDF gia phả Hán-Nôm"),
+    lang_type: Optional[int] = Query(
+        default=None,
+        description="0 = tự động, 1 = Hán, 2 = Nôm (theo HANNOM_OCR_LANG_TYPE của Kim Hán Nôm).",
+    ),
     current_user: OptionalUser = None,
 ) -> AnalyzeImageResponse:
     """
@@ -1643,6 +1651,7 @@ async def analyze_family_image(
     filename = file.filename or "upload"
     is_pdf = (file.content_type == "application/pdf") or filename.lower().endswith(".pdf")
 
+    hannom_text_parts: List[str] = []
     ocr_text_parts: List[str] = []
     pages_processed = 0
     pages_truncated = False
@@ -1656,12 +1665,14 @@ async def analyze_family_image(
             pages_truncated = total_pages > len(page_images)
             for index, page_bytes in enumerate(page_images):
                 result = process_hannom_image_to_vietnamese(
-                    page_bytes, f"{filename}-p{index + 1}.png"
+                    page_bytes, f"{filename}-p{index + 1}.png", lang_type=lang_type
                 )
+                hannom_text_parts.append(result["ocr_text"])
                 ocr_text_parts.append(result["transcription_text"])
                 pages_processed += 1
         else:
-            result = process_hannom_image_to_vietnamese(content, filename)
+            result = process_hannom_image_to_vietnamese(content, filename, lang_type=lang_type)
+            hannom_text_parts.append(result["ocr_text"])
             ocr_text_parts.append(result["transcription_text"])
             pages_processed = 1
     except ValueError as error:
@@ -1670,6 +1681,7 @@ async def analyze_family_image(
         raise HTTPException(status_code=502, detail=f"Lỗi OCR Kim Hán Nôm: {error}") from error
 
     combined_text = "\n\n".join(part for part in ocr_text_parts if part.strip())
+    combined_hannom = "\n\n".join(part for part in hannom_text_parts if part.strip())
     if not combined_text.strip():
         raise HTTPException(
             status_code=422,
@@ -1686,6 +1698,7 @@ async def analyze_family_image(
     return AnalyzeImageResponse(
         **analysis.model_dump(),
         ocr_text=combined_text,
+        hannom_text=combined_hannom or None,
         pages_processed=pages_processed,
         pages_truncated=pages_truncated,
     )
