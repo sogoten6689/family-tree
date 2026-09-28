@@ -11,22 +11,22 @@
 
 | Tên | Link | Có code chạy được? | License | Ghi chú |
 |---|---|---|---|---|
-| **CHAT_models** ✅ đã chạy thử (T2) | https://github.com/colibrisson/CHAT_models | Có — weight nằm trực tiếp trong git repo | CC BY-NC 4.0 | Kraken seg+rec, huấn luyện 1.7M dòng Hán cổ TQ 10th–20th c. |
+| **CHAT_models** ✅ đã chạy thử (T2), ✅ tái lập 27/9 với `kraken<5` (xem [EVALUATION.md](./EVALUATION.md)) | https://github.com/colibrisson/CHAT_models | Có — weight nằm trực tiếp trong git repo. **Bắt buộc ghim `kraken<5`** — bản mới (7.1.1) cho output vô nghĩa (đã xác nhận là bug tương thích, không phải model kém) | CC BY-NC 4.0 | Kraken seg+rec, huấn luyện 1.7M dòng Hán cổ TQ 10th–20th c. |
 | CnOCR | https://github.com/breezedeus/cnocr | Có | MIT lõi (một số model phái sinh có điều kiện) | OCR TQ tổng quát, không chuyên Hán cổ |
 | chinese-pdf-ocr-toolkit | https://github.com/MH-API/chinese-pdf-ocr-toolkit | Có, nhưng cần VLM API key ngoài | Chưa kiểm tra | Không chạy độc lập offline hoàn toàn |
 | sanskrit-ocr (tham khảo kiến trúc) | https://github.com/ihdia/sanskrit-ocr | — | — | Không phải tiếng Trung, chỉ tham khảo |
 
 ## (b) NER cổ văn — tên người / chức quan / quan hệ thân tộc
 
-| Tên | Link | Có code chạy được **trong sandbox này**? | License |
-|---|---|---|---|
-| guwen-ner (GuwenBERT) | https://github.com/Ethan-yt/guwen-models (weight: https://huggingface.co/ethanyt/guwen-ner) | ❌ Không — HuggingFace Hub bị chặn egress proxy (403 connect_rejected, org policy) | Apache-2.0 |
-| GuwenBERT base/large | https://github.com/Ethan-yt/guwenbert | ❌ Không — HF Hub bị chặn | Apache-2.0 |
-| SikuBERT/SikuRoBERTa | https://huggingface.co/SIKU-BERT/sikubert | ❌ Không — HF Hub bị chặn | Chưa rõ |
-| Jiayan (甲言) | https://github.com/jiaeyan/Jiayan | ❌ Không — weight host Google Drive/Baidu NetDisk, bị chặn | MIT |
-| UD-Kanbun | https://github.com/KoichiYasuoka/UD-Kanbun | Chưa thử | Chưa kiểm tra |
+| Tên | Link | Có code chạy được **trong sandbox cloud gốc**? | Chạy thử ở máy khác (27/9)? | License |
+|---|---|---|---|---|
+| guwen-ner (GuwenBERT) | https://github.com/Ethan-yt/guwen-models (weight: https://huggingface.co/ethanyt/guwen-ner) | ❌ Không — HuggingFace Hub bị chặn egress proxy (403 connect_rejected, org policy) | ✅ **Chạy được** — [`trial/guwen_ner_rerun_log.txt`](./trial/guwen_ner_rerun_log.txt), chi tiết ở [EVALUATION.md](./EVALUATION.md) mục "Tái lập độc lập 27/9". Phồn thể: 0/4 thực thể; giản thể: 3/4 | Apache-2.0 |
+| GuwenBERT base/large | https://github.com/Ethan-yt/guwenbert | ❌ Không — HF Hub bị chặn | Chưa thử riêng (guwen-ner đã bao gồm) | Apache-2.0 |
+| SikuBERT/SikuRoBERTa | https://huggingface.co/SIKU-BERT/sikubert | ❌ Không — HF Hub bị chặn | Chưa thử | Chưa rõ |
+| Jiayan (甲言) | https://github.com/jiaeyan/Jiayan | ❌ Không — weight host Google Drive/Baidu NetDisk, bị chặn | ✅ **Chạy được** — [`trial/jiayan_rerun_log.txt`](./trial/jiayan_rerun_log.txt). Tách từ đúng `知府`, `阮氏` ở cả phồn/giản thể | MIT |
+| UD-Kanbun | https://github.com/KoichiYasuoka/UD-Kanbun | Chưa thử | Chưa thử | Chưa kiểm tra |
 
-**→ Loại khỏi T2** (không có code chạy được trong môi trường này, không phải vì chất lượng kém): guwen-ner, GuwenBERT, SikuBERT, Jiayan. Lý do là hạ tầng (proxy egress chặn HF/ModelScope/Google Drive/Zenodo), không phải lỗi của các repo này — cần thử lại khi có môi trường mạng khác.
+**Cập nhật 27/9:** guwen-ner và Jiayan **chạy được bình thường** khi thử trên máy có thể truy cập HuggingFace/Google Drive — xác nhận nhận định ban đầu: đây là hạn chế **hạ tầng của sandbox Claude Code cloud** (chặn egress tới HF/ModelScope/Google Drive/Zenodo), không phải do bản thân 2 repo này có vấn đề.
 
 ## (c) Trích xuất quan hệ / knowledge graph nhân vật
 
