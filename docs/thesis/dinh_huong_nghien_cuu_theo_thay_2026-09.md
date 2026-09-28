@@ -59,13 +59,15 @@ Một phiên Claude khác (nhánh `claude/meeting-project-evaluation-eui68s`) đ
 
 **Phát hiện quan trọng nhất (High confidence):** *không tồn tại mô hình/dataset mã nguồn mở nào giải quyết trực tiếp bài toán "gia phả Hán TQ → cây gia phả có cấu trúc"* — khảo sát có hệ thống trên nhiều từ khoá, không tìm được. Đây **không phải tin xấu cho luận văn** — nó là bằng chứng củng cố khoảng trống học thuật (research gap) mà câu đóng góp ở §4 nhắm tới: nếu đã có sẵn, luận văn mất giá trị mới; vì chưa có, việc tự xây (L2) có cơ sở đóng góp thật.
 
+**Xác nhận của bạn (2026-09-28): đề tài chỉ phục vụ nghiên cứu khoa học (luận văn), không thương mại.** Điều này **loại bỏ** ràng buộc license mà bảng bên dưới từng đánh dấu là hạn chế (CC BY-NC 4.0 của CHAT_models) — không cần cân nhắc "cấm thương mại" như một rủi ro cho việc dùng CHAT_models làm baseline OCR nữa. Vẫn cần xác nhận license của XunziLLM trước khi dùng (chưa rõ là non-commercial hay có điều kiện khác như copyleft/ghi công bắt buộc), vì "chưa rõ" khác với "biết rõ và cho phép nghiên cứu phi thương mại".
+
 **Bảng ứng viên đã chạy thử (rút gọn, xem `research/model_survey/EVALUATION.md` trên nhánh kia để đủ chi tiết):**
 
 | Ứng viên | Việc làm được | Kết quả trên chữ **phồn thể** (đúng dạng Hán-Nôm thật) | License | Vai trò khả thi trong pipeline |
 |---|---|---|---|---|
 | **Jiayan** (甲言) | Tách từ, POS cổ văn | Tách đúng `知府`, `阮氏` — **không nhạy phồn/giản thể** | MIT | Bước tiền xử lý (word segmentation) trước NER — đáng dùng |
 | **guwen-ner** (GuwenBERT) | NER cổ văn | **0/4 thực thể** trên phồn thể (chỉ được 3/4 nếu ép về giản thể — rủi ro sai nghĩa với chữ Nôm) | Apache-2.0 | Gần như vô dụng nếu không tiền xử lý phồn→giản có kiểm soát; có bằng chứng ngoài (bài *Spring and Autumn Annals*) cho thấy cả họ GuwenBERT thua SikuBERT/SikuRoBERTa |
-| **CHAT_models** (kraken OCR) | OCR Hán cổ dọc | Đọc được phần lớn văn bản có nghĩa **nếu ghim `kraken<5`** (bug tương thích version, đã tái lập 27/9) | **CC BY-NC 4.0 — cấm thương mại** | Baseline OCR khả thi cho mục đích luận văn (phi thương mại) |
+| **CHAT_models** (kraken OCR) | OCR Hán cổ dọc | Đọc được phần lớn văn bản có nghĩa **nếu ghim `kraken<5`** (bug tương thích version, đã tái lập 27/9) | CC BY-NC 4.0 — **không phải rào cản** (đề tài phi thương mại, xác nhận trên) | Baseline OCR khả thi, dùng được ngay cho luận văn |
 | **XunziLLM** | Tách câu, chấm câu, **IE người/sự kiện/địa điểm**, dịch | Chưa chạy thử được (host ModelScope, bị chặn egress trong sandbox cloud) | Chưa rõ — cần xác nhận trước khi dùng | Ứng viên **tiềm năng nhất** cho đúng việc L2 (trích xuất), nhưng chưa kiểm chứng |
 | **DSNF** (Chinese Open RE, ACM 2018) | Trích quan hệ không cần nhãn (dựa dependency parsing) | Chưa chạy thử (chỉ đọc abstract, bài đầy đủ bị chặn) | — | Hướng rule-based nâng cao, bổ sung cho rule hiện tại thay vì thay bằng deep model |
 | **CBDB kinship normalization** (bài, Harvard) | Chuẩn hoá quan hệ thân tộc Hán tiền-hiện-đại | Chuẩn hoá về **3 quan hệ cơ bản: cha–con, mẹ–con, chồng–vợ** | — (bài báo, không phải code) | **Khớp trực tiếp** với thiết kế rule hiện tại của `nlp_family_extractor` (`spouse_of`/`parent_of`/`sibling_of`) — nên trích dẫn làm cơ sở lý thuyết cho chương thiết kế quan hệ |
