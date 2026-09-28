@@ -45,7 +45,7 @@ Không tìm được ứng viên nào giải quyết trực tiếp bài toán. D
 | Ứng viên | Kết quả (fact) | License |
 |---|---|---|
 | `CHAT_models` (kraken OCR Hán cổ) | 0% đúng với `kraken` mới nhất (7.1.1) → sau khi ghim `kraken<5`, **đọc được văn bản có nghĩa thật** (thơ cổ điển, tên tác giả xác minh được) — **H2 xác nhận**: lỗi do version mismatch, không phải model kém | CC BY-NC 4.0 (cấm thương mại) |
-| `guwen-ner` | 0/4 thực thể trên câu phồn thể (đúng dạng chữ Hán-Nôm thật), 3/4 trên giản thể | Apache-2.0 |
+| `guwen-ner` | **[Cập nhật sau Colab]** 0/4 trên 1 câu tự soạn, nhưng **95%/97.5% (phồn/giản)** trên 9 đoạn Sử Ký thật — kết luận ban đầu "yếu trên phồn thể" bị bác bỏ, chỉ đúng cho mẫu n=1 | Apache-2.0 |
 | `Jiayan` | Tách từ đúng ranh giới ở cả phồn/giản thể | MIT |
 
 Chi tiết đầy đủ + log thật: [`research/model_survey/EVALUATION.md`](../../research/model_survey/EVALUATION.md).
@@ -56,15 +56,14 @@ Chi tiết đầy đủ + log thật: [`research/model_survey/EVALUATION.md`](..
 — đề xuất bổ sung `guwen-ner` (có tiền xử lý phồn→giản) song song với rule-
 based hiện tại, không xoá rule-based. Chưa implement, **chờ thầy duyệt**.
 
-### 1.5 Thực nghiệm mở rộng trên Google Colab (đang chạy)
+### 1.5 Thực nghiệm mở rộng trên Google Colab — hoàn tất, có 1 phát hiện đảo ngược kết luận cũ
 
-Notebook [`research/model_survey/colab/hannom_model_experiments.ipynb`](../../research/model_survey/colab/hannom_model_experiments.ipynb),
-3 nhóm cell:
-- **Nhóm A:** kiểm lại `guwen-ner` trên 9 đoạn Sử Ký thật (không chỉ 1 câu tự đặt) — falsification check cho kết luận "yếu trên phồn thể".
-- **Nhóm B:** license-gate + so `SikuBERT` với `GuwenBERT` bằng fill-mask.
-- **Nhóm C:** benchmark tốc độ GPU cho `kraken<5` so với baseline CPU (459.5s/trang).
+Notebook [`research/model_survey/colab/hannom_model_experiments.ipynb`](../../research/model_survey/colab/hannom_model_experiments.ipynb)
+đã chạy xong trên GPU Tesla T4 (không bị chặn egress). Kết quả (bằng chứng: [`research/model_survey/colab/results/`](../../research/model_survey/colab/results/)):
 
-**Trạng thái:** Lâm đã bắt đầu chạy trên Colab, **chưa push kết quả**.
+- **Nhóm A (falsification check guwen-ner):** trên 9 đoạn Sử Ký thật (Kanripo, pin commit), recall tên người đạt **95% phồn thể / 97.5% giản thể** — gần như ngang nhau. **Kết luận tuần trước "guwen-ner gần như vô dụng trên phồn thể" bị bác bỏ** — kết luận đó chỉ đúng cho đúng 1 câu tự soạn (n=1, không đại diện). Vẫn thiếu: test trên câu/đoạn gia phả Hán-Nôm thật.
+- **Nhóm B (SikuBERT vs GuwenBERT):** cả 2 xác nhận license Apache-2.0. SikuBERT có **0% ký tự lỗi (`[UNK]`) trên phồn thể** so với **~20% của GuwenBERT** — xác nhận SikuBERT là nền tảng tốt hơn để fine-tune tiếp.
+- **Nhóm C (benchmark GPU):** GPU nhanh hơn CPU **37.8 lần** (601s → 15.9s/trang, cùng máy). Tái lập thành công H2 lần 2 (3 chuỗi mốc từ log 27/9 xuất hiện lại). `ketos train/segtrain` lỗi cú pháp CLI (`-q fixed` sai, phải `-q dumb`) — chưa đo được tốc độ fine-tune.
 
 ### 1.6 Hạn chế hạ tầng phát hiện được
 
@@ -101,13 +100,16 @@ Chi tiết: [`../lab/note_meeting_weekly/21_09_2026/`](../lab/note_meeting_weekl
 là **thành viên trong nhóm** — một bạn tự nhận đã fine-tune `guwen-seg`/
 `guwen-punc` dưới đúng tài khoản đó. **Chưa xác nhận** — cần hỏi thầy/nhóm.
 
-**Bằng chứng hội tụ về GuwenBERT yếu:**
+**Bằng chứng hội tụ về GuwenBERT yếu hơn SikuBERT (đã xác nhận bằng thực nghiệm Colab, không còn là suy luận):**
 - Nhóm đo `guwen-punc` thủ công: F1 = 0.195 → kết luận overfitting.
-- Tuần này đo `guwen-ner`: 0/4 trên phồn thể.
+- Colab (Nhóm B, xem mục 1.5): GuwenBERT ~20% ký tự lỗi (`[UNK]`) trên phồn thể, SikuBERT 0%.
 - 1 bài báo ngoài (*Spring and Autumn Annals*, doi:10.1093/llc/fqad016) xác
   nhận GuwenBERT thua SikuBERT/SikuRoBERTa trên segmentation.
 → Cả 3 nguồn độc lập đều chỉ về cùng 1 hướng: **nên ưu tiên SikuBERT hơn
-GuwenBERT** — đúng hướng Nhóm B của notebook Colab đang chạy.
+GuwenBERT** làm nền tảng fine-tune. (Lưu ý: đây khác với năng lực NER nói
+chung của guwen-ner, thứ mà mục 1.5 vừa xác nhận là tốt trên văn bản thật —
+2 phát hiện không mâu thuẫn nhau, chỉ là 2 khía cạnh khác nhau của cùng họ
+model GuwenBERT.)
 
 **Ứng viên/tài nguyên mới nhóm tìm được, chưa có trong `candidates.md`:**
 - **XunziLLM** — LLM ~7B (fine-tune Qwen/ChatGLM3/Baichuan2), làm được

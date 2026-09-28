@@ -9,7 +9,7 @@
 |---|---|---|---|---|---|---|
 | **CHAT_models** (kraken seg+rec, **với kraken<5**) | **Phần lớn đọc được** — output gồm nhiều đoạn văn/thơ cổ điển có nghĩa (nhan đề, tên tác giả có thật xác minh được), xen một số đoạn ngắn dạng số/ký hiệu lạ. Chưa đếm % dòng-đúng chính xác (cần đối chiếu ground-truth gốc của ảnh, chưa có) | 0% — không trích được quan hệ (đây là OCR, không phải NER; không có bước quan hệ) | **CC BY-NC 4.0** — cấm thương mại | **Trung bình** (kỹ thuật thấp nếu ghim `kraken<5`) | **H2 xác nhận** (version mismatch, không phải model kém) — xem "Tái lập độc lập 27/9" | **High** (quan sát trực tiếp, tái lập được, có mốc kiểm tra độc lập là tên tác giả/nhan đề thơ cổ có thật) |
 | **CHAT_models (kraken 7.1.1, không ghim version)** | 0% — như T3 gốc | 0% | CC BY-NC 4.0 | Trung bình nhưng **cấu hình mặc định (`pip install kraken`) vẫn hỏng** nếu không tự ghim `<5` | H1 bị bác bỏ | High |
-| guwen-ner / GuwenBERT | **Phồn thể: 0/4** (rỗng); **Giản thể: 3/4** (`文成`, `阮氏`, `德重`; bỏ sót `知府`) | Không đo (không phải task RE) | Apache-2.0 (tốt) | Trung bình — kỹ thuật dễ nhưng cần bước tiền xử lý giản thể hoá (rủi ro với chữ Nôm) | Chạy được, nhưng **nhạy cảm nghiêm trọng với phồn/giản thể** — gia phả Hán-Nôm thật dùng phồn thể → hiệu năng gần 0% nếu không tiền xử lý | **High** cho việc đo được (log trực tiếp); **Moderate** cho việc suy rộng ra dữ liệu Hán-Nôm thật (chưa test trên ảnh/text gia phả thật) |
+| guwen-ner / GuwenBERT | **[ĐÃ SỬA, xem "Thực nghiệm Colab mở rộng"]** Trên 1 câu tự soạn: 0/4 phồn thể, 3/4 giản thể. Nhưng trên **9 đoạn Sử Ký thật**: **95% phồn thể, 97.5% giản thể** — gần như không khác biệt | Không đo (không phải task RE) | Apache-2.0 (tốt) | Thấp-Trung bình — chạy tốt trên văn phong sử/truyện ký thật; rủi ro còn lại là từ vựng riêng của gia phả (`諱`...) chưa test đủ | Kết luận cũ "vô dụng trên phồn thể" bị **bác bỏ** khi test trên mẫu lớn hơn (n=1 → không đại diện). Vẫn cần test trên câu/đoạn gia phả THẬT (không tự soạn) trước khi kết luận chắc chắn | **High** cho kết quả trên Sử Ký (n=9, có nguồn xác minh); **Moderate** cho khả năng tổng quát sang đúng văn phong gia phả Hán-Nôm (chưa có dữ liệu thật) |
 | Jiayan | Không phải NER — nhưng phân đoạn từ đúng ranh giới `知府`, `阮氏` ở cả phồn/giản thể | Không đo (task khác: tokenize/POS) | MIT (tốt) | Thấp — chạy trực tiếp, không nhạy phồn/giản thể trong test này | Hữu ích như bước tiền xử lý (word segmentation) trước khi đưa vào NER khác, hơn là NER độc lập | **Moderate** — chỉ 1 câu test, cần thêm mẫu để khái quát hoá |
 
 ## Fact vs Inference (đối chiếu trực tiếp với yêu cầu T3)
@@ -59,10 +59,56 @@ Nếu chạy lại với `kraken<5` cho ra văn bản đọc được có nghĩa
 
 **[Fact] Jiayan** trên cùng câu (cả 2 bản phồn/giản thể): phân đoạn từ đúng ranh giới cho các cụm quan trọng — `知府` (chức quan) và `阮氏` (tên có họ) đều được tách thành 1 token riêng đúng nghĩa ở cả 2 bản; gắn nhãn POS hợp lý (`nh` cho `阮氏` — có vẻ là nhãn "human name"). Không nhạy cảm phồn/giản thể như guwen-ner trong test này.
 
+## Thực nghiệm Colab mở rộng — ĐẢO NGƯỢC 1 kết luận quan trọng
+
+> Chạy trên Google Colab (GPU Tesla T4, không bị chặn egress). Log/JSON thật đọc trực tiếp (không phải tường thuật): [`colab/results/A_guwen_ner.json`](./colab/results/A_guwen_ner.json), [`colab/results/B_sikubert_fillmask.json`](./colab/results/B_sikubert_fillmask.json), [`colab/results/C_kraken_bench.json`](./colab/results/C_kraken_bench.json) + các file `.txt`/`.jsonl` kèm theo. Notebook nguồn: [`colab/hannom_model_experiments.ipynb`](./colab/hannom_model_experiments.ipynb).
+
+### ⚠️ Sửa lại kết luận trước: "guwen-ner gần như vô dụng trên phồn thể" — SAI, dựa trên mẫu quá nhỏ (n=1 câu)
+
+**[Fact]** Chạy `guwen-ner` trên **9 đoạn Sử Ký thật** (孔子世家, 項羽本紀, 高祖本紀, 老子韓非列傳, 留侯世家..., lấy từ Kanripo, pin commit `1c19dc6f`, có `assert` xác nhận đoạn trích khớp nguyên văn nguồn — không bịa dữ liệu), đo recall tên người (lenient) từng đoạn:
+
+| | Phồn thể (trad) | Giản thể (simp) |
+|---|---|---|
+| Recall tên người (P1–P9, micro) | **95% (38/40)** | 97.5% (39/40) |
+| Recall exact | 85% (34/40) | 95% (38/40) |
+| Tỷ lệ ký tự → `[UNK]` | 16.6% (55/331) | 0% |
+
+**Script tự tính "verdict" theo tiêu chí đặt trước** (support: trad≤10% & simp≥50%; reject: trad≥50%): kết quả trả về **"BÁC BỎ 'vô dụng trên phồn thể' (phồn ≥ 50%)"**.
+
+**Đối chiếu với câu P0 (câu tự soạn 26–27/9, `始祖諱文成官至知府娶阮氏生子一人諱德重`):** tái lập đúng y hệt kết luận cũ — **0/3 trên phồn thể, 3/3 trên giản thể**. Tức kết luận "yếu trên phồn thể" tuần trước **không sai vì đo sai**, mà sai vì **khái quát hoá từ đúng 1 câu tự soạn** lên toàn bộ "văn bản phồn thể nói chung" — một sai lầm suy luận cổ điển (mẫu n=1, không đại diện).
+
+**Suy luận mới (Moderate-High confidence):** vấn đề không phải "phồn thể" nói chung, mà nhiều khả năng là **từ vựng/quy ước riêng của thể loại gia phả** (ví dụ `諱` — chữ chuyên dùng trước tên huý tổ tiên trong gia phả, hiếm gặp trong văn phong sử ký/truyện ký mà guwen-ner được huấn luyện) khiến câu P0 rơi vào phân phối lạ, không phải vì bản thân bộ chữ phồn thể. **Cần bộ test bằng câu gia phả THẬT (không tự soạn) để kết luận chắc chắn** — đây là giới hạn còn lại, chưa giải quyết được.
+
+**Falsification check đã tự chạy (đúng tinh thần T3):** nếu có ≥1 đoạn Sử Ký thật mà trad tệ hơn hẳn simp thì nghi ngờ "phồn thể nói chung yếu" được củng cố lại — thực tế: `sign_test` cho `wins=1, losses=1, ties=7` (hầu hết đoạn HOÀ, không nghiêng hẳn bên nào) → không có bằng chứng hệ thống rằng phồn thể kém hơn giản thể trên văn bản thật.
+
+### Nhóm B — SikuBERT vs GuwenBERT (fill-mask, license đã xác nhận cả 2 Apache-2.0)
+
+**[Fact]** Cả `SIKU-BERT/sikubert` và `ethanyt/guwenbert-base` đều **Apache-2.0** (tra trực tiếp qua HF API, không phải "chưa rõ" như candidates.md ghi trước đây).
+
+**[Fact]** Độ chính xác dự đoán ký tự nền (không phải thực thể) khi che 1 ký tự, top-1, trên 9 đoạn Sử Ký:
+
+| Model | Phồn thể | Giản thể | Chênh lệch (giản − phồn) | UNK trên phồn thể |
+|---|---|---|---|---|
+| **SikuBERT** | **45.0%** (77/171) | 34.5% (59/171) | **−10.5%** (tốt hơn trên phồn thể) | **0/171 — không UNK** |
+| GuwenBERT-base | 45.6% (78/171) | 74.9% (128/171) | **+29.2%** (tệ hơn hẳn trên phồn thể) | 34/171 (~20%) |
+
+**Kết luận (High confidence — kết quả sạch, đối lập rõ, khớp cả 3 nguồn độc lập: NER tuần này với P0, thí nghiệm labmate về guwen-punc, và fill-mask này):** SikuBERT xử lý phồn thể **tốt hơn hẳn** GuwenBERT về mặt tokenizer/OOV (0% vs 20% UNK) và không bị lệch hiệu năng theo phồn/giản thể như GuwenBERT. **Nên ưu tiên SikuBERT làm nền tảng fine-tune**, không phải GuwenBERT — khuyến nghị này giờ có 3 bằng chứng độc lập ủng hộ, không còn là suy luận đơn lẻ.
+
+### Nhóm C — Benchmark GPU kraken<5 + CHAT_models
+
+**[Fact]** `kraken==4.3.13` cài được trong venv Colab sau khi vá lỗi `setuptools<81` (xem commit `ff5908e`). CHAT_models HEAD khớp đúng `9b86ab6c...` (đúng bản đã dùng 27/9).
+
+**[Fact]** Cùng ảnh `houcunxiansheng.png`, cùng máy: **segmentation CPU 601.1s vs GPU 15.9s → tăng tốc 37.8 lần**. Độ giống văn bản giữa 2 lần chạy CPU/GPU: 97.3% (gần như y hệt, GPU không làm giảm chất lượng).
+
+**[Fact]** Đối chứng dương (3 chuỗi mốc từ log 27/9: `巫山高`, `謝眺`, `恭惟某官`) đều xuất hiện lại trong output GPU/CPU trên Colab → **tái lập thành công H2 lần thứ 2, trên máy/hạ tầng khác** (Mac local 27/9 → Colab GPU) — củng cố thêm độ tin cậy, không còn phụ thuộc 1 máy duy nhất.
+
+**[Fact] Thử fine-tune tốc độ (`ketos segtrain`/`train`) — THẤT BẠI do lỗi cú pháp CLI, không phải lỗi hạ tầng:** cả 4 lần gọi đều báo `Error: Invalid value for '-q'/'--quit': 'fixed' is not one of 'early', 'dumb'.` — tham số `-q fixed` không hợp lệ với kraken 4.3.13 (đúng phải là `-q dumb` để chạy đúng N epoch không early-stop). Đây là lỗi trong script notebook (chưa tra cứu kỹ CLI `ketos --help` trước khi dùng), **chưa đo được tốc độ fine-tune/epoch** — vẫn là việc còn thiếu.
+
 ## Kết luận T3 (cập nhật sau tái lập 27/9 — thay thế kết luận "chưa đủ điều kiện T4" ở bản gốc)
 
-- **H2 được xác nhận bằng thực nghiệm tái lập được** (không còn là suy luận): CHAT_models 0% chính xác ở T3 gốc là do version mismatch kraken (7.1.1 vs 2023), **không phải model kém**. Ghim `kraken<5` là điều kiện bắt buộc, không phải tuỳ chọn, nếu dùng CHAT_models.
-- **Điều kiện T4 nay đã đạt một phần:** CHAT_models có bằng chứng thực nghiệm ủng hộ H2 với effort Trung bình (ghim version + fine-tune) — đủ điều kiện viết proposal T4 **cho mục đích nghiên cứu/luận văn phi thương mại** (license CC BY-NC vẫn cấm thương mại — đây là ràng buộc cứng, không đổi dù kỹ thuật đã khả thi hơn).
-- guwen-ner (Apache-2.0) và Jiayan (MIT) giờ có bằng chứng thực nghiệm thật (không còn "chưa kiểm chứng được"): guwen-ner chạy được nhưng gần như vô dụng trên phồn thể (dạng chữ Hán-Nôm thật sẽ gặp) nếu không tiền xử lý; Jiayan hữu ích như bước tách từ tiền xử lý.
-- **T4 (đề xuất nâng cấp) — chưa viết trong phiên này.** Cursor có đề cập đã soạn 1 bản nhưng chưa được push/commit vào repo này (không có file nào trong `docs/planning/` khớp tên `hannom_ner_model_upgrade_proposal.md` tại thời điểm 2026-09-28) — không thể xác minh hay dùng lại nội dung đó. Nếu cần, viết T4 mới dựa trên bảng bằng chứng đã cập nhật ở trên, ưu tiên kiến trúc: Jiayan (tách từ) → guwen-ner (NER, cần tiền xử lý phồn→giản có kiểm soát) hoặc CHAT_models (`kraken<5`, ghim version) làm baseline OCR fine-tune.
+- **H2 được xác nhận bằng thực nghiệm tái lập được LẦN 2** (Mac local 27/9 → Colab GPU): CHAT_models 0% chính xác ở T3 gốc là do version mismatch kraken (7.1.1 vs 2023), **không phải model kém**. Ghim `kraken<5` là điều kiện bắt buộc, không phải tuỳ chọn, nếu dùng CHAT_models. GPU tăng tốc segmentation **37.8 lần** so với CPU (601s → 15.9s/trang) — khả thi cho pipeline xử lý hàng loạt nếu có GPU.
+- **Kết luận về guwen-ner đã bị đảo ngược một phần** (xem "Thực nghiệm Colab mở rộng"): KHÔNG còn đúng là "gần như vô dụng trên phồn thể" — trên 9 đoạn Sử Ký thật, recall tên người đạt 95% phồn thể / 97.5% giản thể, gần như ngang nhau. Kết luận cũ chỉ đúng cho đúng 1 câu tự soạn (n=1), không đại diện. **Vẫn còn thiếu:** test trên câu/đoạn gia phả Hán-Nôm THẬT (không phải Sử Ký hay câu tự soạn) để biết hiệu năng thật trên đúng thể loại.
+- **SikuBERT được xác nhận là nền tảng tốt hơn GuwenBERT** để fine-tune tiếp — bằng chứng hội tụ từ 3 nguồn độc lập: (1) fill-mask Colab (SikuBERT 0% UNK trên phồn thể vs GuwenBERT ~20% UNK), (2) NER tuần này, (3) thí nghiệm guwen-punc của labmate (F1 0.195, kết luận overfitting).
+- **Điều kiện T4 nay đã đạt:** cả CHAT_models (OCR, non-commercial) lẫn hướng NER (guwen-ner hoặc SikuBERT fine-tune) đều có bằng chứng thực nghiệm đủ mạnh để viết proposal T4 **cho mục đích nghiên cứu/luận văn phi thương mại** (license CC BY-NC của CHAT_models vẫn cấm thương mại — ràng buộc cứng, không đổi).
+- **Việc còn thiếu, chưa đo được:** tốc độ fine-tune (`ketos train`/`segtrain`) — 4 lần thử đều lỗi cú pháp CLI (`-q fixed` không hợp lệ, phải là `-q dumb`), chưa phải lỗi hạ tầng, dễ sửa nhưng chưa làm.
 - **Phát hiện quan trọng cho luận văn (không đổi):** không tồn tại mô hình/dataset mã nguồn mở nào giải quyết trực tiếp "gia phả Hán TQ → cây gia phả có cấu trúc" — khoảng trống này vẫn là **cơ hội đóng góp học thuật** tiềm năng. **Độ tin cậy: High.**

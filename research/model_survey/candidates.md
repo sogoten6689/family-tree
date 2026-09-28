@@ -20,9 +20,9 @@
 
 | Tên | Link | Có code chạy được **trong sandbox cloud gốc**? | Chạy thử ở máy khác (27/9)? | License |
 |---|---|---|---|---|
-| guwen-ner (GuwenBERT) | https://github.com/Ethan-yt/guwen-models (weight: https://huggingface.co/ethanyt/guwen-ner) | ❌ Không — HuggingFace Hub bị chặn egress proxy (403 connect_rejected, org policy) | ✅ **Chạy được** — [`trial/guwen_ner_rerun_log.txt`](./trial/guwen_ner_rerun_log.txt), chi tiết ở [EVALUATION.md](./EVALUATION.md) mục "Tái lập độc lập 27/9". Phồn thể: 0/4 thực thể; giản thể: 3/4 | Apache-2.0 |
-| GuwenBERT base/large | https://github.com/Ethan-yt/guwenbert | ❌ Không — HF Hub bị chặn | Chưa thử riêng (guwen-ner đã bao gồm) | Apache-2.0 |
-| SikuBERT/SikuRoBERTa | https://huggingface.co/SIKU-BERT/sikubert | ❌ Không — HF Hub bị chặn | Chưa thử | Chưa rõ |
+| guwen-ner (GuwenBERT) | https://github.com/Ethan-yt/guwen-models (weight: https://huggingface.co/ethanyt/guwen-ner) | ❌ Không — HuggingFace Hub bị chặn egress proxy (403 connect_rejected, org policy) | ✅ **Chạy được.** Trên 1 câu tự soạn: 0/4 phồn thể, 3/4 giản thể. Trên **9 đoạn Sử Ký thật (Colab)**: **95% phồn thể, 97.5% giản thể** — kết luận "yếu trên phồn thể" ban đầu bị bác bỏ khi test mẫu lớn hơn. Xem [EVALUATION.md](./EVALUATION.md) mục "Thực nghiệm Colab mở rộng" | Apache-2.0 |
+| GuwenBERT base/large | https://github.com/Ethan-yt/guwenbert | ❌ Không — HF Hub bị chặn | ✅ **Chạy được (Colab, fill-mask).** Yếu hơn SikuBERT trên phồn thể: ~20% ký tự → `[UNK]`, hiệu năng lệch hẳn giữa phồn/giản (+29.2 điểm % nghiêng giản thể). Xem EVALUATION.md | Apache-2.0 |
+| SikuBERT/SikuRoBERTa | https://huggingface.co/SIKU-BERT/sikubert | ❌ Không — HF Hub bị chặn | ✅ **Chạy được (Colab, fill-mask).** License xác nhận trực tiếp qua HF API: **Apache-2.0** (không phải "chưa rõ" như ghi trước đây). **0% ký tự → `[UNK]` trên phồn thể** (so với ~20% của GuwenBERT) — tốt hơn hẳn cho phồn thể, đúng hướng ưu tiên fine-tune tiếp | **Apache-2.0** (đã xác nhận) |
 | Jiayan (甲言) | https://github.com/jiaeyan/Jiayan | ❌ Không — weight host Google Drive/Baidu NetDisk, bị chặn | ✅ **Chạy được** — [`trial/jiayan_rerun_log.txt`](./trial/jiayan_rerun_log.txt). Tách từ đúng `知府`, `阮氏` ở cả phồn/giản thể | MIT |
 | UD-Kanbun | https://github.com/KoichiYasuoka/UD-Kanbun | Chưa thử | Chưa thử | Chưa kiểm tra |
 

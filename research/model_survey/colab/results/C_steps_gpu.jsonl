@@ -1,0 +1,5 @@
+{"step": "segment", "seconds": 15.883076429367065, "n_lines": 13, "size": [1011, 1433], "device": "cuda:0"}
+{"step": "recognition", "seconds": 2.0398271083831787, "n_lines": 13}
+{"step": "segment", "seconds": 12.363794326782227, "n_lines": 13, "size": [892, 1456], "device": "cuda:0"}
+{"step": "recognition", "seconds": 1.9404878616333008, "n_lines": 13}
+{"step": "script_total", "seconds": 123.82015991210938}

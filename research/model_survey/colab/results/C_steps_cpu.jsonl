@@ -1,0 +1,3 @@
+{"step": "segment", "seconds": 601.1411702632904, "n_lines": 13, "size": [1011, 1433], "device": "cpu (m\u1eb7c \u0111\u1ecbnh)"}
+{"step": "recognition", "seconds": 5.193949937820435, "n_lines": 13}
+{"step": "script_total", "seconds": 695.4145619869232}

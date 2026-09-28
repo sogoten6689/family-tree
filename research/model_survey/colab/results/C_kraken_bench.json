@@ -1,0 +1,236 @@
+{
+ "experiment": "C_kraken_chat_original_script_gpu",
+ "timestamp_utc": "2026-09-28T12:50:37.720791Z",
+ "kraken": "kraken==4.3.13",
+ "chat_models_sha": "9b86ab6c78dc460585c8f63f7149e77e2863419c",
+ "segment_params": {
+  "segment": [
+   "im",
+   "text_direction",
+   "mask",
+   "reading_order_fn",
+   "model",
+   "device",
+   "raise_on_error",
+   "autocast"
+  ],
+  "load_any": [
+   "fname",
+   "train",
+   "device"
+  ]
+ },
+ "seg_has_device": true,
+ "load_any_has_device": true,
+ "gpu_in_venv": true,
+ "baseline": {
+  "seg_s_per_page": 459.5,
+  "note": "kraken 7.1.1, CPU sandbox cloud 25/9 — khác version/phần cứng"
+ },
+ "config": {
+  "cpu_same_machine": true,
+  "cpu_max_images": 1
+ },
+ "runs": {
+  "gpu": {
+   "tag": "gpu",
+   "device": "cuda:0",
+   "returncode": 0,
+   "wall_s": 127.38903474807739,
+   "steps": [
+    {
+     "step": "segment",
+     "seconds": 15.883076429367065,
+     "n_lines": 13,
+     "size": [
+      1011,
+      1433
+     ],
+     "device": "cuda:0",
+     "image": "houcunxiansheng.png"
+    },
+    {
+     "step": "recognition",
+     "seconds": 2.0398271083831787,
+     "n_lines": 13
+    },
+    {
+     "step": "segment",
+     "seconds": 12.363794326782227,
+     "n_lines": 13,
+     "size": [
+      892,
+      1456
+     ],
+     "device": "cuda:0",
+     "image": "yutaixinyong.png"
+    },
+    {
+     "step": "recognition",
+     "seconds": 1.9404878616333008,
+     "n_lines": 13
+    },
+    {
+     "step": "script_total",
+     "seconds": 123.82015991210938
+    }
+   ],
+   "stdout": "二二\n○一八一一○\n\n之曲交情無斁初度有光恭惟某官雲霄之志素高\n月旦之評尤媺興懷老叟嘗忝近臣山巨源啓事雖\n多孰先嵇叔衛將軍賔客皆去僅有任安因其蓬矢\n之懸寵以香奩之作誦蜀客逰獵之賦莫吹送以上\n天尋洛英真率之盟願牽聯而入社\n甲子生日\n徐常丞\n凋年急景自箋表聖之宜休永歌長言尚記靈均之\n初度探諸驪頷賁此雀羅恭惟某官養孟氏之陪然\n識孔門之丈者常命伯夷典禮直哉惟清子謂平仲\n人\n上○\n幸得與珠綴冪嚴君之楹月映不辭卷風來輒自\n輕每聚金鑪氣時駐玉琴聲但願置尊酒蘭缸當\n夜明\n巫山高\n響像巫山高薄暮陽臺曲烟霞乍舒卷蘅芳自斷\n續彼美如可期寤言紛在屬撫然坐相思秋風下\n庭綠\n贈王主簿二首\n謝眺\n日落窓中坐紅粧好顏色舞衣襞未縫流黃覆不\n織蜻蛉草際飛逰蜂花上食一遇長思相願寄連\nDone!\n"
+  },
+  "cpu": {
+   "tag": "cpu",
+   "device": "cpu",
+   "returncode": 0,
+   "wall_s": 698.698486328125,
+   "steps": [
+    {
+     "step": "segment",
+     "seconds": 601.1411702632904,
+     "n_lines": 13,
+     "size": [
+      1011,
+      1433
+     ],
+     "device": "cpu (mặc định)",
+     "image": "houcunxiansheng.png"
+    },
+    {
+     "step": "recognition",
+     "seconds": 5.193949937820435,
+     "n_lines": 13
+    },
+    {
+     "step": "script_total",
+     "seconds": 695.4145619869232
+    }
+   ],
+   "stdout": "二二\n○一八一一○\n\n之曲交情無斁初度有光恭惟某官雲霄之志素高\n月旦之評尤媺興懷老叟嘗忝近臣山巨源啓事雖\n多孰先嵇叔衛將軍賔客皆去僅有任安因其蓬矢\n之懸寵以香奩之作誦蜀客逰獵之賦莫吹送以上\n天尋洛英真率之盟願牽聯而入社\n甲子生日\n徐常丞\n凋年急景自箋表聖之宜休永歌長言尚記靈均之\n初度探諸驪頷賁此雀羅恭惟某官養孟氏之陪然\n識孔門之丈者常命伯夷典禮直哉惟清子謂平仲\nDone!\n"
+  }
+ },
+ "comparison": {
+  "houcunxiansheng.png": {
+   "seg_cpu_s": 601.1411702632904,
+   "seg_gpu_s": 15.883076429367065,
+   "speedup": 37.84790515468455
+  },
+  "text_similarity_cpu_vs_gpu_first_image_prefix": 0.973404255319149
+ },
+ "anchors": {
+  "巫山高": true,
+  "謝眺": true,
+  "恭惟某官": true
+ },
+ "ketos": {
+  "pseudo_gt": {
+   "returncode": 0,
+   "stderr_tail": "scikit-learn version 1.2.2 is not supported. Minimum required version: 0.17. Maximum required version: 1.1.2. Disabling scikit-learn conversion API.\nTorch version 2.0.1+cu117 has not been tested with coremltools. You may run into unexpected errors. Torch 2.0.0 is the most recent version that has been tested.\n"
+  },
+  "segtrain": {
+   "1": {
+    "cmd": "/content/kraken_bench/venv311/bin/ketos segtrain -i /content/kraken_bench/CHAT_models/models/chat_seg.mlmodel -f alto -d cuda:0 -q fixed -N 1 -o /content/kraken_bench/ft_segtrain_1 -e /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/yutaixinyong.xml",
+    "returncode": 2,
+    "wall_s": 2.9302079677581787,
+    "stderr_tail": "Usage: ketos segtrain [OPTIONS] [GROUND_TRUTH]...\nTry 'ketos segtrain --help' for help.\n\nError: Invalid value for '-q' / '--quit': 'fixed' is not one of 'early', 'dumb'.\n",
+    "stdout_tail": ""
+   },
+   "3": {
+    "cmd": "/content/kraken_bench/venv311/bin/ketos segtrain -i /content/kraken_bench/CHAT_models/models/chat_seg.mlmodel -f alto -d cuda:0 -q fixed -N 3 -o /content/kraken_bench/ft_segtrain_3 -e /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/yutaixinyong.xml",
+    "returncode": 2,
+    "wall_s": 2.819633960723877,
+    "stderr_tail": "Usage: ketos segtrain [OPTIONS] [GROUND_TRUTH]...\nTry 'ketos segtrain --help' for help.\n\nError: Invalid value for '-q' / '--quit': 'fixed' is not one of 'early', 'dumb'.\n",
+    "stdout_tail": ""
+   }
+  },
+  "train": {
+   "1": {
+    "cmd": "/content/kraken_bench/venv311/bin/ketos train -i /content/kraken_bench/CHAT_models/models/chat_rec.mlmodel -f alto -d cuda:0 -q fixed -N 1 -o /content/kraken_bench/ft_train_1 -e /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/yutaixinyong.xml",
+    "returncode": 2,
+    "wall_s": 3.703143358230591,
+    "stderr_tail": "Usage: ketos train [OPTIONS] [GROUND_TRUTH]...\nTry 'ketos train --help' for help.\n\nError: Invalid value for '-q' / '--quit': 'fixed' is not one of 'early', 'dumb'.\n",
+    "stdout_tail": ""
+   },
+   "3": {
+    "cmd": "/content/kraken_bench/venv311/bin/ketos train -i /content/kraken_bench/CHAT_models/models/chat_rec.mlmodel -f alto -d cuda:0 -q fixed -N 3 -o /content/kraken_bench/ft_train_3 -e /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/houcunxiansheng.xml /content/kraken_bench/pseudo_gt/yutaixinyong.xml",
+    "returncode": 2,
+    "wall_s": 2.9562151432037354,
+    "stderr_tail": "Usage: ketos train [OPTIONS] [GROUND_TRUTH]...\nTry 'ketos train --help' for help.\n\nError: Invalid value for '-q' / '--quit': 'fixed' is not one of 'early', 'dumb'.\n",
+    "stdout_tail": ""
+   }
+  }
+ },
+ "venv_freeze": [
+  "aiohappyeyeballs==2.7.1",
+  "aiohttp==3.14.3",
+  "aiosignal==1.4.0",
+  "attrs==26.1.0",
+  "certifi==2026.7.22",
+  "charset-normalizer==3.5.1",
+  "click==8.5.0",
+  "cloudpickle==3.1.2",
+  "cmake==4.4.3",
+  "coremltools==6.3.0",
+  "filelock==4.0.5",
+  "frozenlist==1.8.0",
+  "fsspec==2026.9.0",
+  "idna==3.20",
+  "imageio==2.38.0",
+  "jinja2==3.1.6",
+  "joblib==1.6.0",
+  "jsonschema==4.26.0",
+  "jsonschema-specifications==2025.9.1",
+  "kraken==4.3.13",
+  "lightning-utilities==0.15.3",
+  "lit==23.1.2",
+  "lxml==6.1.3",
+  "markdown-it-py==4.2.0",
+  "markupsafe==3.0.3",
+  "mdurl==0.1.2",
+  "mpmath==1.3.0",
+  "multidict==6.9.1",
+  "networkx==3.6.1",
+  "numpy==1.23.5",
+  "nvidia-cublas-cu11==11.10.3.66",
+  "nvidia-cuda-cupti-cu11==11.7.101",
+  "nvidia-cuda-nvrtc-cu11==11.7.99",
+  "nvidia-cuda-runtime-cu11==11.7.99",
+  "nvidia-cudnn-cu11==8.5.0.96",
+  "nvidia-cufft-cu11==10.9.0.58",
+  "nvidia-curand-cu11==10.2.10.91",
+  "nvidia-cusolver-cu11==11.4.0.1",
+  "nvidia-cusparse-cu11==11.7.4.91",
+  "nvidia-nccl-cu11==2.14.3",
+  "nvidia-nvtx-cu11==11.7.91",
+  "packaging==26.3",
+  "pillow==12.3.0",
+  "propcache==0.5.4",
+  "protobuf==3.20.3",
+  "pyarrow==25.0.1",
+  "pygments==2.21.0",
+  "python-bidi==0.6.11",
+  "pytorch-lightning==2.0.9.post0",
+  "pywavelets==1.8.0",
+  "pyyaml==6.0.3",
+  "referencing==0.37.0",
+  "regex==2026.9.10",
+  "requests==2.34.2",
+  "rich==15.0.0",
+  "rpds-py==2026.6.3",
+  "scikit-image==0.19.3",
+  "scikit-learn==1.2.2",
+  "scipy==1.10.1",
+  "setuptools==80.10.2",
+  "shapely==1.8.5.post1",
+  "sympy==1.14.0",
+  "threadpoolctl==3.7.0",
+  "tifffile==2026.3.3",
+  "torch==2.0.1",
+  "torchmetrics==1.9.0",
+  "torchvision==0.15.2",
+  "tqdm==4.70.1",
+  "triton==2.0.0",
+  "typing-extensions==4.16.0",
+  "urllib3==2.8.0",
+  "wheel==0.48.0",
+  "yarl==1.25.1"
+ ]
+}

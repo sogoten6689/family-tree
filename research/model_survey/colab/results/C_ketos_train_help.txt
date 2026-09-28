@@ -1,0 +1,136 @@
+Usage: ketos train [OPTIONS] [GROUND_TRUTH]...
+
+  Trains a model from image-text pairs.
+
+Options:
+  -B, --batch-size INTEGER        batch sample size  [default: 1]
+  --pad INTEGER                   Left and right padding around lines
+                                  [default: 16]
+  -o, --output PATH               Output model file  [default: model]
+  -s, --spec TEXT                 VGSL spec of the network to train. CTC layer
+                                  will be added automatically.  [default:
+                                  [1,120,0,1 Cr3,13,32 Do0.1,2 Mp2,2 Cr3,13,32
+                                  Do0.1,2 Mp2,2 Cr3,9,64 Do0.1,2 Mp2,2
+                                  Cr3,9,64 Do0.1,2 S1(1x0)1,3 Lbx200 Do0.1,2
+                                  Lbx200 Do0.1,2 Lbx200 Do]]
+  -a, --append INTEGER            Removes layers before argument and then
+                                  appends spec. Only works when loading an
+                                  existing model
+  -i, --load PATH                 Load existing file to continue training
+  -F, --freq FLOAT                Model saving and report generation frequency
+                                  in epochs during training. If frequency is
+                                  >1 it must be an integer, i.e. running
+                                  validation every n-th epoch.  [default: 1.0]
+  -q, --quit [early|dumb]         Stop condition for training. Set to `early`
+                                  for early stooping or `dumb` for fixed
+                                  number of epochs  [default: early]
+  -N, --epochs INTEGER            Number of epochs to train for  [default: -1]
+  --min-epochs INTEGER            Minimal number of epochs to train for when
+                                  using early stopping.  [default: 0]
+  --lag INTEGER                   Number of evaluations (--report frequence)
+                                  to wait before stopping training without
+                                  improvement  [default: 10]
+  --min-delta FLOAT               Minimum improvement between epochs to reset
+                                  early stopping. Default is scales the delta
+                                  by the best loss
+  -d, --device TEXT               Select device to use (cpu, cuda:0, cuda:1,
+                                  ...)  [default: cpu]
+  --precision [64|32|bf16|16]     Numerical precision to use for training.
+                                  Default is 32-bit single-point precision.
+                                  [default: 32]
+  --optimizer [Adam|SGD|RMSprop]  Select optimizer  [default: Adam]
+  -r, --lrate FLOAT               Learning rate  [default: 0.001]
+  -m, --momentum FLOAT            Momentum  [default: 0.9]
+  -w, --weight-decay FLOAT        Weight decay  [default: 0.0]
+  --warmup INTEGER                Number of steps to ramp up to `lrate`
+                                  initial learning rate.  [default: 0]
+  --freeze-backbone INTEGER       Number of samples to keep the backbone
+                                  (everything but last layer) frozen.
+                                  [default: 0]
+  --schedule [constant|1cycle|exponential|cosine|step|reduceonplateau]
+                                  Set learning rate scheduler. For 1cycle,
+                                  cycle length is determined by the `--epoch`
+                                  option.  [default: constant]
+  -g, --gamma FLOAT               Decay factor for exponential, step, and
+                                  reduceonplateau learning rate schedules
+                                  [default: 0.1]
+  -ss, --step-size INTEGER        Number of validation runs between learning
+                                  rate decay for exponential and step LR
+                                  schedules  [default: 10]
+  --sched-patience INTEGER        Minimal number of validation runs between LR
+                                  reduction for reduceonplateau LR schedule.
+                                  [default: 5]
+  --cos-max INTEGER               Epoch of minimal learning rate for cosine LR
+                                  scheduler.  [default: 50]
+  -p, --partition FLOAT           Ground truth data partition ratio between
+                                  train/validation set  [default: 0.9]
+  --fixed-splits / --ignore-fixed-split
+                                  Whether to honor fixed splits in binary
+                                  datasets.  [default: ignore-fixed-split]
+  -u, --normalization [NFD|NFKD|NFC|NFKC]
+                                  Ground truth normalization
+  -n, --normalize-whitespace / --no-normalize-whitespace
+                                  Normalizes unicode whitespace  [default: n]
+  -c, --codec FILENAME            Load a codec JSON definition (invalid if
+                                  loading existing model)
+  --resize [add|union|both|new|fail]
+                                  Codec/output layer resizing option. If set
+                                  to `union` code points will be added, `new`
+                                  will set the layer to match exactly the
+                                  training data, `fail` will abort if training
+                                  data and model codec do not match.
+                                  [default: fail]
+  --reorder / --no-reorder        Reordering of code points to display order
+                                  [default: reorder]
+  --base-dir [L|R|auto]           Set base text direction.  This should be set
+                                  to the direction used during the creation of
+                                  the training data. If set to `auto` it will
+                                  be overridden by any explicit value given in
+                                  the input files.  [default: auto]
+  -t, --training-files FILENAME   File(s) with additional paths to training
+                                  data
+  -e, --evaluation-files FILENAME
+                                  File(s) with paths to evaluation data.
+                                  Overrides the `-p` parameter
+  --workers INTEGER               Number of OpenMP threads and workers when
+                                  running on CPU.  [default: 1]
+  --load-hyper-parameters / --no-load-hyper-parameters
+                                  When loading an existing model, retrieve
+                                  hyperparameters from the model  [default:
+                                  no-load-hyper-parameters]
+  --repolygonize / --no-repolygonize
+                                  Repolygonizes line data in ALTO/PageXML
+                                  files. This ensures that the trained model
+                                  is compatible with the segmenter in kraken
+                                  even if the original image files either do
+                                  not contain anything but transcriptions and
+                                  baseline information or the polygon data was
+                                  created using a different method. Will be
+                                  ignored in `path` mode. Note that this
+                                  option will be slow and will not scale input
+                                  images to the same size as the segmenter
+                                  does.  [default: no-repolygonize]
+  --force-binarization / --no-binarization
+                                  Forces input images to be binary, otherwise
+                                  the appropriate color format will be auto-
+                                  determined through the network
+                                  specification. Will be ignored in `path`
+                                  mode.  [default: no-binarization]
+  -f, --format-type [path|xml|alto|page|binary]
+                                  Sets the training data format. In ALTO and
+                                  PageXML mode all data is extracted from xml
+                                  files containing both line definitions and a
+                                  link to source images. In `path` mode
+                                  arguments are image files sharing a prefix
+                                  up to the last extension with `.gt.txt` text
+                                  files containing the transcription. In
+                                  binary mode files are datasets files
+                                  containing pre-extracted text lines.
+  --augment / --no-augment        Enable image augmentation  [default: no-
+                                  augment]
+  --logger [tensorboard]          Logger used by PyTorch Lightning to track
+                                  metrics such as loss and accuracy.
+  --log-dir PATH                  Path to directory where the logger will
+                                  store the logs. If not set, a directory will
+                                  be created in the current working directory.
+  --help                          Show this message and exit.
