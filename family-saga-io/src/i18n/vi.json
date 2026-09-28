@@ -234,7 +234,11 @@
     "errBackendUnavailable": "Không gọi được backend. Hãy kiểm tra API đang chạy tại http://localhost:8000.",
     "errDocxParse": "Không thể đọc tệp Word này. Hãy thử tệp .docx khác hoặc chuyển sang ảnh scan.",
     "errDocOld": "Tệp .doc cũ chưa được trích xuất trực tiếp trên trình duyệt. Hãy chuyển sang .docx để đọc nội dung.",
-    "errUnsupported": "Định dạng chưa được hỗ trợ. Hãy dùng tệp Word .docx hoặc ảnh scan."
+    "errUnsupported": "Định dạng chưa được hỗ trợ. Hãy dùng tệp Word .docx hoặc ảnh scan.",
+    "msgPdfSuccess": "Đã nhận PDF — bấm \"Phân tích\" để OCR và trích xuất.",
+    "modePdf": "PDF (OCR)",
+    "pdfPreviewHint": "Chưa xem trước được PDF trong trình duyệt — bấm \"Phân tích\" để OCR trực tiếp.",
+    "msgAnalyzePagesTruncated": "Phân tích xong {{count}} người (chỉ OCR {{pages}} trang đầu — tài liệu dài hơn nên dùng trang Admin)."
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",

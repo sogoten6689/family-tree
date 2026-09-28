@@ -234,7 +234,11 @@
     "errBackendUnavailable": "Cannot reach backend API. Ensure server is running at http://localhost:8000.",
     "errDocxParse": "Could not read this Word file. Try a different .docx or switch to a scanned image.",
     "errDocOld": "Old .doc files cannot be extracted directly in the browser. Convert to .docx to read.",
-    "errUnsupported": "Format not supported. Please use a .docx Word file or a scanned image."
+    "errUnsupported": "Format not supported. Please use a .docx Word file or a scanned image.",
+    "msgPdfSuccess": "PDF received — click \"Analyze\" to OCR and extract.",
+    "modePdf": "PDF (OCR)",
+    "pdfPreviewHint": "PDF preview isn't supported in the browser yet — click \"Analyze\" to OCR it directly.",
+    "msgAnalyzePagesTruncated": "Analyzed {{count}} people (only OCR'd the first {{pages}} pages — use the Admin page for longer documents)."
   },
   "notFound": {
     "subtitle": "Page not found",
@@ -424,10 +428,9 @@
     "step1": "Register at /register (default role: user).",
     "step2": "Upload a family document (Word, txt, or scanned image).",
     "step3": "Extract relationships and save as a family tree.",
-    "step4": "View the tree, export, or (admin) manage the system.",
+    "step4": "Admins manage the system at /admin/gia-pha and /admin/users.",
     "appendixHint": "Technical appendix — for admins / developers.",
     "appendixPages": "Route & access table",
-    "step4": "Admins manage the system at /admin/gia-pha and /admin/users.",
     "flowIntro": "Six-step workflow: materials → OCR → extract → normalize → visualize → export. Complete demo in 5–7 actions.",
     "demoTitle": "Thesis demo (5–7 clicks)",
     "demo1": "Sign in → /user/dashboard to track workflow progress.",

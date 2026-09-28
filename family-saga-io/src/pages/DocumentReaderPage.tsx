@@ -36,7 +36,7 @@ import {
 } from "@/lib/userWorkspaceApi";
 import { Textarea } from "@/components/ui/textarea";
 
-type PreviewType = "image" | "docx" | "text" | "unsupported" | null;
+type PreviewType = "image" | "pdf" | "docx" | "text" | "unsupported" | null;
 
 type MammothModule = typeof import("mammoth/mammoth.browser");
 type DetectedLanguageCode = "vi" | "en" | "unknown";
@@ -46,6 +46,9 @@ type FamilyAnalyzeResponse = {
   request_id?: string | null;
   balkan_nodes: BalkanNode[];
   gemini_error: string | null;
+  ocr_text?: string | null;
+  pages_processed?: number;
+  pages_truncated?: boolean;
 };
 
 type LanguageDetection = {
@@ -429,6 +432,14 @@ const DocumentReaderPage = ({
       return;
     }
 
+    if (file.type === "application/pdf" || /\.pdf$/i.test(lowerName)) {
+      setPreviewType("pdf");
+      setLanguageDetection(detectLanguageFromFilename(file.name));
+      setStatusMessage(t("docReader.msgPdfSuccess", { defaultValue: "Đã nhận PDF — bấm \"Phân tích\" để OCR và trích xuất." }));
+      await registerScan(file);
+      return;
+    }
+
     if (/\.txt$/i.test(lowerName)) {
       setPreviewType("text");
       setIsParsing(true);
@@ -501,10 +512,18 @@ const DocumentReaderPage = ({
   };
 
   const handleAnalyzeFamilyTree = async () => {
-    if (
-      (previewType !== "docx" && previewType !== "text") ||
-      !documentText.trim()
-    ) {
+    const isTextLike = previewType === "docx" || previewType === "text";
+    const isImageLike = previewType === "image" || previewType === "pdf";
+
+    if (isTextLike && !documentText.trim()) {
+      setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
+      return;
+    }
+    if (isImageLike && !activeFile) {
+      setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
+      return;
+    }
+    if (!isTextLike && !isImageLike) {
       setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
       return;
     }
@@ -514,27 +533,50 @@ const DocumentReaderPage = ({
 
     try {
       const token = getStoredAccessToken();
-      const response = await fetch(
-        `${backendBaseUrl}/api/family-tree/analyze`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-          body: JSON.stringify({
-            text: documentText,
-            source: "document-reader",
-            metadata: {
-              fileName: activeFile?.name,
-              language: languageDetection?.code ?? "unknown",
+      let response: Response;
+
+      if (isImageLike && activeFile) {
+        // Ảnh/PDF: gửi multipart, backend tự OCR (Kim Hán Nôm) rồi phân tích —
+        // xem POST /api/family-tree/analyze-image trong nlp_family_extractor/api.py.
+        const formData = new FormData();
+        formData.append("file", activeFile);
+        response = await fetch(
+          `${backendBaseUrl}/api/family-tree/analyze-image`,
+          {
+            method: "POST",
+            headers: {
+              ...(token ? { Authorization: `Bearer ${token}` } : {}),
             },
-          }),
-        },
-      );
+            body: formData,
+          },
+        );
+      } else {
+        response = await fetch(
+          `${backendBaseUrl}/api/family-tree/analyze`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            },
+            body: JSON.stringify({
+              text: documentText,
+              source: "document-reader",
+              metadata: {
+                fileName: activeFile?.name,
+                language: languageDetection?.code ?? "unknown",
+              },
+            }),
+          },
+        );
+      }
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const errorBody = await response.json().catch(() => null);
+        throw new Error(
+          (errorBody && typeof errorBody.detail === "string" && errorBody.detail) ||
+            `HTTP ${response.status}`,
+        );
       }
 
       const raw = (await response.json()) as Partial<FamilyAnalyzeResponse>;
@@ -542,6 +584,9 @@ const DocumentReaderPage = ({
         request_id: raw.request_id ?? null,
         balkan_nodes: Array.isArray(raw.balkan_nodes) ? raw.balkan_nodes : [],
         gemini_error: raw.gemini_error ?? null,
+        ocr_text: raw.ocr_text ?? null,
+        pages_processed: raw.pages_processed,
+        pages_truncated: raw.pages_truncated,
       };
       setAnalysisResult(payload);
       setIsResultModalOpen(true);
@@ -550,19 +595,30 @@ const DocumentReaderPage = ({
         await updateUserDocument(currentScanId, {
           request_id: payload.request_id ?? undefined,
           tree_status: "draft",
-          ocr_status: "skipped",
-          source_text: documentText,
+          ocr_status: isImageLike ? "completed" : "skipped",
+          source_text: isImageLike ? payload.ocr_text ?? undefined : documentText,
         });
       }
       fetchHistory();
       setStatusMessage(
-        t("docReader.msgAnalyzeSuccess", {
-          count: payload.balkan_nodes.length,
-        }),
+        payload.pages_truncated
+          ? t("docReader.msgAnalyzePagesTruncated", {
+              count: payload.balkan_nodes.length,
+              pages: payload.pages_processed,
+              defaultValue:
+                "Phân tích xong {{count}} người (chỉ OCR {{pages}} trang đầu — tài liệu dài hơn nên dùng trang Admin).",
+            })
+          : t("docReader.msgAnalyzeSuccess", {
+              count: payload.balkan_nodes.length,
+            }),
       );
       setIsResultModalOpen(true);
     } catch (error) {
-      setAnalysisError(t("docReader.errBackendUnavailable"));
+      setAnalysisError(
+        error instanceof Error && error.message
+          ? error.message
+          : t("docReader.errBackendUnavailable"),
+      );
     } finally {
       setIsAnalyzing(false);
     }
@@ -638,8 +694,10 @@ const DocumentReaderPage = ({
                     size="large"
                     loading={isAnalyzing}
                     disabled={
-                      (previewType !== "docx" && previewType !== "text") ||
-                      !documentText.trim()
+                      previewType === "image" || previewType === "pdf"
+                        ? !activeFile
+                        : (previewType !== "docx" && previewType !== "text") ||
+                          !documentText.trim()
                     }
                     onClick={handleAnalyzeFamilyTree}
                   >
@@ -741,7 +799,7 @@ const DocumentReaderPage = ({
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept=".txt,text/plain,.doc,.docx,image/png,image/jpeg,image/webp"
+                  accept=".txt,text/plain,.doc,.docx,image/png,image/jpeg,image/webp,.pdf,application/pdf"
                   className="hidden"
                   onChange={async (event) => {
                     if (event.target.files) {
@@ -1032,6 +1090,17 @@ const DocumentReaderPage = ({
                               {documentText}
                             </article>
                           </div>
+                        ) : previewType === "pdf" && activeFile ? (
+                          <div className="h-[520px] flex flex-col items-center justify-center gap-3 bg-muted text-center px-6">
+                            <FileTextOutlined style={{ fontSize: 48 }} className="!text-primary" />
+                            <p className="font-medium mb-0">{activeFile.name}</p>
+                            <p className="text-sm text-muted-foreground mb-0">
+                              {t("docReader.pdfPreviewHint", {
+                                defaultValue:
+                                  "Chưa xem trước được PDF trong trình duyệt — bấm \"Phân tích\" để OCR trực tiếp.",
+                              })}
+                            </p>
+                          </div>
                         ) : (
                           <div className="h-[520px] flex items-center justify-center bg-muted">
                             <Empty description={t("docReader.noPreview")} />
@@ -1073,11 +1142,13 @@ const DocumentReaderPage = ({
                           >
                             {previewType === "image"
                               ? t("docReader.modeImage")
-                              : previewType === "docx"
-                                ? t("docReader.modeDocx")
-                                : previewType === "text"
-                                  ? t("docReader.modeText")
-                                  : t("docReader.modeUnsupported")}
+                              : previewType === "pdf"
+                                ? t("docReader.modePdf", { defaultValue: "PDF (OCR)" })
+                                : previewType === "docx"
+                                  ? t("docReader.modeDocx")
+                                  : previewType === "text"
+                                    ? t("docReader.modeText")
+                                    : t("docReader.modeUnsupported")}
                           </Descriptions.Item>
                           <Descriptions.Item
                             label={t("docReader.fileInfoLanguage")}
