@@ -1,0 +1,71 @@
+// Jenkins job: family-tree-backup-weekly
+// Chạy hàng tuần trên cicd.kimtudien.com.vn, SSH vào VPS production
+// (giapha.kimtudien.com.vn) và chạy infra/scripts/backup.sh tại đó.
+//
+// Backup CHỈ nằm lại trên VPS (~/backups/family-tree/) — không tự động
+// tải đi máy khác (theo yêu cầu 2026-09). Muốn tải về máy khác thì
+// scp/rsync thủ công từ VPS.
+//
+// Thiết lập job trong Jenkins UI (một lần, xem thêm infra/jenkins/README.md):
+//   - New Item -> Pipeline -> Pipeline script from SCM -> trỏ repo này,
+//     "Script Path": infra/jenkins/Jenkinsfile.backup
+//   - Build Triggers: KHÔNG cần tick "Poll SCM" — trigger đã khai báo
+//     ngay trong file này (cron). Nếu Jenkins của bạn không tự đọc
+//     `triggers{}` từ Pipeline-from-SCM ở lần chạy đầu, chạy tay 1 lần
+//     rồi lần sau cron sẽ tự áp dụng (giới hạn đã biết của Jenkins).
+//   - Credentials cần tạo trước trong Jenkins (Manage Jenkins -> Credentials):
+//       vps-ssh-key   (SSH Username with private key, username = user SSH VPS)
+
+pipeline {
+    agent any
+
+    triggers {
+        // Mỗi Chủ nhật ~02:00 (giờ server Jenkins). Đổi giờ nếu server ở
+        // múi giờ khác VN.
+        cron('H 2 * * 0')
+    }
+
+    options {
+        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
+        disableConcurrentBuilds()
+    }
+
+    parameters {
+        string(
+            name: 'VPS_HOST',
+            defaultValue: 'giapha.kimtudien.com.vn',
+            description: 'Host/IP của VPS production.'
+        )
+        string(
+            name: 'VPS_USER',
+            defaultValue: 'deploy',
+            description: 'User SSH trên VPS (đổi cho khớp user thật của bạn).'
+        )
+        string(
+            name: 'VPS_PROJECT_DIR',
+            defaultValue: '~/projects/family-tree',
+            description: 'Thư mục repo trên VPS (khớp .github/workflows/deploy.yml).'
+        )
+    }
+
+    stages {
+        stage('Backup MySQL + MinIO trên VPS') {
+            steps {
+                sshagent(credentials: ['vps-ssh-key']) {
+                    sh '''
+                        set -euo pipefail
+                        ssh -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
+                            "cd ${VPS_PROJECT_DIR} && ./infra/scripts/backup.sh"
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Backup thất bại — kiểm tra log ở trên (thường do MYSQL_ROOT_PASSWORD thiếu trong .env VPS, hoặc docker volume minio_data đổi tên).'
+        }
+    }
+}

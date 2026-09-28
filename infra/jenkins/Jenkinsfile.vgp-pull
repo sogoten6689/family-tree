@@ -1,0 +1,81 @@
+// Jenkins job: family-tree-vgp-pull-weekly
+// Chạy hàng tuần trên cicd.kimtudien.com.vn — SSH vào VPS production, gọi
+// infra/scripts/vgp_pull_sync.sh (chạy tại đó, gọi thẳng localhost:8002)
+// để tìm + đồng bộ cây gia phả MỚI trên VietnamGiaPha vào DB production.
+//
+// KHÔNG viết lại logic crawl — chỉ tái dùng endpoint có sẵn
+// POST /api/vietnamgiapha/crawl-sync (đã tự skip cây trùng/không đổi nhờ
+// skip_unchanged=true, xem docs/methods/CRAWL_PLAN.md Phần A).
+//
+// Thiết lập job trong Jenkins UI (một lần, xem infra/jenkins/README.md):
+//   - New Item -> Pipeline -> Pipeline script from SCM -> trỏ repo này,
+//     "Script Path": infra/jenkins/Jenkinsfile.vgp-pull
+//   - Credentials cần tạo trước (Manage Jenkins -> Credentials):
+//       vps-ssh-key           (SSH Username with private key — dùng chung với job backup)
+//       vgp-admin-password    (Secret text — mật khẩu tài khoản admin production,
+//                              KHÔNG phải mật khẩu dev mặc định Admin@123456)
+
+pipeline {
+    agent any
+
+    triggers {
+        // Sau job backup ~1 giờ để không tranh tải MySQL/CPU cùng lúc.
+        cron('H 3 * * 0')
+    }
+
+    options {
+        timestamps()
+        timeout(time: 60, unit: 'MINUTES')
+        disableConcurrentBuilds()
+    }
+
+    parameters {
+        string(
+            name: 'VPS_HOST',
+            defaultValue: 'giapha.kimtudien.com.vn',
+            description: 'Host/IP của VPS production.'
+        )
+        string(
+            name: 'VPS_USER',
+            defaultValue: 'deploy',
+            description: 'User SSH trên VPS.'
+        )
+        string(
+            name: 'VPS_PROJECT_DIR',
+            defaultValue: '~/projects/family-tree',
+            description: 'Thư mục repo trên VPS.'
+        )
+        string(
+            name: 'VGP_START_ID',
+            defaultValue: '1',
+            description: 'tree_id bắt đầu quét trên VietnamGiaPha.'
+        )
+        string(
+            name: 'VGP_END_ID',
+            defaultValue: '3000',
+            description: 'tree_id kết thúc — rộng hơn ~2.152 cây đã biết để bắt cây mới; skip_unchanged làm việc quét rộng vẫn rẻ.'
+        )
+    }
+
+    stages {
+        stage('Pull + sync VGP mới trên VPS') {
+            steps {
+                sshagent(credentials: ['vps-ssh-key']) {
+                    withCredentials([string(credentialsId: 'vgp-admin-password', variable: 'ADMIN_PASSWORD')]) {
+                        sh '''
+                            set -euo pipefail
+                            ssh -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
+                                "cd ${VPS_PROJECT_DIR} && ADMIN_PASSWORD='${ADMIN_PASSWORD}' VGP_START_ID=${VGP_START_ID} VGP_END_ID=${VGP_END_ID} ./infra/scripts/vgp_pull_sync.sh"
+                        '''
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pull VGP thất bại hoặc có lỗi crawl/sync — xem log ở trên (in ra crawl_errors/sync_errors/error_details từ vgp_pull_sync.sh).'
+        }
+    }
+}
