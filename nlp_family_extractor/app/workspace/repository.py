@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -40,6 +40,7 @@ class UserScanRepository:
         source_text: Optional[str] = None,
         hannom_text: Optional[str] = None,
         transliteration_text: Optional[str] = None,
+        ocr_vote_meta: Optional[List[dict[str, Any]]] = None,
     ) -> UserScan:
         scan = UserScan(
             user_id=user_id,
@@ -50,6 +51,7 @@ class UserScanRepository:
             source_text=source_text,
             hannom_text=hannom_text,
             transliteration_text=transliteration_text,
+            ocr_vote_meta=ocr_vote_meta,
             uploaded_at=datetime.now(timezone.utc),
         )
         self._db.add(scan)
@@ -70,6 +72,7 @@ class UserScanRepository:
         source_file_key: Optional[str] = None,
         hannom_text: Optional[str] = None,
         transliteration_text: Optional[str] = None,
+        ocr_vote_meta: Optional[List[dict[str, Any]]] = None,
     ) -> UserScan:
         if title is not None:
             scan.title = title.strip()
@@ -89,6 +92,8 @@ class UserScanRepository:
             scan.hannom_text = hannom_text
         if transliteration_text is not None:
             scan.transliteration_text = transliteration_text
+        if ocr_vote_meta is not None:
+            scan.ocr_vote_meta = ocr_vote_meta
         self._db.add(scan)
         self._db.commit()
         self._db.refresh(scan)

@@ -5,11 +5,16 @@ thật — xem `research/hannom-bilingual-dataset/scripts/_repo_paths.py` cho qu
 `FamilyTree`, MySQL) — thay cho việc 2 hệ thống này đang hoàn toàn tách biệt.
 
 Mỗi record trở thành 1 UserScan (title/text đã OCR+dịch sẵn, ocr_status=
-completed) thuộc về 1 tài khoản cố định (--owner-email). Nếu trích xuất được
-quan hệ nhân vật (cần GOOGLE_API_KEY — lưu qua Admin › Developer › Cấu hình,
-hoặc biến môi trường, xem app/config.py:get_google_api_key), tạo thêm 1
-FamilyTree công khai (is_public=True, xuất hiện ở "Gia phả mẫu"/`/gia-pha`)
-và gắn family_tree_id + tree_status=created vào scan. KHÔNG có
+completed) thuộc về 1 tài khoản cố định (--owner-email) — lưu đủ 3 lớp:
+`source_text` (dịch nghĩa Quốc ngữ, dùng để trích xuất quan hệ), `hannom_text`
+(OCR Hán-Nôm đã vote, L1), `transliteration_text` (phiên âm Hán-Việt, L2), và
+`ocr_vote_meta` (JSON: vote_method/engines/uncertain_rate/uncertain_spans/
+structural_diffs theo từng trang — bằng chứng "đồng thuận đến đâu, chỗ nào
+chưa chắc" từ scripts/vote_ocr.py, không chỉ giữ mỗi kết quả cuối). Nếu trích
+xuất được quan hệ nhân vật (cần GOOGLE_API_KEY — lưu qua Admin › Developer ›
+Cấu hình, hoặc biến môi trường, xem app/config.py:get_google_api_key), tạo
+thêm 1 FamilyTree công khai (is_public=True, xuất hiện ở "Gia phả mẫu"/
+`/gia-pha`) và gắn family_tree_id + tree_status=created vào scan. KHÔNG có
 GOOGLE_API_KEY: vẫn import scan/text (trung thực, không giả vờ có cây) —
 tree_status giữ NONE, in rõ lý do.
 
@@ -129,6 +134,31 @@ def _transliteration_text(record: Dict[str, Any]) -> Optional[str]:
     return _join_pages(record, lambda page: page.get("l2_phien_am"))
 
 
+def _vote_meta(record: Dict[str, Any]) -> Optional[List[Dict[str, Any]]]:
+    """Metadata vote OCR theo trang — vote_method/engines/uncertain_rate/
+    uncertain_spans/structural_diffs từ scripts/vote_ocr.py, KHÔNG kèm
+    voted_text (đã lưu riêng ở hannom_text). Giữ lại để soát lỗi/QA: biết
+    được đoạn nào các engine OCR bất đồng thay vì chỉ thấy kết quả cuối."""
+    pages = record.get("pages") or []
+    meta: List[Dict[str, Any]] = []
+    for page in pages:
+        l1 = page.get("l1_ocr")
+        if not isinstance(l1, dict):
+            continue
+        entry = {
+            "page_id": page.get("page_id"),
+            "vote_method": l1.get("vote_method"),
+            "engines": l1.get("engines"),
+            "uncertain_rate": l1.get("uncertain_rate"),
+            "uncertain_spans": l1.get("uncertain_spans"),
+            "structural_diffs": l1.get("structural_diffs"),
+        }
+        # Chỉ giữ trang có ít nhất 1 field thật (đừng nhét toàn None vào JSON).
+        if any(v not in (None, [], {}) for k, v in entry.items() if k != "page_id"):
+            meta.append(entry)
+    return meta or None
+
+
 def _title(record: Dict[str, Any]) -> str:
     return (
         record.get("ten_han_viet")
@@ -201,21 +231,29 @@ def main() -> int:
 
             existing_scan = existing_by_request_id.get(request_id)
             if existing_scan is not None:
-                # Đã import trước — không tạo trùng, nhưng backfill hannom_text/
-                # transliteration_text nếu lần import trước chưa có 2 cột này
-                # (vd chạy bằng script bản cũ, trước khi thêm 2 field).
-                if not existing_scan.hannom_text and not existing_scan.transliteration_text:
+                # Đã import trước — không tạo trùng, nhưng backfill từng field
+                # còn thiếu độc lập (vd chạy bằng script bản cũ trước khi có
+                # hannom_text/transliteration_text, hoặc trước khi có
+                # ocr_vote_meta — không phải all-or-nothing, kẻo 1 field mới
+                # thêm sau bị bỏ sót cho record đã backfill field khác rồi).
+                backfill_kwargs: Dict[str, Any] = {}
+                if not existing_scan.hannom_text:
                     hannom = _hannom_text(record)
+                    if hannom:
+                        backfill_kwargs["hannom_text"] = hannom
+                if not existing_scan.transliteration_text:
                     translit = _transliteration_text(record)
-                    if (hannom or translit) and not args.dry_run:
-                        scans.update(
-                            existing_scan,
-                            hannom_text=hannom,
-                            transliteration_text=translit,
-                        )
-                        print(f"[BACKFILL] {doc_id} -> scan#{existing_scan.id} (hannom/phiên âm)")
-                        backfilled += 1
-                        continue
+                    if translit:
+                        backfill_kwargs["transliteration_text"] = translit
+                if not existing_scan.ocr_vote_meta:
+                    vote_meta = _vote_meta(record)
+                    if vote_meta:
+                        backfill_kwargs["ocr_vote_meta"] = vote_meta
+                if backfill_kwargs and not args.dry_run:
+                    scans.update(existing_scan, **backfill_kwargs)
+                    print(f"[BACKFILL] {doc_id} -> scan#{existing_scan.id} ({', '.join(backfill_kwargs)})")
+                    backfilled += 1
+                    continue
                 print(f"[SKIP đã import] {doc_id}")
                 skipped_dup += 1
                 continue
@@ -241,6 +279,7 @@ def main() -> int:
                 source_text=text,
                 hannom_text=_hannom_text(record),
                 transliteration_text=_transliteration_text(record),
+                ocr_vote_meta=_vote_meta(record),
             )
             scans.update(scan, ocr_status=OcrStatus.COMPLETED, request_id=request_id)
 
@@ -268,7 +307,7 @@ def main() -> int:
             "\nTổng kết — "
             f"có cây: {imported_with_tree}, chỉ có text/scan (chưa có cây): {imported_text_only}, "
             f"bỏ qua (draft/chưa có text): {skipped_draft}, bỏ qua (đã import trước): {skipped_dup}, "
-            f"backfill hannom/phiên âm: {backfilled}, tổng record đọc được: {len(records)}"
+            f"backfill (hannom/phiên âm/vote): {backfilled}, tổng record đọc được: {len(records)}"
         )
     return 0
 

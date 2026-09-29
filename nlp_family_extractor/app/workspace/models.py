@@ -3,7 +3,9 @@ from __future__ import annotations
 import enum
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, Enum, ForeignKey, Integer, String
+from typing import Any
+
+from sqlalchemy import JSON, DateTime, Enum, ForeignKey, Integer, String
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -59,3 +61,10 @@ class UserScan(Base):
     # hiển thị được cả 3 lớp L1/L2/L3 trong giao diện đọc song song.
     hannom_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
     transliteration_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
+    # Metadata vote OCR theo trang (vote_method, engines, uncertain_rate,
+    # uncertain_spans, structural_diffs) — KHÔNG phải voted_text (đã có ở
+    # hannom_text); đây là bằng chứng "đồng thuận đến đâu, chỗ nào chưa chắc"
+    # từ scripts/vote_ocr.py, giữ lại để soát lỗi/QA thay vì chỉ giữ kết quả
+    # cuối cùng. List[dict] theo đúng thứ tự trang, xem
+    # tools/import_hannom_bilingual_corpus.py:_vote_meta.
+    ocr_vote_meta: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)
