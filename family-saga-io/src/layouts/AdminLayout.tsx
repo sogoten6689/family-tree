@@ -10,15 +10,13 @@ import {
   TeamOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Button, Card, Layout, Menu, Space, Typography } from "antd";
+import { Button, Card, Typography } from "antd";
 import type { MenuProps } from "antd";
 import { useEffect, useMemo, useState } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "next-themes";
 
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import ThemeToggle from "@/components/ThemeToggle";
+import AppShell from "@/layouts/AppShell";
 import {
   DEVELOPER_NAV_ITEMS,
   getAdminMenuSelectedKey,
@@ -27,8 +25,6 @@ import {
 } from "@/config/developerRoutes";
 import { getPageTitleKey } from "@/config/pages";
 import { useAuth } from "@/contexts/AuthContext";
-
-const { Header, Sider, Content } = Layout;
 
 const DEVELOPER_ICON_MAP: Record<string, React.ReactNode> = {
   "developer-hannom": <CodeOutlined />,
@@ -43,8 +39,6 @@ const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout, isAdmin } = useAuth();
-  const { resolvedTheme, systemTheme } = useTheme();
-  const isDark = (resolvedTheme ?? systemTheme) === "dark";
   const [menuOpenKeys, setMenuOpenKeys] = useState<string[]>([]);
 
   useEffect(() => {
@@ -109,8 +103,6 @@ const AdminLayout = () => {
     return items;
   }, [t, isAdmin, developerChildren]);
 
-  const openKeys = menuOpenKeys;
-
   const breadcrumbItems = useMemo(() => {
     const items: { title: React.ReactNode }[] = [
       { title: <Link to="/">{t("common.backHome", { defaultValue: "Trang chủ" })}</Link> },
@@ -158,29 +150,16 @@ const AdminLayout = () => {
   };
 
   return (
-    <Layout className="min-h-screen">
-      <Sider width={250} breakpoint="lg" theme={isDark ? "dark" : "light"} className="border-r border-border !bg-[hsl(var(--sidebar-background))]">
-        <div className="px-5 py-6">
-          <Typography.Title level={5} className="!mb-1">
-            {t("admin.panelTitle", { defaultValue: "Admin" })}
-          </Typography.Title>
-          <Typography.Text type="secondary" className="text-xs">
-            {t("admin.panelSubtitle", { defaultValue: "Quản trị hệ thống" })}
-          </Typography.Text>
-        </div>
-
-        <Menu
-          mode="inline"
-          theme={isDark ? "dark" : "light"}
-          selectedKeys={[selectedKey]}
-          openKeys={openKeys}
-          onOpenChange={setMenuOpenKeys}
-          items={menuItems}
-          className="!border-none !bg-transparent"
-          onClick={handleMenuClick}
-        />
-
-        <div className="px-4 absolute bottom-4 left-0 right-0 space-y-2">
+    <AppShell
+      panelTitle={t("admin.panelTitle", { defaultValue: "Admin" })}
+      panelSubtitle={t("admin.panelSubtitle", { defaultValue: "Quản trị hệ thống" })}
+      menuItems={menuItems}
+      selectedKeys={[selectedKey]}
+      openKeys={menuOpenKeys}
+      onOpenChange={setMenuOpenKeys}
+      onMenuClick={handleMenuClick}
+      accountSlot={
+        <>
           <Card size="small" className="!bg-primary !text-primary-foreground !border-none">
             <Typography.Text className="!text-primary-foreground text-xs block mb-2">
               {t("guide.needHelp", { defaultValue: "Cần hỗ trợ?" })}
@@ -192,34 +171,21 @@ const AdminLayout = () => {
           <Button block icon={<HomeOutlined />} onClick={() => navigate("/")}>
             {t("common.backHome", { defaultValue: "Trang chủ" })}
           </Button>
-        </div>
-      </Sider>
-
-      <Layout>
-        <Header className="!px-6 flex items-center justify-between border-b border-border !bg-card" style={{ height: 64 }}>
-          <div>
-            <Breadcrumb items={breadcrumbItems} />
-            <Typography.Title level={4} className="!mb-0 !mt-1">
-              {pageTitle}
-            </Typography.Title>
-          </div>
-          <Space wrap>
-            <Typography.Text type="secondary">
-              {user?.full_name} · {user?.role}
-            </Typography.Text>
-            <LanguageSwitcher />
-            <ThemeToggle />
-            <Button icon={<LogoutOutlined />} onClick={logout}>
-              {t("auth.logout", { defaultValue: "Đăng xuất" })}
-            </Button>
-          </Space>
-        </Header>
-
-        <Content className="p-6 min-h-[calc(100vh-64px)]">
-          <Outlet />
-        </Content>
-      </Layout>
-    </Layout>
+        </>
+      }
+      headerExtra={
+        <>
+          <Typography.Text type="secondary">
+            {user?.full_name} · {user?.role}
+          </Typography.Text>
+          <Button icon={<LogoutOutlined />} onClick={logout}>
+            {t("auth.logout", { defaultValue: "Đăng xuất" })}
+          </Button>
+        </>
+      }
+      breadcrumbItems={breadcrumbItems}
+      pageTitle={pageTitle}
+    />
   );
 };
 

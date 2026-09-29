@@ -3,6 +3,7 @@ import {
   ArrowLeftOutlined,
   CopyOutlined,
   DeleteOutlined,
+  EditOutlined,
   EyeOutlined,
   FileImageOutlined,
   FileTextOutlined,
@@ -10,6 +11,7 @@ import {
   InboxOutlined,
   PictureOutlined,
   ReloadOutlined,
+  SnippetsOutlined,
   SwapOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
@@ -17,6 +19,7 @@ import {
   Alert,
   Button,
   Card,
+  Checkbox,
   Descriptions,
   Empty,
   Modal,
@@ -214,6 +217,12 @@ const DocumentReaderPage = ({
   const [langType, setLangType] = useState<HannomLangType>(0);
   /** Chỉ đổi vị trí hiển thị hai cột, không dịch ngược Quốc ngữ → Hán-Nôm. */
   const [columnsSwapped, setColumnsSwapped] = useState(false);
+  /** Bật thì cột Hán-Nôm chuyển từ chỉ đọc (kết quả OCR) sang ô nhập tay —
+   * chỉ ảnh hưởng hiển thị cục bộ, hannomText không được gửi lên backend
+   * phân tích (handleAnalyzeFamilyTree chỉ dùng documentText). */
+  const [isHannomEditable, setIsHannomEditable] = useState(false);
+  const [hannomText, setHannomText] = useState("");
+  const [showSourceImage, setShowSourceImage] = useState(false);
 
   const [isDragging, setIsDragging] = useState(false);
   const [isParsing, setIsParsing] = useState(false);
@@ -535,6 +544,28 @@ const DocumentReaderPage = ({
     }
   };
 
+  /** Dán vào ô đang chỉnh sửa — Hán-Nôm nếu đang bật "Gõ Hán-Nôm", ngược lại
+   * Quốc Ngữ (ô còn lại luôn có thể chỉnh sửa). */
+  const handlePasteActiveColumn = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (isHannomEditable) {
+        setHannomText((prev) => prev + text);
+      } else {
+        setDocumentText((prev) => prev + text);
+      }
+    } catch {
+      toast.error(t("docReader.pasteFailed"));
+    }
+  };
+
+  const handleToggleHannomEditable = (nextValue: boolean) => {
+    if (nextValue && !hannomText) {
+      setHannomText(analysisResult?.hannom_text ?? "");
+    }
+    setIsHannomEditable(nextValue);
+  };
+
   const handleSelectedFiles = async (files: FileList | File[]) => {
     const firstFile = Array.from(files)[0];
     if (!firstFile) {
@@ -692,6 +723,23 @@ const DocumentReaderPage = ({
 
   const mainContent = (
     <div className={embedded ? "space-y-6" : "px-4 md:px-6 py-8"}>
+      {embedded && (
+        <section className="brand-gradient px-4 md:px-6 py-5 rounded-2xl">
+          <div className="mx-auto flex flex-wrap items-center justify-between gap-4 text-primary-foreground">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/80">
+                {t("docReader.bannerLabel")}
+              </p>
+              <h2 className="text-3xl font-display font-bold mt-2">
+                {t("docReader.bannerTitle")}
+              </h2>
+            </div>
+            <div className="max-w-xl text-sm text-primary-foreground/90 leading-6">
+              {t("docReader.bannerDesc")}
+            </div>
+          </div>
+        </section>
+      )}
       {embedded && currentScanId != null && (
         <ServerSavedAlert />
       )}
@@ -1171,7 +1219,18 @@ const DocumentReaderPage = ({
               </Card>
             )}
 
-            <div className="mb-4 flex flex-wrap items-center gap-2">
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <Tooltip title={t("docReader.docTypeHint")}>
+                <Select
+                  value="auto"
+                  disabled
+                  aria-label={t("docReader.docTypeLabel")}
+                  className="min-w-[140px]"
+                  options={[
+                    { value: "auto", label: `${t("docReader.docTypeLabel")}: ${t("docReader.docTypeAuto")}` },
+                  ]}
+                />
+              </Tooltip>
               <Select<HannomLangType>
                 value={langType}
                 onChange={setLangType}
@@ -1183,6 +1242,8 @@ const DocumentReaderPage = ({
                   { value: 2, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeNom")}` },
                 ]}
               />
+            </div>
+            <div className="mb-4 flex flex-wrap items-center gap-2">
               <Button icon={<ReloadOutlined />} onClick={resetPreview}>
                 {t("docReader.btnReset")}
               </Button>
@@ -1258,7 +1319,14 @@ const DocumentReaderPage = ({
                           const ocrDone =
                             isImageLike && analysisResult?.ocr_text != null;
 
-                          const hannomBody = ocrDone ? (
+                          const hannomBody = isHannomEditable ? (
+                            <Textarea
+                              value={hannomText}
+                              onChange={(event) => setHannomText(event.target.value)}
+                              placeholder={t("docReader.hannomEditPlaceholder")}
+                              className="h-full w-full resize-none rounded-none border-0 bg-muted px-5 py-4 text-2xl leading-[2.4rem] focus-visible:ring-0 focus-visible:ring-offset-0"
+                            />
+                          ) : ocrDone ? (
                             analysisResult?.hannom_text ? (
                               <div className="h-full overflow-auto bg-muted px-5 py-4 whitespace-pre-wrap text-2xl leading-[2.4rem] text-foreground">
                                 {analysisResult.hannom_text}
@@ -1298,12 +1366,26 @@ const DocumentReaderPage = ({
                             </div>
                           );
 
+                          const showSourceImagePreview =
+                            showSourceImage && previewType === "image" && !!imageUrl;
+
                           const hannomColumn = (
                             <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border">
                               <div className="border-b border-border bg-background px-4 py-2 text-center text-sm font-semibold tracking-widest text-foreground">
                                 {t("docReader.columnHannom")}
                               </div>
-                              <div className="h-[560px]">{hannomBody}</div>
+                              <div className="flex h-[560px] flex-col">
+                                {showSourceImagePreview && (
+                                  <div className="h-[180px] shrink-0 overflow-auto border-b border-border bg-muted p-2">
+                                    <img
+                                      src={imageUrl}
+                                      alt={activeFile.name}
+                                      className="mx-auto max-h-full rounded-lg shadow"
+                                    />
+                                  </div>
+                                )}
+                                <div className="min-h-0 flex-1">{hannomBody}</div>
+                              </div>
                             </div>
                           );
 
@@ -1346,21 +1428,58 @@ const DocumentReaderPage = ({
                                 </div>
                                 {columnsSwapped ? hannomColumn : quocNguColumn}
                               </div>
-                              <div className="mt-3 flex items-center justify-between gap-3">
-                                <Typography.Text type="secondary" className="text-sm">
-                                  {t("docReader.charCount", {
-                                    count: documentText.length,
-                                  })}
-                                </Typography.Text>
-                                <Tooltip title={t("docReader.btnCopy")}>
-                                  <Button
-                                    type="text"
-                                    icon={<CopyOutlined />}
-                                    aria-label={t("docReader.btnCopy")}
-                                    disabled={!documentText}
-                                    onClick={handleCopyQuocNgu}
-                                  />
-                                </Tooltip>
+                              <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+                                <div className="flex flex-wrap items-center gap-4">
+                                  <Checkbox
+                                    checked={isHannomEditable}
+                                    onChange={(event) =>
+                                      handleToggleHannomEditable(event.target.checked)
+                                    }
+                                  >
+                                    {t("docReader.chkTypeHannom")}
+                                  </Checkbox>
+                                  <Checkbox
+                                    checked={showSourceImage}
+                                    onChange={(event) => setShowSourceImage(event.target.checked)}
+                                  >
+                                    {t("docReader.chkShowImageResult")}
+                                  </Checkbox>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Typography.Text type="secondary" className="text-sm mr-2">
+                                    {t("docReader.charCount", {
+                                      count: documentText.length,
+                                    })}
+                                  </Typography.Text>
+                                  <Tooltip title={t("docReader.btnPaste")}>
+                                    <Button
+                                      type="text"
+                                      icon={<SnippetsOutlined />}
+                                      aria-label={t("docReader.btnPaste")}
+                                      onClick={handlePasteActiveColumn}
+                                    />
+                                  </Tooltip>
+                                  <Tooltip title={t("docReader.btnEditHannom")}>
+                                    <Button
+                                      type="text"
+                                      icon={<EditOutlined />}
+                                      aria-label={t("docReader.btnEditHannom")}
+                                      disabled={!ocrDone && !isHannomEditable}
+                                      onClick={() =>
+                                        handleToggleHannomEditable(!isHannomEditable)
+                                      }
+                                    />
+                                  </Tooltip>
+                                  <Tooltip title={t("docReader.btnCopy")}>
+                                    <Button
+                                      type="text"
+                                      icon={<CopyOutlined />}
+                                      aria-label={t("docReader.btnCopy")}
+                                      disabled={!documentText}
+                                      onClick={handleCopyQuocNgu}
+                                    />
+                                  </Tooltip>
+                                </div>
                               </div>
                             </div>
                           );
