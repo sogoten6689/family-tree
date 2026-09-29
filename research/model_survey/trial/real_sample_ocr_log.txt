@@ -1,0 +1,11 @@
+Loading segmentation model from /tmp/claude-0/-home-user-family-tree/3842576e-30ae-58f6-89fa-3083c949683a/scratchpad/repo-hunt/CHAT_models/models/chat_seg.mlmodel ...
+Loading recognition model from /tmp/claude-0/-home-user-family-tree/3842576e-30ae-58f6-89fa-3083c949683a/scratchpad/repo-hunt/CHAT_models/models/chat_rec.mlmodel ...
+
+=== houcunxiansheng.png ===
+  segmentation: 12 lines found in 459.5s
+/tmp/claude-0/-home-user-family-tree/3842576e-30ae-58f6-89fa-3083c949683a/scratchpad/repo-hunt/venv/lib/python3.11/site-packages/kraken/rpred.py:339: UserWarning: Using legacy polygon extractor, as the model was not trained with the new method. Please retrain your model to get speed improvement.
+  warnings.warn('Using legacy polygon extractor, as the model was not trained with the new method. Please retrain your model to get speed improvement.')
+  line 01: 
+  line 02: 八
+  line 03: 八一一一一一
+  line 04: 八八川川八川人○川八川八人川人○川八八川

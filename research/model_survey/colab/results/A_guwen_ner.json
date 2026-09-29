@@ -1,0 +1,2845 @@
+{
+ "experiment": "A_guwen_ner_trad_vs_simp",
+ "timestamp_utc": "2026-09-28T09:28:55.324435Z",
+ "env": {
+  "python": "3.13.15",
+  "torch": "2.11.0+cu128",
+  "transformers": "4.46.3",
+  "opencc": "0.1.7",
+  "gpu": "Tesla T4"
+ },
+ "model": {
+  "id": "ethanyt/guwen-ner",
+  "revision": "591273ff61bb5eb453f47c300f577058d6d2ee15"
+ },
+ "source": {
+  "repo": "kanripo/KR2a0001",
+  "sha": "1c19dc6fa970b1c530fced9e8e3697d19163c26c"
+ },
+ "criteria": {
+  "support": "trad<=10% and simp>=50%",
+  "reject": "trad>=50%",
+  "metric": "micro lenient PER recall P1-P9"
+ },
+ "summary": {
+  "trad": {
+   "per_exact": [
+    0.85,
+    34,
+    40
+   ],
+   "per_lenient": [
+    0.95,
+    38,
+    40
+   ],
+   "per_multi_lenient": [
+    0.9333333333333333,
+    28,
+    30
+   ],
+   "title_lenient": [
+    0.6,
+    3,
+    5
+   ],
+   "unk_rate": [
+    0.1661631419939577,
+    55,
+    331
+   ],
+   "spurious_unk_per_pred": [
+    0.27956989247311825,
+    26,
+    93
+   ]
+  },
+  "simp": {
+   "per_exact": [
+    0.95,
+    38,
+    40
+   ],
+   "per_lenient": [
+    0.975,
+    39,
+    40
+   ],
+   "per_multi_lenient": [
+    1.0,
+    30,
+    30
+   ],
+   "title_lenient": [
+    0.8,
+    4,
+    5
+   ],
+   "unk_rate": [
+    0.0,
+    0,
+    331
+   ],
+   "spurious_unk_per_pred": [
+    0.0,
+    0,
+    78
+   ]
+  },
+  "trad_nopunct": {
+   "per_exact": [
+    0.775,
+    31,
+    40
+   ],
+   "per_lenient": [
+    0.9,
+    36,
+    40
+   ],
+   "per_multi_lenient": [
+    0.9,
+    27,
+    30
+   ],
+   "title_lenient": [
+    0.6,
+    3,
+    5
+   ],
+   "unk_rate": [
+    0.19927536231884058,
+    55,
+    276
+   ],
+   "spurious_unk_per_pred": [
+    0.2916666666666667,
+    28,
+    96
+   ]
+  },
+  "simp_nopunct": {
+   "per_exact": [
+    0.925,
+    37,
+    40
+   ],
+   "per_lenient": [
+    1.0,
+    40,
+    40
+   ],
+   "per_multi_lenient": [
+    1.0,
+    30,
+    30
+   ],
+   "title_lenient": [
+    0.8,
+    4,
+    5
+   ],
+   "unk_rate": [
+    0.0,
+    0,
+    276
+   ],
+   "spurious_unk_per_pred": [
+    0.0,
+    0,
+    78
+   ]
+  }
+ },
+ "sign_test": {
+  "wins": 1,
+  "losses": 1,
+  "ties": 7,
+  "p_two_sided": 1.0
+ },
+ "verdict": "BÁC BỎ 'vô dụng trên phồn thể' (phồn ≥ 50%)",
+ "verdict_nopunct_posthoc": "BÁC BỎ 'vô dụng trên phồn thể' (phồn ≥ 50%)",
+ "rows": [
+  {
+   "id": "P0_control",
+   "script": "trad",
+   "text": "始祖諱文成官至知府娶阮氏生子一人諱德重",
+   "n_chars": 19,
+   "unk_n": 2,
+   "unk_chars": "諱諱",
+   "n_per": 3,
+   "per_exact": 0,
+   "per_lenient": 0,
+   "n_per_multi": 3,
+   "per_multi_lenient": 0,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 0,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [
+    "文成",
+    "阮氏",
+    "德重"
+   ],
+   "preds": []
+  },
+  {
+   "id": "P0_control",
+   "script": "simp",
+   "text": "始祖讳文成官至知府娶阮氏生子一人讳德重",
+   "n_chars": 19,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 3,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 3,
+   "per_multi_lenient": 3,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 3,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "文成",
+     "label": "NOUN_OTHER",
+     "score": 0.9673
+    },
+    {
+     "surface": "阮氏",
+     "label": "NOUN_OTHER",
+     "score": 0.8168
+    },
+    {
+     "surface": "德重",
+     "label": "NOUN_OTHER",
+     "score": 0.9484
+    }
+   ]
+  },
+  {
+   "id": "P0_control",
+   "script": "trad_nopunct",
+   "text": "始祖諱文成官至知府娶阮氏生子一人諱德重",
+   "n_chars": 19,
+   "unk_n": 2,
+   "unk_chars": "諱諱",
+   "n_per": 3,
+   "per_exact": 0,
+   "per_lenient": 0,
+   "n_per_multi": 3,
+   "per_multi_lenient": 0,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 0,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [
+    "文成",
+    "阮氏",
+    "德重"
+   ],
+   "preds": []
+  },
+  {
+   "id": "P0_control",
+   "script": "simp_nopunct",
+   "text": "始祖讳文成官至知府娶阮氏生子一人讳德重",
+   "n_chars": 19,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 3,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 3,
+   "per_multi_lenient": 3,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 3,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "文成",
+     "label": "NOUN_OTHER",
+     "score": 0.9673
+    },
+    {
+     "surface": "阮氏",
+     "label": "NOUN_OTHER",
+     "score": 0.8168
+    },
+    {
+     "surface": "德重",
+     "label": "NOUN_OTHER",
+     "score": 0.9484
+    }
+   ]
+  },
+  {
+   "id": "P1_kongzi",
+   "script": "trad",
+   "text": "孔子生魯昌平鄉陬邑。其先宋人也，曰孔防叔。防叔生伯夏，伯夏生叔梁紇。紇與顏氏女野合而生孔子",
+   "n_chars": 45,
+   "unk_n": 6,
+   "unk_chars": "魯鄉紇紇與顏",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 5,
+   "per_multi_lenient": 5,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 13,
+   "spurious_unk_spans": [
+    "魯",
+    "鄉陬邑",
+    "紇與"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    },
+    {
+     "surface": "魯",
+     "label": "NOUN_OTHER",
+     "score": 0.9687
+    },
+    {
+     "surface": "昌平",
+     "label": "NOUN_OTHER",
+     "score": 0.9238
+    },
+    {
+     "surface": "鄉陬邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9797
+    },
+    {
+     "surface": "宋",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "孔防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9869
+    },
+    {
+     "surface": "防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9966
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9957
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9954
+    },
+    {
+     "surface": "叔梁紇",
+     "label": "NOUN_OTHER",
+     "score": 0.9836
+    },
+    {
+     "surface": "紇與",
+     "label": "NOUN_OTHER",
+     "score": 0.8405
+    },
+    {
+     "surface": "顏氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9695
+    },
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.9974
+    }
+   ]
+  },
+  {
+   "id": "P1_kongzi",
+   "script": "simp",
+   "text": "孔子生鲁昌平乡陬邑。其先宋人也，曰孔防叔。防叔生伯夏，伯夏生叔梁纥。纥与颜氏女野合而生孔子",
+   "n_chars": 45,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 5,
+   "per_multi_lenient": 5,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 13,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    },
+    {
+     "surface": "鲁",
+     "label": "NOUN_OTHER",
+     "score": 0.9986
+    },
+    {
+     "surface": "昌平乡",
+     "label": "NOUN_OTHER",
+     "score": 0.9919
+    },
+    {
+     "surface": "陬邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9937
+    },
+    {
+     "surface": "宋",
+     "label": "NOUN_OTHER",
+     "score": 0.9987
+    },
+    {
+     "surface": "孔防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9882
+    },
+    {
+     "surface": "防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9977
+    },
+    {
+     "surface": "叔梁纥",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    },
+    {
+     "surface": "纥",
+     "label": "NOUN_OTHER",
+     "score": 0.9972
+    },
+    {
+     "surface": "颜氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    }
+   ]
+  },
+  {
+   "id": "P1_kongzi",
+   "script": "trad_nopunct",
+   "text": "孔子生魯昌平鄉陬邑其先宋人也曰孔防叔防叔生伯夏伯夏生叔梁紇紇與顏氏女野合而生孔子",
+   "n_chars": 40,
+   "unk_n": 6,
+   "unk_chars": "魯鄉紇紇與顏",
+   "n_per": 5,
+   "per_exact": 3,
+   "per_lenient": 5,
+   "n_per_multi": 5,
+   "per_multi_lenient": 5,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 14,
+   "spurious_unk_spans": [
+    "魯",
+    "鄉陬邑"
+   ],
+   "n_spurious_unk": 2,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.9954
+    },
+    {
+     "surface": "魯",
+     "label": "NOUN_OTHER",
+     "score": 0.9544
+    },
+    {
+     "surface": "昌平",
+     "label": "NOUN_OTHER",
+     "score": 0.9204
+    },
+    {
+     "surface": "鄉陬邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9697
+    },
+    {
+     "surface": "宋",
+     "label": "NOUN_OTHER",
+     "score": 0.9961
+    },
+    {
+     "surface": "孔防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9704
+    },
+    {
+     "surface": "防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9884
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9929
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.986
+    },
+    {
+     "surface": "叔梁",
+     "label": "NOUN_OTHER",
+     "score": 0.9895
+    },
+    {
+     "surface": "紇",
+     "label": "NOUN_OTHER",
+     "score": 0.9342
+    },
+    {
+     "surface": "紇",
+     "label": "NOUN_OTHER",
+     "score": 0.7686
+    },
+    {
+     "surface": "與顏氏",
+     "label": "NOUN_OTHER",
+     "score": 0.6833
+    },
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    }
+   ]
+  },
+  {
+   "id": "P1_kongzi",
+   "script": "simp_nopunct",
+   "text": "孔子生鲁昌平乡陬邑其先宋人也曰孔防叔防叔生伯夏伯夏生叔梁纥纥与颜氏女野合而生孔子",
+   "n_chars": 40,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 5,
+   "per_multi_lenient": 5,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 13,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.9978
+    },
+    {
+     "surface": "鲁",
+     "label": "NOUN_OTHER",
+     "score": 0.9983
+    },
+    {
+     "surface": "昌平乡",
+     "label": "NOUN_OTHER",
+     "score": 0.9931
+    },
+    {
+     "surface": "陬邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9913
+    },
+    {
+     "surface": "宋",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "孔防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9882
+    },
+    {
+     "surface": "防叔",
+     "label": "NOUN_OTHER",
+     "score": 0.9841
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9971
+    },
+    {
+     "surface": "伯夏",
+     "label": "NOUN_OTHER",
+     "score": 0.9929
+    },
+    {
+     "surface": "叔梁纥",
+     "label": "NOUN_OTHER",
+     "score": 0.9963
+    },
+    {
+     "surface": "纥",
+     "label": "NOUN_OTHER",
+     "score": 0.9866
+    },
+    {
+     "surface": "颜氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9978
+    },
+    {
+     "surface": "孔子",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    }
+   ]
+  },
+  {
+   "id": "P2_taibo",
+   "script": "trad",
+   "text": "吳太伯，太伯弟仲雍，皆周太王之子，而王季歷之兄也。季歷賢，而有聖子昌",
+   "n_chars": 34,
+   "unk_n": 5,
+   "unk_chars": "吳歷歷賢聖",
+   "n_per": 5,
+   "per_exact": 4,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 11,
+   "spurious_unk_spans": [
+    "吳",
+    "賢",
+    "聖子"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "吳",
+     "label": "NOUN_OTHER",
+     "score": 0.6487
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.9746
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.9953
+    },
+    {
+     "surface": "仲雍",
+     "label": "NOUN_OTHER",
+     "score": 0.9965
+    },
+    {
+     "surface": "周",
+     "label": "NOUN_OTHER",
+     "score": 0.9943
+    },
+    {
+     "surface": "太王",
+     "label": "NOUN_OTHER",
+     "score": 0.9902
+    },
+    {
+     "surface": "王季歷",
+     "label": "NOUN_OTHER",
+     "score": 0.922
+    },
+    {
+     "surface": "季",
+     "label": "NOUN_OTHER",
+     "score": 0.9463
+    },
+    {
+     "surface": "賢",
+     "label": "NOUN_OTHER",
+     "score": 0.7699
+    },
+    {
+     "surface": "聖子",
+     "label": "NOUN_OTHER",
+     "score": 0.8354
+    },
+    {
+     "surface": "昌",
+     "label": "NOUN_OTHER",
+     "score": 0.9312
+    }
+   ]
+  },
+  {
+   "id": "P2_taibo",
+   "script": "simp",
+   "text": "吴太伯，太伯弟仲雍，皆周太王之子，而王季历之兄也。季历贤，而有圣子昌",
+   "n_chars": 34,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "吴",
+     "label": "NOUN_OTHER",
+     "score": 0.9988
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.9057
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.9986
+    },
+    {
+     "surface": "仲雍",
+     "label": "NOUN_OTHER",
+     "score": 0.9986
+    },
+    {
+     "surface": "周",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "太王",
+     "label": "NOUN_OTHER",
+     "score": 0.9894
+    },
+    {
+     "surface": "王季历",
+     "label": "NOUN_OTHER",
+     "score": 0.9963
+    },
+    {
+     "surface": "季历",
+     "label": "NOUN_OTHER",
+     "score": 0.9988
+    },
+    {
+     "surface": "昌",
+     "label": "NOUN_OTHER",
+     "score": 0.9922
+    }
+   ]
+  },
+  {
+   "id": "P2_taibo",
+   "script": "trad_nopunct",
+   "text": "吳太伯太伯弟仲雍皆周太王之子而王季歷之兄也季歷賢而有聖子昌",
+   "n_chars": 29,
+   "unk_n": 5,
+   "unk_chars": "吳歷歷賢聖",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 12,
+   "spurious_unk_spans": [
+    "吳",
+    "賢",
+    "聖"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "吳",
+     "label": "NOUN_OTHER",
+     "score": 0.7796
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.9604
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.981
+    },
+    {
+     "surface": "仲雍",
+     "label": "NOUN_OTHER",
+     "score": 0.9952
+    },
+    {
+     "surface": "周",
+     "label": "NOUN_OTHER",
+     "score": 0.994
+    },
+    {
+     "surface": "太王",
+     "label": "NOUN_OTHER",
+     "score": 0.9911
+    },
+    {
+     "surface": "王季歷",
+     "label": "NOUN_OTHER",
+     "score": 0.9285
+    },
+    {
+     "surface": "季歷",
+     "label": "NOUN_OTHER",
+     "score": 0.8101
+    },
+    {
+     "surface": "賢",
+     "label": "NOUN_OTHER",
+     "score": 0.6265
+    },
+    {
+     "surface": "聖",
+     "label": "NOUN_OTHER",
+     "score": 0.8987
+    },
+    {
+     "surface": "子",
+     "label": "NOUN_OTHER",
+     "score": 0.49
+    },
+    {
+     "surface": "昌",
+     "label": "NOUN_OTHER",
+     "score": 0.8343
+    }
+   ]
+  },
+  {
+   "id": "P2_taibo",
+   "script": "simp_nopunct",
+   "text": "吴太伯太伯弟仲雍皆周太王之子而王季历之兄也季历贤而有圣子昌",
+   "n_chars": 29,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "吴",
+     "label": "NOUN_OTHER",
+     "score": 0.9984
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.8857
+    },
+    {
+     "surface": "太伯",
+     "label": "NOUN_OTHER",
+     "score": 0.9972
+    },
+    {
+     "surface": "仲雍",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "周",
+     "label": "NOUN_OTHER",
+     "score": 0.9967
+    },
+    {
+     "surface": "太王",
+     "label": "NOUN_OTHER",
+     "score": 0.9895
+    },
+    {
+     "surface": "王季历",
+     "label": "NOUN_OTHER",
+     "score": 0.9949
+    },
+    {
+     "surface": "季历",
+     "label": "NOUN_OTHER",
+     "score": 0.9984
+    },
+    {
+     "surface": "昌",
+     "label": "NOUN_OTHER",
+     "score": 0.9887
+    }
+   ]
+  },
+  {
+   "id": "P3_xiangyu",
+   "script": "trad",
+   "text": "項籍者，下相人也，字羽。初起時，年二十四。其季父項梁，梁父即楚將項燕，為秦將王翦所戮者也。",
+   "n_chars": 45,
+   "unk_n": 7,
+   "unk_chars": "項時項將項為將",
+   "n_per": 5,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 4,
+   "per_multi_lenient": 2,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 14,
+   "spurious_unk_spans": [
+    "時",
+    "將",
+    "為"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [
+    "項梁",
+    "項燕"
+   ],
+   "preds": [
+    {
+     "surface": "項籍",
+     "label": "NOUN_OTHER",
+     "score": 0.8614
+    },
+    {
+     "surface": "下相",
+     "label": "NOUN_OTHER",
+     "score": 0.98
+    },
+    {
+     "surface": "羽",
+     "label": "NOUN_OTHER",
+     "score": 0.9529
+    },
+    {
+     "surface": "時",
+     "label": "NOUN_OTHER",
+     "score": 0.9849
+    },
+    {
+     "surface": "項",
+     "label": "NOUN_OTHER",
+     "score": 0.5861
+    },
+    {
+     "surface": "梁",
+     "label": "NOUN_OTHER",
+     "score": 0.9652
+    },
+    {
+     "surface": "梁",
+     "label": "NOUN_OTHER",
+     "score": 0.9934
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.9953
+    },
+    {
+     "surface": "將",
+     "label": "NOUN_OTHER",
+     "score": 0.6877
+    },
+    {
+     "surface": "項",
+     "label": "NOUN_OTHER",
+     "score": 0.4667
+    },
+    {
+     "surface": "燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9626
+    },
+    {
+     "surface": "為",
+     "label": "NOUN_OTHER",
+     "score": 0.8299
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.7834
+    },
+    {
+     "surface": "王翦",
+     "label": "NOUN_OTHER",
+     "score": 0.8954
+    }
+   ]
+  },
+  {
+   "id": "P3_xiangyu",
+   "script": "simp",
+   "text": "项籍者，下相人也，字羽。初起时，年二十四。其季父项梁，梁父即楚将项燕，为秦将王翦所戮者也。",
+   "n_chars": 45,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "项籍",
+     "label": "NOUN_OTHER",
+     "score": 0.9983
+    },
+    {
+     "surface": "下相",
+     "label": "NOUN_OTHER",
+     "score": 0.9417
+    },
+    {
+     "surface": "羽",
+     "label": "NOUN_OTHER",
+     "score": 0.8426
+    },
+    {
+     "surface": "项梁",
+     "label": "NOUN_OTHER",
+     "score": 0.9983
+    },
+    {
+     "surface": "梁父",
+     "label": "NOUN_OTHER",
+     "score": 0.9959
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    },
+    {
+     "surface": "项燕",
+     "label": "NOUN_OTHER",
+     "score": 0.997
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.9957
+    },
+    {
+     "surface": "王翦",
+     "label": "NOUN_OTHER",
+     "score": 0.9976
+    }
+   ]
+  },
+  {
+   "id": "P3_xiangyu",
+   "script": "trad_nopunct",
+   "text": "項籍者下相人也字羽初起時年二十四其季父項梁梁父即楚將項燕為秦將王翦所戮者也",
+   "n_chars": 37,
+   "unk_n": 7,
+   "unk_chars": "項時項將項為將",
+   "n_per": 5,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 4,
+   "per_multi_lenient": 2,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 14,
+   "spurious_unk_spans": [
+    "時",
+    "將項",
+    "為",
+    "將"
+   ],
+   "n_spurious_unk": 4,
+   "missed_per": [
+    "項梁",
+    "項燕"
+   ],
+   "preds": [
+    {
+     "surface": "項籍",
+     "label": "NOUN_OTHER",
+     "score": 0.8795
+    },
+    {
+     "surface": "下相",
+     "label": "NOUN_OTHER",
+     "score": 0.9732
+    },
+    {
+     "surface": "羽",
+     "label": "NOUN_OTHER",
+     "score": 0.9066
+    },
+    {
+     "surface": "時",
+     "label": "NOUN_OTHER",
+     "score": 0.6266
+    },
+    {
+     "surface": "項",
+     "label": "NOUN_OTHER",
+     "score": 0.9707
+    },
+    {
+     "surface": "梁",
+     "label": "NOUN_OTHER",
+     "score": 0.7603
+    },
+    {
+     "surface": "梁父",
+     "label": "NOUN_OTHER",
+     "score": 0.7471
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.9922
+    },
+    {
+     "surface": "將項",
+     "label": "NOUN_OTHER",
+     "score": 0.6262
+    },
+    {
+     "surface": "燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9781
+    },
+    {
+     "surface": "為",
+     "label": "NOUN_OTHER",
+     "score": 0.7508
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.9488
+    },
+    {
+     "surface": "將",
+     "label": "NOUN_OTHER",
+     "score": 0.5871
+    },
+    {
+     "surface": "王翦",
+     "label": "NOUN_OTHER",
+     "score": 0.8903
+    }
+   ]
+  },
+  {
+   "id": "P3_xiangyu",
+   "script": "simp_nopunct",
+   "text": "项籍者下相人也字羽初起时年二十四其季父项梁梁父即楚将项燕为秦将王翦所戮者也",
+   "n_chars": 37,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "项籍",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    },
+    {
+     "surface": "下相",
+     "label": "NOUN_OTHER",
+     "score": 0.8356
+    },
+    {
+     "surface": "羽",
+     "label": "NOUN_OTHER",
+     "score": 0.5228
+    },
+    {
+     "surface": "项梁",
+     "label": "NOUN_OTHER",
+     "score": 0.9978
+    },
+    {
+     "surface": "梁父",
+     "label": "NOUN_OTHER",
+     "score": 0.9959
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.9974
+    },
+    {
+     "surface": "项燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9963
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.9957
+    },
+    {
+     "surface": "王翦",
+     "label": "NOUN_OTHER",
+     "score": 0.9971
+    }
+   ]
+  },
+  {
+   "id": "P4_gaozu",
+   "script": "trad",
+   "text": "高祖，沛豐邑中陽里人，姓劉氏，字季。父曰太公，母曰劉媼。",
+   "n_chars": 28,
+   "unk_n": 5,
+   "unk_chars": "豐陽劉劉媼",
+   "n_per": 4,
+   "per_exact": 4,
+   "per_lenient": 4,
+   "n_per_multi": 3,
+   "per_multi_lenient": 3,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 8,
+   "spurious_unk_spans": [
+    "豐邑",
+    "中陽里",
+    "劉氏"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "高祖",
+     "label": "NOUN_OTHER",
+     "score": 0.9911
+    },
+    {
+     "surface": "沛",
+     "label": "NOUN_OTHER",
+     "score": 0.9985
+    },
+    {
+     "surface": "豐邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9157
+    },
+    {
+     "surface": "中陽里",
+     "label": "NOUN_OTHER",
+     "score": 0.9707
+    },
+    {
+     "surface": "劉氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9843
+    },
+    {
+     "surface": "季",
+     "label": "NOUN_OTHER",
+     "score": 0.9803
+    },
+    {
+     "surface": "太公",
+     "label": "NOUN_OTHER",
+     "score": 0.9972
+    },
+    {
+     "surface": "劉媼",
+     "label": "NOUN_OTHER",
+     "score": 0.9797
+    }
+   ]
+  },
+  {
+   "id": "P4_gaozu",
+   "script": "simp",
+   "text": "高祖，沛丰邑中阳里人，姓刘氏，字季。父曰太公，母曰刘媪。",
+   "n_chars": 28,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 4,
+   "per_exact": 4,
+   "per_lenient": 4,
+   "n_per_multi": 3,
+   "per_multi_lenient": 3,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 8,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "高祖",
+     "label": "NOUN_OTHER",
+     "score": 0.9974
+    },
+    {
+     "surface": "沛",
+     "label": "NOUN_OTHER",
+     "score": 0.9984
+    },
+    {
+     "surface": "丰邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9948
+    },
+    {
+     "surface": "中阳里",
+     "label": "NOUN_OTHER",
+     "score": 0.995
+    },
+    {
+     "surface": "刘氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9948
+    },
+    {
+     "surface": "季",
+     "label": "NOUN_OTHER",
+     "score": 0.9887
+    },
+    {
+     "surface": "太公",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    },
+    {
+     "surface": "刘媪",
+     "label": "NOUN_OTHER",
+     "score": 0.9966
+    }
+   ]
+  },
+  {
+   "id": "P4_gaozu",
+   "script": "trad_nopunct",
+   "text": "高祖沛豐邑中陽里人姓劉氏字季父曰太公母曰劉媼",
+   "n_chars": 22,
+   "unk_n": 5,
+   "unk_chars": "豐陽劉劉媼",
+   "n_per": 4,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 3,
+   "per_multi_lenient": 3,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 7,
+   "spurious_unk_spans": [
+    "豐邑",
+    "中陽里",
+    "劉氏"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [
+    "季"
+   ],
+   "preds": [
+    {
+     "surface": "高祖",
+     "label": "NOUN_OTHER",
+     "score": 0.996
+    },
+    {
+     "surface": "沛",
+     "label": "NOUN_OTHER",
+     "score": 0.9964
+    },
+    {
+     "surface": "豐邑",
+     "label": "NOUN_OTHER",
+     "score": 0.8074
+    },
+    {
+     "surface": "中陽里",
+     "label": "NOUN_OTHER",
+     "score": 0.9616
+    },
+    {
+     "surface": "劉氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9905
+    },
+    {
+     "surface": "太公",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    },
+    {
+     "surface": "劉媼",
+     "label": "NOUN_OTHER",
+     "score": 0.9844
+    }
+   ]
+  },
+  {
+   "id": "P4_gaozu",
+   "script": "simp_nopunct",
+   "text": "高祖沛丰邑中阳里人姓刘氏字季父曰太公母曰刘媪",
+   "n_chars": 22,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 4,
+   "per_exact": 4,
+   "per_lenient": 4,
+   "n_per_multi": 3,
+   "per_multi_lenient": 3,
+   "n_title": 0,
+   "title_lenient": 0,
+   "n_pred": 8,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "高祖",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "沛",
+     "label": "NOUN_OTHER",
+     "score": 0.9951
+    },
+    {
+     "surface": "丰邑",
+     "label": "NOUN_OTHER",
+     "score": 0.9929
+    },
+    {
+     "surface": "中阳里",
+     "label": "NOUN_OTHER",
+     "score": 0.9933
+    },
+    {
+     "surface": "刘氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9943
+    },
+    {
+     "surface": "季",
+     "label": "NOUN_OTHER",
+     "score": 0.9137
+    },
+    {
+     "surface": "太公",
+     "label": "NOUN_OTHER",
+     "score": 0.9977
+    },
+    {
+     "surface": "刘媪",
+     "label": "NOUN_OTHER",
+     "score": 0.9953
+    }
+   ]
+  },
+  {
+   "id": "P5_laozi",
+   "script": "trad",
+   "text": "老子者，楚苦縣厲鄉曲仁里人也，姓李氏，名耳，字聃，周守藏室之史也。",
+   "n_chars": 33,
+   "unk_n": 3,
+   "unk_chars": "縣厲鄉",
+   "n_per": 3,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 1,
+   "per_multi_lenient": 1,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 10,
+   "spurious_unk_spans": [
+    "苦縣",
+    "厲",
+    "鄉"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "老子",
+     "label": "NOUN_OTHER",
+     "score": 0.9972
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "苦縣",
+     "label": "NOUN_OTHER",
+     "score": 0.9875
+    },
+    {
+     "surface": "厲",
+     "label": "NOUN_OTHER",
+     "score": 0.5852
+    },
+    {
+     "surface": "鄉",
+     "label": "NOUN_OTHER",
+     "score": 0.755
+    },
+    {
+     "surface": "曲仁里",
+     "label": "NOUN_OTHER",
+     "score": 0.9405
+    },
+    {
+     "surface": "李氏",
+     "label": "NOUN_OTHER",
+     "score": 0.982
+    },
+    {
+     "surface": "耳",
+     "label": "NOUN_OTHER",
+     "score": 0.8939
+    },
+    {
+     "surface": "聃",
+     "label": "NOUN_OTHER",
+     "score": 0.9844
+    },
+    {
+     "surface": "周",
+     "label": "NOUN_OTHER",
+     "score": 0.997
+    }
+   ]
+  },
+  {
+   "id": "P5_laozi",
+   "script": "simp",
+   "text": "老子者，楚苦县厉乡曲仁里人也，姓李氏，名耳，字聃，周守藏室之史也。",
+   "n_chars": 33,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 3,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 1,
+   "per_multi_lenient": 1,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "老子",
+     "label": "NOUN_OTHER",
+     "score": 0.9973
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.9985
+    },
+    {
+     "surface": "苦县",
+     "label": "NOUN_OTHER",
+     "score": 0.9935
+    },
+    {
+     "surface": "厉乡",
+     "label": "NOUN_OTHER",
+     "score": 0.996
+    },
+    {
+     "surface": "曲仁里",
+     "label": "NOUN_OTHER",
+     "score": 0.9882
+    },
+    {
+     "surface": "李氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9669
+    },
+    {
+     "surface": "耳",
+     "label": "NOUN_OTHER",
+     "score": 0.8953
+    },
+    {
+     "surface": "聃",
+     "label": "NOUN_OTHER",
+     "score": 0.9901
+    },
+    {
+     "surface": "周",
+     "label": "NOUN_OTHER",
+     "score": 0.9972
+    }
+   ]
+  },
+  {
+   "id": "P5_laozi",
+   "script": "trad_nopunct",
+   "text": "老子者楚苦縣厲鄉曲仁里人也姓李氏名耳字聃周守藏室之史也",
+   "n_chars": 27,
+   "unk_n": 3,
+   "unk_chars": "縣厲鄉",
+   "n_per": 3,
+   "per_exact": 2,
+   "per_lenient": 3,
+   "n_per_multi": 1,
+   "per_multi_lenient": 1,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 9,
+   "spurious_unk_spans": [
+    "苦縣",
+    "厲",
+    "鄉"
+   ],
+   "n_spurious_unk": 3,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "老子",
+     "label": "NOUN_OTHER",
+     "score": 0.9973
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.997
+    },
+    {
+     "surface": "苦縣",
+     "label": "NOUN_OTHER",
+     "score": 0.987
+    },
+    {
+     "surface": "厲",
+     "label": "NOUN_OTHER",
+     "score": 0.3791
+    },
+    {
+     "surface": "鄉",
+     "label": "NOUN_OTHER",
+     "score": 0.6891
+    },
+    {
+     "surface": "曲仁里",
+     "label": "NOUN_OTHER",
+     "score": 0.9786
+    },
+    {
+     "surface": "李氏",
+     "label": "NOUN_OTHER",
+     "score": 0.984
+    },
+    {
+     "surface": "耳",
+     "label": "NOUN_OTHER",
+     "score": 0.8615
+    },
+    {
+     "surface": "聃周",
+     "label": "NOUN_OTHER",
+     "score": 0.9921
+    }
+   ]
+  },
+  {
+   "id": "P5_laozi",
+   "script": "simp_nopunct",
+   "text": "老子者楚苦县厉乡曲仁里人也姓李氏名耳字聃周守藏室之史也",
+   "n_chars": 27,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 3,
+   "per_exact": 2,
+   "per_lenient": 3,
+   "n_per_multi": 1,
+   "per_multi_lenient": 1,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 8,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "老子",
+     "label": "NOUN_OTHER",
+     "score": 0.9974
+    },
+    {
+     "surface": "楚",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "苦县",
+     "label": "NOUN_OTHER",
+     "score": 0.9956
+    },
+    {
+     "surface": "厉乡",
+     "label": "NOUN_OTHER",
+     "score": 0.994
+    },
+    {
+     "surface": "曲仁里",
+     "label": "NOUN_OTHER",
+     "score": 0.9875
+    },
+    {
+     "surface": "李氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9762
+    },
+    {
+     "surface": "耳",
+     "label": "NOUN_OTHER",
+     "score": 0.8674
+    },
+    {
+     "surface": "聃周",
+     "label": "NOUN_OTHER",
+     "score": 0.9954
+    }
+   ]
+  },
+  {
+   "id": "P6_mengchang",
+   "script": "trad",
+   "text": "孟嘗君名文，姓田氏。文之父曰靖郭君田嬰，田嬰者，齊威王少子而齊宣王庶弟也。",
+   "n_chars": 37,
+   "unk_n": 5,
+   "unk_chars": "嘗嬰嬰齊齊",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孟嘗君",
+     "label": "NOUN_OTHER",
+     "score": 0.9937
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9693
+    },
+    {
+     "surface": "田氏",
+     "label": "NOUN_OTHER",
+     "score": 0.994
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9892
+    },
+    {
+     "surface": "靖郭君",
+     "label": "NOUN_OTHER",
+     "score": 0.996
+    },
+    {
+     "surface": "田嬰",
+     "label": "NOUN_OTHER",
+     "score": 0.9851
+    },
+    {
+     "surface": "田嬰",
+     "label": "NOUN_OTHER",
+     "score": 0.992
+    },
+    {
+     "surface": "齊威王",
+     "label": "NOUN_OTHER",
+     "score": 0.9781
+    },
+    {
+     "surface": "齊宣王",
+     "label": "NOUN_OTHER",
+     "score": 0.9604
+    }
+   ]
+  },
+  {
+   "id": "P6_mengchang",
+   "script": "simp",
+   "text": "孟尝君名文，姓田氏。文之父曰靖郭君田婴，田婴者，齐威王少子而齐宣王庶弟也。",
+   "n_chars": 37,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孟尝君",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9913
+    },
+    {
+     "surface": "田氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9884
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9943
+    },
+    {
+     "surface": "靖郭君",
+     "label": "NOUN_OTHER",
+     "score": 0.9961
+    },
+    {
+     "surface": "田婴",
+     "label": "NOUN_OTHER",
+     "score": 0.997
+    },
+    {
+     "surface": "田婴",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "齐威王",
+     "label": "NOUN_OTHER",
+     "score": 0.9933
+    },
+    {
+     "surface": "齐宣王",
+     "label": "NOUN_OTHER",
+     "score": 0.9879
+    }
+   ]
+  },
+  {
+   "id": "P6_mengchang",
+   "script": "trad_nopunct",
+   "text": "孟嘗君名文姓田氏文之父曰靖郭君田嬰田嬰者齊威王少子而齊宣王庶弟也",
+   "n_chars": 32,
+   "unk_n": 5,
+   "unk_chars": "嘗嬰嬰齊齊",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孟嘗君",
+     "label": "NOUN_OTHER",
+     "score": 0.9937
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9558
+    },
+    {
+     "surface": "田氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9933
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9667
+    },
+    {
+     "surface": "靖郭君",
+     "label": "NOUN_OTHER",
+     "score": 0.996
+    },
+    {
+     "surface": "田嬰",
+     "label": "NOUN_OTHER",
+     "score": 0.9834
+    },
+    {
+     "surface": "田嬰",
+     "label": "NOUN_OTHER",
+     "score": 0.9907
+    },
+    {
+     "surface": "齊威王",
+     "label": "NOUN_OTHER",
+     "score": 0.9841
+    },
+    {
+     "surface": "齊宣王",
+     "label": "NOUN_OTHER",
+     "score": 0.9448
+    }
+   ]
+  },
+  {
+   "id": "P6_mengchang",
+   "script": "simp_nopunct",
+   "text": "孟尝君名文姓田氏文之父曰靖郭君田婴田婴者齐威王少子而齐宣王庶弟也",
+   "n_chars": 32,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 5,
+   "per_exact": 5,
+   "per_lenient": 5,
+   "n_per_multi": 4,
+   "per_multi_lenient": 4,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 9,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "孟尝君",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.982
+    },
+    {
+     "surface": "田氏",
+     "label": "NOUN_OTHER",
+     "score": 0.9912
+    },
+    {
+     "surface": "文",
+     "label": "NOUN_OTHER",
+     "score": 0.9898
+    },
+    {
+     "surface": "靖郭君",
+     "label": "NOUN_OTHER",
+     "score": 0.995
+    },
+    {
+     "surface": "田婴",
+     "label": "NOUN_OTHER",
+     "score": 0.9963
+    },
+    {
+     "surface": "田婴",
+     "label": "NOUN_OTHER",
+     "score": 0.9974
+    },
+    {
+     "surface": "齐威王",
+     "label": "NOUN_OTHER",
+     "score": 0.991
+    },
+    {
+     "surface": "齐宣王",
+     "label": "NOUN_OTHER",
+     "score": 0.9848
+    }
+   ]
+  },
+  {
+   "id": "P7_zhangliang",
+   "script": "trad",
+   "text": "留侯張良者，其先韓人也。大父開地，相韓昭侯、宣惠王、襄哀王。父平，相釐王、悼惠王。",
+   "n_chars": 41,
+   "unk_n": 5,
+   "unk_chars": "張韓開韓釐",
+   "n_per": 8,
+   "per_exact": 8,
+   "per_lenient": 8,
+   "n_per_multi": 7,
+   "per_multi_lenient": 7,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 10,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "留侯",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "張良",
+     "label": "NOUN_OTHER",
+     "score": 0.9264
+    },
+    {
+     "surface": "韓",
+     "label": "NOUN_OTHER",
+     "score": 0.8362
+    },
+    {
+     "surface": "開地",
+     "label": "NOUN_OTHER",
+     "score": 0.9575
+    },
+    {
+     "surface": "韓昭侯",
+     "label": "NOUN_OTHER",
+     "score": 0.9798
+    },
+    {
+     "surface": "宣惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    },
+    {
+     "surface": "襄哀王",
+     "label": "NOUN_OTHER",
+     "score": 0.9968
+    },
+    {
+     "surface": "平",
+     "label": "NOUN_OTHER",
+     "score": 0.9812
+    },
+    {
+     "surface": "釐王",
+     "label": "NOUN_OTHER",
+     "score": 0.9548
+    },
+    {
+     "surface": "悼惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9971
+    }
+   ]
+  },
+  {
+   "id": "P7_zhangliang",
+   "script": "simp",
+   "text": "留侯张良者，其先韩人也。大父开地，相韩昭侯、宣惠王、襄哀王。父平，相厘王、悼惠王。",
+   "n_chars": 41,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 8,
+   "per_exact": 8,
+   "per_lenient": 8,
+   "n_per_multi": 7,
+   "per_multi_lenient": 7,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 10,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "留侯",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    },
+    {
+     "surface": "张良",
+     "label": "NOUN_OTHER",
+     "score": 0.9959
+    },
+    {
+     "surface": "韩",
+     "label": "NOUN_OTHER",
+     "score": 0.9988
+    },
+    {
+     "surface": "开地",
+     "label": "NOUN_OTHER",
+     "score": 0.9872
+    },
+    {
+     "surface": "韩昭侯",
+     "label": "NOUN_OTHER",
+     "score": 0.993
+    },
+    {
+     "surface": "宣惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9977
+    },
+    {
+     "surface": "襄哀王",
+     "label": "NOUN_OTHER",
+     "score": 0.9976
+    },
+    {
+     "surface": "平",
+     "label": "NOUN_OTHER",
+     "score": 0.9859
+    },
+    {
+     "surface": "厘王",
+     "label": "NOUN_OTHER",
+     "score": 0.9957
+    },
+    {
+     "surface": "悼惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9975
+    }
+   ]
+  },
+  {
+   "id": "P7_zhangliang",
+   "script": "trad_nopunct",
+   "text": "留侯張良者其先韓人也大父開地相韓昭侯宣惠王襄哀王父平相釐王悼惠王",
+   "n_chars": 32,
+   "unk_n": 5,
+   "unk_chars": "張韓開韓釐",
+   "n_per": 8,
+   "per_exact": 7,
+   "per_lenient": 7,
+   "n_per_multi": 7,
+   "per_multi_lenient": 6,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 10,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [
+    "開地"
+   ],
+   "preds": [
+    {
+     "surface": "留侯",
+     "label": "NOUN_OTHER",
+     "score": 0.9955
+    },
+    {
+     "surface": "張良",
+     "label": "NOUN_OTHER",
+     "score": 0.9233
+    },
+    {
+     "surface": "韓",
+     "label": "NOUN_OTHER",
+     "score": 0.9594
+    },
+    {
+     "surface": "開",
+     "label": "NOUN_OTHER",
+     "score": 0.9013
+    },
+    {
+     "surface": "韓昭侯",
+     "label": "NOUN_OTHER",
+     "score": 0.8431
+    },
+    {
+     "surface": "宣惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9826
+    },
+    {
+     "surface": "襄哀王",
+     "label": "NOUN_OTHER",
+     "score": 0.9771
+    },
+    {
+     "surface": "平",
+     "label": "NOUN_OTHER",
+     "score": 0.9541
+    },
+    {
+     "surface": "釐王",
+     "label": "NOUN_OTHER",
+     "score": 0.9546
+    },
+    {
+     "surface": "悼惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9855
+    }
+   ]
+  },
+  {
+   "id": "P7_zhangliang",
+   "script": "simp_nopunct",
+   "text": "留侯张良者其先韩人也大父开地相韩昭侯宣惠王襄哀王父平相厘王悼惠王",
+   "n_chars": 32,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 8,
+   "per_exact": 8,
+   "per_lenient": 8,
+   "n_per_multi": 7,
+   "per_multi_lenient": 7,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 10,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "留侯",
+     "label": "NOUN_OTHER",
+     "score": 0.9969
+    },
+    {
+     "surface": "张良",
+     "label": "NOUN_OTHER",
+     "score": 0.995
+    },
+    {
+     "surface": "韩",
+     "label": "NOUN_OTHER",
+     "score": 0.9983
+    },
+    {
+     "surface": "开地",
+     "label": "NOUN_OTHER",
+     "score": 0.9481
+    },
+    {
+     "surface": "韩昭侯",
+     "label": "NOUN_OTHER",
+     "score": 0.9849
+    },
+    {
+     "surface": "宣惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.994
+    },
+    {
+     "surface": "襄哀王",
+     "label": "NOUN_OTHER",
+     "score": 0.992
+    },
+    {
+     "surface": "平",
+     "label": "NOUN_OTHER",
+     "score": 0.9423
+    },
+    {
+     "surface": "厘王",
+     "label": "NOUN_OTHER",
+     "score": 0.9948
+    },
+    {
+     "surface": "悼惠王",
+     "label": "NOUN_OTHER",
+     "score": 0.9954
+    }
+   ]
+  },
+  {
+   "id": "P8_liguang",
+   "script": "trad",
+   "text": "李將軍廣者，隴西成紀人也。其先曰李信，秦時為將，逐得燕太子丹者也。",
+   "n_chars": 33,
+   "unk_n": 8,
+   "unk_chars": "將軍廣隴紀時為將",
+   "n_per": 3,
+   "per_exact": 2,
+   "per_lenient": 3,
+   "n_per_multi": 2,
+   "per_multi_lenient": 2,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 10,
+   "spurious_unk_spans": [
+    "李將",
+    "隴西",
+    "成紀",
+    "時",
+    "為將"
+   ],
+   "n_spurious_unk": 5,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "李將",
+     "label": "NOUN_OTHER",
+     "score": 0.9659
+    },
+    {
+     "surface": "軍廣",
+     "label": "NOUN_OTHER",
+     "score": 0.9222
+    },
+    {
+     "surface": "隴西",
+     "label": "NOUN_OTHER",
+     "score": 0.994
+    },
+    {
+     "surface": "成紀",
+     "label": "NOUN_OTHER",
+     "score": 0.9935
+    },
+    {
+     "surface": "李信",
+     "label": "NOUN_OTHER",
+     "score": 0.9927
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.9959
+    },
+    {
+     "surface": "時",
+     "label": "NOUN_OTHER",
+     "score": 0.7118
+    },
+    {
+     "surface": "為將",
+     "label": "NOUN_OTHER",
+     "score": 0.7217
+    },
+    {
+     "surface": "燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9982
+    },
+    {
+     "surface": "太子丹",
+     "label": "NOUN_OTHER",
+     "score": 0.9277
+    }
+   ]
+  },
+  {
+   "id": "P8_liguang",
+   "script": "simp",
+   "text": "李将军广者，陇西成纪人也。其先曰李信，秦时为将，逐得燕太子丹者也。",
+   "n_chars": 33,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 3,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 2,
+   "per_multi_lenient": 2,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 8,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "李将军",
+     "label": "NOUN_OTHER",
+     "score": 0.9899
+    },
+    {
+     "surface": "广",
+     "label": "NOUN_OTHER",
+     "score": 0.8052
+    },
+    {
+     "surface": "陇西",
+     "label": "NOUN_OTHER",
+     "score": 0.998
+    },
+    {
+     "surface": "成纪",
+     "label": "NOUN_OTHER",
+     "score": 0.9981
+    },
+    {
+     "surface": "李信",
+     "label": "NOUN_OTHER",
+     "score": 0.997
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.9982
+    },
+    {
+     "surface": "燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9987
+    },
+    {
+     "surface": "太子丹",
+     "label": "NOUN_OTHER",
+     "score": 0.9337
+    }
+   ]
+  },
+  {
+   "id": "P8_liguang",
+   "script": "trad_nopunct",
+   "text": "李將軍廣者隴西成紀人也其先曰李信秦時為將逐得燕太子丹者也",
+   "n_chars": 28,
+   "unk_n": 8,
+   "unk_chars": "將軍廣隴紀時為將",
+   "n_per": 3,
+   "per_exact": 2,
+   "per_lenient": 3,
+   "n_per_multi": 2,
+   "per_multi_lenient": 2,
+   "n_title": 1,
+   "title_lenient": 0,
+   "n_pred": 10,
+   "spurious_unk_spans": [
+    "李將",
+    "隴西",
+    "成紀",
+    "時",
+    "為將"
+   ],
+   "n_spurious_unk": 5,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "李將",
+     "label": "NOUN_OTHER",
+     "score": 0.9529
+    },
+    {
+     "surface": "軍廣",
+     "label": "NOUN_OTHER",
+     "score": 0.9186
+    },
+    {
+     "surface": "隴西",
+     "label": "NOUN_OTHER",
+     "score": 0.9952
+    },
+    {
+     "surface": "成紀",
+     "label": "NOUN_OTHER",
+     "score": 0.993
+    },
+    {
+     "surface": "李信",
+     "label": "NOUN_OTHER",
+     "score": 0.9748
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.8797
+    },
+    {
+     "surface": "時",
+     "label": "NOUN_OTHER",
+     "score": 0.88
+    },
+    {
+     "surface": "為將",
+     "label": "NOUN_OTHER",
+     "score": 0.6305
+    },
+    {
+     "surface": "燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9974
+    },
+    {
+     "surface": "太子丹",
+     "label": "NOUN_OTHER",
+     "score": 0.9504
+    }
+   ]
+  },
+  {
+   "id": "P8_liguang",
+   "script": "simp_nopunct",
+   "text": "李将军广者陇西成纪人也其先曰李信秦时为将逐得燕太子丹者也",
+   "n_chars": 28,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 3,
+   "per_exact": 3,
+   "per_lenient": 3,
+   "n_per_multi": 2,
+   "per_multi_lenient": 2,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 8,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "李将军",
+     "label": "NOUN_OTHER",
+     "score": 0.9945
+    },
+    {
+     "surface": "广",
+     "label": "NOUN_OTHER",
+     "score": 0.7423
+    },
+    {
+     "surface": "陇西",
+     "label": "NOUN_OTHER",
+     "score": 0.9982
+    },
+    {
+     "surface": "成纪",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "李信",
+     "label": "NOUN_OTHER",
+     "score": 0.9964
+    },
+    {
+     "surface": "秦",
+     "label": "NOUN_OTHER",
+     "score": 0.9973
+    },
+    {
+     "surface": "燕",
+     "label": "NOUN_OTHER",
+     "score": 0.9982
+    },
+    {
+     "surface": "太子丹",
+     "label": "NOUN_OTHER",
+     "score": 0.9625
+    }
+   ]
+  },
+  {
+   "id": "P9_chenping",
+   "script": "trad",
+   "text": "陳丞相平者，陽武戶牖鄉人也。少時家貧，好讀書，有田三十畝，獨與兄伯居。",
+   "n_chars": 35,
+   "unk_n": 11,
+   "unk_chars": "陳陽戶鄉時貧讀書畝獨與",
+   "n_per": 2,
+   "per_exact": 0,
+   "per_lenient": 2,
+   "n_per_multi": 0,
+   "per_multi_lenient": 0,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 8,
+   "spurious_unk_spans": [
+    "陽武",
+    "戶牖鄉",
+    "貧",
+    "讀",
+    "書",
+    "獨與"
+   ],
+   "n_spurious_unk": 6,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "陳丞相平",
+     "label": "NOUN_OTHER",
+     "score": 0.7778
+    },
+    {
+     "surface": "陽武",
+     "label": "NOUN_OTHER",
+     "score": 0.9458
+    },
+    {
+     "surface": "戶牖鄉",
+     "label": "NOUN_OTHER",
+     "score": 0.8543
+    },
+    {
+     "surface": "貧",
+     "label": "NOUN_OTHER",
+     "score": 0.9473
+    },
+    {
+     "surface": "讀",
+     "label": "NOUN_OTHER",
+     "score": 0.8721
+    },
+    {
+     "surface": "書",
+     "label": "NOUN_OTHER",
+     "score": 0.5239
+    },
+    {
+     "surface": "獨與",
+     "label": "NOUN_OTHER",
+     "score": 0.8293
+    },
+    {
+     "surface": "伯居",
+     "label": "NOUN_OTHER",
+     "score": 0.9764
+    }
+   ]
+  },
+  {
+   "id": "P9_chenping",
+   "script": "simp",
+   "text": "陈丞相平者，阳武户牖乡人也。少时家贫，好读书，有田三十亩，独与兄伯居。",
+   "n_chars": 35,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 2,
+   "per_exact": 0,
+   "per_lenient": 1,
+   "n_per_multi": 0,
+   "per_multi_lenient": 0,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 3,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [
+    "伯"
+   ],
+   "preds": [
+    {
+     "surface": "陈丞相平",
+     "label": "NOUN_OTHER",
+     "score": 0.8899
+    },
+    {
+     "surface": "阳武",
+     "label": "NOUN_OTHER",
+     "score": 0.9979
+    },
+    {
+     "surface": "户牖乡",
+     "label": "NOUN_OTHER",
+     "score": 0.9775
+    }
+   ]
+  },
+  {
+   "id": "P9_chenping",
+   "script": "trad_nopunct",
+   "text": "陳丞相平者陽武戶牖鄉人也少時家貧好讀書有田三十畝獨與兄伯居",
+   "n_chars": 29,
+   "unk_n": 11,
+   "unk_chars": "陳陽戶鄉時貧讀書畝獨與",
+   "n_per": 2,
+   "per_exact": 1,
+   "per_lenient": 2,
+   "n_per_multi": 0,
+   "per_multi_lenient": 0,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 11,
+   "spurious_unk_spans": [
+    "陽武",
+    "戶牖鄉",
+    "時",
+    "貧",
+    "讀",
+    "書",
+    "獨",
+    "與兄"
+   ],
+   "n_spurious_unk": 8,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "陳丞相",
+     "label": "NOUN_OTHER",
+     "score": 0.8092
+    },
+    {
+     "surface": "平",
+     "label": "NOUN_OTHER",
+     "score": 0.6467
+    },
+    {
+     "surface": "陽武",
+     "label": "NOUN_OTHER",
+     "score": 0.9339
+    },
+    {
+     "surface": "戶牖鄉",
+     "label": "NOUN_OTHER",
+     "score": 0.856
+    },
+    {
+     "surface": "時",
+     "label": "NOUN_OTHER",
+     "score": 0.6095
+    },
+    {
+     "surface": "貧",
+     "label": "NOUN_OTHER",
+     "score": 0.7682
+    },
+    {
+     "surface": "讀",
+     "label": "NOUN_OTHER",
+     "score": 0.9096
+    },
+    {
+     "surface": "書",
+     "label": "NOUN_OTHER",
+     "score": 0.48
+    },
+    {
+     "surface": "獨",
+     "label": "NOUN_OTHER",
+     "score": 0.7265
+    },
+    {
+     "surface": "與兄",
+     "label": "NOUN_OTHER",
+     "score": 0.5145
+    },
+    {
+     "surface": "伯居",
+     "label": "NOUN_OTHER",
+     "score": 0.9096
+    }
+   ]
+  },
+  {
+   "id": "P9_chenping",
+   "script": "simp_nopunct",
+   "text": "陈丞相平者阳武户牖乡人也少时家贫好读书有田三十亩独与兄伯居",
+   "n_chars": 29,
+   "unk_n": 0,
+   "unk_chars": "",
+   "n_per": 2,
+   "per_exact": 0,
+   "per_lenient": 2,
+   "n_per_multi": 0,
+   "per_multi_lenient": 0,
+   "n_title": 1,
+   "title_lenient": 1,
+   "n_pred": 4,
+   "spurious_unk_spans": [],
+   "n_spurious_unk": 0,
+   "missed_per": [],
+   "preds": [
+    {
+     "surface": "陈丞相平",
+     "label": "NOUN_OTHER",
+     "score": 0.9113
+    },
+    {
+     "surface": "阳武",
+     "label": "NOUN_OTHER",
+     "score": 0.9966
+    },
+    {
+     "surface": "户牖乡",
+     "label": "NOUN_OTHER",
+     "score": 0.9489
+    },
+    {
+     "surface": "伯居",
+     "label": "NOUN_OTHER",
+     "score": 0.9397
+    }
+   ]
+  }
+ ]
+}

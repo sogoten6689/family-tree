@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import io
 import json
 from collections import deque
 from contextlib import asynccontextmanager
@@ -9,7 +10,7 @@ from threading import Lock
 from typing import Any, Dict, List, Literal, Optional
 from uuid import uuid4
 
-from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -21,6 +22,9 @@ from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
 from app.documents.storage import ObjectStorage, ObjectStorageError
 from app.hannom.bootstrap import bootstrap_hannom
+from app.hannom.errors import HannomApiError
+from app.hannom.pdf_utils import render_pdf_pages_to_png
+from app.hannom.pipeline import process_hannom_image_to_vietnamese
 from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
@@ -122,6 +126,29 @@ class AnalyzeResponse(BaseModel):
     )
 
 
+class AnalyzeImageResponse(AnalyzeResponse):
+    ocr_text: Optional[str] = Field(
+        default=None,
+        description="Văn bản Quốc ngữ do OCR + phiên âm Kim Hán Nôm sinh ra, dùng để hiển thị/cho người dùng sửa trước khi lưu.",
+    )
+    hannom_text: Optional[str] = Field(
+        default=None,
+        description="Văn bản Hán-Nôm gốc (trước phiên âm), do bước OCR Kim Hán Nôm trả về — hiển thị cột đối chiếu.",
+    )
+    source_file_key: Optional[str] = Field(
+        default=None,
+        description="Key MinIO của ảnh/PDF gốc đã lưu (None nếu MinIO chưa cấu hình — OCR vẫn chạy bình thường).",
+    )
+    pages_processed: int = Field(
+        default=0,
+        description="Số trang ảnh/PDF đã OCR (PDF nhiều trang bị giới hạn, xem `pages_truncated`).",
+    )
+    pages_truncated: bool = Field(
+        default=False,
+        description="True nếu PDF có nhiều trang hơn giới hạn xử lý nhanh (dùng luồng Admin cho tài liệu dài).",
+    )
+
+
 class HistoryItem(BaseModel):
     request_id: str = Field(description="UUID của request.")
     created_at: str = Field(description="Thời điểm xử lý (UTC ISO-8601).")
@@ -183,6 +210,10 @@ class FamilyTreeSummary(BaseModel):
     has_hannom_text: bool = False
     user_id: Optional[int] = None
     is_public: bool = False
+    lineage_code: Optional[str] = Field(
+        default=None,
+        description="Mã họ F-{A...Y|Z}-{NNN}, sinh tự động từ tên cây theo bảng mã họ.",
+    )
     generation_count: int = 0
 
 
@@ -203,6 +234,7 @@ class FamilyTreeDocument(BaseModel):
     has_hannom_text: bool = False
     user_id: Optional[int] = None
     is_public: bool = False
+    lineage_code: Optional[str] = None
     generation_count: int = 0
 
 
@@ -1519,18 +1551,34 @@ def analyze_family_text(req: AnalyzeRequest, current_user: OptionalUser = None) 
     """
     Trả về **balkan_nodes** (Gemini) và **gemini_error** nếu có.
     """
+    return _run_family_analysis(
+        text=req.text,
+        source=req.source or "frontend",
+        metadata=req.metadata,
+        current_user=current_user,
+    )
+
+
+def _run_family_analysis(
+    *,
+    text: str,
+    source: str,
+    metadata: RequestMetadata,
+    current_user: OptionalUser,
+) -> AnalyzeResponse:
+    """Logic dùng chung cho cả phân tích text thuần lẫn text OCR từ ảnh/PDF."""
     request_id = str(uuid4())
     created_at = datetime.now(timezone.utc).isoformat()
 
     extractor = FamilyExtractor()
-    extraction = extractor.parse(req.text)
+    extraction = extractor.parse(text)
 
     warnings: List[str] = []
     warnings.extend(validate_no_self_relationship(extraction))
     warnings.extend(validate_no_duplicate_edges(extraction))
     warnings.extend(validate_parent_age_gap(extraction))
 
-    balkan_nodes, gemini_err = normalize_balkan_nodes(req.text, extraction)
+    balkan_nodes, gemini_err = normalize_balkan_nodes(text, extraction)
     if gemini_err:
         warnings.append(gemini_err)
 
@@ -1545,8 +1593,8 @@ def analyze_family_text(req: AnalyzeRequest, current_user: OptionalUser = None) 
     history_item = HistoryItem(
         request_id=request_id,
         created_at=created_at,
-        source=req.source or "frontend",
-        metadata=req.metadata,
+        source=source,
+        metadata=metadata,
         people_count=people_count,
         relationship_count=len(extraction.get("relationships", [])),
         warning_count=len(warnings),
@@ -1570,3 +1618,124 @@ def analyze_family_text(req: AnalyzeRequest, current_user: OptionalUser = None) 
     )
 
     return response_payload
+
+
+def _max_image_upload_bytes() -> int:
+    import os
+
+    return int(os.getenv("MINIO_MAX_UPLOAD_BYTES", str(50 * 1024 * 1024)))
+
+
+@app.post(
+    "/api/family-tree/analyze-image",
+    response_model=AnalyzeImageResponse,
+    tags=["Analysis"],
+    summary="OCR ảnh/PDF gia phả Hán-Nôm rồi phân tích thành cây",
+    response_description="ocr_text + balkan_nodes + gemini_error.",
+)
+async def analyze_family_image(
+    file: UploadFile = File(..., description="Ảnh (jpg/png/webp) hoặc PDF gia phả Hán-Nôm"),
+    lang_type: Optional[int] = Query(
+        default=None,
+        description="0 = tự động, 1 = Hán, 2 = Nôm (theo HANNOM_OCR_LANG_TYPE của Kim Hán Nôm).",
+    ),
+    scan_id: Optional[int] = Query(
+        default=None,
+        description="ID bản ghi user_scans (nếu có) để lưu ảnh gốc dưới đúng namespace của scan đó.",
+    ),
+    current_user: OptionalUser = None,
+) -> AnalyzeImageResponse:
+    """
+    Pipeline nhanh cho Document Reader: OCR Hán-Nôm (Kim Hán Nôm API) → phiên âm
+    Quốc ngữ → trích xuất gia phả (dùng lại đúng logic của `/api/family-tree/analyze`).
+    PDF nhiều trang bị giới hạn `MAX_PDF_PAGES_DEFAULT` trang để tránh gọi quá
+    nhiều lần API OCR trả phí/rate-limited từ một lần upload nhanh; tài liệu dài
+    hơn nên dùng luồng Admin (upload nhiều file + pipeline 7 bước).
+
+    Ảnh/PDF gốc cũng được lưu vào MinIO (best-effort — nếu MinIO chưa cấu
+    hình, OCR vẫn chạy bình thường, chỉ `source_file_key` sẽ là `None`).
+    """
+    content = await file.read()
+    if not content:
+        raise HTTPException(status_code=400, detail="File rỗng.")
+    max_bytes = _max_image_upload_bytes()
+    if len(content) > max_bytes:
+        raise HTTPException(
+            status_code=400,
+            detail=f"File vượt quá giới hạn upload ({max_bytes} bytes).",
+        )
+
+    filename = file.filename or "upload"
+    is_pdf = (file.content_type == "application/pdf") or filename.lower().endswith(".pdf")
+
+    source_file_key: Optional[str] = None
+    try:
+        storage = ObjectStorage.from_env()
+        if storage.config.enabled:
+            storage.ensure_bucket()
+            safe_name = "".join(c for c in filename if c.isalnum() or c in "._-") or "upload"
+            namespace = f"scan-{scan_id}" if scan_id is not None else f"anon-{uuid4().hex[:8]}"
+            source_file_key = f"user-scans/{namespace}/{uuid4().hex}_{safe_name}"
+            storage.upload_file(
+                source_file_key,
+                io.BytesIO(content),
+                content_type=file.content_type or "application/octet-stream",
+                size=len(content),
+            )
+    except ObjectStorageError as error:
+        # Lưu ảnh chỉ là best-effort — không chặn OCR/phân tích nếu MinIO lỗi.
+        source_file_key = None
+        print(f"[analyze-image] Không lưu được ảnh gốc vào MinIO: {error}")
+
+    hannom_text_parts: List[str] = []
+    ocr_text_parts: List[str] = []
+    pages_processed = 0
+    pages_truncated = False
+
+    try:
+        if is_pdf:
+            import pypdfium2 as pdfium
+
+            total_pages = len(pdfium.PdfDocument(content))
+            page_images = render_pdf_pages_to_png(content)
+            pages_truncated = total_pages > len(page_images)
+            for index, page_bytes in enumerate(page_images):
+                result = process_hannom_image_to_vietnamese(
+                    page_bytes, f"{filename}-p{index + 1}.png", lang_type=lang_type
+                )
+                hannom_text_parts.append(result["ocr_text"])
+                ocr_text_parts.append(result["transcription_text"])
+                pages_processed += 1
+        else:
+            result = process_hannom_image_to_vietnamese(content, filename, lang_type=lang_type)
+            hannom_text_parts.append(result["ocr_text"])
+            ocr_text_parts.append(result["transcription_text"])
+            pages_processed = 1
+    except ValueError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    except HannomApiError as error:
+        raise HTTPException(status_code=502, detail=f"Lỗi OCR Kim Hán Nôm: {error}") from error
+
+    combined_text = "\n\n".join(part for part in ocr_text_parts if part.strip())
+    combined_hannom = "\n\n".join(part for part in hannom_text_parts if part.strip())
+    if not combined_text.strip():
+        raise HTTPException(
+            status_code=422,
+            detail="OCR không nhận được văn bản nào từ file — thử ảnh rõ nét hơn.",
+        )
+
+    analysis = _run_family_analysis(
+        text=combined_text,
+        source="document-reader-image",
+        metadata=RequestMetadata(fileName=filename, documentType="gia-pha"),
+        current_user=current_user,
+    )
+
+    return AnalyzeImageResponse(
+        **analysis.model_dump(),
+        ocr_text=combined_text,
+        hannom_text=combined_hannom or None,
+        source_file_key=source_file_key,
+        pages_processed=pages_processed,
+        pages_truncated=pages_truncated,
+    )

@@ -12,6 +12,7 @@ from uuid import uuid4
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
+from app.lineage_code import build_lineage_code
 from app.balkan_node import (
     BalkanNodeValidationError,
     build_canonical_node,
@@ -591,6 +592,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             external_url VARCHAR(512) NULL,
             has_source_document TINYINT(1) NOT NULL DEFAULT 0,
             has_hannom_text TINYINT(1) NOT NULL DEFAULT 0,
+            lineage_code VARCHAR(16) NULL,
             created_at  VARCHAR(64)  NOT NULL,
             updated_at  VARCHAR(64)  NOT NULL,
             created_ts  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
@@ -620,6 +622,10 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             (
                 "is_public",
                 "ALTER TABLE family_tree ADD COLUMN is_public TINYINT(1) NOT NULL DEFAULT 0",
+            ),
+            (
+                "lineage_code",
+                "ALTER TABLE family_tree ADD COLUMN lineage_code VARCHAR(16) NULL",
             ),
         ]
         for column_name, statement in migrations:
@@ -663,7 +669,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 rows = conn.execute(
                     text(
                         "SELECT id, name, description, created_at, updated_at, node_count, "
-                        "external_url, has_source_document, has_hannom_text, user_id, is_public "
+                        "external_url, has_source_document, has_hannom_text, user_id, is_public, "
+                        "lineage_code "
                         f"FROM family_tree {where_sql} ORDER BY created_ts ASC"
                     ),
                     params,
@@ -683,6 +690,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             "has_hannom_text": bool(row.get("has_hannom_text", 0)),
             "user_id": row.get("user_id"),
             "is_public": bool(row.get("is_public", 0)),
+            "lineage_code": row.get("lineage_code"),
             "generation_count": 0,
         }
 
@@ -719,8 +727,25 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
         }
 
         with self._lock:
+            doc["lineage_code"] = self._next_lineage_code(clean_name)
             self._insert_document(doc)
         return doc
+
+    def _next_lineage_code(self, tree_name: str) -> str:
+        """Mã họ F-{A...Y|Z}-{NNN} — NNN tăng tuần tự riêng cho từng chữ.
+
+        Gọi bên trong self._lock để tránh 2 request cùng lúc lấy trùng số thứ
+        tự (race condition) — khớp cách self._lock đã dùng bảo vệ create_tree.
+        """
+        from app.lineage_code import extract_surname, surname_letter_code
+
+        letter = surname_letter_code(extract_surname(tree_name))
+        with self._engine.connect() as conn:
+            count = conn.execute(
+                text("SELECT COUNT(*) FROM family_tree WHERE lineage_code LIKE :pattern"),
+                {"pattern": f"F-{letter}-%"},
+            ).scalar()
+        return build_lineage_code(tree_name, (count or 0) + 1)
 
     def get_tree(self, tree_id: str) -> Dict[str, Any]:
         with self._lock:
@@ -957,7 +982,8 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             row = conn.execute(
                 text(
                     "SELECT id, name, description, nodes_json, created_at, updated_at, "
-                    "external_url, has_source_document, has_hannom_text, user_id, is_public "
+                    "external_url, has_source_document, has_hannom_text, user_id, is_public, "
+                    "lineage_code "
                     "FROM family_tree WHERE id = :id"
                 ),
                 {"id": tree_id},
@@ -978,6 +1004,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             "has_hannom_text": bool(row.get("has_hannom_text", 0)),
             "user_id": row.get("user_id"),
             "is_public": bool(row.get("is_public", 0)),
+            "lineage_code": row.get("lineage_code"),
         }
         return doc
 
@@ -988,10 +1015,11 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                 text(
                     "INSERT INTO family_tree "
                     "(id, name, description, nodes_json, node_count, external_url, "
-                    "has_source_document, has_hannom_text, user_id, is_public, created_at, updated_at) "
+                    "has_source_document, has_hannom_text, user_id, is_public, lineage_code, "
+                    "created_at, updated_at) "
                     "VALUES (:id, :name, :description, CAST(:nodes_json AS JSON), :node_count, "
                     ":external_url, :has_source_document, :has_hannom_text, :user_id, :is_public, "
-                    ":created_at, :updated_at)"
+                    ":lineage_code, :created_at, :updated_at)"
                 ),
                 {
                     "id": doc["id"],
@@ -1004,6 +1032,7 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
                     "has_hannom_text": int(bool(doc.get("has_hannom_text", False))),
                     "user_id": doc.get("user_id"),
                     "is_public": int(bool(doc.get("is_public", False))),
+                    "lineage_code": doc.get("lineage_code"),
                     "created_at": doc["created_at"],
                     "updated_at": doc["updated_at"],
                 },

@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeftOutlined,
+  CopyOutlined,
   DeleteOutlined,
   EyeOutlined,
   FileImageOutlined,
   FileTextOutlined,
   HistoryOutlined,
   InboxOutlined,
+  PictureOutlined,
   ReloadOutlined,
+  SwapOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
 import {
@@ -17,9 +20,11 @@ import {
   Descriptions,
   Empty,
   Modal,
+  Select,
   Spin,
   Tabs,
   Tag,
+  Tooltip,
   Typography,
 } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +44,7 @@ import {
 } from "@/lib/userWorkspaceApi";
 import { Textarea } from "@/components/ui/textarea";
 
-type PreviewType = "image" | "docx" | "text" | "pdf" | "unsupported" | null;
+type PreviewType = "image" | "pdf" | "docx" | "text" | "unsupported" | null;
 
 type MammothModule = typeof import("mammoth/mammoth.browser");
 type DetectedLanguageCode = "vi" | "en" | "unknown";
@@ -49,6 +54,11 @@ type FamilyAnalyzeResponse = {
   request_id?: string | null;
   balkan_nodes: BalkanNode[];
   gemini_error: string | null;
+  ocr_text?: string | null;
+  hannom_text?: string | null;
+  source_file_key?: string | null;
+  pages_processed?: number;
+  pages_truncated?: boolean;
 };
 
 type LanguageDetection = {
@@ -83,6 +93,10 @@ const supportedFormats = [
   ".pdf",
 ];
 const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? "";
+/** Giá trị `lang_type` của Kim Hán Nôm: 0 tự động, 1 Hán, 2 Nôm. */
+type HannomLangType = 0 | 1 | 2;
+const DOCUMENT_ACCEPT = ".txt,text/plain,.docx,.pdf,application/pdf";
+const IMAGE_ACCEPT = "image/png,image/jpeg,image/webp";
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
 const viKeywords = [
   "gia",
@@ -195,6 +209,11 @@ const DocumentReaderPage = ({
   const { isAuthenticated } = useAuth();
   const guestQuota = useGuestUploadQuota();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const documentInputRef = useRef<HTMLInputElement | null>(null);
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
+  const [langType, setLangType] = useState<HannomLangType>(0);
+  /** Chỉ đổi vị trí hiển thị hai cột, không dịch ngược Quốc ngữ → Hán-Nôm. */
+  const [columnsSwapped, setColumnsSwapped] = useState(false);
 
   const [isDragging, setIsDragging] = useState(false);
   const [isParsing, setIsParsing] = useState(false);
@@ -444,10 +463,7 @@ const DocumentReaderPage = ({
     }
 
     if (file.type === "application/pdf" || /\.pdf$/i.test(lowerName)) {
-      // Chưa nối OCR thật cho PDF (giống ảnh — xem Alert "sắp có" ở khu vực
-      // xem trước) — chỉ xem trước, không phân tích được ngay (đúng REQUIREMENTS.md §7.1).
       setPreviewType("pdf");
-      setImageUrl(URL.createObjectURL(file));
       setLanguageDetection(detectLanguageFromFilename(file.name));
       setStatusMessage(t("docReader.msgPdfSuccess"));
       await registerScan(file);
@@ -510,6 +526,15 @@ const DocumentReaderPage = ({
     setErrorMessage(t("docReader.errUnsupported"));
   };
 
+  const handleCopyQuocNgu = async () => {
+    try {
+      await navigator.clipboard.writeText(documentText);
+      toast.success(t("docReader.copySuccess"));
+    } catch {
+      toast.error(t("docReader.copyFailed"));
+    }
+  };
+
   const handleSelectedFiles = async (files: FileList | File[]) => {
     const firstFile = Array.from(files)[0];
     if (!firstFile) {
@@ -526,10 +551,18 @@ const DocumentReaderPage = ({
   };
 
   const handleAnalyzeFamilyTree = async () => {
-    if (
-      (previewType !== "docx" && previewType !== "text") ||
-      !documentText.trim()
-    ) {
+    const isTextLike = previewType === "docx" || previewType === "text";
+    const isImageLike = previewType === "image" || previewType === "pdf";
+
+    if (isTextLike && !documentText.trim()) {
+      setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
+      return;
+    }
+    if (isImageLike && !activeFile) {
+      setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
+      return;
+    }
+    if (!isTextLike && !isImageLike) {
       setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
       return;
     }
@@ -542,29 +575,65 @@ const DocumentReaderPage = ({
     setIsAnalyzing(true);
     setAnalysisError(null);
 
+    // Sau lần OCR đầu, phân tích lại dùng văn bản Quốc ngữ (có thể đã sửa) thay vì OCR lại.
+    const hasOcrText = isImageLike && analysisResult?.ocr_text != null;
+    const shouldOcr = isImageLike && !hasOcrText;
+    if (hasOcrText && !documentText.trim()) {
+      setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
+      return;
+    }
+
     try {
       const token = getStoredAccessToken();
-      const response = await fetch(
-        `${backendBaseUrl}/api/family-tree/analyze`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-          body: JSON.stringify({
-            text: documentText,
-            source: "document-reader",
-            metadata: {
-              fileName: activeFile?.name,
-              language: languageDetection?.code ?? "unknown",
+      let response: Response;
+
+      if (shouldOcr && activeFile) {
+        // Ảnh/PDF: gửi multipart, backend tự OCR (Kim Hán Nôm), lưu ảnh gốc
+        // vào MinIO (best-effort) rồi phân tích — xem POST
+        // /api/family-tree/analyze-image trong nlp_family_extractor/api.py.
+        const formData = new FormData();
+        formData.append("file", activeFile);
+        const query = new URLSearchParams({ lang_type: String(langType) });
+        if (currentScanId != null) {
+          query.set("scan_id", String(currentScanId));
+        }
+        response = await fetch(
+          `${backendBaseUrl}/api/family-tree/analyze-image?${query.toString()}`,
+          {
+            method: "POST",
+            headers: {
+              ...(token ? { Authorization: `Bearer ${token}` } : {}),
             },
-          }),
-        },
-      );
+            body: formData,
+          },
+        );
+      } else {
+        response = await fetch(
+          `${backendBaseUrl}/api/family-tree/analyze`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            },
+            body: JSON.stringify({
+              text: documentText,
+              source: "document-reader",
+              metadata: {
+                fileName: activeFile?.name,
+                language: languageDetection?.code ?? "unknown",
+              },
+            }),
+          },
+        );
+      }
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const errorBody = await response.json().catch(() => null);
+        throw new Error(
+          (errorBody && typeof errorBody.detail === "string" && errorBody.detail) ||
+            `HTTP ${response.status}`,
+        );
       }
 
       const raw = (await response.json()) as Partial<FamilyAnalyzeResponse>;
@@ -572,8 +641,16 @@ const DocumentReaderPage = ({
         request_id: raw.request_id ?? null,
         balkan_nodes: Array.isArray(raw.balkan_nodes) ? raw.balkan_nodes : [],
         gemini_error: raw.gemini_error ?? null,
+        ocr_text: raw.ocr_text ?? analysisResult?.ocr_text ?? null,
+        hannom_text: raw.hannom_text ?? analysisResult?.hannom_text ?? null,
+        source_file_key: raw.source_file_key ?? analysisResult?.source_file_key ?? null,
+        pages_processed: raw.pages_processed ?? analysisResult?.pages_processed,
+        pages_truncated: raw.pages_truncated ?? analysisResult?.pages_truncated,
       };
       setAnalysisResult(payload);
+      if (shouldOcr && payload.ocr_text) {
+        setDocumentText(payload.ocr_text);
+      }
       setIsResultModalOpen(true);
       localStorage.setItem("family-tree.analysis", JSON.stringify(payload));
       if (!isAuthenticated) {
@@ -583,19 +660,31 @@ const DocumentReaderPage = ({
         await updateUserDocument(currentScanId, {
           request_id: payload.request_id ?? undefined,
           tree_status: "draft",
-          ocr_status: "skipped",
-          source_text: documentText,
+          ocr_status: isImageLike ? "completed" : "skipped",
+          source_text: shouldOcr ? payload.ocr_text ?? undefined : documentText,
+          source_file_key: shouldOcr ? payload.source_file_key ?? undefined : undefined,
         });
       }
       fetchHistory();
       setStatusMessage(
-        t("docReader.msgAnalyzeSuccess", {
-          count: payload.balkan_nodes.length,
-        }),
+        payload.pages_truncated
+          ? t("docReader.msgAnalyzePagesTruncated", {
+              count: payload.balkan_nodes.length,
+              pages: payload.pages_processed,
+              defaultValue:
+                "Phân tích xong {{count}} người (chỉ OCR {{pages}} trang đầu — tài liệu dài hơn nên dùng trang Admin).",
+            })
+          : t("docReader.msgAnalyzeSuccess", {
+              count: payload.balkan_nodes.length,
+            }),
       );
       setIsResultModalOpen(true);
     } catch (error) {
-      setAnalysisError(t("docReader.errBackendUnavailable"));
+      setAnalysisError(
+        error instanceof Error && error.message
+          ? error.message
+          : t("docReader.errBackendUnavailable"),
+      );
     } finally {
       setIsAnalyzing(false);
     }
@@ -671,9 +760,11 @@ const DocumentReaderPage = ({
                     size="large"
                     loading={isAnalyzing}
                     disabled={
-                      (previewType !== "docx" && previewType !== "text") ||
-                      !documentText.trim() ||
-                      (!isAuthenticated && guestQuota.exhausted)
+                      (!isAuthenticated && guestQuota.exhausted) ||
+                      (previewType === "image" || previewType === "pdf"
+                        ? !activeFile
+                        : (previewType !== "docx" && previewType !== "text") ||
+                          !documentText.trim())
                     }
                     onClick={handleAnalyzeFamilyTree}
                   >
@@ -986,16 +1077,6 @@ const DocumentReaderPage = ({
               />
             )}
 
-            {(previewType === "image" || previewType === "pdf") && (
-              <Alert
-                showIcon
-                type="info"
-                message={t("docReader.ocrComingSoonTitle")}
-                description={t("docReader.imageOrPdfOcrComingSoon")}
-                className="mb-4"
-              />
-            )}
-
             {errorMessage && (
               <Alert
                 showIcon
@@ -1090,6 +1171,54 @@ const DocumentReaderPage = ({
               </Card>
             )}
 
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <Select<HannomLangType>
+                value={langType}
+                onChange={setLangType}
+                aria-label={t("docReader.langTypeLabel")}
+                className="min-w-[140px]"
+                options={[
+                  { value: 0, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeAuto")}` },
+                  { value: 1, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeHan")}` },
+                  { value: 2, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeNom")}` },
+                ]}
+              />
+              <Button icon={<ReloadOutlined />} onClick={resetPreview}>
+                {t("docReader.btnReset")}
+              </Button>
+              <Button
+                icon={<FileTextOutlined />}
+                onClick={() => documentInputRef.current?.click()}
+              >
+                {t("docReader.btnPickDocument")}
+              </Button>
+              <Button
+                icon={<PictureOutlined />}
+                onClick={() => imageInputRef.current?.click()}
+              >
+                {t("docReader.btnPickImage")}
+              </Button>
+              {[
+                { ref: documentInputRef, accept: DOCUMENT_ACCEPT },
+                { ref: imageInputRef, accept: IMAGE_ACCEPT },
+              ].map(({ ref, accept }) => (
+                <input
+                  key={accept}
+                  ref={ref}
+                  type="file"
+                  accept={accept}
+                  className="hidden"
+                  onChange={async (event) => {
+                    const file = event.target.files?.[0];
+                    event.target.value = "";
+                    if (file) {
+                      await loadFile(file);
+                    }
+                  }}
+                />
+              ))}
+            </div>
+
             {isParsing ? (
               <div className="h-[520px] flex items-center justify-center rounded-2xl bg-muted">
                 <div className="text-center">
@@ -1117,35 +1246,126 @@ const DocumentReaderPage = ({
                         <EyeOutlined /> {t("docReader.tabPreview")}
                       </span>
                     ),
-                    children: (
-                      <div className="rounded-2xl border border-border overflow-hidden">
-                        {previewType === "image" && imageUrl ? (
-                          <div className="max-h-[620px] overflow-auto bg-muted p-4">
-                            <img
-                              src={imageUrl}
-                              alt={activeFile.name}
-                              className="mx-auto max-w-full rounded-xl shadow-lg"
-                            />
-                          </div>
-                        ) : previewType === "pdf" && imageUrl ? (
-                          <embed
-                            src={imageUrl}
-                            type="application/pdf"
-                            className="w-full h-[620px] bg-muted"
-                          />
-                        ) : previewType === "docx" || previewType === "text" ? (
-                          <div className="h-[620px] overflow-auto bg-muted px-8 py-6">
-                            <article className="mx-auto max-w-4xl whitespace-pre-wrap text-[15px] leading-8 text-foreground">
-                              {documentText}
-                            </article>
-                          </div>
-                        ) : (
-                          <div className="h-[520px] flex items-center justify-center bg-muted">
-                            <Empty description={t("docReader.noPreview")} />
-                          </div>
-                        )}
-                      </div>
-                    ),
+                    children:
+                      previewType === "unsupported" || previewType === null ? (
+                        <div className="h-[520px] flex items-center justify-center rounded-2xl border border-border bg-muted">
+                          <Empty description={t("docReader.noPreview")} />
+                        </div>
+                      ) : (
+                        (() => {
+                          const isImageLike =
+                            previewType === "image" || previewType === "pdf";
+                          const ocrDone =
+                            isImageLike && analysisResult?.ocr_text != null;
+
+                          const hannomBody = ocrDone ? (
+                            analysisResult?.hannom_text ? (
+                              <div className="h-full overflow-auto bg-muted px-5 py-4 whitespace-pre-wrap text-2xl leading-[2.4rem] text-foreground">
+                                {analysisResult.hannom_text}
+                              </div>
+                            ) : (
+                              <div className="h-full flex items-center justify-center bg-muted px-6 text-center text-sm text-muted-foreground">
+                                {t("docReader.hannomEmptyAfterOcr")}
+                              </div>
+                            )
+                          ) : previewType === "image" && imageUrl ? (
+                            <div className="h-full overflow-auto bg-muted p-4">
+                              <img
+                                src={imageUrl}
+                                alt={activeFile.name}
+                                className="mx-auto max-w-full rounded-xl shadow-lg"
+                              />
+                            </div>
+                          ) : previewType === "pdf" ? (
+                            <div className="h-full flex flex-col items-center justify-center gap-3 bg-muted text-center px-6">
+                              <FileTextOutlined style={{ fontSize: 48 }} className="!text-primary" />
+                              <p className="font-medium mb-0">{activeFile.name}</p>
+                              <p className="text-sm text-muted-foreground mb-0">
+                                {t("docReader.pdfPreviewHint")}
+                              </p>
+                            </div>
+                          ) : (
+                            <div className="h-full overflow-auto bg-muted px-5 py-4">
+                              <Alert
+                                type="info"
+                                showIcon
+                                message={t("docReader.noHannomSource")}
+                                className="mb-3"
+                              />
+                              <article className="whitespace-pre-wrap text-[15px] leading-8 text-foreground">
+                                {documentText}
+                              </article>
+                            </div>
+                          );
+
+                          const hannomColumn = (
+                            <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border">
+                              <div className="border-b border-border bg-background px-4 py-2 text-center text-sm font-semibold tracking-widest text-foreground">
+                                {t("docReader.columnHannom")}
+                              </div>
+                              <div className="h-[560px]">{hannomBody}</div>
+                            </div>
+                          );
+
+                          const quocNguColumn = (
+                            <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border">
+                              <div className="border-b border-border bg-background px-4 py-2 text-center text-sm font-semibold tracking-widest text-foreground">
+                                {t("docReader.columnQuocNgu")}
+                              </div>
+                              <Textarea
+                                value={documentText}
+                                onChange={(event) =>
+                                  setDocumentText(event.target.value)
+                                }
+                                disabled={isImageLike && !ocrDone}
+                                placeholder={
+                                  isImageLike && !ocrDone
+                                    ? t("docReader.quocNguAwaitOcr")
+                                    : t("docReader.quocNguPlaceholder")
+                                }
+                                className="h-[560px] w-full resize-none rounded-none border-0 bg-muted px-5 py-4 text-[15px] leading-8 focus-visible:ring-0 focus-visible:ring-offset-0"
+                              />
+                            </div>
+                          );
+
+                          return (
+                            <div>
+                              <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start">
+                                {columnsSwapped ? quocNguColumn : hannomColumn}
+                                <div className="flex justify-center md:pt-1">
+                                  <Tooltip title={t("docReader.btnSwapColumns")}>
+                                    <Button
+                                      shape="circle"
+                                      icon={<SwapOutlined />}
+                                      aria-label={t("docReader.btnSwapColumns")}
+                                      onClick={() =>
+                                        setColumnsSwapped((value) => !value)
+                                      }
+                                    />
+                                  </Tooltip>
+                                </div>
+                                {columnsSwapped ? hannomColumn : quocNguColumn}
+                              </div>
+                              <div className="mt-3 flex items-center justify-between gap-3">
+                                <Typography.Text type="secondary" className="text-sm">
+                                  {t("docReader.charCount", {
+                                    count: documentText.length,
+                                  })}
+                                </Typography.Text>
+                                <Tooltip title={t("docReader.btnCopy")}>
+                                  <Button
+                                    type="text"
+                                    icon={<CopyOutlined />}
+                                    aria-label={t("docReader.btnCopy")}
+                                    disabled={!documentText}
+                                    onClick={handleCopyQuocNgu}
+                                  />
+                                </Tooltip>
+                              </div>
+                            </div>
+                          );
+                        })()
+                      ),
                   },
                   {
                     key: "info",

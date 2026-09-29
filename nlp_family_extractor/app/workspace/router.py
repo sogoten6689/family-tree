@@ -40,6 +40,7 @@ class WorkspaceTreeSummary(BaseModel):
     has_hannom_text: bool = False
     user_id: Optional[int] = None
     is_public: bool = False
+    lineage_code: Optional[str] = None
     source_document_title: Optional[str] = None
 
 
@@ -79,6 +80,7 @@ class UserScanResponse(BaseModel):
     tree_status: TreeStatus
     family_tree_id: Optional[str] = None
     request_id: Optional[str] = None
+    source_file_key: Optional[str] = None
 
 
 class UserScanListResponse(BaseModel):
@@ -101,6 +103,7 @@ class UserScanUpdateRequest(BaseModel):
     family_tree_id: Optional[str] = None
     request_id: Optional[str] = None
     source_text: Optional[str] = None
+    source_file_key: Optional[str] = None
 
 
 class UserFamilyTreeCreateRequest(BaseModel):
@@ -125,6 +128,7 @@ def _to_tree_summary(item: Dict[str, Any], *, source_document_title: Optional[st
         has_hannom_text=bool(item.get("has_hannom_text", False)),
         user_id=item.get("user_id"),
         is_public=bool(item.get("is_public", False)),
+        lineage_code=item.get("lineage_code"),
         source_document_title=source_document_title,
     )
 
@@ -267,6 +271,7 @@ def create_workspace_router(
             family_tree_id=payload.family_tree_id,
             request_id=payload.request_id,
             source_text=payload.source_text,
+            source_file_key=payload.source_file_key,
         )
         return UserScanResponse.model_validate(updated)
 

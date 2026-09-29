@@ -15,6 +15,8 @@ export interface FamilyTreeSummary {
   has_hannom_text?: boolean;
   user_id?: number | null;
   is_public?: boolean;
+  /** Mã họ F-{A...Y|Z}-{NNN}, server tự tính từ tên cây — chỉ đọc. */
+  lineage_code?: string | null;
   generation_count?: number;
   source_document_title?: string | null;
 }
@@ -31,6 +33,8 @@ export interface FamilyTreeDocument {
   has_hannom_text?: boolean;
   user_id?: number | null;
   is_public?: boolean;
+  /** Mã họ F-{A...Y|Z}-{NNN}, server tự tính từ tên cây — chỉ đọc. */
+  lineage_code?: string | null;
   generation_count?: number;
   source_document_title?: string | null;
 }

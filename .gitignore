@@ -12,3 +12,5 @@ nlp_family_extractor/data/
 data/
 research/label_studio_pipeline/.env
 research/source_discovery/.env
+__pycache__/
+*.pyc

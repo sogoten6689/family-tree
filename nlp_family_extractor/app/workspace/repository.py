@@ -63,6 +63,7 @@ class UserScanRepository:
         family_tree_id: Optional[str] = None,
         request_id: Optional[str] = None,
         source_text: Optional[str] = None,
+        source_file_key: Optional[str] = None,
     ) -> UserScan:
         if title is not None:
             scan.title = title.strip()
@@ -76,6 +77,8 @@ class UserScanRepository:
             scan.request_id = request_id or None
         if source_text is not None:
             scan.source_text = source_text
+        if source_file_key is not None:
+            scan.source_file_key = source_file_key or None
         self._db.add(scan)
         self._db.commit()
         self._db.refresh(scan)

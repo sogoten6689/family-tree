@@ -50,3 +50,4 @@ class UserScan(Base):
     family_tree_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     request_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
     source_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_file_key: Mapped[str | None] = mapped_column(String(512), nullable=True)

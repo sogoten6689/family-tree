@@ -26,8 +26,8 @@ export function GenealogyFlowStepper({
     <div className={className}>
       <Steps
         size={compact ? "small" : "default"}
-        direction={compact ? "vertical" : "horizontal"}
-        responsive={!compact}
+        direction="horizontal"
+        responsive
         current={currentIndex >= 0 ? currentIndex : 0}
         items={GENEALOGY_FLOW_STEPS.map((stepId) => {
           const done = completedSteps.includes(stepId);
