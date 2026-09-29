@@ -17,6 +17,12 @@ pipeline {
     agent any
     environment {
         DATA_REPO_URL = 'github.com/sogoten6689/hannom-bilingual-dataset.git'
+        // Pipeline script from SCM checks out the whole family-tree repo to
+        // the workspace root, so `sh` steps run from there — NOT from the
+        // directory that holds this Jenkinsfile. Every path the Dockerfile
+        // expects (dashboard/Dockerfile, data/, scripts/) lives under this
+        // subdir, so stages that touch them must `dir(SUBDIR) { ... }`.
+        SUBDIR = 'research/hannom-bilingual-dataset'
     }
     stages {
         stage('Checkout OK') {
@@ -26,23 +32,27 @@ pipeline {
         }
         stage('Fetch data (repo rieng, khong con trong repo nay)') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'hannom-data-repo-pat',
-                    usernameVariable: 'DATA_GIT_USER',
-                    passwordVariable: 'DATA_GIT_TOKEN'
-                )]) {
-                    sh '''
-                    rm -rf .data-fetch data
-                    git clone --depth 1 "https://${DATA_GIT_USER}:${DATA_GIT_TOKEN}@${DATA_REPO_URL}" .data-fetch
-                    cp -r .data-fetch/data data
-                    rm -rf .data-fetch
-                    '''
+                dir(SUBDIR) {
+                    withCredentials([usernamePassword(
+                        credentialsId: 'hannom-data-repo-pat',
+                        usernameVariable: 'DATA_GIT_USER',
+                        passwordVariable: 'DATA_GIT_TOKEN'
+                    )]) {
+                        sh '''
+                        rm -rf .data-fetch data
+                        git clone --depth 1 "https://${DATA_GIT_USER}:${DATA_GIT_TOKEN}@${DATA_REPO_URL}" .data-fetch
+                        cp -r .data-fetch/data data
+                        rm -rf .data-fetch
+                        '''
+                    }
                 }
             }
         }
         stage('Build Dashboard Image') {
             steps {
-                sh 'docker build -t hannom-dashboard:latest -f dashboard/Dockerfile .'
+                dir(SUBDIR) {
+                    sh 'docker build -t hannom-dashboard:latest -f dashboard/Dockerfile .'
+                }
             }
         }
         stage('Deploy') {
@@ -56,7 +66,9 @@ pipeline {
     }
     post {
         always {
-            sh 'rm -rf data .data-fetch || true'
+            dir(SUBDIR) {
+                sh 'rm -rf data .data-fetch || true'
+            }
         }
     }
 }
