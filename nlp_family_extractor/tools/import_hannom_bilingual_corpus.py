@@ -18,10 +18,9 @@ thêm 1 FamilyTree công khai (is_public=True, xuất hiện ở "Gia phả mẫ
 GOOGLE_API_KEY: vẫn import scan/text (trung thực, không giả vờ có cây) —
 tree_status giữ NONE, in rõ lý do.
 
-KHÔNG xử lý ảnh gốc (nguon.duong_dan_goc trỏ vào family-tree/data/, hiện
-chưa có trong môi trường chạy import lần đầu) — chạy riêng 1 lượt đính ảnh
-sau khi có access tới file gốc thật (DocumentFile/ObjectStorage, xem
-app/documents/repository.py DocumentService.upload_files).
+KHÔNG xử lý ảnh gốc — chạy riêng
+`tools/attach_hannom_corpus_images.py` sau khi đã upload ảnh/file gốc lên
+MinIO (xem docstring file đó cho quy ước thư mục staging).
 
 Idempotent: mỗi lần chạy lại, record đã import trước (khớp theo doc_id, lưu
 trong UserScan.request_id với prefix "hannom-corpus:") sẽ được bỏ qua, không
