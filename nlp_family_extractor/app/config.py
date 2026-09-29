@@ -12,3 +12,23 @@ load_dotenv()
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 GEMINI_MODEL_NAME = os.getenv("GEMINI_MODEL_NAME", "models/gemini-2.5-flash")
+
+
+def get_google_api_key() -> str | None:
+    """Đọc GOOGLE_API_KEY runtime — ưu tiên config lưu DB (menu Admin ›
+    Developer › Cấu hình, xem app/settings/), fallback biến môi trường tĩnh
+    ở trên. Đọc DB mỗi lần gọi (không cache) để admin đổi key qua UI có hiệu
+    lực ngay, không cần restart server."""
+    try:
+        from app.database import database_enabled, session_scope
+
+        if database_enabled():
+            from app.settings.store import SettingsStore
+
+            with session_scope() as db:
+                value = SettingsStore().get_value(db, "GOOGLE_API_KEY")
+                if value:
+                    return value
+    except Exception:
+        pass
+    return GOOGLE_API_KEY

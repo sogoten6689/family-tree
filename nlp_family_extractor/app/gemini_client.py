@@ -2,16 +2,19 @@ from __future__ import annotations
 
 from google import genai
 
-from app.config import GEMINI_MODEL_NAME, GOOGLE_API_KEY
+from app.config import GEMINI_MODEL_NAME, get_google_api_key
 
 
 class GeminiClient:
     """Thin wrapper around google-genai (same pattern as old_code/generate-family-tree)."""
 
     def __init__(self) -> None:
-        if not GOOGLE_API_KEY:
-            raise ValueError("GOOGLE_API_KEY is not set. Add it to .env or the environment.")
-        self._client = genai.Client(api_key=GOOGLE_API_KEY)
+        api_key = get_google_api_key()
+        if not api_key:
+            raise ValueError(
+                "GOOGLE_API_KEY is not set. Add it via Admin › Developer › Cấu hình or the environment."
+            )
+        self._client = genai.Client(api_key=api_key)
 
     def generate(self, prompt: str) -> str:
         response = self._client.models.generate_content(

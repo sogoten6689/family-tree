@@ -3,7 +3,8 @@ from __future__ import annotations
 import enum
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, Enum, ForeignKey, Integer, String, Text
+from sqlalchemy import DateTime, Enum, ForeignKey, Integer, String
+from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
@@ -49,5 +50,7 @@ class UserScan(Base):
     )
     family_tree_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     request_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
-    source_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # LONGTEXT (không phải TEXT — giới hạn 64KB, gia phả dài (vd corpus Hán
+    # Nôm nhiều trang) vượt quá dễ dàng và INSERT sẽ lỗi "Data too long").
+    source_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
     source_file_key: Mapped[str | None] = mapped_column(String(512), nullable=True)

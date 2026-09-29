@@ -2,6 +2,7 @@ export const DEVELOPER_BASE = "/admin/developer";
 
 export const DEVELOPER_ROUTES = {
   hannomConfig: `${DEVELOPER_BASE}/hannom-config`,
+  settings: `${DEVELOPER_BASE}/settings`,
   storage: `${DEVELOPER_BASE}/storage`,
   logs: `${DEVELOPER_BASE}/logs`,
   docs: `${DEVELOPER_BASE}/docs`,
@@ -28,6 +29,14 @@ export const DEVELOPER_NAV_ITEMS: DeveloperNavItem[] = [
     labelDefault: "Hán-Nôm",
     breadcrumbKey: "admin.developer.breadcrumbHannom",
     breadcrumbDefault: "Hán-Nôm",
+  },
+  {
+    key: "developer-settings",
+    path: DEVELOPER_ROUTES.settings,
+    labelKey: "admin.developer.menuSettings",
+    labelDefault: "Cấu hình",
+    breadcrumbKey: "admin.developer.breadcrumbSettings",
+    breadcrumbDefault: "Cấu hình",
   },
   {
     key: "developer-storage",
