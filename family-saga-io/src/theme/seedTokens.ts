@@ -1,6 +1,6 @@
 /** SSOT — chỉ sửa màu brand tại đây */
 export const brandSeed = {
-  colorPrimary: "#b8860b",
+  colorPrimary: "#1677ff",
   colorSuccess: "#52c41a",
   colorWarning: "#faad14",
   colorError: "#ff4d4f",
@@ -12,5 +12,5 @@ export const brandSeed = {
 } as const;
 
 export const darkSeedOverrides = {
-  colorPrimary: "#d4a017",
+  colorPrimary: "#4096ff",
 } as const;

@@ -129,7 +129,7 @@ Tailwind đọc **trực tiếp** — không cần hardcode hex trong config.
 ```typescript
 /** SSOT — CHỈ SỬA MÀU BRAND TẠI ĐÂY */
 export const brandSeed = {
-  colorPrimary: "#b8860b",   // brand vàng gia phả (thống nhất Landing + App)
+  colorPrimary: "#1677ff",   // brand xanh dương (thống nhất Landing + App, đổi 2026-09-29 từ vàng #b8860b)
   colorSuccess: "#52c41a",
   colorWarning: "#faad14",
   colorError: "#ff4d4f",
@@ -141,7 +141,7 @@ export const brandSeed = {
 } as const;
 
 export const darkSeedOverrides = {
-  colorPrimary: "#d4a017",
+  colorPrimary: "#4096ff",
 } as const;
 ```
 

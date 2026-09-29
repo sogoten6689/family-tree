@@ -13,33 +13,33 @@
     --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
-    --primary: 43 74% 38%;
+    --primary: 215 100% 54%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 45% 35%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
-    --accent: 43 74% 95%;
-    --accent-foreground: 43 74% 30%;
+    --accent: 215 100% 95%;
+    --accent-foreground: 215 100% 30%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 43 74% 38%;
-    --brand: 43 74% 38%;
-    --brand-light: 43 74% 95%;
-    --brand-foreground: 43 74% 30%;
+    --ring: 215 100% 54%;
+    --brand: 215 100% 54%;
+    --brand-light: 215 100% 95%;
+    --brand-foreground: 215 100% 30%;
     --radius: 0.75rem;
     --font-display: 'Roboto', sans-serif;
     --font-body: 'Roboto', sans-serif;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 43 74% 38%;
+    --sidebar-primary: 215 100% 54%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 9%;
     --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 43 74% 38%;
+    --sidebar-ring: 215 100% 54%;
   }
 
   .dark {
@@ -49,30 +49,30 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 95%;
-    --primary: 43 80% 47%;
+    --primary: 213 100% 63%;
     --primary-foreground: 0 0% 7%;
     --secondary: 0 45% 45%;
     --secondary-foreground: 0 0% 95%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
-    --accent: 43 50% 20%;
-    --accent-foreground: 43 80% 70%;
+    --accent: 213 50% 20%;
+    --accent-foreground: 213 100% 70%;
     --destructive: 0 63% 50%;
     --destructive-foreground: 0 0% 95%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 43 80% 47%;
-    --brand: 43 80% 47%;
-    --brand-light: 43 50% 20%;
-    --brand-foreground: 43 80% 70%;
+    --ring: 213 100% 63%;
+    --brand: 213 100% 63%;
+    --brand-light: 213 50% 20%;
+    --brand-foreground: 213 100% 70%;
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 43 80% 47%;
+    --sidebar-primary: 213 100% 63%;
     --sidebar-primary-foreground: 0 0% 7%;
     --sidebar-accent: 0 0% 15%;
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 43 80% 47%;
+    --sidebar-ring: 213 100% 63%;
   }
 }
 

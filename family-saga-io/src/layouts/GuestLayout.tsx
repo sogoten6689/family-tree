@@ -70,6 +70,7 @@ const GuestLayout = () => {
         breakpoint="lg"
         theme={isDark ? "dark" : "light"}
         className="border-r border-border !bg-[hsl(var(--sidebar-background))]"
+        style={{ position: "sticky", top: 0, height: "100vh", overflow: "auto" }}
       >
         <div className="px-5 py-6">
           <Typography.Title level={5} className="!mb-1">
@@ -106,7 +107,7 @@ const GuestLayout = () => {
       <Layout>
         <Header
           className="!px-6 flex items-center justify-between border-b border-border !bg-card"
-          style={{ height: 64 }}
+          style={{ height: 64, position: "sticky", top: 0, zIndex: 10 }}
         >
           <div>
             <Breadcrumb
