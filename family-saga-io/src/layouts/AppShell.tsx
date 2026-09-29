@@ -91,7 +91,7 @@ const AppShell = ({
       >
         <Header
           className="!px-6 flex items-center justify-between border-b border-border !bg-card"
-          style={{ height: 64 }}
+          style={{ height: 64, position: "sticky", top: 0, zIndex: 10 }}
         >
           <div>
             <Breadcrumb items={breadcrumbItems} />
