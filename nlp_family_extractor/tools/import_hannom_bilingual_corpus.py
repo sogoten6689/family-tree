@@ -6,7 +6,8 @@ thật — xem `research/hannom-bilingual-dataset/scripts/_repo_paths.py` cho qu
 
 Mỗi record trở thành 1 UserScan (title/text đã OCR+dịch sẵn, ocr_status=
 completed) thuộc về 1 tài khoản cố định (--owner-email). Nếu trích xuất được
-quan hệ nhân vật (cần GOOGLE_API_KEY — xem app/gemini_service.py), tạo thêm 1
+quan hệ nhân vật (cần GOOGLE_API_KEY — lưu qua Admin › Developer › Cấu hình,
+hoặc biến môi trường, xem app/config.py:get_google_api_key), tạo thêm 1
 FamilyTree công khai (is_public=True, xuất hiện ở "Gia phả mẫu"/`/gia-pha`)
 và gắn family_tree_id + tree_status=created vào scan. KHÔNG có
 GOOGLE_API_KEY: vẫn import scan/text (trung thực, không giả vờ có cây) —
@@ -21,8 +22,9 @@ Idempotent: mỗi lần chạy lại, record đã import trước (khớp theo d
 trong UserScan.request_id với prefix "hannom-corpus:") sẽ được bỏ qua, không
 tạo trùng.
 
-Chạy (từ nlp_family_extractor/, cần MYSQL_HOST/MYSQL_USER/MYSQL_PASSWORD +
-optionally GOOGLE_API_KEY trong env, giống khi chạy `uvicorn api:app`):
+Chạy (từ nlp_family_extractor/, cần MYSQL_HOST/MYSQL_USER/MYSQL_PASSWORD
+trong env, giống khi chạy `uvicorn api:app`; GOOGLE_API_KEY lấy từ DB nếu đã
+cấu hình qua Admin › Developer › Cấu hình, không cần set lại ở đây):
 
     python3 tools/import_hannom_bilingual_corpus.py --dry-run   # xem trước
     python3 tools/import_hannom_bilingual_corpus.py             # import thật

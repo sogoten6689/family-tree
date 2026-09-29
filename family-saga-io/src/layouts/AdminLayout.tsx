@@ -7,6 +7,7 @@ import {
   FileTextOutlined,
   HomeOutlined,
   LogoutOutlined,
+  SettingOutlined,
   TeamOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
@@ -32,6 +33,7 @@ const { Header, Sider, Content } = Layout;
 
 const DEVELOPER_ICON_MAP: Record<string, React.ReactNode> = {
   "developer-hannom": <CodeOutlined />,
+  "developer-settings": <SettingOutlined />,
   "developer-storage": <DatabaseOutlined />,
   "developer-crawl": <CloudDownloadOutlined />,
   "developer-logs": <UnorderedListOutlined />,

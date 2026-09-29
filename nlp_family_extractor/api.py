@@ -24,6 +24,8 @@ from app.hannom.bootstrap import bootstrap_hannom
 from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
+from app.settings.bootstrap import bootstrap_settings
+from app.settings.router import router as settings_router
 from app.vgp.bootstrap import bootstrap_vgp
 from app.vgp.crawl_service import VgpCrawlOptions, VgpCrawlService
 from app.workspace.bootstrap import bootstrap_workspace
@@ -423,6 +425,7 @@ async def _lifespan(_: FastAPI):
         bootstrap_vgp()
         bootstrap_workspace()
         bootstrap_hannom()
+        bootstrap_settings()
     yield
 
 _DESCRIPTION = """
@@ -522,6 +525,7 @@ app.include_router(
     )
 )
 app.include_router(hannom_developer_router)
+app.include_router(settings_router)
 
 
 def _raise_store_error(error: Exception) -> None:

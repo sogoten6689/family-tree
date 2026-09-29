@@ -32,6 +32,7 @@ import EditDocumentPage from "./pages/EditDocumentPage";
 import NotFound from "./pages/NotFound";
 import ForbiddenPage from "./pages/ForbiddenPage";
 import HannomConfigPage from "./pages/developer/HannomConfigPage";
+import SettingsPage from "./pages/developer/SettingsPage";
 import StoragePage from "./pages/developer/StoragePage";
 import LogsPage from "./pages/developer/LogsPage";
 import DocsPage from "./pages/developer/DocsPage";
@@ -121,6 +122,7 @@ const AppContent = () => (
               >
                 <Route index element={<Navigate to="/admin/developer/hannom-config" replace />} />
                 <Route path="hannom-config" element={<HannomConfigPage />} />
+                <Route path="settings" element={<SettingsPage />} />
                 <Route path="storage" element={<StoragePage />} />
                 <Route path="vietnamgiapha-crawl" element={<VietnamGiaPhaCrawlPage />} />
                 <Route path="nomfoundation-crawl" element={<NomFoundationCrawlPage />} />
