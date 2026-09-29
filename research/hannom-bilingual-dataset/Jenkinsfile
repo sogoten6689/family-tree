@@ -1,0 +1,75 @@
+// Cập nhật 2026-09-29 (chuẩn bị deploy VPS lần đầu, sau khi gộp code vào
+// family-tree): thêm stage "Fetch data" — data/ KHÔNG còn nằm trong repo
+// này (đã dọn sang family-tree/research/hannom-bilingual-dataset/, chỉ giữ
+// CODE) mà ở lại repo hannom-bilingual-dataset cũ, giờ private/data-only
+// (~82MB). dashboard/Dockerfile vẫn `COPY data/ data/` như cũ — stage này
+// clone repo dữ liệu và populate data/ (gitignored, build-time only) TRƯỚC
+// khi build, không đổi Dockerfile.
+//
+// Repo dữ liệu là PRIVATE — `git clone` trần qua HTTPS sẽ bị từ chối (401)
+// nếu chạy ẩn danh. Stage dưới dùng credential Jenkins id cố định
+// `hannom-data-repo-pat` (kind "Username with password": username = tài
+// khoản GitHub, password = Personal Access Token có quyền đọc repo đó) để
+// nhúng token vào URL clone TẠI RUNTIME — không hardcode token trong file
+// này. Xem hướng dẫn tạo credential này trong
+// docs/planning/vps_jenkins_deploy_guide.md (đọc trước khi chạy job lần đầu).
+pipeline {
+    agent any
+    environment {
+        DATA_REPO_URL = 'github.com/sogoten6689/hannom-bilingual-dataset.git'
+        // Pipeline script from SCM checks out the whole family-tree repo to
+        // the workspace root, so `sh` steps run from there — NOT from the
+        // directory that holds this Jenkinsfile. Every path the Dockerfile
+        // expects (dashboard/Dockerfile, data/, scripts/) lives under this
+        // subdir, so stages that touch them must `dir(SUBDIR) { ... }`.
+        SUBDIR = 'research/hannom-bilingual-dataset'
+    }
+    stages {
+        stage('Checkout OK') {
+            steps {
+                echo 'Da checkout thanh cong tu GitHub!'
+            }
+        }
+        stage('Fetch data (repo rieng, khong con trong repo nay)') {
+            steps {
+                dir(SUBDIR) {
+                    withCredentials([usernamePassword(
+                        credentialsId: 'hannom-data-repo-pat',
+                        usernameVariable: 'DATA_GIT_USER',
+                        passwordVariable: 'DATA_GIT_TOKEN'
+                    )]) {
+                        sh '''
+                        rm -rf .data-fetch data
+                        git clone --depth 1 "https://${DATA_GIT_USER}:${DATA_GIT_TOKEN}@${DATA_REPO_URL}" .data-fetch
+                        cp -r .data-fetch/data data
+                        rm -rf .data-fetch
+                        '''
+                    }
+                }
+            }
+        }
+        stage('Build Dashboard Image') {
+            steps {
+                dir(SUBDIR) {
+                    sh 'docker build -t hannom-dashboard:latest -f dashboard/Dockerfile .'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker rm -f hannom-dashboard || true
+                docker run -d --name hannom-dashboard --restart unless-stopped -p 89:80 hannom-dashboard:latest
+                '''
+            }
+        }
+    }
+    post {
+        always {
+            dir(SUBDIR) {
+                sh 'rm -rf data .data-fetch || true'
+            }
+        }
+    }
+}
+

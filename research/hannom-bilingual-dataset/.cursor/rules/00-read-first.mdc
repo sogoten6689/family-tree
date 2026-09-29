@@ -1,0 +1,31 @@
+---
+description: Đọc tài liệu nào trước khi làm task — onboarding repo done-data Hán-Việt
+alwaysApply: true
+---
+
+# Đọc ban đầu (read-first)
+
+Repo này chỉ chứa **dữ liệu đã xử lý** (JSON), không có code app. Trước khi sửa:
+
+| Loại task | Đọc trước |
+|-----------|-----------|
+| Hiểu tổng quan, cách chạy pipeline | `README.md` |
+| Thêm/sửa 1 record | `schema/bilingual_record.schema.json` (bắt buộc, `additionalProperties: false`) |
+| Tài liệu nào track nào | `manifest/classification.json` |
+| Vote/mix OCR | `scripts/vote_ocr.py` (docstring đầu file có thuật toán + số liệu thật) |
+
+## Repo layout
+
+- `data/track1_hannom_only/` — 17 record, toàn Hán Nôm chưa dịch (ưu tiên chính)
+- `data/track2_bilingual/` — 3 record, đã có sẵn Hán+Việt (ưu tiên chính, mẫu chuẩn)
+- `data/track3_viet_only/` — 4 record, Việt thuần, `co_ban_han: false` (tham khảo, ưu tiên thấp)
+- `scripts/ocr_adapters/` — mỗi engine 1 file, trả `None` nếu chưa có key (không giả lập)
+- `../family-tree/` — nguồn ảnh/PDF gốc thật, **không copy vào đây**
+
+## Nguyên tắc chung
+
+1. Không bịa `quy_mo`/`hinh_thuc`/`dia_danh`/`nien_dai` — để `null` nếu chưa có bằng chứng.
+2. Track 3 không cần đầu tư sâu — chỉ Track 1 & 2 mới là mục tiêu chính của repo.
+3. OCR vote: chỉ ghi đè khi ≥3 engine đồng thuận cùng vị trí ký tự; ít hơn thì gắn `uncertain_spans`, giữ backbone.
+4. Validate schema trước mọi commit (lệnh trong `README.md` / `CLAUDE.md`).
+5. Chỉ xử lý bản thân 1 bộ phả — không kế ước/tế văn/sách lý thuyết (xem `manifest/classification.json` → `loai_khoi_pham_vi`).

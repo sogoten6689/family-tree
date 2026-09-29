@@ -1,0 +1,33 @@
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+secrets/
+.env
+
+# Dữ liệu — CỐ Ý KHÔNG có trong repo family-tree (theo yêu cầu tích hợp
+# 2026-09-29): data/ và runs/ vẫn ở lại repo hannom-bilingual-dataset cũ
+# (giờ chỉ giữ vai trò kho dữ liệu, xem scripts/_repo_paths.py). Ignore ở
+# đây để phòng trường hợp có người symlink/copy tạm data repo vào đúng chỗ
+# này để dev local — không bao giờ được commit nhầm vào family-tree.
+data/
+runs/
+
+# dashboard/index.html + status.json + data/: sinh tự động từ
+# scripts/build_dashboard.py, XÁC NHẬN 2026-09-21: index.html từng vượt 100MB
+# (giới hạn GitHub) sau khi vote lại 17 tài liệu bằng thuật toán câu/Levenshtein
+# — đã tách kiến trúc (index.html/status.json chỉ còn khung nhẹ, nội dung từng
+# tài liệu nằm ở dashboard/data/<doc_id>.html/.json, tải riêng khi mở) nhưng cả
+# 3 vẫn là dữ liệu SINH RA, không phải nguồn — bỏ khỏi git, Docker build tự chạy
+# lại `python3 scripts/build_dashboard.py` (xem dashboard/Dockerfile).
+dashboard/index.html
+dashboard/status.json
+dashboard/data/
+
+# TOOL_ChatGPT_API / TOOL_Gemini_API: cookie dang nhap va anh chan doan
+cookies.pkl
+gemini_probe.png
+gemini_started.png
+gemini_upload_image.png
+chatgpt_debug.png
+chatGPT_started.png
