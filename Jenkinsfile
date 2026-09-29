@@ -24,9 +24,14 @@ pipeline {
         }
         stage('Health check') {
             steps {
+                // Jenkins agent chay trong container (docker.sock mount, khong
+                // host networking) nen khong thay port host 87 qua localhost —
+                // exec thang vao network namespace cua container nginx va goi
+                // 127.0.0.1 (khong dung "localhost": busybox wget thu IPv6 ::1
+                // truoc, nginx chi listen 0.0.0.0:80 nen bi Connection refused).
                 sh '''
                 sleep 5
-                curl -fsS http://localhost:87/health
+                docker exec family-tree-nginx wget -qO- http://127.0.0.1/health
                 '''
             }
         }
