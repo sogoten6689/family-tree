@@ -1,0 +1,12 @@
+# Requirements cho scripts/ (vote_ocr.py, adapters, pipeline chính).
+# Rà bằng grep import trực tiếp trên scripts/*.py + scripts/ocr_adapters/*.py — 2026-09-29.
+# Xem VOTE_OCR_RULE.md §3 để biết package nào dùng ở đâu.
+
+rapidfuzz>=3.0        # vote_ocr.py — Levenshtein MED, lõi thuật toán vote
+python-dotenv>=1.0    # đọc .env cho API key OCR/dịch (adapters, dich_nghia.py, phien_am.py)
+requests>=2.31        # adapter gọi API OCR (paddle_v6, deepseek, google_vision, gemini, kim_hannom_lab)
+jsonschema>=4.0       # validate schema record (add_new_source.py, lệnh trong README/CLAUDE.md)
+
+# Không cần cho CI test logic vote (vote_line/vote_line_positional/rank_by_similarity
+# là pure function, không dùng 4 package trên ngoại trừ rapidfuzz) — nhưng cần đủ để
+# chạy được toàn bộ scripts/ nếu CI mở rộng sang test pipeline thật.

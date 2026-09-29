@@ -1,0 +1,9 @@
+numba==0.60.0
+faiss-cpu
+# faiss-gpu==1.7.2
+googletrans==4.0.0rc1
+sentence-splitter==1.4
+sentence-transformers==3.2.1
+underthesea
+fastapi
+uvicorn

@@ -1,0 +1,5 @@
+selenium
+configparser
+undetected-chromedriver
+psutil
+setuptools

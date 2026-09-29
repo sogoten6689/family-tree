@@ -67,6 +67,8 @@ flowchart LR
 
 **Đọc biểu đồ:** cột trái là cái đang chạy thật cho user; cột phải là cái đã nghiên cứu xong (thuật toán, schema, mã định danh) nhưng nằm ngoài hệ thống. Requirement của file này = **xây cầu nối** (đường đứt nét) + làm mỗi khối cột trái **thay được**, không phải viết lại từ đầu.
 
+> **Cập nhật 2026-09-29 — nửa "cầu nối" bên mã nguồn đã xong:** cột RESEARCH (`vote_ocr.py`, mã định danh, schema) đã **gộp vào family-tree** tại `research/hannom-bilingual-dataset/` — không còn 2 repo mã nguồn tách biệt như hình trên (chỉ còn 2 repo cho **dữ liệu**: `data/`+`runs/` vẫn ở repo `hannom-bilingual-dataset` cũ). Đường đứt nét ở trên giờ chỉ còn đúng ở tầng **wiring** (§4 — khối OCR/Trích xuất của `nlp_family_extractor` chưa import các module đã gộp), không còn ở tầng **vị trí file** nữa.
+
 ---
 
 ## 3. Mô hình dữ liệu Hán-Nôm
@@ -276,7 +278,7 @@ Giữ đúng roadmap Phase 3 (`user_id` trên history, dashboard). Bổ sung **m
 - Không phá SSOT `BalkanNode` (`docs/schemas/balkan-node.schema.json`) — mọi mở rộng dữ liệu Hán-Nôm (§3) là **thêm bảng mới**, không đổi cấu trúc node cây hiện có.
 - Giữ nguyên chính sách **free-only visualization** (`.cursor/rules/free-only-visualization.mdc`) — không đổi renderer.
 - Giữ phạm vi **gia-pha-only** (`.cursor/rules/gia-pha-only-analysis.mdc`) — không mở rộng sang kế ước/tế văn/sắc phong.
-- 2 repo (`nlp_family_extractor` sản xuất, `hannom-bilingual-dataset` research) **vẫn tách biệt về mã nguồn** — mang thuật toán/schema qua bằng **copy có ghi rõ nguồn** (file, commit hash) hoặc package riêng dùng chung, **không symlink/import chéo** (đúng rule đã ghi ở `VOTE_OCR_RULE.md` §6).
+- **Cập nhật 2026-09-29 (đảo ngược so với bản đầu):** mã nguồn `hannom-bilingual-dataset` (scripts/schema/dashboard...) đã **gộp vào `family-tree`** tại `research/hannom-bilingual-dataset/`, theo yêu cầu "tích hợp thành 1 repo duy nhất" — không còn tách biệt mã nguồn như constraint cũ ở đây. Chỉ **dữ liệu** (`data/`, `runs/` — nặng, ~82MB) **vẫn ở lại** repo `hannom-bilingual-dataset` cũ, đọc/ghi qua `DATA_REPO_ROOT` (`research/hannom-bilingual-dataset/scripts/_repo_paths.py`, mặc định sibling directory, override bằng env `HANNOM_DATA_ROOT`). §4 của requirement này (khối OCR dùng `vote_ocr.py`) giờ **import trực tiếp trong cùng repo**, không phải copy-có-ghi-nguồn như dự kiến ban đầu.
 
 ---
 

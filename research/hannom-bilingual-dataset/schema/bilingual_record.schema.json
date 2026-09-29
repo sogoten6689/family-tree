@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://internal/hannom-bilingual-dataset/bilingual_record.schema.json",
+  "title": "Bản ghi gia phả Hán Nôm / song ngữ Hán-Việt",
+  "description": "Một tài liệu (cuốn/tệp) trong done-data. Track 1 = chỉ có metadata + ảnh, chờ OCR (L1-L3 và pairs = null). Track 2 = đầy đủ Hán+Việt. Track 3 = chỉ có Việt (co_ban_han=false, không ghép pairs).",
+  "type": "object",
+  "required": ["doc_id", "track", "co_ban_han", "ten_han_viet", "nguon", "pages", "status", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "doc_id": {
+      "type": "string",
+      "description": "Khớp book_id trong family-tree/data/00_raw/hannom/books_catalog.json — KEY KỸ THUẬT nội bộ (ổn định, có trước khi phân loại), KHÔNG phải mã định danh khoa học. Xem trường ma_dinh_danh cho mã chính thức."
+    },
+    "ma_dinh_danh": {
+      "type": ["string", "null"],
+      "description": "Mã định danh khoa học (F-code) đã chốt với thầy 06-07/09 (xem family-tree/docs/lab/note_meeting_weekly/31_08_2026/huong_dan_gia_pha_han_nom.md mục 'Đối chiếu mã 6 trục' + 31_08_2026.md bảng chữ cái A-V). Cấu trúc: F-{chữ A-V ứng Quy_Mô×Hình_Thức}-{Mã Họ 2 chữ}-{Địa Danh cấp thấp nhất, không dấu không cách}-{ID 3 chữ số tăng dần theo thứ tự nhập catalogue}-{Năm soạn GỐC, không phải năm ấn bản/dịch lại}. Ví dụ đã chốt: F-B-PN-GiaThien-001-1930 (Phan gia công phả). null nếu chưa đủ 5 thành phần (quy_mo, hinh_thuc, ho, dia_danh, nien_dai đều xác nhận VÀ đã có số ID chính thức) — không suy đoán/tự gán ID khi chưa chắc thứ tự."
+    },
+    "track": {
+      "type": "integer",
+      "enum": [1, 2, 3],
+      "description": "1 = toàn Hán Nôm chưa dịch; 2 = đã có sẵn Hán+Việt song ngữ; 3 = văn bản gia phả tiếng Việt thuần (không có/mất bản Hán)"
+    },
+    "co_ban_han": {
+      "type": "boolean",
+      "description": "false cho Track 3 — không được coi record này là song ngữ dù có text Việt"
+    },
+    "ten_goc_han": { "type": ["string", "null"], "description": "Tên nguyên văn chữ Hán, null nếu không có (Track 3)" },
+    "ten_han_viet": { "type": "string", "description": "Tên phiên âm Hán Việt hoặc tên gọi tiếng Việt nếu Track 3" },
+    "ho": { "type": ["string", "null"] },
+    "quy_mo": {
+      "type": ["string", "null"],
+      "description": "Tông phả | Tộc phả | Chi phả | Phân phả | Ngọc phả | null nếu chưa phân loại"
+    },
+    "hinh_thuc": {
+      "type": ["string", "null"],
+      "description": "Bộ | Đồ | Ký | Điệp | Bia (ngoại lệ, không thuộc hệ mã F) | null nếu chưa phân loại"
+    },
+    "dia_danh": { "type": ["string", "null"] },
+    "nien_dai": { "type": ["string", "null"] },
+    "nguon": {
+      "type": "object",
+      "required": ["duong_dan_goc", "loai_tu_lieu"],
+      "additionalProperties": false,
+      "properties": {
+        "duong_dan_goc": {
+          "type": "string",
+          "description": "Đường dẫn tương đối TRONG repo family-tree — repo này không copy ảnh/PDF gốc"
+        },
+        "loai_tu_lieu": {
+          "type": "string",
+          "enum": ["anh_scan", "pdf_anh_scan", "docx", "anh_chup_quoc_ngu", "web_quoc_ngu"],
+          "description": "web_quoc_ngu = văn bản Quốc ngữ dựng lại/thứ cấp từ một trang web (không phải scan/ảnh chụp/docx nội bộ), vd. giaphatphcm.com"
+        },
+        "canonical_url": {
+          "type": "string",
+          "description": "URL gốc, chỉ dùng khi loai_tu_lieu=web_quoc_ngu"
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/page" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "l1_done", "l2_done", "l3_done", "reviewed", "final"]
+    },
+    "ghi_chu": { "type": ["string", "null"], "description": "Cảnh báo/độ tin cậy, vd. 'đọc trực tiếp bởi AI, chưa chuyên gia xác nhận'" },
+    "provenance": {
+      "type": "object",
+      "required": ["created_at", "pipeline_version"],
+      "additionalProperties": false,
+      "properties": {
+        "created_at": { "type": "string", "format": "date" },
+        "pipeline_version": { "type": "string" },
+        "reviewed_by": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "definitions": {
+    "page": {
+      "type": "object",
+      "required": ["page_id", "l0_image"],
+      "additionalProperties": false,
+      "properties": {
+        "page_id": { "type": "string" },
+        "l0_image": {
+          "type": ["string", "null"],
+          "description": "Đường dẫn tương đối trong family-tree tới ảnh/trang gốc, null nếu không xác định được từng trang (vd. toàn văn Word)"
+        },
+        "l1_ocr": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "voted_text": {
+              "type": ["string", "null"],
+              "description": "Kết quả SAU vote (không chỉ backbone thô) — xem vote_method + uncertain_spans. Từ 2026-09-14: vote ở CẤP CÂU/DÒNG bằng Levenshtein MED (rapidfuzz), chọn nguyên 1 dòng thắng cuộc thay vì ghép ký tự từ nhiều engine (bản cũ đến 2026-09-13 vote ký tự bằng difflib.SequenceMatcher, xem lịch sử thuật toán trong docstring vote_ocr.py)."
+            },
+            "vote_method": { "type": ["string", "null"] },
+            "engines": {
+              "type": "object",
+              "description": "Kết quả từng OCR engine trong 5 tool: paddle_v6, kim_hannom_lab (=CLC), deepseek, google_vision, gemini",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "text": { "type": ["string", "null"] },
+                  "score": { "type": ["number", "null"] },
+                  "similarity_to_others": {
+                    "type": ["number", "null"],
+                    "description": "Từ 2026-09-15: độ giống trung bình (bag-of-lines, không phụ thuộc thứ tự dòng) với TỪNG engine khác có dữ liệu cùng trang — dùng để chọn backbone + engine bị loại khi cần giữ số phiếu lẻ, xem rank_by_similarity() trong vote_ocr.py. KHÔNG còn dùng priority cố định (kim_hannom_lab > paddle_v6 > ...) để chọn backbone."
+                  }
+                }
+              }
+            },
+            "uncertain_spans": {
+              "type": "array",
+              "description": "Từ 2026-09-14: 1 bản ghi / DÒNG có engine bất đồng (không unanimous), vote bằng Levenshtein MED cấp câu — {line, voted_line, method, n_agree, n_total, disagreeing:[{engine,text,similarity}]}. 4 method: 'line_unanimous' mọi engine ra dòng giống hệt (chỉ xuất hiện trong spans nếu có disagreeing dù cùng cụm thắng — hiếm); 'line_majority_override' cụm khác backbone có nhiều engine đồng ý hơn -> ghi đè; 'line_confirmed_majority' backbone thắng đa số thật; 'line_no_majority' hoà phiếu, không bên nào áp đảo -> giữ backbone, cần người soát kỹ nhất. — Record vote kiểu CŨ (đến 2026-09-13, vote ký tự bằng difflib) vẫn giữ nguyên field cấp ký tự {pos,backbone,resolved,votes} với method cũ {'majority_override','confirmed_majority','flagged_no_majority'} — 2 kiểu record cùng tồn tại trong data cũ/mới, phân biệt bằng có field 'pos' (ký tự) hay 'voted_line' (câu).",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "line": { "type": "integer" },
+                  "pos": { "type": "integer" },
+                  "backbone": { "type": "string" },
+                  "resolved": { "type": "string" },
+                  "votes": { "type": "object", "additionalProperties": { "type": "integer" } },
+                  "voted_line": { "type": "string" },
+                  "n_agree": { "type": "integer" },
+                  "n_total": { "type": "integer" },
+                  "disagreeing": { "type": "array" },
+                  "method": {
+                    "type": "string",
+                    "enum": ["majority_override", "confirmed_majority", "flagged_no_majority",
+                             "line_majority_override", "line_confirmed_majority", "line_unanimous", "line_no_majority"]
+                  }
+                }
+              }
+            },
+            "structural_diffs": {
+              "type": "array",
+              "description": "DEPRECATED kể từ 2026-09-14 — vote ký tự cũ (difflib) ghi đoạn insert/delete/replace lệch độ dài vào đây vì không vote được; vote câu (Levenshtein MED) xử lý được mọi trường hợp ngay trong bước gom cụm nên field này LUÔN RỖNG [] ở record mới. Giữ lại field (không xoá) để tương thích ngược schema với record đã vote kiểu cũ.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "line": { "type": "integer" },
+                  "engine": { "type": "string" },
+                  "pos": { "type": "integer" },
+                  "backbone_span": { "type": "string" },
+                  "other_span": { "type": "string" }
+                }
+              }
+            },
+            "uncertain_rate": {
+              "type": ["number", "null"],
+              "description": "Từ 2026-09-14: len(uncertain_spans) / tổng số DÒNG backbone (trước: / tổng số ký tự) — đổi đơn vị cùng lúc đổi đơn vị vote, KHÔNG so sánh trực tiếp giá trị này giữa record vote câu (mới) và record vote ký tự (cũ, đến 2026-09-13)."
+            }
+          }
+        },
+        "l2_phien_am": { "type": ["string", "null"] },
+        "l3_dich_nghia": { "type": ["string", "null"] },
+        "ghi_chu_trang": { "type": ["string", "null"], "description": "Ghi chú riêng cho trang này, vd. nghi vấn chưa giải quyết" },
+        "pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["han", "viet", "align_method"],
+            "properties": {
+              "han": { "type": "string" },
+              "viet": { "type": "string" },
+              "align_method": { "type": "string", "enum": ["human_book_page", "model", "heuristic"] },
+              "confidence": { "type": "string", "enum": ["cao", "trung_binh", "thap"] },
+              "tu_ghep": {
+                "type": "array",
+                "description": "Ghép từng chữ/cụm từ Hán với từ/cụm tiếng Việt tương ứng trong pair này — chi tiết hơn han/viet (vốn ghép cả dòng/câu). Thứ tự đúng theo thứ tự xuất hiện trong câu Hán.",
+                "items": {
+                  "type": "object",
+                  "required": ["han", "viet"],
+                  "properties": {
+                    "han": { "type": "string" },
+                    "viet": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

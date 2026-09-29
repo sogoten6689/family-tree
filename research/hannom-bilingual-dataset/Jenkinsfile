@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout OK') {
+            steps {
+                echo 'Da checkout thanh cong tu GitHub!'
+            }
+        }
+        stage('Build Dashboard Image') {
+            steps {
+                sh 'docker build -t hannom-dashboard:latest -f dashboard/Dockerfile .'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker rm -f hannom-dashboard || true
+                docker run -d --name hannom-dashboard --restart unless-stopped -p 89:80 hannom-dashboard:latest
+                '''
+            }
+        }
+    }
+}
+

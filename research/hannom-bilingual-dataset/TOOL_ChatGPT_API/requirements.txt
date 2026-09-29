@@ -1,0 +1,4 @@
+selenium
+pickle-mixin
+configparser
+undetected-chromedriver

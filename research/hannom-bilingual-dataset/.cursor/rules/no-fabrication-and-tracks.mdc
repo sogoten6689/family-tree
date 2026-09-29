@@ -1,0 +1,40 @@
+---
+description: Không bịa dữ liệu, ưu tiên Track 1&2, quy tắc vote OCR
+alwaysApply: true
+---
+
+# Không bịa dữ liệu
+
+Mọi trường trong `bilingual_record.schema.json` phải truy được về 1 trong 3
+nguồn: (a) `family-tree/data/00_raw/hannom/books_catalog.json`, (b) đọc trực
+tiếp ảnh/bản dịch gốc, (c) đã ghi trong 1 file khác của chính repo này. Không
+suy đoán mới khi thêm/sửa record — nếu chưa đọc nội dung, để `null` và ghi rõ
+trong `ghi_chu` là "Chưa phân loại"/"Chưa đọc nội dung", không phải đoán rồi
+viết như thể chắc chắn.
+
+Khi có suy luận (không phải đọc trực tiếp), luôn gắn nhãn rõ trong `ghi_chu`,
+ví dụ mẫu đã dùng trong `data/track1_hannom_only/nom-557.json`:
+`"XÁC NHẬN qua đọc trực tiếp trang 2: ..."` (fact) vs
+`"Phân phả (suy luận) — nội dung là tiểu sử 1 cá nhân"` (inference).
+
+# Ưu tiên Track 1 & 2, hạ thấp Track 3
+
+`data/track1_hannom_only/` và `data/track2_bilingual/` là mục tiêu chính của
+repo (Rule 1: có Hán-Việt song ngữ). `data/track3_viet_only/` (`co_ban_han:
+false`) chỉ để tham khảo câu văn — **không** đầu tư OCR/đọc sâu thêm cho Track
+3 trừ khi user nói rõ.
+
+# Vote OCR — không tự đoán khi thiếu bằng chứng
+
+`scripts/vote_ocr.py` chỉ **tự ghi đè** ký tự backbone khi có đa số thật (số
+phiếu ứng viên khác > số phiếu backbone, cần ≥3 engine để xảy ra). Với đúng 2
+engine hiện có (`paddle_v6`, `kim_hannom_lab`), code **không bao giờ** tự chọn
+1 bên khi bất đồng — chỉ gắn `uncertain_spans` vào record. Không sửa thuật
+toán để "tự tin hơn" khi chưa có engine thứ 3 thật.
+
+# Phạm vi: chỉ bản thân 1 bộ phả
+
+Không OCR/dịch/vote cho tài liệu không phải bản thân 1 bộ phả — danh sách loại
+trừ và lý do nằm ở `manifest/classification.json` → `loai_khoi_pham_vi` (kế
+ước, sách lý thuyết, sử liệu chung). Nếu gặp tài liệu mới thuộc loại này, thêm
+vào đúng danh sách đó, không thêm vào track 1/2/3.

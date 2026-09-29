@@ -1,0 +1,208 @@
+{
+  "sinh_tu": "family-tree/data/00_raw/hannom/books_catalog.json",
+  "tong_so": 29,
+  "so_luong_theo_track": {
+    "1": 17,
+    "2": 3,
+    "3": 5
+  },
+  "entries": [
+    {
+      "doc_id": "nom-84",
+      "track": 1,
+      "title_han": "白雲庵居士阮文達譜記",
+      "title_vn": "Bạch Vân Am cư sĩ Nguyễn Văn Đạt phả ký",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/84"
+    },
+    {
+      "doc_id": "nom-147",
+      "track": 1,
+      "title_han": "朱族家譜",
+      "title_vn": "Chu tộc gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/147"
+    },
+    {
+      "doc_id": "nom-207",
+      "track": 1,
+      "title_han": "段族譜",
+      "title_vn": "Đoàn tộc phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/207"
+    },
+    {
+      "doc_id": "nom-208",
+      "track": 1,
+      "title_han": "東稠段族譜",
+      "title_vn": "Đông Trù Đoàn tộc phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/208"
+    },
+    {
+      "doc_id": "nom-429",
+      "track": 1,
+      "title_han": "瑞應家譜",
+      "title_vn": "Thuỵ Ứng gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/429"
+    },
+    {
+      "doc_id": "nom-557",
+      "track": 1,
+      "title_han": "統會大族石譜",
+      "title_vn": "Thống Hội đại tộc thạch phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/557"
+    },
+    {
+      "doc_id": "nom-563",
+      "track": 1,
+      "title_han": "狀元樗寮先生家譜",
+      "title_vn": "Trạng nguyên Hu Liêu tiên sinh gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/563"
+    },
+    {
+      "doc_id": "nom-833",
+      "track": 1,
+      "title_han": "慕澤黎氏家譜事跡記",
+      "title_vn": "Mộ trạch Lê thị gia phả sự tích ký",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/833"
+    },
+    {
+      "doc_id": "nom-854",
+      "track": 1,
+      "title_han": "阮堂譜記",
+      "title_vn": "Nguyễn đường phả ký",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/854"
+    },
+    {
+      "doc_id": "nom-855",
+      "track": 1,
+      "title_han": "阮族家譜",
+      "title_vn": "Nguyễn tộc gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/855"
+    },
+    {
+      "doc_id": "nom-865",
+      "track": 1,
+      "title_han": "譜記廟墓",
+      "title_vn": "Phả ký miếu mộ",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/865"
+    },
+    {
+      "doc_id": "nom-1158",
+      "track": 1,
+      "title_han": "江氏家譜",
+      "title_vn": "Giang Thị gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/1158"
+    },
+    {
+      "doc_id": "nom-1255",
+      "track": 1,
+      "title_han": "朱族譜記",
+      "title_vn": "Chu tộc gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/1255"
+    },
+    {
+      "doc_id": "nom-1256",
+      "track": 1,
+      "title_han": "黎族大宗家譜",
+      "title_vn": "Lê tộc đại tông gia phả",
+      "duong_dan_goc": "data/00_raw/hannom/nomfoundation/volumes/1256"
+    },
+    {
+      "doc_id": "pdf-1000-mai",
+      "track": 1,
+      "title_han": "梅氏宗譜",
+      "title_vn": "Mai thị tông phả — tập 1",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/13_8_2026/pdf-1000-mai"
+    },
+    {
+      "doc_id": "pdf-1001-la",
+      "track": 1,
+      "title_han": "罗氏宗譜",
+      "title_vn": "Là thị tông phả — tập 1",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/13_8_2026/pdf-1001-la"
+    },
+    {
+      "doc_id": "pdf-1005-tran",
+      "track": 1,
+      "title_han": "陈氏宗譜",
+      "title_vn": "Trần thị tông phả — tập 1",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/13_8_2026/pdf-1005-tran"
+    },
+    {
+      "doc_id": "gpc-dang-1928",
+      "track": 2,
+      "title_han": "家譜誌",
+      "title_vn": "Gia phả chí (họ Đặng, Bảo Đại 1928)",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/gia_pha_chi"
+    },
+    {
+      "doc_id": "pdf-phan-gia-cong-pha",
+      "track": 2,
+      "title_han": "潘家公譜",
+      "title_vn": "Phan gia công phả (Gia Thiện – Hà Tĩnh; Nxb Thế Giới, 2006)",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/31_8_2026"
+    },
+    {
+      "doc_id": "docx-nguyen-van",
+      "track": 2,
+      "title_han": "阮文族譜",
+      "title_vn": "Gia phả Nguyễn Văn (dịch nghĩa + phiên âm + Hán)",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/24_8_2026"
+    },
+    {
+      "doc_id": "nguyen-ke-gia-pha",
+      "track": 3,
+      "title_han": null,
+      "title_vn": "Nguyễn Kế gia phả — ảnh Quốc ngữ (+ bằng khoán Diên Khánh)",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/25_8_2026/Hương/Nguyễn Kế gia phả"
+    },
+    {
+      "doc_id": "pdf-nguyen-phuc-the-pha",
+      "track": 3,
+      "title_han": "阮福族世譜",
+      "title_vn": "Nguyễn Phúc tộc thế phả (Nxb Thuận Hóa, 1995)",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/28_8_2026"
+    },
+    {
+      "doc_id": "docx-pham-1876",
+      "track": 3,
+      "title_han": "范氏家譜 · 范族副意",
+      "title_vn": "Gia phả + Phó ý họ Phạm (biên dịch 2018)",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/24_8_2026"
+    },
+    {
+      "doc_id": "docx-tran-200",
+      "track": 3,
+      "title_han": "陳氏家譜",
+      "title_vn": "Gia phả họ Trần — Thanh Thủy Thượng, Hương Thủy, TT-Huế",
+      "duong_dan_goc": "data/00_raw/du_lieu_han_nom_moi/24_8_2026"
+    },
+    {
+      "doc_id": "giaphatphcm-080-ha-ngoc",
+      "track": 3,
+      "title_han": null,
+      "title_vn": "Gia phả họ Hà Ngọc (thôn Ngọc Tứ, Điện An, Điện Bàn, Quảng Nam)",
+      "duong_dan_goc": "data/00_raw/giaphatphcm/080-ha-ngoc-dien-an"
+    }
+  ],
+  "loai_khoi_pham_vi": [
+    {
+      "doc_id": "nom-130",
+      "title_vn": "Việt sử kính",
+      "ly_do": "sử liệu chung, không gắn dòng họ nào"
+    },
+    {
+      "doc_id": "nguyen-ke-han-nom",
+      "title_vn": "Nguyễn Kế Hán-Nôm — kế ước / văn khế đất (Diên Khánh)",
+      "ly_do": "văn khế/kế ước đất, không phải bản thân 1 bộ phả"
+    },
+    {
+      "doc_id": "sach-gia-pha-hoc-tinh-hoa",
+      "title_vn": "Gia phả học tinh hoa",
+      "ly_do": "sách lý thuyết, không phải bản thân 1 bộ phả"
+    },
+    {
+      "doc_id": "sach-huong-dan-viet-gia-pha",
+      "title_vn": "Hướng dẫn viết gia phả (PDF 3742)",
+      "ly_do": "sách lý thuyết, không phải bản thân 1 bộ phả"
+    }
+  ]
+}
