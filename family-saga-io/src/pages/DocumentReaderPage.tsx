@@ -9,7 +9,6 @@ import {
   FileTextOutlined,
   HistoryOutlined,
   InboxOutlined,
-  PictureOutlined,
   ReloadOutlined,
   SnippetsOutlined,
   SwapOutlined,
@@ -23,6 +22,7 @@ import {
   Descriptions,
   Empty,
   Modal,
+  Segmented,
   Select,
   Spin,
   Tabs,
@@ -86,21 +86,16 @@ type HistoryResponse = {
   items: HistoryItem[];
 };
 
-const supportedFormats = [
-  ".docx",
-  ".txt",
-  ".doc",
-  ".png",
-  ".jpg",
-  ".jpeg",
-  ".webp",
-  ".pdf",
-];
 const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? "";
 /** Giá trị `lang_type` của Kim Hán Nôm: 0 tự động, 1 Hán, 2 Nôm. */
 type HannomLangType = 0 | 1 | 2;
-const DOCUMENT_ACCEPT = ".txt,text/plain,.docx,.pdf,application/pdf";
-const IMAGE_ACCEPT = "image/png,image/jpeg,image/webp";
+/** Accept theo đúng loại nội dung đang chọn ở chế độ "Tạo mới" — mỗi lần
+ * chỉ nhận 1 loại, tránh lẫn nhiều cách nhập như trước. */
+const CREATE_TYPE_ACCEPT: Record<"image" | "pdf" | "text", string> = {
+  image: "image/png,image/jpeg,image/webp",
+  pdf: ".pdf,application/pdf",
+  text: ".txt,text/plain,.docx",
+};
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
 const viKeywords = [
   "gia",
@@ -213,8 +208,11 @@ const DocumentReaderPage = ({
   const { isAuthenticated } = useAuth();
   const guestQuota = useGuestUploadQuota();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const documentInputRef = useRef<HTMLInputElement | null>(null);
-  const imageInputRef = useRef<HTMLInputElement | null>(null);
+  /** Chế độ "Tạo mới": chọn đúng 1 loại nội dung trước khi tải lên, tránh
+   * lẫn nhiều cách nhập (ảnh/PDF/text) trên cùng 1 màn hình như trước. */
+  const [createContentType, setCreateContentType] = useState<
+    "image" | "pdf" | "text"
+  >("image");
   const [langType, setLangType] = useState<HannomLangType>(0);
   /** Chỉ đổi vị trí hiển thị hai cột, không dịch ngược Quốc ngữ → Hán-Nôm. */
   const [columnsSwapped, setColumnsSwapped] = useState(false);
@@ -244,7 +242,6 @@ const DocumentReaderPage = ({
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isResultModalOpen, setIsResultModalOpen] = useState(false);
-  const [inputMode, setInputMode] = useState<"file" | "text">("file");
   const [manualInputText, setManualInputText] = useState("");
   const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
   const [historyTotal, setHistoryTotal] = useState(0);
@@ -434,7 +431,6 @@ const DocumentReaderPage = ({
     setAnalysisError(null);
     setIsAnalyzing(false);
     setIsResultModalOpen(false);
-    setInputMode("file");
     setManualInputText("");
   };
 
@@ -781,53 +777,142 @@ const DocumentReaderPage = ({
               className={`transition-shadow ${isDragging ? "bg-muted shadow-lg ring-2 ring-primary/40" : "bg-card shadow-md"}`}
               styles={{ body: { padding: 24 } }}
             >
-              <div
-                className={`rounded-2xl border-2 border-dashed p-8 text-center transition-all ${
-                  isDragging
-                    ? "border-primary bg-muted"
-                    : "border-border bg-background"
-                }`}
-                onDragEnter={(event) => {
-                  event.preventDefault();
-                  setIsDragging(true);
-                }}
-                onDragLeave={(event) => {
-                  event.preventDefault();
-                  setIsDragging(false);
-                }}
-                onDragOver={(event) => {
-                  event.preventDefault();
-                  setIsDragging(true);
-                }}
-                onDrop={handleDrop}
-              >
-                <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full brand-gradient text-primary-foreground">
-                  <InboxOutlined className="text-[34px]" />
+              <div className="space-y-5 text-left">
+                <div>
+                  <Typography.Text strong className="block mb-2">
+                    {t("docReader.createTypeLabel", {
+                      defaultValue: "Loại nội dung",
+                    })}
+                  </Typography.Text>
+                  <Segmented
+                    block
+                    value={createContentType}
+                    onChange={(value) =>
+                      setCreateContentType(value as "image" | "pdf" | "text")
+                    }
+                    options={[
+                      {
+                        label: t("docReader.createTypeImage", {
+                          defaultValue: "Hình ảnh",
+                        }),
+                        value: "image",
+                      },
+                      {
+                        label: t("docReader.createTypePdf", {
+                          defaultValue: "PDF",
+                        }),
+                        value: "pdf",
+                      },
+                      {
+                        label: t("docReader.createTypeText", {
+                          defaultValue: "Text Hán-Nôm",
+                        }),
+                        value: "text",
+                      },
+                    ]}
+                  />
                 </div>
 
-                <Typography.Title level={4} className="!mb-2 font-display text-foreground">
-                  {t("docReader.dropTitle")}
-                </Typography.Title>
-                <Typography.Paragraph className="!mb-5 text-muted-foreground">
-                  {t("docReader.dropDesc")}
-                </Typography.Paragraph>
+                {createContentType === "text" ? (
+                  <div className="space-y-3">
+                    <Typography.Paragraph className="!mb-0 text-sm text-muted-foreground">
+                      {t("docReader.createTypeTextHint", {
+                        defaultValue:
+                          "Gõ hoặc dán văn bản Hán-Nôm/Quốc ngữ trực tiếp, hoặc tải lên file .docx/.txt đã có sẵn.",
+                      })}
+                    </Typography.Paragraph>
+                    <Textarea
+                      value={manualInputText}
+                      onChange={(event) =>
+                        setManualInputText(event.target.value)
+                      }
+                      placeholder={t("docReader.directInputPlaceholder", {
+                        defaultValue: "Dán hoặc gõ nội dung gia phả vào đây...",
+                      })}
+                      className="min-h-[220px] w-full resize-y text-sm leading-6"
+                    />
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        type="primary"
+                        onClick={applyManualText}
+                        disabled={!manualInputText.trim()}
+                      >
+                        {t("docReader.btnUseDirectText", {
+                          defaultValue: "Dùng text này",
+                        })}
+                      </Button>
+                      <Button
+                        onClick={() => setManualInputText("")}
+                        disabled={!manualInputText}
+                      >
+                        {t("docReader.btnClearDirectText", {
+                          defaultValue: "Xóa text",
+                        })}
+                      </Button>
+                      <Button onClick={() => fileInputRef.current?.click()}>
+                        {t("docReader.btnUploadTextFile", {
+                          defaultValue: "Tải file .docx/.txt",
+                        })}
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className={`rounded-2xl border-2 border-dashed p-8 text-center transition-all ${
+                      isDragging
+                        ? "border-primary bg-muted"
+                        : "border-border bg-background"
+                    }`}
+                    onDragEnter={(event) => {
+                      event.preventDefault();
+                      setIsDragging(true);
+                    }}
+                    onDragLeave={(event) => {
+                      event.preventDefault();
+                      setIsDragging(false);
+                    }}
+                    onDragOver={(event) => {
+                      event.preventDefault();
+                      setIsDragging(true);
+                    }}
+                    onDrop={handleDrop}
+                  >
+                    <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full brand-gradient text-primary-foreground">
+                      <InboxOutlined className="text-[34px]" />
+                    </div>
 
-                <div className="flex flex-wrap justify-center gap-2 mb-6">
-                  {supportedFormats.map((format) => (
-                    <Tag key={format} className="px-2.5 py-1">
-                      {format}
-                    </Tag>
-                  ))}
-                </div>
+                    <Typography.Title level={4} className="!mb-2 font-display text-foreground">
+                      {createContentType === "image"
+                        ? t("docReader.dropTitleImage", {
+                            defaultValue: "Thả ảnh scan vào đây",
+                          })
+                        : t("docReader.dropTitlePdf", {
+                            defaultValue: "Thả file PDF vào đây",
+                          })}
+                    </Typography.Title>
+                    <Typography.Paragraph className="!mb-5 text-muted-foreground">
+                      {t("docReader.dropDesc")}
+                    </Typography.Paragraph>
+
+                    <div className="flex flex-wrap justify-center gap-2 mb-6">
+                      <Tag className="px-2.5 py-1">
+                        {createContentType === "image"
+                          ? ".png .jpg .jpeg .webp"
+                          : ".pdf"}
+                      </Tag>
+                    </div>
+
+                    <Button
+                      type="primary"
+                      size="large"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      {t("docReader.btnChooseFile")}
+                    </Button>
+                  </div>
+                )}
 
                 <div className="flex justify-center gap-3 flex-wrap">
-                  <Button
-                    type="primary"
-                    size="large"
-                    onClick={() => fileInputRef.current?.click()}
-                  >
-                    {t("docReader.btnChooseFile")}
-                  </Button>
                   <Button
                     icon={<ReloadOutlined />}
                     size="large"
@@ -860,7 +945,7 @@ const DocumentReaderPage = ({
                 </div>
 
                 {!isAuthenticated && (
-                  <div className="mt-4 flex justify-center">
+                  <div className="flex justify-center">
                     {guestQuota.exhausted ? (
                       <Alert
                         showIcon
@@ -890,93 +975,10 @@ const DocumentReaderPage = ({
                   </div>
                 )}
 
-                <div className="mt-6 rounded-2xl border border-border bg-background/80 p-4 text-left">
-                  <Tabs
-                    activeKey={inputMode}
-                    onChange={(key) => setInputMode(key as "file" | "text")}
-                    className="[&_.ant-tabs-nav]:mb-4"
-                    items={[
-                      {
-                        key: "file",
-                        label: t("docReader.inputModeFile", {
-                          defaultValue: "Upload file",
-                        }),
-                        children: (
-                          <Typography.Paragraph className="!mb-0 text-sm text-muted-foreground">
-                            {t("docReader.directInputFallback", {
-                              defaultValue:
-                                "Chuyển sang tab Nhập text để dán nội dung trực tiếp.",
-                            })}
-                          </Typography.Paragraph>
-                        ),
-                      },
-                      {
-                        key: "text",
-                        label: t("docReader.inputModeText", {
-                          defaultValue: "Nhập text",
-                        }),
-                        children: (
-                          <div className="space-y-3">
-                            <div>
-                              <Typography.Title
-                                level={5}
-                                className="!mb-1 font-display text-foreground"
-                              >
-                                {t("docReader.directInputTitle", {
-                                  defaultValue: "Nhập text trực tiếp",
-                                })}
-                              </Typography.Title>
-                              <Typography.Text type="secondary">
-                                {t("docReader.directInputDesc", {
-                                  defaultValue:
-                                    "Dán nội dung vào đây rồi phân tích ngay, không cần upload file.",
-                                })}
-                              </Typography.Text>
-                            </div>
-                            <Textarea
-                              value={manualInputText}
-                              onChange={(event) =>
-                                setManualInputText(event.target.value)
-                              }
-                              placeholder={t(
-                                "docReader.directInputPlaceholder",
-                                {
-                                  defaultValue:
-                                    "Dán hoặc gõ nội dung gia phả vào đây...",
-                                },
-                              )}
-                              className="min-h-[240px] w-full resize-y text-sm leading-6"
-                            />
-                            <div className="flex flex-wrap gap-2">
-                              <Button
-                                type="primary"
-                                onClick={applyManualText}
-                                disabled={!manualInputText.trim()}
-                              >
-                                {t("docReader.btnUseDirectText", {
-                                  defaultValue: "Dùng text này",
-                                })}
-                              </Button>
-                              <Button
-                                onClick={() => setManualInputText("")}
-                                disabled={!manualInputText}
-                              >
-                                {t("docReader.btnClearDirectText", {
-                                  defaultValue: "Xóa text",
-                                })}
-                              </Button>
-                            </div>
-                          </div>
-                        ),
-                      },
-                    ]}
-                  />
-                </div>
-
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept=".txt,text/plain,.doc,.docx,image/png,image/jpeg,image/webp,.pdf,application/pdf"
+                  accept={CREATE_TYPE_ACCEPT[createContentType]}
                   className="hidden"
                   onChange={async (event) => {
                     if (event.target.files) {
@@ -1278,37 +1280,6 @@ const DocumentReaderPage = ({
               <Button icon={<ReloadOutlined />} onClick={resetPreview}>
                 {t("docReader.btnReset")}
               </Button>
-              <Button
-                icon={<FileTextOutlined />}
-                onClick={() => documentInputRef.current?.click()}
-              >
-                {t("docReader.btnPickDocument")}
-              </Button>
-              <Button
-                icon={<PictureOutlined />}
-                onClick={() => imageInputRef.current?.click()}
-              >
-                {t("docReader.btnPickImage")}
-              </Button>
-              {[
-                { ref: documentInputRef, accept: DOCUMENT_ACCEPT },
-                { ref: imageInputRef, accept: IMAGE_ACCEPT },
-              ].map(({ ref, accept }) => (
-                <input
-                  key={accept}
-                  ref={ref}
-                  type="file"
-                  accept={accept}
-                  className="hidden"
-                  onChange={async (event) => {
-                    const file = event.target.files?.[0];
-                    event.target.value = "";
-                    if (file) {
-                      await loadFile(file);
-                    }
-                  }}
-                />
-              ))}
             </div>
 
             {isParsing ? (
