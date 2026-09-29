@@ -234,7 +234,15 @@
     "errBackendUnavailable": "Không gọi được backend. Hãy kiểm tra API đang chạy tại http://localhost:8000.",
     "errDocxParse": "Không thể đọc tệp Word này. Hãy thử tệp .docx khác hoặc chuyển sang ảnh scan.",
     "errDocOld": "Tệp .doc cũ chưa được trích xuất trực tiếp trên trình duyệt. Hãy chuyển sang .docx để đọc nội dung.",
-    "errUnsupported": "Định dạng chưa được hỗ trợ. Hãy dùng tệp Word .docx hoặc ảnh scan."
+    "errUnsupported": "Định dạng chưa được hỗ trợ. Hãy dùng tệp Word .docx hoặc ảnh scan.",
+    "modePdf": "Xem trước PDF",
+    "msgPdfSuccess": "Đã tải PDF lên thành công. Bạn có thể xem trước từng trang.",
+    "ocrComingSoonTitle": "Chưa phân tích được tự động",
+    "imageOrPdfOcrComingSoon": "Đang xem trước — OCR tự động cho ảnh/PDF đang được phát triển. Dùng file .docx/.txt hoặc dán text để phân tích ngay.",
+    "guestLoginToSave": "Đăng nhập để lưu cây",
+    "guestAnalyzeDoneBanner": "Phân tích xong! Đăng nhập để lưu cây gia phả này.",
+    "quotaRemaining": "Còn {{count}} lượt phân tích miễn phí",
+    "quotaExceeded": "Đã hết lượt phân tích miễn phí trong phiên này. Đăng nhập để tiếp tục không giới hạn."
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",
@@ -460,7 +468,8 @@
       "process": "Quy trình xử lý",
       "library": "Thư viện tài liệu",
       "myTrees": "Gia phả của tôi",
-      "treesAndDocs": "Gia phả & tài liệu"
+      "treesAndDocs": "Gia phả & tài liệu",
+      "uploadAnalyze": "Tải lên & Phân tích"
     },
     "step": {
       "material": "Tư liệu",

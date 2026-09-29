@@ -27,6 +27,9 @@ import { useTranslation } from "react-i18next";
 import { FamilyTreeVisualPanel } from "@/components/family-tree/FamilyTreeVisualPanel";
 import type { BalkanNode } from "@/lib/familyTreeApi";
 import { ServerSavedAlert } from "@/components/flow/ServerSavedAlert";
+import { FlowNextBanner } from "@/components/flow/FlowNextBanner";
+import { useAuth } from "@/contexts/AuthContext";
+import { useGuestUploadQuota } from "@/hooks/useGuestUploadQuota";
 import { toast } from "sonner";
 import { getStoredAccessToken } from "@/lib/apiClient";
 import {
@@ -36,7 +39,7 @@ import {
 } from "@/lib/userWorkspaceApi";
 import { Textarea } from "@/components/ui/textarea";
 
-type PreviewType = "image" | "docx" | "text" | "unsupported" | null;
+type PreviewType = "image" | "docx" | "text" | "pdf" | "unsupported" | null;
 
 type MammothModule = typeof import("mammoth/mammoth.browser");
 type DetectedLanguageCode = "vi" | "en" | "unknown";
@@ -77,6 +80,7 @@ const supportedFormats = [
   ".jpg",
   ".jpeg",
   ".webp",
+  ".pdf",
 ];
 const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? "";
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
@@ -188,6 +192,8 @@ const DocumentReaderPage = ({
 }: DocumentReaderPageProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
+  const guestQuota = useGuestUploadQuota();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [isDragging, setIsDragging] = useState(false);
@@ -218,6 +224,9 @@ const DocumentReaderPage = ({
   const [isSavingTree, setIsSavingTree] = useState(false);
 
   const registerScan = async (file: File, sourceText?: string) => {
+    // Guest ẩn danh: không có tài khoản để gắn document vào — bỏ qua, không
+    // gọi /api/user/documents (đúng nhánh isAuthenticated ở REQUIREMENTS.md §7.1/§B).
+    if (!isAuthenticated) return;
     const ext = file.name.split(".").pop()?.toLowerCase() ?? "unknown";
     const fileType = file.type || ext;
     try {
@@ -340,9 +349,14 @@ const DocumentReaderPage = ({
   };
 
   useEffect(() => {
-    fetchHistory();
+    // Lịch sử /api/family-tree/history không lọc theo user ở nhánh fallback
+    // khi gọi ẩn danh (rò rỉ lịch sử toàn hệ thống) — chỉ tải cho người đã
+    // đăng nhập, Guest không thấy panel này (xem JSX bên dưới).
+    if (isAuthenticated) {
+      fetchHistory();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isAuthenticated]);
 
   const resetPreview = () => {
     if (imageUrl) {
@@ -429,6 +443,17 @@ const DocumentReaderPage = ({
       return;
     }
 
+    if (file.type === "application/pdf" || /\.pdf$/i.test(lowerName)) {
+      // Chưa nối OCR thật cho PDF (giống ảnh — xem Alert "sắp có" ở khu vực
+      // xem trước) — chỉ xem trước, không phân tích được ngay (đúng REQUIREMENTS.md §7.1).
+      setPreviewType("pdf");
+      setImageUrl(URL.createObjectURL(file));
+      setLanguageDetection(detectLanguageFromFilename(file.name));
+      setStatusMessage(t("docReader.msgPdfSuccess"));
+      await registerScan(file);
+      return;
+    }
+
     if (/\.txt$/i.test(lowerName)) {
       setPreviewType("text");
       setIsParsing(true);
@@ -509,6 +534,11 @@ const DocumentReaderPage = ({
       return;
     }
 
+    if (!isAuthenticated && guestQuota.exhausted) {
+      setAnalysisError(t("docReader.quotaExceeded"));
+      return;
+    }
+
     setIsAnalyzing(true);
     setAnalysisError(null);
 
@@ -546,6 +576,9 @@ const DocumentReaderPage = ({
       setAnalysisResult(payload);
       setIsResultModalOpen(true);
       localStorage.setItem("family-tree.analysis", JSON.stringify(payload));
+      if (!isAuthenticated) {
+        guestQuota.consume();
+      }
       if (currentScanId) {
         await updateUserDocument(currentScanId, {
           request_id: payload.request_id ?? undefined,
@@ -639,7 +672,8 @@ const DocumentReaderPage = ({
                     loading={isAnalyzing}
                     disabled={
                       (previewType !== "docx" && previewType !== "text") ||
-                      !documentText.trim()
+                      !documentText.trim() ||
+                      (!isAuthenticated && guestQuota.exhausted)
                     }
                     onClick={handleAnalyzeFamilyTree}
                   >
@@ -654,6 +688,37 @@ const DocumentReaderPage = ({
                     </Button>
                   )}
                 </div>
+
+                {!isAuthenticated && (
+                  <div className="mt-4 flex justify-center">
+                    {guestQuota.exhausted ? (
+                      <Alert
+                        showIcon
+                        type="warning"
+                        message={t("docReader.quotaExceeded")}
+                        action={
+                          <Button
+                            size="small"
+                            type="primary"
+                            onClick={() =>
+                              navigate("/login", {
+                                state: { from: "/user/documents/new" },
+                              })
+                            }
+                          >
+                            {t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
+                          </Button>
+                        }
+                      />
+                    ) : (
+                      <Tag color="processing">
+                        {t("docReader.quotaRemaining", {
+                          count: guestQuota.remaining,
+                        })}
+                      </Tag>
+                    )}
+                  </div>
+                )}
 
                 <div className="mt-6 rounded-2xl border border-border bg-background/80 p-4 text-left">
                   <Tabs
@@ -741,7 +806,7 @@ const DocumentReaderPage = ({
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept=".txt,text/plain,.doc,.docx,image/png,image/jpeg,image/webp"
+                  accept=".txt,text/plain,.doc,.docx,image/png,image/jpeg,image/webp,.pdf,application/pdf"
                   className="hidden"
                   onChange={async (event) => {
                     if (event.target.files) {
@@ -764,6 +829,10 @@ const DocumentReaderPage = ({
               </div>
             </Card>
 
+            {/* Lịch sử /api/family-tree/history không lọc theo user ở nhánh
+                fallback ẩn danh (rò rỉ toàn hệ thống) — chỉ hiện cho người
+                đã đăng nhập, đúng REQUIREMENTS.md §7.1/§B. */}
+            {isAuthenticated && (
             <Card bordered={false} className="bg-muted">
               <div className="flex items-center justify-between gap-2 mb-3">
                 <Typography.Title level={5} className="!m-0 font-display text-foreground">
@@ -862,6 +931,7 @@ const DocumentReaderPage = ({
                 </div>
               )}
             </Card>
+            )}
           </div>
 
           <Card
@@ -916,6 +986,16 @@ const DocumentReaderPage = ({
               />
             )}
 
+            {(previewType === "image" || previewType === "pdf") && (
+              <Alert
+                showIcon
+                type="info"
+                message={t("docReader.ocrComingSoonTitle")}
+                description={t("docReader.imageOrPdfOcrComingSoon")}
+                className="mb-4"
+              />
+            )}
+
             {errorMessage && (
               <Alert
                 showIcon
@@ -933,6 +1013,14 @@ const DocumentReaderPage = ({
                 message={t("docReader.analysisFailedTitle")}
                 description={analysisError}
                 className="mb-4"
+              />
+            )}
+
+            {analysisResult && !isAuthenticated && (
+              <FlowNextBanner
+                message={t("docReader.guestAnalyzeDoneBanner")}
+                nextLabel={t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
+                nextHref="/login"
               />
             )}
 
@@ -964,12 +1052,25 @@ const DocumentReaderPage = ({
                   <Button onClick={() => setIsResultModalOpen(true)}>
                     {t("docReader.btnOpenAnalysisPopup")}
                   </Button>
-                  <Button
-                    type="primary"
-                    onClick={() => navigate("/user/family-trees")}
-                  >
-                    {t("docReader.btnOpenTreePage")}
-                  </Button>
+                  {isAuthenticated ? (
+                    <Button
+                      type="primary"
+                      onClick={() => navigate("/user/family-trees")}
+                    >
+                      {t("docReader.btnOpenTreePage")}
+                    </Button>
+                  ) : (
+                    <Button
+                      type="primary"
+                      onClick={() =>
+                        navigate("/login", {
+                          state: { from: "/user/documents/new" },
+                        })
+                      }
+                    >
+                      {t("docReader.guestLoginToSave")}
+                    </Button>
+                  )}
                 </div>
 
                 <Card
@@ -1026,6 +1127,12 @@ const DocumentReaderPage = ({
                               className="mx-auto max-w-full rounded-xl shadow-lg"
                             />
                           </div>
+                        ) : previewType === "pdf" && imageUrl ? (
+                          <embed
+                            src={imageUrl}
+                            type="application/pdf"
+                            className="w-full h-[620px] bg-muted"
+                          />
                         ) : previewType === "docx" || previewType === "text" ? (
                           <div className="h-[620px] overflow-auto bg-muted px-8 py-6">
                             <article className="mx-auto max-w-4xl whitespace-pre-wrap text-[15px] leading-8 text-foreground">
@@ -1073,11 +1180,13 @@ const DocumentReaderPage = ({
                           >
                             {previewType === "image"
                               ? t("docReader.modeImage")
-                              : previewType === "docx"
-                                ? t("docReader.modeDocx")
-                                : previewType === "text"
-                                  ? t("docReader.modeText")
-                                  : t("docReader.modeUnsupported")}
+                              : previewType === "pdf"
+                                ? t("docReader.modePdf")
+                                : previewType === "docx"
+                                  ? t("docReader.modeDocx")
+                                  : previewType === "text"
+                                    ? t("docReader.modeText")
+                                    : t("docReader.modeUnsupported")}
                           </Descriptions.Item>
                           <Descriptions.Item
                             label={t("docReader.fileInfoLanguage")}
@@ -1181,52 +1290,69 @@ const DocumentReaderPage = ({
       <Modal
         open={isResultModalOpen}
         onCancel={() => setIsResultModalOpen(false)}
-        footer={[
-          <Button key="close" onClick={() => setIsResultModalOpen(false)}>
-            {t("familyTree.close")}
-          </Button>,
-          <Button
-            key="save-tree"
-            type="primary"
-            loading={isSavingTree}
-            disabled={!analysisResult?.balkan_nodes?.length}
-            onClick={async () => {
-              if (!analysisResult?.balkan_nodes?.length) return;
-              setIsSavingTree(true);
-              try {
-                const treeName =
-                  activeFile?.name.replace(/\.[^.]+$/, "") ??
-                  t("docReader.defaultTreeName", { defaultValue: "Gia phả mới" });
-                const created = await createUserFamilyTree({
-                  name: treeName,
-                  description: t("docReader.savedFromScan", { defaultValue: "Tạo từ phòng đọc tài liệu" }),
-                  nodes: analysisResult.balkan_nodes,
-                  source_scan_id: currentScanId ?? undefined,
-                });
-                if (currentScanId) {
-                  await updateUserDocument(currentScanId, {
-                    tree_status: "created",
-                    family_tree_id: created.id,
-                  });
-                }
-                setIsResultModalOpen(false);
-                navigate(`/user/family-trees/${created.id}?tab=visual`);
-              } catch (error) {
-                setAnalysisError(error instanceof Error ? error.message : "Không lưu được cây gia phả");
-              } finally {
-                setIsSavingTree(false);
-              }
-            }}
-          >
-            {t("docReader.btnSaveTree", { defaultValue: "Lưu cây gia phả" })}
-          </Button>,
-          <Button
-            key="open-tree"
-            onClick={() => navigate("/user/family-trees")}
-          >
-            {t("docReader.btnOpenTreePage")}
-          </Button>,
-        ]}
+        footer={
+          isAuthenticated
+            ? [
+                <Button key="close" onClick={() => setIsResultModalOpen(false)}>
+                  {t("familyTree.close")}
+                </Button>,
+                <Button
+                  key="save-tree"
+                  type="primary"
+                  loading={isSavingTree}
+                  disabled={!analysisResult?.balkan_nodes?.length}
+                  onClick={async () => {
+                    if (!analysisResult?.balkan_nodes?.length) return;
+                    setIsSavingTree(true);
+                    try {
+                      const treeName =
+                        activeFile?.name.replace(/\.[^.]+$/, "") ??
+                        t("docReader.defaultTreeName", { defaultValue: "Gia phả mới" });
+                      const created = await createUserFamilyTree({
+                        name: treeName,
+                        description: t("docReader.savedFromScan", { defaultValue: "Tạo từ phòng đọc tài liệu" }),
+                        nodes: analysisResult.balkan_nodes,
+                        source_scan_id: currentScanId ?? undefined,
+                      });
+                      if (currentScanId) {
+                        await updateUserDocument(currentScanId, {
+                          tree_status: "created",
+                          family_tree_id: created.id,
+                        });
+                      }
+                      setIsResultModalOpen(false);
+                      navigate(`/user/family-trees/${created.id}?tab=visual`);
+                    } catch (error) {
+                      setAnalysisError(error instanceof Error ? error.message : "Không lưu được cây gia phả");
+                    } finally {
+                      setIsSavingTree(false);
+                    }
+                  }}
+                >
+                  {t("docReader.btnSaveTree", { defaultValue: "Lưu cây gia phả" })}
+                </Button>,
+                <Button
+                  key="open-tree"
+                  onClick={() => navigate("/user/family-trees")}
+                >
+                  {t("docReader.btnOpenTreePage")}
+                </Button>,
+              ]
+            : [
+                <Button key="close" onClick={() => setIsResultModalOpen(false)}>
+                  {t("familyTree.close")}
+                </Button>,
+                <Button
+                  key="login-to-save"
+                  type="primary"
+                  onClick={() =>
+                    navigate("/login", { state: { from: "/user/documents/new" } })
+                  }
+                >
+                  {t("docReader.guestLoginToSave")}
+                </Button>,
+              ]
+        }
         title={t("docReader.analysisPopupTitle")}
         width={1040}
       >

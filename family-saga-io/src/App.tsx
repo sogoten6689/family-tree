@@ -5,13 +5,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AuthProvider } from "@/contexts/AuthContext";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AdminRoute } from "@/components/AdminRoute";
-import PublicLayout from "@/layouts/PublicLayout";
+import GuestLayout from "@/layouts/GuestLayout";
 import UserLayout from "@/layouts/UserLayout";
 import AdminLayout from "@/layouts/AdminLayout";
-import HomePage from "./pages/HomePage";
+import DocumentReaderPage from "./pages/DocumentReaderPage";
 import GuidePage from "./pages/GuidePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -46,15 +46,27 @@ const AdminFamilyTreeRedirect = () => {
   return <Navigate to={`/admin/gia-pha/${treeId ?? ""}`} replace />;
 };
 
+/** Route "/" — khách ẩn danh thấy ngay màn hình tải lên/phân tích (không qua
+ * trang giới thiệu); người đã đăng nhập tự chuyển sang trang tổng quan của
+ * họ, tránh User/Admin lạc vào giao diện Guest. */
+const GuestHomeRoute = () => {
+  const { isAuthenticated } = useAuth();
+  if (isAuthenticated) {
+    return <Navigate to="/user/dashboard" replace />;
+  }
+  return <DocumentReaderPage embedded />;
+};
+
 const AppContent = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* ── Public ── */}
-            <Route element={<PublicLayout />}>
-              <Route path="/" element={<HomePage />} />
+            {/* ── Guest (không cần đăng nhập) — sidebar giống Admin/User, vào thẳng
+                màn hình tải lên/phân tích, không qua trang giới thiệu ── */}
+            <Route element={<GuestLayout />}>
+              <Route path="/" element={<GuestHomeRoute />} />
               <Route path="/huong-dan" element={<GuidePage />} />
               <Route path="/gia-pha" element={<PublicFamilyTreeListPage />} />
               <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />

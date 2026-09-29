@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { GenealogyFlowStepper } from "@/components/flow/GenealogyFlowStepper";
 import { ADMIN_PAGES, APP_PAGES, PUBLIC_PAGES, USER_PAGES, type AppPageMeta } from "@/config/pages";
 import { GENEALOGY_FLOW_STEPS, flowRouteForStep, type GenealogyFlowStepId } from "@/lib/genealogyFlow";
+import { useAuth } from "@/contexts/AuthContext";
 
 const zoneColors: Record<AppPageMeta["zone"], string> = {
   public: "blue",
@@ -33,6 +34,7 @@ const FLOW_STEP_ICONS: Record<GenealogyFlowStepId, React.ReactNode> = {
 
 const GuidePage = () => {
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
 
   const columns = [
     {
@@ -121,7 +123,13 @@ const GuidePage = () => {
               <Typography.Paragraph type="secondary" className="!mb-4 text-sm">
                 {t(`flow.stepDesc.${stepId}`, { defaultValue: "" })}
               </Typography.Paragraph>
-              <Link to={flowRouteForStep(stepId)}>
+              <Link
+                to={
+                  stepId === "material" && !isAuthenticated
+                    ? "/"
+                    : flowRouteForStep(stepId)
+                }
+              >
                 <Button type="primary" size="small">
                   {t("flow.openStep", { defaultValue: "Mở bước này" })}
                 </Button>

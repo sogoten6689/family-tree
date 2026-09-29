@@ -234,7 +234,15 @@
     "errBackendUnavailable": "Cannot reach backend API. Ensure server is running at http://localhost:8000.",
     "errDocxParse": "Could not read this Word file. Try a different .docx or switch to a scanned image.",
     "errDocOld": "Old .doc files cannot be extracted directly in the browser. Convert to .docx to read.",
-    "errUnsupported": "Format not supported. Please use a .docx Word file or a scanned image."
+    "errUnsupported": "Format not supported. Please use a .docx Word file or a scanned image.",
+    "modePdf": "PDF preview",
+    "msgPdfSuccess": "PDF uploaded successfully. You can preview each page.",
+    "ocrComingSoonTitle": "Automatic analysis not available yet",
+    "imageOrPdfOcrComingSoon": "Preview only — automatic OCR for images/PDF is in development. Use a .docx/.txt file or paste text to analyze right away.",
+    "guestLoginToSave": "Log in to save",
+    "guestAnalyzeDoneBanner": "Analysis done! Log in to save this family tree.",
+    "quotaRemaining": "{{count}} free analyses left",
+    "quotaExceeded": "You've used all free analyses for this session. Log in to continue without limits."
   },
   "notFound": {
     "subtitle": "Page not found",
@@ -461,7 +469,8 @@
       "process": "Processing workflow",
       "library": "Document library",
       "myTrees": "My family trees",
-      "treesAndDocs": "Trees & documents"
+      "treesAndDocs": "Trees & documents",
+      "uploadAnalyze": "Upload & Analyze"
     },
     "step": {
       "material": "Materials",
