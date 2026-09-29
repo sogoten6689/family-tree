@@ -4,13 +4,19 @@
 // CODE) mà ở lại repo hannom-bilingual-dataset cũ, giờ private/data-only
 // (~82MB). dashboard/Dockerfile vẫn `COPY data/ data/` như cũ — stage này
 // clone repo dữ liệu và populate data/ (gitignored, build-time only) TRƯỚC
-// khi build, không đổi Dockerfile. Job Jenkins cần credential clone được
-// DATA_REPO_URL (repo private) — cấu hình trong Jenkins, không hardcode ở
-// đây.
+// khi build, không đổi Dockerfile.
+//
+// Repo dữ liệu là PRIVATE — `git clone` trần qua HTTPS sẽ bị từ chối (401)
+// nếu chạy ẩn danh. Stage dưới dùng credential Jenkins id cố định
+// `hannom-data-repo-pat` (kind "Username with password": username = tài
+// khoản GitHub, password = Personal Access Token có quyền đọc repo đó) để
+// nhúng token vào URL clone TẠI RUNTIME — không hardcode token trong file
+// này. Xem hướng dẫn tạo credential này trong
+// docs/planning/vps_jenkins_deploy_guide.md (đọc trước khi chạy job lần đầu).
 pipeline {
     agent any
     environment {
-        DATA_REPO_URL = 'https://github.com/sogoten6689/hannom-bilingual-dataset.git'
+        DATA_REPO_URL = 'github.com/sogoten6689/hannom-bilingual-dataset.git'
     }
     stages {
         stage('Checkout OK') {
@@ -20,12 +26,18 @@ pipeline {
         }
         stage('Fetch data (repo rieng, khong con trong repo nay)') {
             steps {
-                sh '''
-                rm -rf .data-fetch data
-                git clone --depth 1 "$DATA_REPO_URL" .data-fetch
-                cp -r .data-fetch/data data
-                rm -rf .data-fetch
-                '''
+                withCredentials([usernamePassword(
+                    credentialsId: 'hannom-data-repo-pat',
+                    usernameVariable: 'DATA_GIT_USER',
+                    passwordVariable: 'DATA_GIT_TOKEN'
+                )]) {
+                    sh '''
+                    rm -rf .data-fetch data
+                    git clone --depth 1 "https://${DATA_GIT_USER}:${DATA_GIT_TOKEN}@${DATA_REPO_URL}" .data-fetch
+                    cp -r .data-fetch/data data
+                    rm -rf .data-fetch
+                    '''
+                }
             }
         }
         stage('Build Dashboard Image') {
