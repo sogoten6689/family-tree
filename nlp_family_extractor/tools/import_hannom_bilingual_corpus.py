@@ -102,6 +102,33 @@ def _best_text(record: Dict[str, Any]) -> Optional[str]:
     return joined or None
 
 
+def _join_pages(record: Dict[str, Any], get_field) -> Optional[str]:
+    """Ghép 1 lớp cụ thể (vd l1_ocr.voted_text, l2_phien_am) qua toàn bộ
+    trang, theo đúng thứ tự — trả None nếu không trang nào có lớp này."""
+    pages = record.get("pages") or []
+    parts: List[str] = []
+    for page in pages:
+        value = get_field(page)
+        if value:
+            parts.append(value.strip())
+    joined = "\n\n".join(p for p in parts if p)
+    return joined or None
+
+
+def _hannom_text(record: Dict[str, Any]) -> Optional[str]:
+    """Văn bản Hán-Nôm gốc (OCR đã vote, L1) — không phải bản dịch/phiên âm."""
+    def _get(page: Dict[str, Any]) -> Optional[str]:
+        l1 = page.get("l1_ocr")
+        return l1.get("voted_text") if isinstance(l1, dict) else None
+
+    return _join_pages(record, _get)
+
+
+def _transliteration_text(record: Dict[str, Any]) -> Optional[str]:
+    """Phiên âm Hán-Việt (L2) — riêng biệt với dịch nghĩa Quốc ngữ (L3)."""
+    return _join_pages(record, lambda page: page.get("l2_phien_am"))
+
+
 def _title(record: Dict[str, Any]) -> str:
     return (
         record.get("ten_han_viet")
@@ -155,8 +182,8 @@ def main() -> int:
             return 1
 
         scans = UserScanRepository(db)
-        existing_request_ids = {
-            scan.request_id for scan in scans.list_by_user(owner.id) if scan.request_id
+        existing_by_request_id = {
+            scan.request_id: scan for scan in scans.list_by_user(owner.id) if scan.request_id
         }
 
         store = _create_family_tree_store()
@@ -166,12 +193,29 @@ def main() -> int:
         imported_text_only = 0
         skipped_draft = 0
         skipped_dup = 0
+        backfilled = 0
 
         for record in records:
             doc_id = record.get("doc_id") or "unknown"
             request_id = f"{REQUEST_ID_PREFIX}{doc_id}"
 
-            if request_id in existing_request_ids:
+            existing_scan = existing_by_request_id.get(request_id)
+            if existing_scan is not None:
+                # Đã import trước — không tạo trùng, nhưng backfill hannom_text/
+                # transliteration_text nếu lần import trước chưa có 2 cột này
+                # (vd chạy bằng script bản cũ, trước khi thêm 2 field).
+                if not existing_scan.hannom_text and not existing_scan.transliteration_text:
+                    hannom = _hannom_text(record)
+                    translit = _transliteration_text(record)
+                    if (hannom or translit) and not args.dry_run:
+                        scans.update(
+                            existing_scan,
+                            hannom_text=hannom,
+                            transliteration_text=translit,
+                        )
+                        print(f"[BACKFILL] {doc_id} -> scan#{existing_scan.id} (hannom/phiên âm)")
+                        backfilled += 1
+                        continue
                 print(f"[SKIP đã import] {doc_id}")
                 skipped_dup += 1
                 continue
@@ -195,6 +239,8 @@ def main() -> int:
                 file_type="hannom-corpus",
                 page_count=max(1, len(record.get("pages") or [])),
                 source_text=text,
+                hannom_text=_hannom_text(record),
+                transliteration_text=_transliteration_text(record),
             )
             scans.update(scan, ocr_status=OcrStatus.COMPLETED, request_id=request_id)
 
@@ -222,7 +268,7 @@ def main() -> int:
             "\nTổng kết — "
             f"có cây: {imported_with_tree}, chỉ có text/scan (chưa có cây): {imported_text_only}, "
             f"bỏ qua (draft/chưa có text): {skipped_draft}, bỏ qua (đã import trước): {skipped_dup}, "
-            f"tổng record đọc được: {len(records)}"
+            f"backfill hannom/phiên âm: {backfilled}, tổng record đọc được: {len(records)}"
         )
     return 0
 

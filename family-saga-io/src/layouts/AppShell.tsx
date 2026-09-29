@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Breadcrumb, Layout, Menu, Space, Typography } from "antd";
 import type { BreadcrumbProps, MenuProps } from "antd";
 import { Outlet } from "react-router-dom";
@@ -45,14 +45,20 @@ const AppShell = ({
 }: AppShellProps) => {
   const { resolvedTheme, systemTheme } = useTheme();
   const isDark = (resolvedTheme ?? systemTheme) === "dark";
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <Layout className="min-h-screen">
+      {/* Fixed to the viewport (not stretched to Content's height) so the
+       * account slot stays pinned to the visible bottom of the screen
+       * instead of sliding far below the fold on tall pages. */}
       <Sider
         width={250}
         breakpoint="lg"
+        collapsedWidth={0}
+        onBreakpoint={setCollapsed}
         theme={isDark ? "dark" : "light"}
-        className="border-r border-border !bg-[hsl(var(--sidebar-background))]"
+        className="!fixed !inset-y-0 !left-0 z-10 flex h-screen flex-col overflow-y-auto border-r border-border !bg-[hsl(var(--sidebar-background))]"
       >
         <div className="px-5 py-6">
           <Typography.Title level={5} className="!mb-1">
@@ -76,12 +82,13 @@ const AppShell = ({
           onClick={onMenuClick}
         />
 
-        <div className="px-4 pb-4 mt-auto absolute bottom-4 left-0 right-0 space-y-2">
-          {accountSlot}
-        </div>
+        <div className="mt-auto space-y-2 px-4 pb-4 pt-4">{accountSlot}</div>
       </Sider>
 
-      <Layout>
+      <Layout
+        style={{ marginLeft: collapsed ? 0 : 250 }}
+        className="transition-[margin] duration-200"
+      >
         <Header
           className="!px-6 flex items-center justify-between border-b border-border !bg-card"
           style={{ height: 64 }}

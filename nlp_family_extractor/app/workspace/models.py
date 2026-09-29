@@ -54,3 +54,8 @@ class UserScan(Base):
     # Nôm nhiều trang) vượt quá dễ dàng và INSERT sẽ lỗi "Data too long").
     source_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
     source_file_key: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    # Văn bản Hán-Nôm gốc (OCR voted_text) và phiên âm Hán-Việt — tách riêng
+    # khỏi source_text (dịch nghĩa Quốc ngữ, dùng để trích xuất quan hệ) để
+    # hiển thị được cả 3 lớp L1/L2/L3 trong giao diện đọc song song.
+    hannom_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
+    transliteration_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)

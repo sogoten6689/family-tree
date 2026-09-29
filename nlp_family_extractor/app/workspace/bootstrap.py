@@ -37,15 +37,21 @@ def ensure_workspace_schema() -> None:
 
 def _migrate_user_scans_columns(engine) -> None:
     with engine.begin() as conn:
-        exists = conn.execute(
-            text(
-                "SELECT COUNT(*) AS cnt FROM information_schema.COLUMNS "
-                "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_scans' "
-                "AND COLUMN_NAME = 'source_file_key'"
-            )
-        ).scalar()
-        if not exists:
+        existing = {
+            row[0]
+            for row in conn.execute(
+                text(
+                    "SELECT COLUMN_NAME FROM information_schema.COLUMNS "
+                    "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_scans'"
+                )
+            ).fetchall()
+        }
+        if "source_file_key" not in existing:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN source_file_key VARCHAR(512) NULL"))
+        if "hannom_text" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN hannom_text LONGTEXT NULL"))
+        if "transliteration_text" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN transliteration_text LONGTEXT NULL"))
 
 
 def bootstrap_workspace() -> None:

@@ -22,6 +22,9 @@ export interface UserScan {
   family_tree_id?: string | null;
   request_id?: string | null;
   source_file_key?: string | null;
+  source_text?: string | null;
+  hannom_text?: string | null;
+  transliteration_text?: string | null;
 }
 
 export interface UserScanListResponse {

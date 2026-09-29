@@ -43,6 +43,7 @@ import { getStoredAccessToken } from "@/lib/apiClient";
 import {
   createUserDocument,
   createUserFamilyTree,
+  getUserDocument,
   updateUserDocument,
 } from "@/lib/userWorkspaceApi";
 import { Textarea } from "@/components/ui/textarea";
@@ -223,6 +224,10 @@ const DocumentReaderPage = ({
   const [isHannomEditable, setIsHannomEditable] = useState(false);
   const [hannomText, setHannomText] = useState("");
   const [showSourceImage, setShowSourceImage] = useState(false);
+  /** Hán-Nôm gốc của 1 scan ĐÃ tồn tại (vd import corpus, hoặc lần phân tích
+   * trước) — khác với analysisResult.hannom_text (chỉ có khi vừa OCR trong
+   * phiên làm việc hiện tại). Nạp khi mở lại 1 scan qua initialScanId. */
+  const [existingHannomText, setExistingHannomText] = useState<string | null>(null);
 
   const [isDragging, setIsDragging] = useState(false);
   const [isParsing, setIsParsing] = useState(false);
@@ -282,6 +287,32 @@ const DocumentReaderPage = ({
       }
     };
   }, [imageUrl]);
+
+  // Mở lại 1 scan đã có sẵn (vd tài liệu import corpus, hoặc đã phân tích
+  // trước đó) — nạp text/hannom_text đã lưu để hiện đúng 2 cột thay vì màn
+  // hình upload trống, dù chưa có file/ảnh nào được tải trong phiên này.
+  useEffect(() => {
+    if (!initialScanId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const scan = await getUserDocument(initialScanId);
+        if (cancelled) return;
+        if (scan.source_text) {
+          setDocumentText((prev) => prev || scan.source_text || "");
+          setPreviewType((prev) => prev ?? "text");
+        }
+        if (scan.hannom_text) {
+          setExistingHannomText(scan.hannom_text);
+        }
+      } catch {
+        // Không chặn UI nếu fetch lỗi — vẫn dùng được như màn hình upload mới.
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [initialScanId]);
 
   const fetchHistory = async () => {
     setIsHistoryLoading(true);
@@ -561,7 +592,7 @@ const DocumentReaderPage = ({
 
   const handleToggleHannomEditable = (nextValue: boolean) => {
     if (nextValue && !hannomText) {
-      setHannomText(analysisResult?.hannom_text ?? "");
+      setHannomText(analysisResult?.hannom_text ?? existingHannomText ?? "");
     }
     setIsHannomEditable(nextValue);
   };
@@ -1336,6 +1367,10 @@ const DocumentReaderPage = ({
                                 {t("docReader.hannomEmptyAfterOcr")}
                               </div>
                             )
+                          ) : existingHannomText ? (
+                            <div className="h-full overflow-auto bg-muted px-5 py-4 whitespace-pre-wrap text-2xl leading-[2.4rem] text-foreground">
+                              {existingHannomText}
+                            </div>
                           ) : previewType === "image" && imageUrl ? (
                             <div className="h-full overflow-auto bg-muted p-4">
                               <img
@@ -1464,7 +1499,7 @@ const DocumentReaderPage = ({
                                       type="text"
                                       icon={<EditOutlined />}
                                       aria-label={t("docReader.btnEditHannom")}
-                                      disabled={!ocrDone && !isHannomEditable}
+                                      disabled={!ocrDone && !existingHannomText && !isHannomEditable}
                                       onClick={() =>
                                         handleToggleHannomEditable(!isHannomEditable)
                                       }

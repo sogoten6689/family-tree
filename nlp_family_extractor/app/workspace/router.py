@@ -81,6 +81,9 @@ class UserScanResponse(BaseModel):
     family_tree_id: Optional[str] = None
     request_id: Optional[str] = None
     source_file_key: Optional[str] = None
+    source_text: Optional[str] = None
+    hannom_text: Optional[str] = None
+    transliteration_text: Optional[str] = None
 
 
 class UserScanListResponse(BaseModel):
@@ -94,6 +97,8 @@ class UserScanCreateRequest(BaseModel):
     file_type: str = Field(default="unknown", max_length=64)
     page_count: int = Field(default=1, ge=1)
     source_text: Optional[str] = None
+    hannom_text: Optional[str] = None
+    transliteration_text: Optional[str] = None
 
 
 class UserScanUpdateRequest(BaseModel):
@@ -104,6 +109,8 @@ class UserScanUpdateRequest(BaseModel):
     request_id: Optional[str] = None
     source_text: Optional[str] = None
     source_file_key: Optional[str] = None
+    hannom_text: Optional[str] = None
+    transliteration_text: Optional[str] = None
 
 
 class UserFamilyTreeCreateRequest(BaseModel):
@@ -239,6 +246,8 @@ def create_workspace_router(
             file_type=payload.file_type,
             page_count=payload.page_count,
             source_text=payload.source_text,
+            hannom_text=payload.hannom_text,
+            transliteration_text=payload.transliteration_text,
         )
         return UserScanResponse.model_validate(created)
 
@@ -272,6 +281,8 @@ def create_workspace_router(
             request_id=payload.request_id,
             source_text=payload.source_text,
             source_file_key=payload.source_file_key,
+            hannom_text=payload.hannom_text,
+            transliteration_text=payload.transliteration_text,
         )
         return UserScanResponse.model_validate(updated)
 

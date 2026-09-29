@@ -38,6 +38,8 @@ class UserScanRepository:
         file_type: str,
         page_count: int = 1,
         source_text: Optional[str] = None,
+        hannom_text: Optional[str] = None,
+        transliteration_text: Optional[str] = None,
     ) -> UserScan:
         scan = UserScan(
             user_id=user_id,
@@ -46,6 +48,8 @@ class UserScanRepository:
             file_type=file_type.strip() or "unknown",
             page_count=max(1, page_count),
             source_text=source_text,
+            hannom_text=hannom_text,
+            transliteration_text=transliteration_text,
             uploaded_at=datetime.now(timezone.utc),
         )
         self._db.add(scan)
@@ -64,6 +68,8 @@ class UserScanRepository:
         request_id: Optional[str] = None,
         source_text: Optional[str] = None,
         source_file_key: Optional[str] = None,
+        hannom_text: Optional[str] = None,
+        transliteration_text: Optional[str] = None,
     ) -> UserScan:
         if title is not None:
             scan.title = title.strip()
@@ -79,6 +85,10 @@ class UserScanRepository:
             scan.source_text = source_text
         if source_file_key is not None:
             scan.source_file_key = source_file_key or None
+        if hannom_text is not None:
+            scan.hannom_text = hannom_text
+        if transliteration_text is not None:
+            scan.transliteration_text = transliteration_text
         self._db.add(scan)
         self._db.commit()
         self._db.refresh(scan)
