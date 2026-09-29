@@ -1,9 +1,31 @@
+// Cập nhật 2026-09-29 (chuẩn bị deploy VPS lần đầu, sau khi gộp code vào
+// family-tree): thêm stage "Fetch data" — data/ KHÔNG còn nằm trong repo
+// này (đã dọn sang family-tree/research/hannom-bilingual-dataset/, chỉ giữ
+// CODE) mà ở lại repo hannom-bilingual-dataset cũ, giờ private/data-only
+// (~82MB). dashboard/Dockerfile vẫn `COPY data/ data/` như cũ — stage này
+// clone repo dữ liệu và populate data/ (gitignored, build-time only) TRƯỚC
+// khi build, không đổi Dockerfile. Job Jenkins cần credential clone được
+// DATA_REPO_URL (repo private) — cấu hình trong Jenkins, không hardcode ở
+// đây.
 pipeline {
     agent any
+    environment {
+        DATA_REPO_URL = 'https://github.com/sogoten6689/hannom-bilingual-dataset.git'
+    }
     stages {
         stage('Checkout OK') {
             steps {
                 echo 'Da checkout thanh cong tu GitHub!'
+            }
+        }
+        stage('Fetch data (repo rieng, khong con trong repo nay)') {
+            steps {
+                sh '''
+                rm -rf .data-fetch data
+                git clone --depth 1 "$DATA_REPO_URL" .data-fetch
+                cp -r .data-fetch/data data
+                rm -rf .data-fetch
+                '''
             }
         }
         stage('Build Dashboard Image') {
@@ -18,6 +40,11 @@ pipeline {
                 docker run -d --name hannom-dashboard --restart unless-stopped -p 89:80 hannom-dashboard:latest
                 '''
             }
+        }
+    }
+    post {
+        always {
+            sh 'rm -rf data .data-fetch || true'
         }
     }
 }

@@ -26,6 +26,11 @@ from rapidfuzz.distance import Levenshtein
 from _repo_paths import DATA_REPO_ROOT
 
 ROOT = Path(__file__).resolve().parents[1]
+# Ưu tiên data/ nằm NGAY CẠNH script (đúng cách dashboard/Dockerfile COPY vào
+# image — xem multi-stage build) — chỉ rơi về DATA_REPO_ROOT (sibling repo
+# ngoài Docker, dùng khi chạy trực tiếp `python3 scripts/build_dashboard.py`
+# trên máy dev) nếu data/ cục bộ không tồn tại.
+DATA_DIR = ROOT / "data" if (ROOT / "data").is_dir() else DATA_REPO_ROOT / "data"
 
 GROUP_NAMES = {
     1: "Hán Nôm thô",
@@ -119,7 +124,7 @@ def chosen_source(voted_text: str | None, engines: dict[str, Any]) -> str | None
 
 def load_records() -> list[dict[str, Any]]:
     docs = []
-    for f in sorted(glob.glob(str(DATA_REPO_ROOT / "data/*/*.json"))):
+    for f in sorted(glob.glob(str(DATA_DIR / "*" / "*.json"))):
         docs.append(json.loads(Path(f).read_text(encoding="utf-8")))
     return docs
 

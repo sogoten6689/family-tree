@@ -26,10 +26,20 @@ import os
 from pathlib import Path
 
 _THIS_FILE = Path(__file__).resolve()
+_PARENTS = _THIS_FILE.parents
 
 # scripts/_repo_paths.py -> parents[0]=scripts, [1]=hannom-bilingual-dataset,
-# [2]=research, [3]=family-tree
-FAMILY_TREE_ROOT: Path = _THIS_FILE.parents[3]
+# [2]=research, [3]=family-tree — ĐÚNG khi chạy từ checkout thật (dev/CI).
+#
+# XÁC NHẬN 2026-09-29 (lúc chuẩn bị deploy Docker qua Jenkinsfile): bên trong
+# image Docker của dashboard/Dockerfile, chỉ `scripts/` (+ `data/`) được COPY
+# vào — cây thư mục chỉ sâu 2 cấp (`/app/scripts/...`), không có đủ 4 cấp
+# cha thật. `parents[3]` cứng sẽ IndexError ngay lúc import, làm build Docker
+# fail trước khi kịp chạy gì — fallback về cấp cha sâu nhất SẴN CÓ khi thiếu,
+# để import không bao giờ crash (giá trị lúc đó chỉ mang tính hình thức, các
+# script chạy trong Docker không thật sự cần FAMILY_TREE_ROOT/DATA_REPO_ROOT
+# đúng — xem build_dashboard.py, ưu tiên data/ COPY sẵn cạnh script trước).
+FAMILY_TREE_ROOT: Path = _PARENTS[3] if len(_PARENTS) > 3 else _PARENTS[-1]
 
 DATA_REPO_ROOT: Path = Path(
     os.environ.get("HANNOM_DATA_ROOT", str(FAMILY_TREE_ROOT.parent / "hannom-bilingual-dataset"))
