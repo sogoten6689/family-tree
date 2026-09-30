@@ -145,6 +145,18 @@
     }
   },
   "docReader": {
+    "workspaceLabel": "Document comparison",
+    "hannomWorkspacePlaceholder": "Recognized Hán-Nôm text will appear here. Enable “Type Hán-Nôm” to enter or edit text.",
+    "hannomLocalEditHint": "Hán-Nôm edits are for comparison in this session only; they are not automatically transliterated.",
+    "sourceImageTitle": "Original image · Click to enlarge",
+    "uploadDocument": "Document",
+    "uploadImage": "Image",
+    "readerUploadHint": "PDF, Word, TXT or scanned image",
+    "readerEmptyHint": "Upload a document, drop an image here, or enter Vietnamese text directly.",
+    "readerProcessing": "Recognizing and analyzing the document…",
+    "readerOcrHint": "Images/PDFs are recognized, transliterated, then analyzed for family relationships.",
+    "readerAnalyzeHint": "Review and edit the Vietnamese text before analyzing family relationships.",
+    "readerOcrAnalyze": "Recognize & analyze",
     "pageTitle": "Genealogy Document Reader",
     "pageSubtitle": "Drag and drop Word files or scanned images to read source documents before extracting the family tree.",
     "tagFormats": "Word & Images",

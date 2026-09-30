@@ -145,6 +145,18 @@
     }
   },
   "docReader": {
+    "workspaceLabel": "Đối chiếu tài liệu",
+    "hannomWorkspacePlaceholder": "Văn bản Hán-Nôm sau nhận diện sẽ xuất hiện tại đây. Bật “Gõ Hán-Nôm” để nhập hoặc chỉnh sửa.",
+    "hannomLocalEditHint": "Chỉnh sửa Hán-Nôm hiện chỉ dùng để đối chiếu trong phiên này; chưa tự phiên âm lại.",
+    "sourceImageTitle": "Ảnh gốc · Bấm để phóng to",
+    "uploadDocument": "Tài liệu",
+    "uploadImage": "Hình ảnh",
+    "readerUploadHint": "PDF, Word, TXT hoặc ảnh scan",
+    "readerEmptyHint": "Tải tài liệu, thả ảnh vào khung hoặc nhập Quốc ngữ trực tiếp.",
+    "readerProcessing": "Đang nhận diện và phân tích tài liệu…",
+    "readerOcrHint": "Ảnh/PDF được nhận diện, phiên âm rồi phân tích gia phả.",
+    "readerAnalyzeHint": "Kiểm tra và chỉnh sửa Quốc ngữ trước khi phân tích gia phả.",
+    "readerOcrAnalyze": "Nhận diện & phân tích",
     "pageTitle": "Phòng đọc tư liệu gia phả",
     "pageSubtitle": "Kéo thả tệp Word hoặc ảnh scan để đọc tư liệu gốc trước khi trích xuất cây gia phả.",
     "tagFormats": "Word và ảnh",

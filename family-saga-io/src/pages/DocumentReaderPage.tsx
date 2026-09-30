@@ -1,28 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeftOutlined,
-  CopyOutlined,
   DeleteOutlined,
-  EditOutlined,
   EyeOutlined,
   FileImageOutlined,
   FileTextOutlined,
   HistoryOutlined,
-  InboxOutlined,
   ReloadOutlined,
-  SnippetsOutlined,
-  SwapOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
 import {
   Alert,
   Button,
   Card,
-  Checkbox,
-  Descriptions,
   Empty,
   Modal,
-  Segmented,
   Select,
   Spin,
   Tabs,
@@ -46,7 +38,7 @@ import {
   getUserDocument,
   updateUserDocument,
 } from "@/lib/userWorkspaceApi";
-import { Textarea } from "@/components/ui/textarea";
+import { ReaderWorkspace } from "@/components/documents/ReaderWorkspace";
 
 type PreviewType = "image" | "pdf" | "docx" | "text" | "unsupported" | null;
 
@@ -89,13 +81,6 @@ type HistoryResponse = {
 const backendBaseUrl = import.meta.env.VITE_BACKEND_URL ?? "";
 /** Giá trị `lang_type` của Kim Hán Nôm: 0 tự động, 1 Hán, 2 Nôm. */
 type HannomLangType = 0 | 1 | 2;
-/** Accept theo đúng loại nội dung đang chọn ở chế độ "Tạo mới" — mỗi lần
- * chỉ nhận 1 loại, tránh lẫn nhiều cách nhập như trước. */
-const CREATE_TYPE_ACCEPT: Record<"image" | "pdf" | "text", string> = {
-  image: "image/png,image/jpeg,image/webp",
-  pdf: ".pdf,application/pdf",
-  text: ".txt,text/plain,.docx",
-};
 const viMarkRegex = /[\u00c0-\u1ef9\u0110\u0111]/g;
 const viKeywords = [
   "gia",
@@ -208,20 +193,14 @@ const DocumentReaderPage = ({
   const { isAuthenticated } = useAuth();
   const guestQuota = useGuestUploadQuota();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  /** Chế độ "Tạo mới": chọn đúng 1 loại nội dung trước khi tải lên, tránh
-   * lẫn nhiều cách nhập (ảnh/PDF/text) trên cùng 1 màn hình như trước. */
-  const [createContentType, setCreateContentType] = useState<
-    "image" | "pdf" | "text"
-  >("image");
   const [langType, setLangType] = useState<HannomLangType>(0);
-  /** Chỉ đổi vị trí hiển thị hai cột, không dịch ngược Quốc ngữ → Hán-Nôm. */
-  const [columnsSwapped, setColumnsSwapped] = useState(false);
+  const [workspaceVersion, setWorkspaceVersion] = useState(0);
   /** Bật thì cột Hán-Nôm chuyển từ chỉ đọc (kết quả OCR) sang ô nhập tay —
    * chỉ ảnh hưởng hiển thị cục bộ, hannomText không được gửi lên backend
    * phân tích (handleAnalyzeFamilyTree chỉ dùng documentText). */
   const [isHannomEditable, setIsHannomEditable] = useState(false);
   const [hannomText, setHannomText] = useState("");
-  const [showSourceImage, setShowSourceImage] = useState(false);
+  const [hannomEdited, setHannomEdited] = useState(false);
   /** Hán-Nôm gốc của 1 scan ĐÃ tồn tại (vd import corpus, hoặc lần phân tích
    * trước) — khác với analysisResult.hannom_text (chỉ có khi vừa OCR trong
    * phiên làm việc hiện tại). Nạp khi mở lại 1 scan qua initialScanId. */
@@ -242,7 +221,6 @@ const DocumentReaderPage = ({
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isResultModalOpen, setIsResultModalOpen] = useState(false);
-  const [manualInputText, setManualInputText] = useState("");
   const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
   const [historyTotal, setHistoryTotal] = useState(0);
   const [isHistoryLoading, setIsHistoryLoading] = useState(false);
@@ -272,6 +250,7 @@ const DocumentReaderPage = ({
       toast.success(
         t("flow.serverSaved", { defaultValue: "Đã lưu trên server" }),
       );
+      return created.id;
     } catch {
       setCurrentScanId(null);
     }
@@ -431,40 +410,13 @@ const DocumentReaderPage = ({
     setAnalysisError(null);
     setIsAnalyzing(false);
     setIsResultModalOpen(false);
-    setManualInputText("");
-  };
-
-  const applyManualText = async () => {
-    const normalizedText = manualInputText.replace(/\n{3,}/g, "\n\n").trim();
-    if (!normalizedText) {
-      setErrorMessage(t("docReader.errNeedDocxToAnalyze"));
-      return;
-    }
-
-    if (imageUrl) {
-      URL.revokeObjectURL(imageUrl);
-    }
-
-    const syntheticFile = new File(
-      [normalizedText],
-      "manual-input.txt",
-      {
-        type: "text/plain",
-      },
-    );
-
-    setActiveFile(syntheticFile);
-    setPreviewType("text");
-    setImageUrl(null);
-    setDocumentText(normalizedText);
-    setStatusMessage(t("docReader.msgTxtSuccess"));
-    setErrorMessage(null);
-    setLanguageDetection(detectLanguage(normalizedText, syntheticFile.name));
-    setAnalysisResult(null);
-    setAnalysisError(null);
-    setIsAnalyzing(false);
-    setIsResultModalOpen(false);
-    await registerScan(syntheticFile, normalizedText);
+    setHannomText("");
+    setHannomEdited(false);
+    setExistingHannomText(null);
+    setIsHannomEditable(false);
+    setWorkspaceVersion((value) => value + 1);
+    setCurrentScanId(null);
+    setLangType(0);
   };
 
   const loadFile = async (file: File) => {
@@ -472,6 +424,12 @@ const DocumentReaderPage = ({
       URL.revokeObjectURL(imageUrl);
     }
 
+    setHannomText("");
+    setHannomEdited(false);
+    setExistingHannomText(null);
+    setIsHannomEditable(false);
+    setWorkspaceVersion((value) => value + 1);
+    setCurrentScanId(null);
     setActiveFile(file);
     setErrorMessage(null);
     setStatusMessage(null);
@@ -513,7 +471,7 @@ const DocumentReaderPage = ({
       try {
         const rawText = await file.text();
         const normalizedText = rawText.replace(/\n{3,}/g, "\n\n").trim();
-        setDocumentText(normalizedText || t("docReader.msgEmptyDocx"));
+        setDocumentText(normalizedText);
         setLanguageDetection(detectLanguage(normalizedText, file.name));
         setStatusMessage(t("docReader.msgTxtSuccess"));
         await registerScan(file, normalizedText);
@@ -537,7 +495,7 @@ const DocumentReaderPage = ({
         const result = await mammothModule.extractRawText({ arrayBuffer });
         const normalizedText = result.value.replace(/\n{3,}/g, "\n\n").trim();
 
-        setDocumentText(normalizedText || t("docReader.msgEmptyDocx"));
+        setDocumentText(normalizedText);
         setLanguageDetection(detectLanguage(normalizedText, file.name));
         setStatusMessage(t("docReader.msgDocxSuccess"));
         await registerScan(file, normalizedText);
@@ -580,6 +538,7 @@ const DocumentReaderPage = ({
         setHannomText((prev) => prev + text);
       } else {
         setDocumentText((prev) => prev + text);
+        if (!previewType) setPreviewType("text");
       }
     } catch {
       toast.error(t("docReader.pasteFailed"));
@@ -587,8 +546,9 @@ const DocumentReaderPage = ({
   };
 
   const handleToggleHannomEditable = (nextValue: boolean) => {
-    if (nextValue && !hannomText) {
+    if (nextValue && !hannomEdited) {
       setHannomText(analysisResult?.hannom_text ?? existingHannomText ?? "");
+      setHannomEdited(true);
     }
     setIsHannomEditable(nextValue);
   };
@@ -605,6 +565,7 @@ const DocumentReaderPage = ({
   const handleDrop: React.DragEventHandler<HTMLDivElement> = async (event) => {
     event.preventDefault();
     setIsDragging(false);
+    if (isParsing || isAnalyzing) return;
     await handleSelectedFiles(event.dataTransfer.files);
   };
 
@@ -616,7 +577,7 @@ const DocumentReaderPage = ({
       setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
       return;
     }
-    if (isImageLike && !activeFile) {
+    if (isImageLike && !activeFile && analysisResult?.ocr_text == null) {
       setAnalysisError(t("docReader.errNeedDocxToAnalyze"));
       return;
     }
@@ -630,7 +591,6 @@ const DocumentReaderPage = ({
       return;
     }
 
-    setIsAnalyzing(true);
     setAnalysisError(null);
 
     // Sau lần OCR đầu, phân tích lại dùng văn bản Quốc ngữ (có thể đã sửa) thay vì OCR lại.
@@ -641,7 +601,15 @@ const DocumentReaderPage = ({
       return;
     }
 
+    setIsAnalyzing(true);
     try {
+      let analysisScanId = currentScanId;
+      if (isAuthenticated && !analysisScanId && isTextLike) {
+        analysisScanId = await registerScan(
+          activeFile ?? new File([documentText], "manual-input.txt", { type: "text/plain" }),
+          documentText,
+        ) ?? null;
+      }
       const token = getStoredAccessToken();
       let response: Response;
 
@@ -714,8 +682,8 @@ const DocumentReaderPage = ({
       if (!isAuthenticated) {
         guestQuota.consume();
       }
-      if (currentScanId) {
-        await updateUserDocument(currentScanId, {
+      if (analysisScanId) {
+        await updateUserDocument(analysisScanId, {
           request_id: payload.request_id ?? undefined,
           tree_status: "draft",
           ocr_status: isImageLike ? "completed" : "skipped",
@@ -723,7 +691,7 @@ const DocumentReaderPage = ({
           source_file_key: shouldOcr ? payload.source_file_key ?? undefined : undefined,
         });
       }
-      fetchHistory();
+      if (isAuthenticated) void fetchHistory();
       setStatusMessage(
         payload.pages_truncated
           ? t("docReader.msgAnalyzePagesTruncated", {
@@ -748,262 +716,163 @@ const DocumentReaderPage = ({
     }
   };
 
+  const isImageInput = previewType === "image" || previewType === "pdf";
+  const awaitingOcr = isImageInput && analysisResult?.ocr_text == null;
+  const busy = isParsing || isAnalyzing;
+  const displayedHannom = hannomEdited ? hannomText : analysisResult?.hannom_text || existingHannomText || "";
+  const chooseFile = (kind: "document" | "image") => {
+    if (!fileInputRef.current) return;
+    fileInputRef.current.accept = kind === "image" ? "image/png,image/jpeg,image/webp" : ".pdf,.docx,.txt";
+    fileInputRef.current.click();
+  };
+  const changeVietnameseText = (text: string) => {
+    setDocumentText(text);
+    if (!previewType) setPreviewType("text");
+  };
+
   const mainContent = (
-    <div className={embedded ? "space-y-6" : "px-4 md:px-6 py-8"}>
-      {embedded && (
-        <section className="brand-gradient px-4 md:px-6 py-5 rounded-2xl">
-          <div className="mx-auto flex flex-wrap items-center justify-between gap-4 text-primary-foreground">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-primary-foreground/80">
-                {t("docReader.bannerLabel")}
-              </p>
-              <h2 className="text-3xl font-display font-bold mt-2">
-                {t("docReader.bannerTitle")}
-              </h2>
-            </div>
-            <div className="max-w-xl text-sm text-primary-foreground/90 leading-6">
-              {t("docReader.bannerDesc")}
-            </div>
+    <div className={`reader-page space-y-5 ${embedded ? "" : "px-4 md:px-6 py-8"}`}>
+      <div className="rounded-xl bg-card p-4 md:p-6">
+        <div className="reader-settings">
+          <div className="reader-setting">
+            <label htmlFor="reader-document-type">{t("docReader.docTypeLabel")}</label>
+            <Tooltip title={t("docReader.docTypeHint")}>
+              <Select id="reader-document-type" value="auto" disabled
+                options={[{ value: "auto", label: t("docReader.docTypeAuto") }]} />
+            </Tooltip>
           </div>
-        </section>
-      )}
-      {embedded && currentScanId != null && (
-        <ServerSavedAlert />
-      )}
-      <div className={`mx-auto grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)] xl:grid-cols-[380px_minmax(0,1fr)] ${embedded ? "max-w-full" : "max-w-7xl"}`}>
-          <div className="space-y-6">
-            <Card
-              bordered={false}
-              className={`transition-shadow ${isDragging ? "bg-muted shadow-lg ring-2 ring-primary/40" : "bg-card shadow-md"}`}
-              styles={{ body: { padding: 24 } }}
-            >
-              <div className="space-y-5 text-left">
-                <div>
-                  <Typography.Text strong className="block mb-2">
-                    {t("docReader.createTypeLabel", {
-                      defaultValue: "Loại nội dung",
+          <div className="reader-setting">
+            <label htmlFor="reader-language">{t("docReader.langTypeLabel")}</label>
+            <Select<HannomLangType> id="reader-language" value={langType} onChange={setLangType} disabled={busy}
+              options={[
+                { value: 0, label: t("docReader.langTypeAuto") },
+                { value: 1, label: t("docReader.langTypeHan") },
+                { value: 2, label: t("docReader.langTypeNom") },
+              ]} />
+          </div>
+        </div>
+        <div className="reader-upload-actions">
+          <Button size="large" icon={<ReloadOutlined />} disabled={busy} onClick={resetPreview}>{t("docReader.btnReset")}</Button>
+          <Button size="large" icon={<FileTextOutlined />} disabled={busy} onClick={() => chooseFile("document")}>{t("docReader.uploadDocument")}</Button>
+          <Button size="large" icon={<FileImageOutlined />} disabled={busy} onClick={() => chooseFile("image")}>{t("docReader.uploadImage")}</Button>
+          <Typography.Text type="secondary" className="md:ml-2">{t("docReader.readerUploadHint")}</Typography.Text>
+          <input ref={fileInputRef} type="file" className="hidden" aria-label={t("docReader.btnChooseFile")}
+            onChange={async (event) => {
+              const input = event.currentTarget;
+              if (input.files) await handleSelectedFiles(input.files);
+              input.value = "";
+            }} />
+        </div>
+        <p className="reader-file-summary" role="status">
+          {activeFile ? `${t("docReader.fileInfoName")}: ${activeFile.name}` : t("docReader.readerEmptyHint")}
+        </p>
+        {errorMessage && <Alert showIcon type="warning" message={errorMessage} className="mb-4" />}
+        {analysisError && <Alert showIcon type="error" message={t("docReader.analysisFailedTitle")} description={analysisError} className="mb-4" />}
+        <div onDragOver={(event) => { event.preventDefault(); if (!busy) setIsDragging(true); }}
+          onDragLeave={() => setIsDragging(false)} onDrop={handleDrop}
+          className={isDragging ? "rounded-xl ring-2 ring-primary" : ""}>
+          <Spin spinning={busy} tip={t(isParsing ? "docReader.parsing" : "docReader.readerProcessing")}>
+            <ReaderWorkspace
+              key={workspaceVersion}
+              hannomText={isHannomEditable ? hannomText : displayedHannom}
+              vietnameseText={documentText} editableHannom={isHannomEditable}
+              vietnameseDisabled={awaitingOcr} busy={busy} imageUrl={imageUrl} filename={activeFile?.name}
+              onHannomChange={setHannomText} onVietnameseChange={changeVietnameseText}
+              onToggleHannom={handleToggleHannomEditable} onPaste={handlePasteActiveColumn} onCopy={handleCopyQuocNgu}
+            />
+          </Spin>
+        </div>
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+          <Typography.Text type="secondary">{t(awaitingOcr ? "docReader.readerOcrHint" : "docReader.readerAnalyzeHint")}</Typography.Text>
+          <Button type="primary" size="large" loading={isAnalyzing}
+            disabled={isParsing || (!isAuthenticated && guestQuota.exhausted) ||
+              (awaitingOcr ? !activeFile : !documentText.trim() || previewType === "unsupported")}
+            onClick={handleAnalyzeFamilyTree}>
+            {t(awaitingOcr ? "docReader.readerOcrAnalyze" : "docReader.btnAnalyzeTree")}
+          </Button>
+        </div>
+        {!isAuthenticated && <div className="mt-3">
+          {guestQuota.exhausted ? <Alert showIcon type="warning" message={t("docReader.quotaExceeded")}
+            action={<Button onClick={() => navigate("/login")}>{t("auth.loginBtn")}</Button>} />
+            : <Typography.Text type="secondary">{t("docReader.quotaRemaining", { count: guestQuota.remaining })}</Typography.Text>}
+        </div>}
+        {statusMessage && <p role="status" className="mt-3 mb-0 text-sm text-muted-foreground">{statusMessage}</p>}
+      </div>
+      {embedded && currentScanId != null && <ServerSavedAlert />}
+            {analysisResult && !isAuthenticated && (
+              <FlowNextBanner
+                message={t("docReader.guestAnalyzeDoneBanner")}
+                nextLabel={t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
+                nextHref="/login"
+              />
+            )}
+
+            {analysisResult && (
+              <Card
+                bordered={false}
+                className="mb-4 bg-muted"
+                title={t("docReader.analysisInlineTitle")}
+              >
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <Tag color="processing">
+                    {t("docReader.analysisPeople", {
+                      count: analysisResult.balkan_nodes.length,
                     })}
-                  </Typography.Text>
-                  <Segmented
-                    block
-                    value={createContentType}
-                    onChange={(value) =>
-                      setCreateContentType(value as "image" | "pdf" | "text")
-                    }
-                    options={[
-                      {
-                        label: t("docReader.createTypeImage", {
-                          defaultValue: "Hình ảnh",
-                        }),
-                        value: "image",
-                      },
-                      {
-                        label: t("docReader.createTypePdf", {
-                          defaultValue: "PDF",
-                        }),
-                        value: "pdf",
-                      },
-                      {
-                        label: t("docReader.createTypeText", {
-                          defaultValue: "Text Hán-Nôm",
-                        }),
-                        value: "text",
-                      },
-                    ]}
-                  />
+                  </Tag>
                 </div>
 
-                {createContentType === "text" ? (
-                  <div className="space-y-3">
-                    <Typography.Paragraph className="!mb-0 text-sm text-muted-foreground">
-                      {t("docReader.createTypeTextHint", {
-                        defaultValue:
-                          "Gõ hoặc dán văn bản Hán-Nôm/Quốc ngữ trực tiếp, hoặc tải lên file .docx/.txt đã có sẵn.",
-                      })}
-                    </Typography.Paragraph>
-                    <Textarea
-                      value={manualInputText}
-                      onChange={(event) =>
-                        setManualInputText(event.target.value)
-                      }
-                      placeholder={t("docReader.directInputPlaceholder", {
-                        defaultValue: "Dán hoặc gõ nội dung gia phả vào đây...",
-                      })}
-                      className="min-h-[220px] w-full resize-y text-sm leading-6"
-                    />
-                    <div className="flex flex-wrap gap-2">
-                      <Button
-                        type="primary"
-                        onClick={applyManualText}
-                        disabled={!manualInputText.trim()}
-                      >
-                        {t("docReader.btnUseDirectText", {
-                          defaultValue: "Dùng text này",
-                        })}
-                      </Button>
-                      <Button
-                        onClick={() => setManualInputText("")}
-                        disabled={!manualInputText}
-                      >
-                        {t("docReader.btnClearDirectText", {
-                          defaultValue: "Xóa text",
-                        })}
-                      </Button>
-                      <Button onClick={() => fileInputRef.current?.click()}>
-                        {t("docReader.btnUploadTextFile", {
-                          defaultValue: "Tải file .docx/.txt",
-                        })}
-                      </Button>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    className={`rounded-2xl border-2 border-dashed p-8 text-center transition-all ${
-                      isDragging
-                        ? "border-primary bg-muted"
-                        : "border-border bg-background"
-                    }`}
-                    onDragEnter={(event) => {
-                      event.preventDefault();
-                      setIsDragging(true);
-                    }}
-                    onDragLeave={(event) => {
-                      event.preventDefault();
-                      setIsDragging(false);
-                    }}
-                    onDragOver={(event) => {
-                      event.preventDefault();
-                      setIsDragging(true);
-                    }}
-                    onDrop={handleDrop}
-                  >
-                    <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full brand-gradient text-primary-foreground">
-                      <InboxOutlined className="text-[34px]" />
-                    </div>
-
-                    <Typography.Title level={4} className="!mb-2 font-display text-foreground">
-                      {createContentType === "image"
-                        ? t("docReader.dropTitleImage", {
-                            defaultValue: "Thả ảnh scan vào đây",
-                          })
-                        : t("docReader.dropTitlePdf", {
-                            defaultValue: "Thả file PDF vào đây",
-                          })}
-                    </Typography.Title>
-                    <Typography.Paragraph className="!mb-5 text-muted-foreground">
-                      {t("docReader.dropDesc")}
-                    </Typography.Paragraph>
-
-                    <div className="flex flex-wrap justify-center gap-2 mb-6">
-                      <Tag className="px-2.5 py-1">
-                        {createContentType === "image"
-                          ? ".png .jpg .jpeg .webp"
-                          : ".pdf"}
-                      </Tag>
-                    </div>
-
-                    <Button
-                      type="primary"
-                      size="large"
-                      onClick={() => fileInputRef.current?.click()}
-                    >
-                      {t("docReader.btnChooseFile")}
-                    </Button>
-                  </div>
+                {analysisResult.gemini_error && (
+                  <Alert
+                    type="warning"
+                    showIcon
+                    message={t("docReader.geminiErrorTitle")}
+                    description={analysisResult.gemini_error}
+                    className="mb-3"
+                  />
                 )}
 
-                <div className="flex justify-center gap-3 flex-wrap">
-                  <Button
-                    icon={<ReloadOutlined />}
-                    size="large"
-                    onClick={resetPreview}
-                  >
-                    {t("docReader.btnReset")}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  <Button onClick={() => setIsResultModalOpen(true)}>
+                    {t("docReader.btnOpenAnalysisPopup")}
                   </Button>
-                  <Button
-                    size="large"
-                    loading={isAnalyzing}
-                    disabled={
-                      (!isAuthenticated && guestQuota.exhausted) ||
-                      (previewType === "image" || previewType === "pdf"
-                        ? !activeFile
-                        : (previewType !== "docx" && previewType !== "text") ||
-                          !documentText.trim())
-                    }
-                    onClick={handleAnalyzeFamilyTree}
-                  >
-                    {t("docReader.btnAnalyzeTree")}
-                  </Button>
-                  {analysisResult && (
+                  {isAuthenticated ? (
                     <Button
-                      size="large"
-                      onClick={() => setIsResultModalOpen(true)}
+                      type="primary"
+                      onClick={() => navigate("/user/family-trees")}
                     >
-                      {t("docReader.btnOpenAnalysisPopup")}
+                      {t("docReader.btnOpenTreePage")}
+                    </Button>
+                  ) : (
+                    <Button
+                      type="primary"
+                      onClick={() =>
+                        navigate("/login", {
+                          state: { from: "/user/documents/new" },
+                        })
+                      }
+                    >
+                      {t("docReader.guestLoginToSave")}
                     </Button>
                   )}
                 </div>
 
-                {!isAuthenticated && (
-                  <div className="flex justify-center">
-                    {guestQuota.exhausted ? (
-                      <Alert
-                        showIcon
-                        type="warning"
-                        message={t("docReader.quotaExceeded")}
-                        action={
-                          <Button
-                            size="small"
-                            type="primary"
-                            onClick={() =>
-                              navigate("/login", {
-                                state: { from: "/user/documents/new" },
-                              })
-                            }
-                          >
-                            {t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
-                          </Button>
-                        }
-                      />
-                    ) : (
-                      <Tag color="processing">
-                        {t("docReader.quotaRemaining", {
-                          count: guestQuota.remaining,
-                        })}
-                      </Tag>
-                    )}
-                  </div>
-                )}
+                <Card
+                  size="small"
+                  className="mt-4 bg-muted"
+                  title={t("docReader.inlineTreeTitle")}
+                >
+                  {analysisResult.balkan_nodes.length > 0 ? (
+                    <FamilyTreeVisualPanel
+                      nodes={analysisResult.balkan_nodes}
+                      treeName={t("docReader.inlineTreeTitle", { defaultValue: "Sơ đồ từ phân tích" })}
+                    />
+                  ) : (
+                    <Empty description={t("docReader.inlineTreeEmpty")} />
+                  )}
+                </Card>
+              </Card>
+            )}
 
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept={CREATE_TYPE_ACCEPT[createContentType]}
-                  className="hidden"
-                  onChange={async (event) => {
-                    if (event.target.files) {
-                      await handleSelectedFiles(event.target.files);
-                      event.target.value = "";
-                    }
-                  }}
-                />
-              </div>
-            </Card>
-
-            <Card bordered={false} className="bg-muted">
-              <Typography.Title level={4} className="!mb-4 font-display text-foreground">
-                {t("docReader.workflowTitle")}
-              </Typography.Title>
-              <div className="space-y-3 text-sm text-muted-foreground leading-6">
-                <p>{t("docReader.step1")}</p>
-                <p>{t("docReader.step2")}</p>
-                <p>{t("docReader.step3")}</p>
-              </div>
-            </Card>
-
-            {/* Lịch sử /api/family-tree/history không lọc theo user ở nhánh
-                fallback ẩn danh (rò rỉ toàn hệ thống) — chỉ hiện cho người
-                đã đăng nhập, đúng REQUIREMENTS.md §7.1/§B. */}
             {isAuthenticated && (
             <Card bordered={false} className="bg-muted">
               <div className="flex items-center justify-between gap-2 mb-3">
@@ -1104,533 +973,6 @@ const DocumentReaderPage = ({
               )}
             </Card>
             )}
-          </div>
-
-          <Card
-            bordered={false}
-            className="bg-card min-h-[640px]"
-            styles={{ body: { padding: 24, height: "100%" } }}
-          >
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
-              <div>
-                <Typography.Title level={3} className="!mb-1 font-display text-foreground">
-                  {t("docReader.previewAreaTitle")}
-                </Typography.Title>
-                <Typography.Text type="secondary">
-                  {t("docReader.previewAreaSubtitle")}
-                </Typography.Text>
-              </div>
-
-              {activeFile && (
-                <Tag color="processing" className="px-2.5 py-1.5">
-                  {activeFile.name}
-                </Tag>
-              )}
-            </div>
-
-            {statusMessage && (
-              <Alert
-                showIcon
-                type="success"
-                message={t("docReader.successTitle")}
-                description={
-                  <div>
-                    <div>{statusMessage}</div>
-                    {languageDetection && (
-                      <div className="mt-2 flex flex-wrap items-center gap-2">
-                        <Tag color="processing">
-                          {t("docReader.detectedLanguage", {
-                            lang: t(`docReader.lang.${languageDetection.code}`),
-                          })}
-                        </Tag>
-                        <Tag>
-                          {t("docReader.detectedBy", {
-                            method: t(
-                              `docReader.method.${languageDetection.method}`,
-                            ),
-                          })}
-                        </Tag>
-                      </div>
-                    )}
-                  </div>
-                }
-                className="mb-4"
-              />
-            )}
-
-            {errorMessage && (
-              <Alert
-                showIcon
-                type="warning"
-                message={t("docReader.warningTitle")}
-                description={errorMessage}
-                className="mb-4"
-              />
-            )}
-
-            {analysisError && (
-              <Alert
-                showIcon
-                type="error"
-                message={t("docReader.analysisFailedTitle")}
-                description={analysisError}
-                className="mb-4"
-              />
-            )}
-
-            {analysisResult && !isAuthenticated && (
-              <FlowNextBanner
-                message={t("docReader.guestAnalyzeDoneBanner")}
-                nextLabel={t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
-                nextHref="/login"
-              />
-            )}
-
-            {analysisResult && (
-              <Card
-                bordered={false}
-                className="mb-4 bg-muted"
-                title={t("docReader.analysisInlineTitle")}
-              >
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Tag color="processing">
-                    {t("docReader.analysisPeople", {
-                      count: analysisResult.balkan_nodes.length,
-                    })}
-                  </Tag>
-                </div>
-
-                {analysisResult.gemini_error && (
-                  <Alert
-                    type="warning"
-                    showIcon
-                    message={t("docReader.geminiErrorTitle")}
-                    description={analysisResult.gemini_error}
-                    className="mb-3"
-                  />
-                )}
-
-                <div className="flex flex-wrap gap-2 mb-3">
-                  <Button onClick={() => setIsResultModalOpen(true)}>
-                    {t("docReader.btnOpenAnalysisPopup")}
-                  </Button>
-                  {isAuthenticated ? (
-                    <Button
-                      type="primary"
-                      onClick={() => navigate("/user/family-trees")}
-                    >
-                      {t("docReader.btnOpenTreePage")}
-                    </Button>
-                  ) : (
-                    <Button
-                      type="primary"
-                      onClick={() =>
-                        navigate("/login", {
-                          state: { from: "/user/documents/new" },
-                        })
-                      }
-                    >
-                      {t("docReader.guestLoginToSave")}
-                    </Button>
-                  )}
-                </div>
-
-                <Card
-                  size="small"
-                  className="mt-4 bg-muted"
-                  title={t("docReader.inlineTreeTitle")}
-                >
-                  {analysisResult.balkan_nodes.length > 0 ? (
-                    <FamilyTreeVisualPanel
-                      nodes={analysisResult.balkan_nodes}
-                      treeName={t("docReader.inlineTreeTitle", { defaultValue: "Sơ đồ từ phân tích" })}
-                    />
-                  ) : (
-                    <Empty description={t("docReader.inlineTreeEmpty")} />
-                  )}
-                </Card>
-              </Card>
-            )}
-
-            <div className="mb-2 flex flex-wrap items-center gap-2">
-              <Tooltip title={t("docReader.docTypeHint")}>
-                <Select
-                  value="auto"
-                  disabled
-                  aria-label={t("docReader.docTypeLabel")}
-                  className="min-w-[140px]"
-                  options={[
-                    { value: "auto", label: `${t("docReader.docTypeLabel")}: ${t("docReader.docTypeAuto")}` },
-                  ]}
-                />
-              </Tooltip>
-              <Select<HannomLangType>
-                value={langType}
-                onChange={setLangType}
-                aria-label={t("docReader.langTypeLabel")}
-                className="min-w-[140px]"
-                options={[
-                  { value: 0, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeAuto")}` },
-                  { value: 1, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeHan")}` },
-                  { value: 2, label: `${t("docReader.langTypeLabel")}: ${t("docReader.langTypeNom")}` },
-                ]}
-              />
-            </div>
-            <div className="mb-4 flex flex-wrap items-center gap-2">
-              <Button icon={<ReloadOutlined />} onClick={resetPreview}>
-                {t("docReader.btnReset")}
-              </Button>
-            </div>
-
-            {isParsing ? (
-              <div className="h-[520px] flex items-center justify-center rounded-2xl bg-muted">
-                <div className="text-center">
-                  <Spin size="large" />
-                  <Typography.Paragraph className="!mt-4 !mb-0 text-muted-foreground">
-                    {t("docReader.parsing")}
-                  </Typography.Paragraph>
-                </div>
-              </div>
-            ) : !activeFile ? (
-              <div className="h-[520px] flex items-center justify-center rounded-2xl border border-dashed border-border bg-background">
-                <Empty
-                  image={Empty.PRESENTED_IMAGE_SIMPLE}
-                  description={t("docReader.noDocument")}
-                />
-              </div>
-            ) : (
-              <Tabs
-                defaultActiveKey="preview"
-                items={[
-                  {
-                    key: "preview",
-                    label: (
-                      <span>
-                        <EyeOutlined /> {t("docReader.tabPreview")}
-                      </span>
-                    ),
-                    children:
-                      previewType === "unsupported" || previewType === null ? (
-                        <div className="h-[520px] flex items-center justify-center rounded-2xl border border-border bg-muted">
-                          <Empty description={t("docReader.noPreview")} />
-                        </div>
-                      ) : (
-                        (() => {
-                          const isImageLike =
-                            previewType === "image" || previewType === "pdf";
-                          const ocrDone =
-                            isImageLike && analysisResult?.ocr_text != null;
-
-                          const hannomBody = isHannomEditable ? (
-                            <Textarea
-                              value={hannomText}
-                              onChange={(event) => setHannomText(event.target.value)}
-                              placeholder={t("docReader.hannomEditPlaceholder")}
-                              className="h-full w-full resize-none rounded-none border-0 bg-muted px-5 py-4 text-2xl leading-[2.4rem] focus-visible:ring-0 focus-visible:ring-offset-0"
-                            />
-                          ) : ocrDone ? (
-                            analysisResult?.hannom_text ? (
-                              <div className="h-full overflow-auto bg-muted px-5 py-4 whitespace-pre-wrap text-2xl leading-[2.4rem] text-foreground">
-                                {analysisResult.hannom_text}
-                              </div>
-                            ) : (
-                              <div className="h-full flex items-center justify-center bg-muted px-6 text-center text-sm text-muted-foreground">
-                                {t("docReader.hannomEmptyAfterOcr")}
-                              </div>
-                            )
-                          ) : existingHannomText ? (
-                            <div className="h-full overflow-auto bg-muted px-5 py-4 whitespace-pre-wrap text-2xl leading-[2.4rem] text-foreground">
-                              {existingHannomText}
-                            </div>
-                          ) : previewType === "image" && imageUrl ? (
-                            <div className="h-full overflow-auto bg-muted p-4">
-                              <img
-                                src={imageUrl}
-                                alt={activeFile.name}
-                                className="mx-auto max-w-full rounded-xl shadow-lg"
-                              />
-                            </div>
-                          ) : previewType === "pdf" ? (
-                            <div className="h-full flex flex-col items-center justify-center gap-3 bg-muted text-center px-6">
-                              <FileTextOutlined style={{ fontSize: 48 }} className="!text-primary" />
-                              <p className="font-medium mb-0">{activeFile.name}</p>
-                              <p className="text-sm text-muted-foreground mb-0">
-                                {t("docReader.pdfPreviewHint")}
-                              </p>
-                            </div>
-                          ) : (
-                            <div className="h-full overflow-auto bg-muted px-5 py-4">
-                              <Alert
-                                type="info"
-                                showIcon
-                                message={t("docReader.noHannomSource")}
-                                className="mb-3"
-                              />
-                              <article className="whitespace-pre-wrap text-[15px] leading-8 text-foreground">
-                                {documentText}
-                              </article>
-                            </div>
-                          );
-
-                          const showSourceImagePreview =
-                            showSourceImage && previewType === "image" && !!imageUrl;
-
-                          const hannomColumn = (
-                            <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border">
-                              <div className="border-b border-border bg-background px-4 py-2 text-center text-sm font-semibold tracking-widest text-foreground">
-                                {t("docReader.columnHannom")}
-                              </div>
-                              <div className="flex h-[560px] flex-col">
-                                {showSourceImagePreview && (
-                                  <div className="h-[180px] shrink-0 overflow-auto border-b border-border bg-muted p-2">
-                                    <img
-                                      src={imageUrl}
-                                      alt={activeFile.name}
-                                      className="mx-auto max-h-full rounded-lg shadow"
-                                    />
-                                  </div>
-                                )}
-                                <div className="min-h-0 flex-1">{hannomBody}</div>
-                              </div>
-                            </div>
-                          );
-
-                          const quocNguColumn = (
-                            <div className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border">
-                              <div className="border-b border-border bg-background px-4 py-2 text-center text-sm font-semibold tracking-widest text-foreground">
-                                {t("docReader.columnQuocNgu")}
-                              </div>
-                              <Textarea
-                                value={documentText}
-                                onChange={(event) =>
-                                  setDocumentText(event.target.value)
-                                }
-                                disabled={isImageLike && !ocrDone}
-                                placeholder={
-                                  isImageLike && !ocrDone
-                                    ? t("docReader.quocNguAwaitOcr")
-                                    : t("docReader.quocNguPlaceholder")
-                                }
-                                className="h-[560px] w-full resize-none rounded-none border-0 bg-muted px-5 py-4 text-[15px] leading-8 focus-visible:ring-0 focus-visible:ring-offset-0"
-                              />
-                            </div>
-                          );
-
-                          return (
-                            <div>
-                              <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-start">
-                                {columnsSwapped ? quocNguColumn : hannomColumn}
-                                <div className="flex justify-center md:pt-1">
-                                  <Tooltip title={t("docReader.btnSwapColumns")}>
-                                    <Button
-                                      shape="circle"
-                                      icon={<SwapOutlined />}
-                                      aria-label={t("docReader.btnSwapColumns")}
-                                      onClick={() =>
-                                        setColumnsSwapped((value) => !value)
-                                      }
-                                    />
-                                  </Tooltip>
-                                </div>
-                                {columnsSwapped ? hannomColumn : quocNguColumn}
-                              </div>
-                              <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-                                <div className="flex flex-wrap items-center gap-4">
-                                  <Checkbox
-                                    checked={isHannomEditable}
-                                    onChange={(event) =>
-                                      handleToggleHannomEditable(event.target.checked)
-                                    }
-                                  >
-                                    {t("docReader.chkTypeHannom")}
-                                  </Checkbox>
-                                  <Checkbox
-                                    checked={showSourceImage}
-                                    onChange={(event) => setShowSourceImage(event.target.checked)}
-                                  >
-                                    {t("docReader.chkShowImageResult")}
-                                  </Checkbox>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                  <Typography.Text type="secondary" className="text-sm mr-2">
-                                    {t("docReader.charCount", {
-                                      count: documentText.length,
-                                    })}
-                                  </Typography.Text>
-                                  <Tooltip title={t("docReader.btnPaste")}>
-                                    <Button
-                                      type="text"
-                                      icon={<SnippetsOutlined />}
-                                      aria-label={t("docReader.btnPaste")}
-                                      onClick={handlePasteActiveColumn}
-                                    />
-                                  </Tooltip>
-                                  <Tooltip title={t("docReader.btnEditHannom")}>
-                                    <Button
-                                      type="text"
-                                      icon={<EditOutlined />}
-                                      aria-label={t("docReader.btnEditHannom")}
-                                      disabled={!ocrDone && !existingHannomText && !isHannomEditable}
-                                      onClick={() =>
-                                        handleToggleHannomEditable(!isHannomEditable)
-                                      }
-                                    />
-                                  </Tooltip>
-                                  <Tooltip title={t("docReader.btnCopy")}>
-                                    <Button
-                                      type="text"
-                                      icon={<CopyOutlined />}
-                                      aria-label={t("docReader.btnCopy")}
-                                      disabled={!documentText}
-                                      onClick={handleCopyQuocNgu}
-                                    />
-                                  </Tooltip>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })()
-                      ),
-                  },
-                  {
-                    key: "info",
-                    label: (
-                      <span>
-                        <FileTextOutlined /> {t("docReader.tabInfo")}
-                      </span>
-                    ),
-                    children: activeFile ? (
-                      <Card
-                        bordered={false}
-                        className="bg-muted"
-                      >
-                        <Descriptions column={1} bordered size="middle">
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoName")}
-                          >
-                            {activeFile.name}
-                          </Descriptions.Item>
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoType")}
-                          >
-                            {activeFile.type || t("docReader.unknownType")}
-                          </Descriptions.Item>
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoSize")}
-                          >
-                            {(activeFile.size / 1024 / 1024).toFixed(2)} MB
-                          </Descriptions.Item>
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoMode")}
-                          >
-                            {previewType === "image"
-                              ? t("docReader.modeImage")
-                              : previewType === "pdf"
-                                ? t("docReader.modePdf")
-                                : previewType === "docx"
-                                  ? t("docReader.modeDocx")
-                                  : previewType === "text"
-                                    ? t("docReader.modeText")
-                                    : t("docReader.modeUnsupported")}
-                          </Descriptions.Item>
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoLanguage")}
-                          >
-                            {languageDetection
-                              ? t(`docReader.lang.${languageDetection.code}`)
-                              : t("docReader.lang.unknown")}
-                          </Descriptions.Item>
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoDetectionMethod")}
-                          >
-                            {languageDetection
-                              ? t(
-                                  `docReader.method.${languageDetection.method}`,
-                                )
-                              : t("docReader.method.unavailable")}
-                          </Descriptions.Item>
-                          <Descriptions.Item
-                            label={t("docReader.fileInfoDetectionConfidence")}
-                          >
-                            {languageDetection
-                              ? `${Math.round(languageDetection.confidence * 100)}%`
-                              : "-"}
-                          </Descriptions.Item>
-                        </Descriptions>
-
-                        <div className="grid gap-4 md:grid-cols-2 mt-6">
-                          <Card
-                            size="small"
-                            className="bg-muted"
-                          >
-                            <div className="flex items-center gap-3 mb-2">
-                              <FileImageOutlined
-                                className="!text-primary"
-                              />
-                              <span className="font-medium">
-                                {t("docReader.cardImageTitle")}
-                              </span>
-                            </div>
-                            <p className="mb-0 text-sm text-muted-foreground leading-6">
-                              {t("docReader.cardImageDesc")}
-                            </p>
-                          </Card>
-
-                          <Card
-                            size="small"
-                            className="bg-muted"
-                          >
-                            <div className="flex items-center gap-3 mb-2">
-                              <FileTextOutlined className="!text-primary" />
-                              <span className="font-medium">
-                                {t("docReader.cardDocxTitle")}
-                              </span>
-                            </div>
-                            <p className="mb-0 text-sm text-muted-foreground leading-6">
-                              {t("docReader.cardDocxDesc")}
-                            </p>
-                          </Card>
-                        </div>
-
-                        {analysisResult && (
-                          <Card
-                            size="small"
-                            className="mt-6 bg-muted"
-                            title={t("docReader.analysisTitle")}
-                          >
-                            <div className="flex flex-wrap gap-2 mb-3">
-                              <Tag color="processing">
-                                {t("docReader.analysisPeople", {
-                                  count: analysisResult.balkan_nodes.length,
-                                })}
-                              </Tag>
-                            </div>
-                            {analysisResult.gemini_error && (
-                              <Alert
-                                type="warning"
-                                showIcon
-                                className="mb-3"
-                                message={t("docReader.geminiErrorTitle")}
-                                description={analysisResult.gemini_error}
-                              />
-                            )}
-                            <pre className="max-h-64 overflow-auto rounded bg-muted p-3 text-xs leading-5 text-foreground">
-                              {JSON.stringify(
-                                analysisResult.balkan_nodes,
-                                null,
-                                2,
-                              )}
-                            </pre>
-                          </Card>
-                        )}
-                      </Card>
-                    ) : null,
-                  },
-                ]}
-              />
-            )}
-          </Card>
-        </div>
 
       <Modal
         open={isResultModalOpen}

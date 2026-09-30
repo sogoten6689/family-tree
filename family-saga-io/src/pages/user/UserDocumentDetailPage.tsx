@@ -47,12 +47,9 @@ const UserDocumentDetailPage = () => {
   );
 
   if (scanId === "new") {
-    return (
-      <DocumentReaderPage
-        embedded
-        onScanRegistered={(id) => navigate(`/user/documents/${id}?tab=extract`)}
-      />
-    );
+    // Keep the reader mounted: the selected File and its preview are local
+    // until recognition finishes. Navigating here would discard both.
+    return <DocumentReaderPage embedded />;
   }
 
   if (loading) {
