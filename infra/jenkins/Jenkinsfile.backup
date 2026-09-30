@@ -64,9 +64,20 @@ pipeline {
                 sshagent(credentials: ['vps-ssh-key']) {
                     sh '''
                         set -euo pipefail
+
+                        # VPS_PROJECT_DIR trên VPS có thể lệch nhánh/thiếu file so với
+                        # commit Jenkins vừa checkout (không tự git-pull vì có thể có
+                        # thay đổi cục bộ khác trên đó) — nên LUÔN đẩy đúng bản
+                        # backup.sh vừa checkout lên trước khi chạy, tránh chạy nhầm
+                        # bản cũ trên VPS.
+                        ssh -p "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
+                            "mkdir -p ${VPS_PROJECT_DIR}/infra/scripts"
+                        scp -P "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new \
+                            infra/scripts/backup.sh "${VPS_USER}@${VPS_HOST}:${VPS_PROJECT_DIR}/infra/scripts/backup.sh"
+
                         STAMP="$(date +%Y%m%d-%H%M%S)"
                         ssh -p "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
-                            "cd ${VPS_PROJECT_DIR} && STAMP=${STAMP} ./infra/scripts/backup.sh"
+                            "cd ${VPS_PROJECT_DIR} && chmod +x infra/scripts/backup.sh && STAMP=${STAMP} ./infra/scripts/backup.sh"
 
                         mkdir -p downloaded-backups
                         scp -P "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new \
