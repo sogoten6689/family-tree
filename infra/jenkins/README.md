@@ -28,6 +28,9 @@ thủ công từ VPS sau.
      tham số `VPS_USER` nếu khác). Private key = key đã cho phép SSH vào
      VPS (có thể dùng lại đúng key trong secret `VPS_SSH_KEY` của GitHub
      Actions nếu cùng VPS).
+     ⚠️ SSH trên VPS này không nghe ở cổng 22 mặc định — đổi tham số
+     `VPS_SSH_PORT` khi build cho khớp cổng thật (khớp `secrets.VPS_PORT`
+     trong GitHub Actions nếu đã có).
    - `vgp-admin-password` — loại **Secret text**. Mật khẩu tài khoản admin
      **production** thật (KHÔNG phải `Admin@123456` mặc định trong
      `infra/docker-compose.yml`, đó chỉ để dev local).
