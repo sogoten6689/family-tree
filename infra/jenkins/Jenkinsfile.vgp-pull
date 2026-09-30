@@ -69,8 +69,17 @@ pipeline {
                     withCredentials([string(credentialsId: 'vgp-admin-password', variable: 'ADMIN_PASSWORD')]) {
                         sh '''
                             set -euo pipefail
+
+                            # VPS_PROJECT_DIR trên VPS không tự git-pull — luôn đẩy đúng
+                            # bản vgp_pull_sync.sh vừa checkout lên trước khi chạy (tránh
+                            # chạy nhầm bản cũ, xem lý do tương tự trong Jenkinsfile.backup).
                             ssh -p "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
-                                "cd ${VPS_PROJECT_DIR} && ADMIN_PASSWORD='${ADMIN_PASSWORD}' VGP_START_ID=${VGP_START_ID} VGP_END_ID=${VGP_END_ID} ./infra/scripts/vgp_pull_sync.sh"
+                                "mkdir -p ${VPS_PROJECT_DIR}/infra/scripts"
+                            scp -P "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new \
+                                infra/scripts/vgp_pull_sync.sh "${VPS_USER}@${VPS_HOST}:${VPS_PROJECT_DIR}/infra/scripts/vgp_pull_sync.sh"
+
+                            ssh -p "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
+                                "cd ${VPS_PROJECT_DIR} && chmod +x infra/scripts/vgp_pull_sync.sh && ADMIN_PASSWORD='${ADMIN_PASSWORD}' VGP_START_ID=${VGP_START_ID} VGP_END_ID=${VGP_END_ID} ./infra/scripts/vgp_pull_sync.sh"
                         '''
                     }
                 }
