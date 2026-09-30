@@ -24,7 +24,7 @@ thủ công từ VPS sau.
 
 1. **Tạo 2 credentials** (Manage Jenkins → Credentials → System → Global):
    - `vps-ssh-key` — loại **SSH Username with private key**. Username =
-     user SSH thật trên VPS (mặc định script giả định `deploy`, đổi qua
+     user SSH thật trên VPS (mặc định script giả định `ubuntu`, đổi qua
      tham số `VPS_USER` nếu khác). Private key = key đã cho phép SSH vào
      VPS (có thể dùng lại đúng key trong secret `VPS_SSH_KEY` của GitHub
      Actions nếu cùng VPS).

@@ -37,7 +37,7 @@ pipeline {
         )
         string(
             name: 'VPS_USER',
-            defaultValue: 'deploy',
+            defaultValue: 'ubuntu',
             description: 'User SSH trên VPS.'
         )
         string(
