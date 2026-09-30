@@ -19,7 +19,9 @@ cd "$ROOT_DIR"
 COMPOSE_FILE="infra/docker-compose.yml"
 BACKUP_DIR="${BACKUP_DIR:-$HOME/backups/family-tree}"
 RETENTION_DAYS="${RETENTION_DAYS:-60}"   # giữ ~8 tuần backup hàng tuần
-STAMP="$(date +%Y%m%d-%H%M%S)"
+# Cho phép Jenkins truyền STAMP từ ngoài vào để biết chính xác tên file vừa
+# tạo (dùng scp lấy về workspace rồi archiveArtifacts cho tải qua UI).
+STAMP="${STAMP:-$(date +%Y%m%d-%H%M%S)}"
 
 mkdir -p "$BACKUP_DIR"
 

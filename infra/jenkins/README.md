@@ -10,9 +10,12 @@ build/deploy khi push lên `master`/`main`. Hai job dưới đây chạy trên
 | `family-tree-backup-weekly` | [`Jenkinsfile.backup`](./Jenkinsfile.backup) | CN ~02:00 | Dump MySQL (`family_tree`) + tar volume MinIO, lưu trên VPS (`~/backups/family-tree/`), tự xoá backup > 60 ngày |
 | `family-tree-vgp-pull-weekly` | [`Jenkinsfile.vgp-pull`](./Jenkinsfile.vgp-pull) | CN ~03:00 (sau backup) | Gọi lại `POST /api/vietnamgiapha/crawl-sync` đã có sẵn để tìm + đồng bộ cây gia phả mới trên VietnamGiaPha |
 
-**Phạm vi đã xác nhận với Lâm (2026-09):** backup chỉ cần nằm sẵn trên VPS,
-chưa cần tự động tải đi máy khác. Muốn tải về máy khác thì `scp`/`rsync`
-thủ công từ VPS sau.
+**Phạm vi đã xác nhận với Lâm (2026-09):** backup nằm sẵn trên VPS, ĐỒNG
+THỜI job `family-tree-backup-weekly` cũng scp 2 file vừa tạo về workspace
+Jenkins và `archiveArtifacts` — tải trực tiếp qua link "Build Artifacts"
+trên trang mỗi build (không cần SSH/scp thủ công). Bản đầy đủ + lịch sử
+lâu dài vẫn giữ trên VPS (Jenkins chỉ giữ 8 build gần nhất để đỡ tốn đĩa,
+xem `buildDiscarder` trong Jenkinsfile.backup).
 
 ## Vì sao 2 job tách riêng, không gộp 1
 

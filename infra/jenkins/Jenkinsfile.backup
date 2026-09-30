@@ -2,9 +2,10 @@
 // Chạy hàng tuần trên cicd.kimtudien.com.vn, SSH vào VPS production
 // (giapha.kimtudien.com.vn) và chạy infra/scripts/backup.sh tại đó.
 //
-// Backup CHỈ nằm lại trên VPS (~/backups/family-tree/) — không tự động
-// tải đi máy khác (theo yêu cầu 2026-09). Muốn tải về máy khác thì
-// scp/rsync thủ công từ VPS.
+// Backup nằm lại trên VPS (~/backups/family-tree/), ĐỒNG THỜI 2 file vừa
+// tạo được scp về workspace Jenkins và archiveArtifacts — tải trực tiếp
+// qua link trên trang build Jenkins ("Build Artifacts"), không cần SSH/scp
+// thủ công (theo yêu cầu 2026-09).
 //
 // Thiết lập job trong Jenkins UI (một lần, xem thêm infra/jenkins/README.md):
 //   - New Item -> Pipeline -> Pipeline script from SCM -> trỏ repo này,
@@ -29,6 +30,9 @@ pipeline {
         timestamps()
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
+        // Artifact backup (mysql+minio) khá nặng — chỉ giữ vài build gần nhất
+        // để tránh phình đĩa Jenkins (VPS đã giữ bản đầy đủ 60 ngày riêng).
+        buildDiscarder(logRotator(numToKeepStr: '8'))
     }
 
     parameters {
@@ -60,10 +64,20 @@ pipeline {
                 sshagent(credentials: ['vps-ssh-key']) {
                     sh '''
                         set -euo pipefail
+                        STAMP="$(date +%Y%m%d-%H%M%S)"
                         ssh -p "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new "${VPS_USER}@${VPS_HOST}" \
-                            "cd ${VPS_PROJECT_DIR} && ./infra/scripts/backup.sh"
+                            "cd ${VPS_PROJECT_DIR} && STAMP=${STAMP} ./infra/scripts/backup.sh"
+
+                        mkdir -p downloaded-backups
+                        scp -P "${VPS_SSH_PORT}" -o StrictHostKeyChecking=accept-new \
+                            "${VPS_USER}@${VPS_HOST}:~/backups/family-tree/*-${STAMP}.*" downloaded-backups/
                     '''
                 }
+            }
+        }
+        stage('Lưu backup làm Jenkins artifact') {
+            steps {
+                archiveArtifacts artifacts: 'downloaded-backups/*', fingerprint: true
             }
         }
     }
