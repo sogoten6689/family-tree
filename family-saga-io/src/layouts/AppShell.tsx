@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
-import { Breadcrumb, Layout, Menu, Space, Typography } from "antd";
+import { Breadcrumb, Button, Layout, Menu, Space, Typography } from "antd";
 import type { BreadcrumbProps, MenuProps } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Outlet } from "react-router-dom";
 import { useTheme } from "next-themes";
 
@@ -56,7 +57,10 @@ const AppShell = ({
         width={250}
         breakpoint="lg"
         collapsedWidth={0}
+        collapsed={collapsed}
+        onCollapse={setCollapsed}
         onBreakpoint={setCollapsed}
+        trigger={null}
         theme={isDark ? "dark" : "light"}
         className="!fixed !inset-y-0 !left-0 z-10 flex h-screen flex-col overflow-y-auto border-r border-border !bg-[hsl(var(--sidebar-background))]"
       >
@@ -93,11 +97,19 @@ const AppShell = ({
           className="!px-6 flex items-center justify-between border-b border-border !bg-card"
           style={{ height: 64, position: "sticky", top: 0, zIndex: 10 }}
         >
-          <div>
-            <Breadcrumb items={breadcrumbItems} />
-            <Typography.Title level={4} className="!mb-0 !mt-1">
-              {pageTitle}
-            </Typography.Title>
+          <div className="flex items-center gap-3">
+            <Button
+              type="text"
+              aria-label={collapsed ? "Mở rộng menu" : "Thu gọn menu"}
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed((value) => !value)}
+            />
+            <div>
+              <Breadcrumb items={breadcrumbItems} />
+              <Typography.Title level={4} className="!mb-0 !mt-1">
+                {pageTitle}
+              </Typography.Title>
+            </div>
           </div>
           <Space wrap>
             {headerExtra}

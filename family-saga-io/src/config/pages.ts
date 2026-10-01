@@ -100,15 +100,6 @@ export const APP_PAGES: AppPageMeta[] = [
     requiresAdmin: true,
   },
   {
-    id: "admin-dev-crawl",
-    zone: "admin",
-    path: "/admin/developer/vietnamgiapha-crawl",
-    titleKey: "admin.developer.breadcrumbCrawl",
-    descKey: "admin.developer.descCrawl",
-    requiresAuth: true,
-    requiresAdmin: true,
-  },
-  {
     id: "admin-dev-logs",
     zone: "admin",
     path: "/admin/developer/logs",
