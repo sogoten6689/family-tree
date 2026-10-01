@@ -50,3 +50,7 @@
   .reader-options { flex-basis: 100%; }
   .reader-actions { margin-left: auto; }
 }
+.pipeline-steps-panel { margin-top: 16px; }
+.pipeline-steps-engines { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.pipeline-steps-engine { border: 1px solid var(--ant-color-border-secondary); border-radius: var(--ant-border-radius); padding: 12px; }
+.pipeline-steps-engine-text { font-family: "Noto Serif CJK TC", "Songti SC", "SimSun", serif; white-space: pre-wrap; margin-top: 8px !important; }

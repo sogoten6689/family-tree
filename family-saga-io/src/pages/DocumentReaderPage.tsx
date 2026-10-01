@@ -40,6 +40,7 @@ import {
 } from "@/lib/userWorkspaceApi";
 import { ReaderWorkspace } from "@/components/documents/ReaderWorkspace";
 import type { BBoxItem } from "@/components/documents/BoundingBoxOverlay";
+import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 
 type PreviewType = "image" | "pdf" | "docx" | "text" | "unsupported" | null;
 
@@ -58,7 +59,7 @@ type FamilyAnalyzeResponse = {
   pages_truncated?: boolean;
   bbox?: BBoxItem[][] | null;
   translation_text?: string | null;
-  vote_meta?: Record<string, unknown>[] | null;
+  vote_meta?: VoteMeta[] | null;
   pipeline_version?: string;
 };
 
@@ -804,6 +805,12 @@ const DocumentReaderPage = ({
             />
           </Spin>
         </div>
+        <PipelineStepsPanel
+          pipelineVersion={analysisResult?.pipeline_version}
+          transliterationText={analysisResult?.ocr_text}
+          translationText={analysisResult?.translation_text}
+          voteMeta={analysisResult?.vote_meta}
+        />
         <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
           <Typography.Text type="secondary">{t(awaitingOcr ? "docReader.readerOcrHint" : "docReader.readerAnalyzeHint")}</Typography.Text>
           <Button type="primary" size="large" loading={isAnalyzing}
