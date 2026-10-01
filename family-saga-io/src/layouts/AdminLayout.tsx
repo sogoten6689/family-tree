@@ -1,5 +1,4 @@
 import {
-  BranchesOutlined,
   CodeOutlined,
   DashboardOutlined,
   DatabaseOutlined,
@@ -8,6 +7,7 @@ import {
   SettingOutlined,
   TeamOutlined,
   UnorderedListOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { Button, Card, Typography } from "antd";
 import type { MenuProps } from "antd";
@@ -16,6 +16,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import AppShell from "@/layouts/AppShell";
+import { useCoreNavItems } from "@/layouts/useCoreNavItems";
+import { CORE_NAV_PATHS, isCoreNavKey } from "@/config/coreNav";
 import {
   DEVELOPER_NAV_ITEMS,
   getAdminMenuSelectedKey,
@@ -65,6 +67,7 @@ const AdminLayout = () => {
     [t],
   );
 
+  const coreNavItems = useCoreNavItems();
   const menuItems = useMemo(() => {
     const items: MenuProps["items"] = [
       {
@@ -72,10 +75,11 @@ const AdminLayout = () => {
         icon: <DashboardOutlined />,
         label: t("adminDashboard.title", { defaultValue: "Tổng quan" }),
       },
+      ...coreNavItems,
       {
-        key: "gia-pha",
-        icon: <BranchesOutlined />,
-        label: t("flow.menu.treesAndDocs", { defaultValue: "Gia phả Hán Nôm" }),
+        key: "profile",
+        icon: <UserOutlined />,
+        label: t("profile.title", { defaultValue: "Tài khoản" }),
       },
       {
         key: "history",
@@ -99,7 +103,7 @@ const AdminLayout = () => {
     }
 
     return items;
-  }, [t, isAdmin, developerChildren]);
+  }, [t, isAdmin, developerChildren, coreNavItems]);
 
   const breadcrumbItems = useMemo(() => {
     const items: { title: React.ReactNode }[] = [
@@ -124,6 +128,14 @@ const AdminLayout = () => {
   }, [t, location.pathname, developerItem, pageTitle]);
 
   const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
+    if (isCoreNavKey(key)) {
+      navigate(CORE_NAV_PATHS.admin[key]);
+      return;
+    }
+    if (key === "profile") {
+      navigate("/user/profile");
+      return;
+    }
     if (key === "dashboard") {
       navigate("/admin/dashboard");
       return;
@@ -136,11 +148,6 @@ const AdminLayout = () => {
       navigate("/admin/users");
       return;
     }
-    if (key === "gia-pha") {
-      navigate("/admin/gia-pha");
-      return;
-    }
-
     const devRoute = DEVELOPER_NAV_ITEMS.find((item) => item.key === key);
     if (devRoute) {
       navigate(devRoute.path);

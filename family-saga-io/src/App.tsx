@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { ThemeContextProvider } from "@/theme/ThemeContextProvider";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -16,16 +16,13 @@ import GuidePage from "./pages/GuidePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
-import FamilyTreeManagerPage from "./pages/FamilyTreeManagerPage";
 import FamilyTreeDetailPage from "./pages/admin/FamilyTreeDetailPage";
 import PublicFamilyTreePage from "./pages/PublicFamilyTreePage";
-import PublicFamilyTreeListPage from "./pages/PublicFamilyTreeListPage";
+import GiaPhaListPage from "./pages/GiaPhaListPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AdminHistoryPage from "./pages/admin/AdminHistoryPage";
-import UserDocumentsPage from "./pages/user/UserDocumentsPage";
 import UserDocumentDetailPage from "./pages/user/UserDocumentDetailPage";
-import UserFamilyTreesPage from "./pages/user/UserFamilyTreesPage";
 import UserFamilyTreeDetailPage from "./pages/user/UserFamilyTreeDetailPage";
 import UserProfilePage from "./pages/user/UserProfilePage";
 import EditDocumentPage from "./pages/EditDocumentPage";
@@ -42,6 +39,15 @@ const queryClient = new QueryClient();
 const AdminFamilyTreeRedirect = () => {
   const { treeId } = useParams<{ treeId: string }>();
   return <Navigate to={`/admin/gia-pha/${treeId ?? ""}`} replace />;
+};
+
+/** Route cũ "/user/family-trees(/:treeId)" và "/user/documents" (danh sách)
+ * đã gộp vào "/user/gia-pha" — giữ redirect, kèm nguyên query (?tab=...) vì
+ * genealogyFlow.ts/DocumentReaderPage vẫn sinh link theo path cũ. */
+const UserGiaPhaRedirect = () => {
+  const { treeId } = useParams<{ treeId: string }>();
+  const { search } = useLocation();
+  return <Navigate to={`/user/gia-pha${treeId ? `/${treeId}` : ""}${search}`} replace />;
 };
 
 /** Route "/" — khách ẩn danh thấy ngay màn hình tải lên/phân tích (không qua
@@ -66,7 +72,7 @@ const AppContent = () => (
             <Route element={<GuestLayout />}>
               <Route path="/" element={<GuestHomeRoute />} />
               <Route path="/huong-dan" element={<GuidePage />} />
-              <Route path="/gia-pha" element={<PublicFamilyTreeListPage />} />
+              <Route path="/gia-pha" element={<GiaPhaListPage scope="public" />} />
               <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
@@ -85,11 +91,15 @@ const AppContent = () => (
               <Route index element={<Navigate to="/user/dashboard" replace />} />
               <Route path="dashboard" element={<DashboardPage />} />
               <Route path="document-reader" element={<Navigate to="/user/documents/new" replace />} />
-              <Route path="documents" element={<UserDocumentsPage />} />
+              <Route path="gia-pha" element={<GiaPhaListPage scope="user" />} />
+              <Route path="gia-pha/:treeId" element={<UserFamilyTreeDetailPage />} />
+              {/* Chi tiết bộ gia phả chưa dựng cây (+ "/new" = màn hình tải lên) */}
               <Route path="documents/:scanId" element={<UserDocumentDetailPage />} />
-              <Route path="family-trees" element={<UserFamilyTreesPage />} />
-              <Route path="family-trees/:treeId" element={<UserFamilyTreeDetailPage />} />
-              <Route path="family-tree" element={<Navigate to="/user/family-trees" replace />} />
+              <Route path="documents" element={<UserGiaPhaRedirect />} />
+              <Route path="family-trees" element={<UserGiaPhaRedirect />} />
+              <Route path="family-trees/:treeId" element={<UserGiaPhaRedirect />} />
+              <Route path="family-tree" element={<Navigate to="/user/gia-pha" replace />} />
+              <Route path="huong-dan" element={<GuidePage />} />
               <Route path="profile" element={<UserProfilePage />} />
             </Route>
 
@@ -104,7 +114,7 @@ const AppContent = () => (
             >
               <Route index element={<Navigate to="/admin/dashboard" replace />} />
               <Route path="dashboard" element={<AdminDashboardPage />} />
-              <Route path="gia-pha" element={<FamilyTreeManagerPage />} />
+              <Route path="gia-pha" element={<GiaPhaListPage scope="admin" />} />
               <Route path="gia-pha/:treeId" element={<FamilyTreeDetailPage />} />
               <Route path="history" element={<AdminHistoryPage />} />
               <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
@@ -128,7 +138,7 @@ const AppContent = () => (
             {/* Redirects cũ */}
             <Route path="/dashboard" element={<Navigate to="/user/dashboard" replace />} />
             <Route path="/document-reader" element={<Navigate to="/user/documents/new" replace />} />
-            <Route path="/family-tree" element={<Navigate to="/user/family-trees" replace />} />
+            <Route path="/family-tree" element={<Navigate to="/user/gia-pha" replace />} />
             <Route path="/family-tree-manager" element={<Navigate to="/admin/gia-pha" replace />} />
             <Route path="/admin/family-tree/:treeId" element={<AdminFamilyTreeRedirect />} />
 

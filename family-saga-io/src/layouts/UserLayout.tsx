@@ -1,6 +1,4 @@
 import {
-  BookOutlined,
-  BranchesOutlined,
   DashboardOutlined,
   LogoutOutlined,
   SettingOutlined,
@@ -12,17 +10,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import AppShell from "@/layouts/AppShell";
+import { useCoreNavItems } from "@/layouts/useCoreNavItems";
+import { CORE_NAV_PATHS, isCoreNavKey } from "@/config/coreNav";
 import { getPageTitleKey } from "@/config/pages";
 import { useAuth } from "@/contexts/AuthContext";
 
 function resolveUserMenuKey(pathname: string): string {
-  if (pathname.startsWith("/user/documents")) return "documents";
-  if (pathname.startsWith("/user/family-trees") || pathname.startsWith("/user/family-tree")) {
-    return "family-trees";
+  // "/user/documents/new" là màn hình tải lên; "/user/documents/:id" là chi
+  // tiết 1 bộ gia phả chưa dựng cây — thuộc mục "Gia phả".
+  if (pathname.startsWith("/user/documents/new") || pathname.startsWith("/user/document-reader")) {
+    return "upload";
   }
+  if (pathname.startsWith("/user/gia-pha") || pathname.startsWith("/user/documents")) return "gia-pha";
+  if (pathname.startsWith("/user/huong-dan")) return "guide";
   if (pathname.startsWith("/user/profile")) return "profile";
-  if (pathname.startsWith("/user/dashboard")) return "dashboard";
-  if (pathname.startsWith("/user/document-reader")) return "documents";
   return "dashboard";
 }
 
@@ -35,6 +36,7 @@ const UserLayout = () => {
   const selectedKey = resolveUserMenuKey(location.pathname);
   const pageTitle = t(getPageTitleKey(location.pathname), { defaultValue: "User" });
 
+  const coreNavItems = useCoreNavItems();
   const menuItems = useMemo(
     () => [
       {
@@ -42,23 +44,14 @@ const UserLayout = () => {
         icon: <DashboardOutlined />,
         label: t("pages.userDashboard.title", { defaultValue: "Tổng quan" }),
       },
-      {
-        key: "documents",
-        icon: <BookOutlined />,
-        label: t("flow.menu.library", { defaultValue: "Thư viện tài liệu" }),
-      },
-      {
-        key: "family-trees",
-        icon: <BranchesOutlined />,
-        label: t("flow.menu.myTrees", { defaultValue: "Gia phả của tôi" }),
-      },
+      ...coreNavItems,
       {
         key: "profile",
         icon: <UserOutlined />,
         label: t("profile.title", { defaultValue: "Tài khoản" }),
       },
     ],
-    [t],
+    [t, coreNavItems],
   );
 
   return (
@@ -68,9 +61,8 @@ const UserLayout = () => {
       menuItems={menuItems}
       selectedKeys={[selectedKey]}
       onMenuClick={({ key }) => {
+        if (isCoreNavKey(key)) navigate(CORE_NAV_PATHS.user[key]);
         if (key === "dashboard") navigate("/user/dashboard");
-        if (key === "documents") navigate("/user/documents");
-        if (key === "family-trees") navigate("/user/family-trees");
         if (key === "profile") navigate("/user/profile");
       }}
       accountSlot={
