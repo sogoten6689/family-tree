@@ -3,7 +3,6 @@ import { Breadcrumb, Button, Layout, Menu, Space, Typography } from "antd";
 import type { BreadcrumbProps, MenuProps } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Outlet } from "react-router-dom";
-import { useTheme } from "next-themes";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -44,8 +43,6 @@ const AppShell = ({
   pageTitle,
   headerExtra,
 }: AppShellProps) => {
-  const { resolvedTheme, systemTheme } = useTheme();
-  const isDark = (resolvedTheme ?? systemTheme) === "dark";
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -61,7 +58,7 @@ const AppShell = ({
         onCollapse={setCollapsed}
         onBreakpoint={setCollapsed}
         trigger={null}
-        theme={isDark ? "dark" : "light"}
+        theme="dark"
         className="!fixed !inset-y-0 !left-0 z-10 flex h-screen flex-col overflow-y-auto border-r border-border !bg-[hsl(var(--sidebar-background))]"
       >
         <div className="px-5 py-6">
@@ -77,7 +74,7 @@ const AppShell = ({
 
         <Menu
           mode="inline"
-          theme={isDark ? "dark" : "light"}
+          theme="dark"
           selectedKeys={selectedKeys}
           openKeys={openKeys}
           onOpenChange={onOpenChange}

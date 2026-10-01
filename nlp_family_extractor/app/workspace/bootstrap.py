@@ -33,6 +33,46 @@ def ensure_workspace_schema() -> None:
     Base.metadata.create_all(bind=engine, tables=[models.UserScan.__table__])
     _migrate_user_scans_columns(engine)
     _migrate_source_text_to_longtext(engine)
+    Base.metadata.create_all(
+        bind=engine,
+        tables=[
+            models.GiaPhaPage.__table__,
+            models.GiaPhaVersion.__table__,
+            models.GiaPhaVersionStep.__table__,
+            models.GiaPhaPageContent.__table__,
+        ],
+    )
+    _migrate_gia_pha_columns(engine)
+
+
+def _migrate_gia_pha_columns(engine) -> None:
+    """Cột mới trên user_scans cho mô hình version + mã định danh F-code
+    (xem app/workspace/ma_dinh_danh.py). Idempotent."""
+    with engine.begin() as conn:
+        existing = {
+            row[0]
+            for row in conn.execute(
+                text(
+                    "SELECT COLUMN_NAME FROM information_schema.COLUMNS "
+                    "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_scans'"
+                )
+            ).fetchall()
+        }
+        if "current_version_id" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN current_version_id INT NULL"))
+        if "quy_mo" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN quy_mo VARCHAR(32) NULL"))
+        if "hinh_thuc" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN hinh_thuc VARCHAR(32) NULL"))
+        if "ho_toc" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN ho_toc VARCHAR(64) NULL"))
+        if "dia_danh" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN dia_danh VARCHAR(128) NULL"))
+        if "nam_soan_goc" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN nam_soan_goc INT NULL"))
+        if "ma_dinh_danh" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN ma_dinh_danh VARCHAR(64) NULL"))
+            conn.execute(text("CREATE INDEX ix_user_scans_ma_dinh_danh ON user_scans (ma_dinh_danh)"))
 
 
 def _migrate_user_scans_columns(engine) -> None:

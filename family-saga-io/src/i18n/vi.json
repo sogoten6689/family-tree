@@ -301,7 +301,9 @@
     "guestLoginToSave": "Đăng nhập để lưu cây",
     "guestAnalyzeDoneBanner": "Phân tích xong! Đăng nhập để lưu cây gia phả này.",
     "quotaRemaining": "Còn {{count}} lượt phân tích miễn phí",
-    "quotaExceeded": "Đã hết lượt phân tích miễn phí trong phiên này. Đăng nhập để tiếp tục không giới hạn."
+    "quotaExceeded": "Đã hết lượt phân tích miễn phí trong phiên này. Đăng nhập để tiếp tục không giới hạn.",
+    "voteWinLabel": "Thắng {{agree}}/{{total}}",
+    "voteDisagreeLabel": "Engine không đồng ý"
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",
@@ -611,5 +613,22 @@
       "distilledPending": "Bước cô đọng chưa triển khai tự động.",
       "viewVisual": "Xem sơ đồ (Visual)"
     }
+  },
+  "coreNav": {
+    "giaPha": "Gia phả"
+  },
+  "giaPhaList": {
+    "title": "Gia phả",
+    "columnId": "Mã",
+    "columnTitle": "Tên",
+    "columnStatus": "Trạng thái",
+    "columnUpdated": "Cập nhật",
+    "columnActions": "Hành động",
+    "statusBuilt": "Đã dựng cây",
+    "statusPending": "Chờ dựng cây",
+    "detail": "Chi tiết",
+    "pendingCode": "Chưa có mã chính thức",
+    "empty": "Chưa có bộ gia phả nào",
+    "uploadNew": "Tải lên mới"
   }
 }

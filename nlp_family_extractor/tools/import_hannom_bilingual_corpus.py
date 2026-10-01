@@ -60,7 +60,11 @@ from app.family_tree_store import (  # noqa: E402
 )
 from app.gemini_service import normalize_balkan_nodes  # noqa: E402
 from app.workspace.models import OcrStatus, TreeStatus  # noqa: E402
-from app.workspace.repository import UserScanRepository  # noqa: E402
+from app.workspace.repository import (  # noqa: E402
+    GiaPhaPageRepository,
+    GiaPhaVersionRepository,
+    UserScanRepository,
+)
 
 REQUEST_ID_PREFIX = "hannom-corpus:"
 
@@ -158,6 +162,60 @@ def _vote_meta(record: Dict[str, Any]) -> Optional[List[Dict[str, Any]]]:
     return meta or None
 
 
+def _create_pages_version_and_content(
+    *,
+    pages_repo: GiaPhaPageRepository,
+    versions_repo: GiaPhaVersionRepository,
+    user_scan_id: int,
+    record: Dict[str, Any],
+    owner_id: int,
+) -> None:
+    """Tạo gia_pha_page (1/trang, image_file_key = l0_image gốc, ảnh thật
+    upload sau qua attach_hannom_corpus_images.py) + 1 gia_pha_version (v1,
+    is_current=true, engine="corpus_import") + gia_pha_page_content cho từng
+    trang (l1_ocr/l2_phien_am/l3_dich_nghia) — thay vì chỉ ghi blob phẳng, để
+    21+ bản ghi import có sẵn cấu trúc trang/version ngay từ đầu (mục E của
+    plan hợp nhất Gia phả)."""
+    pages = record.get("pages") or []
+    if not pages:
+        return
+    version = versions_repo.create_version(
+        user_scan_id=user_scan_id,
+        ocr_engines=["corpus_import"],
+        created_by=owner_id,
+        note="Import từ hannom-bilingual-dataset",
+        make_current=True,
+    )
+    for index, page in enumerate(pages, start=1):
+        l1 = page.get("l1_ocr")
+        l1 = l1 if isinstance(l1, dict) else {}
+        gia_pha_page = pages_repo.create_page(
+            user_scan_id=user_scan_id,
+            page_number=index,
+            image_file_key=page.get("l0_image"),
+        )
+        vote_meta = None
+        if any(l1.get(k) not in (None, [], {}) for k in ("vote_method", "engines", "uncertain_rate", "uncertain_spans")):
+            vote_meta = {
+                "vote_method": l1.get("vote_method"),
+                "engines": l1.get("engines"),
+                "uncertain_rate": l1.get("uncertain_rate"),
+                "uncertain_spans": l1.get("uncertain_spans"),
+                "structural_diffs": l1.get("structural_diffs"),
+            }
+        pages_repo.upsert_content(
+            version_id=version.id,
+            page_id=gia_pha_page.id,
+            hannom_text=l1.get("voted_text"),
+            transliteration_text=page.get("l2_phien_am"),
+            translation_text=page.get("l3_dich_nghia"),
+            ocr_vote_meta=vote_meta,
+        )
+    # Cache phẳng (UserScan.hannom_text/transliteration_text/source_text) đã
+    # được ghi trực tiếp từ _hannom_text()/_transliteration_text()/_best_text()
+    # khi tạo scan ở main() — không cần sync lại ở đây.
+
+
 def _title(record: Dict[str, Any]) -> str:
     return (
         record.get("ten_han_viet")
@@ -211,6 +269,8 @@ def main() -> int:
             return 1
 
         scans = UserScanRepository(db)
+        pages_repo = GiaPhaPageRepository(db)
+        versions_repo = GiaPhaVersionRepository(db)
         existing_by_request_id = {
             scan.request_id: scan for scan in scans.list_by_user(owner.id) if scan.request_id
         }
@@ -281,6 +341,13 @@ def main() -> int:
                 ocr_vote_meta=_vote_meta(record),
             )
             scans.update(scan, ocr_status=OcrStatus.COMPLETED, request_id=request_id)
+            _create_pages_version_and_content(
+                pages_repo=pages_repo,
+                versions_repo=versions_repo,
+                user_scan_id=scan.id,
+                record=record,
+                owner_id=owner.id,
+            )
 
             extraction = extractor.parse(text)
             balkan_nodes, gemini_err = normalize_balkan_nodes(text, extraction)

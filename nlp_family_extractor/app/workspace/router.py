@@ -7,16 +7,20 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
 
-from app.auth.dependencies import AdminUser, CurrentUser
+from app.auth.dependencies import AdminUser, CurrentUser, OptionalUser
+from app.auth.models import UserRole
 from app.auth.user_repository import UserRepository
 from app.database import database_enabled, get_db
 from app.documents.repository import DocumentRepository
 from app.documents.schemas import DocumentListResponse, DocumentResponse
 from app.documents.storage import ObjectStorage
 from app.family_tree_store import FamilyTreeNotFoundError, FamilyTreeStoreError
-from app.workspace.models import OcrStatus, TreeStatus
-from app.workspace.repository import UserScanRepository
+from app.workspace.models import GiaPhaVersion, GiaPhaVersionStep, OcrStatus, TreeStatus, UserScan
+from app.workspace.repository import GiaPhaPageRepository, GiaPhaVersionRepository, UserScanRepository
 from app.workspace.utils import compute_generation_count
+
+# Phải khớp đúng tools/import_hannom_bilingual_corpus.py:REQUEST_ID_PREFIX
+HANNOM_CORPUS_REQUEST_ID_PREFIX = "hannom-corpus:"
 
 
 def require_workspace_database() -> None:
@@ -116,6 +120,42 @@ class UserScanUpdateRequest(BaseModel):
     ocr_bbox: Optional[List[Dict[str, Any]]] = None
 
 
+class ItemVersionStep(BaseModel):
+    step_type: str
+    status: str
+
+
+class ItemVersion(BaseModel):
+    version_id: int
+    version_number: int
+    is_current: bool
+    ocr_engines: Optional[List[str]] = None
+    status: str
+    steps: List[ItemVersionStep] = Field(default_factory=list)
+
+
+class GiaPhaItem(BaseModel):
+    id: str
+    ma_dinh_danh_pending: bool = False
+    title: str
+    status: str  # "built" | "pending"
+    is_public: Optional[bool] = None
+    updated_at: str
+    scan_id: Optional[int] = None
+    tree_id: Optional[str] = None
+    node_count: Optional[int] = None
+    current_version: Optional[ItemVersion] = None
+
+
+class GiaPhaListResponse(BaseModel):
+    total: int
+    items: List[GiaPhaItem]
+
+
+class GiaPhaVersionCloneRequest(BaseModel):
+    make_current: bool = False
+
+
 class UserFamilyTreeCreateRequest(BaseModel):
     name: str = Field(min_length=1)
     description: Optional[str] = None
@@ -143,6 +183,75 @@ def _to_tree_summary(item: Dict[str, Any], *, source_document_title: Optional[st
     )
 
 
+def _scan_display_id(scan: UserScan) -> tuple[str, bool]:
+    """Mã gia phả hiển thị: ma_dinh_danh (F-code) nếu đã xác nhận đủ 5 input,
+    ngược lại id tạm (doc_id từ request_id, hoặc fallback scan-{id}) + cờ
+    ma_dinh_danh_pending=True. Xem app/workspace/ma_dinh_danh.py."""
+    if scan.ma_dinh_danh:
+        return scan.ma_dinh_danh, False
+    if scan.request_id:
+        doc_id = (
+            scan.request_id[len(HANNOM_CORPUS_REQUEST_ID_PREFIX):]
+            if scan.request_id.startswith(HANNOM_CORPUS_REQUEST_ID_PREFIX)
+            else scan.request_id
+        )
+        return doc_id, True
+    return f"scan-{scan.id}", True
+
+
+def _item_version_from(version: GiaPhaVersion, steps: List[GiaPhaVersionStep]) -> ItemVersion:
+    return ItemVersion(
+        version_id=version.id,
+        version_number=version.version_number,
+        is_current=version.is_current,
+        ocr_engines=version.ocr_engines,
+        status=version.status,
+        steps=[ItemVersionStep(step_type=s.step_type.value, status=s.status) for s in steps],
+    )
+
+
+def _scan_to_gia_pha_item(scan: UserScan, version_repo: GiaPhaVersionRepository) -> GiaPhaItem:
+    gia_pha_id, pending = _scan_display_id(scan)
+    current_version = None
+    if scan.current_version_id:
+        version = version_repo.get(scan.current_version_id)
+        if version is not None:
+            current_version = _item_version_from(version, version_repo.steps_for(version.id))
+    return GiaPhaItem(
+        id=gia_pha_id,
+        ma_dinh_danh_pending=pending,
+        title=scan.title,
+        status="built" if scan.tree_status == TreeStatus.CREATED else "pending",
+        updated_at=scan.uploaded_at.isoformat(),
+        scan_id=scan.id,
+        tree_id=scan.family_tree_id,
+        current_version=current_version,
+    )
+
+
+def _tree_to_gia_pha_item(tree: Dict[str, Any]) -> GiaPhaItem:
+    return GiaPhaItem(
+        id=tree["id"],
+        ma_dinh_danh_pending=False,
+        title=tree["name"],
+        status="built",
+        is_public=bool(tree.get("is_public")),
+        updated_at=tree["updated_at"],
+        tree_id=tree["id"],
+        node_count=tree.get("node_count"),
+        current_version=None,
+    )
+
+
+def _find_scan_by_display_id(scans: UserScanRepository, current_user, gia_pha_id: str) -> Optional[UserScan]:
+    candidates = scans.list_all() if current_user.role == UserRole.ADMIN else scans.list_by_user(current_user.id)
+    for scan in candidates:
+        display_id, _ = _scan_display_id(scan)
+        if display_id == gia_pha_id:
+            return scan
+    return None
+
+
 def create_workspace_router(
     *,
     get_tree_store: Callable[[], Any],
@@ -155,6 +264,12 @@ def create_workspace_router(
 
     def user_repo(db: Session = Depends(get_db)) -> UserRepository:
         return UserRepository(db)
+
+    def version_repo(db: Session = Depends(get_db)) -> GiaPhaVersionRepository:
+        return GiaPhaVersionRepository(db)
+
+    def page_repo(db: Session = Depends(get_db)) -> GiaPhaPageRepository:
+        return GiaPhaPageRepository(db)
 
     def _raise_store_error(error: Exception) -> None:
         if isinstance(error, FamilyTreeNotFoundError):
@@ -204,6 +319,65 @@ def create_workspace_router(
                     file_item.download_url = storage.presigned_get_url(file_item.file_key)
             items.append(response)
         return DocumentListResponse(total=len(items), items=items)
+
+    @router.get("/api/gia-pha", response_model=GiaPhaListResponse)
+    def list_gia_pha(
+        current_user: OptionalUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+    ) -> GiaPhaListResponse:
+        store = get_tree_store()
+        try:
+            if current_user is None:
+                trees = store.list_public_trees()
+                pending_scans: List[UserScan] = []
+            elif current_user.role == UserRole.ADMIN:
+                trees = store.list_trees()
+                pending_scans = [s for s in scans.list_all() if not s.family_tree_id]
+            else:
+                trees = store.list_trees_by_user(current_user.id)
+                pending_scans = [s for s in scans.list_by_user(current_user.id) if not s.family_tree_id]
+        except Exception as error:
+            _raise_store_error(error)
+
+        items = [_tree_to_gia_pha_item(tree) for tree in trees]
+        items.extend(_scan_to_gia_pha_item(scan, versions) for scan in pending_scans)
+        return GiaPhaListResponse(total=len(items), items=items)
+
+    @router.get("/api/gia-pha/{gia_pha_id}/versions", response_model=List[ItemVersion])
+    def list_gia_pha_versions(
+        gia_pha_id: str,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+    ) -> List[ItemVersion]:
+        scan = _find_scan_by_display_id(scans, current_user, gia_pha_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Không tìm thấy bộ gia phả này.")
+        return [
+            _item_version_from(version, versions.steps_for(version.id))
+            for version in versions.list_by_scan(scan.id)
+        ]
+
+    @router.post("/api/user/documents/{scan_id}/versions/{version_id}/clone", response_model=ItemVersion)
+    def clone_gia_pha_version(
+        scan_id: int,
+        version_id: int,
+        payload: GiaPhaVersionCloneRequest,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+    ) -> ItemVersion:
+        scan = scans.get_for_user(current_user.id, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        source_version = versions.get(version_id)
+        if source_version is None or source_version.user_scan_id != scan.id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version nguồn.")
+        new_version = versions.clone_version(version_id, created_by=current_user.id)
+        if payload.make_current:
+            versions.set_current(scan.id, new_version.id)
+        return _item_version_from(new_version, versions.steps_for(new_version.id))
 
     @router.get("/api/user/stats", response_model=UserStatsResponse)
     def get_user_stats(

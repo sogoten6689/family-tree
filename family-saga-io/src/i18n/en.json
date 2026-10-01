@@ -301,7 +301,9 @@
     "guestLoginToSave": "Log in to save",
     "guestAnalyzeDoneBanner": "Analysis done! Log in to save this family tree.",
     "quotaRemaining": "{{count}} free analyses left",
-    "quotaExceeded": "You've used all free analyses for this session. Log in to continue without limits."
+    "quotaExceeded": "You've used all free analyses for this session. Log in to continue without limits.",
+    "voteWinLabel": "Winner {{agree}}/{{total}}",
+    "voteDisagreeLabel": "Disagreeing engines"
   },
   "notFound": {
     "subtitle": "Page not found",
@@ -611,5 +613,22 @@
       "distilledPending": "Distilled step is not automated yet.",
       "viewVisual": "View diagram (Visual)"
     }
+  },
+  "coreNav": {
+    "giaPha": "Genealogies"
+  },
+  "giaPhaList": {
+    "title": "Genealogies",
+    "columnId": "Code",
+    "columnTitle": "Name",
+    "columnStatus": "Status",
+    "columnUpdated": "Updated",
+    "columnActions": "Actions",
+    "statusBuilt": "Tree built",
+    "statusPending": "Pending tree",
+    "detail": "Details",
+    "pendingCode": "No official code yet",
+    "empty": "No genealogy records yet",
+    "uploadNew": "Upload new"
   }
 }
