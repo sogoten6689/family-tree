@@ -77,7 +77,7 @@ const AdminLayout = () => {
       {
         key: "gia-pha",
         icon: <BranchesOutlined />,
-        label: t("flow.menu.treesAndDocs", { defaultValue: "Gia phả & tài liệu" }),
+        label: t("flow.menu.treesAndDocs", { defaultValue: "Gia phả Hán Nôm" }),
       },
       {
         key: "history",
