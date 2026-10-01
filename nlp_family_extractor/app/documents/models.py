@@ -3,7 +3,10 @@ from __future__ import annotations
 import enum
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, Enum, ForeignKey, Integer, String, Text
+from typing import Any
+
+from sqlalchemy import JSON, DateTime, Enum, ForeignKey, Integer, String, Text
+from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
@@ -63,5 +66,12 @@ class DocumentFile(Base):
         nullable=False,
         default=lambda: datetime.now(timezone.utc),
     )
+    # Kết quả OCR v2 (vote nhiều engine + dịch nghĩa) — chỉ set trên file kết
+    # quả transcription do _ocr_transliterate_bytes tạo ra, xem
+    # app/hannom/pipeline.py:run_hannom_pipeline.
+    ocr_bbox: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)
+    ocr_translation_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
+    ocr_vote_meta: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    ocr_pipeline_version: Mapped[str | None] = mapped_column(String(16), nullable=True)
 
     document: Mapped[Document] = relationship("Document", back_populates="files")

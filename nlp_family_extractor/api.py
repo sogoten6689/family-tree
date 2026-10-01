@@ -17,14 +17,14 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.auth.bootstrap import bootstrap_auth
 from app.auth.dependencies import AdminUser, CurrentUser, OptionalUser
 from app.auth.router import router as auth_router
-from app.database import database_enabled, database_init_error, get_db, init_database
+from app.database import database_enabled, database_init_error, get_db, init_database, session_scope
 from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
 from app.documents.storage import ObjectStorage, ObjectStorageError
 from app.hannom.bootstrap import bootstrap_hannom
 from app.hannom.errors import HannomApiError
 from app.hannom.pdf_utils import render_pdf_pages_to_png
-from app.hannom.pipeline import process_hannom_image_to_vietnamese
+from app.hannom.pipeline import run_hannom_pipeline
 from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
@@ -33,6 +33,7 @@ from app.settings.router import router as settings_router
 from app.vgp.bootstrap import bootstrap_vgp
 from app.vgp.crawl_service import VgpCrawlOptions, VgpCrawlService
 from app.workspace.bootstrap import bootstrap_workspace
+from app.workspace.repository import UserScanRepository
 from app.workspace.router import create_workspace_router
 from app.export.router import create_export_router, create_node_meta_router
 from app.domains.extraction.extractor import FamilyExtractor
@@ -148,6 +149,22 @@ class AnalyzeImageResponse(AnalyzeResponse):
     pages_truncated: bool = Field(
         default=False,
         description="True nếu PDF có nhiều trang hơn giới hạn xử lý nhanh (dùng luồng Admin cho tài liệu dài).",
+    )
+    bbox: Optional[List[List[Dict[str, Any]]]] = Field(
+        default=None,
+        description="Bounding box OCR theo từng trang (1 danh sách box/trang, khớp index pages_processed). None nếu engine không trả box.",
+    )
+    translation_text: Optional[str] = Field(
+        default=None,
+        description="Dịch nghĩa Quốc ngữ hiện đại (chỉ có khi HANNOM_PIPELINE_VERSION=v2).",
+    )
+    vote_meta: Optional[List[Dict[str, Any]]] = Field(
+        default=None,
+        description="Metadata vote OCR nhiều engine, theo từng trang (chỉ có khi pipeline v2).",
+    )
+    pipeline_version: str = Field(
+        default="v1",
+        description="Phiên bản pipeline đã dùng để tạo kết quả này (v1 hoặc v2).",
     )
 
 
@@ -1693,8 +1710,12 @@ async def analyze_family_image(
 
     hannom_text_parts: List[str] = []
     ocr_text_parts: List[str] = []
+    bbox_pages: List[List[Dict[str, Any]]] = []
+    translation_parts: List[str] = []
+    vote_meta_pages: List[Dict[str, Any]] = []
     pages_processed = 0
     pages_truncated = False
+    pipeline_version = "v1"
 
     try:
         if is_pdf:
@@ -1704,21 +1725,35 @@ async def analyze_family_image(
             page_images = render_pdf_pages_to_png(content)
             pages_truncated = total_pages > len(page_images)
             for index, page_bytes in enumerate(page_images):
-                result = process_hannom_image_to_vietnamese(
+                result = run_hannom_pipeline(
                     page_bytes, f"{filename}-p{index + 1}.png", lang_type=lang_type
                 )
                 hannom_text_parts.append(result["ocr_text"])
                 ocr_text_parts.append(result["transcription_text"])
+                bbox_pages.append(result.get("bbox") or [])
+                if result.get("translation_text"):
+                    translation_parts.append(result["translation_text"])
+                if result.get("vote_meta"):
+                    vote_meta_pages.append(result["vote_meta"])
+                pipeline_version = result.get("pipeline_version", pipeline_version)
                 pages_processed += 1
         else:
-            result = process_hannom_image_to_vietnamese(content, filename, lang_type=lang_type)
+            result = run_hannom_pipeline(content, filename, lang_type=lang_type)
             hannom_text_parts.append(result["ocr_text"])
             ocr_text_parts.append(result["transcription_text"])
+            bbox_pages.append(result.get("bbox") or [])
+            if result.get("translation_text"):
+                translation_parts.append(result["translation_text"])
+            if result.get("vote_meta"):
+                vote_meta_pages.append(result["vote_meta"])
+            pipeline_version = result.get("pipeline_version", pipeline_version)
             pages_processed = 1
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
     except HannomApiError as error:
         raise HTTPException(status_code=502, detail=f"Lỗi OCR Kim Hán Nôm: {error}") from error
+
+    translation_text = "\n\n".join(translation_parts) if translation_parts else None
 
     combined_text = "\n\n".join(part for part in ocr_text_parts if part.strip())
     combined_hannom = "\n\n".join(part for part in hannom_text_parts if part.strip())
@@ -1735,6 +1770,23 @@ async def analyze_family_image(
         current_user=current_user,
     )
 
+    if scan_id is not None and current_user is not None:
+        try:
+            with session_scope() as db:
+                scan_repo = UserScanRepository(db)
+                scan = scan_repo.get_for_user(current_user.id, scan_id)
+                if scan is not None:
+                    scan_repo.update(
+                        scan,
+                        hannom_text=combined_hannom or None,
+                        transliteration_text=combined_text or None,
+                        source_text=translation_text,
+                        ocr_vote_meta=vote_meta_pages or None,
+                        ocr_bbox=bbox_pages or None,
+                    )
+        except Exception as error:
+            print(f"[analyze-image] Không đồng bộ được user_scan {scan_id}: {error}")
+
     return AnalyzeImageResponse(
         **analysis.model_dump(),
         ocr_text=combined_text,
@@ -1742,4 +1794,8 @@ async def analyze_family_image(
         source_file_key=source_file_key,
         pages_processed=pages_processed,
         pages_truncated=pages_truncated,
+        bbox=bbox_pages or None,
+        translation_text=translation_text,
+        vote_meta=vote_meta_pages or None,
+        pipeline_version=pipeline_version,
     )

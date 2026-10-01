@@ -54,6 +54,8 @@ def _migrate_user_scans_columns(engine) -> None:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN transliteration_text LONGTEXT NULL"))
         if "ocr_vote_meta" not in existing:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN ocr_vote_meta JSON NULL"))
+        if "ocr_bbox" not in existing:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN ocr_bbox JSON NULL"))
 
 
 def bootstrap_workspace() -> None:

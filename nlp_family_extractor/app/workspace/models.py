@@ -68,3 +68,6 @@ class UserScan(Base):
     # cuối cùng. List[dict] theo đúng thứ tự trang, xem
     # tools/import_hannom_bilingual_corpus.py:_vote_meta.
     ocr_vote_meta: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)
+    # Bounding box OCR (list[{han, confidence, quad, bbox_xyxy, id}]) từ
+    # engine kimhannom — xem app/hannom/client.py:normalize_result_bbox.
+    ocr_bbox: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)

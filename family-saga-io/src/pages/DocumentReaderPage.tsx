@@ -39,6 +39,7 @@ import {
   updateUserDocument,
 } from "@/lib/userWorkspaceApi";
 import { ReaderWorkspace } from "@/components/documents/ReaderWorkspace";
+import type { BBoxItem } from "@/components/documents/BoundingBoxOverlay";
 
 type PreviewType = "image" | "pdf" | "docx" | "text" | "unsupported" | null;
 
@@ -55,6 +56,10 @@ type FamilyAnalyzeResponse = {
   source_file_key?: string | null;
   pages_processed?: number;
   pages_truncated?: boolean;
+  bbox?: BBoxItem[][] | null;
+  translation_text?: string | null;
+  vote_meta?: Record<string, unknown>[] | null;
+  pipeline_version?: string;
 };
 
 type LanguageDetection = {
@@ -672,6 +677,10 @@ const DocumentReaderPage = ({
         source_file_key: raw.source_file_key ?? analysisResult?.source_file_key ?? null,
         pages_processed: raw.pages_processed ?? analysisResult?.pages_processed,
         pages_truncated: raw.pages_truncated ?? analysisResult?.pages_truncated,
+        bbox: raw.bbox ?? analysisResult?.bbox ?? null,
+        translation_text: raw.translation_text ?? analysisResult?.translation_text ?? null,
+        vote_meta: raw.vote_meta ?? analysisResult?.vote_meta ?? null,
+        pipeline_version: raw.pipeline_version ?? analysisResult?.pipeline_version,
       };
       setAnalysisResult(payload);
       if (shouldOcr && payload.ocr_text) {
@@ -777,6 +786,8 @@ const DocumentReaderPage = ({
               hannomText={isHannomEditable ? hannomText : displayedHannom}
               vietnameseText={documentText} editableHannom={isHannomEditable}
               vietnameseDisabled={awaitingOcr} busy={busy} imageUrl={imageUrl} filename={activeFile?.name}
+              translationText={analysisResult?.translation_text || undefined}
+              bbox={analysisResult?.bbox?.[0] || null}
               onHannomChange={setHannomText} onVietnameseChange={changeVietnameseText}
               onToggleHannom={handleToggleHannomEditable} onPaste={handlePasteActiveColumn} onCopy={handleCopyQuocNgu}
             />

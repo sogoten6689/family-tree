@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -33,6 +33,10 @@ class DocumentFileResponse(BaseModel):
     position: int
     created_at: datetime
     download_url: Optional[str] = None
+    ocr_bbox: Optional[List[Dict[str, Any]]] = None
+    ocr_translation_text: Optional[str] = None
+    ocr_vote_meta: Optional[Dict[str, Any]] = None
+    ocr_pipeline_version: Optional[str] = None
 
 
 class DocumentResponse(BaseModel):
@@ -78,6 +82,10 @@ class OcrTransliterateResponse(BaseModel):
     result_document: DocumentResponse
     merged_page_count: int = 0
     pipeline_synced: bool = False
+    bbox: Optional[List[Dict[str, Any]]] = None
+    translation_text: Optional[str] = None
+    vote_meta: Optional[Dict[str, Any]] = None
+    pipeline_version: Optional[str] = None
 
 
 class OcrPageStatusItem(BaseModel):

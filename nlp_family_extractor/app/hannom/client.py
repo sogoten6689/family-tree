@@ -258,6 +258,50 @@ def run_image_ocr_payload(
     return {"result_ocr_text": texts, "result_bbox": []}
 
 
+def normalize_result_bbox(result_bbox: Any) -> list[dict[str, Any]]:
+    """Reshape API quads — mỗi item là [quad 4 điểm, [text, confidence]], theo
+    từng đoạn/cột chữ (không phải từng ký tự, không phải từng dòng ngang).
+    Giữ cả quad gốc lẫn bbox_xyxy (hình chữ nhật trục thẳng) để frontend vẽ
+    rect đơn giản trước, vẫn còn quad nếu sau này cần vẽ polygon nghiêng."""
+    boxes: list[dict[str, Any]] = []
+    if not isinstance(result_bbox, list):
+        return boxes
+    for index, item in enumerate(result_bbox):
+        if not isinstance(item, (list, tuple)) or len(item) < 1:
+            continue
+        quad = item[0]
+        if not isinstance(quad, list) or len(quad) < 3:
+            continue
+        text = ""
+        conf = None
+        if len(item) >= 2 and isinstance(item[1], (list, tuple)):
+            if item[1]:
+                text = str(item[1][0])
+            if len(item[1]) >= 2:
+                try:
+                    conf = float(item[1][1])
+                except (TypeError, ValueError):
+                    conf = None
+        xs: list[float] = []
+        ys: list[float] = []
+        for point in quad:
+            if isinstance(point, (list, tuple)) and len(point) >= 2:
+                xs.append(float(point[0]))
+                ys.append(float(point[1]))
+        if not xs:
+            continue
+        boxes.append(
+            {
+                "han": text,
+                "confidence": conf,
+                "quad": quad,
+                "bbox_xyxy": [int(min(xs)), int(min(ys)), int(max(xs)), int(max(ys))],
+                "id": index + 1,
+            }
+        )
+    return boxes
+
+
 def run_transliteration(
     client: httpx.Client,
     *,

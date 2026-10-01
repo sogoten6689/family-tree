@@ -11,7 +11,13 @@ from app.settings.store import SettingsStore, SettingsStoreError
 router = APIRouter(prefix="/api/admin/settings", tags=["Admin - Cấu hình"])
 
 # Danh sách key gợi ý sẵn cho UI (không giới hạn — vẫn nhận key tuỳ ý qua PUT).
-KNOWN_SETTING_KEYS = ["GOOGLE_API_KEY"]
+KNOWN_SETTING_KEYS = [
+    "GOOGLE_API_KEY",
+    "HANNOM_PIPELINE_VERSION",
+    "HANNOM_VOTE_ENGINES",
+    "HANNOM_LAB_OCR_ID",
+    "HANNOM_LAB_LANG_TYPE",
+]
 
 
 def _require_db() -> None:

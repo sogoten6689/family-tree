@@ -41,6 +41,7 @@ class UserScanRepository:
         hannom_text: Optional[str] = None,
         transliteration_text: Optional[str] = None,
         ocr_vote_meta: Optional[List[dict[str, Any]]] = None,
+        ocr_bbox: Optional[List[dict[str, Any]]] = None,
     ) -> UserScan:
         scan = UserScan(
             user_id=user_id,
@@ -52,6 +53,7 @@ class UserScanRepository:
             hannom_text=hannom_text,
             transliteration_text=transliteration_text,
             ocr_vote_meta=ocr_vote_meta,
+            ocr_bbox=ocr_bbox,
             uploaded_at=datetime.now(timezone.utc),
         )
         self._db.add(scan)
@@ -73,6 +75,7 @@ class UserScanRepository:
         hannom_text: Optional[str] = None,
         transliteration_text: Optional[str] = None,
         ocr_vote_meta: Optional[List[dict[str, Any]]] = None,
+        ocr_bbox: Optional[List[dict[str, Any]]] = None,
     ) -> UserScan:
         if title is not None:
             scan.title = title.strip()
@@ -94,6 +97,8 @@ class UserScanRepository:
             scan.transliteration_text = transliteration_text
         if ocr_vote_meta is not None:
             scan.ocr_vote_meta = ocr_vote_meta
+        if ocr_bbox is not None:
+            scan.ocr_bbox = ocr_bbox
         self._db.add(scan)
         self._db.commit()
         self._db.refresh(scan)

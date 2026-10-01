@@ -105,6 +105,10 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             position=file_item.position,
             created_at=file_item.created_at,
             download_url=getattr(file_item, "download_url", None),
+            ocr_bbox=getattr(file_item, "ocr_bbox", None),
+            ocr_translation_text=getattr(file_item, "ocr_translation_text", None),
+            ocr_vote_meta=getattr(file_item, "ocr_vote_meta", None),
+            ocr_pipeline_version=getattr(file_item, "ocr_pipeline_version", None),
         )
 
     def _serialize_document(document) -> DocumentResponse:
@@ -341,6 +345,10 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             result_document=_serialize_document(result_document),
             merged_page_count=int(merge_info.get("page_count") or 0),
             pipeline_synced=bool(hook_result.get("pipeline_synced")),
+            bbox=result.get("bbox"),
+            translation_text=result.get("translation_text"),
+            vote_meta=result.get("vote_meta"),
+            pipeline_version=result.get("pipeline_version"),
         )
 
     @router.get(
@@ -433,6 +441,10 @@ def create_documents_router(get_tree: Callable[[str], dict]) -> APIRouter:
             result_document=_serialize_document(result_document),
             merged_page_count=int(merge_info.get("page_count") or 0),
             pipeline_synced=bool(hook_result.get("pipeline_synced")),
+            bbox=result.get("bbox"),
+            translation_text=result.get("translation_text"),
+            vote_meta=result.get("vote_meta"),
+            pipeline_version=result.get("pipeline_version"),
         )
 
     @router.post(

@@ -10,7 +10,7 @@ from io import BytesIO
 from app.documents.models import Document, DocumentFile, DocumentType
 from app.documents.storage import ObjectStorage, ObjectStorageError
 from app.hannom.errors import HannomApiError
-from app.hannom.pipeline import process_hannom_image_to_vietnamese
+from app.hannom.pipeline import run_hannom_pipeline
 
 
 class DocumentNotFoundError(Exception):
@@ -110,6 +110,31 @@ class DocumentRepository:
             size=size,
             position=position,
         )
+        self.db.add(record)
+        self.db.flush()
+        self.db.refresh(record)
+        return record
+
+    def update_file_ocr_metadata(
+        self,
+        file_id: int,
+        *,
+        ocr_bbox: Optional[list] = None,
+        ocr_translation_text: Optional[str] = None,
+        ocr_vote_meta: Optional[dict] = None,
+        ocr_pipeline_version: Optional[str] = None,
+    ) -> DocumentFile:
+        record = self.db.get(DocumentFile, file_id)
+        if record is None:
+            raise DocumentNotFoundError(f"DocumentFile {file_id} not found.")
+        if ocr_bbox is not None:
+            record.ocr_bbox = ocr_bbox
+        if ocr_translation_text is not None:
+            record.ocr_translation_text = ocr_translation_text
+        if ocr_vote_meta is not None:
+            record.ocr_vote_meta = ocr_vote_meta
+        if ocr_pipeline_version is not None:
+            record.ocr_pipeline_version = ocr_pipeline_version
         self.db.add(record)
         self.db.flush()
         self.db.refresh(record)
@@ -386,7 +411,7 @@ class DocumentService:
             raise DocumentValidationError("File ảnh rỗng.")
 
         try:
-            pipeline_result = process_hannom_image_to_vietnamese(
+            pipeline_result = run_hannom_pipeline(
                 file_bytes,
                 filename,
                 ocr_id=ocr_id,
@@ -424,6 +449,20 @@ class DocumentService:
             ],
         )
 
+        bbox = pipeline_result.get("bbox")
+        translation_text = pipeline_result.get("translation_text")
+        vote_meta = pipeline_result.get("vote_meta")
+        pipeline_version = pipeline_result.get("pipeline_version")
+        saved_file = created_files[0]
+        if bbox or translation_text or vote_meta or pipeline_version:
+            saved_file = self.repository.update_file_ocr_metadata(
+                saved_file.id,
+                ocr_bbox=bbox,
+                ocr_translation_text=translation_text,
+                ocr_vote_meta=vote_meta,
+                ocr_pipeline_version=pipeline_version,
+            )
+
         return {
             "source_document": source,
             "result_document": self.get_document(result_document.id),
@@ -431,7 +470,11 @@ class DocumentService:
             "ocr_lines": list(pipeline_result["ocr_lines"]),
             "transcription_lines": list(pipeline_result["transcription_lines"]),
             "transcription_text": transcription_text,
-            "saved_file": created_files[0],
+            "saved_file": saved_file,
+            "bbox": bbox,
+            "translation_text": translation_text,
+            "vote_meta": vote_meta,
+            "pipeline_version": pipeline_version,
         }
 
     def ocr_transliterate_stored_file(

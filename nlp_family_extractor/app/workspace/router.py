@@ -84,6 +84,7 @@ class UserScanResponse(BaseModel):
     source_text: Optional[str] = None
     hannom_text: Optional[str] = None
     transliteration_text: Optional[str] = None
+    ocr_bbox: Optional[List[Dict[str, Any]]] = None
 
 
 class UserScanListResponse(BaseModel):
@@ -99,6 +100,7 @@ class UserScanCreateRequest(BaseModel):
     source_text: Optional[str] = None
     hannom_text: Optional[str] = None
     transliteration_text: Optional[str] = None
+    ocr_bbox: Optional[List[Dict[str, Any]]] = None
 
 
 class UserScanUpdateRequest(BaseModel):
@@ -111,6 +113,7 @@ class UserScanUpdateRequest(BaseModel):
     source_file_key: Optional[str] = None
     hannom_text: Optional[str] = None
     transliteration_text: Optional[str] = None
+    ocr_bbox: Optional[List[Dict[str, Any]]] = None
 
 
 class UserFamilyTreeCreateRequest(BaseModel):
@@ -248,6 +251,7 @@ def create_workspace_router(
             source_text=payload.source_text,
             hannom_text=payload.hannom_text,
             transliteration_text=payload.transliteration_text,
+            ocr_bbox=payload.ocr_bbox,
         )
         return UserScanResponse.model_validate(created)
 
@@ -283,6 +287,7 @@ def create_workspace_router(
             source_file_key=payload.source_file_key,
             hannom_text=payload.hannom_text,
             transliteration_text=payload.transliteration_text,
+            ocr_bbox=payload.ocr_bbox,
         )
         return UserScanResponse.model_validate(updated)
 
