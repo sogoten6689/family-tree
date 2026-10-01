@@ -26,7 +26,6 @@ export function ReaderWorkspace(props: ReaderWorkspaceProps) {
   const { t } = useTranslation();
   const [swapped, setSwapped] = useState(false);
   const [showImage, setShowImage] = useState(true);
-  const [imgMode, setImgMode] = useState<"original" | "bbox">("original");
   const hasTranslation = !!props.translationText;
   const hasBbox = !!(props.bbox && props.bbox.length > 0);
   const [mobileColumn, setMobileColumn] = useState("hannom");
@@ -87,17 +86,6 @@ export function ReaderWorkspace(props: ReaderWorkspaceProps) {
             onChange={(event) => props.onToggleHannom(event.target.checked)}>{t("docReader.chkTypeHannom")}</Checkbox>
           <Checkbox checked={showImage && !!props.imageUrl} disabled={!props.imageUrl}
             onChange={(event) => setShowImage(event.target.checked)}>{t("docReader.chkShowImageResult")}</Checkbox>
-          {hasBbox && showImage && props.imageUrl && (
-            <Segmented
-              size="small"
-              value={imgMode}
-              onChange={(value) => setImgMode(value as "original" | "bbox")}
-              options={[
-                { value: "original", label: t("docReader.imgModeOriginal") },
-                { value: "bbox", label: t("docReader.imgModeBbox") },
-              ]}
-            />
-          )}
         </div>
         <span className="reader-count">{t("docReader.charCount", { count: Array.from(props.editableHannom ? props.hannomText : props.vietnameseText).length })}</span>
         <div className="reader-actions">
@@ -112,19 +100,28 @@ export function ReaderWorkspace(props: ReaderWorkspaceProps) {
         {props.editableHannom && <p className="reader-edit-hint">{t("docReader.hannomLocalEditHint")}</p>}
       </div>
       {showImage && props.imageUrl && (
-        <figure className="reader-source">
-          <figcaption>{t("docReader.sourceImageTitle")} <span>{props.filename}</span></figcaption>
-          {hasBbox ? (
-            <BoundingBoxOverlay
-              imageUrl={props.imageUrl}
-              alt={props.filename || t("docReader.sourceImageTitle")}
-              bbox={props.bbox || []}
-              showBoxes={imgMode === "bbox"}
-            />
-          ) : (
+        hasBbox ? (
+          <div className="reader-source-row">
+            <figure className="reader-source">
+              <figcaption>{t("docReader.imgModeOriginal")} <span>{props.filename}</span></figcaption>
+              <Image src={props.imageUrl} alt={props.filename || t("docReader.sourceImageTitle")} />
+            </figure>
+            <figure className="reader-source">
+              <figcaption>{t("docReader.imgModeBbox")}</figcaption>
+              <BoundingBoxOverlay
+                imageUrl={props.imageUrl}
+                alt={props.filename || t("docReader.sourceImageTitle")}
+                bbox={props.bbox || []}
+                showBoxes
+              />
+            </figure>
+          </div>
+        ) : (
+          <figure className="reader-source">
+            <figcaption>{t("docReader.sourceImageTitle")} <span>{props.filename}</span></figcaption>
             <Image src={props.imageUrl} alt={props.filename || t("docReader.sourceImageTitle")} />
-          )}
-        </figure>
+          </figure>
+        )
       )}
     </section>
   );

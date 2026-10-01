@@ -146,7 +146,7 @@
   },
   "docReader": {
     "workspaceLabel": "Document comparison",
-    "hannomWorkspacePlaceholder": "Recognized Hán-Nôm text will appear here. Enable “Type Hán-Nôm” to enter or edit text.",
+    "hannomWorkspacePlaceholder": "Type or paste Hán-Nôm text here, or upload an image/PDF to fill it in via OCR.",
     "hannomLocalEditHint": "Hán-Nôm edits are for comparison in this session only; they are not automatically transliterated.",
     "sourceImageTitle": "Original image · Click to enlarge",
     "uploadDocument": "Document",

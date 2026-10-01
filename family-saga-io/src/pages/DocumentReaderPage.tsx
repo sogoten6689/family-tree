@@ -200,10 +200,11 @@ const DocumentReaderPage = ({
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [langType, setLangType] = useState<HannomLangType>(0);
   const [workspaceVersion, setWorkspaceVersion] = useState(0);
-  /** Bật thì cột Hán-Nôm chuyển từ chỉ đọc (kết quả OCR) sang ô nhập tay —
-   * chỉ ảnh hưởng hiển thị cục bộ, hannomText không được gửi lên backend
-   * phân tích (handleAnalyzeFamilyTree chỉ dùng documentText). */
-  const [isHannomEditable, setIsHannomEditable] = useState(false);
+  /** Mặc định BẬT (luôn có thể gõ Hán-Nôm trực tiếp ngay từ đầu, không cần
+   * bật checkbox trước) — tắt thì cột Hán-Nôm chuyển về chỉ đọc (xem kết quả
+   * OCR mà không sửa). Chỉ ảnh hưởng hiển thị cục bộ, hannomText không được
+   * gửi lên backend phân tích (handleAnalyzeFamilyTree chỉ dùng documentText). */
+  const [isHannomEditable, setIsHannomEditable] = useState(true);
   const [hannomText, setHannomText] = useState("");
   const [hannomEdited, setHannomEdited] = useState(false);
   /** Hán-Nôm gốc của 1 scan ĐÃ tồn tại (vd import corpus, hoặc lần phân tích
@@ -398,6 +399,15 @@ const DocumentReaderPage = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
+  // Ô Hán-Nôm mặc định đã bật gõ tay — tự đồng bộ nội dung từ OCR/tài liệu
+  // đã có cho tới khi người dùng thật sự gõ (hannomEdited=true), để "thêm
+  // ảnh hay pdf thì lấy text bỏ vô [ô] thôi" thay vì hiện ô trống.
+  useEffect(() => {
+    if (!hannomEdited) {
+      setHannomText(analysisResult?.hannom_text ?? existingHannomText ?? "");
+    }
+  }, [analysisResult?.hannom_text, existingHannomText, hannomEdited]);
+
   const resetPreview = () => {
     if (imageUrl) {
       URL.revokeObjectURL(imageUrl);
@@ -540,7 +550,7 @@ const DocumentReaderPage = ({
     try {
       const text = await navigator.clipboard.readText();
       if (isHannomEditable) {
-        setHannomText((prev) => prev + text);
+        handleHannomTextChange((hannomEdited ? hannomText : displayedHannom) + text);
       } else {
         setDocumentText((prev) => prev + text);
         if (!previewType) setPreviewType("text");
@@ -551,11 +561,12 @@ const DocumentReaderPage = ({
   };
 
   const handleToggleHannomEditable = (nextValue: boolean) => {
-    if (nextValue && !hannomEdited) {
-      setHannomText(analysisResult?.hannom_text ?? existingHannomText ?? "");
-      setHannomEdited(true);
-    }
     setIsHannomEditable(nextValue);
+  };
+
+  const handleHannomTextChange = (text: string) => {
+    setHannomText(text);
+    setHannomEdited(true);
   };
 
   const handleSelectedFiles = async (files: FileList | File[]) => {
@@ -788,7 +799,7 @@ const DocumentReaderPage = ({
               vietnameseDisabled={awaitingOcr} busy={busy} imageUrl={imageUrl} filename={activeFile?.name}
               translationText={analysisResult?.translation_text || undefined}
               bbox={analysisResult?.bbox?.[0] || null}
-              onHannomChange={setHannomText} onVietnameseChange={changeVietnameseText}
+              onHannomChange={handleHannomTextChange} onVietnameseChange={changeVietnameseText}
               onToggleHannom={handleToggleHannomEditable} onPaste={handlePasteActiveColumn} onCopy={handleCopyQuocNgu}
             />
           </Spin>

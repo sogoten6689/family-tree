@@ -146,7 +146,7 @@
   },
   "docReader": {
     "workspaceLabel": "Đối chiếu tài liệu",
-    "hannomWorkspacePlaceholder": "Văn bản Hán-Nôm sau nhận diện sẽ xuất hiện tại đây. Bật “Gõ Hán-Nôm” để nhập hoặc chỉnh sửa.",
+    "hannomWorkspacePlaceholder": "Gõ hoặc dán văn bản Hán-Nôm vào đây, hoặc tải ảnh/PDF lên để tự nhận diện (OCR) điền vào.",
     "hannomLocalEditHint": "Chỉnh sửa Hán-Nôm hiện chỉ dùng để đối chiếu trong phiên này; chưa tự phiên âm lại.",
     "sourceImageTitle": "Ảnh gốc · Bấm để phóng to",
     "uploadDocument": "Tài liệu",
