@@ -6,6 +6,7 @@ from typing import Any, List, Optional
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.auth.models import User, UserRole
 from app.workspace.ma_dinh_danh import build_ma_dinh_danh
 from app.workspace.models import (
     GiaPhaPage,
@@ -46,6 +47,13 @@ class UserScanRepository:
         stmt = select(UserScan).where(UserScan.id == scan_id, UserScan.user_id == user_id)
         return self._db.scalar(stmt)
 
+    def get_accessible(self, user: User, scan_id: int) -> Optional[UserScan]:
+        """Bộ gia phả `user` được phép mở: Admin mở được mọi bản ghi (khớp
+        phạm vi `list_all()` mà `GET /api/gia-pha` trả cho Admin), User chỉ
+        mở bản ghi của chính mình."""
+        if user.role == UserRole.ADMIN:
+            return self.get(scan_id)
+        return self.get_for_user(user.id, scan_id)
 
     def create(
         self,

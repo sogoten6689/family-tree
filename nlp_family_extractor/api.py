@@ -1205,7 +1205,7 @@ async def analyze_family_image(
         try:
             with session_scope() as db:
                 scan_repo = UserScanRepository(db)
-                scan = scan_repo.get_for_user(current_user.id, scan_id)
+                scan = scan_repo.get_accessible(current_user, scan_id)
                 if scan is not None:
                     scan_repo.update(
                         scan,

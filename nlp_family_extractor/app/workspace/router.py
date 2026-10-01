@@ -368,7 +368,7 @@ def create_workspace_router(
         scans: UserScanRepository = Depends(scan_repo),
         versions: GiaPhaVersionRepository = Depends(version_repo),
     ) -> ItemVersion:
-        scan = scans.get_for_user(current_user.id, scan_id)
+        scan = scans.get_accessible(current_user, scan_id)
         if scan is None:
             raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
         source_version = versions.get(version_id)
@@ -435,7 +435,7 @@ def create_workspace_router(
         current_user: CurrentUser,
         scans: UserScanRepository = Depends(scan_repo),
     ) -> UserScanResponse:
-        scan = scans.get_for_user(current_user.id, scan_id)
+        scan = scans.get_accessible(current_user, scan_id)
         if scan is None:
             raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
         return UserScanResponse.model_validate(scan)
@@ -447,7 +447,7 @@ def create_workspace_router(
         current_user: CurrentUser,
         scans: UserScanRepository = Depends(scan_repo),
     ) -> UserScanResponse:
-        scan = scans.get_for_user(current_user.id, scan_id)
+        scan = scans.get_accessible(current_user, scan_id)
         if scan is None:
             raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
         updated = scans.update(
@@ -505,7 +505,7 @@ def create_workspace_router(
 
         source_title = None
         if payload.source_scan_id is not None:
-            scan = scans.get_for_user(current_user.id, payload.source_scan_id)
+            scan = scans.get_accessible(current_user, payload.source_scan_id)
             if scan is not None:
                 source_title = scan.title
                 scans.update(
