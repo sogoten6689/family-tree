@@ -35,7 +35,6 @@ import HannomConfigPage from "./pages/developer/HannomConfigPage";
 import SettingsPage from "./pages/developer/SettingsPage";
 import StoragePage from "./pages/developer/StoragePage";
 import LogsPage from "./pages/developer/LogsPage";
-import DocsPage from "./pages/developer/DocsPage";
 import { DeveloperRoute } from "@/components/DeveloperRoute";
 
 const queryClient = new QueryClient();
@@ -123,7 +122,6 @@ const AppContent = () => (
                 <Route path="settings" element={<SettingsPage />} />
                 <Route path="storage" element={<StoragePage />} />
                 <Route path="logs" element={<LogsPage />} />
-                <Route path="docs" element={<DocsPage />} />
               </Route>
             </Route>
 

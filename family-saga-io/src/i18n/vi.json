@@ -354,17 +354,14 @@
       "menuSettings": "Cấu hình",
       "menuStorage": "Lưu trữ",
       "menuLogs": "Nhật ký",
-      "menuDocs": "API Docs",
       "breadcrumbHannom": "Hán-Nôm",
       "breadcrumbSettings": "Cấu hình",
       "breadcrumbStorage": "Lưu trữ",
       "breadcrumbLogs": "Nhật ký",
-      "breadcrumbDocs": "API Docs",
       "descHannom": "Cấu hình API phiên âm Hán-Nôm.",
       "descSettings": "Config key-value hệ thống (API key, secret) lưu DB.",
       "descStorage": "Trạng thái lưu trữ và backend.",
-      "descLogs": "Nhật ký debug OCR.",
-      "descDocs": "CURL mẫu và schema API."
+      "descLogs": "Nhật ký debug OCR."
     }
   },
   "adminDashboard": {

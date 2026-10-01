@@ -108,15 +108,6 @@ export const APP_PAGES: AppPageMeta[] = [
     requiresAuth: true,
     requiresAdmin: true,
   },
-  {
-    id: "admin-dev-docs",
-    zone: "admin",
-    path: "/admin/developer/docs",
-    titleKey: "admin.developer.breadcrumbDocs",
-    descKey: "admin.developer.descDocs",
-    requiresAuth: true,
-    requiresAdmin: true,
-  },
 ];
 
 export const PUBLIC_PAGES = APP_PAGES.filter((page) => page.zone === "public");
@@ -129,9 +120,7 @@ export function getPageTitleKey(pathname: string): string {
   if (pathname.startsWith("/admin/users")) return "pages.adminUsers.title";
   if (pathname.startsWith("/admin/developer/hannom-config")) return "admin.developer.breadcrumbHannom";
   if (pathname.startsWith("/admin/developer/storage")) return "admin.developer.breadcrumbStorage";
-  if (pathname.startsWith("/admin/developer/vietnamgiapha-crawl")) return "admin.developer.breadcrumbCrawl";
   if (pathname.startsWith("/admin/developer/logs")) return "admin.developer.breadcrumbLogs";
-  if (pathname.startsWith("/admin/developer/docs")) return "admin.developer.breadcrumbDocs";
   if (pathname.match(/^\/admin\/gia-pha\/[^/]+$/)) return "pages.adminGiaPhaDetail.title";
   if (pathname.startsWith("/admin/gia-pha")) return "pages.adminGiaPha.title";
   if (pathname.startsWith("/user/documents/new")) return "userDocuments.uploadNew";

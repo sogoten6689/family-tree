@@ -5,7 +5,6 @@ export const DEVELOPER_ROUTES = {
   settings: `${DEVELOPER_BASE}/settings`,
   storage: `${DEVELOPER_BASE}/storage`,
   logs: `${DEVELOPER_BASE}/logs`,
-  docs: `${DEVELOPER_BASE}/docs`,
 } as const;
 
 export type DeveloperRouteKey = keyof typeof DEVELOPER_ROUTES;
@@ -51,14 +50,6 @@ export const DEVELOPER_NAV_ITEMS: DeveloperNavItem[] = [
     labelDefault: "Nhật ký",
     breadcrumbKey: "admin.developer.breadcrumbLogs",
     breadcrumbDefault: "Nhật ký",
-  },
-  {
-    key: "developer-docs",
-    path: DEVELOPER_ROUTES.docs,
-    labelKey: "admin.developer.menuDocs",
-    labelDefault: "API Docs",
-    breadcrumbKey: "admin.developer.breadcrumbDocs",
-    breadcrumbDefault: "API Docs",
   },
 ];
 

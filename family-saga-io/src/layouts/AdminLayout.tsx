@@ -3,7 +3,6 @@ import {
   CodeOutlined,
   DashboardOutlined,
   DatabaseOutlined,
-  FileTextOutlined,
   HomeOutlined,
   LogoutOutlined,
   SettingOutlined,
@@ -31,7 +30,6 @@ const DEVELOPER_ICON_MAP: Record<string, React.ReactNode> = {
   "developer-settings": <SettingOutlined />,
   "developer-storage": <DatabaseOutlined />,
   "developer-logs": <UnorderedListOutlined />,
-  "developer-docs": <FileTextOutlined />,
 };
 
 const AdminLayout = () => {

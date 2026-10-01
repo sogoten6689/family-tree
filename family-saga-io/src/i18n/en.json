@@ -354,17 +354,14 @@
       "menuSettings": "Settings",
       "menuStorage": "Storage",
       "menuLogs": "Logs",
-      "menuDocs": "API Docs",
       "breadcrumbHannom": "Hán-Nôm",
       "breadcrumbSettings": "Settings",
       "breadcrumbStorage": "Storage",
       "breadcrumbLogs": "Logs",
-      "breadcrumbDocs": "API Docs",
       "descHannom": "Hán-Nôm transliteration API config.",
       "descSettings": "System key-value config (API keys, secrets) stored in DB.",
       "descStorage": "Storage and backend health.",
-      "descLogs": "OCR debug logs.",
-      "descDocs": "Sample CURL and API schema."
+      "descLogs": "OCR debug logs."
     }
   },
   "adminDashboard": {
