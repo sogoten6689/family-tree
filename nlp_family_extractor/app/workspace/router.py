@@ -178,6 +178,11 @@ class GiaPhaPageView(BaseModel):
     translation_text: Optional[str] = None
 
 
+class GiaPhaPageDetail(GiaPhaPageView):
+    # OCR từng engine + vote của trang (đã gắn sẵn diff từng chữ để tô màu).
+    ocr_vote_meta: Optional[Dict[str, Any]] = None
+
+
 class MaDinhDanhAutoResult(BaseModel):
     ma_dinh_danh: Optional[str] = None
     ma_dinh_danh_nguon: Optional[str] = None
@@ -560,6 +565,55 @@ def create_workspace_router(
                 )
             )
         return result
+
+    @router.get("/api/user/documents/{scan_id}/pages/{page_number}", response_model=GiaPhaPageDetail)
+    def get_scan_page(
+        scan_id: int,
+        page_number: int,
+        current_user: CurrentUser,
+        version_id: Optional[int] = None,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageDetail:
+        """1 trang đầy đủ: ảnh + chữ + OCR từng engine + vote. Tải theo trang
+        (bộ lớn có tới 233 trang × 4 engine). Diff từng chữ tính lúc đọc
+        (annotate_vote_diffs trên bản sao), không ghi DB. Chủ bộ hoặc admin."""
+        import copy
+
+        from app.documents.storage import ObjectStorage
+        from app.hannom.vote_diff import annotate_vote_diffs
+        from app.workspace.page_images import is_storage_key
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        version = versions.get(version_id) if version_id is not None else versions.get_current(scan.id)
+        if version is None or version.user_scan_id != scan.id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        content = next((c for c in pages_repo.list_content_for_version(version.id) if c.page_id == page.id), None)
+        meta = copy.deepcopy(content.ocr_vote_meta) if content and isinstance(content.ocr_vote_meta, dict) else None
+        if meta:
+            annotate_vote_diffs(meta)
+        image_url = None
+        if is_storage_key(page.image_file_key):
+            storage = ObjectStorage.from_env()
+            if storage.config.enabled:
+                try:
+                    image_url = storage.get_presigned_url(page.image_file_key)
+                except Exception:  # noqa: BLE001 — MinIO lỗi thì vẫn trả chữ/vote
+                    image_url = None
+        return GiaPhaPageDetail(
+            page_number=page.page_number,
+            image_url=image_url,
+            hannom_text=content.hannom_text if content else None,
+            transliteration_text=content.transliteration_text if content else None,
+            translation_text=content.translation_text if content else None,
+            ocr_vote_meta=meta,
+        )
 
     @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)
     def auto_ma_dinh_danh(

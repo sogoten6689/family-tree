@@ -3,7 +3,8 @@ import { Alert, Card, Empty, Image, Pagination, Spin, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { listScanPages, type GiaPhaPageView } from "@/lib/userWorkspaceApi";
+import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
+import { getScanPage, listScanPages, type GiaPhaPageDetail, type GiaPhaPageView } from "@/lib/userWorkspaceApi";
 
 import "./ReaderWorkspace.css";
 
@@ -20,6 +21,23 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
+  // Chi tiết (OCR từng engine + vote) tải theo trang — bộ lớn có tới 233 trang.
+  const [detail, setDetail] = useState<GiaPhaPageDetail | null>(null);
+  const [detailError, setDetailError] = useState<string | null>(null);
+  const currentNumber = pages[index]?.page_number;
+
+  useEffect(() => {
+    if (currentNumber === undefined) return;
+    let cancelled = false;
+    setDetail(null);
+    setDetailError(null);
+    getScanPage(scanId, currentNumber)
+      .then((data) => !cancelled && setDetail(data))
+      .catch((err) => !cancelled && setDetailError(err instanceof Error ? err.message : "Không tải được OCR/vote"));
+    return () => {
+      cancelled = true;
+    };
+  }, [scanId, currentNumber]);
 
   useEffect(() => {
     let cancelled = false;
@@ -45,11 +63,8 @@ export function PageViewer({ scanId }: { scanId: number }) {
 
   const page = pages[index];
   const withImages = pages.filter((p) => p.image_url).length;
-  const texts: [string, string | null, string][] = [
-    [t("pageViewer.hannom", { defaultValue: "Chữ Hán Nôm" }), page.hannom_text, "page-viewer-han"],
-    [t("pageViewer.transliteration", { defaultValue: "Phiên âm" }), page.transliteration_text, ""],
-    [t("pageViewer.translation", { defaultValue: "Dịch nghĩa" }), page.translation_text, ""],
-  ];
+  const loadedDetail = detail?.page_number === page.page_number ? detail : null;
+  const voteMeta = loadedDetail?.ocr_vote_meta ? [loadedDetail.ocr_vote_meta as unknown as VoteMeta] : null;
 
   return (
     <div className="space-y-3">
@@ -80,18 +95,28 @@ export function PageViewer({ scanId }: { scanId: number }) {
             />
           )}
         </Card>
-        <Card size="small">
-          {texts.map(([label, value, className]) => (
-            <div key={label} className="mb-3">
-              <Text strong>{label}</Text>
-              {value ? (
-                <Paragraph className={`whitespace-pre-wrap ${className}`}>{value}</Paragraph>
-              ) : (
-                <Paragraph type="secondary">{t("pageViewer.none", { defaultValue: "Chưa có" })}</Paragraph>
-              )}
-            </div>
-          ))}
-        </Card>
+        <div className="space-y-3">
+          <Card size="small" title={t("pageViewer.hannom", { defaultValue: "Chữ Hán Nôm" })}>
+            {page.hannom_text ? (
+              <Paragraph className="whitespace-pre-wrap page-viewer-han !mb-0">{page.hannom_text}</Paragraph>
+            ) : (
+              <Paragraph type="secondary" className="!mb-0">
+                {t("pageViewer.none", { defaultValue: "Chưa có" })}
+              </Paragraph>
+            )}
+          </Card>
+          {detailError && <Alert type="warning" showIcon message={detailError} />}
+          {loadedDetail || detailError ? (
+            <PipelineStepsPanel
+              key={page.page_number}
+              transliterationText={page.transliteration_text}
+              translationText={page.translation_text}
+              voteMeta={voteMeta}
+            />
+          ) : (
+            <Spin className="flex justify-center py-6" />
+          )}
+        </div>
       </div>
     </div>
   );

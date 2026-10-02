@@ -165,3 +165,13 @@ export interface GiaPhaPageView {
 export async function listScanPages(scanId: number): Promise<GiaPhaPageView[]> {
   return apiRequest<GiaPhaPageView[]>(`/api/user/documents/${scanId}/pages`);
 }
+
+export interface GiaPhaPageDetail extends GiaPhaPageView {
+  /** OCR từng engine + vote (shape VoteMeta, đã kèm diff từng chữ). */
+  ocr_vote_meta: Record<string, unknown> | null;
+}
+
+/** 1 trang đầy đủ (ảnh + chữ + OCR/vote) — tải khi mở trang đó. */
+export async function getScanPage(scanId: number, pageNumber: number): Promise<GiaPhaPageDetail> {
+  return apiRequest<GiaPhaPageDetail>(`/api/user/documents/${scanId}/pages/${pageNumber}`);
+}

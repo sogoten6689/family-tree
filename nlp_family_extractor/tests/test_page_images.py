@@ -87,7 +87,7 @@ class UploadScriptTest(_Pages, unittest.TestCase):
         self.assertEqual((stats["already"], stats["uploaded"], uploaded), (2, 0, []))
 
 
-class PagesEndpointTest(_Pages, unittest.TestCase):
+class _PagesApi(_Pages):
     def setUp(self) -> None:
         super().setUp()
         self.db.add(User(email="o@x.l", full_name="O", password_hash="x", role=UserRole.USER))
@@ -108,6 +108,9 @@ class PagesEndpointTest(_Pages, unittest.TestCase):
         api.app.dependency_overrides.clear()
         super().tearDown()
 
+
+
+class PagesEndpointTest(_PagesApi, unittest.TestCase):
     def test_lists_pages_with_text_and_signed_url_only_for_uploaded_images(self) -> None:
         page = GiaPhaPageRepository(self.db).list_by_scan(self.scan.id)[0]
         page.image_file_key = f"gia-pha/{self.scan.id}/pages/001.jpg"
@@ -128,3 +131,47 @@ class PagesEndpointTest(_Pages, unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+META = {
+    "vote_method": "paddle_v6_backbone_line_vote_levenshtein_2_other",
+    "engines": {"paddle_v6": {"text": "乾坤天", "score": 0.9, "similarity_to_others": 0.8}},
+    "uncertain_rate": 0.5,
+    "uncertain_spans": [
+        {"line": 0, "voted_line": "乾坤天", "method": "line_no_majority", "n_agree": 1, "n_total": 3,
+         "disagreeing": [{"engine": "gemini", "text": "乾坤夫", "similarity": 0.66}]}
+    ],
+    "structural_diffs": [],
+}
+
+
+class PageDetailEndpointTest(_PagesApi, unittest.TestCase):
+    def setUp(self) -> None:
+        super().setUp()
+        page = GiaPhaPageRepository(self.db).list_by_scan(self.scan.id)[0]
+        GiaPhaPageRepository(self.db).upsert_content(version_id=self.version.id, page_id=page.id, ocr_vote_meta=META)
+
+    def test_page_detail_has_engines_and_annotated_vote(self) -> None:
+        body = self.client.get(f"/api/user/documents/{self.scan.id}/pages/1").json()
+        meta = body["ocr_vote_meta"]
+        self.assertEqual(body["hannom_text"], "漢1")
+        self.assertIn("paddle_v6", meta["engines"])
+        span = meta["uncertain_spans"][0]
+        self.assertEqual(span["voted_segments"][-1], {"text": "天", "contested": True})
+        self.assertEqual(span["disagreeing"][0]["diff"][-1], {"op": "replace", "text": "夫"})
+
+    def test_db_meta_is_not_mutated(self) -> None:
+        self.client.get(f"/api/user/documents/{self.scan.id}/pages/1")
+        self.db.expire_all()
+        page = GiaPhaPageRepository(self.db).list_by_scan(self.scan.id)[0]
+        stored = next(c for c in GiaPhaPageRepository(self.db).list_content_for_version(self.version.id) if c.page_id == page.id)
+        self.assertNotIn("voted_segments", stored.ocr_vote_meta["uncertain_spans"][0])
+
+    def test_page_without_vote_data(self) -> None:
+        body = self.client.get(f"/api/user/documents/{self.scan.id}/pages/2").json()
+        self.assertIsNone(body["ocr_vote_meta"])
+
+    def test_missing_page_and_other_user(self) -> None:
+        self.assertEqual(self.client.get(f"/api/user/documents/{self.scan.id}/pages/99").status_code, 404)
+        self.user = self.db.query(User).filter_by(email="o@x.l").one()
+        self.assertEqual(self.client.get(f"/api/user/documents/{self.scan.id}/pages/1").status_code, 404)
