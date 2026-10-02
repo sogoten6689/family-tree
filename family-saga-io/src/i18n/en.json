@@ -672,6 +672,17 @@
     "check": "Check & preview",
     "summary": "{{records}} sentences on {{pages}} pages, skipped {{skipped}} [Chú giải] sentences.",
     "errorsTitle": "Errors — cannot import yet",
-    "warningsTitle": "Warnings — import still allowed"
+    "warningsTitle": "Warnings — import still allowed",
+    "runQueued": "Queued {{engine}} — version v{{n}}",
+    "noEngine": "No engine",
+    "engine": "Transliteration/translation engine",
+    "runBtn": "Run engine",
+    "colRun": "Run",
+    "run": {
+      "pending": "Queued",
+      "running": "Running",
+      "done": "Done",
+      "error": "Error"
+    }
   }
 }

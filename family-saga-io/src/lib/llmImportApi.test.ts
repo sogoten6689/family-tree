@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { parseImportFile } from "./llmImportApi";
+import { engineRunStatus, parseImportFile, type ScanVersion } from "./llmImportApi";
 
 const r = { page: 1, cn: "乾坤", sv: "Càn khôn", vi: "Trời đất" };
 
@@ -31,5 +31,37 @@ describe("parseImportFile", () => {
 
   it("rejects empty files", () => {
     expect(() => parseImportFile("  \n")).toThrow("File rỗng");
+  });
+});
+
+const v = (source: string | null, statuses: string[]): ScanVersion => ({
+  version_id: 1,
+  version_number: 1,
+  is_current: false,
+  status: "draft",
+  parent_version_id: null,
+  source,
+  review_status: null,
+  note: null,
+  created_at: null,
+  steps: [
+    { step_type: "ocr", status: "done" },
+    { step_type: "transliteration", status: statuses[0] },
+    { step_type: "translation", status: statuses[1] },
+  ],
+});
+
+describe("engineRunStatus", () => {
+  it("is null for non-engine versions", () => {
+    expect(engineRunStatus(v(null, ["done", "done"]))).toBeNull();
+    expect(engineRunStatus(v("chatgpt-web", ["imported", "imported"]))).toBeNull();
+  });
+  it.each([
+    [["pending", "pending"], "pending"],
+    [["running", "running"], "running"],
+    [["done", "done"], "done"],
+    [["error", "error"], "error"],
+  ])("%j -> %s", (statuses, expected) => {
+    expect(engineRunStatus(v("engine-gemini-web", statuses as string[]))).toBe(expected);
   });
 });

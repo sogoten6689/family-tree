@@ -131,3 +131,10 @@ def bootstrap_workspace() -> None:
     if not database_enabled():
         return
     ensure_workspace_schema()
+    # Hàng đợi engine phiên âm/dịch nằm trong bộ nhớ → job dở dang lúc tắt
+    # server đã mất; đánh dấu lỗi để version không treo ở "running".
+    from app.database import session_scope
+    from app.hannom.text_engine_runner import fail_interrupted_runs
+
+    with session_scope() as db:
+        fail_interrupted_runs(db)

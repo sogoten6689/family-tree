@@ -27,3 +27,7 @@ class OcrEngineConfig(BaseModel):
 
 class OcrEngineUpdateRequest(BaseModel):
     enabled: list[str]
+
+
+class TextEngineConfig(OcrEngineConfig):
+    load_error: str | None = None

@@ -55,3 +55,18 @@ export function canDisable(config: OcrEngineConfig, name: string): boolean {
   const engine = config.engines.find((e) => e.name === name);
   return !engine?.enabled || enabledCount > config.min_enabled;
 }
+
+export interface TextEngineConfig extends OcrEngineConfig {
+  load_error: string | null;
+}
+
+export async function getTextEngines(): Promise<TextEngineConfig> {
+  return apiRequest<TextEngineConfig>("/api/admin/text-engines", { method: "GET" });
+}
+
+export async function updateTextEngines(enabled: string[]): Promise<TextEngineConfig> {
+  return apiRequest<TextEngineConfig>("/api/admin/text-engines", {
+    method: "PUT",
+    body: JSON.stringify({ enabled }),
+  });
+}

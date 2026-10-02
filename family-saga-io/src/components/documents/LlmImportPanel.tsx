@@ -1,14 +1,24 @@
-import { CheckOutlined, CloseOutlined, DownloadOutlined, ImportOutlined, ReloadOutlined } from "@ant-design/icons";
-import { Alert, AutoComplete, Button, Input, Modal, Space, Table, Tag, Typography, message } from "antd";
+import {
+  CheckOutlined,
+  CloseOutlined,
+  DownloadOutlined,
+  ImportOutlined,
+  PlayCircleOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
+import { Alert, AutoComplete, Button, Input, Modal, Select, Space, Table, Tag, Tooltip, Typography, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
+  engineRunStatus,
   fetchTrainingExport,
   importLlmResults,
+  listEnabledTextEngines,
   listScanVersions,
   parseImportFile,
   reviewVersion,
+  runTextEngine,
   type LlmImportPayload,
   type LlmImportResult,
   type ReviewStatus,
@@ -18,6 +28,9 @@ import {
 const SOURCE_OPTIONS = [{ value: "chatgpt-web" }, { value: "gemini-web" }];
 
 const REVIEW_COLOR: Record<ReviewStatus, string> = { pending: "gold", approved: "green", rejected: "red" };
+const RUN_COLOR = { pending: "default", running: "processing", done: "green", error: "red" } as const;
+/** Tự tải lại khi còn version engine đang chờ/chạy (engine chạy nền ở backend). */
+const RUN_POLL_MS = 5000;
 
 /**
  * Phiên bản của 1 bộ gia phả + nhập kết quả {cn, sv, vi} do tool LLM chạy
@@ -31,6 +44,9 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [busyVersion, setBusyVersion] = useState<number | null>(null);
+  const [engines, setEngines] = useState<string[]>([]);
+  const [engine, setEngine] = useState<string | undefined>();
+  const [starting, setStarting] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -46,6 +62,41 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
   useEffect(() => {
     void load();
   }, [load]);
+
+  useEffect(() => {
+    listEnabledTextEngines()
+      .then((names) => {
+        setEngines(names);
+        setEngine((current) => current ?? names[0]);
+      })
+      .catch(() => setEngines([]));
+  }, []);
+
+  const hasActiveRun = versions.some((v) => {
+    const status = engineRunStatus(v);
+    return status === "pending" || status === "running";
+  });
+  useEffect(() => {
+    if (!hasActiveRun) return;
+    const timer = window.setInterval(() => void load(), RUN_POLL_MS);
+    return () => window.clearInterval(timer);
+  }, [hasActiveRun, load]);
+
+  const startRun = async () => {
+    if (!engine) return;
+    setStarting(true);
+    try {
+      const version = await runTextEngine(scanId, engine);
+      message.success(
+        t("llmImport.runQueued", { defaultValue: "Đã xếp hàng chạy {{engine}} — phiên bản v{{n}}", engine, n: version.version_number }),
+      );
+      await load();
+    } catch (err) {
+      message.error(err instanceof Error ? err.message : "Không chạy được engine");
+    } finally {
+      setStarting(false);
+    }
+  };
 
   const review = async (versionId: number, status: ReviewStatus) => {
     setBusyVersion(versionId);
@@ -91,6 +142,23 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
         <Button icon={<ReloadOutlined />} onClick={() => void load()} loading={loading}>
           {t("familyTree.reload", { defaultValue: "Tải lại" })}
         </Button>
+        <Select
+          className="min-w-[180px]"
+          value={engine}
+          onChange={setEngine}
+          options={engines.map((name) => ({ value: name, label: name }))}
+          placeholder={t("llmImport.noEngine", { defaultValue: "Chưa có engine" })}
+          disabled={engines.length === 0}
+          aria-label={t("llmImport.engine", { defaultValue: "Engine phiên âm/dịch" })}
+        />
+        <Button
+          icon={<PlayCircleOutlined />}
+          disabled={!engine}
+          loading={starting}
+          onClick={() => void startRun()}
+        >
+          {t("llmImport.runBtn", { defaultValue: "Chạy engine" })}
+        </Button>
         {isAdmin && (
           <Button icon={<DownloadOutlined />} onClick={() => void exportTraining()}>
             {t("llmImport.exportBtn", { defaultValue: "Xuất dữ liệu train (JSONL)" })}
@@ -119,6 +187,16 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
             render: (_, v) => (v.source ? <Typography.Text code>{v.source}</Typography.Text> : "Pipeline"),
           },
           { title: t("llmImport.colNote", { defaultValue: "Ghi chú" }), dataIndex: "note", render: (n) => n || "—" },
+          {
+            title: t("llmImport.colRun", { defaultValue: "Chạy" }),
+            render: (_, v) => {
+              const status = engineRunStatus(v);
+              if (!status) return "—";
+              const tag = <Tag color={RUN_COLOR[status]}>{t(`llmImport.run.${status}`, { defaultValue: status })}</Tag>;
+              const errorMessage = v.steps?.find((s) => s.status === "error")?.error_message;
+              return errorMessage ? <Tooltip title={errorMessage}>{tag}</Tooltip> : tag;
+            },
+          },
           {
             title: t("llmImport.colReview", { defaultValue: "Duyệt" }),
             render: (_, v) =>

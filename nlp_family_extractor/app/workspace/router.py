@@ -125,6 +125,7 @@ class UserScanUpdateRequest(BaseModel):
 class ItemVersionStep(BaseModel):
     step_type: str
     status: str
+    error_message: Optional[str] = None
 
 
 class ItemVersion(BaseModel):
@@ -157,6 +158,11 @@ class LlmImportResult(BaseModel):
     errors: List[str] = Field(default_factory=list)
     warnings: List[str] = Field(default_factory=list)
     version: Optional[ItemVersion] = None
+
+
+class TextEngineRunRequest(BaseModel):
+    engine: str
+    pages: Optional[List[int]] = None  # None = mọi trang có văn bản Hán Nôm
 
 
 class VersionReviewRequest(BaseModel):
@@ -235,7 +241,9 @@ def _item_version_from(version: GiaPhaVersion, steps: List[GiaPhaVersionStep]) -
         is_current=version.is_current,
         ocr_engines=version.ocr_engines,
         status=version.status,
-        steps=[ItemVersionStep(step_type=s.step_type.value, status=s.status) for s in steps],
+        steps=[
+            ItemVersionStep(step_type=s.step_type.value, status=s.status, error_message=s.error_message) for s in steps
+        ],
         parent_version_id=version.parent_version_id,
         source=version.source,
         review_status=version.review_status,
@@ -458,6 +466,72 @@ def create_workspace_router(
         )
         result.version = _item_version_from(version, versions.steps_for(version.id))
         return result
+
+    @router.get("/api/user/text-engines", response_model=List[str])
+    def list_enabled_text_engines(_: CurrentUser) -> List[str]:
+        """Engine phiên âm/dịch đang bật — để người dùng chọn khi bấm Chạy."""
+        from app.config import _get_setting
+        from app.hannom import text_engines
+
+        return text_engines.enabled_engines(_get_setting(text_engines.SETTING_KEY))
+
+    @router.post("/api/user/documents/{scan_id}/text-engine-runs", response_model=ItemVersion)
+    def run_text_engine(
+        scan_id: int,
+        payload: TextEngineRunRequest,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> ItemVersion:
+        """Xếp hàng 1 lần chạy engine phiên âm/dịch cho bộ gia phả (chạy nền,
+        trả về ngay version mới với bước pending). Ai mở được bộ gia phả thì
+        chạy được (đã chốt). Kết quả không cần duyệt."""
+        from app.config import _get_setting
+        from app.hannom import text_engines
+        from app.hannom.text_engine_runner import (
+            ENGINE_RESULT_REVIEW_STATUS,
+            SOURCE_PREFIX,
+            EngineJob,
+            get_runner,
+        )
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        if payload.engine not in text_engines.enabled_engines(_get_setting(text_engines.SETTING_KEY)):
+            raise HTTPException(status_code=400, detail=f"Engine '{payload.engine}' chưa được đăng ký hoặc đang tắt.")
+        parent = versions.get_current(scan.id)
+        pages = pages_repo.list_by_scan(scan.id)
+        if parent is None or not pages:
+            raise HTTPException(status_code=400, detail="Bộ gia phả chưa có trang/version — cần OCR trước.")
+        contents = {c.page_id: c for c in pages_repo.list_content_for_version(parent.id)}
+        wanted = set(payload.pages) if payload.pages else None
+        job_pages = [
+            (p.page_number, contents[p.id].hannom_text)
+            for p in pages
+            if (wanted is None or p.page_number in wanted) and p.id in contents and contents[p.id].hannom_text
+        ]
+        if not job_pages:
+            raise HTTPException(status_code=400, detail="Không có trang nào có văn bản Hán Nôm để chạy.")
+        version = versions.create_derived_version(
+            user_scan_id=scan.id,
+            parent_version_id=parent.id,
+            source=SOURCE_PREFIX + payload.engine,
+            review_status=ENGINE_RESULT_REVIEW_STATUS,
+            note=f"{payload.engine}: đang chờ chạy {len(job_pages)} trang",
+            created_by=current_user.id,
+        )
+        get_runner().submit(
+            EngineJob(
+                scan_id=scan.id,
+                version_id=version.id,
+                engine=payload.engine,
+                pages=job_pages,
+                page_ids={p.page_number: p.id for p in pages},
+            )
+        )
+        return _item_version_from(version, versions.steps_for(version.id))
 
     @router.patch("/api/user/documents/{scan_id}/versions/{version_id}/review", response_model=ItemVersion)
     def review_imported_version(

@@ -9,6 +9,8 @@ const api = vi.hoisted(() => ({
   importLlmResults: vi.fn(),
   reviewVersion: vi.fn(),
   fetchTrainingExport: vi.fn(),
+  listEnabledTextEngines: vi.fn(),
+  runTextEngine: vi.fn(),
 }));
 vi.mock("@/lib/llmImportApi", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/llmImportApi")>()),
@@ -69,6 +71,7 @@ const okButton = () => screen.getByRole("button", { name: "Nhập" });
 describe("LlmImportPanel", { timeout: 15000 }, () => {
   beforeEach(() => {
     Object.values(api).forEach((fn) => fn.mockReset());
+    api.listEnabledTextEngines.mockResolvedValue(["gemini-web"]);
     api.listScanVersions.mockResolvedValue([
       version({}),
       version({ version_id: 2, version_number: 2, is_current: false, source: "chatgpt-web", review_status: "pending" }),
@@ -118,5 +121,54 @@ describe("LlmImportPanel", { timeout: 15000 }, () => {
     fireEvent.click(screen.getByRole("button", { name: /Kiểm tra/ }));
     await screen.findByText("records[0]: thiếu sv.");
     expect(okButton()).toBeDisabled();
+  });
+
+  it("runs the selected engine", async () => {
+    api.runTextEngine.mockResolvedValue(version({ version_id: 9, version_number: 3, source: "engine-gemini-web" }));
+    render(<LlmImportPanel scanId={7} isAdmin={false} />);
+    await screen.findByText("gemini-web");
+    fireEvent.click(screen.getByRole("button", { name: /Chạy engine/ }));
+    await waitFor(() => expect(api.runTextEngine).toHaveBeenCalledWith(7, "gemini-web"));
+  });
+
+  it("disables running when no engine is enabled", async () => {
+    api.listEnabledTextEngines.mockResolvedValue([]);
+    render(<LlmImportPanel scanId={7} isAdmin={false} />);
+    await screen.findByText("chatgpt-web");
+    expect(screen.getByRole("button", { name: /Chạy engine/ })).toBeDisabled();
+  });
+
+  it("shows run status and polls while an engine run is active", async () => {
+    const running = version({
+      version_id: 5,
+      version_number: 5,
+      is_current: false,
+      source: "engine-gemini-web",
+      review_status: "approved",
+      steps: [
+        { step_type: "transliteration", status: "running" },
+        { step_type: "translation", status: "running" },
+      ],
+    });
+    const done = {
+      ...running,
+      steps: [
+        { step_type: "transliteration" as const, status: "done" },
+        { step_type: "translation" as const, status: "done" },
+      ],
+    };
+    api.listScanVersions.mockResolvedValueOnce([running]).mockResolvedValue([done]);
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    try {
+      render(<LlmImportPanel scanId={7} isAdmin={false} />);
+      await screen.findByText("Đang chạy");
+      await vi.advanceTimersByTimeAsync(5000);
+      await screen.findByText("Xong");
+      const calls = api.listScanVersions.mock.calls.length;
+      await vi.advanceTimersByTimeAsync(10000);
+      expect(api.listScanVersions.mock.calls.length).toBe(calls); // hết job → ngừng poll
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

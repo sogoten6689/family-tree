@@ -672,6 +672,17 @@
     "check": "Kiểm tra & xem trước",
     "summary": "{{records}} câu trên {{pages}} trang, bỏ {{skipped}} câu [Chú giải].",
     "errorsTitle": "Lỗi — chưa nhập được",
-    "warningsTitle": "Cảnh báo — vẫn nhập được"
+    "warningsTitle": "Cảnh báo — vẫn nhập được",
+    "runQueued": "Đã xếp hàng chạy {{engine}} — phiên bản v{{n}}",
+    "noEngine": "Chưa có engine",
+    "engine": "Engine phiên âm/dịch",
+    "runBtn": "Chạy engine",
+    "colRun": "Chạy",
+    "run": {
+      "pending": "Đang chờ",
+      "running": "Đang chạy",
+      "done": "Xong",
+      "error": "Lỗi"
+    }
   }
 }

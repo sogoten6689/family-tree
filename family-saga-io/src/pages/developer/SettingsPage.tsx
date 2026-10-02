@@ -2,7 +2,7 @@ import { DeleteOutlined, KeyOutlined, PlusOutlined, SaveOutlined } from "@ant-de
 import { Alert, Button, Card, Empty, Form, Input, Popconfirm, Space, Table, Tag, Typography, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 
-import { OcrEnginesCard } from "@/components/settings/OcrEnginesCard";
+import { OcrEnginesCard, TextEnginesCard } from "@/components/settings/OcrEnginesCard";
 import { deleteSetting, listSettings, upsertSetting, type SettingItem } from "@/lib/settingsApi";
 
 const SettingsPage = () => {
@@ -151,6 +151,8 @@ const SettingsPage = () => {
       />
 
       <OcrEnginesCard onSaved={() => void refresh()} />
+
+      <TextEnginesCard onSaved={() => void refresh()} />
 
       <Card title="Danh sách config">
         <Table

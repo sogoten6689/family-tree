@@ -29,17 +29,24 @@ def known_engines() -> list[str]:
     return list(ENGINE_REGISTRY)
 
 
-def validate_enabled(names: list[str], current_order: list[str]) -> list[str]:
+def validate_enabled(
+    names: list[str],
+    current_order: list[str],
+    *,
+    registry: list[str] | None = None,
+    min_enabled: int = MIN_ENABLED_ENGINES,
+) -> list[str]:
     """Kiểm tra danh sách engine muốn bật, trả về chuỗi đã chuẩn hoá theo thứ
     tự ưu tiên: giữ thứ tự cấu hình hiện tại, engine mới bật xếp sau theo thứ
-    tự registry. Raise EngineConfigError nếu có tên lạ hoặc < tối thiểu."""
-    registry = known_engines()
+    tự registry. Raise EngineConfigError nếu có tên lạ hoặc < tối thiểu.
+    Mặc định là engine OCR; engine phiên âm/dịch truyền registry riêng."""
+    registry = known_engines() if registry is None else registry
     cleaned = list(dict.fromkeys(name.strip() for name in names if name.strip()))
     unknown = [name for name in cleaned if name not in registry]
     if unknown:
         raise EngineConfigError(f"Engine không tồn tại: {', '.join(unknown)}. Có sẵn: {', '.join(registry)}.")
-    if len(cleaned) < MIN_ENABLED_ENGINES:
-        raise EngineConfigError(f"Phải bật ít nhất {MIN_ENABLED_ENGINES} engine OCR.")
+    if len(cleaned) < min_enabled:
+        raise EngineConfigError(f"Phải bật ít nhất {min_enabled} engine.")
     wanted = set(cleaned)
     ordered = [name for name in current_order if name in wanted]
     ordered += [name for name in registry if name in wanted and name not in ordered]

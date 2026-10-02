@@ -2,6 +2,12 @@ import { ApiError, apiRequest, getBackendBaseUrl, getStoredAccessToken, parseApi
 
 export type ReviewStatus = "pending" | "approved" | "rejected";
 
+export interface VersionStep {
+  step_type: "ocr" | "vote" | "transliteration" | "translation";
+  status: string;
+  error_message?: string | null;
+}
+
 export interface ScanVersion {
   version_id: number;
   version_number: number;
@@ -12,6 +18,33 @@ export interface ScanVersion {
   review_status: ReviewStatus | null;
   note: string | null;
   created_at: string | null;
+  steps?: VersionStep[];
+}
+
+/** Version do engine phiên âm/dịch tạo (chạy nền ở backend). */
+export const ENGINE_SOURCE_PREFIX = "engine-";
+
+/** Trạng thái 2 bước phiên âm/dịch của 1 version engine; null nếu không phải. */
+export function engineRunStatus(version: ScanVersion): "pending" | "running" | "done" | "error" | null {
+  if (!version.source?.startsWith(ENGINE_SOURCE_PREFIX)) return null;
+  const statuses = (version.steps ?? [])
+    .filter((s) => s.step_type === "transliteration" || s.step_type === "translation")
+    .map((s) => s.status);
+  if (statuses.includes("error")) return "error";
+  if (statuses.includes("running")) return "running";
+  if (statuses.length > 0 && statuses.every((s) => s === "done")) return "done";
+  return "pending";
+}
+
+export function listEnabledTextEngines(): Promise<string[]> {
+  return apiRequest<string[]>("/api/user/text-engines");
+}
+
+export function runTextEngine(scanId: number, engine: string, pages?: number[]): Promise<ScanVersion> {
+  return apiRequest<ScanVersion>(`/api/user/documents/${scanId}/text-engine-runs`, {
+    method: "POST",
+    body: JSON.stringify({ engine, pages: pages && pages.length ? pages : null }),
+  });
 }
 
 export interface LlmImportRecord {

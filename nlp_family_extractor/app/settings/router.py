@@ -11,6 +11,7 @@ from app.settings.schemas import (
     OcrEngineItem,
     OcrEngineUpdateRequest,
     SettingItem,
+    TextEngineConfig,
     SettingUpsertRequest,
 )
 from app.settings.store import SettingsStore, SettingsStoreError
@@ -132,3 +133,56 @@ def update_ocr_engines(
     except SettingsStoreError as error:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(error)) from error
     return _engine_config_response(ordered)
+
+
+# ── Bật/tắt engine phiên âm/dịch nghĩa (app/hannom/text_engines.py) — engine
+# do người dùng tự đăng ký trong text_engines_local.py. Bắt buộc bật ≥1 khi
+# đã có engine đăng ký. ──
+text_engines_router = APIRouter(prefix="/api/admin/text-engines", tags=["Admin - Cấu hình"])
+
+
+def _text_engine_response(enabled: list[str]) -> TextEngineConfig:
+    from app.hannom import text_engines
+
+    return TextEngineConfig(
+        min_enabled=text_engines.MIN_ENABLED_TEXT_ENGINES,
+        load_error=text_engines.load_error(),
+        engines=[
+            OcrEngineItem(name=name, label=name, enabled=name in enabled, ready=True)
+            for name in text_engines.registered_engines()
+        ],
+    )
+
+
+@text_engines_router.get("", response_model=TextEngineConfig, summary="Engine phiên âm/dịch đã đăng ký + bật/tắt")
+def get_text_engines(_: AdminUser, db: Session = Depends(get_db)) -> TextEngineConfig:
+    from app.hannom import text_engines
+
+    _require_db()
+    return _text_engine_response(text_engines.enabled_engines(SettingsStore().get_value(db, text_engines.SETTING_KEY)))
+
+
+@text_engines_router.put("", response_model=TextEngineConfig, summary="Lưu engine phiên âm/dịch được bật")
+def update_text_engines(
+    payload: OcrEngineUpdateRequest,
+    _: AdminUser,
+    db: Session = Depends(get_db),
+) -> TextEngineConfig:
+    from app.hannom import text_engines
+
+    _require_db()
+    current = text_engines.enabled_engines(SettingsStore().get_value(db, text_engines.SETTING_KEY))
+    try:
+        ordered = engine_config.validate_enabled(
+            payload.enabled,
+            current,
+            registry=text_engines.registered_engines(),
+            min_enabled=text_engines.MIN_ENABLED_TEXT_ENGINES,
+        )
+    except engine_config.EngineConfigError as error:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(error)) from error
+    try:
+        SettingsStore().set_value(db, text_engines.SETTING_KEY, ",".join(ordered))
+    except SettingsStoreError as error:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(error)) from error
+    return _text_engine_response(ordered)
