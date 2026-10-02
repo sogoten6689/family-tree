@@ -62,15 +62,3 @@ export function getDeveloperNavItem(pathname: string): DeveloperNavItem | undefi
     (item) => pathname === item.path || pathname.startsWith(`${item.path}/`),
   );
 }
-
-export function getAdminMenuSelectedKey(pathname: string): string {
-  if (pathname.startsWith("/admin/dashboard")) return "dashboard";
-  if (pathname.startsWith("/admin/history")) return "history";
-  if (pathname.startsWith("/admin/users")) return "users";
-  const devItem = getDeveloperNavItem(pathname);
-  if (devItem) return devItem.key;
-  if (pathname.startsWith("/admin/gia-pha") || pathname.startsWith("/admin/documents")) {
-    return "gia-pha";
-  }
-  return "dashboard";
-}

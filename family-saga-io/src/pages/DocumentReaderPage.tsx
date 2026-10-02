@@ -183,7 +183,7 @@ const detectLanguage = (text: string, fileName: string): LanguageDetection => {
 };
 
 type DocumentReaderPageProps = {
-  /** Nằm trong UserLayout — không render header/banner riêng */
+  /** Nằm trong RoleLayout — không render header/banner riêng */
   embedded?: boolean;
   initialScanId?: number | null;
   onScanRegistered?: (scanId: number) => void;

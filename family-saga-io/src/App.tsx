@@ -8,9 +8,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AdminRoute } from "@/components/AdminRoute";
-import GuestLayout from "@/layouts/GuestLayout";
-import UserLayout from "@/layouts/UserLayout";
-import AdminLayout from "@/layouts/AdminLayout";
+import RoleLayout from "@/layouts/RoleLayout";
+import { roleHomePath } from "@/config/coreNav";
 import DocumentReaderPage from "./pages/DocumentReaderPage";
 import GuidePage from "./pages/GuidePage";
 import LoginPage from "./pages/LoginPage";
@@ -54,9 +53,9 @@ const UserGiaPhaRedirect = () => {
  * trang giới thiệu); người đã đăng nhập tự chuyển sang trang tổng quan của
  * họ, tránh User/Admin lạc vào giao diện Guest. */
 const GuestHomeRoute = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isAdmin } = useAuth();
   if (isAuthenticated) {
-    return <Navigate to="/user/dashboard" replace />;
+    return <Navigate to={roleHomePath(isAdmin ? "admin" : "user")} replace />;
   }
   return <DocumentReaderPage embedded />;
 };
@@ -67,73 +66,75 @@ const AppContent = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* ── Guest (không cần đăng nhập) — sidebar giống Admin/User, vào thẳng
-                màn hình tải lên/phân tích, không qua trang giới thiệu ── */}
-            <Route element={<GuestLayout />}>
+            {/* Mọi trang dùng chung 1 RoleLayout — menu theo vai trò người đang
+                đăng nhập, không theo tiền tố URL. Quyền truy cập kiểm tra theo
+                từng nhóm route bên dưới. */}
+            <Route element={<RoleLayout />}>
+              {/* ── Công khai ── */}
               <Route path="/" element={<GuestHomeRoute />} />
               <Route path="/huong-dan" element={<GuidePage />} />
               <Route path="/gia-pha" element={<GiaPhaListPage scope="public" />} />
               <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />
+
+              {/* ── User (đã đăng nhập) ── */}
+              <Route
+                path="/user"
+                element={
+                  <ProtectedRoute>
+                    <Outlet />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Navigate to="/user/dashboard" replace />} />
+                <Route path="dashboard" element={<DashboardPage />} />
+                <Route path="document-reader" element={<Navigate to="/user/documents/new" replace />} />
+                <Route path="gia-pha" element={<GiaPhaListPage scope="user" />} />
+                <Route path="gia-pha/:treeId" element={<UserFamilyTreeDetailPage />} />
+                {/* Chi tiết bộ gia phả chưa dựng cây (+ "/new" = màn hình tải lên) */}
+                <Route path="documents/:scanId" element={<UserDocumentDetailPage />} />
+                <Route path="documents" element={<UserGiaPhaRedirect />} />
+                <Route path="family-trees" element={<UserGiaPhaRedirect />} />
+                <Route path="family-trees/:treeId" element={<UserGiaPhaRedirect />} />
+                <Route path="family-tree" element={<Navigate to="/user/gia-pha" replace />} />
+                <Route path="huong-dan" element={<Navigate to="/huong-dan" replace />} />
+                <Route path="profile" element={<UserProfilePage />} />
+              </Route>
+
+              {/* ── Admin ── */}
+              <Route
+                path="/admin"
+                element={
+                  <AdminRoute>
+                    <Outlet />
+                  </AdminRoute>
+                }
+              >
+                <Route index element={<Navigate to="/admin/dashboard" replace />} />
+                <Route path="dashboard" element={<AdminDashboardPage />} />
+                <Route path="gia-pha" element={<GiaPhaListPage scope="admin" />} />
+                <Route path="gia-pha/:treeId" element={<FamilyTreeDetailPage />} />
+                <Route path="history" element={<AdminHistoryPage />} />
+                <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
+                <Route path="users" element={<AdminUsersPage />} />
+                <Route
+                  path="developer"
+                  element={
+                    <DeveloperRoute>
+                      <Outlet />
+                    </DeveloperRoute>
+                  }
+                >
+                  <Route index element={<Navigate to="/admin/developer/hannom-config" replace />} />
+                  <Route path="hannom-config" element={<HannomConfigPage />} />
+                  <Route path="settings" element={<SettingsPage />} />
+                  <Route path="storage" element={<StoragePage />} />
+                  <Route path="logs" element={<LogsPage />} />
+                </Route>
+              </Route>
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/403" element={<ForbiddenPage />} />
-
-            {/* ── User (đã đăng nhập) ── */}
-            <Route
-              path="/user"
-              element={
-                <ProtectedRoute>
-                  <UserLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate to="/user/dashboard" replace />} />
-              <Route path="dashboard" element={<DashboardPage />} />
-              <Route path="document-reader" element={<Navigate to="/user/documents/new" replace />} />
-              <Route path="gia-pha" element={<GiaPhaListPage scope="user" />} />
-              <Route path="gia-pha/:treeId" element={<UserFamilyTreeDetailPage />} />
-              {/* Chi tiết bộ gia phả chưa dựng cây (+ "/new" = màn hình tải lên) */}
-              <Route path="documents/:scanId" element={<UserDocumentDetailPage />} />
-              <Route path="documents" element={<UserGiaPhaRedirect />} />
-              <Route path="family-trees" element={<UserGiaPhaRedirect />} />
-              <Route path="family-trees/:treeId" element={<UserGiaPhaRedirect />} />
-              <Route path="family-tree" element={<Navigate to="/user/gia-pha" replace />} />
-              <Route path="huong-dan" element={<GuidePage />} />
-              <Route path="profile" element={<UserProfilePage />} />
-            </Route>
-
-            {/* ── Admin ── */}
-            <Route
-              path="/admin"
-              element={
-                <AdminRoute>
-                  <AdminLayout />
-                </AdminRoute>
-              }
-            >
-              <Route index element={<Navigate to="/admin/dashboard" replace />} />
-              <Route path="dashboard" element={<AdminDashboardPage />} />
-              <Route path="gia-pha" element={<GiaPhaListPage scope="admin" />} />
-              <Route path="gia-pha/:treeId" element={<FamilyTreeDetailPage />} />
-              <Route path="history" element={<AdminHistoryPage />} />
-              <Route path="documents/:documentId/edit" element={<EditDocumentPage />} />
-              <Route path="users" element={<AdminUsersPage />} />
-              <Route
-                path="developer"
-                element={
-                  <DeveloperRoute>
-                    <Outlet />
-                  </DeveloperRoute>
-                }
-              >
-                <Route index element={<Navigate to="/admin/developer/hannom-config" replace />} />
-                <Route path="hannom-config" element={<HannomConfigPage />} />
-                <Route path="settings" element={<SettingsPage />} />
-                <Route path="storage" element={<StoragePage />} />
-                <Route path="logs" element={<LogsPage />} />
-              </Route>
-            </Route>
 
             {/* Redirects cũ */}
             <Route path="/dashboard" element={<Navigate to="/user/dashboard" replace />} />
