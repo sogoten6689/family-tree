@@ -10,3 +10,20 @@ class SettingItem(BaseModel):
 
 class SettingUpsertRequest(BaseModel):
     value: str = Field(min_length=1)
+
+
+class OcrEngineItem(BaseModel):
+    name: str
+    label: str
+    enabled: bool
+    ready: bool
+    ready_reason: str | None = None
+
+
+class OcrEngineConfig(BaseModel):
+    min_enabled: int
+    engines: list[OcrEngineItem]
+
+
+class OcrEngineUpdateRequest(BaseModel):
+    enabled: list[str]

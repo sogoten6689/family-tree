@@ -5,7 +5,14 @@ from sqlalchemy.orm import Session
 
 from app.auth.dependencies import AdminUser
 from app.database import database_enabled, get_db
-from app.settings.schemas import SettingItem, SettingUpsertRequest
+from app.hannom import engine_config
+from app.settings.schemas import (
+    OcrEngineConfig,
+    OcrEngineItem,
+    OcrEngineUpdateRequest,
+    SettingItem,
+    SettingUpsertRequest,
+)
 from app.settings.store import SettingsStore, SettingsStoreError
 
 router = APIRouter(prefix="/api/admin/settings", tags=["Admin - Cấu hình"])
@@ -80,3 +87,48 @@ def delete_setting(key: str, _: AdminUser, db: Session = Depends(get_db)) -> dic
     if not deleted:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Không tìm thấy key")
     return {"deleted": key}
+
+
+# ── Bật/tắt engine OCR (pipeline v2) — giao diện có cấu trúc thay cho việc gõ
+# tay chuỗi HANNOM_VOTE_ENGINES; vẫn lưu đúng key đó (tương thích ngược). ──
+ocr_engines_router = APIRouter(prefix="/api/admin/ocr-engines", tags=["Admin - Cấu hình"])
+
+
+def _current_engine_order(db: Session) -> list[str]:
+    from app.config import get_hannom_vote_engines
+
+    stored = SettingsStore().get_value(db, engine_config.SETTING_KEY)
+    if stored:
+        return [item.strip() for item in stored.split(",") if item.strip()]
+    return get_hannom_vote_engines()  # mặc định khi chưa lưu
+
+
+def _engine_config_response(enabled: list[str]) -> OcrEngineConfig:
+    return OcrEngineConfig(
+        min_enabled=engine_config.MIN_ENABLED_ENGINES,
+        engines=[OcrEngineItem(**item) for item in engine_config.describe_engines(enabled)],
+    )
+
+
+@ocr_engines_router.get("", response_model=OcrEngineConfig, summary="Danh sách engine OCR + trạng thái bật/tắt")
+def get_ocr_engines(_: AdminUser, db: Session = Depends(get_db)) -> OcrEngineConfig:
+    _require_db()
+    return _engine_config_response(_current_engine_order(db))
+
+
+@ocr_engines_router.put("", response_model=OcrEngineConfig, summary="Lưu danh sách engine OCR được bật")
+def update_ocr_engines(
+    payload: OcrEngineUpdateRequest,
+    _: AdminUser,
+    db: Session = Depends(get_db),
+) -> OcrEngineConfig:
+    _require_db()
+    try:
+        ordered = engine_config.validate_enabled(payload.enabled, _current_engine_order(db))
+    except engine_config.EngineConfigError as error:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(error)) from error
+    try:
+        SettingsStore().set_value(db, engine_config.SETTING_KEY, ",".join(ordered))
+    except SettingsStoreError as error:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(error)) from error
+    return _engine_config_response(ordered)

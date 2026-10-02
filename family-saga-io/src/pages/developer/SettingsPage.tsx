@@ -2,6 +2,7 @@ import { DeleteOutlined, KeyOutlined, PlusOutlined, SaveOutlined } from "@ant-de
 import { Alert, Button, Card, Empty, Form, Input, Popconfirm, Space, Table, Tag, Typography, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 
+import { OcrEnginesCard } from "@/components/settings/OcrEnginesCard";
 import { deleteSetting, listSettings, upsertSetting, type SettingItem } from "@/lib/settingsApi";
 
 const SettingsPage = () => {
@@ -148,6 +149,8 @@ const SettingsPage = () => {
         message="Cấu hình key-value hệ thống"
         description="Lưu API key/secret vào MySQL (mã hoá), dùng lấy ra ngay khi backend cần — không phải sửa .env + restart server. Ví dụ: GOOGLE_API_KEY cho Gemini (trích xuất quan hệ nhân vật → cây gia phả)."
       />
+
+      <OcrEnginesCard onSaved={() => void refresh()} />
 
       <Card title="Danh sách config">
         <Table

@@ -88,12 +88,17 @@ def process_hannom_image_v2(
     from app.hannom.translate import translate_to_modern_vietnamese
     from app.hannom.vote import vote_from_results
 
-    names = engine_names or get_hannom_vote_engines()
+    configured = engine_names or get_hannom_vote_engines()
+    names = [name for name in configured if name in ENGINE_REGISTRY]
+    if not names:
+        # Trước đây tên lạ bị bỏ qua im lặng rồi mới lỗi chung chung ở dưới.
+        raise HannomApiError(
+            f"Không có engine OCR hợp lệ nào được bật (đang cấu hình: {', '.join(configured) or 'trống'}). "
+            "Bật ít nhất 1 engine trong Admin › Cấu hình › Engine OCR."
+        )
     results: dict[str, EngineResult] = {}
     for name in names:
-        adapter = ENGINE_REGISTRY.get(name)
-        if adapter is None:
-            continue
+        adapter = ENGINE_REGISTRY[name]
         if name == "kimhannom":
             result = adapter(file_bytes, filename, ocr_id=ocr_id, lang_type=lang_type)
         else:
