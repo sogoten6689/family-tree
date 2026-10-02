@@ -709,5 +709,16 @@
     "autoHint": "Gọi Gemini 1 lần (tốn phí) để trích thông tin và tạo mã.",
     "needText": "Cần có bản dịch/phiên âm trước.",
     "failed": "Chưa tạo được mã"
+  },
+  "pageViewer": {
+    "tab": "Trang",
+    "noPages": "Bộ này chưa có trang.",
+    "hannom": "Chữ Hán Nôm",
+    "transliteration": "Phiên âm",
+    "translation": "Dịch nghĩa",
+    "imageCount": "{{n}}/{{total}} trang có ảnh",
+    "page": "Trang {{n}}",
+    "noImage": "Chưa có ảnh cho trang này",
+    "none": "Chưa có"
   }
 }

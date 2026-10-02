@@ -170,6 +170,14 @@ class TextEngineRunRequest(BaseModel):
     pages: Optional[List[int]] = None  # None = mọi trang có văn bản Hán Nôm
 
 
+class GiaPhaPageView(BaseModel):
+    page_number: int
+    image_url: Optional[str] = None  # link tạm (presigned) nếu ảnh đã lên MinIO
+    hannom_text: Optional[str] = None
+    transliteration_text: Optional[str] = None
+    translation_text: Optional[str] = None
+
+
 class MaDinhDanhAutoResult(BaseModel):
     ma_dinh_danh: Optional[str] = None
     ma_dinh_danh_nguon: Optional[str] = None
@@ -392,7 +400,7 @@ def create_workspace_router(
             response = DocumentResponse.model_validate(document)
             for file_item in response.files:
                 if storage.config.enabled:
-                    file_item.download_url = storage.presigned_get_url(file_item.file_key)
+                    file_item.download_url = storage.get_presigned_url(file_item.file_key)
             items.append(response)
         return DocumentListResponse(total=len(items), items=items)
 
@@ -505,6 +513,52 @@ def create_workspace_router(
             created_by=current_user.id,
         )
         result.version = _item_version_from(version, versions.steps_for(version.id))
+        return result
+
+    @router.get("/api/user/documents/{scan_id}/pages", response_model=List[GiaPhaPageView])
+    def list_scan_pages(
+        scan_id: int,
+        current_user: CurrentUser,
+        version_id: Optional[int] = None,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> List[GiaPhaPageView]:
+        """Từng trang của bộ gia phả: link ảnh tạm (chỉ khi ảnh đã lên MinIO) +
+        chữ Hán / phiên âm / dịch nghĩa của version hiện tại (hoặc version_id).
+        Chỉ chủ bộ hoặc admin — gia phả có thông tin nhạy cảm."""
+        from app.documents.storage import ObjectStorage
+        from app.workspace.page_images import is_storage_key
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        version = versions.get(version_id) if version_id is not None else versions.get_current(scan.id)
+        if version_id is not None and (version is None or version.user_scan_id != scan.id):
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        contents = {c.page_id: c for c in pages_repo.list_content_for_version(version.id)} if version else {}
+        storage = ObjectStorage.from_env()
+
+        def image_url(key: Optional[str]) -> Optional[str]:
+            if not is_storage_key(key) or not storage.config.enabled:
+                return None
+            try:
+                return storage.get_presigned_url(key)
+            except Exception:  # noqa: BLE001 — MinIO lỗi thì vẫn trả chữ
+                return None
+
+        result: List[GiaPhaPageView] = []
+        for page in pages_repo.list_by_scan(scan.id):
+            content = contents.get(page.id)
+            result.append(
+                GiaPhaPageView(
+                    page_number=page.page_number,
+                    image_url=image_url(page.image_file_key),
+                    hannom_text=content.hannom_text if content else None,
+                    transliteration_text=content.transliteration_text if content else None,
+                    translation_text=content.translation_text if content else None,
+                )
+            )
         return result
 
     @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)

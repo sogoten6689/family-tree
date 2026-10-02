@@ -709,5 +709,16 @@
     "autoHint": "Calls Gemini once (paid) to extract details and build the identifier.",
     "needText": "Needs a translation/transliteration first.",
     "failed": "Could not generate the identifier"
+  },
+  "pageViewer": {
+    "tab": "Pages",
+    "noPages": "This item has no pages yet.",
+    "hannom": "Hán Nôm text",
+    "transliteration": "Transliteration",
+    "translation": "Translation",
+    "imageCount": "{{n}}/{{total}} pages have images",
+    "page": "Page {{n}}",
+    "noImage": "No image for this page yet",
+    "none": "None"
   }
 }

@@ -152,3 +152,16 @@ export async function getAdminStats(): Promise<AdminStats> {
 export async function listAdminHistory(limit = 50): Promise<AdminHistoryResponse> {
   return apiRequest<AdminHistoryResponse>(`/api/admin/history?limit=${limit}`);
 }
+
+export interface GiaPhaPageView {
+  page_number: number;
+  image_url: string | null;
+  hannom_text: string | null;
+  transliteration_text: string | null;
+  translation_text: string | null;
+}
+
+/** Từng trang (ảnh + chữ Hán/phiên âm/dịch nghĩa) của version hiện tại. */
+export async function listScanPages(scanId: number): Promise<GiaPhaPageView[]> {
+  return apiRequest<GiaPhaPageView[]>(`/api/user/documents/${scanId}/pages`);
+}

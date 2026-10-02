@@ -77,3 +77,6 @@
 .vote-pos-fixed { border-left-color: var(--ant-color-success); }
 .vote-pos-open { border-left-color: var(--ant-color-warning); }
 .vote-pos-votes { color: var(--ant-color-text-secondary); margin-top: 2px; }
+
+/* PageViewer — chữ Hán to hơn để đối chiếu với ảnh */
+.page-viewer-han { font-size: 18px; line-height: 1.8; letter-spacing: 1px; }

@@ -10,6 +10,7 @@ import { OcrStatusTag, TreeStatusTag } from "@/components/flow/StatusTags";
 import DocumentReaderPage from "@/pages/DocumentReaderPage";
 import { LlmImportPanel } from "@/components/documents/LlmImportPanel";
 import { MaDinhDanhField } from "@/components/documents/MaDinhDanhField";
+import { PageViewer } from "@/components/documents/PageViewer";
 import { useAuth } from "@/contexts/AuthContext";
 import { computeFlowProgressForScan } from "@/lib/flowProgress";
 import { flowRouteForStep } from "@/lib/genealogyFlow";
@@ -197,6 +198,11 @@ const UserDocumentDetailPage = () => {
                   }}
                 />
               ),
+            },
+            {
+              key: "pages",
+              label: t("pageViewer.tab", { defaultValue: "Trang" }),
+              children: <PageViewer scanId={scan.id} />,
             },
             {
               key: "versions",
