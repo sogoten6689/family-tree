@@ -644,5 +644,34 @@
     "pendingCode": "No official code yet",
     "empty": "No genealogy records yet",
     "uploadNew": "Upload new"
+  },
+  "llmImport": {
+    "tab": "Versions & LLM import",
+    "introTitle": "Import transliteration/translation from an LLM tool",
+    "introDesc": "Run the tool on your machine, then upload a JSON/JSONL file of {page, cn, sv, vi}. Each import creates a new version without overwriting the current one. An admin reviews it before it enters the training data.",
+    "importBtn": "Import LLM results",
+    "exportBtn": "Export training data (JSONL)",
+    "colVersion": "Version",
+    "current": "Current",
+    "colSource": "Source",
+    "colNote": "Note",
+    "colReview": "Review",
+    "colCreated": "Created",
+    "review": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "approve": "Approve",
+    "reject": "Reject",
+    "imported": "Created version v{{n}} (pending review)",
+    "confirm": "Import",
+    "file": "Result file",
+    "source": "Source",
+    "notePlaceholder": "Note: model, prompt version…",
+    "check": "Check & preview",
+    "summary": "{{records}} sentences on {{pages}} pages, skipped {{skipped}} [Chú giải] sentences.",
+    "errorsTitle": "Errors — cannot import yet",
+    "warningsTitle": "Warnings — import still allowed"
   }
 }

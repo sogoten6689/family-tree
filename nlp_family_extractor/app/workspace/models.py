@@ -128,6 +128,12 @@ class GiaPhaVersion(Base):
     )
     created_by: Mapped[int | None] = mapped_column(Integer, ForeignKey("users.id"), nullable=True)
     note: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    # Version nhập từ kết quả LLM bên ngoài (app/workspace/llm_import.py):
+    # source = "chatgpt-web"/"gemini-web"…, review_status = pending|approved|
+    # rejected. Cả 2 NULL với version do pipeline nội bộ tạo ra. Duyệt KHÔNG
+    # tự đặt làm version hiện tại — chỉ quyết định có vào dữ liệu train không.
+    source: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    review_status: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
 
 
 class GiaPhaVersionStep(Base):
@@ -160,6 +166,8 @@ class GiaPhaPageContent(Base):
     translation_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
     ocr_bbox: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)
     ocr_vote_meta: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    # Cặp câu [{cn, sv, vi}] của version nhập từ LLM — nguồn dữ liệu train.
+    pairs: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

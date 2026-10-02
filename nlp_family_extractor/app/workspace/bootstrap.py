@@ -43,6 +43,7 @@ def ensure_workspace_schema() -> None:
         ],
     )
     _migrate_gia_pha_columns(engine)
+    _migrate_llm_import_columns(engine)
 
 
 def _migrate_gia_pha_columns(engine) -> None:
@@ -73,6 +74,34 @@ def _migrate_gia_pha_columns(engine) -> None:
         if "ma_dinh_danh" not in existing:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN ma_dinh_danh VARCHAR(64) NULL"))
             conn.execute(text("CREATE INDEX ix_user_scans_ma_dinh_danh ON user_scans (ma_dinh_danh)"))
+
+
+def _existing_columns(conn, table: str) -> set[str]:
+    return {
+        row[0]
+        for row in conn.execute(
+            text(
+                "SELECT COLUMN_NAME FROM information_schema.COLUMNS "
+                "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = :table"
+            ),
+            {"table": table},
+        ).fetchall()
+    }
+
+
+def _migrate_llm_import_columns(engine) -> None:
+    """Cột cho version nhập từ LLM (app/workspace/llm_import.py). Idempotent."""
+    with engine.begin() as conn:
+        version_cols = _existing_columns(conn, "gia_pha_version")
+        if "source" not in version_cols:
+            conn.execute(text("ALTER TABLE gia_pha_version ADD COLUMN source VARCHAR(64) NULL"))
+        if "review_status" not in version_cols:
+            conn.execute(text("ALTER TABLE gia_pha_version ADD COLUMN review_status VARCHAR(16) NULL"))
+            conn.execute(
+                text("CREATE INDEX ix_gia_pha_version_review_status ON gia_pha_version (review_status)")
+            )
+        if "pairs" not in _existing_columns(conn, "gia_pha_page_content"):
+            conn.execute(text("ALTER TABLE gia_pha_page_content ADD COLUMN pairs JSON NULL"))
 
 
 def _migrate_user_scans_columns(engine) -> None:

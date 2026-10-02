@@ -8,6 +8,8 @@ import { GenealogyFlowStepper } from "@/components/flow/GenealogyFlowStepper";
 import { ServerSavedAlert } from "@/components/flow/ServerSavedAlert";
 import { OcrStatusTag, TreeStatusTag } from "@/components/flow/StatusTags";
 import DocumentReaderPage from "@/pages/DocumentReaderPage";
+import { LlmImportPanel } from "@/components/documents/LlmImportPanel";
+import { useAuth } from "@/contexts/AuthContext";
 import { computeFlowProgressForScan } from "@/lib/flowProgress";
 import { flowRouteForStep } from "@/lib/genealogyFlow";
 import { getUserDocument, type UserScan } from "@/lib/userWorkspaceApi";
@@ -16,6 +18,7 @@ const UserDocumentDetailPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { scanId } = useParams<{ scanId: string }>();
+  const { isAdmin } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const [scan, setScan] = useState<UserScan | null>(null);
   const [loading, setLoading] = useState(true);
@@ -190,6 +193,11 @@ const UserDocumentDetailPage = () => {
                   }}
                 />
               ),
+            },
+            {
+              key: "versions",
+              label: t("llmImport.tab", { defaultValue: "Phiên bản & nhập LLM" }),
+              children: <LlmImportPanel scanId={scan.id} isAdmin={isAdmin} />,
             },
           ]}
         />

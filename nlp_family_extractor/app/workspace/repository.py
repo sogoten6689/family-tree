@@ -261,6 +261,7 @@ class GiaPhaVersionRepository:
                     translation_text=content.translation_text,
                     ocr_bbox=content.ocr_bbox,
                     ocr_vote_meta=content.ocr_vote_meta,
+                    pairs=content.pairs,
                 )
             )
         for source_step in self._db.scalars(
@@ -280,6 +281,103 @@ class GiaPhaVersionRepository:
         self._db.commit()
         self._db.refresh(new_version)
         return new_version
+
+
+    def create_import_version(
+        self,
+        *,
+        user_scan_id: int,
+        parent_version_id: int,
+        source: str,
+        model_note: Optional[str],
+        pages: dict[int, list[dict[str, str]]],
+        page_ids: dict[int, int],
+        created_by: Optional[int] = None,
+    ) -> GiaPhaVersion:
+        """Version mới từ kết quả LLM: copy nội dung version cha (giữ OCR),
+        thay phiên âm/dịch nghĩa + lưu pairs ở các trang được nhập. Không đặt
+        làm version hiện tại; version cha giữ nguyên."""
+        parent = self._db.get(GiaPhaVersion, parent_version_id)
+        if parent is None or parent.user_scan_id != user_scan_id:
+            raise ValueError(f"Version cha {parent_version_id} không thuộc bộ gia phả {user_scan_id}")
+        version = self.create_version(
+            user_scan_id=user_scan_id,
+            ocr_engines=parent.ocr_engines,
+            parent_version_id=parent.id,
+            created_by=created_by,
+            note=model_note,
+            make_current=False,
+        )
+        version.source = source
+        version.review_status = "pending"
+        parent_contents = {
+            c.page_id: c
+            for c in self._db.scalars(
+                select(GiaPhaPageContent).where(GiaPhaPageContent.version_id == parent.id)
+            ).all()
+        }
+        imported_page_ids = {page_ids[number]: records for number, records in pages.items()}
+        for page_id in set(parent_contents) | set(imported_page_ids):
+            base = parent_contents.get(page_id)
+            records = imported_page_ids.get(page_id)
+            self._db.add(
+                GiaPhaPageContent(
+                    version_id=version.id,
+                    page_id=page_id,
+                    hannom_text=base.hannom_text if base else None,
+                    transliteration_text="\n".join(r["sv"] for r in records) if records else (base.transliteration_text if base else None),
+                    translation_text="\n".join(r["vi"] for r in records) if records else (base.translation_text if base else None),
+                    ocr_bbox=base.ocr_bbox if base else None,
+                    ocr_vote_meta=base.ocr_vote_meta if base else None,
+                    pairs=records if records else (base.pairs if base else None),
+                )
+            )
+        parent_steps = {s.step_type: s.status for s in self.steps_for(parent.id)}
+        for step in self.steps_for(version.id):
+            if step.step_type in (PipelineStepType.TRANSLITERATION, PipelineStepType.TRANSLATION):
+                step.status = "imported"
+            else:
+                step.status = parent_steps.get(step.step_type, step.status)
+            self._db.add(step)
+        self._db.add(version)
+        self._db.commit()
+        self._db.refresh(version)
+        return version
+
+    def set_review_status(self, version_id: int, review_status: str) -> GiaPhaVersion:
+        version = self._db.get(GiaPhaVersion, version_id)
+        if version is None:
+            raise ValueError(f"Không tìm thấy version {version_id}")
+        version.review_status = review_status
+        self._db.add(version)
+        self._db.commit()
+        self._db.refresh(version)
+        return version
+
+    def approved_pairs(self) -> List[dict[str, Any]]:
+        """Cặp câu của mọi version nhập đã duyệt — dữ liệu train (kèm nguồn)."""
+        stmt = (
+            select(GiaPhaVersion, GiaPhaPageContent, GiaPhaPage)
+            .join(GiaPhaPageContent, GiaPhaPageContent.version_id == GiaPhaVersion.id)
+            .join(GiaPhaPage, GiaPhaPage.id == GiaPhaPageContent.page_id)
+            .where(GiaPhaVersion.review_status == "approved")
+            .order_by(GiaPhaVersion.user_scan_id, GiaPhaVersion.id, GiaPhaPage.page_number)
+        )
+        rows: List[dict[str, Any]] = []
+        for version, content, page in self._db.execute(stmt).all():
+            for pair in content.pairs or []:
+                rows.append(
+                    {
+                        "scan_id": version.user_scan_id,
+                        "version_id": version.id,
+                        "source": version.source,
+                        "page": page.page_number,
+                        "cn": pair.get("cn"),
+                        "sv": pair.get("sv"),
+                        "vi": pair.get("vi"),
+                    }
+                )
+        return rows
 
 
 class GiaPhaPageRepository:

@@ -4,6 +4,7 @@ from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
 
@@ -16,6 +17,7 @@ from app.documents.schemas import DocumentListResponse, DocumentResponse
 from app.documents.storage import ObjectStorage
 from app.family_tree_store import FamilyTreeNotFoundError, FamilyTreeStoreError
 from app.workspace.models import GiaPhaVersion, GiaPhaVersionStep, OcrStatus, TreeStatus, UserScan
+from app.workspace.llm_import import add_coverage_warnings, parse_import
 from app.workspace.repository import GiaPhaPageRepository, GiaPhaVersionRepository, UserScanRepository
 from app.workspace.utils import compute_generation_count
 
@@ -132,6 +134,33 @@ class ItemVersion(BaseModel):
     ocr_engines: Optional[List[str]] = None
     status: str
     steps: List[ItemVersionStep] = Field(default_factory=list)
+    parent_version_id: Optional[int] = None
+    source: Optional[str] = None  # != None: version nhập từ LLM
+    review_status: Optional[str] = None
+    note: Optional[str] = None
+    created_at: Optional[str] = None
+
+
+class LlmImportRequest(BaseModel):
+    source: str = ""
+    model_note: Optional[str] = None
+    records: List[Dict[str, Any]] = Field(default_factory=list)
+    dry_run: bool = False
+
+
+class LlmImportResult(BaseModel):
+    ok: bool
+    dry_run: bool
+    pages: int
+    records: int
+    skipped_annotations: int
+    errors: List[str] = Field(default_factory=list)
+    warnings: List[str] = Field(default_factory=list)
+    version: Optional[ItemVersion] = None
+
+
+class VersionReviewRequest(BaseModel):
+    review_status: str = Field(pattern="^(pending|approved|rejected)$")
 
 
 class GiaPhaItem(BaseModel):
@@ -207,6 +236,11 @@ def _item_version_from(version: GiaPhaVersion, steps: List[GiaPhaVersionStep]) -
         ocr_engines=version.ocr_engines,
         status=version.status,
         steps=[ItemVersionStep(step_type=s.step_type.value, status=s.status) for s in steps],
+        parent_version_id=version.parent_version_id,
+        source=version.source,
+        review_status=version.review_status,
+        note=version.note,
+        created_at=version.created_at.isoformat() if version.created_at else None,
     )
 
 
@@ -358,6 +392,105 @@ def create_workspace_router(
             _item_version_from(version, versions.steps_for(version.id))
             for version in versions.list_by_scan(scan.id)
         ]
+
+    @router.get("/api/user/documents/{scan_id}/versions", response_model=List[ItemVersion])
+    def list_scan_versions(
+        scan_id: int,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+    ) -> List[ItemVersion]:
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        return [_item_version_from(v, versions.steps_for(v.id)) for v in versions.list_by_scan(scan.id)]
+
+    @router.post("/api/user/documents/{scan_id}/imports", response_model=LlmImportResult)
+    def import_llm_results(
+        scan_id: int,
+        payload: LlmImportRequest,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> LlmImportResult:
+        """Nhập kết quả {cn, sv, vi} từ tool LLM chạy NGOÀI web. Chủ bộ gia
+        phả hoặc admin được nhập. dry_run=True: chỉ kiểm tra + xem trước."""
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        pages = pages_repo.list_by_scan(scan.id)
+        parent = versions.get_current(scan.id)
+        if not pages or parent is None:
+            raise HTTPException(
+                status_code=400,
+                detail="Bộ gia phả chưa có trang/version — cần OCR hoặc import corpus trước khi nhập kết quả LLM.",
+            )
+        page_ids = {p.page_number: p.id for p in pages}
+        parsed = parse_import(payload.model_dump(), set(page_ids))
+        if not parsed.errors:
+            contents = {c.page_id: c for c in pages_repo.list_content_for_version(parent.id)}
+            add_coverage_warnings(
+                parsed,
+                {number: (contents[pid].hannom_text if pid in contents else None) for number, pid in page_ids.items()},
+            )
+        result = LlmImportResult(
+            ok=not parsed.errors,
+            dry_run=payload.dry_run,
+            pages=len(parsed.pages),
+            records=parsed.record_count,
+            skipped_annotations=parsed.skipped_annotations,
+            errors=parsed.errors,
+            warnings=parsed.warnings,
+        )
+        if payload.dry_run:
+            return result
+        if parsed.errors:
+            raise HTTPException(status_code=400, detail=result.model_dump())
+        version = versions.create_import_version(
+            user_scan_id=scan.id,
+            parent_version_id=parent.id,
+            source=parsed.source,
+            model_note=parsed.model_note,
+            pages={n: [{"cn": r.cn, "sv": r.sv, "vi": r.vi} for r in recs] for n, recs in parsed.pages.items()},
+            page_ids=page_ids,
+            created_by=current_user.id,
+        )
+        result.version = _item_version_from(version, versions.steps_for(version.id))
+        return result
+
+    @router.patch("/api/user/documents/{scan_id}/versions/{version_id}/review", response_model=ItemVersion)
+    def review_imported_version(
+        scan_id: int,
+        version_id: int,
+        payload: VersionReviewRequest,
+        _: AdminUser,
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+    ) -> ItemVersion:
+        """Chỉ admin duyệt. Duyệt KHÔNG đổi version hiện tại — chỉ quyết định
+        cặp câu của version này có vào dữ liệu train không."""
+        version = versions.get(version_id)
+        if version is None or version.user_scan_id != scan_id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        if version.source is None:
+            raise HTTPException(status_code=400, detail="Chỉ duyệt được version nhập từ LLM.")
+        updated = versions.set_review_status(version_id, payload.review_status)
+        return _item_version_from(updated, versions.steps_for(updated.id))
+
+    @router.get("/api/admin/training-export", response_class=PlainTextResponse)
+    def export_training_pairs(
+        _: AdminUser,
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+    ) -> PlainTextResponse:
+        """JSONL các cặp câu đã duyệt: {scan_id, version_id, source, page, cn, sv, vi}."""
+        import json as _json
+
+        lines = [_json.dumps(row, ensure_ascii=False) for row in versions.approved_pairs()]
+        return PlainTextResponse(
+            "\n".join(lines) + ("\n" if lines else ""),
+            media_type="application/x-ndjson",
+            headers={"Content-Disposition": 'attachment; filename="gia_pha_training_pairs.jsonl"'},
+        )
 
     @router.post("/api/user/documents/{scan_id}/versions/{version_id}/clone", response_model=ItemVersion)
     def clone_gia_pha_version(
