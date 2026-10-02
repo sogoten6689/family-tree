@@ -52,4 +52,18 @@ describe("PipelineStepsPanel", { timeout: 15000 }, () => {
     render(<PipelineStepsPanel voteMeta={[meta("only")]} />);
     expect(screen.queryByRole("combobox", { name: "Trang" })).toBeNull();
   });
+
+  it("renders disputed lines in batches of 50 with a show-more button", () => {
+    const spans = Array.from({ length: 120 }, (_, i) => ({
+      line: i, voted_line: "家", method: "line_no_majority", n_agree: 1, n_total: 3, disagreeing: [],
+    }));
+    const { container } = render(<PipelineStepsPanel voteMeta={[{ ...meta("x"), uncertain_spans: spans }]} />);
+    fireEvent.click(screen.getByText("2. Vote (hợp nhất)"));
+    expect(container.querySelectorAll(".vote-span")).toHaveLength(50);
+    fireEvent.click(screen.getByRole("button", { name: /Hiện thêm \(50\/120 dòng\)/ }));
+    expect(container.querySelectorAll(".vote-span")).toHaveLength(100);
+    fireEvent.click(screen.getByRole("button", { name: /Hiện thêm/ }));
+    expect(container.querySelectorAll(".vote-span")).toHaveLength(120);
+    expect(screen.queryByRole("button", { name: /Hiện thêm/ })).toBeNull();
+  });
 });

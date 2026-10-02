@@ -28,6 +28,10 @@ type PipelineStepsPanelProps = {
 
 const { Paragraph, Text } = Typography;
 
+/** Số dòng tranh chấp vẽ mỗi lần — có trang OCR vỡ thành hàng nghìn mẩu
+ * (scan#20 trang 76: 4.949 dòng) làm trình duyệt treo nếu vẽ hết. */
+const SPAN_PAGE_SIZE = 50;
+
 /**
  * Xem chi tiết từng bước (OCR theo engine -> vote -> phiên âm -> dịch nghĩa).
  * Hiện khi CÓ dữ liệu cho ít nhất 1 bước — kể cả scan mở lại (vote_meta đã
@@ -44,6 +48,7 @@ export function PipelineStepsPanel({
   const { t } = useTranslation();
   const [stepIndex, setStepIndex] = useState(0);
   const [pageIndex, setPageIndex] = useState(0);
+  const [spanLimit, setSpanLimit] = useState(SPAN_PAGE_SIZE);
 
   const pageCount = voteMeta?.length ?? 0;
   const hasData = pipelineVersion === "v2" || pageCount > 0 || !!transliterationText || !!translationText;
@@ -97,9 +102,18 @@ export function PipelineStepsPanel({
           </Paragraph>
           {pageVoteMeta.uncertain_spans?.length ? (
             <div className="vote-spans">
-              {pageVoteMeta.uncertain_spans.map((span) => (
+              {pageVoteMeta.uncertain_spans.slice(0, spanLimit).map((span) => (
                 <VoteDiffLine key={span.line} span={span} />
               ))}
+              {pageVoteMeta.uncertain_spans.length > spanLimit && (
+                <Button onClick={() => setSpanLimit((n) => n + SPAN_PAGE_SIZE)}>
+                  {t("docReader.voteShowMore", {
+                    defaultValue: "Hiện thêm ({{shown}}/{{total}} dòng)",
+                    shown: spanLimit,
+                    total: pageVoteMeta.uncertain_spans.length,
+                  })}
+                </Button>
+              )}
             </div>
           ) : (
             <Text type="secondary">{t("docReader.voteNoSpans")}</Text>
@@ -138,7 +152,10 @@ export function PipelineStepsPanel({
             <Select
               size="small"
               value={safePage}
-              onChange={setPageIndex}
+              onChange={(value) => {
+                setPageIndex(value);
+                setSpanLimit(SPAN_PAGE_SIZE);
+              }}
               options={Array.from({ length: pageCount }, (_, i) => ({ value: i, label: `${i + 1}/${pageCount}` }))}
               aria-label={t("docReader.stepPage", { defaultValue: "Trang" })}
               style={{ minWidth: 96 }}

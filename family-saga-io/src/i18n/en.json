@@ -319,7 +319,8 @@
       "line_no_majority": "Tie"
     },
     "stepNoVoteData": "No multi-engine OCR / vote data for this item (pipeline v1).",
-    "stepPage": "Page"
+    "stepPage": "Page",
+    "voteShowMore": "Show more ({{shown}}/{{total}} lines)"
   },
   "notFound": {
     "subtitle": "Page not found",

@@ -319,7 +319,8 @@
       "line_no_majority": "Hoà phiếu"
     },
     "stepNoVoteData": "Không có dữ liệu OCR nhiều engine / vote cho bộ này (pipeline v1).",
-    "stepPage": "Trang"
+    "stepPage": "Trang",
+    "voteShowMore": "Hiện thêm ({{shown}}/{{total}} dòng)"
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",
