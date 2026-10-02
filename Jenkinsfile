@@ -11,6 +11,13 @@
 // trỏ đúng node đó).
 pipeline {
     agent any
+    environment {
+        // Link tạm MinIO phải ký với domain công khai (không /minio) — nginx
+        // chuyển /family-tree-docs/ vào MinIO giữ nguyên đường dẫn + Host
+        // (infra/nginx/conf.d/giapha.kimtudien.com.vn.conf). Mặc định trong
+        // compose là localhost:9002 → trình duyệt người dùng không tải được ảnh.
+        MINIO_PUBLIC_ENDPOINT = 'https://giapha.kimtudien.com.vn'
+    }
     stages {
         stage('Checkout OK') {
             steps {
