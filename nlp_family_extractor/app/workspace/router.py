@@ -94,6 +94,8 @@ class UserScanResponse(BaseModel):
     # Vote OCR theo từng trang (pipeline v2 / corpus import) — để mở lại 1 bộ
     # gia phả vẫn xem được panel các bước, không chỉ ngay sau khi phân tích.
     ocr_vote_meta: Optional[List[Dict[str, Any]]] = None
+    ma_dinh_danh: Optional[str] = None
+    ma_dinh_danh_nguon: Optional[str] = None
 
 
 class UserScanListResponse(BaseModel):
@@ -168,6 +170,12 @@ class TextEngineRunRequest(BaseModel):
     pages: Optional[List[int]] = None  # None = mọi trang có văn bản Hán Nôm
 
 
+class MaDinhDanhAutoResult(BaseModel):
+    ma_dinh_danh: Optional[str] = None
+    ma_dinh_danh_nguon: Optional[str] = None
+    problems: List[str] = Field(default_factory=list)
+
+
 class VersionReviewRequest(BaseModel):
     review_status: str = Field(pattern="^(pending|approved|rejected)$")
 
@@ -175,6 +183,7 @@ class VersionReviewRequest(BaseModel):
 class GiaPhaItem(BaseModel):
     id: str
     ma_dinh_danh_pending: bool = False
+    ma_dinh_danh_nguon: Optional[str] = None  # "catalogue" | "gemini"
     title: str
     status: str  # "built" | "pending"
     is_public: Optional[bool] = None
@@ -265,6 +274,7 @@ def _scan_to_gia_pha_item(scan: UserScan, version_repo: GiaPhaVersionRepository)
     return GiaPhaItem(
         id=gia_pha_id,
         ma_dinh_danh_pending=pending,
+        ma_dinh_danh_nguon=scan.ma_dinh_danh_nguon,
         title=scan.title,
         status="built" if scan.tree_status == TreeStatus.CREATED else "pending",
         updated_at=scan.uploaded_at.isoformat(),
@@ -294,6 +304,7 @@ def _tree_to_gia_pha_item(
     return GiaPhaItem(
         id=display_id,
         ma_dinh_danh_pending=pending,
+        ma_dinh_danh_nguon=source_scan.ma_dinh_danh_nguon if source_scan else None,
         title=tree["name"],
         status="built",
         is_public=bool(tree.get("is_public")),
@@ -492,6 +503,24 @@ def create_workspace_router(
         )
         result.version = _item_version_from(version, versions.steps_for(version.id))
         return result
+
+    @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)
+    def auto_ma_dinh_danh(
+        scan_id: int,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+    ) -> MaDinhDanhAutoResult:
+        """Tự tạo mã định danh cho bộ chưa có mã: Gemini trích 5 thông tin từ
+        bản dịch (tốn 1 lượt gọi Gemini). Bộ đã có mã → trả mã cũ, không gọi."""
+        from app.workspace.ma_dinh_danh_auto import ensure_ma_dinh_danh
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        scan, problems = ensure_ma_dinh_danh(scans, scan)
+        return MaDinhDanhAutoResult(
+            ma_dinh_danh=scan.ma_dinh_danh, ma_dinh_danh_nguon=scan.ma_dinh_danh_nguon, problems=problems
+        )
 
     @router.get("/api/user/text-engines", response_model=List[str])
     def list_enabled_text_engines(_: CurrentUser) -> List[str]:

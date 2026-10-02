@@ -687,5 +687,16 @@
       "done": "Done",
       "error": "Error"
     }
+  },
+  "maDinhDanh": {
+    "label": "Identifier",
+    "sourceGemini": "Auto (Gemini)",
+    "sourceCatalogue": "Confirmed",
+    "geminiHint": "Generated from details Gemini extracted from the translation — double-check when reading.",
+    "none": "No identifier",
+    "autoBtn": "Generate identifier",
+    "autoHint": "Calls Gemini once (paid) to extract details and build the identifier.",
+    "needText": "Needs a translation/transliteration first.",
+    "failed": "Could not generate the identifier"
   }
 }

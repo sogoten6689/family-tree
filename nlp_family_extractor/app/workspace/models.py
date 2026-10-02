@@ -86,6 +86,9 @@ class UserScan(Base):
     # Mô tả niên đại kèm bằng chứng (vd "Thiệu Trị năm 5 (Ất Tỵ) = 1845 — …").
     nien_dai_mo_ta: Mapped[str | None] = mapped_column(Text, nullable=True)
     ma_dinh_danh: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    # Nguồn của mã: "catalogue" (đã chốt ở catalogue nghiên cứu, chép nguyên
+    # văn) | "gemini" (tự tạo từ thông tin Gemini trích ở bản dịch).
+    ma_dinh_danh_nguon: Mapped[str | None] = mapped_column(String(16), nullable=True)
 
 
 class PipelineStepType(str, enum.Enum):

@@ -115,6 +115,11 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
                 <BranchesOutlined className="text-primary" />
                 <div>
                   <div className="font-mono text-xs">{record.id}</div>
+                  {record.ma_dinh_danh_nguon === "gemini" && (
+                    <Tag color="gold" className="!text-[10px] !leading-4 !mt-0.5">
+                      {t("maDinhDanh.sourceGemini", { defaultValue: "Tự tạo (Gemini)" })}
+                    </Tag>
+                  )}
                   {record.ma_dinh_danh_pending && (
                     <div className="text-[11px] text-muted-foreground">
                       {t("giaPhaList.pendingCode", { defaultValue: "Chưa có mã chính thức" })}

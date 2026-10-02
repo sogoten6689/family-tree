@@ -27,6 +27,20 @@ export interface UserScan {
   transliteration_text?: string | null;
   /** Vote OCR theo từng trang — shape VoteMeta (components/documents/PipelineStepsPanel). */
   ocr_vote_meta?: Record<string, unknown>[] | null;
+  ma_dinh_danh?: string | null;
+  /** "catalogue" = đã chốt ở catalogue nghiên cứu; "gemini" = tự tạo. */
+  ma_dinh_danh_nguon?: "catalogue" | "gemini" | null;
+}
+
+export interface MaDinhDanhAutoResult {
+  ma_dinh_danh: string | null;
+  ma_dinh_danh_nguon: "catalogue" | "gemini" | null;
+  problems: string[];
+}
+
+/** Tự tạo mã định danh (1 lượt gọi Gemini nếu bộ chưa có mã). */
+export async function autoMaDinhDanh(scanId: number): Promise<MaDinhDanhAutoResult> {
+  return apiRequest<MaDinhDanhAutoResult>(`/api/user/documents/${scanId}/ma-dinh-danh/auto`, { method: "POST" });
 }
 
 export interface UserScanListResponse {

@@ -1219,6 +1219,14 @@ async def analyze_family_image(
                         ocr_vote_meta=vote_meta_pages or None,
                         ocr_bbox=bbox_pages or None,
                     )
+                    # Tự tạo mã định danh sau khi dịch nghĩa (1 lượt Gemini,
+                    # chỉ khi bộ CHƯA có mã — mã đã có không bao giờ bị ghi đè).
+                    if translation_text and not scan.ma_dinh_danh:
+                        from app.workspace.ma_dinh_danh_auto import ensure_ma_dinh_danh
+
+                        _, problems = ensure_ma_dinh_danh(scan_repo, scan)
+                        if problems:
+                            print(f"[analyze-image] Chưa tạo được mã định danh scan {scan_id}: {'; '.join(problems)}")
         except Exception as error:
             print(f"[analyze-image] Không đồng bộ được user_scan {scan_id}: {error}")
 

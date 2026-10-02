@@ -51,6 +51,7 @@ class CorpusIdentifierFieldsTest(unittest.TestCase):
         fields, warnings = corpus_identifier_fields(RECORD)
         self.assertEqual(warnings, [])
         self.assertEqual(fields["ma_dinh_danh"], "F-B-PN-GiaThien-001-1930")
+        self.assertEqual(fields["ma_dinh_danh_nguon"], "catalogue")
         self.assertEqual(fields["nam_soan_goc"], 1930)  # từ mã, không đọc văn "2006"
         self.assertEqual(fields["ho_toc"], "Phan")
         self.assertTrue(fields["nien_dai_mo_ta"].startswith("Bản gốc"))
@@ -93,31 +94,6 @@ class _Db:
 
     def new_scan(self, **kw):
         return self.scans.create(user_id=self.owner.id, title="GP", file_name="x", file_type="hannom-corpus", **kw)
-
-
-class CatalogueNumberTest(_Db, unittest.TestCase):
-    def test_uses_given_catalogue_number_not_a_count(self) -> None:
-        self.new_scan()  # có sẵn bộ khác — bản cũ sẽ đếm thành 002
-        scan = self.new_scan()
-        self.scans.set_ma_dinh_danh_inputs(
-            scan, quy_mo="Tộc phả", hinh_thuc="Bộ", ho_toc="Phan", dia_danh_ngan="Gia Thiện", so_catalogue=1, nam_soan_goc=1930
-        )
-        self.assertEqual(scan.ma_dinh_danh, "F-B-PN-GiaThien-001-1930")
-
-    def test_rejects_duplicate_catalogue_number(self) -> None:
-        first, second = self.new_scan(), self.new_scan()
-        args = dict(quy_mo="Tộc phả", hinh_thuc="Bộ", ho_toc="Phan", dia_danh_ngan="Gia Thiện", nam_soan_goc=1930)
-        self.scans.set_ma_dinh_danh_inputs(first, so_catalogue=7, **args)
-        with self.assertRaisesRegex(ValueError, "007"):
-            self.scans.set_ma_dinh_danh_inputs(second, so_catalogue=7, **args)
-        self.assertIsNone(second.ma_dinh_danh)
-
-    def test_rejects_out_of_range(self) -> None:
-        scan = self.new_scan()
-        with self.assertRaises(ValueError):
-            self.scans.set_ma_dinh_danh_inputs(
-                scan, quy_mo="Tộc phả", hinh_thuc="Bộ", ho_toc="Phan", dia_danh_ngan="X", so_catalogue=0, nam_soan_goc=1
-            )
 
 
 class BackfillTest(_Db, unittest.TestCase):

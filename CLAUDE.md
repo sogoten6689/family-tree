@@ -19,8 +19,10 @@ Bản đồ: `docs/REPO_MAP.md` · Chạy/deploy: `readme.md` · Mục lục tà
 - Python: CI dùng 3.11; `.venv` local là 3.10; `.venv-paddleocr` là 3.11, chỉ dùng cho PaddleOCR
 
 ## Quy ước khoa học (thầy xác nhận = nguồn sự thật, không tự đặt lại)
-- `ma_dinh_danh` (mã F) ≠ `doc_id`. Không bao giờ tự sinh `ma_dinh_danh` cho tài liệu chưa đọc.
-  Nguồn: `docs/lab/note_meeting_weekly/31_08_2026/`
+- `ma_dinh_danh` (mã F) ≠ `doc_id`. Nguồn quy ước: `docs/lab/note_meeting_weekly/31_08_2026/`.
+- Từ 02/10/2026 (quyết định của Lâm, chưa ghi nhận thầy duyệt): mã **tự tạo** — chép nguyên văn mã
+  đã chốt ở catalogue nghiên cứu, hoặc Gemini trích thông tin từ bản dịch; số 3 chữ số đánh **riêng
+  theo chữ A–V**. Mã đã có không bao giờ ghi đè. Chi tiết: `docs/planning/ma_dinh_danh_tu_dong.md`.
 
 ## Cấm
 - Không commit `.env`, `.claude/settings.local.json`, dữ liệu trong `data/`

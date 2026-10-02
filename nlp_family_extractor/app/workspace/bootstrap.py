@@ -120,6 +120,8 @@ def _migrate_identifier_columns(engine) -> None:
             conn.execute(text("ALTER TABLE user_scans MODIFY COLUMN dia_danh VARCHAR(512) NULL"))
         if "nien_dai_mo_ta" not in lengths:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN nien_dai_mo_ta TEXT NULL"))
+        if "ma_dinh_danh_nguon" not in lengths:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN ma_dinh_danh_nguon VARCHAR(16) NULL"))
 
 
 def _migrate_user_scans_columns(engine) -> None:

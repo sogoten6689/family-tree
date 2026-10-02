@@ -687,5 +687,16 @@
       "done": "Xong",
       "error": "Lỗi"
     }
+  },
+  "maDinhDanh": {
+    "label": "Mã định danh",
+    "sourceGemini": "Tự tạo (Gemini)",
+    "sourceCatalogue": "Đã chốt",
+    "geminiHint": "Tự tạo từ thông tin Gemini trích ở bản dịch — nên đối chiếu lại khi đọc.",
+    "none": "Chưa có mã",
+    "autoBtn": "Tạo mã tự động",
+    "autoHint": "Gọi Gemini 1 lần (tốn phí) để trích thông tin và tạo mã.",
+    "needText": "Cần có bản dịch/phiên âm trước.",
+    "failed": "Chưa tạo được mã"
   }
 }

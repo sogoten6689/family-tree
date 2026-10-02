@@ -7,7 +7,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.auth.models import User, UserRole
-from app.workspace.ma_dinh_danh import build_ma_dinh_danh
+from app.workspace.ma_dinh_danh import build_ma_dinh_danh, letter_for, next_sequence_for_letter
 from app.workspace.models import (
     GiaPhaPage,
     GiaPhaPageContent,
@@ -142,37 +142,37 @@ class UserScanRepository:
         self._db.refresh(scan)
         return scan
 
-    def set_ma_dinh_danh_inputs(
-        self,
-        scan: UserScan,
-        *,
-        quy_mo: str,
-        hinh_thuc: str,
-        ho_toc: str,
-        dia_danh_ngan: str,
-        so_catalogue: int,
-        nam_soan_goc: int,
-    ) -> UserScan:
-        """Lưu input đã xác nhận + tính ma_dinh_danh. Số thứ tự 3 chữ số
-        (`so_catalogue`) do NGƯỜI NHẬP điền theo đúng thứ tự trong catalogue
-        của thầy — KHÔNG tự đếm (bản trước đếm số mã đã có +1, sai quy ước).
-        Raise ValueError nếu số ngoài 1–999 hoặc đã có bộ khác dùng."""
-        if not 1 <= so_catalogue <= 999:
-            raise ValueError("Số catalogue phải từ 001 đến 999.")
-        code = build_ma_dinh_danh(quy_mo, hinh_thuc, ho_toc, dia_danh_ngan, so_catalogue, nam_soan_goc)
-        clash = self._db.scalar(
-            select(UserScan).where(
-                UserScan.id != scan.id,
-                UserScan.ma_dinh_danh.like(f"%-{so_catalogue:03d}-%"),
-            )
+    def auto_assign_ma_dinh_danh(self, scan: UserScan, inputs: dict[str, Any], *, nguon: str) -> UserScan:
+        """Tự tạo mã định danh từ 5 input (đã kiểm tra) — số 3 chữ số đánh
+        RIÊNG theo chữ A–V: số lớn nhất đang có ở chữ đó + 1. Scan đã có mã
+        thì giữ nguyên (không bao giờ ghi đè mã đã chốt). Raise ValueError nếu
+        input không ra được mã hoặc mã trùng."""
+        if scan.ma_dinh_danh:
+            return scan
+        letter = letter_for(inputs["quy_mo"], inputs["hinh_thuc"])
+        if letter is None:
+            raise ValueError(f"Không có chữ mã cho ({inputs['quy_mo']}, {inputs['hinh_thuc']}).")
+        existing = [
+            code
+            for code in self._db.scalars(
+                select(UserScan.ma_dinh_danh).where(UserScan.ma_dinh_danh.like(f"F-{letter}-%"))
+            ).all()
+            if code
+        ]
+        seq = next_sequence_for_letter(existing, letter)
+        code = build_ma_dinh_danh(
+            inputs["quy_mo"], inputs["hinh_thuc"], inputs["ho_toc"], inputs["dia_danh_ngan"], seq, inputs["nam_soan_goc"]
         )
-        if clash is not None:
-            raise ValueError(f"Số catalogue {so_catalogue:03d} đã dùng cho {clash.ma_dinh_danh}.")
-        scan.quy_mo = quy_mo
-        scan.hinh_thuc = hinh_thuc
-        scan.ho_toc = ho_toc
-        scan.nam_soan_goc = nam_soan_goc
+        if self._db.scalar(select(UserScan).where(UserScan.ma_dinh_danh == code)) is not None:
+            raise ValueError(f"Mã {code} đã tồn tại.")
+        scan.quy_mo = inputs["quy_mo"]
+        scan.hinh_thuc = inputs["hinh_thuc"]
+        scan.ho_toc = inputs["ho_toc"]
+        scan.nam_soan_goc = inputs["nam_soan_goc"]
+        if not scan.dia_danh:
+            scan.dia_danh = inputs["dia_danh_ngan"]
         scan.ma_dinh_danh = code
+        scan.ma_dinh_danh_nguon = nguon
         self._db.add(scan)
         self._db.commit()
         self._db.refresh(scan)
@@ -181,7 +181,16 @@ class UserScanRepository:
     def set_corpus_identifiers(self, scan: UserScan, fields: dict[str, Any]) -> UserScan:
         """Ghi mã định danh + thông tin đi kèm ĐÃ CHỐT ở catalogue nghiên cứu
         (chép nguyên văn, không tính lại) — chỉ dùng khi import corpus."""
-        for key in ("ma_dinh_danh", "quy_mo", "hinh_thuc", "ho_toc", "dia_danh", "nam_soan_goc", "nien_dai_mo_ta"):
+        for key in (
+            "ma_dinh_danh",
+            "ma_dinh_danh_nguon",
+            "quy_mo",
+            "hinh_thuc",
+            "ho_toc",
+            "dia_danh",
+            "nam_soan_goc",
+            "nien_dai_mo_ta",
+        ):
             if key in fields:
                 setattr(scan, key, fields[key])
         self._db.add(scan)

@@ -17,6 +17,7 @@ export interface ItemVersion {
 export interface GiaPhaItem {
   id: string;
   ma_dinh_danh_pending: boolean;
+  ma_dinh_danh_nguon?: "catalogue" | "gemini" | null;
   title: string;
   status: "built" | "pending";
   is_public?: boolean | null;

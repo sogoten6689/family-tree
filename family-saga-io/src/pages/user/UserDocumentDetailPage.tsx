@@ -9,6 +9,7 @@ import { ServerSavedAlert } from "@/components/flow/ServerSavedAlert";
 import { OcrStatusTag, TreeStatusTag } from "@/components/flow/StatusTags";
 import DocumentReaderPage from "@/pages/DocumentReaderPage";
 import { LlmImportPanel } from "@/components/documents/LlmImportPanel";
+import { MaDinhDanhField } from "@/components/documents/MaDinhDanhField";
 import { useAuth } from "@/contexts/AuthContext";
 import { computeFlowProgressForScan } from "@/lib/flowProgress";
 import { flowRouteForStep } from "@/lib/genealogyFlow";
@@ -125,6 +126,9 @@ const UserDocumentDetailPage = () => {
                 <Descriptions bordered column={1}>
                   <Descriptions.Item label={t("userDocuments.name", { defaultValue: "Tên tài liệu" })}>
                     {scan.title}
+                  </Descriptions.Item>
+                  <Descriptions.Item label={t("maDinhDanh.label", { defaultValue: "Mã định danh" })}>
+                    <MaDinhDanhField scan={scan} onChanged={() => void getUserDocument(scan.id).then(setScan)} />
                   </Descriptions.Item>
                   <Descriptions.Item label={t("userDocuments.fileName", { defaultValue: "Tên file" })}>
                     {scan.file_name}

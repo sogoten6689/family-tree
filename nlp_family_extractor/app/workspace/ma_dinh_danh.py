@@ -91,7 +91,35 @@ def corpus_identifier_fields(record: dict) -> tuple[dict, list[str]]:
         match = MA_DINH_DANH_PATTERN.match(code.strip())
         if match:
             fields["ma_dinh_danh"] = code.strip()
+            fields["ma_dinh_danh_nguon"] = "catalogue"
             fields["nam_soan_goc"] = int(match.group(5))
         else:
             warnings.append(f"ma_dinh_danh {code!r} sai cấu trúc F-code — bỏ qua, không ghi.")
     return fields, warnings
+
+
+# ── Tự tạo mã (quyết định của Lam 02/10/2026, thay quy ước "số thứ tự nhập
+# catalogue" 07/09): số 3 chữ số đánh RIÊNG theo từng chữ A–V (quy mô ×
+# hình thức), tiếp theo số lớn nhất đang có ở chữ đó. Mã đã chốt ở catalogue
+# nghiên cứu giữ nguyên. Xem docs/planning/ma_dinh_danh_tu_dong.md. ──
+
+QUY_MO_VALUES = sorted({quy_mo for quy_mo, _ in HINH_THUC_LETTER})
+HINH_THUC_VALUES = sorted({hinh_thuc for _, hinh_thuc in HINH_THUC_LETTER})
+
+
+def letter_for(quy_mo: str, hinh_thuc: str) -> str | None:
+    return HINH_THUC_LETTER.get((quy_mo, hinh_thuc))
+
+
+def next_sequence_for_letter(existing_codes: list[str], letter: str) -> int:
+    """Số kế tiếp trong dãy riêng của chữ `letter` = số lớn nhất đang có ở
+    chữ đó + 1 (bỏ qua mã sai cấu trúc). Raise ValueError nếu vượt 999."""
+    used = [
+        int(match.group(4))
+        for code in existing_codes
+        if (match := MA_DINH_DANH_PATTERN.match(code or "")) and match.group(1) == letter
+    ]
+    nxt = max(used, default=0) + 1
+    if nxt > 999:
+        raise ValueError(f"Chữ {letter} đã dùng hết số 001–999.")
+    return nxt
