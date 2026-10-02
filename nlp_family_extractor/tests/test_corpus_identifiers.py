@@ -63,6 +63,21 @@ class CorpusIdentifierFieldsTest(unittest.TestCase):
         self.assertNotIn("nam_soan_goc", fields)
         self.assertEqual(len(warnings), 1)
 
+    def test_annotated_classification_is_skipped_not_stored(self) -> None:
+        # Giá trị thật gây lỗi backfill production 02/10/2026 (nom-207, nom-84).
+        record = {
+            **RECORD,
+            "quy_mo": "Tộc phả (theo tên gọi, chưa đọc để xác nhận)",
+            "hinh_thuc": "Ký (khớp tên gọi + nội dung, đọc trực tiếp trang 1)",
+            "ho": "X" * 70,
+        }
+        fields, warnings = corpus_identifier_fields(record)
+        self.assertNotIn("quy_mo", fields)
+        self.assertNotIn("hinh_thuc", fields)
+        self.assertNotIn("ho_toc", fields)
+        self.assertEqual(len(warnings), 3)
+        self.assertEqual(fields["ma_dinh_danh"], "F-B-PN-GiaThien-001-1930")  # mã đã chốt vẫn giữ
+
     def test_record_without_code_keeps_other_fields_only(self) -> None:
         fields, _ = corpus_identifier_fields({k: v for k, v in RECORD.items() if k != "ma_dinh_danh"})
         self.assertNotIn("ma_dinh_danh", fields)

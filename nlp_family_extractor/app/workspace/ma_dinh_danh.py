@@ -76,10 +76,24 @@ def corpus_identifier_fields(record: dict) -> tuple[dict, list[str]]:
     Trả về (fields, cảnh báo)."""
     fields: dict = {}
     warnings: list[str] = []
-    for src, dst in (("quy_mo", "quy_mo"), ("hinh_thuc", "hinh_thuc"), ("ho", "ho_toc")):
-        value = record.get(src)
-        if isinstance(value, str) and value.strip():
-            fields[dst] = value.strip()
+    # Chỉ nhận giá trị CHUẨN của bảng tra — catalogue có bản ghi kèm chú thích
+    # "(chưa đọc để xác nhận)", "(suy luận …)": chưa phải phân loại đã chốt,
+    # và dài quá cột VARCHAR(32) (lỗi backfill production 02/10/2026).
+    allowed = {"quy_mo": QUY_MO_VALUES, "hinh_thuc": HINH_THUC_VALUES}
+    for key in ("quy_mo", "hinh_thuc"):
+        value = record.get(key)
+        if not isinstance(value, str) or not value.strip():
+            continue
+        if value.strip() in allowed[key]:
+            fields[key] = value.strip()
+        else:
+            warnings.append(f"{key} {value.strip()!r} không phải giá trị chuẩn {allowed[key]} — bỏ qua.")
+    ho = record.get("ho")
+    if isinstance(ho, str) and ho.strip():
+        if len(ho.strip()) <= 64:
+            fields["ho_toc"] = ho.strip()
+        else:
+            warnings.append(f"ho dài {len(ho.strip())} ký tự (> 64) — bỏ qua.")
     dia_danh = record.get("dia_danh")
     if isinstance(dia_danh, str) and dia_danh.strip():
         fields["dia_danh"] = dia_danh.strip()[:512]
