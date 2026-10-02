@@ -303,7 +303,21 @@
     "quotaRemaining": "Còn {{count}} lượt phân tích miễn phí",
     "quotaExceeded": "Đã hết lượt phân tích miễn phí trong phiên này. Đăng nhập để tiếp tục không giới hạn.",
     "voteWinLabel": "Thắng {{agree}}/{{total}}",
-    "voteDisagreeLabel": "Engine không đồng ý"
+    "voteDisagreeLabel": "Engine không đồng ý",
+    "voteLine": "Dòng {{line}}",
+    "voteLegend": "Engine không theo cụm thắng — đỏ = bị thay, vàng = chữ thừa, chấm mờ = chữ thiếu",
+    "voteNoSpans": "Không có dòng bất đồng (thống nhất, hoặc chỉ 1 engine được bỏ phiếu)",
+    "votePosition": "Vị trí {{pos}} (gốc \"{{char}}\")",
+    "voteGap": "Khe trước vị trí {{pos}} (chữ chèn thêm)",
+    "voteNotResolved": "giữ nguyên (chưa đủ ≥3 engine đồng thuận)",
+    "voteKeepBackbone": "giữ nguyên backbone",
+    "voteNoChar": "bỏ (không có chữ)",
+    "voteMethod": {
+      "line_unanimous": "Thống nhất",
+      "line_majority_override": "Ghi đè backbone",
+      "line_confirmed_majority": "Giữ backbone (đa số)",
+      "line_no_majority": "Hoà phiếu"
+    }
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",

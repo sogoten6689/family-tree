@@ -3,6 +3,8 @@ import { Button, Card, Empty, Steps, Tag, Typography } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
+import { VoteDiffLine, type UncertainSpan } from "./VoteDiffLine";
+
 export type EngineOcrInfo = {
   text: string;
   score: number | null;
@@ -12,7 +14,7 @@ export type EngineOcrInfo = {
 export type VoteMeta = {
   vote_method: string | null;
   engines: Record<string, EngineOcrInfo>;
-  uncertain_spans: unknown[];
+  uncertain_spans: UncertainSpan[];
   uncertain_rate: number;
   structural_diffs: unknown[];
 };
@@ -81,6 +83,15 @@ export function PipelineStepsPanel({
             {Math.round((pageVoteMeta.uncertain_rate || 0) * 100)}%{" "}
             {t("docReader.stepVoteUncertainLines", { count: pageVoteMeta.uncertain_spans?.length || 0 })}
           </Paragraph>
+          {pageVoteMeta.uncertain_spans?.length ? (
+            <div className="vote-spans">
+              {pageVoteMeta.uncertain_spans.map((span) => (
+                <VoteDiffLine key={span.line} span={span} />
+              ))}
+            </div>
+          ) : (
+            <Text type="secondary">{t("docReader.voteNoSpans")}</Text>
+          )}
         </div>
       ) : (
         <Empty description={t("docReader.stepOcrEmpty")} image={Empty.PRESENTED_IMAGE_SIMPLE} />

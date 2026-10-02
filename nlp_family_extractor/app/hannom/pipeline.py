@@ -13,6 +13,7 @@ from app.hannom.client import (
     upload_image,
 )
 from app.hannom.errors import HannomApiError
+from app.hannom.vote_diff import annotate_vote_diffs
 
 
 def process_hannom_image_to_vietnamese(
@@ -128,10 +129,10 @@ def process_hannom_image_v2(
         "translation_text": translation_text,
         "translation_error": translation_error,
         "bbox": bbox,
-        "vote_meta": {
+        "vote_meta": annotate_vote_diffs({
             key: vote_result.get(key)
             for key in ("vote_method", "engines", "uncertain_spans", "uncertain_rate", "structural_diffs")
-        },
+        }),
     }
 
 

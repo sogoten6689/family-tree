@@ -303,7 +303,21 @@
     "quotaRemaining": "{{count}} free analyses left",
     "quotaExceeded": "You've used all free analyses for this session. Log in to continue without limits.",
     "voteWinLabel": "Winner {{agree}}/{{total}}",
-    "voteDisagreeLabel": "Disagreeing engines"
+    "voteDisagreeLabel": "Disagreeing engines",
+    "voteLine": "Line {{line}}",
+    "voteLegend": "Engines outside the winning cluster — red = replaced, yellow = extra char, faded dots = missing char",
+    "voteNoSpans": "No disputed lines (unanimous, or only one engine allowed to vote)",
+    "votePosition": "Position {{pos}} (original \"{{char}}\")",
+    "voteGap": "Gap before position {{pos}} (inserted char)",
+    "voteNotResolved": "kept (fewer than 3 engines agree)",
+    "voteKeepBackbone": "keep backbone",
+    "voteNoChar": "drop (no char)",
+    "voteMethod": {
+      "line_unanimous": "Unanimous",
+      "line_majority_override": "Backbone overridden",
+      "line_confirmed_majority": "Backbone kept (majority)",
+      "line_no_majority": "Tie"
+    }
   },
   "notFound": {
     "subtitle": "Page not found",

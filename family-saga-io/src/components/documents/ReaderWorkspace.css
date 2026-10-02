@@ -56,3 +56,24 @@
 .pipeline-steps-engines { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .pipeline-steps-engine { border: 1px solid var(--ant-color-border-secondary); border-radius: var(--ant-border-radius); padding: 12px; }
 .pipeline-steps-engine-text { font-family: "Noto Serif CJK TC", "Songti SC", "SimSun", serif; font-weight: 600; white-space: pre-wrap; margin-top: 8px !important; }
+
+/* Bước Vote — VoteDiffLine (cùng cách tô màu với build_dashboard.py) */
+.vote-spans { display: flex; flex-direction: column; gap: 12px; }
+.vote-span { border: 1px solid var(--ant-color-border-secondary); border-left-width: 3px; border-radius: var(--ant-border-radius); padding: 10px 12px; }
+.vote-span-override { border-left-color: var(--ant-color-success); }
+.vote-span-tie { border-left-color: var(--ant-color-warning); }
+.vote-span-keep { border-left-color: var(--ant-color-primary); }
+.vote-span-ok { border-left-color: var(--ant-color-text-quaternary); }
+.vote-span-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; }
+.vote-han { font-size: 18px; line-height: 1.8; letter-spacing: 1px; white-space: pre-wrap; word-break: break-all; }
+.vote-legend { display: block; font-size: 12px; margin-top: 6px; }
+.vote-dis { list-style: none; padding: 0; margin: 4px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.vote-ch-contested { text-decoration: underline; text-decoration-color: var(--ant-color-error); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.vote-ch-rep { background: var(--ant-color-error-bg); color: var(--ant-color-error); border-radius: 3px; padding: 0 1px; }
+.vote-ch-ins { background: var(--ant-color-warning-bg); color: var(--ant-color-warning-text); border-radius: 3px; padding: 0 1px; }
+.vote-ch-gap { color: var(--ant-color-text-quaternary); }
+.vote-positions { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
+.vote-pos { font-size: 12px; border: 1px solid var(--ant-color-border-secondary); border-left-width: 3px; border-radius: 6px; padding: 4px 8px; }
+.vote-pos-fixed { border-left-color: var(--ant-color-success); }
+.vote-pos-open { border-left-color: var(--ant-color-warning); }
+.vote-pos-votes { color: var(--ant-color-text-secondary); margin-top: 2px; }
