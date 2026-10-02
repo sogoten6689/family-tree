@@ -236,6 +236,13 @@ const DocumentReaderPage = ({
     string | null
   >(null);
   const [currentScanId, setCurrentScanId] = useState<number | null>(initialScanId);
+  /** Dữ liệu các bước đã lưu của scan mở lại (khác analysisResult — chỉ có
+   * sau 1 lần phân tích trong phiên), để panel các bước vẫn hiện. */
+  const [storedSteps, setStoredSteps] = useState<{
+    voteMeta: VoteMeta[] | null;
+    transliteration: string | null;
+    translation: string | null;
+  } | null>(null);
   const [isSavingTree, setIsSavingTree] = useState(false);
 
   const registerScan = async (file: File, sourceText?: string) => {
@@ -288,6 +295,11 @@ const DocumentReaderPage = ({
         if (scan.hannom_text) {
           setExistingHannomText(scan.hannom_text);
         }
+        setStoredSteps({
+          voteMeta: (scan.ocr_vote_meta as VoteMeta[] | null | undefined) ?? null,
+          transliteration: scan.transliteration_text ?? null,
+          translation: scan.source_text ?? null,
+        });
       } catch {
         // Không chặn UI nếu fetch lỗi — vẫn dùng được như màn hình upload mới.
       }
@@ -423,6 +435,7 @@ const DocumentReaderPage = ({
     setIsParsing(false);
     setLanguageDetection(null);
     setAnalysisResult(null);
+    setStoredSteps(null);
     setAnalysisError(null);
     setIsAnalyzing(false);
     setIsResultModalOpen(false);
@@ -454,6 +467,7 @@ const DocumentReaderPage = ({
     setIsParsing(false);
     setLanguageDetection(null);
     setAnalysisResult(null);
+    setStoredSteps(null);
     setAnalysisError(null);
     setIsAnalyzing(false);
     setIsResultModalOpen(false);
@@ -807,9 +821,9 @@ const DocumentReaderPage = ({
         </div>
         <PipelineStepsPanel
           pipelineVersion={analysisResult?.pipeline_version}
-          transliterationText={analysisResult?.ocr_text}
-          translationText={analysisResult?.translation_text}
-          voteMeta={analysisResult?.vote_meta}
+          transliterationText={analysisResult?.ocr_text ?? storedSteps?.transliteration}
+          translationText={analysisResult?.translation_text ?? storedSteps?.translation}
+          voteMeta={analysisResult?.vote_meta ?? storedSteps?.voteMeta}
         />
         <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
           <Typography.Text type="secondary">{t(awaitingOcr ? "docReader.readerOcrHint" : "docReader.readerAnalyzeHint")}</Typography.Text>

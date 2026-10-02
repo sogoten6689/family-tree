@@ -25,6 +25,8 @@ export interface UserScan {
   source_text?: string | null;
   hannom_text?: string | null;
   transliteration_text?: string | null;
+  /** Vote OCR theo từng trang — shape VoteMeta (components/documents/PipelineStepsPanel). */
+  ocr_vote_meta?: Record<string, unknown>[] | null;
 }
 
 export interface UserScanListResponse {

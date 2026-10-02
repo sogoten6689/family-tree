@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Card, Empty, Steps, Tag, Typography } from "antd";
+import { Button, Card, Empty, Select, Space, Steps, Tag, Typography } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
@@ -29,11 +29,11 @@ type PipelineStepsPanelProps = {
 const { Paragraph, Text } = Typography;
 
 /**
- * Xem chi tiết từng bước của pipeline v2 (OCR theo engine -> vote -> phiên
- * âm -> dịch nghĩa) — trước đây backend đã tính (vote_meta) nhưng chưa có
- * chỗ nào hiển thị. Chỉ hiện khi pipeline_version="v2" (v1 không có dữ liệu
- * nhiều engine để so sánh). Điều hướng từng bước bằng nút quay lại/đi tiếp
- * thay vì accordion, cho rõ thứ tự xử lý.
+ * Xem chi tiết từng bước (OCR theo engine -> vote -> phiên âm -> dịch nghĩa).
+ * Hiện khi CÓ dữ liệu cho ít nhất 1 bước — kể cả scan mở lại (vote_meta đã
+ * lưu) và pipeline v1 (chỉ có phiên âm/dịch; bước OCR/vote ghi rõ không có).
+ * vote_meta là danh sách theo trang → chọn trang để xem. Bấm thẳng vào step
+ * bất kỳ hoặc dùng nút quay lại/đi tiếp.
  */
 export function PipelineStepsPanel({
   pipelineVersion,
@@ -43,10 +43,22 @@ export function PipelineStepsPanel({
 }: PipelineStepsPanelProps) {
   const { t } = useTranslation();
   const [stepIndex, setStepIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0);
 
-  if (pipelineVersion !== "v2") return null;
+  const pageCount = voteMeta?.length ?? 0;
+  const hasData = pipelineVersion === "v2" || pageCount > 0 || !!transliterationText || !!translationText;
+  if (!hasData) return null;
 
-  const pageVoteMeta = voteMeta?.[0];
+  const safePage = Math.min(pageIndex, Math.max(pageCount - 1, 0));
+  const pageVoteMeta = voteMeta?.[safePage];
+  const noVoteData = (
+    <Empty
+      description={t("docReader.stepNoVoteData", {
+        defaultValue: "Không có dữ liệu OCR nhiều engine / vote cho bộ này (pipeline v1).",
+      })}
+      image={Empty.PRESENTED_IMAGE_SIMPLE}
+    />
+  );
   const engineEntries = pageVoteMeta?.engines ? Object.entries(pageVoteMeta.engines) : [];
 
   const steps = [
@@ -67,7 +79,7 @@ export function PipelineStepsPanel({
             ))}
           </div>
         ) : (
-          <Empty description={t("docReader.stepOcrEmpty")} image={Empty.PRESENTED_IMAGE_SIMPLE} />
+          noVoteData
         ),
     },
     {
@@ -94,7 +106,7 @@ export function PipelineStepsPanel({
           )}
         </div>
       ) : (
-        <Empty description={t("docReader.stepOcrEmpty")} image={Empty.PRESENTED_IMAGE_SIMPLE} />
+        noVoteData
       ),
     },
     {
@@ -116,7 +128,25 @@ export function PipelineStepsPanel({
   ];
 
   return (
-    <Card className="pipeline-steps-panel" title={t("docReader.pipelineStepsTitle")}>
+    <Card
+      className="pipeline-steps-panel"
+      title={t("docReader.pipelineStepsTitle")}
+      extra={
+        pageCount > 1 ? (
+          <Space>
+            <Text type="secondary">{t("docReader.stepPage", { defaultValue: "Trang" })}</Text>
+            <Select
+              size="small"
+              value={safePage}
+              onChange={setPageIndex}
+              options={Array.from({ length: pageCount }, (_, i) => ({ value: i, label: `${i + 1}/${pageCount}` }))}
+              aria-label={t("docReader.stepPage", { defaultValue: "Trang" })}
+              style={{ minWidth: 96 }}
+            />
+          </Space>
+        ) : null
+      }
+    >
       <Steps
         current={stepIndex}
         onChange={setStepIndex}
