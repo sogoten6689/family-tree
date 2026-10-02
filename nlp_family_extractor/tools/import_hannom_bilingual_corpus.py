@@ -254,6 +254,59 @@ def backfill_structure(
     return actions
 
 
+def refresh_text(
+    *,
+    scan: Any,
+    record: Dict[str, Any],
+    scans: UserScanRepository,
+    pages_repo: GiaPhaPageRepository,
+    versions_repo: GiaPhaVersionRepository,
+    owner_id: int,
+    dry_run: bool,
+) -> List[str]:
+    """--refresh-text: corpus có phiên âm (l2)/dịch nghĩa (l3) mới hơn version
+    hiện tại của scan → tạo version MỚI (cha = version hiện tại, v1 giữ nguyên),
+    chỉ thay các trang có giá trị corpus khác rỗng và khác bản hiện tại, đặt làm
+    version hiện tại + đồng bộ cache phẳng trên UserScan (trang đọc tài liệu).
+    KHÔNG đưa `pairs` của corpus vào (dạng {han, viet} nháp LLM, thiếu phiên
+    âm — không dùng làm dữ liệu train). Không có gì khác → không tạo version."""
+    current = versions_repo.get_current(scan.id)
+    pages = {p.page_number: p for p in pages_repo.list_by_scan(scan.id)}
+    if current is None or not pages:
+        return []
+    contents = {c.page_id: c for c in pages_repo.list_content_for_version(current.id)}
+    updates: Dict[int, Dict[str, str]] = {}
+    for number, page in enumerate(record.get("pages") or [], start=1):
+        if number not in pages or not isinstance(page, dict):
+            continue
+        base = contents.get(pages[number].id)
+        for src, dst in (("l2_phien_am", "transliteration_text"), ("l3_dich_nghia", "translation_text")):
+            value = page.get(src)
+            if isinstance(value, str) and value.strip() and value != getattr(base, dst, None):
+                updates.setdefault(number, {})[dst] = value
+    if not updates:
+        return []
+    n_l2 = sum(1 for u in updates.values() if "transliteration_text" in u)
+    n_l3 = sum(1 for u in updates.values() if "translation_text" in u)
+    action = f"version mới (hiện tại) cập nhật {len(updates)} trang: phiên âm {n_l2}, dịch nghĩa {n_l3}"
+    if dry_run:
+        return [action]
+    version = versions_repo.create_derived_version(
+        user_scan_id=scan.id,
+        parent_version_id=current.id,
+        source="corpus",
+        review_status=None,
+        note=f"Cập nhật phiên âm/dịch nghĩa từ hannom-bilingual-dataset ({len(updates)} trang)",
+        created_by=owner_id,
+        text_step_status="done",
+    )
+    for number, fields in updates.items():
+        pages_repo.upsert_content(version_id=version.id, page_id=pages[number].id, **fields)
+    versions_repo.set_current(scan.id, version.id)
+    pages_repo.sync_flat_cache(scans, scan.id, version.id)  # cùng session — commit cả set_current
+    return [action]
+
+
 def _title(record: Dict[str, Any]) -> str:
     return (
         record.get("ten_han_viet")
@@ -280,6 +333,11 @@ def main() -> int:
         help="Tài khoản sở hữu các UserScan/FamilyTree import vào (mặc định: admin@giapha.com)",
     )
     parser.add_argument("--dry-run", action="store_true", help="Chỉ in ra, không ghi DB")
+    parser.add_argument(
+        "--refresh-text",
+        action="store_true",
+        help="Với bộ đã import: corpus có phiên âm/dịch nghĩa mới → tạo version mới (đặt làm hiện tại), giữ version cũ",
+    )
     parser.add_argument(
         "--backfill",
         action="store_true",
@@ -358,6 +416,16 @@ def main() -> int:
                         scans.update(existing_scan, **backfill_kwargs)
                 if args.backfill:
                     actions += backfill_structure(
+                        scan=existing_scan,
+                        record=record,
+                        scans=scans,
+                        pages_repo=pages_repo,
+                        versions_repo=versions_repo,
+                        owner_id=owner.id,
+                        dry_run=args.dry_run,
+                    )
+                if args.refresh_text:
+                    actions += refresh_text(
                         scan=existing_scan,
                         record=record,
                         scans=scans,

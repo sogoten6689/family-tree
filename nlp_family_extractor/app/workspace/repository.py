@@ -326,7 +326,7 @@ class GiaPhaVersionRepository:
         user_scan_id: int,
         parent_version_id: int,
         source: str,
-        review_status: str,
+        review_status: Optional[str],
         note: Optional[str] = None,
         created_by: Optional[int] = None,
         text_step_status: str = "pending",

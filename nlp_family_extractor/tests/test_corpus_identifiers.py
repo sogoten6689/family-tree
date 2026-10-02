@@ -192,3 +192,67 @@ class TreeListShowsSourceCodeTest(_Db, unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class RefreshTextTest(_Db, unittest.TestCase):
+    def _run(self, scan, record, dry_run=False):
+        return import_corpus.refresh_text(
+            scan=scan,
+            record=record,
+            scans=self.scans,
+            pages_repo=GiaPhaPageRepository(self.db),
+            versions_repo=GiaPhaVersionRepository(self.db),
+            owner_id=self.owner.id,
+            dry_run=dry_run,
+        )
+
+    def _imported_scan(self):
+        scan = self.new_scan()
+        import_corpus.backfill_structure(
+            scan=scan, record=RECORD, scans=self.scans, pages_repo=GiaPhaPageRepository(self.db),
+            versions_repo=GiaPhaVersionRepository(self.db), owner_id=self.owner.id, dry_run=False,
+        )
+        return scan
+
+    def _updated_record(self):
+        pages = [dict(p) for p in RECORD["pages"]]
+        pages[1]["l3_dich_nghia"] = "Phả hệ (bản dịch mới)"
+        pages[0]["pairs"] = [{"han": "乾坤", "viet": "Trời đất", "align_method": "llm_draft"}]
+        return {**RECORD, "pages": pages}
+
+    def test_nothing_new_creates_nothing(self) -> None:
+        scan = self._imported_scan()
+        self.assertEqual(self._run(scan, RECORD), [])
+        self.assertEqual(len(GiaPhaVersionRepository(self.db).list_by_scan(scan.id)), 1)
+
+    def test_dry_run_reports_without_writing(self) -> None:
+        scan = self._imported_scan()
+        actions = self._run(scan, self._updated_record(), dry_run=True)
+        self.assertIn("cập nhật 1 trang", actions[0])
+        self.assertEqual(len(GiaPhaVersionRepository(self.db).list_by_scan(scan.id)), 1)
+
+    def test_new_current_version_keeps_v1_and_skips_pairs(self) -> None:
+        scan = self._imported_scan()
+        versions = GiaPhaVersionRepository(self.db)
+        v1 = versions.get_current(scan.id)
+        self._run(scan, self._updated_record())
+        current = versions.get_current(scan.id)
+        self.assertNotEqual(current.id, v1.id)
+        self.assertEqual((current.source, current.parent_version_id), ("corpus", v1.id))
+        pages = GiaPhaPageRepository(self.db)
+        new = {c.page_id: c for c in pages.list_content_for_version(current.id)}
+        old = {c.page_id: c for c in pages.list_content_for_version(v1.id)}
+        p2 = max(new)
+        self.assertEqual(new[p2].translation_text, "Phả hệ (bản dịch mới)")
+        self.assertEqual(old[p2].translation_text, "Phả hệ")  # v1 giữ nguyên
+        self.assertEqual(new[min(new)].hannom_text, "乾坤")  # OCR giữ
+        self.assertTrue(all(c.pairs is None for c in new.values()))  # không đưa pairs nháp vào
+        self.db.refresh(scan)
+        self.assertIn("Phả hệ (bản dịch mới)", scan.source_text)  # cache phẳng cho trang đọc
+        self.assertEqual(self._run(scan, self._updated_record()), [])  # chạy lại: idempotent
+
+    def test_empty_corpus_value_never_erases(self) -> None:
+        scan = self._imported_scan()
+        pages = [dict(p) for p in RECORD["pages"]]
+        pages[0]["l3_dich_nghia"] = None
+        pages[1]["l2_phien_am"] = "  "
+        self.assertEqual(self._run(scan, {**RECORD, "pages": pages}), [])
