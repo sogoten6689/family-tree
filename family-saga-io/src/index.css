@@ -209,3 +209,45 @@
     padding: 1rem 1.25rem;
   }
 }
+
+/* Sidebar nền xanh dương (AppShell) — đặt NGOÀI @layer để thắng style của
+ * antd Menu theme="dark" (selector :where(.css-…) có specificity 0). Màu lấy
+ * từ --sidebar-* ở :root/.dark phía trên. */
+.app-sidebar .ant-menu-dark .ant-menu-item,
+.app-sidebar .ant-menu-dark .ant-menu-submenu-title {
+  color: hsl(var(--sidebar-foreground) / 0.85);
+}
+.app-sidebar .ant-menu-dark .ant-menu-sub.ant-menu-inline {
+  background: transparent;
+}
+.app-sidebar .ant-menu-dark .ant-menu-item:not(.ant-menu-item-selected):hover,
+.app-sidebar .ant-menu-dark .ant-menu-submenu-title:hover {
+  color: hsl(var(--sidebar-foreground));
+  background: hsl(var(--sidebar-accent));
+}
+.app-sidebar .ant-menu-dark .ant-menu-item-selected {
+  color: hsl(var(--sidebar-primary-foreground));
+  background: hsl(var(--sidebar-primary));
+  font-weight: 500;
+}
+
+/* Nút ở account slot của sidebar: primary mặc định (xanh) bị chìm vào nền
+ * xanh — đảo thành nền sáng chữ xanh; nút thường thành viền/chữ sáng. */
+.app-sidebar .ant-btn-variant-solid.ant-btn-color-primary {
+  color: hsl(var(--sidebar-primary-foreground));
+  background: hsl(var(--sidebar-primary));
+}
+.app-sidebar .ant-btn-variant-outlined.ant-btn-color-default:not(.ant-btn-dangerous) {
+  color: hsl(var(--sidebar-foreground));
+  background: transparent;
+  border-color: hsl(var(--sidebar-foreground) / 0.6);
+}
+.app-sidebar .ant-btn-variant-solid.ant-btn-color-primary:not(:disabled):hover {
+  color: hsl(var(--sidebar-primary-foreground));
+  background: hsl(var(--sidebar-primary) / 0.9);
+}
+.app-sidebar .ant-btn-variant-outlined.ant-btn-color-default:not(.ant-btn-dangerous):not(:disabled):hover {
+  color: hsl(var(--sidebar-foreground));
+  background: hsl(var(--sidebar-accent));
+  border-color: hsl(var(--sidebar-foreground));
+}

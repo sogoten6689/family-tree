@@ -30,14 +30,9 @@ export function syncAntdTokensToCssVars(
   set("--brand-light", toHslChannels(token.colorPrimaryBg, token.colorBgContainer));
   set("--brand-foreground", toHslChannels(token.colorPrimaryText));
   set("--radius", `${token.borderRadius}px`);
-  set("--sidebar-background", toHslChannels(token.colorBgContainer));
-  set("--sidebar-foreground", toHslChannels(token.colorText));
-  set("--sidebar-primary", toHslChannels(token.colorPrimary));
-  set("--sidebar-border", toHslChannels(token.colorBorder));
-  set("--sidebar-ring", toHslChannels(token.colorPrimary));
-  set("--sidebar-accent", toHslChannels(token.colorFillAlter, token.colorBgContainer));
-  set("--sidebar-accent-foreground", toHslChannels(token.colorText));
-  set("--sidebar-primary-foreground", toHslChannels(token.colorTextLightSolid));
+  // --sidebar-* KHÔNG sync từ token: sidebar có bảng màu riêng (nền xanh
+  // dương, chữ trắng) khai báo trong index.css cho cả light/dark. Inline
+  // style ở đây sẽ đè mất :root của index.css.
   set("--antd-font-size", `${token.fontSize}px`);
   set("--antd-control-height", `${token.controlHeight}px`);
 }

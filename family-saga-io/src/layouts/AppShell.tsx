@@ -59,14 +59,14 @@ const AppShell = ({
         onBreakpoint={setCollapsed}
         trigger={null}
         theme="dark"
-        className="!fixed !inset-y-0 !left-0 z-10 flex h-screen flex-col overflow-y-auto border-r border-border !bg-[hsl(var(--sidebar-background))]"
+        className="app-sidebar !fixed !inset-y-0 !left-0 z-10 flex h-screen flex-col overflow-y-auto border-r border-border !bg-[hsl(var(--sidebar-background))]"
       >
         <div className="px-5 py-6">
-          <Typography.Title level={5} className="!mb-1">
+          <Typography.Title level={5} className="!mb-1 !text-[hsl(var(--sidebar-foreground))]">
             {panelTitle}
           </Typography.Title>
           {panelSubtitle != null && (
-            <Typography.Text type="secondary" className="text-xs">
+            <Typography.Text className="text-xs !text-[hsl(var(--sidebar-foreground)/0.75)]">
               {panelSubtitle}
             </Typography.Text>
           )}
