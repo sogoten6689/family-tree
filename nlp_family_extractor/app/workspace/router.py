@@ -91,6 +91,9 @@ class UserScanResponse(BaseModel):
     hannom_text: Optional[str] = None
     transliteration_text: Optional[str] = None
     ocr_bbox: Optional[List[Dict[str, Any]]] = None
+    # Vote OCR theo từng trang (pipeline v2 / corpus import) — để mở lại 1 bộ
+    # gia phả vẫn xem được panel các bước, không chỉ ngay sau khi phân tích.
+    ocr_vote_meta: Optional[List[Dict[str, Any]]] = None
 
 
 class UserScanListResponse(BaseModel):
@@ -271,17 +274,34 @@ def _scan_to_gia_pha_item(scan: UserScan, version_repo: GiaPhaVersionRepository)
     )
 
 
-def _tree_to_gia_pha_item(tree: Dict[str, Any]) -> GiaPhaItem:
+def _tree_to_gia_pha_item(
+    tree: Dict[str, Any],
+    source_scan: Optional[UserScan] = None,
+    version_repo: Optional[GiaPhaVersionRepository] = None,
+    *,
+    expose_scan: bool = False,
+) -> GiaPhaItem:
+    """Cây đã dựng. Mã hiển thị lấy từ bộ gia phả nguồn (scan) — trước đây
+    dùng id kỹ thuật của cây và ghi sai ma_dinh_danh_pending=False. Cây không
+    có bộ nguồn → id cây + pending=True (chưa có mã chính thức).
+    expose_scan=False (khách): chỉ hiện mã, không lộ scan_id/version riêng tư."""
+    display_id, pending = _scan_display_id(source_scan) if source_scan else (tree["id"], True)
+    current_version = None
+    if expose_scan and source_scan is not None and version_repo is not None and source_scan.current_version_id:
+        version = version_repo.get(source_scan.current_version_id)
+        if version is not None:
+            current_version = _item_version_from(version, version_repo.steps_for(version.id))
     return GiaPhaItem(
-        id=tree["id"],
-        ma_dinh_danh_pending=False,
+        id=display_id,
+        ma_dinh_danh_pending=pending,
         title=tree["name"],
         status="built",
         is_public=bool(tree.get("is_public")),
         updated_at=tree["updated_at"],
+        scan_id=source_scan.id if (expose_scan and source_scan is not None) else None,
         tree_id=tree["id"],
         node_count=tree.get("node_count"),
-        current_version=None,
+        current_version=current_version,
     )
 
 
@@ -382,7 +402,13 @@ def create_workspace_router(
         except Exception as error:
             _raise_store_error(error)
 
-        items = [_tree_to_gia_pha_item(tree) for tree in trees]
+        source_scans = scans.by_family_tree_ids([tree["id"] for tree in trees])
+        items = [
+            _tree_to_gia_pha_item(
+                tree, source_scans.get(tree["id"]), versions, expose_scan=current_user is not None
+            )
+            for tree in trees
+        ]
         items.extend(_scan_to_gia_pha_item(scan, versions) for scan in pending_scans)
         return GiaPhaListResponse(total=len(items), items=items)
 

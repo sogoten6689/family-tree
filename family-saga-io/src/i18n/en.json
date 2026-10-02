@@ -317,7 +317,9 @@
       "line_majority_override": "Backbone overridden",
       "line_confirmed_majority": "Backbone kept (majority)",
       "line_no_majority": "Tie"
-    }
+    },
+    "stepNoVoteData": "No multi-engine OCR / vote data for this item (pipeline v1).",
+    "stepPage": "Page"
   },
   "notFound": {
     "subtitle": "Page not found",
@@ -643,7 +645,8 @@
     "detail": "Details",
     "pendingCode": "No official code yet",
     "empty": "No genealogy records yet",
-    "uploadNew": "Upload new"
+    "uploadNew": "Upload new",
+    "versions": "Versions"
   },
   "llmImport": {
     "tab": "Versions & LLM import",

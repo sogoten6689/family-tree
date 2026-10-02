@@ -43,6 +43,14 @@ class UserScanRepository:
     def get(self, scan_id: int) -> Optional[UserScan]:
         return self._db.get(UserScan, scan_id)
 
+    def by_family_tree_ids(self, tree_ids: List[str]) -> dict[str, UserScan]:
+        """Scan nguồn của các cây đã dựng (để danh sách Gia phả hiện đúng mã
+        định danh của bộ, không phải id kỹ thuật của cây)."""
+        if not tree_ids:
+            return {}
+        stmt = select(UserScan).where(UserScan.family_tree_id.in_(tree_ids))
+        return {scan.family_tree_id: scan for scan in self._db.scalars(stmt).all() if scan.family_tree_id}
+
     def count_by_user(self, user_id: int) -> int:
         stmt = select(func.count()).select_from(UserScan).where(UserScan.user_id == user_id)
         return int(self._db.scalar(stmt) or 0)
@@ -141,25 +149,41 @@ class UserScanRepository:
         quy_mo: str,
         hinh_thuc: str,
         ho_toc: str,
-        dia_danh: str,
+        dia_danh_ngan: str,
+        so_catalogue: int,
         nam_soan_goc: int,
     ) -> UserScan:
-        """Lưu 5 input đã xác nhận và tính lại ma_dinh_danh (F-code). Số thứ tự
-        3 chữ số = đếm số ma_dinh_danh đã có trong hệ thống +1 (tăng dần theo
-        thứ tự xác nhận thật, không suy đoán trước)."""
+        """Lưu input đã xác nhận + tính ma_dinh_danh. Số thứ tự 3 chữ số
+        (`so_catalogue`) do NGƯỜI NHẬP điền theo đúng thứ tự trong catalogue
+        của thầy — KHÔNG tự đếm (bản trước đếm số mã đã có +1, sai quy ước).
+        Raise ValueError nếu số ngoài 1–999 hoặc đã có bộ khác dùng."""
+        if not 1 <= so_catalogue <= 999:
+            raise ValueError("Số catalogue phải từ 001 đến 999.")
+        code = build_ma_dinh_danh(quy_mo, hinh_thuc, ho_toc, dia_danh_ngan, so_catalogue, nam_soan_goc)
+        clash = self._db.scalar(
+            select(UserScan).where(
+                UserScan.id != scan.id,
+                UserScan.ma_dinh_danh.like(f"%-{so_catalogue:03d}-%"),
+            )
+        )
+        if clash is not None:
+            raise ValueError(f"Số catalogue {so_catalogue:03d} đã dùng cho {clash.ma_dinh_danh}.")
         scan.quy_mo = quy_mo
         scan.hinh_thuc = hinh_thuc
         scan.ho_toc = ho_toc
-        scan.dia_danh = dia_danh
         scan.nam_soan_goc = nam_soan_goc
-        existing_count = int(
-            self._db.scalar(
-                select(func.count()).select_from(UserScan).where(UserScan.ma_dinh_danh.isnot(None))
-            )
-            or 0
-        )
-        id_seq = existing_count + 1
-        scan.ma_dinh_danh = build_ma_dinh_danh(quy_mo, hinh_thuc, ho_toc, dia_danh, id_seq, nam_soan_goc)
+        scan.ma_dinh_danh = code
+        self._db.add(scan)
+        self._db.commit()
+        self._db.refresh(scan)
+        return scan
+
+    def set_corpus_identifiers(self, scan: UserScan, fields: dict[str, Any]) -> UserScan:
+        """Ghi mã định danh + thông tin đi kèm ĐÃ CHỐT ở catalogue nghiên cứu
+        (chép nguyên văn, không tính lại) — chỉ dùng khi import corpus."""
+        for key in ("ma_dinh_danh", "quy_mo", "hinh_thuc", "ho_toc", "dia_danh", "nam_soan_goc", "nien_dai_mo_ta"):
+            if key in fields:
+                setattr(scan, key, fields[key])
         self._db.add(scan)
         self._db.commit()
         self._db.refresh(scan)

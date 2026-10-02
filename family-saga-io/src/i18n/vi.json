@@ -317,7 +317,9 @@
       "line_majority_override": "Ghi đè backbone",
       "line_confirmed_majority": "Giữ backbone (đa số)",
       "line_no_majority": "Hoà phiếu"
-    }
+    },
+    "stepNoVoteData": "Không có dữ liệu OCR nhiều engine / vote cho bộ này (pipeline v1).",
+    "stepPage": "Trang"
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",
@@ -643,7 +645,8 @@
     "detail": "Chi tiết",
     "pendingCode": "Chưa có mã chính thức",
     "empty": "Chưa có bộ gia phả nào",
-    "uploadNew": "Tải lên mới"
+    "uploadNew": "Tải lên mới",
+    "versions": "Phiên bản"
   },
   "llmImport": {
     "tab": "Phiên bản & nhập LLM",

@@ -44,6 +44,7 @@ def ensure_workspace_schema() -> None:
     )
     _migrate_gia_pha_columns(engine)
     _migrate_llm_import_columns(engine)
+    _migrate_identifier_columns(engine)
 
 
 def _migrate_gia_pha_columns(engine) -> None:
@@ -102,6 +103,23 @@ def _migrate_llm_import_columns(engine) -> None:
             )
         if "pairs" not in _existing_columns(conn, "gia_pha_page_content"):
             conn.execute(text("ALTER TABLE gia_pha_page_content ADD COLUMN pairs JSON NULL"))
+
+
+def _migrate_identifier_columns(engine) -> None:
+    """dia_danh 128 -> 512 (catalogue ghi toàn văn địa danh, có bản ~170 ký tự)
+    + nien_dai_mo_ta. Idempotent."""
+    with engine.begin() as conn:
+        rows = conn.execute(
+            text(
+                "SELECT COLUMN_NAME, CHARACTER_MAXIMUM_LENGTH FROM information_schema.COLUMNS "
+                "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'user_scans'"
+            )
+        ).fetchall()
+        lengths = {row[0]: row[1] for row in rows}
+        if "dia_danh" in lengths and (lengths["dia_danh"] or 0) < 512:
+            conn.execute(text("ALTER TABLE user_scans MODIFY COLUMN dia_danh VARCHAR(512) NULL"))
+        if "nien_dai_mo_ta" not in lengths:
+            conn.execute(text("ALTER TABLE user_scans ADD COLUMN nien_dai_mo_ta TEXT NULL"))
 
 
 def _migrate_user_scans_columns(engine) -> None:

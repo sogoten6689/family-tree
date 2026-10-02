@@ -62,3 +62,36 @@ def build_ma_dinh_danh(
         raise ValueError(f"Không suy ra được mã Họ cho {ho!r}")
     dia_danh_slug = slugify_dia_danh(dia_danh_ngan)
     return f"F-{letter}-{ho_code}-{dia_danh_slug}-{id_seq:03d}-{nam_goc}"
+
+
+# F-{chữ}-{họ 2 chữ}-{địa danh}-{3 số}-{năm} — để nhận diện mã ĐÃ CHỐT trong
+# catalogue nghiên cứu (chép nguyên văn khi import, không tính lại).
+MA_DINH_DANH_PATTERN = re.compile(r"^F-([A-V])-([A-Z]{2})-([A-Za-z]+)-(\d{3})-(\d{3,4})$")
+
+
+def corpus_identifier_fields(record: dict) -> tuple[dict, list[str]]:
+    """Trường định danh từ 1 record hannom-bilingual-dataset để ghi vào
+    UserScan. `ma_dinh_danh` chỉ lấy khi đúng cấu trúc; năm soạn gốc lấy từ
+    đoạn cuối của mã (đã được chốt), KHÔNG đọc từ văn mô tả `nien_dai`.
+    Trả về (fields, cảnh báo)."""
+    fields: dict = {}
+    warnings: list[str] = []
+    for src, dst in (("quy_mo", "quy_mo"), ("hinh_thuc", "hinh_thuc"), ("ho", "ho_toc")):
+        value = record.get(src)
+        if isinstance(value, str) and value.strip():
+            fields[dst] = value.strip()
+    dia_danh = record.get("dia_danh")
+    if isinstance(dia_danh, str) and dia_danh.strip():
+        fields["dia_danh"] = dia_danh.strip()[:512]
+    nien_dai = record.get("nien_dai")
+    if isinstance(nien_dai, str) and nien_dai.strip():
+        fields["nien_dai_mo_ta"] = nien_dai.strip()
+    code = record.get("ma_dinh_danh")
+    if isinstance(code, str) and code.strip():
+        match = MA_DINH_DANH_PATTERN.match(code.strip())
+        if match:
+            fields["ma_dinh_danh"] = code.strip()
+            fields["nam_soan_goc"] = int(match.group(5))
+        else:
+            warnings.append(f"ma_dinh_danh {code!r} sai cấu trúc F-code — bỏ qua, không ghi.")
+    return fields, warnings

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, Button, Empty, Table, Tag, Typography } from "antd";
+import { Alert, Button, Empty, Space, Table, Tag, Typography } from "antd";
 import { BranchesOutlined, PlusOutlined, ReloadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -148,18 +148,31 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           {
             title: t("giaPhaList.columnActions", { defaultValue: "Hành động" }).toUpperCase(),
             key: "actions",
-            width: 120,
+            width: 200,
             align: "right",
             render: (_: unknown, record: GiaPhaItem) => (
-              <Button
-                type="link"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  goToDetail(record);
-                }}
-              >
-                {t("giaPhaList.detail", { defaultValue: "Chi tiết" })}
-              </Button>
+              <Space size={0}>
+                <Button
+                  type="link"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    goToDetail(record);
+                  }}
+                >
+                  {t("giaPhaList.detail", { defaultValue: "Chi tiết" })}
+                </Button>
+                {scope !== "public" && record.scan_id != null && (
+                  <Button
+                    type="link"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      navigate(`/user/documents/${record.scan_id}?tab=versions`);
+                    }}
+                  >
+                    {t("giaPhaList.versions", { defaultValue: "Phiên bản" })}
+                  </Button>
+                )}
+              </Space>
             ),
           },
         ]}

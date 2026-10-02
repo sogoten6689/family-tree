@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 from typing import Any
 
-from sqlalchemy import JSON, Boolean, DateTime, Enum, ForeignKey, Integer, String
+from sqlalchemy import JSON, Boolean, DateTime, Enum, ForeignKey, Integer, String, Text
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -79,8 +79,12 @@ class UserScan(Base):
     quy_mo: Mapped[str | None] = mapped_column(String(32), nullable=True)
     hinh_thuc: Mapped[str | None] = mapped_column(String(32), nullable=True)
     ho_toc: Mapped[str | None] = mapped_column(String(64), nullable=True)
-    dia_danh: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    # Toàn văn địa danh như catalogue ghi (có thể dài, vd. "Thôn Trung Tự, tổng
+    # Kim Liên, …"); phần rút gọn trong mã (vd "TrungTu") do người đọc chốt.
+    dia_danh: Mapped[str | None] = mapped_column(String(512), nullable=True)
     nam_soan_goc: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # Mô tả niên đại kèm bằng chứng (vd "Thiệu Trị năm 5 (Ất Tỵ) = 1845 — …").
+    nien_dai_mo_ta: Mapped[str | None] = mapped_column(Text, nullable=True)
     ma_dinh_danh: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
 
 

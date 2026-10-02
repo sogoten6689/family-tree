@@ -32,6 +32,8 @@ cấu hình qua Admin › Developer › Cấu hình, không cần set lại ở 
 
     python3 tools/import_hannom_bilingual_corpus.py --dry-run   # xem trước
     python3 tools/import_hannom_bilingual_corpus.py             # import thật
+    python3 tools/import_hannom_bilingual_corpus.py --backfill --dry-run
+        # bộ đã import trước: xem sẽ ghi mã định danh đã chốt + tạo trang/version
 """
 from __future__ import annotations
 
@@ -59,6 +61,7 @@ from app.family_tree_store import (  # noqa: E402
     MySqlFamilyTreeStore,
 )
 from app.gemini_service import normalize_balkan_nodes  # noqa: E402
+from app.workspace.ma_dinh_danh import corpus_identifier_fields  # noqa: E402
 from app.workspace.models import OcrStatus, TreeStatus  # noqa: E402
 from app.workspace.repository import (  # noqa: E402
     GiaPhaPageRepository,
@@ -216,6 +219,41 @@ def _create_pages_version_and_content(
     # khi tạo scan ở main() — không cần sync lại ở đây.
 
 
+def backfill_structure(
+    *,
+    scan: Any,
+    record: Dict[str, Any],
+    scans: UserScanRepository,
+    pages_repo: GiaPhaPageRepository,
+    versions_repo: GiaPhaVersionRepository,
+    owner_id: int,
+    dry_run: bool,
+) -> List[str]:
+    """--backfill cho scan đã import trước: (1) mã định danh + thông tin đi
+    kèm ĐÃ CHỐT ở catalogue (chép nguyên văn), (2) trang + version v1 nếu scan
+    chưa có (bản ghi import trước khi có mô hình trang/version). Idempotent:
+    chỉ ghi phần còn thiếu/khác. Trả về danh sách việc đã (hoặc sẽ) làm."""
+    actions: List[str] = []
+    fields, warnings = corpus_identifier_fields(record)
+    actions += [f"CẢNH BÁO: {w}" for w in warnings]
+    changed = {k: v for k, v in fields.items() if getattr(scan, k, None) != v}
+    if changed:
+        actions.append("mã định danh/thông tin: " + ", ".join(sorted(changed)))
+        if not dry_run:
+            scans.set_corpus_identifiers(scan, changed)
+    if not pages_repo.list_by_scan(scan.id) and record.get("pages"):
+        actions.append(f"tạo {len(record['pages'])} trang + version v1")
+        if not dry_run:
+            _create_pages_version_and_content(
+                pages_repo=pages_repo,
+                versions_repo=versions_repo,
+                user_scan_id=scan.id,
+                record=record,
+                owner_id=owner_id,
+            )
+    return actions
+
+
 def _title(record: Dict[str, Any]) -> str:
     return (
         record.get("ten_han_viet")
@@ -242,6 +280,11 @@ def main() -> int:
         help="Tài khoản sở hữu các UserScan/FamilyTree import vào (mặc định: admin@giapha.com)",
     )
     parser.add_argument("--dry-run", action="store_true", help="Chỉ in ra, không ghi DB")
+    parser.add_argument(
+        "--backfill",
+        action="store_true",
+        help="Với bộ đã import trước: ghi mã định danh đã chốt + tạo trang/version v1 nếu còn thiếu",
+    )
     args = parser.parse_args()
 
     data_root = _default_data_root()
@@ -308,9 +351,24 @@ def main() -> int:
                     vote_meta = _vote_meta(record)
                     if vote_meta:
                         backfill_kwargs["ocr_vote_meta"] = vote_meta
-                if backfill_kwargs and not args.dry_run:
-                    scans.update(existing_scan, **backfill_kwargs)
-                    print(f"[BACKFILL] {doc_id} -> scan#{existing_scan.id} ({', '.join(backfill_kwargs)})")
+                actions = []
+                if backfill_kwargs:
+                    actions.append("text: " + ", ".join(backfill_kwargs))
+                    if not args.dry_run:
+                        scans.update(existing_scan, **backfill_kwargs)
+                if args.backfill:
+                    actions += backfill_structure(
+                        scan=existing_scan,
+                        record=record,
+                        scans=scans,
+                        pages_repo=pages_repo,
+                        versions_repo=versions_repo,
+                        owner_id=owner.id,
+                        dry_run=args.dry_run,
+                    )
+                if actions:
+                    tag = "DRY-RUN BACKFILL" if args.dry_run else "BACKFILL"
+                    print(f"[{tag}] {doc_id} -> scan#{existing_scan.id}: " + "; ".join(actions))
                     backfilled += 1
                     continue
                 print(f"[SKIP đã import] {doc_id}")
@@ -341,6 +399,11 @@ def main() -> int:
                 ocr_vote_meta=_vote_meta(record),
             )
             scans.update(scan, ocr_status=OcrStatus.COMPLETED, request_id=request_id)
+            identifier_fields, identifier_warnings = corpus_identifier_fields(record)
+            for warning in identifier_warnings:
+                print(f"[CẢNH BÁO] {doc_id}: {warning}")
+            if identifier_fields:
+                scans.set_corpus_identifiers(scan, identifier_fields)
             _create_pages_version_and_content(
                 pages_repo=pages_repo,
                 versions_repo=versions_repo,
@@ -373,7 +436,7 @@ def main() -> int:
             "\nTổng kết — "
             f"có cây: {imported_with_tree}, chỉ có text/scan (chưa có cây): {imported_text_only}, "
             f"bỏ qua (draft/chưa có text): {skipped_draft}, bỏ qua (đã import trước): {skipped_dup}, "
-            f"backfill (hannom/phiên âm/vote): {backfilled}, tổng record đọc được: {len(records)}"
+            f"backfill: {backfilled}, tổng record đọc được: {len(records)}"
         )
     return 0
 
