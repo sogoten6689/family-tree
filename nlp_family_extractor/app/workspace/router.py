@@ -184,6 +184,7 @@ class GiaPhaItem(BaseModel):
     id: str
     ma_dinh_danh_pending: bool = False
     ma_dinh_danh_nguon: Optional[str] = None  # "catalogue" | "gemini"
+    ho_toc: Optional[str] = None  # để tìm kiếm theo họ
     title: str
     status: str  # "built" | "pending"
     is_public: Optional[bool] = None
@@ -275,6 +276,7 @@ def _scan_to_gia_pha_item(scan: UserScan, version_repo: GiaPhaVersionRepository)
         id=gia_pha_id,
         ma_dinh_danh_pending=pending,
         ma_dinh_danh_nguon=scan.ma_dinh_danh_nguon,
+        ho_toc=scan.ho_toc,
         title=scan.title,
         status="built" if scan.tree_status == TreeStatus.CREATED else "pending",
         updated_at=scan.uploaded_at.isoformat(),
@@ -305,6 +307,7 @@ def _tree_to_gia_pha_item(
         id=display_id,
         ma_dinh_danh_pending=pending,
         ma_dinh_danh_nguon=source_scan.ma_dinh_danh_nguon if source_scan else None,
+        ho_toc=source_scan.ho_toc if source_scan else None,
         title=tree["name"],
         status="built",
         is_public=bool(tree.get("is_public")),

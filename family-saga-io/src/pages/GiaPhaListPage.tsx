@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
-import { Alert, Button, Empty, Space, Table, Tag, Typography } from "antd";
+import { useEffect, useMemo, useState } from "react";
+import { Alert, Button, Empty, Input, Select, Space, Table, Tag, Typography } from "antd";
 import { BranchesOutlined, PlusOutlined, ReloadOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { listGiaPha, type GiaPhaItem } from "@/lib/giaPhaApi";
+import {
+  filterGiaPha,
+  type CodeFilter,
+  type GiaPhaFilters,
+  type SourceFilter,
+  type StatusFilter,
+} from "@/lib/giaPhaSearch";
 import { formatTreeDate } from "@/lib/familyTreeUtils";
 
 export type GiaPhaListScope = "public" | "user" | "admin";
@@ -26,6 +33,27 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   const [items, setItems] = useState<GiaPhaItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [page, setPage] = useState(1);
+
+  // Từ khoá giữ trên URL (?q=) để chia sẻ link; bộ lọc chỉ trong trang.
+  const [filters, setFilters] = useState<GiaPhaFilters>({
+    q: searchParams.get("q") ?? "",
+    status: "all",
+    code: "all",
+    source: "all",
+  });
+  const visibleItems = useMemo(() => filterGiaPha(items, filters), [items, filters]);
+  const updateFilters = (patch: Partial<GiaPhaFilters>) => {
+    setFilters((prev) => ({ ...prev, ...patch }));
+    setPage(1);
+    if (patch.q !== undefined) {
+      const next = new URLSearchParams(searchParams);
+      if (patch.q.trim()) next.set("q", patch.q);
+      else next.delete("q");
+      setSearchParams(next, { replace: true });
+    }
+  };
 
   const detailBase = scope === "admin" ? "/admin/gia-pha" : scope === "user" ? "/user/gia-pha" : "/gia-pha";
   const uploadPath = scope === "public" ? "/" : "/user/document-reader";
@@ -79,6 +107,57 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
         </div>
       </div>
 
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <Input.Search
+          allowClear
+          className="max-w-md"
+          value={filters.q}
+          onChange={(event) => updateFilters({ q: event.target.value })}
+          placeholder={t("giaPhaList.searchPlaceholder", { defaultValue: "Tìm theo mã, tên, họ…" })}
+          aria-label={t("giaPhaList.search", { defaultValue: "Tìm kiếm gia phả" })}
+        />
+        <Select<StatusFilter>
+          value={filters.status}
+          onChange={(status) => updateFilters({ status })}
+          aria-label={t("giaPhaList.filterStatus", { defaultValue: "Trạng thái" })}
+          style={{ minWidth: 150 }}
+          options={[
+            { value: "all", label: t("giaPhaList.allStatus", { defaultValue: "Mọi trạng thái" }) },
+            { value: "built", label: t("giaPhaList.statusBuilt", { defaultValue: "Đã dựng cây" }) },
+            { value: "pending", label: t("giaPhaList.statusPending", { defaultValue: "Chờ dựng cây" }) },
+          ]}
+        />
+        <Select<CodeFilter>
+          value={filters.code}
+          onChange={(code) => updateFilters({ code })}
+          aria-label={t("giaPhaList.filterCode", { defaultValue: "Mã định danh" })}
+          style={{ minWidth: 150 }}
+          options={[
+            { value: "all", label: t("giaPhaList.allCode", { defaultValue: "Có/chưa có mã" }) },
+            { value: "has", label: t("giaPhaList.hasCode", { defaultValue: "Đã có mã" }) },
+            { value: "none", label: t("giaPhaList.pendingCode", { defaultValue: "Chưa có mã chính thức" }) },
+          ]}
+        />
+        <Select<SourceFilter>
+          value={filters.source}
+          onChange={(source) => updateFilters({ source })}
+          aria-label={t("giaPhaList.filterSource", { defaultValue: "Nguồn mã" })}
+          style={{ minWidth: 150 }}
+          options={[
+            { value: "all", label: t("giaPhaList.allSource", { defaultValue: "Mọi nguồn mã" }) },
+            { value: "catalogue", label: t("maDinhDanh.sourceCatalogue", { defaultValue: "Đã chốt" }) },
+            { value: "gemini", label: t("maDinhDanh.sourceGemini", { defaultValue: "Tự tạo (Gemini)" }) },
+          ]}
+        />
+        <Typography.Text type="secondary">
+          {t("giaPhaList.resultCount", {
+            defaultValue: "{{shown}}/{{total}} bộ",
+            shown: visibleItems.length,
+            total: items.length,
+          })}
+        </Typography.Text>
+      </div>
+
       {error && (
         <Alert
           type="warning"
@@ -93,12 +172,22 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
       <Table
         rowKey="id"
         loading={loading}
-        dataSource={items}
-        pagination={{ pageSize: 10, showSizeChanger: true, pageSizeOptions: ["10", "20", "50"] }}
+        dataSource={visibleItems}
+        pagination={{
+          current: page,
+          onChange: setPage,
+          pageSize: 10,
+          showSizeChanger: true,
+          pageSizeOptions: ["10", "20", "50"],
+        }}
         locale={{
           emptyText: (
             <Empty
-              description={t("giaPhaList.empty", { defaultValue: "Chưa có bộ gia phả nào" })}
+              description={
+                items.length > 0
+                  ? t("giaPhaList.noMatch", { defaultValue: "Không có bộ nào khớp tìm kiếm/bộ lọc" })
+                  : t("giaPhaList.empty", { defaultValue: "Chưa có bộ gia phả nào" })
+              }
               image={Empty.PRESENTED_IMAGE_SIMPLE}
             />
           ),

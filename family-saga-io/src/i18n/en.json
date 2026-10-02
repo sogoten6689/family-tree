@@ -646,7 +646,18 @@
     "pendingCode": "No official code yet",
     "empty": "No genealogy records yet",
     "uploadNew": "Upload new",
-    "versions": "Versions"
+    "versions": "Versions",
+    "searchPlaceholder": "Search by identifier, title, surname…",
+    "search": "Search genealogies",
+    "filterStatus": "Status",
+    "allStatus": "All statuses",
+    "filterCode": "Identifier",
+    "allCode": "With/without identifier",
+    "hasCode": "Has identifier",
+    "filterSource": "Identifier source",
+    "allSource": "All sources",
+    "resultCount": "{{shown}}/{{total}} items",
+    "noMatch": "No item matches the search/filters"
   },
   "llmImport": {
     "tab": "Versions & LLM import",

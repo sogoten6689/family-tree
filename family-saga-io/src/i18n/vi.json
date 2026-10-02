@@ -646,7 +646,18 @@
     "pendingCode": "Chưa có mã chính thức",
     "empty": "Chưa có bộ gia phả nào",
     "uploadNew": "Tải lên mới",
-    "versions": "Phiên bản"
+    "versions": "Phiên bản",
+    "searchPlaceholder": "Tìm theo mã, tên, họ…",
+    "search": "Tìm kiếm gia phả",
+    "filterStatus": "Trạng thái",
+    "allStatus": "Mọi trạng thái",
+    "filterCode": "Mã định danh",
+    "allCode": "Có/chưa có mã",
+    "hasCode": "Đã có mã",
+    "filterSource": "Nguồn mã",
+    "allSource": "Mọi nguồn mã",
+    "resultCount": "{{shown}}/{{total}} bộ",
+    "noMatch": "Không có bộ nào khớp tìm kiếm/bộ lọc"
   },
   "llmImport": {
     "tab": "Phiên bản & nhập LLM",
