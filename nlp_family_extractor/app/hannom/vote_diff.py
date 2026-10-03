@@ -49,8 +49,12 @@ def voted_line_segments(voted: str, disagreeing: list[dict[str, Any]]) -> list[d
 
 def annotate_vote_diffs(vote_meta: dict[str, Any] | None) -> dict[str, Any] | None:
     """Gắn `voted_segments` vào từng uncertain span và `diff` vào từng engine
-    bất đồng. Không đổi field có sẵn; gọi lại nhiều lần cho cùng kết quả."""
-    if not vote_meta:
+    bất đồng. Không đổi field có sẵn; gọi lại nhiều lần cho cùng kết quả.
+
+    Chỉ áp cho meta vote theo dòng (schema 1). Meta `schema_version` 2 (vote theo
+    từng chữ, app/hannom/vote_char.py) đã có phiếu từng vị trí trong `slots` →
+    trả nguyên."""
+    if not vote_meta or vote_meta.get("schema_version") == 2:
         return vote_meta
     for span in vote_meta.get("uncertain_spans") or []:
         voted = span.get("voted_line") or ""

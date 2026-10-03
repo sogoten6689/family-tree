@@ -72,5 +72,13 @@ class AnnotateVoteDiffsTest(unittest.TestCase):
         self.assertIsNone(annotate_vote_diffs(None))
 
 
+class SchemaV2PassThroughTest(unittest.TestCase):
+    def test_v2_meta_returned_unchanged(self) -> None:
+        meta = {"schema_version": 2, "vote_method": "char_majority", "slots": [], "uncertain_spans": [{"voted_line": "家", "disagreeing": []}]}
+        before = repr(meta)
+        self.assertIs(annotate_vote_diffs(meta), meta)
+        self.assertEqual(repr(meta), before)
+
+
 if __name__ == "__main__":
     unittest.main()

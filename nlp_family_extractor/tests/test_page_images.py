@@ -175,3 +175,20 @@ class PageDetailEndpointTest(_PagesApi, unittest.TestCase):
         self.assertEqual(self.client.get(f"/api/user/documents/{self.scan.id}/pages/99").status_code, 404)
         self.user = self.db.query(User).filter_by(email="o@x.l").one()
         self.assertEqual(self.client.get(f"/api/user/documents/{self.scan.id}/pages/1").status_code, 404)
+
+
+class PageDetailVoteV2Test(_PagesApi, unittest.TestCase):
+    def test_v2_vote_meta_returned_as_is(self) -> None:
+        from app.hannom.vote_char import build_vote_meta, vote_page
+
+        lines = {"paddle_v6": ["先祖考王品"], "kim": ["先祖考三品"], "deepseek": ["先祖考三品"], "gv": ["先祖考三品"]}
+        meta = build_vote_meta(vote_page(lines, ["paddle_v6"]), lines)
+        page = GiaPhaPageRepository(self.db).list_by_scan(self.scan.id)[0]
+        GiaPhaPageRepository(self.db).upsert_content(version_id=self.version.id, page_id=page.id, ocr_vote_meta=meta)
+        body = self.client.get(f"/api/user/documents/{self.scan.id}/pages/1").json()
+        got = body["ocr_vote_meta"]
+        self.assertEqual((got["schema_version"], got["vote_method"]), (2, "char_majority"))
+        self.assertEqual(got["slots"], meta["slots"])
+        # Nền = engine giống đa số (đọc 三) → 三 giữ với 3 phiếu, phiếu 王 của Paddle vẫn lưu.
+        slot = next(s for s in got["slots"] if s["index"] == 3)
+        self.assertEqual((slot["status"], slot["final"], slot["votes"]["王"]), ("kept", "三", ["paddle_v6"]))

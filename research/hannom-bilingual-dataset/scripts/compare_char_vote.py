@@ -1,7 +1,7 @@
 """So vote cũ (theo dòng, record) với vote mới theo từng chữ (vote_char_majority) — offline.
 
 Không ghi vào record. Paddle đọc lại theo thứ tự cột (adapter đã sửa); engine nền
-chọn như cũ (`rank_by_similarity`, cả 4 engine). Ghi thống kê + mẫu tự sửa ra
+chọn bằng `choose_backbone` của backend (bỏ engine lạc đề, hoà → nhiều chữ Hán hơn). Ghi thống kê + mẫu tự sửa ra
 --out (JSON) và cắt ảnh mẫu (--crops) để đối chiếu bằng mắt.
 
 Chạy: python3 scripts/compare_char_vote.py --doc nom-147 --out OUT.json [--crops DIR --sample 20]
@@ -23,8 +23,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _repo_paths import DATA_REPO_ROOT, FAMILY_TREE  # noqa: E402
 from ocr_adapters import paddle_v6  # noqa: E402
 from ocr_adapters.base import first_existing_file, paddle_dir_candidates  # noqa: E402
-from vote_char_majority import find_outliers, han_only, slot_to_dict, vote_page_chars  # noqa: E402
-from vote_ocr import DEFAULT_PRIORITY, load_catalog, rank_by_similarity, results_from_engines  # noqa: E402
+from vote_char_majority import han_only, slot_to_dict, vote_page  # noqa: E402
+from vote_ocr import DEFAULT_PRIORITY, load_catalog, results_from_engines  # noqa: E402
 
 
 def find_record(doc_id: str) -> Path:
@@ -101,11 +101,11 @@ def main() -> int:
             fresh = paddle_v6.load(book, Path(page["l0_image"]).stem, FAMILY_TREE)
             if fresh is not None:
                 results["paddle_v6"] = fresh
-        # Bỏ engine lạc đề TRƯỚC khi chọn nền (vote_page_chars sàng lại + lệch thứ tự).
-        outliers = find_outliers({n: han_only("".join(r.lines)) for n, r in results.items()})
-        ranked = {n: r for n, r in results.items() if n not in outliers} or results
-        backbone = rank_by_similarity(ranked, DEFAULT_PRIORITY)[0][0]
-        vote = vote_page_chars({name: r.lines for name, r in results.items()}, backbone)
+        if not any(han_only("".join(r.lines)) for r in results.values()):
+            continue
+        # Chọn nền + sàng engine theo đúng hàm của backend (app/hannom/vote_char.py).
+        vote = vote_page({name: r.lines for name, r in results.items()}, DEFAULT_PRIORITY)
+        backbone = vote.backbone
         page_status_total[vote.page_status] += 1
         for name, reason in vote.excluded.items():
             excluded_total[(name, reason.split(":")[0])] += 1

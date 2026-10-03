@@ -320,7 +320,25 @@
     },
     "stepNoVoteData": "Không có dữ liệu OCR nhiều engine / vote cho bộ này (pipeline v1).",
     "stepPage": "Trang",
-    "voteShowMore": "Hiện thêm ({{shown}}/{{total}} dòng)"
+    "voteShowMore": "Hiện thêm ({{shown}}/{{total}} dòng)",
+    "voteV2": {
+      "review": "Chữ cần soát",
+      "autoFixed": "Tự sửa (≥3 phiếu)",
+      "suggested": "Đề xuất (2 phiếu)",
+      "tie": "Hoà phiếu",
+      "backbone": "nền",
+      "excluded": "không bỏ phiếu",
+      "chars": "{{n}} chữ",
+      "unaligned": "Chỉ 1 engine đọc được trang này — chưa có gì để đối chiếu, cần soát cả trang.",
+      "legendFixed": "đã tự sửa",
+      "legendReview": "cần xem (2 phiếu / có đề xuất)",
+      "legendTie": "hoà phiếu",
+      "legendClick": "Bấm 1 dòng để xem bảng đối chiếu",
+      "result": "Kết quả",
+      "noteSuggest": "Chữ {{pos}}: đề xuất “{{to}}” thay cho “{{from}}”",
+      "noteFixed": "Chữ {{pos}}: đã sửa “{{from}}” → “{{to}}”",
+      "noteInsert": "Trước chữ {{pos}}: đề xuất thêm “{{text}}”"
+    }
   },
   "notFound": {
     "subtitle": "Trang không tồn tại",

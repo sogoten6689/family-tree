@@ -3,6 +3,8 @@ import { Button, Card, Empty, Select, Space, Steps, Tag, Typography } from "antd
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
+import { VoteCharView } from "./VoteCharView";
+import { engineLabel, isVoteMetaV2, type VoteMetaV2 } from "./voteMetaV2";
 import { VoteDiffLine, type UncertainSpan } from "./VoteDiffLine";
 
 export type EngineOcrInfo = {
@@ -11,13 +13,16 @@ export type EngineOcrInfo = {
   similarity_to_others: number;
 };
 
-export type VoteMeta = {
+/** Meta vote theo dòng (schema 1, cũ). Schema 2 (theo từng chữ): VoteMetaV2. */
+export type VoteMetaV1 = {
   vote_method: string | null;
   engines: Record<string, EngineOcrInfo>;
   uncertain_spans: UncertainSpan[];
   uncertain_rate: number;
   structural_diffs: unknown[];
 };
+
+export type VoteMeta = VoteMetaV1 | VoteMetaV2;
 
 type PipelineStepsPanelProps = {
   pipelineVersion?: string;
@@ -55,7 +60,9 @@ export function PipelineStepsPanel({
   if (!hasData) return null;
 
   const safePage = Math.min(pageIndex, Math.max(pageCount - 1, 0));
-  const pageVoteMeta = voteMeta?.[safePage];
+  const rawPageMeta = voteMeta?.[safePage];
+  const pageMetaV2 = isVoteMetaV2(rawPageMeta) ? rawPageMeta : null;
+  const pageVoteMeta = rawPageMeta && !pageMetaV2 ? (rawPageMeta as VoteMetaV1) : undefined;
   const noVoteData = (
     <Empty
       description={t("docReader.stepNoVoteData", {
@@ -65,12 +72,34 @@ export function PipelineStepsPanel({
     />
   );
   const engineEntries = pageVoteMeta?.engines ? Object.entries(pageVoteMeta.engines) : [];
+  const engineEntriesV2 = pageMetaV2 ? Object.entries(pageMetaV2.engines) : [];
 
   const steps = [
     {
       title: t("docReader.stepOcr"),
       content:
-        engineEntries.length > 0 ? (
+        engineEntriesV2.length > 0 ? (
+          <div className="pipeline-steps-engines">
+            {engineEntriesV2.map(([name, info]) => (
+              <div key={name} className="pipeline-steps-engine">
+                <Text strong>{engineLabel(name)}</Text>
+                <Tag className="ml-2">{t("docReader.voteV2.chars", { defaultValue: "{{n}} chữ", n: info.han_chars })}</Tag>
+                {name === pageMetaV2?.backbone && (
+                  <Tag color="blue">{t("docReader.voteV2.backbone", { defaultValue: "nền" })}</Tag>
+                )}
+                {info.excluded && <Tag title={info.excluded}>{t("docReader.voteV2.excluded", { defaultValue: "không bỏ phiếu" })}</Tag>}
+                {info.excluded && (
+                  <Text type="secondary" className="block text-xs">
+                    {info.excluded}
+                  </Text>
+                )}
+                <Paragraph className="pipeline-steps-engine-text" ellipsis={{ rows: 12, expandable: true }}>
+                  {info.text}
+                </Paragraph>
+              </div>
+            ))}
+          </div>
+        ) : engineEntries.length > 0 ? (
           <div className="pipeline-steps-engines">
             {engineEntries.map(([name, info]) => (
               <div key={name} className="pipeline-steps-engine">
@@ -89,7 +118,9 @@ export function PipelineStepsPanel({
     },
     {
       title: t("docReader.stepVote"),
-      content: pageVoteMeta ? (
+      content: pageMetaV2 ? (
+        <VoteCharView meta={pageMetaV2} />
+      ) : pageVoteMeta ? (
         <div>
           <Paragraph>
             <Text strong>{t("docReader.stepVoteMethod")}: </Text>

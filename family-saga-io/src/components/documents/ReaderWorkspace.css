@@ -80,3 +80,30 @@
 
 /* PageViewer — chữ Hán to hơn để đối chiếu với ảnh */
 .page-viewer-han { font-size: 18px; line-height: 1.8; letter-spacing: 1px; }
+
+/* Vote theo từng chữ (schema 2) — VoteCharView */
+.vote-v2 { display: flex; flex-direction: column; gap: 12px; }
+.vote-v2-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.vote-v2-metric { background: var(--ant-color-fill-quaternary); border-radius: var(--ant-border-radius); padding: 8px 12px; }
+.vote-v2-metric-label { font-size: 12px; }
+.vote-v2-metric-value { font-size: 20px; font-weight: 600; }
+.vote-v2-engines { display: flex; flex-wrap: wrap; gap: 6px; }
+.vote-v2-engine-count { font-size: 12px; }
+.vote-v2-note { display: block; }
+.vote-v2-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--ant-color-text-secondary); }
+.vote-v2-text { border: 1px solid var(--ant-color-border-secondary); border-radius: var(--ant-border-radius); padding: 6px; max-height: 520px; overflow-y: auto; }
+.vote-v2-line { display: flex; gap: 10px; align-items: baseline; width: 100%; padding: 2px 6px; border: 1px solid transparent; border-radius: 6px; background: transparent; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.vote-v2-line:hover { background: var(--ant-color-fill-quaternary); }
+.vote-v2-line.is-selected { border-color: var(--ant-color-primary); background: var(--ant-color-primary-bg); }
+.vote-v2-line-no { min-width: 28px; font-size: 12px; color: var(--ant-color-text-tertiary); }
+.vote-c-fixed { background: var(--ant-color-success-bg); color: var(--ant-color-success-text); border-radius: 3px; }
+.vote-c-review { background: var(--ant-color-warning-bg); color: var(--ant-color-warning-text); border-radius: 3px; }
+.vote-c-tie { background: var(--ant-color-error-bg); color: var(--ant-color-error-text); border-radius: 3px; }
+.vote-c-insert { color: var(--ant-color-warning-text); font-weight: 700; }
+.vote-v2-grid-wrap { overflow-x: auto; }
+.vote-v2-grid { border-collapse: separate; border-spacing: 2px; margin-top: 6px; }
+.vote-v2-grid th { text-align: left; font-family: inherit; font-size: 12px; font-weight: 500; color: var(--ant-color-text-secondary); padding-right: 8px; white-space: nowrap; }
+.vote-v2-grid td { min-width: 1.6em; text-align: center; border-radius: 4px; }
+.vote-v2-grid td.vote-v2-diff { background: var(--ant-color-error-bg); color: var(--ant-color-error-text); }
+.vote-v2-result td { font-weight: 700; border-top: 1px solid var(--ant-color-border-secondary); }
+.vote-v2-notes { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--ant-color-text-secondary); }

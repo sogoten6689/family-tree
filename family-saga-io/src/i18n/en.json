@@ -320,7 +320,25 @@
     },
     "stepNoVoteData": "No multi-engine OCR / vote data for this item (pipeline v1).",
     "stepPage": "Page",
-    "voteShowMore": "Show more ({{shown}}/{{total}} lines)"
+    "voteShowMore": "Show more ({{shown}}/{{total}} lines)",
+    "voteV2": {
+      "review": "Characters to review",
+      "autoFixed": "Auto-fixed (≥3 votes)",
+      "suggested": "Suggested (2 votes)",
+      "tie": "Tied votes",
+      "backbone": "base",
+      "excluded": "not voting",
+      "chars": "{{n}} chars",
+      "unaligned": "Only one engine could read this page — nothing to compare, review the whole page.",
+      "legendFixed": "auto-fixed",
+      "legendReview": "needs a look (2 votes / suggestion)",
+      "legendTie": "tied",
+      "legendClick": "Click a line to see the comparison table",
+      "result": "Result",
+      "noteSuggest": "Char {{pos}}: suggest “{{to}}” instead of “{{from}}”",
+      "noteFixed": "Char {{pos}}: fixed “{{from}}” → “{{to}}”",
+      "noteInsert": "Before char {{pos}}: suggest inserting “{{text}}”"
+    }
   },
   "notFound": {
     "subtitle": "Page not found",
