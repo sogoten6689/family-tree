@@ -217,8 +217,14 @@ Kết quả 19 bộ: tự sửa 1.204 → 1.169; **đề xuất 26.499 → 10.97
 NỀN. Sau sàng: 957 đề xuất, cần soát 80% → 32%.
 
 **Lỗi trong dữ liệu hiện có (vote cũ):** `pdf-phan-gia-cong-pha` tr.78 — `voted_text` = 14.862
-chữ rác của DeepSeek (vote cũ chọn nó làm nền). Bộ này đã import lên web (scan #20) — chưa
-kiểm tra trực tiếp trên production. 34 trang khác có engine lạc đề được bỏ phiếu (không làm nền).
+chữ rác của DeepSeek (vote cũ chọn nó làm nền). Bộ này đã import lên web (scan #20).
+**Đã sửa trên production 04/10/2026** (trang 76 = record `078`, `gia_pha_page_content.id=1374`,
+phiên bản hiện tại v2): `hannom_text` 19.815 → 525 ký tự, nền Gemini (chọn theo đối chiếu ảnh phả
+đồ tờ 3a–3b; Google Vision chỉ đọc số trang), DeepSeek giữ trong `engines` với ghi chú `excluded`,
+`uncertain_rate=1.0`, meta 3,46 MB → 57 KB. Sao lưu: `~/backups/family-tree/gia_pha_page_content_1374_20261004.sql`
+trên VPS. v1 (id 1265, lịch sử) giữ nguyên. Record local `078` (repo dữ liệu `hannom-bilingual-dataset`, chưa commit
+ở repo đó) đã sửa cùng nội dung 04/10/2026, ghi chú ở `ghi_chu_trang`; schema không thêm lỗi;
+file 13,8 MB → 5,5 MB. 34 trang khác có engine lạc đề được bỏ phiếu (không làm nền).
 
 Đối chiếu 8 ca "lệch thứ tự": 6 đúng (vd Google Vision đọc trang trái trước, `nom-147` tr.15/40);
 2 loại quá tay (`nom-208` tr.59: Kim, Gemini khớp đầu trang, chỉ lệch đoạn sau) → mất phiếu tốt,
