@@ -253,3 +253,23 @@ Lâm duyệt thiết kế: 1 bản thuật toán ở backend (`app/hannom/vote_c
 
 Còn lại: Lâm commit repo dữ liệu → `revote_char_records.py --write` → bước 5 (deploy, sao lưu,
 `--refresh-vote` trên production, L5); công tắc pipeline live; soát ảnh mẫu các trang đổi nền.
+
+### Soát ảnh mẫu 381 trang đổi nền (04/10/2026, Claude xem, chưa có người duyệt)
+
+Mẫu phân tầng theo cặp nền cũ → mới (chỉ trang có Paddle để cắt ảnh): 16 trang, 32 dòng mà bản cũ và
+mới đọc cùng nội dung nhưng khác vài chữ; so chữ khác nhau với ảnh.
+
+| Kết quả | Dòng |
+|---|---|
+| **Mới đúng hơn** | **17** (vd `耆老`, `單寒`, `據`, `錄`, `絕`, `賢`, `功`/`儀`, thêm `文` thiếu, `此` thay `𬼘`) |
+| Cũ đúng hơn | 5 (`姓`, `約`, `乎`, `亞`, `妣`) |
+| Mỗi bên đúng 1 chỗ | 2 |
+| Không phân định / chữ dị thể | 8 |
+
+Theo nhóm: DeepSeek→Paddle 7 mới / 3 cũ (bộ `pdf-*`, chỉ 3 engine — đa số tối đa 2/3 nên nền gần như
+quyết định văn bản); Kim→DeepSeek, Google→Paddle, Gemini→DeepSeek: mới đúng ở mọi dòng phân định được.
+
+**Mọi chỗ cũ đúng hơn đều được đánh dấu trong kết quả mới** (không sai im lặng): 4 hoà phiếu (đỏ,
+chữ đúng có trong bảng phiếu), 1 đề xuất đúng chữ (`亞`, 2 phiếu), 2 tô vàng (2 phiếu / có đề xuất).
+Kết luận (tin cậy vừa — mẫu nhỏ): cách chọn nền mới tốt hơn cách cũ khi phân định được (~3,4 : 1);
+bộ 3 engine vẫn là chỗ yếu — cần người soát các chữ đỏ/vàng.
