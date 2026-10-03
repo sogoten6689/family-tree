@@ -21,7 +21,12 @@
 #
 # *******************************************************************************
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import (
+    InvalidSelectorException,
+    NoSuchElementException,
+    StaleElementReferenceException,
+    TimeoutException,
+)
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -87,12 +92,21 @@ RESPONSE_SELECTORS = [
 ]
 
 # CHUA XAC MINH: chi hien trong luc Gemini dang tra loi.
+# 03.10.2026: anh chup luc dang tra loi (UI VI, da login) co nut vuong ■ o vi tri nut Send
+# nhung 5 selector cu khong bat duoc -> them bien the theo icon "stop" va aria-label
+# khong phan biet hoa thuong. Van chua xac minh label that; _wait_for_answer khong con
+# phu thuoc rieng vao nut nay (xem stable_polls).
 STOP_BUTTON_SELECTORS = [
     'button[aria-label="Stop response"]',
     'button[aria-label="Stop generating"]',
     'button[aria-label*="Dừng"]',
-    'button[aria-label*="Stop"]',
+    'button[aria-label*="Ngừng"]',
+    'button[aria-label*="stop" i]',
     'button.stop-button',
+    'button.stop',
+    'button:has(mat-icon[fonticon="stop"])',
+    'button:has(mat-icon[data-mat-icon-name="stop"])',
+    'button:has(.stop-icon)',
 ]
 
 # DA XAC MINH 16.09.2026: sidebar hien "Cuộc trò chuyện mới" (khong phai button
@@ -209,6 +223,9 @@ Constructor for the ToolGeminiAPI class.
         self.url: str = config.get('site', 'url')
         self.wait_time: int = config.getint('context', 'wait_time')
         self.timeout: int = config.getint('context', 'timeout')
+        # So lan poll (1 s/lan) text cau tra loi phai dung yen moi coi la xong. Gemini co the
+        # dung stream vai giay giua chung -> 3 la qua it (03.10.2026 lay phai JSON dang viet do).
+        self.stable_polls: int = config.getint('context', 'stable_polls', fallback=3)
         self.cleanup_context = config.getboolean('context', 'cleanup_context')
         self.require_manual_login = config.getboolean('options', 'manual_login')
         self.context_content = config.get('context', 'context_content')
@@ -363,6 +380,50 @@ Constructor for the ToolGeminiAPI class.
     def _js_click(self, element):
         self.driver.execute_script("arguments[0].click();", element)
 
+    def _prompt_box_text(self) -> str:
+        # Doc dung o nhap da go vao; querySelector('div.ql-editor') co the trung 1 editor khac.
+        try:
+            if self.prompt_text_area is not None:
+                return (self.driver.execute_script(
+                    "return arguments[0].innerText || '';", self.prompt_text_area
+                ) or "").strip()
+        except Exception:
+            pass  # element bi Angular render lai (stale) -> tim lai theo selector
+        return (self.driver.execute_script(
+            "return (document.querySelector('div.ql-editor') || {}).innerText || '';"
+        ) or "").strip()
+
+    def texts_containing(self, *markers: str) -> list:
+        """Text cua cac phan tu NHO NHAT (ngoai o nhap) chua du moi marker, theo thu tu DOM.
+
+        Khong phu thuoc RESPONSE_SELECTORS: 03.10.2026 anh chup cho thay Gemini da tra loi
+        du JSON nhung tool van tra ve rong vi selector khong con khop DOM.
+        """
+        return self.driver.execute_script(
+            """
+            const markers = arguments[0];
+            const has = el => markers.every(m => (el.textContent || '').includes(m));
+            const root = document.querySelector('main') || document.body;
+            const out = [];
+            for (const el of root.querySelectorAll('*')) {
+              if (el.closest('rich-textarea, .ql-editor, [contenteditable="true"]')) continue;
+              if (!has(el) || [...el.children].some(has)) continue;
+              out.push(el.innerText || el.textContent || '');
+            }
+            return out;
+            """,
+            list(markers),
+        ) or []
+
+    def _wait_prompt_sent(self, previous_count: int, timeout: float = 8) -> bool:
+        """Da gui that chua: o nhap rong lai, hoac da co them cau tra loi."""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            if not self._prompt_box_text() or self._current_answer_count() > previous_count:
+                return True
+            time.sleep(0.5)
+        return False
+
     def _fill_prompt(self, request: str) -> bool:
         """Go prompt vao Quill. send_keys thuong khong do chu; dung insertText."""
         self.prompt_text_area, _ = self._find_first(PROMPT_BOX_SELECTORS)
@@ -385,10 +446,12 @@ Constructor for the ToolGeminiAPI class.
             request,
         )
         time.sleep(0.5)
-        current = (self.driver.execute_script(
-            "return (document.querySelector('div.ql-editor') || {}).innerText || '';"
-        ) or "").strip()
-        if request.strip() and request.strip() not in current.replace("\n", " "):
+        # So sanh sau khi gop moi khoang trang: Quill hien xuong dong khac chuoi goc, ban cu
+        # chi doi "\n" o 1 phia nen prompt nhieu dong LUON roi vao fallback send_keys (go lai
+        # ca prompt, cham va de go trung).
+        current = " ".join(self._prompt_box_text().split())
+        wanted = " ".join(request.split())
+        if wanted and wanted not in current:
             self.log_infor("insertText khong do chu, fallback send_keys.", LOG_LEVEL.DEBUG)
             self.prompt_text_area.click()
             time.sleep(0.3)
@@ -757,7 +820,7 @@ Upload one or more files to the current Gemini conversation.
             try:
                 if self.driver.find_element(By.CSS_SELECTOR, selector).is_displayed():
                     return True
-            except NoSuchElementException:
+            except (NoSuchElementException, InvalidSelectorException, StaleElementReferenceException):
                 continue
         return False
 
@@ -791,7 +854,7 @@ Upload one or more files to the current Gemini conversation.
 
             if text == stable_text and not self._is_generating():
                 stable_hits += 1
-                if stable_hits >= 3:
+                if stable_hits >= self.stable_polls:
                     return text
             else:
                 stable_hits = 0
@@ -839,14 +902,37 @@ Send a request to the Gemini web interface and receive a response.
         if not self._fill_prompt(request):
             return None
 
-        send_button, _ = self._find_first(SEND_BUTTON_SELECTORS, timeout=5, visible=True)
-        if send_button is not None and send_button.is_enabled():
-            self._js_click(send_button)
-        else:
-            self.log_infor("Khong dung duoc nut Send, gui bang Enter.", LOG_LEVEL.DEBUG)
-            self.prompt_text_area.send_keys(Keys.RETURN)
+        # 03.10.2026: anh chup cho thay prompt nam nguyen trong o nhap, nut Send van hien
+        # (JS click khong an) -> tool doc nham cau chao trang chu thanh cau tra loi.
+        # Gui lan luot JS click -> click that -> Enter, sau moi cach kiem tra da gui chua.
+        def js_click():
+            button, _ = self._find_first(SEND_BUTTON_SELECTORS, timeout=5, visible=True)
+            if button is None or not button.is_enabled():
+                raise RuntimeError("khong thay nut Send")
+            self._js_click(button)
 
-        return self._wait_for_answer(previous_count)
+        def native_click():
+            button, _ = self._find_first(SEND_BUTTON_SELECTORS, timeout=2, visible=True)
+            if button is None:
+                raise RuntimeError("khong thay nut Send")
+            button.click()
+
+        def press_enter():
+            box, _ = self._find_first(PROMPT_BOX_SELECTORS)
+            (box or self.prompt_text_area).send_keys(Keys.RETURN)
+
+        for name, send in (("js_click", js_click), ("native_click", native_click), ("enter", press_enter)):
+            try:
+                send()
+            except Exception as e:
+                self.log_infor(f"Gui bang {name} that bai: {e}", LOG_LEVEL.DEBUG)
+                continue
+            if self._wait_prompt_sent(previous_count):
+                return self._wait_for_answer(previous_count)
+            self.log_infor(f"Gui bang {name}: prompt van nam trong o nhap.", LOG_LEVEL.DEBUG)
+
+        self.log_infor("Khong gui duoc prompt (van nam trong o nhap).")
+        return None
 
 
 def extract_json(text: str) -> dict:
