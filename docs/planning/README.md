@@ -15,3 +15,4 @@ Path cũ kiểu `data/vgp_corpus/` trong file dưới đây vẫn đúng — đ�
 | [rule_based_genealogy_extraction_steps.md](./rule_based_genealogy_extraction_steps.md) | Baseline rule |
 | [mix_translate_family_tree_plan.md](./mix_translate_family_tree_plan.md) | Mixing OCR/dịch → Quốc ngữ + sơ đồ (pilot Nguyễn Kế) |
 | [mix_translate_yeu_cau.md](./mix_translate_yeu_cau.md) | Thông tin / key cần có để chạy pipeline Hương |
+| [paddle_thu_tu_cot_va_vote.md](./paddle_thu_tu_cot_va_vote.md) | Paddle xếp sai thứ tự cột + phân tích vote OCR (03/10/2026, đang làm) |
