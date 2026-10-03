@@ -40,7 +40,7 @@ def translate_to_modern_vietnamese(
     try:
         client = GeminiClient()
         prompt = build_dich_nghia_prompt(transliteration_text, hannom_context)
-        text = client.generate(prompt)
+        text = client.generate(prompt, task="translate")
         text = (text or "").strip()
         if not text:
             return None, "Gemini trả về rỗng"

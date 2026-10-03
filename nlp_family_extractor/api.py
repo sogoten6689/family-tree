@@ -29,10 +29,11 @@ from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
 from app.settings.bootstrap import bootstrap_settings
-from app.settings.router import ocr_engines_router, router as settings_router, text_engines_router
+from app.settings.router import gemini_usage_router, ocr_engines_router, router as settings_router, text_engines_router
 from app.vgp.bootstrap import bootstrap_vgp
 from app.workspace.bootstrap import bootstrap_workspace
 from app.hannom.text_engines import load_local_engines
+from app.gemini_usage import bootstrap_gemini_usage
 from app.workspace.repository import UserScanRepository
 from app.workspace.router import create_workspace_router
 from app.export.router import create_export_router, create_node_meta_router
@@ -355,6 +356,7 @@ async def _lifespan(_: FastAPI):
     init_database()
     load_local_engines()  # adapter engine phiên âm/dịch do người dùng tự viết (nếu có)
     if database_enabled():
+        bootstrap_gemini_usage()
         bootstrap_auth()
         bootstrap_documents()
         bootstrap_pipeline()
@@ -464,6 +466,7 @@ app.include_router(hannom_developer_router)
 app.include_router(settings_router)
 app.include_router(ocr_engines_router)
 app.include_router(text_engines_router)
+app.include_router(gemini_usage_router)
 
 
 def _raise_store_error(error: Exception) -> None:

@@ -186,3 +186,18 @@ def update_text_engines(
     except SettingsStoreError as error:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(error)) from error
     return _text_engine_response(ordered)
+
+
+# ── Số token Gemini theo loại việc (app/gemini_usage.py) — đo chi phí thật
+# trước khi tối ưu. ──
+gemini_usage_router = APIRouter(prefix="/api/admin/gemini-usage", tags=["Admin - Cấu hình"])
+
+
+@gemini_usage_router.get("", summary="Tổng hợp số token Gemini theo loại việc")
+def get_gemini_usage(_: AdminUser, days: int = 30, db: Session = Depends(get_db)) -> dict:
+    from app.gemini_usage import summarize
+
+    _require_db()
+    if not 1 <= days <= 365:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="days phải từ 1 đến 365.")
+    return summarize(db, days=days)

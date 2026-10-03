@@ -25,7 +25,7 @@ def normalize_balkan_nodes(
     try:
         client = GeminiClient()
         prompt = build_balkan_normalization_prompt(source_text, rough_extraction)
-        raw = client.generate(prompt)
+        raw = client.generate(prompt, task="tree_extract")
         nodes = parse_balkan_json_array(raw)
         return nodes, None
     except ValueError as exc:
@@ -46,7 +46,7 @@ class GeminiService:
         self._client = GeminiClient()
 
     def generate(self, prompt: str) -> str:
-        return self._client.generate(prompt)
+        return self._client.generate(prompt, task="generic")
 
     def normalize_to_balkan_json(
         self,
@@ -58,4 +58,4 @@ class GeminiService:
         Trả về chuỗi text từ model — cần parse JSON phía gọi (và strip markdown nếu có).
         """
         prompt = build_balkan_normalization_prompt(source_text, rough_extraction)
-        return self._client.generate(prompt)
+        return self._client.generate(prompt, task="tree_extract")

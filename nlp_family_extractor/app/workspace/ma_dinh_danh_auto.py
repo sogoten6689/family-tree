@@ -12,6 +12,7 @@ from app.workspace.ma_dinh_danh import HINH_THUC_VALUES, QUY_MO_VALUES, ho_code_
 
 MAX_TEXT_CHARS = 30000
 MIN_YEAR, MAX_YEAR = 100, 2100
+MAX_OUTPUT_TOKENS = 2048
 
 Generate = Callable[[str], str]
 
@@ -85,7 +86,14 @@ def extract_identifier_inputs(text: str, generate: Generate) -> tuple[Optional[d
 def default_generate() -> Generate:
     from app.gemini_client import GeminiClient
 
-    return GeminiClient().generate
+    client = GeminiClient()
+
+    # Bước 5 (03/10/2026): ép JSON + chặn đầu ra — câu trả lời chỉ là 1 object
+    # 5 trường. 2048 chừa chỗ cho thinking (tuỳ phiên bản có tính vào hạn này).
+    def generate(prompt: str) -> str:
+        return client.generate(prompt, task="ma_dinh_danh", json_output=True, max_output_tokens=MAX_OUTPUT_TOKENS)
+
+    return generate
 
 
 def ensure_ma_dinh_danh(scans: Any, scan: Any, generate: Optional[Generate] = None) -> tuple[Any, list[str]]:
