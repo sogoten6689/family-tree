@@ -34,6 +34,8 @@ cấu hình qua Admin › Developer › Cấu hình, không cần set lại ở 
     python3 tools/import_hannom_bilingual_corpus.py             # import thật
     python3 tools/import_hannom_bilingual_corpus.py --backfill --dry-run
         # bộ đã import trước: xem sẽ ghi mã định danh đã chốt + tạo trang/version
+    python3 tools/import_hannom_bilingual_corpus.py --refresh-vote --dry-run
+        # corpus đã vote lại theo từng chữ (schema 2): xem sẽ tạo version mới
 """
 from __future__ import annotations
 
@@ -140,6 +142,27 @@ def _transliteration_text(record: Dict[str, Any]) -> Optional[str]:
     return _join_pages(record, lambda page: page.get("l2_phien_am"))
 
 
+_V1_VOTE_KEYS = ("vote_method", "engines", "uncertain_rate", "uncertain_spans", "structural_diffs")
+
+
+def _page_vote_meta(l1: Any) -> Optional[Dict[str, Any]]:
+    """ocr_vote_meta của 1 trang từ `l1_ocr` của record.
+
+    - schema 2 (vote theo từng chữ, research/.../revote_char_records.py): mọi
+      trường meta + `lines` (= voted_text tách dòng, giao diện cần để tô từng chữ).
+    - schema 1 (vote theo dòng, cũ): 5 trường như trước; None nếu không có gì.
+    voted_text không nằm trong meta — lưu riêng ở hannom_text."""
+    if not isinstance(l1, dict):
+        return None
+    if l1.get("schema_version") == 2:
+        meta = {k: v for k, v in l1.items() if k != "voted_text"}
+        meta["lines"] = (l1.get("voted_text") or "").split("\n") if l1.get("voted_text") else []
+        return meta
+    if not any(l1.get(k) not in (None, [], {}) for k in ("vote_method", "engines", "uncertain_rate", "uncertain_spans")):
+        return None
+    return {k: l1.get(k) for k in _V1_VOTE_KEYS}
+
+
 def _vote_meta(record: Dict[str, Any]) -> Optional[List[Dict[str, Any]]]:
     """Metadata vote OCR theo trang — vote_method/engines/uncertain_rate/
     uncertain_spans/structural_diffs từ scripts/vote_ocr.py, KHÔNG kèm
@@ -151,14 +174,10 @@ def _vote_meta(record: Dict[str, Any]) -> Optional[List[Dict[str, Any]]]:
         l1 = page.get("l1_ocr")
         if not isinstance(l1, dict):
             continue
-        entry = {
-            "page_id": page.get("page_id"),
-            "vote_method": l1.get("vote_method"),
-            "engines": l1.get("engines"),
-            "uncertain_rate": l1.get("uncertain_rate"),
-            "uncertain_spans": l1.get("uncertain_spans"),
-            "structural_diffs": l1.get("structural_diffs"),
-        }
+        if l1.get("schema_version") == 2:
+            meta.append({"page_id": page.get("page_id"), **(_page_vote_meta(l1) or {})})
+            continue
+        entry = {"page_id": page.get("page_id"), **{k: l1.get(k) for k in _V1_VOTE_KEYS}}
         # Chỉ giữ trang có ít nhất 1 field thật (đừng nhét toàn None vào JSON).
         if any(v not in (None, [], {}) for k, v in entry.items() if k != "page_id"):
             meta.append(entry)
@@ -197,15 +216,7 @@ def _create_pages_version_and_content(
             page_number=index,
             image_file_key=page.get("l0_image"),
         )
-        vote_meta = None
-        if any(l1.get(k) not in (None, [], {}) for k in ("vote_method", "engines", "uncertain_rate", "uncertain_spans")):
-            vote_meta = {
-                "vote_method": l1.get("vote_method"),
-                "engines": l1.get("engines"),
-                "uncertain_rate": l1.get("uncertain_rate"),
-                "uncertain_spans": l1.get("uncertain_spans"),
-                "structural_diffs": l1.get("structural_diffs"),
-            }
+        vote_meta = _page_vote_meta(l1)
         pages_repo.upsert_content(
             version_id=version.id,
             page_id=gia_pha_page.id,
@@ -307,6 +318,62 @@ def refresh_text(
     return [action]
 
 
+def refresh_vote(
+    *,
+    scan: Any,
+    record: Dict[str, Any],
+    scans: UserScanRepository,
+    pages_repo: GiaPhaPageRepository,
+    versions_repo: GiaPhaVersionRepository,
+    owner_id: int,
+    dry_run: bool,
+) -> List[str]:
+    """--refresh-vote: corpus đã vote lại theo TỪNG CHỮ (l1_ocr schema 2) →
+    version MỚI (cha = version hiện tại, giữ nguyên), chỉ thay hannom_text +
+    ocr_vote_meta của các trang khác bản hiện tại; phiên âm/dịch nghĩa giữ
+    nguyên (trang có `downstream_stale` có thể lệch — không tự chạy lại vì tốn
+    tiền). Đặt làm version hiện tại + đồng bộ cache phẳng. Không có gì khác →
+    không tạo version (idempotent)."""
+    current = versions_repo.get_current(scan.id)
+    pages = {p.page_number: p for p in pages_repo.list_by_scan(scan.id)}
+    if current is None or not pages:
+        return []
+    contents = {c.page_id: c for c in pages_repo.list_content_for_version(current.id)}
+    updates: Dict[int, Dict[str, Any]] = {}
+    stale = 0
+    for number, page in enumerate(record.get("pages") or [], start=1):
+        l1 = page.get("l1_ocr") if isinstance(page, dict) else None
+        if number not in pages or not isinstance(l1, dict) or l1.get("schema_version") != 2:
+            continue
+        base = contents.get(pages[number].id)
+        fields = {"hannom_text": l1.get("voted_text"), "ocr_vote_meta": _page_vote_meta(l1)}
+        if any(fields[k] != getattr(base, k, None) for k in fields):
+            updates[number] = fields
+            stale += bool(l1.get("downstream_stale"))
+    if not updates:
+        return []
+    action = f"version mới (hiện tại) vote theo từng chữ: {len(updates)} trang, {stale} trang phiên âm/dịch có thể lệch"
+    if dry_run:
+        return [action]
+    version = versions_repo.create_derived_version(
+        user_scan_id=scan.id,
+        parent_version_id=current.id,
+        source="corpus",
+        review_status=None,
+        note=f"Vote OCR theo từng chữ (schema 2) từ hannom-bilingual-dataset ({len(updates)} trang)",
+        created_by=owner_id,
+        text_step_status="done",
+    )
+    for number, fields in updates.items():
+        pages_repo.upsert_content(version_id=version.id, page_id=pages[number].id, **fields)
+    versions_repo.set_current(scan.id, version.id)
+    # Danh sách vote theo trang trên UserScan (trang đọc tài liệu mở lại bộ) —
+    # sync_flat_cache không đụng tới trường này.
+    scans.update(scan, ocr_vote_meta=_vote_meta(record))
+    pages_repo.sync_flat_cache(scans, scan.id, version.id)
+    return [action]
+
+
 def _title(record: Dict[str, Any]) -> str:
     return (
         record.get("ten_han_viet")
@@ -337,6 +404,11 @@ def main() -> int:
         "--refresh-text",
         action="store_true",
         help="Với bộ đã import: corpus có phiên âm/dịch nghĩa mới → tạo version mới (đặt làm hiện tại), giữ version cũ",
+    )
+    parser.add_argument(
+        "--refresh-vote",
+        action="store_true",
+        help="Với bộ đã import: corpus đã vote lại theo từng chữ (schema 2) → tạo version mới (đặt làm hiện tại), giữ version cũ",
     )
     parser.add_argument(
         "--backfill",
@@ -426,6 +498,16 @@ def main() -> int:
                     )
                 if args.refresh_text:
                     actions += refresh_text(
+                        scan=existing_scan,
+                        record=record,
+                        scans=scans,
+                        pages_repo=pages_repo,
+                        versions_repo=versions_repo,
+                        owner_id=owner.id,
+                        dry_run=args.dry_run,
+                    )
+                if args.refresh_vote:
+                    actions += refresh_vote(
                         scan=existing_scan,
                         record=record,
                         scans=scans,

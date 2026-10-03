@@ -152,7 +152,15 @@
             "uncertain_rate": {
               "type": ["number", "null"],
               "description": "Từ 2026-09-14: len(uncertain_spans) / tổng số DÒNG backbone (trước: / tổng số ký tự) — đổi đơn vị cùng lúc đổi đơn vị vote, KHÔNG so sánh trực tiếp giá trị này giữa record vote câu (mới) và record vote ký tự (cũ, đến 2026-09-13)."
-            }
+            },
+            "schema_version": { "type": "integer", "enum": [2], "description": "2 = vote theo TỪNG CHỮ (nlp_family_extractor/app/hannom/vote_char.py, từ 2026-10-04); uncertain_rate = review_rate. Không có = vote theo dòng cũ (vote_ocr.py)." },
+            "backbone": { "type": ["string", "null"], "description": "Engine nền (schema 2)." },
+            "page_status": { "type": "string", "enum": ["ok", "partial", "unaligned"], "description": "partial = có engine không được bỏ phiếu (lạc đề / lệch thứ tự); unaligned = < 2 engine bỏ phiếu." },
+            "thresholds": { "type": "object", "description": "auto_min (tự sửa), suggest_min (đề xuất)." },
+            "stats": { "type": "object", "description": "Số chữ theo trạng thái: unanimous/kept/kept_weak/auto_fixed/suggested/tie/unaligned." },
+            "review_rate": { "type": ["number", "null"], "description": "Tỉ lệ chữ cần người soát (schema 2)." },
+            "slots": { "type": "array", "description": "Vị trí KHÔNG nhất trí: kind, index, line, backbone, final, proposal, status, votes." },
+            "downstream_stale": { "type": "boolean", "description": "Chữ Hán (nội dung hoặc thứ tự) khác bản vote trước → l2_phien_am / l3_dich_nghia có thể lệch." }
           }
         },
         "l2_phien_am": { "type": ["string", "null"] },

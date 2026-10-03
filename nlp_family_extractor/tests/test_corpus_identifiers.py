@@ -256,3 +256,74 @@ class RefreshTextTest(_Db, unittest.TestCase):
         pages[0]["l3_dich_nghia"] = None
         pages[1]["l2_phien_am"] = "  "
         self.assertEqual(self._run(scan, {**RECORD, "pages": pages}), [])
+
+
+def _v2_l1(voted_text, auto_fixed=0, stale=True):
+    return {
+        "voted_text": voted_text, "schema_version": 2, "vote_method": "char_majority", "backbone": "kim",
+        "page_status": "ok", "thresholds": {"auto_min": 3, "suggest_min": 2},
+        "stats": {"chars": len(voted_text), "auto_fixed": auto_fixed}, "review_rate": 0.0, "uncertain_rate": 0.0,
+        "engines": {"kim": {"text": voted_text, "han_chars": len(voted_text), "voted": True, "excluded": None}},
+        "slots": [], "downstream_stale": stale,
+    }
+
+
+class RefreshVoteTest(RefreshTextTest):
+    def _run(self, scan, record, dry_run=False):
+        return import_corpus.refresh_vote(
+            scan=scan, record=record, scans=self.scans, pages_repo=GiaPhaPageRepository(self.db),
+            versions_repo=GiaPhaVersionRepository(self.db), owner_id=self.owner.id, dry_run=dry_run,
+        )
+
+    def _updated_record(self):
+        pages = [dict(p) for p in RECORD["pages"]]
+        pages[1]["l1_ocr"] = _v2_l1("家\n譜", auto_fixed=1)
+        return {**RECORD, "pages": pages}
+
+    def test_dry_run_reports_without_writing(self) -> None:
+        scan = self._imported_scan()
+        actions = self._run(scan, self._updated_record(), dry_run=True)
+        self.assertIn("1 trang, 1 trang phiên âm/dịch có thể lệch", actions[0])
+        self.assertEqual(len(GiaPhaVersionRepository(self.db).list_by_scan(scan.id)), 1)
+
+    def test_new_current_version_keeps_v1_and_skips_pairs(self) -> None:
+        scan = self._imported_scan()
+        versions, pages = GiaPhaVersionRepository(self.db), GiaPhaPageRepository(self.db)
+        v1 = versions.get_current(scan.id)
+        self._run(scan, self._updated_record())
+        current = versions.get_current(scan.id)
+        self.assertEqual((current.source, current.parent_version_id), ("corpus", v1.id))
+        new = {c.page_id: c for c in pages.list_content_for_version(current.id)}
+        old = {c.page_id: c for c in pages.list_content_for_version(v1.id)}
+        p1, p2 = min(new), max(new)
+        self.assertEqual(new[p2].hannom_text, "家\n譜")
+        meta = new[p2].ocr_vote_meta
+        self.assertEqual((meta["schema_version"], meta["lines"], meta["stats"]["auto_fixed"]), (2, ["家", "譜"], 1))
+        self.assertNotIn("voted_text", meta)
+        self.assertEqual((new[p2].translation_text, new[p2].transliteration_text), ("Phả hệ", "Gia phả"))  # giữ L2/L3
+        self.assertEqual(old[p2].hannom_text, "家譜")  # version cũ giữ nguyên
+        self.assertEqual(new[p1].hannom_text, "乾坤")  # trang không phải schema 2 không đổi
+        self.db.refresh(scan)
+        self.assertIn("家\n譜", scan.hannom_text)  # cache phẳng
+        self.assertEqual(scan.ocr_vote_meta[0]["schema_version"], 2)  # danh sách vote trên UserScan
+        self.assertEqual(self._run(scan, self._updated_record()), [])  # chạy lại: idempotent
+        self.assertEqual(len(versions.list_by_scan(scan.id)), 2)
+
+    def test_empty_corpus_value_never_erases(self) -> None:
+        scan = self._imported_scan()
+        self.assertEqual(self._run(scan, RECORD), [])  # record cũ (schema 1) → không làm gì
+
+
+class PageVoteMetaTest(unittest.TestCase):
+    def test_v1_keys_unchanged(self) -> None:
+        l1 = {"voted_text": "家", "vote_method": "x", "engines": {}, "uncertain_rate": 0.5, "uncertain_spans": []}
+        self.assertEqual(
+            import_corpus._page_vote_meta(l1),
+            {"vote_method": "x", "engines": {}, "uncertain_rate": 0.5, "uncertain_spans": [], "structural_diffs": None},
+        )
+        self.assertIsNone(import_corpus._page_vote_meta({"voted_text": "家"}))
+
+    def test_v2_adds_lines_and_drops_voted_text(self) -> None:
+        meta = import_corpus._page_vote_meta(_v2_l1("天地\n玄黃"))
+        self.assertEqual((meta["lines"], "voted_text" in meta), (["天地", "玄黃"], False))
+

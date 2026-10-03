@@ -229,3 +229,27 @@ file 13,8 MB → 5,5 MB. 34 trang khác có engine lạc đề được bỏ phi
 Đối chiếu 8 ca "lệch thứ tự": 6 đúng (vd Google Vision đọc trang trái trước, `nom-147` tr.15/40);
 2 loại quá tay (`nom-208` tr.59: Kim, Gemini khớp đầu trang, chỉ lệch đoạn sau) → mất phiếu tốt,
 không sửa sai. Cải tiến sau: căn theo từng đoạn thay vì cả trang.
+
+## 11. Đưa vote mới vào pipeline (04/10/2026)
+
+Lâm duyệt thiết kế: 1 bản thuật toán ở backend (`app/hannom/vote_char.py`), production dùng
+**version mới** (không ghi đè), pipeline live có công tắc (mặc định vote cũ — chưa làm), phiên
+âm/dịch chỉ đánh dấu `downstream_stale` (không tự chạy lại).
+
+- **Bước 1–2 (commit `f420b18`, đã deploy):** backend vote_char + `ocr_vote_meta` schema 2; chọn nền
+  bỏ lạc đề trước, hoà → nhiều chữ Hán hơn; giao diện `VoteCharView`.
+- **Bước 3 — `scripts/revote_char_records.py`** (chưa ghi dữ liệu thật: repo dữ liệu còn 46 thay đổi
+  chưa commit). Chạy thử 1.259 trang: tự sửa 940, đề xuất 7.402, cần soát 35%; **981 trang chữ Hán đổi**
+  (đổi nền 381, chỉ đổi thứ tự 311, đổi chữ 289). Đổi nền chủ yếu DeepSeek↔Paddle do cách chọn nền mới
+  (tỉ lệ chữ chung) — suy luận là gần số đông hơn (đề xuất 10.977 → 7.402), CHƯA kiểm bằng ảnh.
+  `scripts/check_char_revote.py` trên bản sao: ĐẠT (chỉ l1_ocr của trang có engine đổi, định dạng giữ
+  nguyên, text engine không đổi, idempotent, schema không thêm lỗi). Đã sửa 1 lỗi tìm ra khi kiểm:
+  cờ `downstream_stale` mất ở lần chạy 2 → giờ "dính" (chỉ xoá khi làm lại phiên âm/dịch).
+  Schema `l1_ocr` mở thêm các trường schema 2 (9 dòng).
+- **Bước 4 — `import_hannom_bilingual_corpus.py --refresh-vote`**: version mới từ version hiện tại, chỉ
+  đổi `hannom_text` + `ocr_vote_meta` (schema 2, kèm `lines`), cập nhật cả `UserScan.ocr_vote_meta`;
+  idempotent. Test SQLite (6 test mới) + chạy thử SQLite với dữ liệu thật (`nom-147`, Phan gia): đúng —
+  Phan gia tr.76 ra nền Gemini, DeepSeek bị loại; meta lớn nhất 111 KB/trang (trước 3,46 MB).
+
+Còn lại: Lâm commit repo dữ liệu → `revote_char_records.py --write` → bước 5 (deploy, sao lưu,
+`--refresh-vote` trên production, L5); công tắc pipeline live; soát ảnh mẫu các trang đổi nền.
