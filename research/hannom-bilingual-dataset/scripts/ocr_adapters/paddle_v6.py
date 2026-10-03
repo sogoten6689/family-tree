@@ -30,7 +30,12 @@ SIDE_BY_SIDE_OVERLAP = 0.5
 
 
 def column_order(boxes: Sequence[tuple[Sequence[Sequence[float]], str, float | None]]) -> list[tuple[str, float | None]]:
-    """Sắp khung chữ theo thứ tự đọc chữ Hán dọc.
+    """[(text, score)] theo thứ tự đọc — xem column_order_indices."""
+    return [(boxes[i][1].strip(), boxes[i][2]) for i in column_order_indices(boxes)]
+
+
+def column_order_indices(boxes: Sequence[tuple[Sequence[Sequence[float]], str, float | None]]) -> list[int]:
+    """Chỉ số các khung trong `boxes` theo thứ tự đọc chữ Hán dọc.
 
     `boxes` = [(polygon [[x, y], ...], text, score)]. Gom khung chồng nhau theo
     trục x thành cột (1 cột có thể bị Paddle tách thành nhiều khung dọc), cột
@@ -38,12 +43,12 @@ def column_order(boxes: Sequence[tuple[Sequence[Sequence[float]], str, float | N
     dưới) — khung song song cùng khoảng y đọc phải → trái. Bỏ khung rỗng.
     """
     items = []
-    for poly, text, score in boxes:
+    for index, (poly, text, score) in enumerate(boxes):
         if not (text or "").strip():
             continue
         xs = [float(p[0]) for p in poly]
         ys = [float(p[1]) for p in poly]
-        items.append((min(xs), max(xs), min(ys), text.strip(), score, max(ys)))
+        items.append((min(xs), max(xs), min(ys), text.strip(), score, max(ys), index))
     # Khoá phụ (y, chữ, x) để kết quả không phụ thuộc thứ tự đầu vào khi tâm x trùng nhau.
     items.sort(key=lambda b: (-(b[0] + b[1]) / 2, b[2], b[3], b[0]))
 
@@ -59,10 +64,7 @@ def column_order(boxes: Sequence[tuple[Sequence[Sequence[float]], str, float | N
         else:
             columns.append({"x0": x0, "x1": x1, "items": [item]})
 
-    ordered: list[tuple[str, float | None]] = []
-    for col in columns:
-        ordered += [(it[3], it[4]) for it in _top_to_bottom(col["items"])]
-    return ordered
+    return [it[6] for col in columns for it in _top_to_bottom(col["items"])]
 
 
 def _top_to_bottom(items: list[tuple]) -> list[tuple]:

@@ -12,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ocr_adapters import paddle_v6  # noqa: E402
-from ocr_adapters.paddle_v6 import column_order  # noqa: E402
+from ocr_adapters.paddle_v6 import column_order, column_order_indices  # noqa: E402
 
 
 def box(x0, x1, y0, y1, text, score=0.9):
@@ -100,6 +100,11 @@ class ColumnOrderTest(unittest.TestCase):
         out = column_order([(octagon, "八", None), box(50, 60, 0, 100, "右", None), box(50, 60, 0, 100, "\n")])
         self.assertEqual(out, [("右", None), ("八", None)])
         self.assertEqual(column_order([]), [])
+
+    def test_indices_distinguish_boxes_with_same_text(self) -> None:
+        # nom-147 tr.35: 2 khung cùng chữ 掃墓節祭文 ở 2 trang — chỉ số phải trỏ đúng khung.
+        boxes = [box(0, 10, 0, 10, "掃墓"), box(100, 110, 0, 10, "掃墓"), box(50, 60, 0, 10, "中")]
+        self.assertEqual(column_order_indices(boxes), [1, 2, 0])
 
     def test_identical_boxes_keep_both(self) -> None:
         self.assertEqual(len(column_order([box(0, 10, 0, 10, "同"), box(0, 10, 0, 10, "同")])), 2)
