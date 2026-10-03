@@ -70,3 +70,32 @@ export async function updateTextEngines(enabled: string[]): Promise<TextEngineCo
     body: JSON.stringify({ enabled }),
   });
 }
+
+export interface GeminiUsageTask {
+  task: string;
+  calls: number;
+  errors: number;
+  prompt_tokens: number;
+  output_tokens: number;
+  thinking_tokens: number;
+  total_tokens: number;
+  avg_tokens_per_call: number;
+  avg_duration_ms: number;
+}
+
+export interface GeminiUsageSummary {
+  days: number;
+  tasks: GeminiUsageTask[];
+  total_tokens: number;
+  total_calls: number;
+}
+
+export async function getGeminiUsage(days: number): Promise<GeminiUsageSummary> {
+  return apiRequest<GeminiUsageSummary>(`/api/admin/gemini-usage?days=${days}`, { method: "GET" });
+}
+
+/** Tỉ lệ token thinking / tổng (0–1); null khi chưa có token nào. */
+export function thinkingShare(summary: GeminiUsageSummary): number | null {
+  if (summary.total_tokens === 0) return null;
+  return summary.tasks.reduce((sum, t) => sum + t.thinking_tokens, 0) / summary.total_tokens;
+}
