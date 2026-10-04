@@ -136,7 +136,7 @@ from typing import Any
 from rapidfuzz.distance import Levenshtein
 
 from ocr_adapters import base as _base  # noqa: F401  (đảm bảo package import được)
-from ocr_adapters import deepseek, gemini, google_vision, kim_hannom_lab, paddle_v6
+from ocr_adapters import deepseek, gemini, google_vision, gpt_vision, kim_hannom_lab, paddle_v6
 from _repo_paths import FAMILY_TREE
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -150,8 +150,10 @@ ADAPTERS = {
     "deepseek": deepseek,
     "google_vision": google_vision,
     "gemini": gemini,
+    # 2026-10-04: engine thứ 6 (OpenAI) — thiếu OPENAI_API_KEY thì tự bỏ qua, không gọi.
+    "gpt_vision": gpt_vision,
 }
-DEFAULT_PRIORITY = ["kim_hannom_lab", "paddle_v6", "deepseek", "google_vision", "gemini"]
+DEFAULT_PRIORITY = ["kim_hannom_lab", "paddle_v6", "deepseek", "google_vision", "gemini", "gpt_vision"]
 SIM_MATCH = 0.92
 SIM_NOTE_MIN = 0.30
 
