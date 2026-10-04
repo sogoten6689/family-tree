@@ -28,11 +28,17 @@ GEMINI_MAX_OUTPUT_TOKENS = 8192
 def build_line_translation_prompt(items: list[tuple[str, str]]) -> str:
     numbered = "\n".join(f"{i}. [Hán] {cn}\n   [Phiên âm] {sv}" for i, (cn, sv) in enumerate(items, start=1))
     return (
-        "Đây là các dòng của 1 trang gia phả chữ Hán-Nôm, kèm phiên âm Hán-Việt. Dịch từng dòng "
-        "sang tiếng Việt hiện đại, dễ hiểu, giữ đúng nghĩa và tên riêng/địa danh/niên hiệu, không "
-        "thêm thông tin ngoài văn bản. Trả về DUY NHẤT JSON dạng {\"vi\": [...]} với đúng "
-        f"{len(items)} chuỗi, chuỗi thứ i là bản dịch của dòng i (dòng không dịch được thì diễn "
-        "giải ngắn, không để trống).\n\n"
+        "Đây là các dòng của 1 trang gia phả chữ Hán-Nôm (văn bản OCR, có thể sai/thiếu chữ), kèm "
+        "phiên âm Hán-Việt. Dịch từng dòng sang tiếng Việt hiện đại, dễ hiểu, giữ đúng nghĩa và tên "
+        "riêng/địa danh/niên hiệu, không thêm thông tin ngoài văn bản.\n"
+        "Quy tắc:\n"
+        "- Mỗi dòng chọn MỘT cách dịch hợp lý nhất: không dùng dấu \"/\" để đưa nhiều phương án, "
+        "không đặt câu hỏi, không giải thích hay bình luận.\n"
+        "- Dòng là tên người/chức danh/địa danh rời → giữ dạng phiên âm viết hoa (vd \"Phan Công\").\n"
+        "- Dòng không đủ nghĩa (OCR vụn, sai chữ) → dịch phần hiểu được và thêm \"(chưa rõ nghĩa)\"; "
+        "nếu không hiểu gì thì ghi đúng \"(chưa rõ nghĩa)\".\n"
+        f"Trả về DUY NHẤT JSON dạng {{\"vi\": [...]}} với đúng {len(items)} chuỗi, chuỗi thứ i là "
+        "bản dịch của dòng i, không để trống.\n\n"
         f"{numbered}"
     )
 

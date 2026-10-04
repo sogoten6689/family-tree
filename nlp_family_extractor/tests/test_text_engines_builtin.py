@@ -94,6 +94,15 @@ class KimGeminiEngineTest(unittest.TestCase):
         p = build_line_translation_prompt([("甲", "giáp"), ("乙", "ất")])
         self.assertIn("1. [Hán] 甲", p)
         self.assertIn("2. [Hán] 乙", p)
+        self.assertIn('{"vi": [...]}', p)
+
+    def test_prompt_forbids_hedging(self) -> None:
+        # Chạy thật Phan gia tr.38 (04/10/2026): Gemini trả "tự nhiên/thần diệu" và câu hỏi ngược.
+        p = build_line_translation_prompt([("甲", "giáp")])
+        self.assertIn("MỘT cách dịch", p)
+        self.assertIn('không dùng dấu "/"', p)
+        self.assertIn("không đặt câu hỏi", p)
+        self.assertIn("(chưa rõ nghĩa)", p)
 
 
 class RegistryTest(unittest.TestCase):
