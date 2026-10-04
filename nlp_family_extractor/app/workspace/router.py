@@ -645,14 +645,15 @@ def create_workspace_router(
     def run_text_engine(
         scan_id: int,
         payload: TextEngineRunRequest,
-        current_user: CurrentUser,
+        current_user: AdminUser,
         scans: UserScanRepository = Depends(scan_repo),
         versions: GiaPhaVersionRepository = Depends(version_repo),
         pages_repo: GiaPhaPageRepository = Depends(page_repo),
     ) -> ItemVersion:
         """Xếp hàng 1 lần chạy engine phiên âm/dịch cho bộ gia phả (chạy nền,
-        trả về ngay version mới với bước pending). Ai mở được bộ gia phả thì
-        chạy được (đã chốt). Kết quả không cần duyệt."""
+        trả về ngay version mới với bước pending). CHỈ ADMIN (chốt 04/10/2026 —
+        engine thật như kim_gemini gọi dịch vụ tốn tiền theo trang; trước đó ai
+        mở được bộ gia phả cũng chạy được). Kết quả không cần duyệt."""
         from app.config import _get_setting
         from app.hannom import text_engines
         from app.hannom.text_engine_runner import (

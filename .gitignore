@@ -14,3 +14,6 @@ research/label_studio_pipeline/.env
 research/source_discovery/.env
 __pycache__/
 *.pyc
+
+# Adapter engine phiên âm/dịch riêng của người dùng (có thể chứa khoá) — không commit
+nlp_family_extractor/app/hannom/text_engines_local.py

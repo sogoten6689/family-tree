@@ -2,6 +2,11 @@
 
 Dành cho: Lâm tự làm sau. Viết 02/10/2026, khớp code tại commit `2e0f159`.
 
+> **Cập nhật 04/10/2026:** backend đã có sẵn engine **`kim_gemini`** (`app/hannom/text_engines_builtin.py`:
+> Kim Hán Nôm phiên âm + Gemini dịch nghĩa, 1 lần gọi mỗi dịch vụ / trang — **tốn tiền mỗi lần chạy**).
+> Engine thử `echo` đã gỡ khỏi repo/production; `text_engines_local.py` giờ nằm trong `.gitignore`
+> (adapter riêng có thể chứa khoá — không commit).
+
 Web đã có sẵn **khe cắm engine phiên âm + dịch nghĩa**. Việc cần làm chỉ là viết **1 file adapter**
 gọi tool của bạn (`research/hannom-bilingual-dataset/TOOL_ChatGPT_API`, `TOOL_Gemini_API`) và trả
 kết quả đúng định dạng. Toàn bộ phần còn lại (hàng đợi chạy nền, kiểm tra, tạo version, giao diện,
@@ -113,7 +118,8 @@ Lưu ý khi viết:
 
 ## 4. Thử luồng chạy trước, chưa cần tool
 
-File mẫu có sẵn engine **`echo`** (không gọi dịch vụ nào, mỗi dòng Hán Nôm thành 1 câu):
+File mẫu có sẵn engine **`echo`** (không gọi dịch vụ nào, mỗi dòng Hán Nôm thành 1 câu) — chỉ để
+thử trên **máy local**, đừng đưa lên production (nó ghi chữ giả "(phiên âm trang N)" vào version mới):
 
 1. Để nguyên file mẫu (chưa sửa) dưới tên `text_engines_local.py`, khởi động lại backend
    (`uvicorn api:app --reload --port 8002`).
@@ -140,7 +146,9 @@ Ai mở được bộ gia phả (chủ bộ hoặc admin) thì bấm **Chạy** 
 Hiện trạng (`nlp_family_extractor/Dockerfile`, `infra/docker-compose.yml`):
 
 - Image backend là `python:3.11-slim`, **không có Chrome**.
-- `COPY . .` → file `text_engines_local.py` có mặt trong thư mục lúc build sẽ vào image.
+- `COPY . .` → file `text_engines_local.py` có mặt trong thư mục lúc build sẽ vào image. **Lưu ý (04/10):**
+  file này nay bị `.gitignore` nên Jenkins (build từ git) **không** tự có nó — phải đưa vào bằng volume
+  (mount vào `/app/app/hannom/text_engines_local.py`) hoặc chép tay vào thư mục workspace của Jenkins.
 - Container chỉ mount `./nlp_family_extractor/data:/app/data`.
 - uvicorn chạy **1 tiến trình**. Hàng đợi engine nằm trong bộ nhớ của tiến trình đó — **đừng** thêm
   `--workers N` (mỗi worker sẽ có hàng đợi riêng, 2 job có thể điều khiển cùng 1 trình duyệt).

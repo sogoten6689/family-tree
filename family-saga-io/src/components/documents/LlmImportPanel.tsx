@@ -64,13 +64,14 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
   }, [load]);
 
   useEffect(() => {
+    if (!isAdmin) return; // chạy engine tốn tiền → chỉ admin (chốt 04/10/2026)
     listEnabledTextEngines()
       .then((names) => {
         setEngines(names);
         setEngine((current) => current ?? names[0]);
       })
       .catch(() => setEngines([]));
-  }, []);
+  }, [isAdmin]);
 
   const hasActiveRun = versions.some((v) => {
     const status = engineRunStatus(v);
@@ -142,23 +143,27 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
         <Button icon={<ReloadOutlined />} onClick={() => void load()} loading={loading}>
           {t("familyTree.reload", { defaultValue: "Tải lại" })}
         </Button>
-        <Select
-          className="min-w-[180px]"
-          value={engine}
-          onChange={setEngine}
-          options={engines.map((name) => ({ value: name, label: name }))}
-          placeholder={t("llmImport.noEngine", { defaultValue: "Chưa có engine" })}
-          disabled={engines.length === 0}
-          aria-label={t("llmImport.engine", { defaultValue: "Engine phiên âm/dịch" })}
-        />
-        <Button
-          icon={<PlayCircleOutlined />}
-          disabled={!engine}
-          loading={starting}
-          onClick={() => void startRun()}
-        >
-          {t("llmImport.runBtn", { defaultValue: "Chạy engine" })}
-        </Button>
+        {isAdmin && (
+          <>
+            <Select
+              className="min-w-[180px]"
+              value={engine}
+              onChange={setEngine}
+              options={engines.map((name) => ({ value: name, label: name }))}
+              placeholder={t("llmImport.noEngine", { defaultValue: "Chưa có engine" })}
+              disabled={engines.length === 0}
+              aria-label={t("llmImport.engine", { defaultValue: "Engine phiên âm/dịch" })}
+            />
+            <Button
+              icon={<PlayCircleOutlined />}
+              disabled={!engine}
+              loading={starting}
+              onClick={() => void startRun()}
+            >
+              {t("llmImport.runBtn", { defaultValue: "Chạy engine" })}
+            </Button>
+          </>
+        )}
         {isAdmin && (
           <Button icon={<DownloadOutlined />} onClick={() => void exportTraining()}>
             {t("llmImport.exportBtn", { defaultValue: "Xuất dữ liệu train (JSONL)" })}

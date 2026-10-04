@@ -9,9 +9,9 @@ from typing import Any, Callable
 # Khe cắm engine phiên âm + dịch nghĩa (cách B, chốt 2026-10-02). Engine là
 # 1 hàm `(hannom_text, *, page_number) -> [{"cn", "sv", "vi"}, ...]` — cùng
 # định dạng cổng nhập file (app/workspace/llm_import.py), nên kết quả đi qua
-# đúng đường kiểm tra + tạo version. Adapter cụ thể do người dùng tự viết ở
-# app/hannom/text_engines_local.py (nạp nếu tồn tại) — module này không gọi
-# dịch vụ ngoài nào.
+# đúng đường kiểm tra + tạo version. Engine có sẵn: app/hannom/text_engines_builtin.py
+# (`kim_gemini`, 2026-10-04). Adapter riêng của người dùng: app/hannom/
+# text_engines_local.py (nạp nếu tồn tại, không commit — xem .gitignore).
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +22,7 @@ SETTING_KEY = "HANNOM_TEXT_ENGINES"
 MIN_ENABLED_TEXT_ENGINES = 1
 NAME_PATTERN = re.compile(r"^[a-z0-9][a-z0-9_-]{0,49}$")
 LOCAL_MODULE = "app.hannom.text_engines_local"
+BUILTIN_MODULE = "app.hannom.text_engines_builtin"
 
 TEXT_ENGINE_REGISTRY: dict[str, TextEngine] = {}
 _load_error: str | None = None
@@ -40,6 +41,7 @@ def load_local_engines() -> str | None:
     lỗi (hiện ở trang Cấu hình) nhưng không làm sập server."""
     global _load_error
     _load_error = None
+    importlib.import_module(BUILTIN_MODULE)  # engine có sẵn — lỗi ở đây là lỗi code, để lộ ra
     try:
         importlib.import_module(LOCAL_MODULE)
     except ModuleNotFoundError as error:

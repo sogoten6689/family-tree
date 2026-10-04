@@ -125,15 +125,22 @@ describe("LlmImportPanel", { timeout: 15000 }, () => {
 
   it("runs the selected engine", async () => {
     api.runTextEngine.mockResolvedValue(version({ version_id: 9, version_number: 3, source: "engine-gemini-web" }));
-    render(<LlmImportPanel scanId={7} isAdmin={false} />);
+    render(<LlmImportPanel scanId={7} isAdmin />);
     await screen.findByText("gemini-web");
     fireEvent.click(screen.getByRole("button", { name: /Chạy engine/ }));
     await waitFor(() => expect(api.runTextEngine).toHaveBeenCalledWith(7, "gemini-web"));
   });
 
+  it("hides engine runs from non-admins (running costs money)", async () => {
+    render(<LlmImportPanel scanId={7} isAdmin={false} />);
+    await screen.findByText("chatgpt-web");
+    expect(screen.queryByRole("button", { name: /Chạy engine/ })).not.toBeInTheDocument();
+    expect(api.listEnabledTextEngines).not.toHaveBeenCalled();
+  });
+
   it("disables running when no engine is enabled", async () => {
     api.listEnabledTextEngines.mockResolvedValue([]);
-    render(<LlmImportPanel scanId={7} isAdmin={false} />);
+    render(<LlmImportPanel scanId={7} isAdmin />);
     await screen.findByText("chatgpt-web");
     expect(screen.getByRole("button", { name: /Chạy engine/ })).toBeDisabled();
   });

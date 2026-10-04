@@ -57,10 +57,20 @@ class RegistryTest(unittest.TestCase):
         self.assertIsNone(text_engines.load_local_engines())
 
     def test_broken_local_module_is_reported_not_raised(self) -> None:
-        with mock.patch("importlib.import_module", side_effect=RuntimeError("boom")):
+        import importlib
+
+        real_import = importlib.import_module
+
+        def import_module(name, *args, **kwargs):  # chỉ adapter người dùng hỏng, engine có sẵn vẫn nạp
+            if name == text_engines.LOCAL_MODULE:
+                raise RuntimeError("boom")
+            return real_import(name, *args, **kwargs)
+
+        with mock.patch("importlib.import_module", side_effect=import_module):
             error = text_engines.load_local_engines()
         self.assertIn("boom", error)
         self.assertEqual(text_engines.load_error(), error)
+        self.assertIn("kim_gemini", text_engines.registered_engines())
 
 
 class _Db:
@@ -200,9 +210,11 @@ class RunEndpointTest(_Fixture, unittest.TestCase):
         super().setUp()
         text_engines.register_text_engine("fake", good_engine)
         self.other = User(email="x@t.l", full_name="X", password_hash="x", role=UserRole.USER)
-        self.db.add(self.other)
+        self.admin = User(email="a@t.l", full_name="A", password_hash="x", role=UserRole.ADMIN)
+        self.db.add_all([self.other, self.admin])
         self.db.commit()
-        self.user = self.db.get(User, 1)
+        self.owner = self.db.get(User, 1)
+        self.user = self.admin  # chạy engine: chỉ admin (chốt 04/10/2026)
         api.app.dependency_overrides[get_db] = lambda: self.db
         api.app.dependency_overrides[get_current_user] = lambda: self.user
         api.app.dependency_overrides[require_workspace_database] = lambda: None
@@ -224,7 +236,7 @@ class RunEndpointTest(_Fixture, unittest.TestCase):
     def _post(self, **body):
         return self.client.post(f"/api/user/documents/{self.scan_id}/text-engine-runs", json={"engine": "fake", **body})
 
-    def test_owner_runs_and_gets_pending_version_immediately(self) -> None:
+    def test_admin_runs_and_gets_pending_version_immediately(self) -> None:
         res = self._post()
         self.assertEqual(res.status_code, 200)
         body = res.json()
@@ -241,9 +253,10 @@ class RunEndpointTest(_Fixture, unittest.TestCase):
         version = GiaPhaVersionRepository(self.db).get(version_id)
         self.assertIn("1 câu / 1 trang", version.note)
 
-    def test_other_user_gets_404(self) -> None:
-        self.user = self.other
-        self.assertEqual(self._post().status_code, 404)
+    def test_non_admin_forbidden_even_for_owner(self) -> None:
+        for user in (self.owner, self.other):
+            self.user = user
+            self.assertEqual(self._post().status_code, 403)
 
     def test_disabled_engine_rejected(self) -> None:
         with mock.patch("app.config._get_setting", return_value="someone-else"):
