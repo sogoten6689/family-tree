@@ -170,6 +170,14 @@ class PageDetailEndpointTest(_PagesApi, unittest.TestCase):
     def test_page_without_vote_data(self) -> None:
         body = self.client.get(f"/api/user/documents/{self.scan.id}/pages/2").json()
         self.assertIsNone(body["ocr_vote_meta"])
+        self.assertIsNone(body["ocr_bbox"])
+
+    def test_page_detail_returns_bbox(self) -> None:
+        boxes = [{"bbox_xyxy": [10, 20, 60, 900], "han": "乾坤天", "confidence": 0.97, "order": 1}]
+        page = GiaPhaPageRepository(self.db).list_by_scan(self.scan.id)[0]
+        GiaPhaPageRepository(self.db).upsert_content(version_id=self.version.id, page_id=page.id, ocr_bbox=boxes)
+        body = self.client.get(f"/api/user/documents/{self.scan.id}/pages/1").json()
+        self.assertEqual(body["ocr_bbox"], boxes)
 
     def test_missing_page_and_other_user(self) -> None:
         self.assertEqual(self.client.get(f"/api/user/documents/{self.scan.id}/pages/99").status_code, 404)

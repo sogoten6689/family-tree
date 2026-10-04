@@ -84,6 +84,26 @@ describe("PageViewer", { timeout: 15000 }, () => {
     expect(await screen.findByText("paddle_v6")).toBeInTheDocument();
   });
 
+  it("shows the boxed image and lists agreed lines in a collapsed section", async () => {
+    const page = { ...PAGES[0], hannom_text: "大尊圖\n朱族家譜" };
+    const boxes = [{ order: 1, bbox_xyxy: [10, 20, 60, 900], han: "大尊圖", confidence: 0.9 }];
+    api.listScanPages.mockResolvedValue([page]);
+    api.getScanPage.mockResolvedValue({ ...page, ocr_vote_meta: META, ocr_bbox: boxes });
+    render(<PageViewer scanId={20} />);
+    expect(await screen.findByText(/1 khung, số = thứ tự đọc/)).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Trang 1 có khung chữ" })).toHaveAttribute("src", page.image_url);
+    fireEvent.click(screen.getByText("Các dòng đã thống nhất (1)"));
+    expect(await screen.findByText("朱族家譜")).toBeInTheDocument();
+    expect(screen.getByText("Dòng 2")).toBeInTheDocument();
+  });
+
+  it("says when a page has no boxes", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    render(<PageViewer scanId={20} />);
+    expect(await screen.findByText("Chưa có khung chữ cho trang này.")).toBeInTheDocument();
+  });
+
   it("warns when the Han text changed after a re-vote", async () => {
     const v2 = { schema_version: 2, vote_method: "char_majority", backbone: "paddle_v6", page_status: "ok",
       thresholds: { auto_min: 3, suggest_min: 2 }, stats: { chars: 3 }, review_rate: 0, uncertain_rate: 0,

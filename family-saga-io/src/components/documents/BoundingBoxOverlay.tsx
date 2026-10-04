@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type BBoxItem = {
   bbox_xyxy: [number, number, number, number];
   han?: string;
   confidence?: number | null;
+  /** Thứ tự đọc (1 = cột phải nhất) — hiện số trên khung khi showOrder. */
+  order?: number;
 };
 
 type BoundingBoxOverlayProps = {
@@ -11,6 +13,7 @@ type BoundingBoxOverlayProps = {
   alt?: string;
   bbox: BBoxItem[];
   showBoxes: boolean;
+  showOrder?: boolean;
 };
 
 /**
@@ -18,7 +21,7 @@ type BoundingBoxOverlayProps = {
  * pixel của ảnh GỐC (naturalWidth/Height), không phải pixel hiển thị — nên
  * phải đo kích thước hiển thị thật của <img> rồi scale lại mỗi box.
  */
-export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes }: BoundingBoxOverlayProps) {
+export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes, showOrder = false }: BoundingBoxOverlayProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [size, setSize] = useState<{ natW: number; natH: number; dispW: number; dispH: number } | null>(null);
 
@@ -27,6 +30,12 @@ export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes }: BoundingB
     if (!img || !img.naturalWidth || !img.naturalHeight) return;
     setSize({ natW: img.naturalWidth, natH: img.naturalHeight, dispW: img.clientWidth, dispH: img.clientHeight });
   };
+
+  // Khung co giãn theo ảnh hiển thị → đo lại khi cửa sổ đổi cỡ.
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  });
 
   const scaleX = size && size.natW ? size.dispW / size.natW : 1;
   const scaleY = size && size.natH ? size.dispH / size.natH : 1;
@@ -62,7 +71,9 @@ export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes }: BoundingB
                 boxSizing: "border-box",
                 pointerEvents: "auto",
               }}
-            />
+            >
+              {showOrder && box.order != null && <span className="bbox-order">{box.order}</span>}
+            </div>
           );
         })}
     </div>

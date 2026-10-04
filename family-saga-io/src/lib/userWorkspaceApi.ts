@@ -1,4 +1,5 @@
 import { apiRequest } from "@/lib/apiClient";
+import type { BBoxItem } from "@/components/documents/BoundingBoxOverlay";
 import type { BalkanNode, FamilyTreeDocument, FamilyTreeListResponse } from "@/lib/familyTreeApi";
 
 export type OcrStatus = "pending" | "processing" | "completed" | "failed" | "skipped";
@@ -169,6 +170,8 @@ export async function listScanPages(scanId: number): Promise<GiaPhaPageView[]> {
 export interface GiaPhaPageDetail extends GiaPhaPageView {
   /** OCR từng engine + vote (shape VoteMeta, đã kèm diff từng chữ). */
   ocr_vote_meta: Record<string, unknown> | null;
+  /** Khung chữ trên ảnh gốc theo thứ tự đọc (Paddle) — null nếu bộ chưa có. */
+  ocr_bbox?: BBoxItem[] | null;
 }
 
 /** 1 trang đầy đủ (ảnh + chữ + OCR/vote) — tải khi mở trang đó. */

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Card, Empty, Select, Space, Steps, Tag, Typography } from "antd";
+import { Button, Card, Collapse, Empty, Select, Space, Steps, Tag, Typography } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
@@ -31,6 +31,8 @@ type PipelineStepsPanelProps = {
   voteMeta?: VoteMeta[] | null;
   /** Bước mở sẵn (0 = OCR từng engine, 1 = Vote, …). */
   initialStep?: number;
+  /** Chữ Hán của trang (1 trang) — để liệt kê cả các dòng đã thống nhất (vote theo dòng). */
+  hannomText?: string | null;
 };
 
 const { Paragraph, Text } = Typography;
@@ -52,6 +54,7 @@ export function PipelineStepsPanel({
   translationText,
   voteMeta,
   initialStep = 0,
+  hannomText,
 }: PipelineStepsPanelProps) {
   const { t } = useTranslation();
   const [stepIndex, setStepIndex] = useState(initialStep);
@@ -74,6 +77,16 @@ export function PipelineStepsPanel({
       image={Empty.PRESENTED_IMAGE_SIMPLE}
     />
   );
+  // Vote theo dòng chỉ lưu dòng bất đồng; các dòng còn lại của chữ Hán là dòng
+  // các engine đã thống nhất (span.line = chỉ số dòng, từ 0). Chỉ khi xem 1 trang.
+  const disputed = new Set((pageVoteMeta?.uncertain_spans ?? []).map((s) => s.line));
+  const agreedLines =
+    pageVoteMeta && hannomText && pageCount === 1
+      ? hannomText
+          .split("\n")
+          .map((text, line) => ({ text, line }))
+          .filter((l) => l.text.trim() && !disputed.has(l.line))
+      : [];
   const engineEntries = pageVoteMeta?.engines ? Object.entries(pageVoteMeta.engines) : [];
   const engineEntriesV2 = pageMetaV2 ? Object.entries(pageMetaV2.engines) : [];
 
@@ -151,6 +164,32 @@ export function PipelineStepsPanel({
             </div>
           ) : (
             <Text type="secondary">{t("docReader.voteNoSpans")}</Text>
+          )}
+          {agreedLines.length > 0 && (
+            <Collapse
+              className="mt-3"
+              size="small"
+              items={[
+                {
+                  key: "agreed",
+                  label: t("docReader.voteAgreedLines", {
+                    defaultValue: "Các dòng đã thống nhất ({{count}})",
+                    count: agreedLines.length,
+                  }),
+                  children: (
+                    <div className="vote-spans">
+                      {agreedLines.map((l) => (
+                        <div key={l.line} className="vote-agreed-line">
+                          <Text strong>{t("docReader.voteLine", { line: l.line + 1 })}</Text>
+                          <Tag color="green">✓</Tag>
+                          <Text className="pipeline-steps-engine-text !mt-0">{l.text}</Text>
+                        </div>
+                      ))}
+                    </div>
+                  ),
+                },
+              ]}
+            />
           )}
         </div>
       ) : (

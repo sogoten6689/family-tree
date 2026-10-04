@@ -181,6 +181,8 @@ class GiaPhaPageView(BaseModel):
 class GiaPhaPageDetail(GiaPhaPageView):
     # OCR từng engine + vote của trang (đã gắn sẵn diff từng chữ để tô màu).
     ocr_vote_meta: Optional[Dict[str, Any]] = None
+    # Khung chữ trên ảnh gốc [{bbox_xyxy, han, confidence, order}] — theo thứ tự đọc.
+    ocr_bbox: Optional[List[Dict[str, Any]]] = None
 
 
 class MaDinhDanhAutoResult(BaseModel):
@@ -613,6 +615,7 @@ def create_workspace_router(
             transliteration_text=content.transliteration_text if content else None,
             translation_text=content.translation_text if content else None,
             ocr_vote_meta=meta,
+            ocr_bbox=content.ocr_bbox if content and isinstance(content.ocr_bbox, list) else None,
         )
 
     @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)

@@ -107,3 +107,10 @@
 .vote-v2-grid td.vote-v2-diff { background: var(--ant-color-error-bg); color: var(--ant-color-error-text); }
 .vote-v2-result td { font-weight: 700; border-top: 1px solid var(--ant-color-border-secondary); }
 .vote-v2-notes { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--ant-color-text-secondary); }
+
+/* Ảnh có khung chữ (tab Trang) */
+.bbox-order { position: absolute; top: 0; left: 50%; transform: translate(-50%, -100%); background: #ff4d4f; color: #fff; font-size: 11px; line-height: 14px; padding: 0 3px; border-radius: 3px; pointer-events: none; }
+.page-viewer-images { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
+.page-viewer-images figure { margin: 0; }
+.page-viewer-images figcaption { font-size: 12px; color: var(--ant-color-text-secondary, #888); margin-bottom: 4px; line-height: 1.4; }
+.vote-agreed-line { display: flex; gap: 8px; align-items: baseline; }

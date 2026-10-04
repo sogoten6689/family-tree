@@ -306,6 +306,7 @@
     "voteDisagreeLabel": "Engine không đồng ý",
     "voteLine": "Dòng {{line}}",
     "voteLegend": "Engine không theo cụm thắng — đỏ = bị thay, vàng = chữ thừa, chấm mờ = chữ thiếu",
+    "voteAgreedLines": "Các dòng đã thống nhất ({{count}})",
     "voteNoSpans": "Không có dòng bất đồng (thống nhất, hoặc chỉ 1 engine được bỏ phiếu)",
     "votePosition": "Vị trí {{pos}} (gốc \"{{char}}\")",
     "voteGap": "Khe trước vị trí {{pos}} (chữ chèn thêm)",
@@ -731,6 +732,10 @@
     "failed": "Chưa tạo được mã"
   },
   "pageViewer": {
+    "original": "Ảnh gốc",
+    "boxes": "Khung chữ (Paddle) — {{n}} khung, số = thứ tự đọc",
+    "boxesAlt": "Trang {{n}} có khung chữ",
+    "noBoxes": "Chưa có khung chữ cho trang này.",
     "stale": "Chữ Hán trang này đã đổi sau khi vote lại — phiên âm / dịch nghĩa có thể chưa khớp.",
     "tab": "Trang",
     "noPages": "Bộ này chưa có trang.",

@@ -28,6 +28,12 @@ def _longtext_as_sqlite_text(_type, _compiler, **_kw) -> str:
 _spec = importlib.util.spec_from_file_location(
     "import_corpus", Path(__file__).resolve().parents[1] / "tools" / "import_hannom_bilingual_corpus.py"
 )
+_bbox_spec = importlib.util.spec_from_file_location(
+    "load_page_bbox", Path(__file__).resolve().parents[1] / "tools" / "load_page_bbox.py"
+)
+load_page_bbox = importlib.util.module_from_spec(_bbox_spec)
+_bbox_spec.loader.exec_module(load_page_bbox)
+
 import_corpus = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(import_corpus)
 
@@ -327,3 +333,42 @@ class PageVoteMetaTest(unittest.TestCase):
         meta = import_corpus._page_vote_meta(_v2_l1("天地\n玄黃"))
         self.assertEqual((meta["lines"], "voted_text" in meta), (["天地", "玄黃"], False))
 
+
+
+class LoadPageBboxTest(_Db, unittest.TestCase):
+    BOXES = [{"order": 1, "bbox_xyxy": [900, 10, 960, 800], "han": "乾坤", "confidence": 0.98}]
+
+    def _setup_two_versions(self):
+        scan = self.new_scan()
+        pages_repo, versions_repo = GiaPhaPageRepository(self.db), GiaPhaVersionRepository(self.db)
+        import_corpus.backfill_structure(
+            scan=scan, record=RECORD, scans=self.scans, pages_repo=pages_repo, versions_repo=versions_repo,
+            owner_id=self.owner.id, dry_run=False,
+        )
+        v1 = versions_repo.get_current(scan.id)
+        v2 = versions_repo.clone_version(v1.id, created_by=self.owner.id)
+        return scan, pages_repo, versions_repo, [v1, v2]
+
+    def _apply(self, scan, pages_repo, versions_repo, write):
+        return load_page_bbox.apply_book_bbox(
+            scan_id=scan.id, pages={"1": {"boxes": self.BOXES}, "9": {"boxes": self.BOXES}},
+            pages_repo=pages_repo, versions_repo=versions_repo, write=write,
+        )
+
+    def test_writes_every_version_only_box_field_and_is_idempotent(self) -> None:
+        scan, pages_repo, versions_repo, versions = self._setup_two_versions()
+        self.assertEqual(self._apply(scan, pages_repo, versions_repo, write=False)["rows_changed"], 2)
+        stats = self._apply(scan, pages_repo, versions_repo, write=True)
+        self.assertEqual(stats, {"pages": 1, "rows_changed": 2, "missing_pages": 1})
+        self.db.commit()
+        page1 = pages_repo.list_by_scan(scan.id)[0]
+        for v in versions:
+            c = next(c for c in pages_repo.list_content_for_version(v.id) if c.page_id == page1.id)
+            self.assertEqual((c.ocr_bbox, c.hannom_text), (self.BOXES, "乾坤"))
+        self.assertEqual(len(versions_repo.list_by_scan(scan.id)), 2)  # không tạo version mới
+        self.assertEqual(self._apply(scan, pages_repo, versions_repo, write=True)["rows_changed"], 0)
+
+    def test_dry_run_writes_nothing(self) -> None:
+        scan, pages_repo, versions_repo, versions = self._setup_two_versions()
+        self._apply(scan, pages_repo, versions_repo, write=False)
+        self.assertTrue(all(c.ocr_bbox is None for c in pages_repo.list_content_for_version(versions[0].id)))

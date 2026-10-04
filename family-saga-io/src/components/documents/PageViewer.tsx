@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
+import { BoundingBoxOverlay } from "@/components/documents/BoundingBoxOverlay";
 import { getScanPage, listScanPages, type GiaPhaPageDetail, type GiaPhaPageView } from "@/lib/userWorkspaceApi";
 
 import "./ReaderWorkspace.css";
@@ -66,6 +67,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const withImages = pages.filter((p) => p.image_url).length;
   const loadedDetail = detail?.page_number === page.page_number ? detail : null;
   const voteMeta = loadedDetail?.ocr_vote_meta ? [loadedDetail.ocr_vote_meta as unknown as VoteMeta] : null;
+  const boxes = loadedDetail?.ocr_bbox ?? [];
   const stale = isVoteMetaV2(loadedDetail?.ocr_vote_meta) && !!loadedDetail?.ocr_vote_meta.downstream_stale;
 
   return (
@@ -89,7 +91,35 @@ export function PageViewer({ scanId }: { scanId: number }) {
       <div className="grid gap-4 md:grid-cols-2">
         <Card size="small" title={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })}>
           {page.image_url ? (
-            <Image src={page.image_url} alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })} />
+            <div className="page-viewer-images">
+              <figure>
+                <figcaption>{t("pageViewer.original", { defaultValue: "Ảnh gốc" })}</figcaption>
+                <Image src={page.image_url} alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })} />
+              </figure>
+              {boxes.length > 0 ? (
+                <figure>
+                  <figcaption>
+                    {t("pageViewer.boxes", {
+                      defaultValue: "Khung chữ (Paddle) — {{n}} khung, số = thứ tự đọc",
+                      n: boxes.length,
+                    })}
+                  </figcaption>
+                  <BoundingBoxOverlay
+                    imageUrl={page.image_url}
+                    alt={t("pageViewer.boxesAlt", { defaultValue: "Trang {{n}} có khung chữ", n: page.page_number })}
+                    bbox={boxes}
+                    showBoxes
+                    showOrder
+                  />
+                </figure>
+              ) : (
+                loadedDetail && (
+                  <Text type="secondary" className="text-xs">
+                    {t("pageViewer.noBoxes", { defaultValue: "Chưa có khung chữ cho trang này." })}
+                  </Text>
+                )
+              )}
+            </div>
           ) : (
             <Empty
               image={<FileImageOutlined className="text-4xl text-muted-foreground" />}
@@ -124,6 +154,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
               translationText={page.translation_text}
               voteMeta={voteMeta}
               initialStep={voteMeta ? 1 : 0}
+              hannomText={page.hannom_text}
             />
           ) : (
             <Spin className="flex justify-center py-6" />

@@ -306,6 +306,7 @@
     "voteDisagreeLabel": "Disagreeing engines",
     "voteLine": "Line {{line}}",
     "voteLegend": "Engines outside the winning cluster — red = replaced, yellow = extra char, faded dots = missing char",
+    "voteAgreedLines": "Agreed lines ({{count}})",
     "voteNoSpans": "No disputed lines (unanimous, or only one engine allowed to vote)",
     "votePosition": "Position {{pos}} (original \"{{char}}\")",
     "voteGap": "Gap before position {{pos}} (inserted char)",
@@ -731,6 +732,10 @@
     "failed": "Could not generate the identifier"
   },
   "pageViewer": {
+    "original": "Original image",
+    "boxes": "Text boxes (Paddle) — {{n}} boxes, number = reading order",
+    "boxesAlt": "Page {{n}} with text boxes",
+    "noBoxes": "No text boxes for this page yet.",
     "stale": "Han text on this page changed after re-voting — transliteration / translation may be out of date.",
     "tab": "Pages",
     "noPages": "This item has no pages yet.",
