@@ -32,6 +32,8 @@ export type VoteMetaV2 = {
   engines: Record<string, VoteEngineV2>;
   lines: string[];
   slots: VoteSlot[];
+  /** Chữ Hán đổi sau khi vote lại → phiên âm/dịch nghĩa có thể chưa khớp. */
+  downstream_stale?: boolean;
 };
 
 export function isVoteMetaV2(meta: unknown): meta is VoteMetaV2 {
@@ -46,6 +48,7 @@ const ENGINE_LABELS: Record<string, string> = {
   google_vision: "Google Vision",
   gemini: "Gemini",
   gemini_vision: "Gemini",
+  gpt_vision: "GPT",
 };
 
 export const engineLabel = (name: string) => ENGINE_LABELS[name] ?? name;

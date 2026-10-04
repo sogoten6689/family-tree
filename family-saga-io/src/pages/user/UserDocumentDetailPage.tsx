@@ -27,7 +27,10 @@ const UserDocumentDetailPage = () => {
   // Tăng khi đổi phiên bản hiện tại → tab Trích xuất / Trang dựng lại với dữ liệu mới.
   const [contentKey, setContentKey] = useState(0);
 
-  const activeTab = searchParams.get("tab") ?? "overview";
+  // Tab "OCR / phiên âm" cũ chỉ là thông báo — OCR + vote từng trang nằm ở tab Trang;
+  // link cũ ?tab=ocr (luồng gia phả) mở thẳng tab Trang.
+  const rawTab = searchParams.get("tab") ?? "overview";
+  const activeTab = rawTab === "ocr" ? "pages" : rawTab;
 
   useEffect(() => {
     if (!scanId || scanId === "new") {
@@ -166,26 +169,6 @@ const UserDocumentDetailPage = () => {
                     )}
                   </Descriptions.Item>
                 </Descriptions>
-              ),
-            },
-            {
-              key: "ocr",
-              label: t("flow.step.ocr", { defaultValue: "OCR / phiên âm" }),
-              children: (
-                <Alert
-                  type="info"
-                  showIcon
-                  message={t("userDocuments.ocrTabTitle", { defaultValue: "OCR Hán-Nôm" })}
-                  description={t("userDocuments.ocrTabDesc", {
-                    defaultValue:
-                      "Với ảnh scan Hán-Nôm: dùng Word/txt đã phiên âm và chuyển sang tab Trích xuất. OCR từng trang trên MinIO sẽ bổ sung trong bản cập nhật tiếp theo.",
-                  })}
-                  action={
-                    <Button size="small" onClick={() => setTab("extract")}>
-                      {t("flow.nextExtract")}
-                    </Button>
-                  }
-                />
               ),
             },
             {

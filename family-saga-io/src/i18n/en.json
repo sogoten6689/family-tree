@@ -421,8 +421,6 @@
     "ocrStatusLabel": "OCR status",
     "treeStatusLabel": "Tree status",
     "tabOverview": "Overview",
-    "ocrTabTitle": "Hán-Nôm OCR",
-    "ocrTabDesc": "For scanned Hán-Nôm images: use transliterated Word/txt and switch to the Extract tab. Per-page OCR on server is coming in a future update.",
     "ocrStatus": {
       "pending": "Pending",
       "processing": "Processing",
@@ -733,6 +731,7 @@
     "failed": "Could not generate the identifier"
   },
   "pageViewer": {
+    "stale": "Han text on this page changed after re-voting — transliteration / translation may be out of date.",
     "tab": "Pages",
     "noPages": "This item has no pages yet.",
     "hannom": "Hán Nôm text",

@@ -421,8 +421,6 @@
     "ocrStatusLabel": "Trạng thái OCR",
     "treeStatusLabel": "Trạng thái gia phả",
     "tabOverview": "Tổng quan",
-    "ocrTabTitle": "OCR Hán-Nôm",
-    "ocrTabDesc": "Với ảnh scan Hán-Nôm: dùng file Word/txt đã phiên âm và chuyển sang tab Trích xuất. OCR từng trang trên server sẽ bổ sung trong bản cập nhật tiếp theo.",
     "ocrStatus": {
       "pending": "Chờ xử lý",
       "processing": "Đang xử lý",
@@ -733,6 +731,7 @@
     "failed": "Chưa tạo được mã"
   },
   "pageViewer": {
+    "stale": "Chữ Hán trang này đã đổi sau khi vote lại — phiên âm / dịch nghĩa có thể chưa khớp.",
     "tab": "Trang",
     "noPages": "Bộ này chưa có trang.",
     "hannom": "Chữ Hán Nôm",

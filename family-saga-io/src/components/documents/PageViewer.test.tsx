@@ -76,11 +76,22 @@ describe("PageViewer", { timeout: 15000 }, () => {
     api.listScanPages.mockResolvedValue(PAGES);
     api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
     const { container } = render(<PageViewer scanId={20} />);
-    expect(await screen.findByText("paddle_v6")).toBeInTheDocument(); // bước OCR
-    fireEvent.click(screen.getByText("2. Vote (hợp nhất)"));
+    // Trang có vote → mở sẵn bước Vote.
     expect(await screen.findByText("Dòng 1")).toBeInTheDocument();
     expect(container.querySelector(".vote-ch-contested")?.textContent).toBe("圖");
     expect(container.querySelector(".vote-dis .vote-ch-rep")?.textContent).toBe("國");
+    fireEvent.click(screen.getByText("1. OCR (theo từng engine)"));
+    expect(await screen.findByText("paddle_v6")).toBeInTheDocument();
+  });
+
+  it("warns when the Han text changed after a re-vote", async () => {
+    const v2 = { schema_version: 2, vote_method: "char_majority", backbone: "paddle_v6", page_status: "ok",
+      thresholds: { auto_min: 3, suggest_min: 2 }, stats: { chars: 3 }, review_rate: 0, uncertain_rate: 0,
+      engines: {}, lines: ["大尊圖"], slots: [], downstream_stale: true };
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve({ ...PAGES[n - 1], ocr_vote_meta: v2 }));
+    render(<PageViewer scanId={20} />);
+    expect(await screen.findByText(/đã đổi sau khi vote lại/)).toBeInTheDocument();
   });
 
   it("still shows the page when OCR/vote cannot be loaded", async () => {

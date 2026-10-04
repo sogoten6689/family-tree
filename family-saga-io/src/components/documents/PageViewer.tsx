@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
+import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
 import { getScanPage, listScanPages, type GiaPhaPageDetail, type GiaPhaPageView } from "@/lib/userWorkspaceApi";
 
 import "./ReaderWorkspace.css";
@@ -65,6 +66,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const withImages = pages.filter((p) => p.image_url).length;
   const loadedDetail = detail?.page_number === page.page_number ? detail : null;
   const voteMeta = loadedDetail?.ocr_vote_meta ? [loadedDetail.ocr_vote_meta as unknown as VoteMeta] : null;
+  const stale = isVoteMetaV2(loadedDetail?.ocr_vote_meta) && !!loadedDetail?.ocr_vote_meta.downstream_stale;
 
   return (
     <div className="space-y-3">
@@ -106,12 +108,22 @@ export function PageViewer({ scanId }: { scanId: number }) {
             )}
           </Card>
           {detailError && <Alert type="warning" showIcon message={detailError} />}
+          {stale && (
+            <Alert
+              type="warning"
+              showIcon
+              message={t("pageViewer.stale", {
+                defaultValue: "Chữ Hán trang này đã đổi sau khi vote lại — phiên âm / dịch nghĩa có thể chưa khớp.",
+              })}
+            />
+          )}
           {loadedDetail || detailError ? (
             <PipelineStepsPanel
               key={page.page_number}
               transliterationText={page.transliteration_text}
               translationText={page.translation_text}
               voteMeta={voteMeta}
+              initialStep={voteMeta ? 1 : 0}
             />
           ) : (
             <Spin className="flex justify-center py-6" />

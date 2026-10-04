@@ -29,6 +29,8 @@ type PipelineStepsPanelProps = {
   transliterationText?: string | null;
   translationText?: string | null;
   voteMeta?: VoteMeta[] | null;
+  /** Bước mở sẵn (0 = OCR từng engine, 1 = Vote, …). */
+  initialStep?: number;
 };
 
 const { Paragraph, Text } = Typography;
@@ -49,9 +51,10 @@ export function PipelineStepsPanel({
   transliterationText,
   translationText,
   voteMeta,
+  initialStep = 0,
 }: PipelineStepsPanelProps) {
   const { t } = useTranslation();
-  const [stepIndex, setStepIndex] = useState(0);
+  const [stepIndex, setStepIndex] = useState(initialStep);
   const [pageIndex, setPageIndex] = useState(0);
   const [spanLimit, setSpanLimit] = useState(SPAN_PAGE_SIZE);
 
