@@ -62,6 +62,24 @@ class KimGeminiEngineTest(unittest.TestCase):
         self.assertEqual(kim_gemini_engine("  \n", page_number=1, transliterate=lambda t: 1 / 0, translate=tr), [])
         self.assertEqual(tr.calls, [])
 
+    def test_non_han_lines_and_chars_are_not_sent(self) -> None:
+        # Phan gia tr.81: số trang và "tờ 81a" lẫn vào OCR.
+        sent = []
+        out = kim_gemini_engine(
+            "傳名同性\n302\ntò 81a\n*永佳山\n",
+            page_number=81,
+            transliterate=lambda text: sent.append(text) or ["truyền danh đồng tính", "vĩnh giai sơn"],
+            translate=fake_translate(),
+        )
+        self.assertEqual(sent, ["傳名同性\n永佳山"])
+        self.assertEqual([r["cn"] for r in out], ["傳名同性", "永佳山"])
+
+    def test_page_without_han_costs_nothing(self) -> None:
+        # Phan gia tr.51: "161 / 160 / tờ 10b / tờ 10a" — trước đây vẫn gọi Kim + Gemini.
+        tr = fake_translate()
+        out = kim_gemini_engine("161\n160\ntờ 10b\ntờ 10a", page_number=51, transliterate=lambda t: 1 / 0, translate=tr)
+        self.assertEqual((out, tr.calls), ([], []))
+
     def test_missing_google_key_is_clear_error(self) -> None:
         with mock.patch("app.config.get_google_api_key", return_value=None):
             with self.assertRaisesRegex(RuntimeError, "GOOGLE_API_KEY"):

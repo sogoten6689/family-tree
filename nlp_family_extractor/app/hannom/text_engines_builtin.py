@@ -6,6 +6,8 @@
 Số dòng phiên âm hoặc số câu dịch không khớp số dòng chữ Hán → gộp CẢ TRANG
 thành 1 câu {cn, sv, vi} (vẫn là bản dịch thật, chỉ thô hơn) — không gọi lại cho
 đỡ tốn. Gemini trả không phải JSON / rỗng → báo lỗi (KHÔNG ghi câu giữ chỗ).
+Chỉ gửi dòng CÓ chữ Hán, và chỉ phần chữ Hán của dòng (bỏ số trang "161",
+"tờ 10b", ký hiệu "*", "O" của OCR); trang không có chữ Hán → [] (không gọi gì).
 
 TỐN TIỀN mỗi lần chạy (Kim + Gemini theo trang; Gemini ghi vào bảng gemini_usage,
 task "translate"). Thiếu tài khoản Kim / GOOGLE_API_KEY → lỗi rõ ràng, lần chạy
@@ -18,6 +20,7 @@ import json
 from typing import Any, Callable, Optional
 
 from app.hannom.text_engines import register_text_engine
+from app.hannom.vote_char import han_only
 
 GEMINI_MAX_OUTPUT_TOKENS = 8192
 
@@ -73,8 +76,8 @@ def kim_gemini_engine(
     transliterate: Callable[[str], list[str]] = _default_transliterate,
     translate: Callable[[str], str] = _default_translate,
 ) -> list[dict[str, Any]]:
-    lines = [line.strip() for line in (hannom_text or "").splitlines() if line.strip()]
-    if not lines:
+    lines = [han for han in (han_only(line) for line in (hannom_text or "").splitlines()) if han]
+    if not lines:  # chỉ số trang / ký hiệu → không tốn lần gọi nào
         return []
     sv_lines = [s.strip() for s in transliterate("\n".join(lines)) if s and s.strip()]
     if not sv_lines:
