@@ -718,6 +718,32 @@ def create_workspace_router(
         updated = versions.set_review_status(version_id, payload.review_status)
         return _item_version_from(updated, versions.steps_for(updated.id))
 
+    @router.post("/api/user/documents/{scan_id}/versions/{version_id}/make-current", response_model=ItemVersion)
+    def make_version_current(
+        scan_id: int,
+        version_id: int,
+        _: AdminUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> ItemVersion:
+        """Chỉ admin: đặt 1 version có sẵn làm version hiện tại (không tạo bản
+        sao như /clone) + đồng bộ cache phẳng của bộ (tab Trích xuất). Version
+        engine đang chờ / đang chạy / lỗi → 400."""
+        from app.hannom.text_engine_runner import SOURCE_PREFIX
+
+        version = versions.get(version_id)
+        if version is None or version.user_scan_id != scan_id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        steps = versions.steps_for(version.id)
+        if (version.source or "").startswith(SOURCE_PREFIX):
+            text_steps = [s.status for s in steps if s.step_type.value in ("transliteration", "translation")]
+            if not text_steps or any(status != "done" for status in text_steps):
+                raise HTTPException(status_code=400, detail="Engine chưa chạy xong (hoặc bị lỗi) — chưa đặt làm hiện tại được.")
+        versions.set_current(scan_id, version.id)
+        pages_repo.sync_flat_cache(scans, scan_id, version.id)  # commit cả set_current
+        return _item_version_from(versions.get(version.id), versions.steps_for(version.id))
+
     @router.get("/api/admin/training-export", response_class=PlainTextResponse)
     def export_training_pairs(
         _: AdminUser,

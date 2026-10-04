@@ -170,6 +170,32 @@ class ImportEndpointTest(unittest.TestCase):
         self.assertFalse(res.json()["is_current"])
         self.assertEqual(GiaPhaVersionRepository(self.db).get_current(self.scan_id).id, self.v1.id)
 
+    def test_make_current_is_admin_only_and_syncs_flat_cache(self) -> None:
+        version_id = self._import([rec()]).json()["version"]["version_id"]
+        url = f"/api/user/documents/{self.scan_id}/versions/{version_id}/make-current"
+        self.assertEqual(self.client.post(url).status_code, 403)  # chủ bộ (không phải admin)
+        self.user = self.admin
+        res = self.client.post(url)
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(res.json()["is_current"])
+        versions = GiaPhaVersionRepository(self.db)
+        self.assertEqual(versions.get_current(self.scan_id).id, version_id)
+        self.assertEqual(len(versions.list_by_scan(self.scan_id)), 2)  # không tạo bản sao
+        scan = UserScanRepository(self.db).get(self.scan_id)
+        self.db.refresh(scan)
+        self.assertIn("Càn khôn thiên ý", scan.transliteration_text)  # cache phẳng theo version mới
+        self.assertEqual(self.client.post(url.replace(str(version_id), "999")).status_code, 404)
+
+    def test_make_current_rejects_unfinished_engine_version(self) -> None:
+        versions = GiaPhaVersionRepository(self.db)
+        engine_version = versions.create_derived_version(
+            user_scan_id=self.scan_id, parent_version_id=self.v1.id, source="engine-kim_gemini", review_status="approved"
+        )
+        self.user = self.admin
+        res = self.client.post(f"/api/user/documents/{self.scan_id}/versions/{engine_version.id}/make-current")
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(versions.get_current(self.scan_id).id, self.v1.id)
+
     def test_cannot_review_pipeline_version(self) -> None:
         self.user = self.admin
         res = self.client.patch(

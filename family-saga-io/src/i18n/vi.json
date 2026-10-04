@@ -716,7 +716,10 @@
       "running": "Đang chạy",
       "done": "Xong",
       "error": "Lỗi"
-    }
+    },
+    "makeCurrent": "Đặt làm hiện tại",
+    "makeCurrentConfirm": "Đặt v{{n}} làm phiên bản hiện tại? Tab Trích xuất và Trang sẽ hiện phiên bản này.",
+    "madeCurrent": "Đã đặt v{{n}} làm phiên bản hiện tại"
   },
   "maDinhDanh": {
     "label": "Mã định danh",

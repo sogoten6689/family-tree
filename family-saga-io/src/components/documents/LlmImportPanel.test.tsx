@@ -11,6 +11,7 @@ const api = vi.hoisted(() => ({
   fetchTrainingExport: vi.fn(),
   listEnabledTextEngines: vi.fn(),
   runTextEngine: vi.fn(),
+  makeVersionCurrent: vi.fn(),
 }));
 vi.mock("@/lib/llmImportApi", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/llmImportApi")>()),
@@ -18,6 +19,15 @@ vi.mock("@/lib/llmImportApi", async (importOriginal) => ({
 }));
 
 const { LlmImportPanel } = await import("./LlmImportPanel");
+
+// jsdom không có ResizeObserver (antd Popconfirm cần) — stub chỉ trong test này.
+if (typeof globalThis.ResizeObserver === "undefined") {
+  globalThis.ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  } as unknown as typeof ResizeObserver;
+}
 
 // jsdom 20.0.3 không có File.prototype.text (trình duyệt thật đều có) —
 // polyfill bằng FileReader chỉ trong test này, không đổi code production.
@@ -129,6 +139,47 @@ describe("LlmImportPanel", { timeout: 15000 }, () => {
     await screen.findByText("gemini-web");
     fireEvent.click(screen.getByRole("button", { name: /Chạy engine/ }));
     await waitFor(() => expect(api.runTextEngine).toHaveBeenCalledWith(7, "gemini-web"));
+  });
+
+  it("admin makes a finished version current and the page is told to refresh", async () => {
+    api.makeVersionCurrent.mockResolvedValue(version({ version_id: 2, version_number: 2, is_current: true }));
+    const onCurrentChanged = vi.fn();
+    render(<LlmImportPanel scanId={7} isAdmin onCurrentChanged={onCurrentChanged} />);
+    await screen.findByText("chatgpt-web");
+    const buttons = screen.getAllByRole("button", { name: "Đặt làm hiện tại" });
+    expect(buttons).toHaveLength(1); // v1 đang là hiện tại → không có nút
+    fireEvent.click(buttons[0]); // mở hộp xác nhận
+    await screen.findByText(/Đặt v2 làm phiên bản hiện tại\?/);
+    expect(api.makeVersionCurrent).not.toHaveBeenCalled(); // chưa xác nhận thì chưa gọi
+    const confirm = screen.getAllByRole("button", { name: "Đặt làm hiện tại" }).at(-1)!;
+    fireEvent.click(confirm);
+    await waitFor(() => expect(api.makeVersionCurrent).toHaveBeenCalledWith(7, 2));
+    await waitFor(() => expect(onCurrentChanged).toHaveBeenCalled());
+  });
+
+  it("no make-current button for running engine versions or non-admins", async () => {
+    api.listScanVersions.mockResolvedValue([
+      version({}),
+      version({
+        version_id: 3,
+        version_number: 3,
+        is_current: false,
+        source: "engine-kim_gemini",
+        review_status: "approved",
+        steps: [
+          { step_type: "transliteration", status: "running" },
+          { step_type: "translation", status: "running" },
+        ],
+      }),
+    ]);
+    const { unmount } = render(<LlmImportPanel scanId={7} isAdmin />);
+    await screen.findByText("engine-kim_gemini");
+    expect(screen.queryByRole("button", { name: "Đặt làm hiện tại" })).not.toBeInTheDocument();
+    unmount();
+    api.listScanVersions.mockResolvedValue([version({}), version({ version_id: 2, version_number: 2, is_current: false })]);
+    render(<LlmImportPanel scanId={7} isAdmin={false} />);
+    expect(await screen.findAllByText("Pipeline")).toHaveLength(2); // bảng đã có v1 + v2
+    expect(screen.queryByRole("button", { name: "Đặt làm hiện tại" })).not.toBeInTheDocument();
   });
 
   it("hides engine runs from non-admins (running costs money)", async () => {

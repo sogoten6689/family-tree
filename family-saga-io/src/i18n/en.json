@@ -716,7 +716,10 @@
       "running": "Running",
       "done": "Done",
       "error": "Error"
-    }
+    },
+    "makeCurrent": "Make current",
+    "makeCurrentConfirm": "Make v{{n}} the current version? The Extract and Pages tabs will show this version.",
+    "madeCurrent": "v{{n}} is now the current version"
   },
   "maDinhDanh": {
     "label": "Identifier",

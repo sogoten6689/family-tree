@@ -24,6 +24,8 @@ const UserDocumentDetailPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [scan, setScan] = useState<UserScan | null>(null);
   const [loading, setLoading] = useState(true);
+  // Tăng khi đổi phiên bản hiện tại → tab Trích xuất / Trang dựng lại với dữ liệu mới.
+  const [contentKey, setContentKey] = useState(0);
 
   const activeTab = searchParams.get("tab") ?? "overview";
 
@@ -191,6 +193,7 @@ const UserDocumentDetailPage = () => {
               label: t("flow.step.extract", { defaultValue: "Trích xuất" }),
               children: (
                 <DocumentReaderPage
+                  key={`extract-${contentKey}`}
                   embedded
                   initialScanId={scan.id}
                   onScanRegistered={() => {
@@ -202,12 +205,21 @@ const UserDocumentDetailPage = () => {
             {
               key: "pages",
               label: t("pageViewer.tab", { defaultValue: "Trang" }),
-              children: <PageViewer scanId={scan.id} />,
+              children: <PageViewer key={`pages-${contentKey}`} scanId={scan.id} />,
             },
             {
               key: "versions",
               label: t("llmImport.tab", { defaultValue: "Phiên bản & nhập LLM" }),
-              children: <LlmImportPanel scanId={scan.id} isAdmin={isAdmin} />,
+              children: (
+                <LlmImportPanel
+                  scanId={scan.id}
+                  isAdmin={isAdmin}
+                  onCurrentChanged={() => {
+                    setContentKey((k) => k + 1);
+                    void getUserDocument(scan.id).then(setScan);
+                  }}
+                />
+              ),
             },
           ]}
         />

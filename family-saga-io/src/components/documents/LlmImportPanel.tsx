@@ -6,7 +6,7 @@ import {
   PlayCircleOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
-import { Alert, AutoComplete, Button, Input, Modal, Select, Space, Table, Tag, Tooltip, Typography, message } from "antd";
+import { Alert, AutoComplete, Button, Input, Modal, Popconfirm, Select, Space, Table, Tag, Tooltip, Typography, message } from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +14,7 @@ import {
   engineRunStatus,
   fetchTrainingExport,
   importLlmResults,
+  makeVersionCurrent,
   listEnabledTextEngines,
   listScanVersions,
   parseImportFile,
@@ -38,7 +39,16 @@ const RUN_POLL_MS = 5000;
  * version hiện tại. Chủ bộ gia phả/admin nhập; chỉ admin duyệt (duyệt không
  * đổi version hiện tại — chỉ quyết định có vào dữ liệu train không).
  */
-export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: boolean }) {
+export function LlmImportPanel({
+  scanId,
+  isAdmin,
+  onCurrentChanged,
+}: {
+  scanId: number;
+  isAdmin: boolean;
+  /** Gọi sau khi đổi phiên bản hiện tại — trang cha tải lại tab Trích xuất / Trang. */
+  onCurrentChanged?: () => void;
+}) {
   const { t } = useTranslation();
   const [versions, setVersions] = useState<ScanVersion[]>([]);
   const [loading, setLoading] = useState(false);
@@ -96,6 +106,22 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
       message.error(err instanceof Error ? err.message : "Không chạy được engine");
     } finally {
       setStarting(false);
+    }
+  };
+
+  const makeCurrent = async (version: ScanVersion) => {
+    setBusyVersion(version.version_id);
+    try {
+      await makeVersionCurrent(scanId, version.version_id);
+      message.success(
+        t("llmImport.madeCurrent", { defaultValue: "Đã đặt v{{n}} làm phiên bản hiện tại", n: version.version_number }),
+      );
+      await load();
+      onCurrentChanged?.();
+    } catch (err) {
+      message.error(err instanceof Error ? err.message : "Không đặt được phiên bản hiện tại");
+    } finally {
+      setBusyVersion(null);
     }
   };
 
@@ -223,9 +249,27 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
                 {
                   title: "",
                   key: "actions",
-                  render: (_: unknown, v: ScanVersion) =>
-                    v.source ? (
+                  render: (_: unknown, v: ScanVersion) => {
+                    const runStatus = engineRunStatus(v);
+                    const canMakeCurrent = !v.is_current && (runStatus === null || runStatus === "done");
+                    return (
                       <Space>
+                        {canMakeCurrent && (
+                          <Popconfirm
+                            title={t("llmImport.makeCurrentConfirm", {
+                              defaultValue: "Đặt v{{n}} làm phiên bản hiện tại? Tab Trích xuất và Trang sẽ hiện phiên bản này.",
+                              n: v.version_number,
+                            })}
+                            okText={t("llmImport.makeCurrent", { defaultValue: "Đặt làm hiện tại" })}
+                            onConfirm={() => void makeCurrent(v)}
+                          >
+                            <Button size="small" type="primary" ghost loading={busyVersion === v.version_id}>
+                              {t("llmImport.makeCurrent", { defaultValue: "Đặt làm hiện tại" })}
+                            </Button>
+                          </Popconfirm>
+                        )}
+                        {v.source && (
+                          <>
                         <Button
                           size="small"
                           icon={<CheckOutlined />}
@@ -244,8 +288,11 @@ export function LlmImportPanel({ scanId, isAdmin }: { scanId: number; isAdmin: b
                         >
                           {t("llmImport.reject", { defaultValue: "Loại" })}
                         </Button>
+                          </>
+                        )}
                       </Space>
-                    ) : null,
+                    );
+                  },
                 },
               ]
             : []),

@@ -89,6 +89,11 @@ export function reviewVersion(scanId: number, versionId: number, reviewStatus: R
   });
 }
 
+/** Admin: đặt 1 phiên bản có sẵn làm phiên bản hiện tại (không tạo bản sao). */
+export function makeVersionCurrent(scanId: number, versionId: number): Promise<ScanVersion> {
+  return apiRequest<ScanVersion>(`/api/user/documents/${scanId}/versions/${versionId}/make-current`, { method: "POST" });
+}
+
 /** Tải JSONL các cặp câu đã duyệt (admin) — trả về text, không phải JSON. */
 export async function fetchTrainingExport(): Promise<string> {
   const headers = new Headers();
