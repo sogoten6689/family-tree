@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Row, Statistic, Typography } from "antd";
+import { Button, Card, Col, Row, Statistic, Typography } from "antd";
+import { LinkOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import { PageState } from "@/components/ui/PageState";
 import { getAdminStats, type AdminStats } from "@/lib/userWorkspaceApi";
 
+interface HannomProgressData {
+  total_books: number;
+  total_pages: number;
+  pages_with_ocr: number;
+  pages_with_transliteration: number;
+  pages_with_translation: number;
+  ocr_percent: number;
+  transliteration_percent: number;
+  translation_percent: number;
+}
+
 const AdminDashboardPage = () => {
   const { t } = useTranslation();
   const [stats, setStats] = useState<AdminStats | null>(null);
+  const [hannomStats, setHannomStats] = useState<HannomProgressData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -15,8 +29,12 @@ const AdminDashboardPage = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await getAdminStats();
-      setStats(data);
+      const [adminData, hannomData] = await Promise.all([
+        getAdminStats(),
+        fetch("/api/public/hannom-progress").then((r) => r.json()),
+      ]);
+      setStats(adminData);
+      setHannomStats(hannomData);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Không tải được thống kê");
     } finally {
@@ -52,6 +70,60 @@ const AdminDashboardPage = () => {
             </Col>
           ))}
         </Row>
+
+        {hannomStats && (
+          <>
+            <Typography.Title level={4} className="!mt-8">
+              {t("admin.hannom.title", { defaultValue: "Tiến độ Hán-Nôm" })}
+            </Typography.Title>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} sm={12} md={6}>
+                <Card>
+                  <Statistic
+                    title={t("admin.hannom.books", { defaultValue: "Cuốn" })}
+                    value={hannomStats.total_books}
+                    suffix="/ 28"
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={12} md={6}>
+                <Card>
+                  <Statistic
+                    title={t("admin.hannom.pages", { defaultValue: "Trang" })}
+                    value={hannomStats.total_pages}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={12} md={6}>
+                <Card>
+                  <Statistic
+                    title={t("admin.hannom.ocr", { defaultValue: "OCR" })}
+                    value={hannomStats.ocr_percent}
+                    suffix="%"
+                    precision={1}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={12} md={6}>
+                <Card>
+                  <div className="flex justify-between items-center">
+                    <Statistic
+                      title={t("admin.hannom.translit", { defaultValue: "Phiên âm" })}
+                      value={hannomStats.transliteration_percent}
+                      suffix="%"
+                      precision={1}
+                    />
+                  </div>
+                  <Link to="/admin/gia-pha">
+                    <Button type="link" size="small" icon={<LinkOutlined />}>
+                      {t("admin.hannom.viewDetail", { defaultValue: "Xem chi tiết" })}
+                    </Button>
+                  </Link>
+                </Card>
+              </Col>
+            </Row>
+          </>
+        )}
       </PageState>
     </div>
   );
