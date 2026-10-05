@@ -1,6 +1,6 @@
 # Task — Đưa đủ 28 gia phả Hán Nôm vào DB + trang thống kê công khai
 
-> **Ngày:** 2026-10-05 · **Trạng thái:** chưa code — file này để nhớ việc.
+> **Ngày:** 2026-10-05 · **Trạng thái:** chưa code — file này để nhớ việc. Việc còn dở của cả phiên: **§7**.
 > **Yêu cầu (Lâm):** liệt kê gia phả Hán Nôm kèm trạng thái (mã định danh, OCR, phiên âm, dịch nghĩa,
 > cô đọng, tạo cấu trúc), **đưa vào database với hình ảnh đầy đủ**, làm **trang thống kê công khai** trong web app.
 > **Liên quan:** [hannom_gia_pha_source_hunt_plan.md](./hannom_gia_pha_source_hunt_plan.md) (đi tìm nguồn),
@@ -121,3 +121,34 @@ docker compose -f infra/docker-compose.yml --project-directory . up -d mysql min
 cd nlp_family_extractor && PYTHONPATH=. python -m pytest tests/ --ignore=tests/test_family_tree_api.py -q
 cd ../family-saga-io && npm run test && npm run build
 ```
+
+## 7. Nhật ký phiên 05/10 và việc còn dở
+
+### 7.1. Đã làm
+
+| Việc | Kết quả | Ở đâu |
+|---|---|---|
+| Đi tìm nguồn gia phả Hán Nôm (web, L0→L2) | Nom Foundation (1.479 cuốn) và archive.org đã rà hết; mọi gia phả có ảnh online repo đều đã có | [hannom_gia_pha_source_hunt_plan.md](./hannom_gia_pha_source_hunt_plan.md) |
+| Danh mục Kyoto GCR WP6 | 332 dòng → CSV (số hiệu, số trang, năm). Tên chữ Hán trong PDF hỏng font, chưa đọc được | `data/05_ops/sources_discovery/hannom/kyoto_gcr6/` (local, gitignore) |
+| Tải 10 bộ "liên quan" (Lâm đồng ý) | 7 bộ Nom Foundation + 3 bộ BULAC; 430 ảnh, 331 MB (ước lượng lúc xin phép: 70–100 MB) | `data/00_raw/hannom/related/` + `SUMMARY.md`, `summarize_related.py` |
+| Thống kê trạng thái 28 bộ | §1 file này (từ record nghiên cứu, chưa đối chiếu DB VPS) | — |
+| Docker local | Đã bật `family-tree-mysql` (cổng 3309) và `family-tree-minio` (9002/9003). **Có thể vẫn đang chạy** | `infra/docker-compose.yml` |
+| Git | Nhánh `docs/hannom-progress-task` (2 file docs). File này lên `master` ở `91a7a72` | — |
+
+### 7.2. Việc còn dở (theo thứ tự đề xuất)
+
+| # | Việc | R | Ghi chú |
+|--:|---|---|---|
+| 1 | Code theo §4, bước 1–7 (import `--include-draft --no-tree`, API `/api/public/hannom-progress`, trang `/thong-ke-han-nom`, test, chạy thử local, nhánh `feat/hannom-progress` + PR) | R1–R4 | Chưa bắt đầu |
+| 2 | Chạy import + upload ảnh lên VPS, deploy | **R5** | Hỏi riêng |
+| 3 | Dựng cây bằng Gemini cho các bộ đã dịch | **R3** | Hỏi riêng |
+| 4 | OCR / phiên âm / dịch 9 bộ chưa làm + phần còn thiếu của `hxh-129`, `gpc-dang-1928` (phiên âm 2/17) | R2–R3 | Chọn engine (Paddle local miễn phí; Kim Hán Nôm / Google Vision / Gemini tốn tiền) |
+| 5 | Định nghĩa và viết bước **cô đọng** | R1 | Cần Lâm/thầy định nghĩa trước |
+| 6 | Khôi phục tên chữ Hán cho `gcr6_catalogue.csv` (render trang PDF 67–73 rồi đọc / OCR local) | R2 | Không dùng Kim Hán Nôm |
+| 7 | Chọn 30–50 mục mục tiêu từ danh mục Kyoto; soạn thư nháp xin truy cập Viện Hán Nôm và Thư viện TT‑Huế | R0 soạn / R5 gửi | Lâm hoặc thầy gửi |
+| 8 | `related/bulac`: giữ JPG hay zip JP2 (trùng ~40 MB hoặc ~149 MB) | R1 | Chưa xoá gì |
+| 9 | Chạy lại `build_corpus_inventory`: `DATA_INVENTORY.md` vẫn ghi 28 cuốn, catalog đã là 42 | R2 | |
+| 10 | Thử lại kho Temple University (CONTENTdm `p16002coll24`) bằng tay | R0 | API và trình duyệt đều không vào được |
+| 11 | Dọn git: `master` local còn `e4650ac` chưa push (cần `git pull --rebase`); xoá nhánh `docs/hannom-progress-task` nếu không cần | R4–R5 | |
+| 12 | Tắt Docker local khi không dùng: `docker compose -f infra/docker-compose.yml --project-directory . stop mysql minio` | R2 | |
+| 13 | Họp với thầy: duyệt thay đổi mã định danh (02/10); hỏi kênh làm việc với Viện Hán Nôm và Thư viện Huế | — | |
