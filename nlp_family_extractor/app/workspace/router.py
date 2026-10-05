@@ -73,6 +73,29 @@ class AdminStatsResponse(BaseModel):
     history_total: int
 
 
+class HannomProgressItem(BaseModel):
+    doc_id: str
+    title_vn: str
+    page_count: int
+    has_ocr: bool
+    has_transliteration: bool
+    has_translation: bool
+    ma_dinh_danh: Optional[str] = None
+    flags: List[str] = Field(default_factory=list)
+
+
+class HannomProgressResponse(BaseModel):
+    total_books: int
+    total_pages: int
+    pages_with_ocr: int
+    pages_with_transliteration: int
+    pages_with_translation: int
+    ocr_percent: float
+    transliteration_percent: float
+    translation_percent: float
+    books: List[HannomProgressItem]
+
+
 class UserScanResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -961,6 +984,56 @@ def create_workspace_router(
             total_users=users.count_users(),
             total_scans=total_scans,
             history_total=history_total,
+        )
+
+    @router.get("/api/public/hannom-progress", response_model=HannomProgressResponse)
+    def get_hannom_progress(
+        scans: UserScanRepository = Depends(scan_repo),
+        db: Session = Depends(get_db),
+    ) -> HannomProgressResponse:
+        require_workspace_database()
+        from sqlalchemy import select
+
+        # Query scans từ hannom-corpus import
+        stmt = select(UserScan).filter(
+            UserScan.request_id.like(f"{HANNOM_CORPUS_REQUEST_ID_PREFIX}%")
+        )
+        hannom_scans = db.execute(stmt).scalars().all()
+
+        total_books = len(hannom_scans)
+        total_pages = sum(s.page_count for s in hannom_scans)
+        pages_with_ocr = sum(s.page_count for s in hannom_scans if s.hannom_text)
+        pages_with_transliteration = sum(s.page_count for s in hannom_scans if s.transliteration_text)
+        pages_with_translation = sum(s.page_count for s in hannom_scans if s.source_text)
+
+        books = []
+        for scan in sorted(hannom_scans, key=lambda s: s.file_name):
+            doc_id = scan.file_name
+            books.append(HannomProgressItem(
+                doc_id=doc_id,
+                title_vn=scan.title,
+                page_count=scan.page_count,
+                has_ocr=bool(scan.hannom_text),
+                has_transliteration=bool(scan.transliteration_text),
+                has_translation=bool(scan.source_text),
+                ma_dinh_danh=scan.ma_dinh_danh,
+                flags=[],  # TODO: thêm flags từ corpus metadata
+            ))
+
+        ocr_pct = round(100 * pages_with_ocr / total_pages, 1) if total_pages > 0 else 0.0
+        translit_pct = round(100 * pages_with_transliteration / total_pages, 1) if total_pages > 0 else 0.0
+        trans_pct = round(100 * pages_with_translation / total_pages, 1) if total_pages > 0 else 0.0
+
+        return HannomProgressResponse(
+            total_books=total_books,
+            total_pages=total_pages,
+            pages_with_ocr=pages_with_ocr,
+            pages_with_transliteration=pages_with_transliteration,
+            pages_with_translation=pages_with_translation,
+            ocr_percent=ocr_pct,
+            transliteration_percent=translit_pct,
+            translation_percent=trans_pct,
+            books=books,
         )
 
     @router.get("/api/admin/history")

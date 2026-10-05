@@ -32,6 +32,7 @@ import SettingsPage from "./pages/developer/SettingsPage";
 import StoragePage from "./pages/developer/StoragePage";
 import LogsPage from "./pages/developer/LogsPage";
 import { DeveloperRoute } from "@/components/DeveloperRoute";
+import HannomProgressPage from "./pages/HannomProgressPage";
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,7 @@ const AppContent = () => (
               {/* ── Công khai ── */}
               <Route path="/" element={<GuestHomeRoute />} />
               <Route path="/huong-dan" element={<GuidePage />} />
+              <Route path="/thong-ke-han-nom" element={<HannomProgressPage />} />
               <Route path="/gia-pha" element={<GiaPhaListPage scope="public" />} />
               <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />
 

@@ -415,6 +415,16 @@ def main() -> int:
         action="store_true",
         help="Với bộ đã import trước: ghi mã định danh đã chốt + tạo trang/version v1 nếu còn thiếu",
     )
+    parser.add_argument(
+        "--include-draft",
+        action="store_true",
+        help="Cho phép import bộ chưa có text (OCR/phiên âm/dịch) với ocr_status=PENDING (mặc định: bỏ qua)",
+    )
+    parser.add_argument(
+        "--no-tree",
+        action="store_true",
+        help="Bỏ qua tạo FamilyTree (không gọi Gemini) — set tree_status=NONE (mặc định: tạo cây nếu có text)",
+    )
     args = parser.parse_args()
 
     data_root = _default_data_root()
@@ -526,7 +536,8 @@ def main() -> int:
                 continue
 
             text = _best_text(record)
-            if not text:
+            is_draft = not text
+            if is_draft and not args.include_draft:
                 note = (record.get("ghi_chu") or "")[:80]
                 print(f"[SKIP draft — chưa có text] {doc_id}: {note}")
                 skipped_draft += 1
@@ -534,7 +545,9 @@ def main() -> int:
 
             title = _title(record)
             if args.dry_run:
-                print(f"[DRY-RUN] {doc_id} -> title={title!r}, {len(text)} ký tự")
+                status_label = "DRAFT" if is_draft else "OK"
+                text_size = f"{len(text)} ký tự" if text else "—"
+                print(f"[DRY-RUN {status_label}] {doc_id} -> title={title!r}, {text_size}")
                 continue
 
             scan = scans.create(
@@ -548,38 +561,47 @@ def main() -> int:
                 transliteration_text=_transliteration_text(record),
                 ocr_vote_meta=_vote_meta(record),
             )
-            scans.update(scan, ocr_status=OcrStatus.COMPLETED, request_id=request_id)
+            ocr_st = OcrStatus.PENDING if is_draft else OcrStatus.COMPLETED
+            scans.update(scan, ocr_status=ocr_st, request_id=request_id)
             identifier_fields, identifier_warnings = corpus_identifier_fields(record)
             for warning in identifier_warnings:
                 print(f"[CẢNH BÁO] {doc_id}: {warning}")
             if identifier_fields:
                 scans.set_corpus_identifiers(scan, identifier_fields)
-            _create_pages_version_and_content(
-                pages_repo=pages_repo,
-                versions_repo=versions_repo,
-                user_scan_id=scan.id,
-                record=record,
-                owner_id=owner.id,
-            )
-
-            extraction = extractor.parse(text)
-            balkan_nodes, gemini_err = normalize_balkan_nodes(text, extraction)
-
-            if balkan_nodes:
-                tree = store.create_tree(
-                    name=title,
-                    description=record.get("dia_danh") or None,
-                    nodes=balkan_nodes,
-                    has_source_document=True,
-                    has_hannom_text=bool(record.get("co_ban_han")),
-                    user_id=owner.id,
-                    is_public=True,
+            if text:
+                _create_pages_version_and_content(
+                    pages_repo=pages_repo,
+                    versions_repo=versions_repo,
+                    user_scan_id=scan.id,
+                    record=record,
+                    owner_id=owner.id,
                 )
-                scans.update(scan, tree_status=TreeStatus.CREATED, family_tree_id=tree["id"])
-                print(f"[OK] {doc_id} -> scan#{scan.id}, tree {tree['id']} ({len(balkan_nodes)} người)")
-                imported_with_tree += 1
+
+            if args.no_tree:
+                print(f"[DRAFT] {doc_id} -> scan#{scan.id}, tree_status=NONE (--no-tree)")
+                imported_text_only += 1
+            elif text:
+                extraction = extractor.parse(text)
+                balkan_nodes, gemini_err = normalize_balkan_nodes(text, extraction)
+
+                if balkan_nodes:
+                    tree = store.create_tree(
+                        name=title,
+                        description=record.get("dia_danh") or None,
+                        nodes=balkan_nodes,
+                        has_source_document=True,
+                        has_hannom_text=bool(record.get("co_ban_han")),
+                        user_id=owner.id,
+                        is_public=True,
+                    )
+                    scans.update(scan, tree_status=TreeStatus.CREATED, family_tree_id=tree["id"])
+                    print(f"[OK] {doc_id} -> scan#{scan.id}, tree {tree['id']} ({len(balkan_nodes)} người)")
+                    imported_with_tree += 1
+                else:
+                    print(f"[TEXT-ONLY] {doc_id} -> scan#{scan.id}, chưa tạo được cây: {gemini_err}")
+                    imported_text_only += 1
             else:
-                print(f"[TEXT-ONLY] {doc_id} -> scan#{scan.id}, chưa tạo được cây: {gemini_err}")
+                print(f"[DRAFT] {doc_id} -> scan#{scan.id} (chưa có text)")
                 imported_text_only += 1
 
         print(
