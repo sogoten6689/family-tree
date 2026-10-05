@@ -195,6 +195,17 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
         onRow={(record) => ({ onClick: () => goToDetail(record) })}
         rowClassName={() => "cursor-pointer"}
         columns={[
+          ...(scope === "admin"
+            ? [
+                {
+                  title: t("giaPhaList.columnPages", { defaultValue: "Trang" }).toUpperCase(),
+                  key: "page_count",
+                  width: 80,
+                  align: "right" as const,
+                  render: () => "—",
+                },
+              ]
+            : []),
           {
             title: t("giaPhaList.columnId", { defaultValue: "Mã" }).toUpperCase(),
             dataIndex: "id",
@@ -222,6 +233,22 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
             title: t("giaPhaList.columnTitle", { defaultValue: "Tên" }).toUpperCase(),
             dataIndex: "title",
           },
+          ...(scope === "admin"
+            ? [
+                {
+                  title: t("giaPhaList.columnOcrStatus", { defaultValue: "OCR" }).toUpperCase(),
+                  key: "ocr_status",
+                  width: 120,
+                  render: (_: unknown, record: GiaPhaItem) => {
+                    const versionStatus = record.current_version?.status || "";
+                    if (versionStatus.includes("ocr")) {
+                      return <Tag color="blue">{t("giaPhaList.ocr", { defaultValue: "OCR" })}</Tag>;
+                    }
+                    return <Tag>{t("giaPhaList.pending", { defaultValue: "Chờ" })}</Tag>;
+                  },
+                },
+              ]
+            : []),
           {
             title: t("giaPhaList.columnStatus", { defaultValue: "Trạng thái" }).toUpperCase(),
             dataIndex: "status",
