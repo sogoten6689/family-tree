@@ -26,13 +26,6 @@ export const APP_PAGES: AppPageMeta[] = [
     descKey: "pages.guide.desc",
   },
   {
-    id: "hannom-progress",
-    zone: "public",
-    path: "/thong-ke-han-nom",
-    titleKey: "pages.hannomProgress.title",
-    descKey: "pages.hannomProgress.desc",
-  },
-  {
     id: "login",
     zone: "public",
     path: "/login",
@@ -124,7 +117,6 @@ export const ADMIN_PAGES = APP_PAGES.filter((page) => page.zone === "admin");
 export function getPageTitleKey(pathname: string): string {
   const match = APP_PAGES.find((page) => page.path === pathname);
   if (match) return match.titleKey;
-  if (pathname.startsWith("/thong-ke-han-nom")) return "pages.hannomProgress.title";
   if (pathname.startsWith("/admin/users")) return "pages.adminUsers.title";
   if (pathname.startsWith("/admin/developer/hannom-config")) return "admin.developer.breadcrumbHannom";
   if (pathname.startsWith("/admin/developer/storage")) return "admin.developer.breadcrumbStorage";
