@@ -231,7 +231,7 @@ export default function GenealogyExtractorPage() {
                           {result.persons.length > 0 ? (
                             <Space direction="vertical" style={{ width: "100%" }}>
                               {result.persons.map((person) => (
-                                <div key={person}>
+                                <div key={person} style={{ wordBreak: "break-word" }}>
                                   <Text strong>{person}</Text>
                                   {result.person_years[person] && (
                                     <Text type="secondary" style={{ marginLeft: "8px" }}>
@@ -269,16 +269,17 @@ export default function GenealogyExtractorPage() {
                       children: (
                         <div
                           style={{
-                            background: "#f5f5f5",
+                            background: "rgba(0, 0, 0, 0.05)",
                             padding: "12px",
                             borderRadius: "4px",
                             maxHeight: "400px",
                             overflow: "auto",
                             fontFamily: "monospace",
                             fontSize: "12px",
+                            color: "currentColor",
                           }}
                         >
-                          <pre>{JSON.stringify(result, null, 2)}</pre>
+                          <pre style={{ margin: 0, color: "currentColor" }}>{JSON.stringify(result, null, 2)}</pre>
                         </div>
                       ),
                     },
