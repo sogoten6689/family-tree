@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NER Annotation Tool - Genealogy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #52c41a;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+        }
+
+        .editor {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-display {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 4px;
+            line-height: 1.8;
+            font-size: 16px;
+            word-wrap: break-word;
+            margin-bottom: 20px;
+            min-height: 150px;
+        }
+
+        .text-display .token {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        .text-display .token:hover {
+            background: #e6f7ff;
+        }
+
+        .text-display .token.selected {
+            background: #bae7ff;
+            color: #0050b3;
+        }
+
+        .labels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .label-btn {
+            padding: 8px 12px;
+            border: 2px solid #d9d9d9;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .label-btn:hover {
+            border-color: #1890ff;
+            color: #1890ff;
+        }
+
+        .label-btn.active {
+            background: #1890ff;
+            color: white;
+            border-color: #1890ff;
+        }
+
+        .entities-list {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .entity-item {
+            padding: 8px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .entity-label {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 2px;
+            color: white;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .entity-delete {
+            cursor: pointer;
+            color: #ff4d4f;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: 1px solid #d9d9d9;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            border-color: #40a9ff;
+            color: #1890ff;
+        }
+
+        .btn.primary {
+            background: #1890ff;
+            color: white;
+            border-color: #1890ff;
+        }
+
+        .btn.primary:hover {
+            background: #40a9ff;
+            border-color: #40a9ff;
+        }
+
+        .btn.success {
+            background: #52c41a;
+            color: white;
+            border-color: #52c41a;
+        }
+
+        .btn.success:hover {
+            background: #73d13d;
+            border-color: #73d13d;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stats-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1890ff;
+        }
+
+        .guidelines {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .guidelines h4 {
+            margin-bottom: 10px;
+            color: #1890ff;
+        }
+
+        .guideline-item {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .guideline-item strong {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏷️ Annotation Tool - Genealogy NER</h1>
+            <p>Highlight text → Select label → Save</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressText">0/0 annotated</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="editor">
+                <h3 style="margin-bottom: 15px;">📝 Text to Annotate</h3>
+
+                <div class="text-display" id="textDisplay"></div>
+
+                <div>
+                    <h4 style="margin-bottom: 10px;">Select Entity Type:</h4>
+                    <div class="labels" id="labelsContainer"></div>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 10px;">Extracted Entities:</h4>
+                    <div class="entities-list" id="entitiesList">
+                        <div style="color: #999; text-align: center;">No entities yet</div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn" id="prevBtn" onclick="previousText()">← Previous</button>
+                    <button class="btn success" id="saveBtn" onclick="saveAnnotation()">✓ Save & Next</button>
+                    <button class="btn" id="nextBtn" onclick="nextText()">Next →</button>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="stats-card">
+                    <h4 style="margin-bottom: 15px;">📊 Progress</h4>
+                    <div class="stat-item">
+                        <div class="stat-label">Total Texts</div>
+                        <div class="stat-value" id="statTotal">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Annotated</div>
+                        <div class="stat-value" id="statAnnotated">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Remaining</div>
+                        <div class="stat-value" id="statRemaining">0</div>
+                    </div>
+                </div>
+
+                <div class="guidelines">
+                    <h4>Quick Guidelines</h4>
+                    <div class="guideline-item">
+                        <strong>PERSON:</strong> Tên người
+                    </div>
+                    <div class="guideline-item">
+                        <strong>YEAR:</strong> Năm sinh/mất
+                    </div>
+                    <div class="guideline-item">
+                        <strong>RELATION_SPOUSE:</strong> Vợ/chồng
+                    </div>
+                    <div class="guideline-item">
+                        <strong>RELATION_PARENT:</strong> Cha/mẹ
+                    </div>
+                    <div class="guideline-item">
+                        <strong>RELATION_SIBLING:</strong> Anh/em
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentText = null;
+        let entities = [];
+        let selectedLabel = null;
+        let selectedTokens = [];
+
+        // Render labels
+        function renderLabels(labels) {
+            const container = document.getElementById('labelsContainer');
+            container.innerHTML = '';
+            for (const [label, color] of Object.entries(labels)) {
+                const btn = document.createElement('button');
+                btn.className = 'label-btn';
+                btn.textContent = label;
+                btn.style.borderColor = color;
+                btn.onclick = () => selectLabel(label, btn);
+                container.appendChild(btn);
+            }
+        }
+
+        function selectLabel(label, btn) {
+            document.querySelectorAll('.label-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedLabel = label;
+        }
+
+        // Load current text
+        async function loadCurrent() {
+            const res = await fetch('/api/current');
+            currentText = await res.json();
+            entities = currentText.annotation?.label || [];
+            selectedTokens = [];
+            renderText();
+            updateStats();
+        }
+
+        function renderText() {
+            if (!currentText) return;
+
+            const display = document.getElementById('textDisplay');
+            const text = currentText.text;
+            const tokens = text.split(/\s+/);
+
+            display.innerHTML = tokens
+                .map((token, i) => `<span class="token" data-index="${i}">${token}</span>`)
+                .join(' ');
+
+            document.querySelectorAll('.token').forEach(token => {
+                token.addEventListener('click', () => toggleToken(token));
+            });
+
+            renderEntities();
+        }
+
+        function toggleToken(tokenEl) {
+            const index = parseInt(tokenEl.dataset.index);
+            if (selectedTokens.includes(index)) {
+                selectedTokens = selectedTokens.filter(i => i !== index);
+                tokenEl.classList.remove('selected');
+            } else {
+                selectedTokens.push(index);
+                tokenEl.classList.add('selected');
+            }
+        }
+
+        function addEntity() {
+            if (!selectedLabel || selectedTokens.length === 0) {
+                alert('Please select label and tokens');
+                return;
+            }
+
+            const tokens = currentText.text.split(/\s+/);
+            const selectedText = selectedTokens.map(i => tokens[i]).join(' ');
+
+            entities.push({
+                text: selectedText,
+                label: selectedLabel,
+                token_indices: selectedTokens,
+            });
+
+            selectedTokens = [];
+            renderText();
+            document.querySelectorAll('.label-btn').forEach(b => b.classList.remove('active'));
+            selectedLabel = null;
+        }
+
+        function removeEntity(index) {
+            entities.splice(index, 1);
+            renderEntities();
+        }
+
+        function renderEntities() {
+            const list = document.getElementById('entitiesList');
+            if (entities.length === 0) {
+                list.innerHTML = '<div style="color: #999; text-align: center;">No entities yet</div>';
+                return;
+            }
+
+            list.innerHTML = entities
+                .map((entity, i) => `
+                    <div class="entity-item">
+                        <span>${entity.text}</span>
+                        <div>
+                            <span class="entity-label" style="background: #1890ff;">${entity.label}</span>
+                            <span class="entity-delete" onclick="removeEntity(${i})">✕</span>
+                        </div>
+                    </div>
+                `)
+                .join('');
+        }
+
+        async function saveAnnotation() {
+            if (!currentText) return;
+
+            const res = await fetch('/api/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: currentText.id,
+                    entities: entities,
+                }),
+            });
+
+            const data = await res.json();
+            updateStats(data.stats);
+            await nextText();
+        }
+
+        async function nextText() {
+            const res = await fetch('/api/next', { method: 'POST' });
+            currentText = await res.json();
+            entities = currentText.annotation?.label || [];
+            renderText();
+        }
+
+        async function previousText() {
+            const res = await fetch('/api/prev', { method: 'POST' });
+            currentText = await res.json();
+            entities = currentText.annotation?.label || [];
+            renderText();
+        }
+
+        async function updateStats(stats = null) {
+            if (!stats) {
+                const res = await fetch('/api/stats');
+                stats = await res.json();
+            }
+
+            document.getElementById('progressFill').style.width = stats.progress_percent + '%';
+            document.getElementById('progressText').textContent = `${stats.annotated}/${stats.total} annotated`;
+            document.getElementById('statTotal').textContent = stats.total;
+            document.getElementById('statAnnotated').textContent = stats.annotated;
+            document.getElementById('statRemaining').textContent = stats.remaining;
+        }
+
+        // Initialize
+        window.onload = async () => {
+            const res = await fetch('/api/current');
+            const data = await res.json();
+            const labels = {{ labels | tojson }};
+            renderLabels(labels);
+            currentText = data;
+            entities = data.annotation?.label || [];
+            renderText();
+            updateStats();
+        };
+    </script>
+</body>
+</html>
