@@ -52,6 +52,7 @@ export default function GenealogyExtractorPage() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("persons");
   const [language, setLanguage] = useState<"vietnamese" | "hannom">("vietnamese");
+  const [modelVersion, setModelVersion] = useState<"regex" | "phobert" | "sikubert">("regex");
 
   const handleExtract = async () => {
     if (!text.trim()) {
@@ -69,6 +70,7 @@ export default function GenealogyExtractorPage() {
         body: JSON.stringify({
           text,
           language,
+          model_version: modelVersion,
         }),
       });
 
@@ -177,6 +179,37 @@ export default function GenealogyExtractorPage() {
                       disabled={loading}
                     >
                       🏯 Hán-Nôm
+                    </Button>
+                  </Button.Group>
+                </div>
+              </Space>
+
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <div>
+                  <label style={{ marginRight: "12px", fontWeight: 500 }}>Model Version:</label>
+                  <Button.Group>
+                    <Button
+                      type={modelVersion === "regex" ? "primary" : "default"}
+                      onClick={() => setModelVersion("regex")}
+                      disabled={loading}
+                    >
+                      📊 MVP (60%)
+                    </Button>
+                    <Button
+                      type={modelVersion === "phobert" ? "primary" : "default"}
+                      onClick={() => setModelVersion("phobert")}
+                      disabled={true}
+                      title="Coming soon - Phobert fine-tuned"
+                    >
+                      🚀 Phobert (90%)
+                    </Button>
+                    <Button
+                      type={modelVersion === "sikubert" ? "primary" : "default"}
+                      onClick={() => setModelVersion("sikubert")}
+                      disabled={true}
+                      title="Coming soon - SikuBERT fine-tuned"
+                    >
+                      🏯 SikuBERT (90%)
                     </Button>
                   </Button.Group>
                 </div>
