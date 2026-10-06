@@ -1,4 +1,4 @@
-import { BranchesOutlined, InboxOutlined, ReadOutlined } from "@ant-design/icons";
+import { BranchesOutlined, FileSearchOutlined, InboxOutlined, ReadOutlined } from "@ant-design/icons";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -7,6 +7,7 @@ import { CORE_NAV_ITEMS, type CoreNavKey } from "@/config/coreNav";
 const CORE_NAV_ICON_MAP: Record<CoreNavKey, React.ReactNode> = {
   upload: <InboxOutlined />,
   "gia-pha": <BranchesOutlined />,
+  genealogy: <FileSearchOutlined />,
   guide: <ReadOutlined />,
 };
 

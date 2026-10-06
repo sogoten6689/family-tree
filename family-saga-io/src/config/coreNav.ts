@@ -6,7 +6,7 @@
  */
 import { getDeveloperNavItem } from "@/config/developerRoutes";
 
-export type CoreNavKey = "upload" | "gia-pha" | "guide";
+export type CoreNavKey = "upload" | "gia-pha" | "genealogy" | "guide";
 
 export interface CoreNavItem {
   key: CoreNavKey;
@@ -17,6 +17,7 @@ export interface CoreNavItem {
 export const CORE_NAV_ITEMS: CoreNavItem[] = [
   { key: "upload", labelKey: "flow.menu.uploadAnalyze", labelDefault: "Tải lên & Phân tích" },
   { key: "gia-pha", labelKey: "coreNav.giaPha", labelDefault: "Gia phả" },
+  { key: "genealogy", labelKey: "coreNav.genealogy", labelDefault: "Trích xuất gia phả" },
   { key: "guide", labelKey: "nav.guide", labelDefault: "Hướng dẫn" },
 ];
 
@@ -26,9 +27,9 @@ export type NavRole = "guest" | "user" | "admin";
  * trò, không theo URL), nên trang dùng chung như /huong-dan hay tải lên vẫn
  * giữ đúng menu của người đang đăng nhập. */
 export const CORE_NAV_PATHS: Record<NavRole, Record<CoreNavKey, string>> = {
-  guest: { upload: "/", "gia-pha": "/gia-pha", guide: "/huong-dan" },
-  user: { upload: "/user/document-reader", "gia-pha": "/user/gia-pha", guide: "/huong-dan" },
-  admin: { upload: "/user/document-reader", "gia-pha": "/admin/gia-pha", guide: "/huong-dan" },
+  guest: { upload: "/", "gia-pha": "/gia-pha", genealogy: "/genealogy-extractor", guide: "/huong-dan" },
+  user: { upload: "/user/document-reader", "gia-pha": "/user/gia-pha", genealogy: "/genealogy-extractor", guide: "/huong-dan" },
+  admin: { upload: "/user/document-reader", "gia-pha": "/admin/gia-pha", genealogy: "/genealogy-extractor", guide: "/huong-dan" },
 };
 
 export function isCoreNavKey(key: string): key is CoreNavKey {
@@ -62,6 +63,7 @@ export function resolveMenuKey(pathname: string): string {
     return "gia-pha";
   }
   if (pathname.startsWith("/huong-dan") || pathname.startsWith("/user/huong-dan")) return "guide";
+  if (pathname.startsWith("/genealogy-extractor")) return "genealogy";
   if (pathname.startsWith("/user/profile")) return "profile";
   if (pathname.startsWith("/admin/history")) return "history";
   if (pathname.startsWith("/admin/users")) return "users";

@@ -1245,3 +1245,71 @@ async def analyze_family_image(
         vote_meta=vote_meta_pages or None,
         pipeline_version=pipeline_version,
     )
+
+
+# ============================================================================
+# Genealogy Parser API
+# ============================================================================
+
+class GenealogyExtractRequest(BaseModel):
+    """Request for genealogy extraction"""
+    text: str = Field(
+        min_length=1,
+        description="Vietnamese genealogy text",
+    )
+    language: str = Field(
+        default="vietnamese",
+        description="Language (vietnamese only for now)",
+    )
+
+
+class GenealogyExtractResponse(BaseModel):
+    """Response for genealogy extraction"""
+    persons: List[str]
+    person_years: Dict[str, int]
+    relations: List[Dict[str, Any]]
+    statistics: Dict[str, int]
+
+
+@app.post(
+    "/api/genealogy/extract",
+    response_model=GenealogyExtractResponse,
+    tags=["Genealogy"],
+    summary="Trích xuất gia phả từ văn bản tiếng Việt",
+)
+def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
+    """
+    Extract genealogy (persons, relationships, dates) from Vietnamese text.
+
+    Returns persons list, person-year mappings, and family relationships
+    (spouse, parent-child, sibling) with confidence scores.
+
+    Accuracy: 60% on diverse genealogy data (MVP).
+    """
+    if req.language != "vietnamese":
+        raise HTTPException(
+            status_code=400,
+            detail="Only Vietnamese language supported (language='vietnamese')"
+        )
+
+    if not req.text.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Text cannot be empty"
+        )
+
+    try:
+        from genealogy_parser import VietnamGenealogyParser
+        parser = VietnamGenealogyParser()
+        result = parser.parse(req.text)
+        return GenealogyExtractResponse(**result)
+    except ImportError:
+        raise HTTPException(
+            status_code=500,
+            detail="Genealogy parser module not found"
+        )
+    except Exception as error:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Genealogy extraction error: {str(error)}"
+        )

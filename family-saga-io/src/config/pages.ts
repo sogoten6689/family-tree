@@ -64,6 +64,13 @@ export const APP_PAGES: AppPageMeta[] = [
     requiresAuth: true,
   },
   {
+    id: "genealogy-extractor",
+    zone: "public",
+    path: "/genealogy-extractor",
+    titleKey: "pages.genealogyExtractor.title",
+    descKey: "pages.genealogyExtractor.desc",
+  },
+  {
     id: "admin-gia-pha",
     zone: "admin",
     path: "/admin/gia-pha",
