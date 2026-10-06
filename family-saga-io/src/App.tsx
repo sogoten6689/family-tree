@@ -15,6 +15,7 @@ import GuidePage from "./pages/GuidePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
+import GenealogyExtractorPage from "./pages/GenealogyExtractorPage";
 import FamilyTreeDetailPage from "./pages/admin/FamilyTreeDetailPage";
 import PublicFamilyTreePage from "./pages/PublicFamilyTreePage";
 import GiaPhaListPage from "./pages/GiaPhaListPage";
@@ -99,6 +100,9 @@ const AppContent = () => (
                 <Route path="huong-dan" element={<Navigate to="/huong-dan" replace />} />
                 <Route path="profile" element={<UserProfilePage />} />
               </Route>
+
+              {/* ── Genealogy Extraction (Public + Protected) ── */}
+              <Route path="/genealogy-extractor" element={<ProtectedRoute><GenealogyExtractorPage /></ProtectedRoute>} />
 
               {/* ── Admin ── */}
               <Route
