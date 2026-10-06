@@ -6,9 +6,15 @@ import { useTranslation } from "react-i18next";
 const { TextArea } = Input;
 const { Title, Paragraph, Text } = Typography;
 
+interface ModelInfo {
+  model_name: string;
+  model_version: string;
+  language: string;
+}
+
 interface GenealogyResult {
   persons: string[];
-  person_years: Record<string, number>;
+  person_years: Record<string, number | null>;
   relations: Array<{
     head: string;
     type: string;
@@ -19,6 +25,7 @@ interface GenealogyResult {
     person_count: number;
     relation_count: number;
   };
+  model_info: ModelInfo;
 }
 
 const EXAMPLE_TEXTS = {
@@ -44,6 +51,7 @@ export default function GenealogyExtractorPage() {
   const [result, setResult] = useState<GenealogyResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("persons");
+  const [language, setLanguage] = useState<"vietnamese" | "hannom">("vietnamese");
 
   const handleExtract = async () => {
     if (!text.trim()) {
@@ -60,7 +68,7 @@ export default function GenealogyExtractorPage() {
         },
         body: JSON.stringify({
           text,
-          language: "vietnamese",
+          language,
         }),
       });
 
@@ -68,8 +76,13 @@ export default function GenealogyExtractorPage() {
         throw new Error("Lỗi trích xuất gia phả");
       }
 
-      const data = await response.json();
-      setResult(data);
+      const apiResponse = await response.json();
+
+      if (!apiResponse.success) {
+        throw new Error(apiResponse.error || "Lỗi không xác định");
+      }
+
+      setResult(apiResponse.data);
       message.success("Trích xuất gia phả thành công!");
     } catch (error) {
       message.error(`Lỗi: ${error instanceof Error ? error.message : "Unknown error"}`);
@@ -141,11 +154,33 @@ export default function GenealogyExtractorPage() {
             <Space direction="vertical" style={{ width: "100%" }} size="middle">
               <TextArea
                 rows={10}
-                placeholder="Dán văn bản gia phả tiếng Việt..."
+                placeholder="Dán văn bản gia phả tiếng Việt hoặc Hán-Nôm..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 disabled={loading}
               />
+
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <div>
+                  <label style={{ marginRight: "12px", fontWeight: 500 }}>Ngôn ngữ:</label>
+                  <Button.Group>
+                    <Button
+                      type={language === "vietnamese" ? "primary" : "default"}
+                      onClick={() => setLanguage("vietnamese")}
+                      disabled={loading}
+                    >
+                      🇻🇳 Tiếng Việt
+                    </Button>
+                    <Button
+                      type={language === "hannom" ? "primary" : "default"}
+                      onClick={() => setLanguage("hannom")}
+                      disabled={loading}
+                    >
+                      🏯 Hán-Nôm
+                    </Button>
+                  </Button.Group>
+                </div>
+              </Space>
 
               <Space wrap>
                 <Button
@@ -202,6 +237,26 @@ export default function GenealogyExtractorPage() {
               <Spin tip="Đang xử lý..." />
             ) : result ? (
               <Space direction="vertical" style={{ width: "100%" }} size="large">
+                {/* Model Info */}
+                <div
+                  style={{
+                    padding: "12px 16px",
+                    backgroundColor: "rgba(24, 144, 255, 0.1)",
+                    borderRadius: "4px",
+                    borderLeft: "4px solid #1890ff",
+                  }}
+                >
+                  <Text type="secondary">
+                    <strong>Model:</strong> {result.model_info.model_name} (v{result.model_info.model_version})
+                    {" | "}
+                    <strong>Ngôn ngữ:</strong> {result.model_info.language === "vietnamese" ? "🇻🇳 Tiếng Việt" : "🏯 Hán-Nôm"}
+                  </Text>
+                  <br />
+                  <Text type="secondary" style={{ fontSize: "12px", marginTop: "4px", display: "block" }}>
+                    Độ chính xác: ~60% (MVP regex) | Phiên bản tiếp theo: 90%+ (Phobert + SikuBERT fine-tuned)
+                  </Text>
+                </div>
+
                 <Row gutter={16}>
                   <Col xs={12}>
                     <Statistic
