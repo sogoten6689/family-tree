@@ -306,6 +306,10 @@ class GenealogyExtractRequest(BaseModel):
         default="vietnamese",
         description="Ngôn ngữ của văn bản: 'vietnamese' hoặc 'hannom'",
     )
+    model_version: Literal["regex", "phobert", "sikubert"] = Field(
+        default="regex",
+        description="Model version: 'regex' (MVP, 60%), 'phobert' (fine-tuned, 90%), 'sikubert' (fine-tuned, 90%)",
+    )
 
 
 class GenealogyExtractionResult(BaseModel):
@@ -1330,10 +1334,27 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
             for rel in result["relations"]
         ]
 
-        model_name = "FamilyExtractor-Regex-MVP"
-        model_version = "1.0.0"
-        if req.language == "hannom":
-            model_name = "FamilyExtractor-Regex-MVP (Hán-Nôm)"
+        # Select model based on version
+        model_version_num = "1.0.0"
+        if req.model_version == "phobert":
+            if req.language == "vietnamese":
+                model_name = "Phobert-Fine-tuned (Vietnamese)"
+                model_version_num = "2.0.0"
+            else:
+                model_name = "Phobert-Fine-tuned (Not supported for Hán-Nôm)"
+                model_version_num = "2.0.0"
+        elif req.model_version == "sikubert":
+            if req.language == "hannom":
+                model_name = "SikuBERT-Fine-tuned (Hán-Nôm)"
+                model_version_num = "2.0.0"
+            else:
+                model_name = "SikuBERT-Fine-tuned (Not supported for Vietnamese)"
+                model_version_num = "2.0.0"
+        else:  # regex (default)
+            model_name = "FamilyExtractor-Regex-MVP"
+            if req.language == "hannom":
+                model_name = "FamilyExtractor-Regex-MVP (Hán-Nôm)"
+            model_version_num = "1.0.0"
 
         return GenealogyExtractResponse(
             success=True,
@@ -1347,7 +1368,7 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
                 },
                 model_info={
                     "model_name": model_name,
-                    "model_version": model_version,
+                    "model_version": model_version_num,
                     "language": req.language,
                 },
             ),
