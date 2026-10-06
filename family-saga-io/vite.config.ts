@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => ({
     proxy: {
       // Khi không set VITE_BACKEND_URL, các request `/api/*` được chuyển tới FastAPI (uvicorn mặc định).
       "/api": {
-        target: "http://127.0.0.1:8000",
+        target: "http://127.0.0.1:8002",
         changeOrigin: true,
       },
     },

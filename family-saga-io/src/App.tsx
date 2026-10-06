@@ -101,8 +101,8 @@ const AppContent = () => (
                 <Route path="profile" element={<UserProfilePage />} />
               </Route>
 
-              {/* ── Genealogy Extraction (Public + Protected) ── */}
-              <Route path="/genealogy-extractor" element={<ProtectedRoute><GenealogyExtractorPage /></ProtectedRoute>} />
+              {/* ── Genealogy Extraction (Public) ── */}
+              <Route path="/genealogy-extractor" element={<GenealogyExtractorPage />} />
 
               {/* ── Admin ── */}
               <Route
