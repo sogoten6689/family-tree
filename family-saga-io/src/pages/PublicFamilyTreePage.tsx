@@ -129,7 +129,7 @@ const PublicFamilyTreePage = () => {
                   key: "documents",
                   label: t("familyTree.documentsTab", { defaultValue: "Tài liệu Hán-Nôm" }),
                   children: (
-                    <Table
+                    <Table scroll={{ x: "max-content" }}
                       rowKey="id"
                       dataSource={documents}
                       pagination={false}

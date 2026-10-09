@@ -25,7 +25,7 @@ export function StatTile({ icon, label, value, hint }: { icon: ReactNode; label:
     <Card size="small" className="h-full border-[hsl(var(--border))]">
       <div className="flex items-center gap-3">
         <div
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xl"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-lg sm:h-11 sm:w-11 sm:text-xl"
           style={{ background: "hsl(var(--accent))", color: "hsl(var(--primary))" }}
           aria-hidden
         >
@@ -98,7 +98,7 @@ export function GiaPhaSummaryCards({ compact = false, className }: GiaPhaSummary
       <div className={className} data-testid="gia-pha-summary-loading">
         <Row gutter={[16, 16]}>
           {[0, 1, 2, 3].map((i) => (
-            <Col xs={24} sm={12} lg={6} key={i}>
+            <Col xs={12} lg={6} key={i}>
               <Card size="small"><Skeleton active avatar paragraph={{ rows: 1 }} title={false} /></Card>
             </Col>
           ))}
@@ -137,10 +137,10 @@ export function GiaPhaSummaryCards({ compact = false, className }: GiaPhaSummary
       </div>
 
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={12} lg={6}>
+        <Col xs={12} lg={6}>
           <StatTile icon={<BookOutlined />} label={t("giaPhaSummary.total", { defaultValue: "Tổng số bộ gia phả" })} value={number(data.total)} />
         </Col>
-        <Col xs={24} sm={12} lg={6}>
+        <Col xs={12} lg={6}>
           <StatTile
             icon={<ApartmentOutlined />}
             label={t("giaPhaSummary.built", { defaultValue: "Đã dựng cây" })}
@@ -148,14 +148,14 @@ export function GiaPhaSummaryCards({ compact = false, className }: GiaPhaSummary
             hint={t("giaPhaSummary.builtHint", { defaultValue: "{{percent}}% tổng số bộ", percent: builtPercent })}
           />
         </Col>
-        <Col xs={24} sm={12} lg={6}>
+        <Col xs={12} lg={6}>
           <StatTile
             icon={<ClockCircleOutlined />}
             label={t("giaPhaSummary.pending", { defaultValue: "Chờ dựng cây" })}
             value={number(data.pending)}
           />
         </Col>
-        <Col xs={24} sm={12} lg={6}>
+        <Col xs={12} lg={6}>
           <StatTile
             icon={<NumberOutlined />}
             label={t("giaPhaSummary.withCode", { defaultValue: "Có mã định danh" })}

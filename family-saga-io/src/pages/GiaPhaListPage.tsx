@@ -197,7 +197,7 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
 
       {errorMessage && <Alert type="warning" showIcon className="mb-6" message={errorMessage} />}
 
-      <Table
+      <Table scroll={{ x: "max-content" }}
         rowKey="id"
         loading={loading}
         dataSource={items}

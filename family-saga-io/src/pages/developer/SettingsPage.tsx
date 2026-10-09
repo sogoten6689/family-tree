@@ -158,7 +158,7 @@ const SettingsPage = () => {
       <GeminiUsageCard />
 
       <Card title="Danh sách config">
-        <Table
+        <Table scroll={{ x: "max-content" }}
           rowKey="key"
           loading={loading}
           columns={columns}

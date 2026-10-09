@@ -57,7 +57,7 @@ const LogsPage = () => {
   ];
 
   const renderTable = (data: DeveloperApiLogEntry[]) => (
-    <Table
+    <Table scroll={{ x: "max-content" }}
       rowKey="id"
       size="small"
       columns={columns}

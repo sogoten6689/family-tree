@@ -89,7 +89,7 @@ export function FamilyTreeDocumentsPanel({ treeId }: Props) {
           </Button>
         </Empty>
       ) : (
-        <Table
+        <Table scroll={{ x: "max-content" }}
           rowKey="id"
           dataSource={documents}
           pagination={false}

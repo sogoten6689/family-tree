@@ -52,7 +52,7 @@ const AdminDashboardPage = () => {
         >
           <Row gutter={[16, 16]}>
             {cards.map((item) => (
-              <Col xs={24} sm={12} lg={8} key={item.label}>
+              <Col xs={12} lg={8} key={item.label}>
                 <StatTile icon={item.icon} label={item.label} value={item.value.toLocaleString("vi-VN")} />
               </Col>
             ))}

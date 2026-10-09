@@ -197,7 +197,7 @@ export function LlmImportPanel({
         )}
       </Space>
 
-      <Table<ScanVersion>
+      <Table<ScanVersion> scroll={{ x: "max-content" }}
         rowKey="version_id"
         size="small"
         loading={loading}

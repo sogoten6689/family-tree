@@ -74,7 +74,7 @@ const DashboardPage = () => {
         </Typography.Title>
         <Row gutter={[16, 16]}>
           {personal.map((item) => (
-            <Col xs={24} md={8} key={item.label}>
+            <Col xs={12} md={8} key={item.label}>
               {statsLoading ? (
                 <Card size="small"><Skeleton active avatar paragraph={{ rows: 1 }} title={false} /></Card>
               ) : (
