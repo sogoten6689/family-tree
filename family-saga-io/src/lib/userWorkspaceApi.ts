@@ -251,3 +251,54 @@ export async function ocrScanPage(
     body: JSON.stringify({ engine: "kimhannom", confirm_paid: true, version_id: options.versionId }),
   });
 }
+
+export interface GiaPhaPageDeletedItem {
+  page_number: number;
+  deleted_at: string | null;
+  image_url: string | null;
+  hannom_text: string | null;
+}
+
+export interface GiaPhaPageDeleteResult {
+  page_number: number;
+  /** true = vừa xoá mềm, false = vừa khôi phục. */
+  deleted: boolean;
+  active_pages: number;
+}
+
+/** Xoá MỀM 1 trang (ẩn, không mất dữ liệu/ảnh, khôi phục được). */
+export async function deleteScanPage(scanId: number, pageNumber: number): Promise<GiaPhaPageDeleteResult> {
+  return apiRequest<GiaPhaPageDeleteResult>(`/api/user/documents/${scanId}/pages/${pageNumber}`, { method: "DELETE" });
+}
+
+export async function restoreScanPage(scanId: number, pageNumber: number): Promise<GiaPhaPageDeleteResult> {
+  return apiRequest<GiaPhaPageDeleteResult>(`/api/user/documents/${scanId}/pages/${pageNumber}/restore`, {
+    method: "POST",
+  });
+}
+
+export async function listDeletedScanPages(scanId: number): Promise<GiaPhaPageDeletedItem[]> {
+  return apiRequest<GiaPhaPageDeletedItem[]>(`/api/user/documents/${scanId}/pages/deleted`);
+}
+
+export interface DeletedScan {
+  id: number;
+  title: string;
+  ma_dinh_danh: string | null;
+  page_count: number;
+  deleted_at: string | null;
+  deleted_by: number | null;
+}
+
+/** Xoá MỀM cả bộ — chỉ admin. */
+export async function deleteUserDocument(scanId: number): Promise<DeletedScan> {
+  return apiRequest<DeletedScan>(`/api/user/documents/${scanId}`, { method: "DELETE" });
+}
+
+export async function restoreUserDocument(scanId: number): Promise<DeletedScan> {
+  return apiRequest<DeletedScan>(`/api/user/documents/${scanId}/restore`, { method: "POST" });
+}
+
+export async function listDeletedDocuments(): Promise<{ total: number; items: DeletedScan[] }> {
+  return apiRequest<{ total: number; items: DeletedScan[] }>("/api/admin/documents/deleted");
+}

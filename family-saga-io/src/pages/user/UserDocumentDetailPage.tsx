@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Alert, Button, Card, Descriptions, Spin, Tabs, Typography } from "antd";
+import { Alert, Button, Card, Descriptions, Modal, Space, Spin, Tabs, Typography } from "antd";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +14,7 @@ import { PageViewer } from "@/components/documents/PageViewer";
 import { useAuth } from "@/contexts/AuthContext";
 import { computeFlowProgressForScan } from "@/lib/flowProgress";
 import { flowRouteForStep } from "@/lib/genealogyFlow";
-import { getUserDocument, type UserScan } from "@/lib/userWorkspaceApi";
+import { deleteUserDocument, getUserDocument, type UserScan } from "@/lib/userWorkspaceApi";
 
 const UserDocumentDetailPage = () => {
   const { t } = useTranslation();
@@ -55,6 +55,29 @@ const UserDocumentDetailPage = () => {
     () => (scan ? computeFlowProgressForScan(scan) : null),
     [scan],
   );
+
+  // Xoá MỀM cả bộ (chỉ admin): ẩn khỏi mọi danh sách, khôi phục được ở trang Tài liệu.
+  const confirmDeleteDocument = () => {
+    if (!scan) return;
+    Modal.confirm({
+      title: t("userDocuments.deleteTitle", { defaultValue: "Xoá bộ \"{{title}}\"?", title: scan.title }),
+      content: t("userDocuments.deleteBody", {
+        defaultValue:
+          "Bộ sẽ bị ẩn khỏi danh sách và thống kê công khai. Trang, ảnh và mã định danh vẫn được giữ; admin khôi phục lại được ở mục \"Đã xoá\" của trang Tài liệu.",
+      }),
+      okText: t("userDocuments.deleteOk", { defaultValue: "Xoá bộ" }),
+      okButtonProps: { danger: true },
+      cancelText: t("pageViewer.cancel", { defaultValue: "Huỷ" }),
+      onOk: async () => {
+        try {
+          await deleteUserDocument(scan.id);
+          navigate("/user/documents");
+        } catch (err) {
+          Modal.error({ title: err instanceof Error ? err.message : "Không xoá được bộ" });
+        }
+      },
+    });
+  };
 
   if (scanId === "new") {
     // Keep the reader mounted: the selected File and its preview are local
@@ -116,9 +139,16 @@ const UserDocumentDetailPage = () => {
       <Card
         title={scan.title}
         extra={
-          <Button onClick={() => navigate("/user/documents")}>
-            {t("common.back", { defaultValue: "Quay lại" })}
-          </Button>
+          <Space>
+            {isAdmin && (
+              <Button danger onClick={confirmDeleteDocument}>
+                {t("userDocuments.delete", { defaultValue: "Xoá bộ" })}
+              </Button>
+            )}
+            <Button onClick={() => navigate("/user/documents")}>
+              {t("common.back", { defaultValue: "Quay lại" })}
+            </Button>
+          </Space>
         }
       >
         <Tabs

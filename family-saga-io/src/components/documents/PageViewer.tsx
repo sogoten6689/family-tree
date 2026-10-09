@@ -1,5 +1,5 @@
-import { EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined } from "@ant-design/icons";
-import { Alert, Button, Card, Empty, Image, Input, Modal, Pagination, Spin, Tag, Typography } from "antd";
+import { DeleteOutlined, EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined, UndoOutlined } from "@ant-design/icons";
+import { Alert, Button, Card, Empty, Image, Input, List, Modal, Pagination, Spin, Tag, Typography } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -7,11 +7,15 @@ import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/Pipeli
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
 import { BoundingBoxOverlay } from "@/components/documents/BoundingBoxOverlay";
 import {
+  deleteScanPage,
   editScanPage,
   getScanPage,
+  listDeletedScanPages,
   listScanPages,
   ocrScanPage,
   replaceScanPageImage,
+  restoreScanPage,
+  type GiaPhaPageDeletedItem,
   type GiaPhaPageDetail,
   type GiaPhaPageView,
 } from "@/lib/userWorkspaceApi";
@@ -32,6 +36,8 @@ const { Text, Paragraph } = Typography;
  * giữ nguyên nên khung chữ cũ bị ẩn cho tới khi OCR lại.
  * Nút "OCR lại trang" gọi Kim Hán Nôm (TỐN TIỀN, có hộp xác nhận) và ghi kết
  * quả vào version sửa tay như "Sửa trang"; phiên âm/dịch cũ được báo chưa khớp.
+ * "Xoá trang" là xoá MỀM (ẩn, không mất dữ liệu/ảnh); "Trang đã xoá" liệt kê
+ * và khôi phục lại.
  */
 export function PageViewer({ scanId }: { scanId: number }) {
   const { t } = useTranslation();
@@ -61,6 +67,13 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [ocrStale, setOcrStale] = useState<number[]>([]);
   // Tăng để tải lại chi tiết trang (khung chữ mới) khi OCR ghi tại chỗ, version không đổi.
   const [detailNonce, setDetailNonce] = useState(0);
+  // Tăng để tải lại danh sách trang (sau khôi phục trang đã xoá).
+  const [listNonce, setListNonce] = useState(0);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [trashOpen, setTrashOpen] = useState(false);
+  const [trash, setTrash] = useState<GiaPhaPageDeletedItem[] | null>(null);
+  const [trashError, setTrashError] = useState<string | null>(null);
+  const [trashBusy, setTrashBusy] = useState<number | null>(null);
 
   useEffect(() => {
     if (currentNumber === undefined) return;
@@ -93,7 +106,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
     return () => {
       cancelled = true;
     };
-  }, [scanId, viewVersionId]);
+  }, [scanId, viewVersionId, listNonce]);
 
   const openEdit = (current: GiaPhaPageView) => {
     setDraft({
@@ -120,6 +133,53 @@ export function PageViewer({ scanId }: { scanId: number }) {
     } finally {
       setReplacing(false);
       if (fileInput.current) fileInput.current.value = "";
+    }
+  };
+
+  const confirmDelete = (current: GiaPhaPageView) => {
+    Modal.confirm({
+      title: t("pageViewer.deleteTitle", { defaultValue: "Xoá trang {{n}}?", n: current.page_number }),
+      content: t("pageViewer.deleteBody", {
+        defaultValue:
+          "Trang sẽ bị ẩn khỏi bộ và khỏi văn bản gộp. Dữ liệu và ảnh vẫn được giữ, bạn khôi phục lại được ở mục \"Trang đã xoá\".",
+      }),
+      okText: t("pageViewer.deleteOk", { defaultValue: "Xoá trang" }),
+      okButtonProps: { danger: true },
+      cancelText: t("pageViewer.cancel", { defaultValue: "Huỷ" }),
+      onOk: async () => {
+        setDeleteError(null);
+        try {
+          await deleteScanPage(scanId, current.page_number);
+          setPages((prev) => prev.filter((p) => p.page_number !== current.page_number));
+          setIndex((prev) => Math.max(0, Math.min(prev, pages.length - 2)));
+          setTrash(null);
+        } catch (err) {
+          setDeleteError(err instanceof Error ? err.message : "Không xoá được trang");
+        }
+      },
+    });
+  };
+
+  const openTrash = () => {
+    setTrashOpen(true);
+    setTrash(null);
+    setTrashError(null);
+    listDeletedScanPages(scanId)
+      .then(setTrash)
+      .catch((err) => setTrashError(err instanceof Error ? err.message : "Không tải được trang đã xoá"));
+  };
+
+  const restorePage = async (item: GiaPhaPageDeletedItem) => {
+    setTrashBusy(item.page_number);
+    setTrashError(null);
+    try {
+      await restoreScanPage(scanId, item.page_number);
+      setTrash((prev) => (prev ?? []).filter((p) => p.page_number !== item.page_number));
+      setListNonce((n) => n + 1);
+    } catch (err) {
+      setTrashError(err instanceof Error ? err.message : "Không khôi phục được trang");
+    } finally {
+      setTrashBusy(null);
     }
   };
 
@@ -239,6 +299,12 @@ export function PageViewer({ scanId }: { scanId: number }) {
           <Button size="small" icon={<ScanOutlined />} loading={ocrBusy} onClick={() => runOcr(page)}>
             {t("pageViewer.ocr", { defaultValue: "OCR lại trang" })}
           </Button>
+          <Button size="small" danger icon={<DeleteOutlined />} onClick={() => confirmDelete(page)}>
+            {t("pageViewer.delete", { defaultValue: "Xoá trang" })}
+          </Button>
+          <Button size="small" icon={<UndoOutlined />} onClick={openTrash}>
+            {t("pageViewer.trash", { defaultValue: "Trang đã xoá" })}
+          </Button>
           <Button size="small" type="primary" icon={<EditOutlined />} onClick={() => openEdit(page)}>
             {t("pageViewer.edit", { defaultValue: "Sửa trang" })}
           </Button>
@@ -251,6 +317,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
           })}
         </Text>
       </div>
+      {deleteError && <Alert type="error" showIcon closable message={deleteError} onClose={() => setDeleteError(null)} />}
       {ocrError && <Alert type="error" showIcon closable message={ocrError} onClose={() => setOcrError(null)} />}
       {ocrStale.includes(page.page_number) && (
         <Alert
@@ -345,6 +412,43 @@ export function PageViewer({ scanId }: { scanId: number }) {
           )}
         </div>
       </div>
+      <Modal
+        open={trashOpen}
+        title={t("pageViewer.trashTitle", { defaultValue: "Trang đã xoá" })}
+        footer={null}
+        onCancel={() => setTrashOpen(false)}
+        destroyOnHidden
+      >
+        {trashError && <Alert type="error" showIcon message={trashError} className="mb-3" />}
+        {trash === null && !trashError ? (
+          <Spin className="flex justify-center py-6" />
+        ) : (
+          <List
+            dataSource={trash ?? []}
+            locale={{ emptyText: t("pageViewer.trashEmpty", { defaultValue: "Không có trang nào đã xoá." }) }}
+            renderItem={(item) => (
+              <List.Item
+                actions={[
+                  <Button
+                    key="restore"
+                    size="small"
+                    type="primary"
+                    loading={trashBusy === item.page_number}
+                    onClick={() => void restorePage(item)}
+                  >
+                    {t("pageViewer.restore", { defaultValue: "Khôi phục" })}
+                  </Button>,
+                ]}
+              >
+                <List.Item.Meta
+                  title={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: item.page_number })}
+                  description={(item.hannom_text ?? "").slice(0, 40) || undefined}
+                />
+              </List.Item>
+            )}
+          />
+        )}
+      </Modal>
       <Modal
         open={editing}
         width={720}
