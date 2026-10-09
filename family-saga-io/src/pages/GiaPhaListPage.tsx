@@ -88,7 +88,7 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div>
       <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
         <div>
           <Typography.Title level={4} className="!mb-1">

@@ -141,7 +141,7 @@ export default function GenealogyExtractorPage() {
   ];
 
   return (
-    <div style={{ padding: "24px", maxWidth: "1200px", margin: "0 auto" }}>
+    <div>
       <Title level={2}>
         <FileTextOutlined /> Trích Xuất Gia Phả
       </Title>
