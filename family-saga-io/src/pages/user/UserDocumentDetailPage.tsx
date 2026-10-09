@@ -136,9 +136,11 @@ const UserDocumentDetailPage = () => {
         />
       )}
 
-      <Card
-        title={scan.title}
-        extra={
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Typography.Title level={4} className="!mb-0">
+            {scan.title}
+          </Typography.Title>
           <Space>
             {isAdmin && (
               <Button danger onClick={confirmDeleteDocument}>
@@ -149,8 +151,7 @@ const UserDocumentDetailPage = () => {
               {t("common.back", { defaultValue: "Quay lại" })}
             </Button>
           </Space>
-        }
-      >
+        </div>
         <Tabs
           activeKey={activeTab}
           onChange={setTab}
@@ -236,7 +237,7 @@ const UserDocumentDetailPage = () => {
             },
           ]}
         />
-      </Card>
+      </div>
     </div>
   );
 };

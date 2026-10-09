@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Card, Form, Input, Typography, message } from "antd";
+import { Button, Form, Input, Typography, message } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { useAuth } from "@/contexts/AuthContext";
@@ -33,7 +33,8 @@ const UserProfilePage = () => {
   };
 
   return (
-    <Card title={t("profile.title", { defaultValue: "Thông tin tài khoản" })}>
+    <div>
+      <Typography.Title level={4}>{t("profile.title", { defaultValue: "Thông tin tài khoản" })}</Typography.Title>
       <Typography.Paragraph type="secondary">{user?.email}</Typography.Paragraph>
       <Form
         form={form}
@@ -59,7 +60,7 @@ const UserProfilePage = () => {
           {t("profile.save", { defaultValue: "Lưu thay đổi" })}
         </Button>
       </Form>
-    </Card>
+    </div>
   );
 };
 

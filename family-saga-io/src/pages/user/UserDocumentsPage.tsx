@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Alert, Button, Card, List, Modal, Space, Spin, Table, Typography } from "antd";
+import { Alert, Button, List, Modal, Space, Spin, Table, Typography } from "antd";
 import { EyeOutlined, PlusOutlined, UndoOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -75,7 +75,7 @@ const UserDocumentsPage = () => {
   );
 
   return (
-    <Card>
+    <div>
       <Space className="w-full justify-between mb-4 flex-wrap">
         <Typography.Title level={4} className="!mb-0">
           {t("userDocuments.title", { defaultValue: "Tài liệu đã scan" })}
@@ -186,7 +186,7 @@ const UserDocumentsPage = () => {
           ]}
         />
       </PageState>
-    </Card>
+    </div>
   );
 };
 

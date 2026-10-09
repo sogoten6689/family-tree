@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Table, Typography, message } from "antd";
+import { Table, Typography, message } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { listAdminHistory, type AdminHistoryItem } from "@/lib/userWorkspaceApi";
@@ -24,7 +24,7 @@ const AdminHistoryPage = () => {
   }, []);
 
   return (
-    <Card>
+    <div>
       <Typography.Title level={4}>
         {t("adminHistory.title", { defaultValue: "Lịch sử scan & truy vấn" })}
       </Typography.Title>
@@ -47,7 +47,7 @@ const AdminHistoryPage = () => {
           { title: t("adminHistory.warnings", { defaultValue: "Cảnh báo" }), dataIndex: "warning_count" },
         ]}
       />
-    </Card>
+    </div>
   );
 };
 
