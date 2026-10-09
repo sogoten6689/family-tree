@@ -1,10 +1,10 @@
 /** SSOT — chỉ sửa màu brand tại đây */
 export const brandSeed = {
-  colorPrimary: "#1677ff",
+  colorPrimary: "#0e7cdd",
   colorSuccess: "#52c41a",
   colorWarning: "#faad14",
   colorError: "#ff4d4f",
-  colorInfo: "#1677ff",
+  colorInfo: "#0e7cdd",
   borderRadius: 12,
   fontSize: 14,
   fontFamily: "Roboto, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -12,5 +12,6 @@ export const brandSeed = {
 } as const;
 
 export const darkSeedOverrides = {
-  colorPrimary: "#4096ff",
+  colorPrimary: "#47adf5",
+  colorInfo: "#47adf5",
 } as const;

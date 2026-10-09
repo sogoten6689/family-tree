@@ -91,7 +91,7 @@ const AppShell = ({
         className="transition-[margin] duration-200"
       >
         <Header
-          className="!px-6 flex items-center justify-between border-b border-border !bg-card"
+          className="!px-6 flex items-center justify-between border-b border-border !bg-[hsl(var(--header))]"
           style={{ height: 64, position: "sticky", top: 0, zIndex: 10 }}
         >
           <div className="flex items-center gap-3">

@@ -88,7 +88,7 @@ const GuidePage = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div>
       <Typography.Title level={2}>
         {t("guide.pageTitle", { defaultValue: "Hướng dẫn sử dụng" })}
       </Typography.Title>

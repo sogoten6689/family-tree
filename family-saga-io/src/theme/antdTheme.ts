@@ -9,22 +9,32 @@ export function getAntdTheme(isDark: boolean): ThemeConfig {
     token: {
       ...brandSeed,
       ...(isDark ? darkSeedOverrides : {}),
+      // Nền tối: antd mặc định đen (#141414) — nâng lên xám xanh cho dịu mắt, khớp --background/--card.
+      ...(isDark
+        ? {
+            colorBgContainer: "#242c38",
+            colorBgElevated: "#28313e",
+            colorBgLayout: "#192029",
+            colorBorder: "#3b4554",
+            colorBorderSecondary: "#323b48",
+          }
+        : { colorBgLayout: "#f4f7fb" }),
     },
     components: {
       Layout: {
-        siderBg: isDark ? "#141414" : "#fafafa",
-        bodyBg: isDark ? "#141414" : "#f5f5f5",
-        headerBg: isDark ? "#1f1f1f" : "#ffffff",
-        triggerBg: isDark ? "#1f1f1f" : "#fafafa",
+        siderBg: isDark ? "#172c4a" : "#0f2a52",
+        bodyBg: isDark ? "#192029" : "#f4f7fb",
+        headerBg: isDark ? "#353c46" : "#e2e5e9",
+        triggerBg: isDark ? "#353c46" : "#e2e5e9",
       },
       Menu: {
         itemBorderRadius: 8,
-        darkItemBg: "#141414",
-        darkSubMenuItemBg: "#141414",
+        darkItemBg: "transparent",
+        darkSubMenuItemBg: "transparent",
       },
       Table: {
-        headerBg: isDark ? "#262626" : "#fafafa",
-        rowHoverBg: isDark ? "#262626" : "#fafafa",
+        headerBg: isDark ? "#313b49" : "#edf2f7",
+        rowHoverBg: isDark ? "#313b49" : "#f1f5f9",
       },
       Button: {
         primaryShadow: "none",

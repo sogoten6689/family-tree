@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 from collections import deque
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
@@ -382,11 +383,18 @@ _TAGS_METADATA = [
 ]
 
 
+def read_only_mode() -> bool:
+    """READ_ONLY_MODE=1: chạy local nối thẳng DB/MinIO production bằng tài khoản
+    CHỈ ĐỌC. Bỏ qua mọi bootstrap (CREATE/ALTER/UPDATE lúc khởi động) vì tài
+    khoản chỉ đọc không ghi được và để không bao giờ đụng schema production."""
+    return os.getenv("READ_ONLY_MODE", "").strip().lower() in {"1", "true", "yes"}
+
+
 @asynccontextmanager
 async def _lifespan(_: FastAPI):
     init_database()
     load_local_engines()  # adapter engine phiên âm/dịch do người dùng tự viết (nếu có)
-    if database_enabled():
+    if database_enabled() and not read_only_mode():
         bootstrap_gemini_usage()
         bootstrap_auth()
         bootstrap_documents()
