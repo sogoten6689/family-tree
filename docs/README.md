@@ -14,6 +14,7 @@ Root: `readme.md` (chạy hệ thống). Bản đồ: [REPO_MAP.md](REPO_MAP.md)
 | Sổ lab (họp tuần) | [lab/note_meeting_weekly/](lab/note_meeting_weekly/) |
 | Task đang làm | [planning/](planning/) |
 | Schema node | [schemas/balkan-node.schema.json](schemas/balkan-node.schema.json) |
+| Schema nhãn NER/RE (Hán + Việt) + sơ đồ pipeline | [schemas/NER_RE_LABEL_SCHEMA_AND_PIPELINE.md](schemas/NER_RE_LABEL_SCHEMA_AND_PIPELINE.md) |
 | Code nghiên cứu | [../research/README.md](../research/README.md) |
 | Corpus | [../data/README.md](../data/README.md) (`00_raw` … `05_ops`) |
 | **Tổng quan dữ liệu (sống)** | [../data/DATA_INVENTORY.md](../data/DATA_INVENTORY.md) — PDF, DOCX, list ảnh, funnel gold |
