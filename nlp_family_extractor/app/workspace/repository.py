@@ -527,6 +527,7 @@ class GiaPhaPageRepository:
         translation_text: Optional[str] = None,
         ocr_bbox: Optional[List[dict[str, Any]]] = None,
         ocr_vote_meta: Optional[dict[str, Any]] = None,
+        clear_vote_meta: bool = False,
     ) -> GiaPhaPageContent:
         content = self._db.scalar(
             select(GiaPhaPageContent).where(
@@ -545,6 +546,8 @@ class GiaPhaPageRepository:
             content.ocr_bbox = ocr_bbox
         if ocr_vote_meta is not None:
             content.ocr_vote_meta = ocr_vote_meta
+        elif clear_vote_meta:
+            content.ocr_vote_meta = None
         self._db.add(content)
         self._db.commit()
         self._db.refresh(content)

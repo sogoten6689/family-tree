@@ -1,4 +1,4 @@
-import { EditOutlined, FileImageOutlined, PictureOutlined } from "@ant-design/icons";
+import { EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined } from "@ant-design/icons";
 import { Alert, Button, Card, Empty, Image, Input, Modal, Pagination, Spin, Tag, Typography } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,6 +10,7 @@ import {
   editScanPage,
   getScanPage,
   listScanPages,
+  ocrScanPage,
   replaceScanPageImage,
   type GiaPhaPageDetail,
   type GiaPhaPageView,
@@ -29,6 +30,8 @@ const { Text, Paragraph } = Typography;
  * (`editVersion`), viewer chuyển sang xem version đó; "Về bản gốc" quay lại.
  * Nút "Thay ảnh" đổi ảnh gốc của trang (ảnh cũ vẫn còn trên MinIO); chữ và OCR
  * giữ nguyên nên khung chữ cũ bị ẩn cho tới khi OCR lại.
+ * Nút "OCR lại trang" gọi Kim Hán Nôm (TỐN TIỀN, có hộp xác nhận) và ghi kết
+ * quả vào version sửa tay như "Sửa trang"; phiên âm/dịch cũ được báo chưa khớp.
  */
 export function PageViewer({ scanId }: { scanId: number }) {
   const { t } = useTranslation();
@@ -52,6 +55,12 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [imageError, setImageError] = useState<string | null>(null);
   // Trang đã đổi ảnh trong phiên này: khung chữ (bbox) của ảnh cũ không còn khớp.
   const [imageReplaced, setImageReplaced] = useState<number[]>([]);
+  const [ocrBusy, setOcrBusy] = useState(false);
+  const [ocrError, setOcrError] = useState<string | null>(null);
+  // Trang vừa OCR lại: phiên âm/dịch nghĩa còn là của chữ cũ.
+  const [ocrStale, setOcrStale] = useState<number[]>([]);
+  // Tăng để tải lại chi tiết trang (khung chữ mới) khi OCR ghi tại chỗ, version không đổi.
+  const [detailNonce, setDetailNonce] = useState(0);
 
   useEffect(() => {
     if (currentNumber === undefined) return;
@@ -67,7 +76,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
     return () => {
       cancelled = true;
     };
-  }, [scanId, currentNumber, viewVersionId]);
+  }, [scanId, currentNumber, viewVersionId, detailNonce]);
 
   useEffect(() => {
     let cancelled = false;
@@ -112,6 +121,43 @@ export function PageViewer({ scanId }: { scanId: number }) {
       setReplacing(false);
       if (fileInput.current) fileInput.current.value = "";
     }
+  };
+
+  const runOcr = (current: GiaPhaPageView) => {
+    Modal.confirm({
+      title: t("pageViewer.ocrConfirmTitle", { defaultValue: "OCR lại trang {{n}}?", n: current.page_number }),
+      content: t("pageViewer.ocrConfirmBody", {
+        defaultValue:
+          "Việc này gọi Kim Hán Nôm và TỐN TIỀN mỗi lần chạy. Kết quả lưu vào bản sửa tay, bản gốc giữ nguyên. Phiên âm và dịch nghĩa của trang sẽ chưa khớp chữ mới.",
+      }),
+      okText: t("pageViewer.ocrConfirmOk", { defaultValue: "OCR (tốn tiền)" }),
+      cancelText: t("pageViewer.cancel", { defaultValue: "Huỷ" }),
+      onOk: async () => {
+        setOcrBusy(true);
+        setOcrError(null);
+        try {
+          const result = await ocrScanPage(scanId, current.page_number, { versionId: viewVersionId });
+          setPages((prev) => prev.map((p) => (p.page_number === current.page_number ? { ...p, ...result.page } : p)));
+          setImageReplaced((prev) => prev.filter((n) => n !== current.page_number)); // khung chữ mới khớp ảnh hiện tại
+          setOcrStale((prev) =>
+            result.downstream_stale
+              ? prev.includes(current.page_number)
+                ? prev
+                : [...prev, current.page_number]
+              : prev,
+          );
+          if (result.forked) {
+            setEditVersion({ id: result.version.version_id, number: result.version.version_number });
+          } else {
+            setDetailNonce((n) => n + 1);
+          }
+        } catch (err) {
+          setOcrError(err instanceof Error ? err.message : "Không OCR được");
+        } finally {
+          setOcrBusy(false);
+        }
+      },
+    });
   };
 
   const saveEdit = async (current: GiaPhaPageView) => {
@@ -190,6 +236,9 @@ export function PageViewer({ scanId }: { scanId: number }) {
           >
             {t("pageViewer.replaceImage", { defaultValue: "Thay ảnh" })}
           </Button>
+          <Button size="small" icon={<ScanOutlined />} loading={ocrBusy} onClick={() => runOcr(page)}>
+            {t("pageViewer.ocr", { defaultValue: "OCR lại trang" })}
+          </Button>
           <Button size="small" type="primary" icon={<EditOutlined />} onClick={() => openEdit(page)}>
             {t("pageViewer.edit", { defaultValue: "Sửa trang" })}
           </Button>
@@ -202,6 +251,16 @@ export function PageViewer({ scanId }: { scanId: number }) {
           })}
         </Text>
       </div>
+      {ocrError && <Alert type="error" showIcon closable message={ocrError} onClose={() => setOcrError(null)} />}
+      {ocrStale.includes(page.page_number) && (
+        <Alert
+          type="warning"
+          showIcon
+          message={t("pageViewer.ocrStale", {
+            defaultValue: "Đã OCR lại trang này. Phiên âm và dịch nghĩa bên dưới vẫn là của chữ cũ, chưa khớp chữ mới.",
+          })}
+        />
+      )}
       {imageError && <Alert type="error" showIcon closable message={imageError} onClose={() => setImageError(null)} />}
       {replacedImage && (
         <Alert

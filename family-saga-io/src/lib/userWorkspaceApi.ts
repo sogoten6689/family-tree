@@ -228,3 +228,26 @@ export async function replaceScanPageImage(
     body: form,
   });
 }
+
+export interface GiaPhaPageOcrResult {
+  version: { version_id: number; version_number: number; is_current: boolean };
+  page: GiaPhaPageView;
+  /** true = vừa tạo version sửa tay mới; dùng `version.version_id` cho các lần sau. */
+  forked: boolean;
+  engine: string;
+  box_count: number;
+  /** Phiên âm / dịch nghĩa của trang còn là của chữ cũ, chưa khớp OCR mới. */
+  downstream_stale: boolean;
+}
+
+/** OCR lại 1 trang bằng Kim Hán Nôm — TỐN TIỀN, server đòi confirm_paid. Ghi vào version sửa tay. */
+export async function ocrScanPage(
+  scanId: number,
+  pageNumber: number,
+  options: { versionId?: number } = {},
+): Promise<GiaPhaPageOcrResult> {
+  return apiRequest<GiaPhaPageOcrResult>(`/api/user/documents/${scanId}/pages/${pageNumber}/ocr`, {
+    method: "POST",
+    body: JSON.stringify({ engine: "kimhannom", confirm_paid: true, version_id: options.versionId }),
+  });
+}
