@@ -40,7 +40,7 @@ def apply_book_bbox(
     write: bool,
 ) -> Dict[str, int]:
     """Ghi khung cho 1 bộ. Trả về {pages, rows_changed, missing_pages}."""
-    by_number = {p.page_number: p for p in pages_repo.list_by_scan(scan_id)}
+    by_number = {p.page_number: p for p in pages_repo.list_by_scan(scan_id, include_deleted=True)}
     wanted = {
         by_number[int(n)].id: entry["boxes"] for n, entry in pages.items() if int(n) in by_number and entry.get("boxes")
     }
@@ -84,7 +84,7 @@ def main() -> int:
         if owner is None:
             print(f"Không có user {args.owner_email} — dừng.")
             return 1
-        scans = {s.request_id: s for s in UserScanRepository(db).list_by_user(owner.id) if s.request_id}
+        scans = {s.request_id: s for s in UserScanRepository(db).list_by_user(owner.id, include_deleted=True) if s.request_id}
         pages_repo, versions_repo = GiaPhaPageRepository(db), GiaPhaVersionRepository(db)
         tag = "GHI" if args.write else "XEM TRƯỚC"
         for doc_id, pages in data["books"].items():

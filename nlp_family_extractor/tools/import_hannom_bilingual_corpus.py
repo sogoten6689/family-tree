@@ -252,7 +252,7 @@ def backfill_structure(
         actions.append("mã định danh/thông tin: " + ", ".join(sorted(changed)))
         if not dry_run:
             scans.set_corpus_identifiers(scan, changed)
-    if not pages_repo.list_by_scan(scan.id) and record.get("pages"):
+    if not pages_repo.list_by_scan(scan.id, include_deleted=True) and record.get("pages"):
         actions.append(f"tạo {len(record['pages'])} trang + version v1")
         if not dry_run:
             _create_pages_version_and_content(
@@ -282,7 +282,7 @@ def refresh_text(
     KHÔNG đưa `pairs` của corpus vào (dạng {han, viet} nháp LLM, thiếu phiên
     âm — không dùng làm dữ liệu train). Không có gì khác → không tạo version."""
     current = versions_repo.get_current(scan.id)
-    pages = {p.page_number: p for p in pages_repo.list_by_scan(scan.id)}
+    pages = {p.page_number: p for p in pages_repo.list_by_scan(scan.id, include_deleted=True)}
     if current is None or not pages:
         return []
     contents = {c.page_id: c for c in pages_repo.list_content_for_version(current.id)}
@@ -335,7 +335,7 @@ def refresh_vote(
     tiền). Đặt làm version hiện tại + đồng bộ cache phẳng. Không có gì khác →
     không tạo version (idempotent)."""
     current = versions_repo.get_current(scan.id)
-    pages = {p.page_number: p for p in pages_repo.list_by_scan(scan.id)}
+    pages = {p.page_number: p for p in pages_repo.list_by_scan(scan.id, include_deleted=True)}
     if current is None or not pages:
         return []
     contents = {c.page_id: c for c in pages_repo.list_content_for_version(current.id)}
@@ -455,7 +455,7 @@ def main() -> int:
         pages_repo = GiaPhaPageRepository(db)
         versions_repo = GiaPhaVersionRepository(db)
         existing_by_request_id = {
-            scan.request_id: scan for scan in scans.list_by_user(owner.id) if scan.request_id
+            scan.request_id: scan for scan in scans.list_by_user(owner.id, include_deleted=True) if scan.request_id
         }
 
         store = _create_family_tree_store()

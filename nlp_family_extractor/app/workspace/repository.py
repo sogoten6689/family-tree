@@ -28,17 +28,45 @@ class UserScanRepository:
     def __init__(self, db: Session) -> None:
         self._db = db
 
-    def list_by_user(self, user_id: int) -> List[UserScan]:
+    def list_by_user(self, user_id: int, *, include_deleted: bool = False) -> List[UserScan]:
+        """Mặc định ẩn bộ đã xoá mềm. Script import phải truyền include_deleted=True
+        để nhận ra bộ đã nhập (nếu không sẽ tạo bản trùng)."""
+        stmt = select(UserScan).where(UserScan.user_id == user_id)
+        if not include_deleted:
+            stmt = stmt.where(UserScan.deleted_at.is_(None))
+        stmt = stmt.order_by(UserScan.uploaded_at.desc(), UserScan.id.desc())
+        return list(self._db.scalars(stmt).all())
+
+    def list_all(self, *, include_deleted: bool = False) -> List[UserScan]:
+        stmt = select(UserScan)
+        if not include_deleted:
+            stmt = stmt.where(UserScan.deleted_at.is_(None))
+        stmt = stmt.order_by(UserScan.uploaded_at.desc(), UserScan.id.desc())
+        return list(self._db.scalars(stmt).all())
+
+    def list_deleted(self) -> List[UserScan]:
         stmt = (
             select(UserScan)
-            .where(UserScan.user_id == user_id)
-            .order_by(UserScan.uploaded_at.desc(), UserScan.id.desc())
+            .where(UserScan.deleted_at.is_not(None))
+            .order_by(UserScan.deleted_at.desc(), UserScan.id.desc())
         )
         return list(self._db.scalars(stmt).all())
 
-    def list_all(self) -> List[UserScan]:
-        stmt = select(UserScan).order_by(UserScan.uploaded_at.desc(), UserScan.id.desc())
-        return list(self._db.scalars(stmt).all())
+    def soft_delete(self, scan: UserScan, *, user_id: int) -> UserScan:
+        scan.deleted_at = datetime.now(timezone.utc)
+        scan.deleted_by = user_id
+        self._db.add(scan)
+        self._db.commit()
+        self._db.refresh(scan)
+        return scan
+
+    def restore(self, scan: UserScan) -> UserScan:
+        scan.deleted_at = None
+        scan.deleted_by = None
+        self._db.add(scan)
+        self._db.commit()
+        self._db.refresh(scan)
+        return scan
 
     def get(self, scan_id: int) -> Optional[UserScan]:
         return self._db.get(UserScan, scan_id)
@@ -48,15 +76,21 @@ class UserScanRepository:
         định danh của bộ, không phải id kỹ thuật của cây)."""
         if not tree_ids:
             return {}
-        stmt = select(UserScan).where(UserScan.family_tree_id.in_(tree_ids))
+        stmt = select(UserScan).where(UserScan.family_tree_id.in_(tree_ids), UserScan.deleted_at.is_(None))
         return {scan.family_tree_id: scan for scan in self._db.scalars(stmt).all() if scan.family_tree_id}
 
     def count_by_user(self, user_id: int) -> int:
-        stmt = select(func.count()).select_from(UserScan).where(UserScan.user_id == user_id)
+        stmt = (
+            select(func.count())
+            .select_from(UserScan)
+            .where(UserScan.user_id == user_id, UserScan.deleted_at.is_(None))
+        )
         return int(self._db.scalar(stmt) or 0)
 
     def get_for_user(self, user_id: int, scan_id: int) -> Optional[UserScan]:
-        stmt = select(UserScan).where(UserScan.id == scan_id, UserScan.user_id == user_id)
+        stmt = select(UserScan).where(
+            UserScan.id == scan_id, UserScan.user_id == user_id, UserScan.deleted_at.is_(None)
+        )
         return self._db.scalar(stmt)
 
     def get_accessible(self, user: User, scan_id: int) -> Optional[UserScan]:
@@ -64,7 +98,8 @@ class UserScanRepository:
         phạm vi `list_all()` mà `GET /api/gia-pha` trả cho Admin), User chỉ
         mở bản ghi của chính mình."""
         if user.role == UserRole.ADMIN:
-            return self.get(scan_id)
+            scan = self.get(scan_id)
+            return None if scan is None or scan.deleted_at is not None else scan
         return self.get_for_user(user.id, scan_id)
 
     def create(
@@ -481,13 +516,45 @@ class GiaPhaPageRepository:
     def __init__(self, db: Session) -> None:
         self._db = db
 
-    def list_by_scan(self, user_scan_id: int) -> List[GiaPhaPage]:
+    def list_by_scan(self, user_scan_id: int, *, include_deleted: bool = False) -> List[GiaPhaPage]:
+        """Mặc định ẩn trang đã xoá mềm. Script import truyền include_deleted=True
+        để không tạo lại/trùng trang đã xoá."""
+        stmt = select(GiaPhaPage).where(GiaPhaPage.user_scan_id == user_scan_id)
+        if not include_deleted:
+            stmt = stmt.where(GiaPhaPage.deleted_at.is_(None))
+        stmt = stmt.order_by(GiaPhaPage.page_number.asc())
+        return list(self._db.scalars(stmt).all())
+
+    def list_deleted_by_scan(self, user_scan_id: int) -> List[GiaPhaPage]:
         stmt = (
             select(GiaPhaPage)
-            .where(GiaPhaPage.user_scan_id == user_scan_id)
+            .where(GiaPhaPage.user_scan_id == user_scan_id, GiaPhaPage.deleted_at.is_not(None))
             .order_by(GiaPhaPage.page_number.asc())
         )
         return list(self._db.scalars(stmt).all())
+
+    def sync_page_count(self, user_scan_id: int) -> int:
+        """page_count của bộ = số trang đang dùng (không tính trang xoá mềm).
+        Bộ chưa có hàng gia_pha_page nào (chưa cấu trúc hoá) giữ nguyên số cũ."""
+        total = int(
+            self._db.scalar(select(func.count()).select_from(GiaPhaPage).where(GiaPhaPage.user_scan_id == user_scan_id))
+            or 0
+        )
+        scan = self._db.get(UserScan, user_scan_id)
+        active = len(self.list_by_scan(user_scan_id))
+        if scan is not None and total > 0 and scan.page_count != active:
+            scan.page_count = active
+            self._db.add(scan)
+            self._db.commit()
+        return active
+
+    def set_deleted(self, page: GiaPhaPage, *, deleted: bool, user_id: Optional[int] = None) -> GiaPhaPage:
+        page.deleted_at = datetime.now(timezone.utc) if deleted else None
+        page.deleted_by = user_id if deleted else None
+        self._db.add(page)
+        self._db.commit()
+        self._db.refresh(page)
+        return page
 
     def create_page(
         self,

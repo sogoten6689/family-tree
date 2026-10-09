@@ -1,4 +1,4 @@
-import { Alert, Button, Card, Select, Spin, Table, Typography } from "antd";
+import { Alert, Button, Select, Spin, Table, Typography } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -70,8 +70,7 @@ const AdminUsersPage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <Card>
+    <div>
         <Typography.Paragraph type="secondary">
           {t("auth.adminUsersDesc", {
             defaultValue: "Chỉ admin mới có thể xem, cập nhật role và xóa user.",
@@ -131,7 +130,6 @@ const AdminUsersPage = () => {
             ]}
           />
         )}
-      </Card>
     </div>
   );
 };

@@ -89,6 +89,10 @@ class UserScan(Base):
     # Nguồn của mã: "catalogue" (đã chốt ở catalogue nghiên cứu, chép nguyên
     # văn) | "gemini" (tự tạo từ thông tin Gemini trích ở bản dịch).
     ma_dinh_danh_nguon: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    # Xoá mềm: deleted_at != NULL = đã xoá (ẩn khỏi mọi danh sách), dữ liệu và
+    # ảnh KHÔNG bị xoá thật, khôi phục được. Mã định danh vẫn giữ chỗ (không cấp lại).
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    deleted_by: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
 
 class PipelineStepType(str, enum.Enum):
@@ -113,6 +117,9 @@ class GiaPhaPage(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=lambda: datetime.now(timezone.utc)
     )
+    # Xoá mềm trang: deleted_at != NULL = ẩn, nội dung theo version và ảnh vẫn còn.
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    deleted_by: Mapped[int | None] = mapped_column(Integer, nullable=True)
 
 
 class GiaPhaVersion(Base):

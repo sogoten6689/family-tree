@@ -45,6 +45,7 @@ def ensure_workspace_schema() -> None:
     _migrate_gia_pha_columns(engine)
     _migrate_llm_import_columns(engine)
     _migrate_identifier_columns(engine)
+    _migrate_soft_delete_columns(engine)
 
 
 def _migrate_gia_pha_columns(engine) -> None:
@@ -122,6 +123,18 @@ def _migrate_identifier_columns(engine) -> None:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN nien_dai_mo_ta TEXT NULL"))
         if "ma_dinh_danh_nguon" not in lengths:
             conn.execute(text("ALTER TABLE user_scans ADD COLUMN ma_dinh_danh_nguon VARCHAR(16) NULL"))
+
+
+def _migrate_soft_delete_columns(engine) -> None:
+    """Xoá mềm bộ (user_scans) và trang (gia_pha_page): deleted_at/deleted_by,
+    cùng NULL = đang dùng. Idempotent; hàng cũ giữ NULL nên không bị ẩn."""
+    with engine.begin() as conn:
+        for table in ("user_scans", "gia_pha_page"):
+            cols = _existing_columns(conn, table)
+            if "deleted_at" not in cols:
+                conn.execute(text(f"ALTER TABLE {table} ADD COLUMN deleted_at DATETIME NULL"))
+            if "deleted_by" not in cols:
+                conn.execute(text(f"ALTER TABLE {table} ADD COLUMN deleted_by INT NULL"))
 
 
 def _migrate_user_scans_columns(engine) -> None:

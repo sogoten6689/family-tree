@@ -226,6 +226,33 @@ class GiaPhaPageEditResult(BaseModel):
     forked: bool  # True = vừa tạo version sửa tay mới (client dùng version_id này cho các lần sửa sau)
 
 
+class GiaPhaPageDeletedItem(BaseModel):
+    page_number: int
+    deleted_at: Optional[str] = None
+    image_url: Optional[str] = None
+    hannom_text: Optional[str] = None  # của version hiện tại, để nhận ra trang
+
+
+class GiaPhaPageDeleteResult(BaseModel):
+    page_number: int
+    deleted: bool  # True = vừa xoá mềm, False = vừa khôi phục
+    active_pages: int
+
+
+class DeletedScanItem(BaseModel):
+    id: int
+    title: str
+    ma_dinh_danh: Optional[str] = None
+    page_count: int
+    deleted_at: Optional[str] = None
+    deleted_by: Optional[int] = None
+
+
+class DeletedScanListResponse(BaseModel):
+    total: int
+    items: List[DeletedScanItem]
+
+
 class GiaPhaPageImageResult(BaseModel):
     page: GiaPhaPageView
     # Key ảnh cũ — object vẫn còn trên MinIO (không xoá) nên khôi phục được.
@@ -585,6 +612,152 @@ def create_workspace_router(
         )
         result.version = _item_version_from(version, versions.steps_for(version.id))
         return result
+
+    @router.get("/api/user/documents/{scan_id}/pages/deleted", response_model=List[GiaPhaPageDeletedItem])
+    def list_deleted_scan_pages(
+        scan_id: int,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> List[GiaPhaPageDeletedItem]:
+        """Các trang đã xoá mềm của bộ (để khôi phục). Chủ bộ hoặc admin."""
+        from app.documents.storage import ObjectStorage
+        from app.workspace.page_images import is_storage_key
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        version = versions.get_current(scan.id)
+        contents = {c.page_id: c for c in pages_repo.list_content_for_version(version.id)} if version else {}
+        storage = ObjectStorage.from_env()
+        items: List[GiaPhaPageDeletedItem] = []
+        for page in pages_repo.list_deleted_by_scan(scan.id):
+            image_url = None
+            if is_storage_key(page.image_file_key) and storage.config.enabled:
+                try:
+                    image_url = storage.get_presigned_url(page.image_file_key)
+                except Exception:  # noqa: BLE001 — MinIO lỗi thì vẫn liệt kê được
+                    image_url = None
+            content = contents.get(page.id)
+            items.append(
+                GiaPhaPageDeletedItem(
+                    page_number=page.page_number,
+                    deleted_at=page.deleted_at.isoformat() if page.deleted_at else None,
+                    image_url=image_url,
+                    hannom_text=content.hannom_text if content else None,
+                )
+            )
+        return items
+
+    @router.delete("/api/user/documents/{scan_id}/pages/{page_number}", response_model=GiaPhaPageDeleteResult)
+    def delete_scan_page(
+        scan_id: int,
+        page_number: int,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageDeleteResult:
+        """Xoá MỀM 1 trang: ẩn khỏi danh sách và khỏi văn bản gộp, nhưng nội
+        dung mọi version và ảnh trên MinIO vẫn còn, khôi phục được bằng
+        POST .../restore. Số trang của bộ được tính lại. Chủ bộ hoặc admin."""
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        pages_repo.set_deleted(page, deleted=True, user_id=current_user.id)
+        active = pages_repo.sync_page_count(scan.id)
+        current = versions.get_current(scan.id)
+        if current is not None:
+            pages_repo.sync_flat_cache(scans, scan.id, current.id)
+        return GiaPhaPageDeleteResult(page_number=page_number, deleted=True, active_pages=active)
+
+    @router.post("/api/user/documents/{scan_id}/pages/{page_number}/restore", response_model=GiaPhaPageDeleteResult)
+    def restore_scan_page(
+        scan_id: int,
+        page_number: int,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageDeleteResult:
+        """Khôi phục trang đã xoá mềm (giữ nguyên số trang và nội dung)."""
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_deleted_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang đã xoá này.")
+        pages_repo.set_deleted(page, deleted=False)
+        active = pages_repo.sync_page_count(scan.id)
+        current = versions.get_current(scan.id)
+        if current is not None:
+            pages_repo.sync_flat_cache(scans, scan.id, current.id)
+        return GiaPhaPageDeleteResult(page_number=page_number, deleted=False, active_pages=active)
+
+    @router.get("/api/admin/documents/deleted", response_model=DeletedScanListResponse)
+    def list_deleted_documents(
+        _: AdminUser,
+        scans: UserScanRepository = Depends(scan_repo),
+    ) -> DeletedScanListResponse:
+        """Các bộ đã xoá mềm (chỉ admin) để khôi phục."""
+        items = [
+            DeletedScanItem(
+                id=scan.id,
+                title=scan.title,
+                ma_dinh_danh=scan.ma_dinh_danh,
+                page_count=scan.page_count,
+                deleted_at=scan.deleted_at.isoformat() if scan.deleted_at else None,
+                deleted_by=scan.deleted_by,
+            )
+            for scan in scans.list_deleted()
+        ]
+        return DeletedScanListResponse(total=len(items), items=items)
+
+    @router.delete("/api/user/documents/{scan_id}", response_model=DeletedScanItem)
+    def delete_user_document(
+        scan_id: int,
+        current_user: AdminUser,
+        scans: UserScanRepository = Depends(scan_repo),
+    ) -> DeletedScanItem:
+        """Xoá MỀM cả bộ (chỉ admin): ẩn khỏi mọi danh sách và số thống kê
+        công khai; trang, version, ảnh và mã định danh vẫn còn (mã không được
+        cấp lại). Cây gia phả đã dựng từ bộ không bị đụng tới."""
+        scan = scans.get(scan_id)
+        if scan is None or scan.deleted_at is not None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        scan = scans.soft_delete(scan, user_id=current_user.id)
+        return DeletedScanItem(
+            id=scan.id,
+            title=scan.title,
+            ma_dinh_danh=scan.ma_dinh_danh,
+            page_count=scan.page_count,
+            deleted_at=scan.deleted_at.isoformat() if scan.deleted_at else None,
+            deleted_by=scan.deleted_by,
+        )
+
+    @router.post("/api/user/documents/{scan_id}/restore", response_model=DeletedScanItem)
+    def restore_user_document(
+        scan_id: int,
+        _: AdminUser,
+        scans: UserScanRepository = Depends(scan_repo),
+    ) -> DeletedScanItem:
+        """Khôi phục bộ đã xoá mềm (chỉ admin)."""
+        scan = scans.get(scan_id)
+        if scan is None or scan.deleted_at is None:
+            raise HTTPException(status_code=404, detail="Không có tài liệu đã xoá này.")
+        scan = scans.restore(scan)
+        return DeletedScanItem(
+            id=scan.id,
+            title=scan.title,
+            ma_dinh_danh=scan.ma_dinh_danh,
+            page_count=scan.page_count,
+            deleted_at=None,
+            deleted_by=None,
+        )
 
     @router.get("/api/user/documents/{scan_id}/pages", response_model=List[GiaPhaPageView])
     def list_scan_pages(
@@ -1252,7 +1425,8 @@ def create_workspace_router(
 
         # Query scans từ hannom-corpus import
         stmt = select(UserScan).filter(
-            UserScan.request_id.like(f"{HANNOM_CORPUS_REQUEST_ID_PREFIX}%")
+            UserScan.request_id.like(f"{HANNOM_CORPUS_REQUEST_ID_PREFIX}%"),
+            UserScan.deleted_at.is_(None),
         )
         hannom_scans = db.execute(stmt).scalars().all()
 
