@@ -1,12 +1,18 @@
-import { FileImageOutlined } from "@ant-design/icons";
-import { Alert, Card, Empty, Image, Pagination, Spin, Typography } from "antd";
+import { EditOutlined, FileImageOutlined } from "@ant-design/icons";
+import { Alert, Button, Card, Empty, Image, Input, Modal, Pagination, Spin, Tag, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
 import { BoundingBoxOverlay } from "@/components/documents/BoundingBoxOverlay";
-import { getScanPage, listScanPages, type GiaPhaPageDetail, type GiaPhaPageView } from "@/lib/userWorkspaceApi";
+import {
+  editScanPage,
+  getScanPage,
+  listScanPages,
+  type GiaPhaPageDetail,
+  type GiaPhaPageView,
+} from "@/lib/userWorkspaceApi";
 
 import "./ReaderWorkspace.css";
 
@@ -16,6 +22,10 @@ const { Text, Paragraph } = Typography;
  * Xem từng trang của bộ gia phả: ảnh gốc (link tạm từ MinIO, bấm để phóng to)
  * cạnh chữ Hán / phiên âm / dịch nghĩa của version hiện tại. Chỉ chủ bộ hoặc
  * admin mở được (API trả 404 cho người khác).
+ *
+ * Nút "Sửa trang" sửa tay chữ Hán / phiên âm / dịch nghĩa của trang đang xem.
+ * KHÔNG ghi đè bản gốc: lần sửa đầu server fork 1 version "manual-edit"
+ * (`editVersion`), viewer chuyển sang xem version đó; "Về bản gốc" quay lại.
  */
 export function PageViewer({ scanId }: { scanId: number }) {
   const { t } = useTranslation();
@@ -27,35 +37,81 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [detail, setDetail] = useState<GiaPhaPageDetail | null>(null);
   const [detailError, setDetailError] = useState<string | null>(null);
   const currentNumber = pages[index]?.page_number;
+  // Version sửa tay đang xem/sửa (null = version hiện tại của bộ).
+  const [editVersion, setEditVersion] = useState<{ id: number; number: number } | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState({ hannom: "", translit: "", translation: "" });
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const viewVersionId = editVersion?.id;
 
   useEffect(() => {
     if (currentNumber === undefined) return;
     let cancelled = false;
     setDetail(null);
     setDetailError(null);
-    getScanPage(scanId, currentNumber)
+    (viewVersionId === undefined
+      ? getScanPage(scanId, currentNumber)
+      : getScanPage(scanId, currentNumber, viewVersionId)
+    )
       .then((data) => !cancelled && setDetail(data))
       .catch((err) => !cancelled && setDetailError(err instanceof Error ? err.message : "Không tải được OCR/vote"));
     return () => {
       cancelled = true;
     };
-  }, [scanId, currentNumber]);
+  }, [scanId, currentNumber, viewVersionId]);
 
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
-    listScanPages(scanId)
+    (viewVersionId === undefined ? listScanPages(scanId) : listScanPages(scanId, viewVersionId))
       .then((data) => {
         if (cancelled) return;
         setPages(data);
-        setIndex(0);
+        // Đổi version (sửa lần đầu / về bản gốc) giữ nguyên trang đang xem.
+        setIndex((prev) => Math.min(prev, Math.max(data.length - 1, 0)));
       })
       .catch((err) => !cancelled && setError(err instanceof Error ? err.message : "Không tải được trang"))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
     };
-  }, [scanId]);
+  }, [scanId, viewVersionId]);
+
+  const openEdit = (current: GiaPhaPageView) => {
+    setDraft({
+      hannom: current.hannom_text ?? "",
+      translit: current.transliteration_text ?? "",
+      translation: current.translation_text ?? "",
+    });
+    setSaveError(null);
+    setEditing(true);
+  };
+
+  const saveEdit = async (current: GiaPhaPageView) => {
+    // Chỉ gửi trường đã đổi; so với null coi như "" để không tạo version vì khác biệt rỗng.
+    const payload: Parameters<typeof editScanPage>[2] = { version_id: viewVersionId };
+    if (draft.hannom !== (current.hannom_text ?? "")) payload.hannom_text = draft.hannom;
+    if (draft.translit !== (current.transliteration_text ?? "")) payload.transliteration_text = draft.translit;
+    if (draft.translation !== (current.translation_text ?? "")) payload.translation_text = draft.translation;
+    if (!("hannom_text" in payload || "transliteration_text" in payload || "translation_text" in payload)) {
+      setEditing(false);
+      return;
+    }
+    setSaving(true);
+    setSaveError(null);
+    try {
+      const result = await editScanPage(scanId, current.page_number, payload);
+      setPages((prev) => prev.map((p) => (p.page_number === current.page_number ? { ...p, ...result.page } : p)));
+      setDetail((prev) => (prev?.page_number === current.page_number ? { ...prev, ...result.page } : prev));
+      setEditing(false);
+      if (result.forked) setEditVersion({ id: result.version.version_id, number: result.version.version_number });
+    } catch (err) {
+      setSaveError(err instanceof Error ? err.message : "Không lưu được");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   if (loading) return <Spin className="flex justify-center py-12" />;
   if (error) return <Alert type="warning" showIcon message={error} />;
@@ -80,6 +136,21 @@ export function PageViewer({ scanId }: { scanId: number }) {
           pageSize={1}
           onChange={(value) => setIndex(value - 1)}
         />
+        <div className="flex flex-wrap items-center gap-2">
+          {editVersion && (
+            <>
+              <Tag color="orange">
+                {t("pageViewer.editVersion", { defaultValue: "Bản sửa tay v{{n}}", n: editVersion.number })}
+              </Tag>
+              <Button size="small" onClick={() => setEditVersion(null)}>
+                {t("pageViewer.backToOriginal", { defaultValue: "Về bản gốc" })}
+              </Button>
+            </>
+          )}
+          <Button size="small" type="primary" icon={<EditOutlined />} onClick={() => openEdit(page)}>
+            {t("pageViewer.edit", { defaultValue: "Sửa trang" })}
+          </Button>
+        </div>
         <Text type="secondary">
           {t("pageViewer.imageCount", {
             defaultValue: "{{n}}/{{total}} trang có ảnh",
@@ -161,6 +232,57 @@ export function PageViewer({ scanId }: { scanId: number }) {
           )}
         </div>
       </div>
+      <Modal
+        open={editing}
+        width={720}
+        title={t("pageViewer.editTitle", { defaultValue: "Sửa trang {{n}}", n: page.page_number })}
+        okText={t("pageViewer.save", { defaultValue: "Lưu" })}
+        cancelText={t("pageViewer.cancel", { defaultValue: "Huỷ" })}
+        confirmLoading={saving}
+        onOk={() => void saveEdit(page)}
+        onCancel={() => setEditing(false)}
+        destroyOnHidden
+      >
+        <div className="space-y-3">
+          <Alert
+            type="info"
+            showIcon
+            message={t("pageViewer.editNote", {
+              defaultValue:
+                "Bản gốc được giữ nguyên: chỗ sửa lưu vào một version sửa tay riêng. Khung chữ và kết quả vote OCR giữ như cũ nên có thể không còn khớp chữ đã sửa.",
+            })}
+          />
+          {saveError && <Alert type="error" showIcon message={saveError} />}
+          <label className="block">
+            <Text strong>{t("pageViewer.hannom", { defaultValue: "Chữ Hán Nôm" })}</Text>
+            <Input.TextArea
+              aria-label={t("pageViewer.hannom", { defaultValue: "Chữ Hán Nôm" })}
+              className="page-viewer-han"
+              autoSize={{ minRows: 4, maxRows: 14 }}
+              value={draft.hannom}
+              onChange={(e) => setDraft((d) => ({ ...d, hannom: e.target.value }))}
+            />
+          </label>
+          <label className="block">
+            <Text strong>{t("pageViewer.translit", { defaultValue: "Phiên âm" })}</Text>
+            <Input.TextArea
+              aria-label={t("pageViewer.translit", { defaultValue: "Phiên âm" })}
+              autoSize={{ minRows: 3, maxRows: 12 }}
+              value={draft.translit}
+              onChange={(e) => setDraft((d) => ({ ...d, translit: e.target.value }))}
+            />
+          </label>
+          <label className="block">
+            <Text strong>{t("pageViewer.translation", { defaultValue: "Dịch nghĩa" })}</Text>
+            <Input.TextArea
+              aria-label={t("pageViewer.translation", { defaultValue: "Dịch nghĩa" })}
+              autoSize={{ minRows: 3, maxRows: 12 }}
+              value={draft.translation}
+              onChange={(e) => setDraft((d) => ({ ...d, translation: e.target.value }))}
+            />
+          </label>
+        </div>
+      </Modal>
     </div>
   );
 }

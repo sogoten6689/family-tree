@@ -162,9 +162,10 @@ export interface GiaPhaPageView {
   translation_text: string | null;
 }
 
-/** Từng trang (ảnh + chữ Hán/phiên âm/dịch nghĩa) của version hiện tại. */
-export async function listScanPages(scanId: number): Promise<GiaPhaPageView[]> {
-  return apiRequest<GiaPhaPageView[]>(`/api/user/documents/${scanId}/pages`);
+/** Từng trang (ảnh + chữ Hán/phiên âm/dịch nghĩa) của version hiện tại (hoặc `versionId`). */
+export async function listScanPages(scanId: number, versionId?: number): Promise<GiaPhaPageView[]> {
+  const query = versionId === undefined ? "" : `?version_id=${versionId}`;
+  return apiRequest<GiaPhaPageView[]>(`/api/user/documents/${scanId}/pages${query}`);
 }
 
 export interface GiaPhaPageDetail extends GiaPhaPageView {
@@ -175,6 +176,35 @@ export interface GiaPhaPageDetail extends GiaPhaPageView {
 }
 
 /** 1 trang đầy đủ (ảnh + chữ + OCR/vote) — tải khi mở trang đó. */
-export async function getScanPage(scanId: number, pageNumber: number): Promise<GiaPhaPageDetail> {
-  return apiRequest<GiaPhaPageDetail>(`/api/user/documents/${scanId}/pages/${pageNumber}`);
+export async function getScanPage(scanId: number, pageNumber: number, versionId?: number): Promise<GiaPhaPageDetail> {
+  const query = versionId === undefined ? "" : `?version_id=${versionId}`;
+  return apiRequest<GiaPhaPageDetail>(`/api/user/documents/${scanId}/pages/${pageNumber}${query}`);
+}
+
+export interface GiaPhaPageEdit {
+  /** Trường bỏ qua = giữ nguyên; "" = xoá trắng. */
+  hannom_text?: string;
+  transliteration_text?: string;
+  translation_text?: string;
+  /** Version sửa tay đang làm việc; bỏ qua = lần sửa đầu (server fork version mới). */
+  version_id?: number;
+}
+
+export interface GiaPhaPageEditResult {
+  version: { version_id: number; version_number: number; is_current: boolean };
+  page: GiaPhaPageView;
+  /** true = vừa tạo version sửa tay mới; dùng `version.version_id` cho các lần sửa sau. */
+  forked: boolean;
+}
+
+/** Sửa tay chữ 1 trang — không ghi đè bản gốc (server tạo version "manual-edit"). */
+export async function editScanPage(
+  scanId: number,
+  pageNumber: number,
+  payload: GiaPhaPageEdit,
+): Promise<GiaPhaPageEditResult> {
+  return apiRequest<GiaPhaPageEditResult>(`/api/user/documents/${scanId}/pages/${pageNumber}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
 }
