@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import "@/i18n";
 
-const api = vi.hoisted(() => ({ listScanPages: vi.fn(), getScanPage: vi.fn(), editScanPage: vi.fn() }));
+const api = vi.hoisted(() => ({ listScanPages: vi.fn(), getScanPage: vi.fn(), editScanPage: vi.fn(), replaceScanPageImage: vi.fn(), ocrScanPage: vi.fn() }));
 vi.mock("@/lib/userWorkspaceApi", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/userWorkspaceApi")>()),
   ...api,
@@ -178,5 +178,72 @@ describe("PageViewer", { timeout: 15000 }, () => {
     fireEvent.click(screen.getByRole("button", { name: "Lưu" }));
     expect(await screen.findByText("Tài liệu không tồn tại.")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Lưu" })).toBeInTheDocument();
+  });
+
+  it("replaces the page image, shows the new one and hides stale boxes", async () => {
+    const withBoxes = { ...PAGES[0], ocr_vote_meta: null, ocr_bbox: [{ bbox_xyxy: [0, 0, 10, 10], han: "大", confidence: 0.9, order: 1 }] };
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockResolvedValue(withBoxes);
+    api.replaceScanPageImage.mockResolvedValue({
+      page: { ...PAGES[0], image_url: "https://minio/gia-pha/20/pages/001-ab12cd34.png?sig" },
+      previous_image_key: "gia-pha/20/pages/001.jpg",
+    });
+    render(<PageViewer scanId={20} />);
+    await screen.findByText(/Khung chữ \(Paddle\)/);
+    const file = new File([new Uint8Array([137, 80, 78, 71])], "moi.png", { type: "image/png" });
+    fireEvent.change(screen.getByTestId("page-image-input"), { target: { files: [file] } });
+    await waitFor(() => expect(api.replaceScanPageImage).toHaveBeenCalledWith(20, 1, file));
+    expect(await screen.findByText(/Đã thay ảnh trang này/)).toBeInTheDocument();
+    expect(screen.queryByText(/Khung chữ \(Paddle\)/)).not.toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Trang 1" })).toHaveAttribute("src", "https://minio/gia-pha/20/pages/001-ab12cd34.png?sig");
+  });
+
+  it("shows the error when the image cannot be replaced and keeps the old image", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.replaceScanPageImage.mockImplementation(() => Promise.reject(new Error("Chỉ nhận ảnh JPG, PNG, WEBP hoặc TIFF.")));
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.change(screen.getByTestId("page-image-input"), { target: { files: [new File(["x"], "a.pdf")] } });
+    expect(await screen.findByText("Chỉ nhận ảnh JPG, PNG, WEBP hoặc TIFF.")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Trang 1" })).toHaveAttribute("src", PAGES[0].image_url);
+    expect(screen.queryByText(/Đã thay ảnh trang này/)).not.toBeInTheDocument();
+  });
+
+  it("OCR again: asks for paid confirmation, then switches to the new version and warns about stale text", async () => {
+    const OCRED = [{ ...PAGES[0], hannom_text: "新字一" }, PAGES[1]];
+    api.listScanPages.mockImplementation((_s: number, v?: number) => Promise.resolve(v === 9 ? OCRED : PAGES));
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.ocrScanPage.mockResolvedValue({
+      version: { version_id: 9, version_number: 4, is_current: false },
+      page: OCRED[0],
+      forked: true,
+      engine: "kimhannom",
+      box_count: 3,
+      downstream_stale: true,
+    });
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.click(screen.getByRole("button", { name: /OCR lại trang/ }));
+    expect(await screen.findByText(/TỐN TIỀN/)).toBeInTheDocument();
+    expect(api.ocrScanPage).not.toHaveBeenCalled(); // chưa xác nhận thì không gọi
+    fireEvent.click(screen.getByRole("button", { name: /OCR \(tốn tiền\)/ }));
+    await waitFor(() => expect(api.ocrScanPage).toHaveBeenCalledWith(20, 1, { versionId: undefined }));
+    expect(await screen.findByText("Bản sửa tay v4")).toBeInTheDocument();
+    expect(await screen.findByText(/vẫn là của chữ cũ/)).toBeInTheDocument();
+    await waitFor(() => expect(api.listScanPages).toHaveBeenLastCalledWith(20, 9));
+  });
+
+  it("OCR error is shown and nothing changes", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.ocrScanPage.mockImplementation(() => Promise.reject(new Error("Kim Hán Nôm không trả về chữ")));
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.click(screen.getByRole("button", { name: /OCR lại trang/ }));
+    fireEvent.click(await screen.findByRole("button", { name: /OCR \(tốn tiền\)/ }));
+    expect(await screen.findByText("Kim Hán Nôm không trả về chữ")).toBeInTheDocument();
+    expect(screen.queryByText(/Bản sửa tay/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/vẫn là của chữ cũ/)).not.toBeInTheDocument();
   });
 });

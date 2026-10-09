@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
@@ -224,6 +224,29 @@ class GiaPhaPageEditResult(BaseModel):
     version: ItemVersion
     page: GiaPhaPageView
     forked: bool  # True = vừa tạo version sửa tay mới (client dùng version_id này cho các lần sửa sau)
+
+
+class GiaPhaPageImageResult(BaseModel):
+    page: GiaPhaPageView
+    # Key ảnh cũ — object vẫn còn trên MinIO (không xoá) nên khôi phục được.
+    previous_image_key: Optional[str] = None
+
+
+class GiaPhaPageOcrRequest(BaseModel):
+    engine: str = "kimhannom"
+    # OCR là lời gọi TỐN TIỀN: server từ chối nếu chưa có xác nhận rõ ràng.
+    confirm_paid: bool = False
+    version_id: Optional[int] = None  # version sửa tay đang làm việc (xem GiaPhaPageEditRequest)
+
+
+class GiaPhaPageOcrResult(BaseModel):
+    version: ItemVersion
+    page: GiaPhaPageView
+    forked: bool
+    engine: str
+    box_count: int
+    # Phiên âm / dịch nghĩa của trang còn là của chữ cũ → chưa khớp OCR mới.
+    downstream_stale: bool
 
 
 class MaDinhDanhAutoResult(BaseModel):
@@ -715,6 +738,163 @@ def create_workspace_router(
                 translation_text=content.translation_text,
             ),
             forked=forked,
+        )
+
+    @router.post("/api/user/documents/{scan_id}/pages/{page_number}/ocr", response_model=GiaPhaPageOcrResult)
+    def ocr_scan_page(
+        scan_id: int,
+        page_number: int,
+        payload: GiaPhaPageOcrRequest,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageOcrResult:
+        """OCR lại 1 trang bằng Kim Hán Nôm (TỐN TIỀN, cần confirm_paid=true).
+        Kết quả (chữ Hán + khung chữ) ghi vào version sửa tay — cùng cơ chế
+        với PATCH pages/{n}: lần đầu fork version mới, không đặt làm hiện tại,
+        bản gốc giữ nguyên. Vote cũ của trang bị xoá (không còn đúng). Phiên
+        âm/dịch của trang giữ theo chữ cũ và được báo là chưa khớp. Chủ bộ
+        hoặc admin."""
+        from app.documents.storage import ObjectStorage, ObjectStorageError
+        from app.hannom import engines as hannom_engines
+        from app.workspace.page_images import is_storage_key
+
+        if payload.engine != "kimhannom":
+            raise HTTPException(status_code=400, detail="Hiện chỉ hỗ trợ engine kimhannom.")
+        if not payload.confirm_paid:
+            raise HTTPException(status_code=400, detail="OCR Kim Hán Nôm tốn tiền: cần xác nhận (confirm_paid=true).")
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        base = versions.get(payload.version_id) if payload.version_id is not None else versions.get_current(scan.id)
+        if base is None or base.user_scan_id != scan.id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        if not is_storage_key(page.image_file_key):
+            raise HTTPException(status_code=409, detail="Ảnh trang này chưa lên MinIO nên chưa OCR được.")
+        storage = ObjectStorage.from_env()
+        if not storage.config.enabled:
+            raise HTTPException(status_code=503, detail="Chưa cấu hình lưu trữ ảnh (MinIO).")
+        try:
+            image = storage.read_file_bytes(page.image_file_key)
+        except ObjectStorageError as error:
+            raise HTTPException(status_code=502, detail=f"Không đọc được ảnh: {error}") from error
+        if not image:
+            raise HTTPException(status_code=409, detail="File ảnh trên MinIO rỗng.")
+
+        # Gọi OCR TRƯỚC khi tạo version: lỗi/không có chữ thì không để lại version rác.
+        result = hannom_engines.run_kimhannom(image, page.image_file_key.rsplit("/", 1)[-1])
+        text = "\n".join(result.lines).strip() if result else ""
+        if not text:
+            raise HTTPException(
+                status_code=502,
+                detail="Kim Hán Nôm không trả về chữ (kiểm tra token, hạn mức hoặc kết nối).",
+            )
+        bbox = result.bbox or []
+
+        forked = base.source != MANUAL_EDIT_SOURCE
+        target = base
+        if forked:
+            target = versions.create_derived_version(
+                user_scan_id=scan.id,
+                parent_version_id=base.id,
+                source=MANUAL_EDIT_SOURCE,
+                review_status=None,
+                note=f"OCR lại trang {page_number} bằng Kim Hán Nôm (từ v{base.version_number})",
+                created_by=current_user.id,
+                text_step_status=None,
+            )
+        previous = next((c for c in pages_repo.list_content_for_version(target.id) if c.page_id == page.id), None)
+        stale = bool(previous and (previous.transliteration_text or previous.translation_text))
+        content = pages_repo.upsert_content(
+            version_id=target.id,
+            page_id=page.id,
+            hannom_text=text,
+            ocr_bbox=bbox,
+            clear_vote_meta=True,
+        )
+        if target.is_current:
+            pages_repo.sync_flat_cache(scans, scan.id, target.id)
+        return GiaPhaPageOcrResult(
+            version=_item_version_from(versions.get(target.id), versions.steps_for(target.id)),
+            page=GiaPhaPageView(
+                page_number=page.page_number,
+                hannom_text=content.hannom_text,
+                transliteration_text=content.transliteration_text,
+                translation_text=content.translation_text,
+            ),
+            forked=forked,
+            engine="kimhannom",
+            box_count=len(bbox),
+            downstream_stale=stale,
+        )
+
+    @router.put("/api/user/documents/{scan_id}/pages/{page_number}/image", response_model=GiaPhaPageImageResult)
+    async def replace_scan_page_image(
+        scan_id: int,
+        page_number: int,
+        current_user: CurrentUser,
+        file: UploadFile = File(...),
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageImageResult:
+        """Thay ảnh gốc của 1 trang. Ảnh mới lên MinIO với key MỚI rồi mới đổi
+        key trong DB; object cũ giữ nguyên (không xoá) để hoàn tác. Loại ảnh
+        xét theo chữ ký đầu file (jpg/png/webp/tiff), không theo tên file.
+        Chữ và OCR của các version KHÔNG đổi — khung chữ cũ có thể không còn
+        khớp ảnh mới, cần OCR lại. Chủ bộ hoặc admin."""
+        import io
+        import os
+
+        from app.documents.storage import ObjectStorage, ObjectStorageError
+        from app.workspace.page_images import replacement_image_key, sniff_image
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        storage = ObjectStorage.from_env()
+        if not storage.config.enabled:
+            raise HTTPException(status_code=503, detail="Chưa cấu hình lưu trữ ảnh (MinIO).")
+        max_bytes = int(os.getenv("MINIO_MAX_UPLOAD_BYTES", str(50 * 1024 * 1024)))
+        content = await file.read(max_bytes + 1)
+        if not content:
+            raise HTTPException(status_code=400, detail="File ảnh rỗng.")
+        if len(content) > max_bytes:
+            raise HTTPException(status_code=400, detail=f"Ảnh vượt giới hạn {max_bytes} byte.")
+        kind = sniff_image(content)
+        if kind is None:
+            raise HTTPException(status_code=400, detail="Chỉ nhận ảnh JPG, PNG, WEBP hoặc TIFF.")
+        ext, content_type = kind
+        new_key = replacement_image_key(scan.id, page_number, ext)
+        try:
+            storage.upload_file(new_key, io.BytesIO(content), content_type=content_type, size=len(content))
+        except ObjectStorageError as error:
+            raise HTTPException(status_code=502, detail=f"Không tải ảnh lên được: {error}") from error
+        previous = page.image_file_key
+        page = pages_repo.set_image_key(page, new_key)
+        try:
+            image_url = storage.get_presigned_url(new_key)
+        except ObjectStorageError:
+            image_url = None
+        contents = {c.page_id: c for c in pages_repo.list_content_for_version(
+            versions.get_current(scan.id).id)} if versions.get_current(scan.id) else {}
+        c = contents.get(page.id)
+        return GiaPhaPageImageResult(
+            page=GiaPhaPageView(
+                page_number=page.page_number,
+                image_url=image_url,
+                hannom_text=c.hannom_text if c else None,
+                transliteration_text=c.transliteration_text if c else None,
+                translation_text=c.translation_text if c else None,
+            ),
+            previous_image_key=previous,
         )
 
     @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)

@@ -1,6 +1,6 @@
-import { EditOutlined, FileImageOutlined } from "@ant-design/icons";
+import { EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined } from "@ant-design/icons";
 import { Alert, Button, Card, Empty, Image, Input, Modal, Pagination, Spin, Tag, Typography } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
@@ -10,6 +10,8 @@ import {
   editScanPage,
   getScanPage,
   listScanPages,
+  ocrScanPage,
+  replaceScanPageImage,
   type GiaPhaPageDetail,
   type GiaPhaPageView,
 } from "@/lib/userWorkspaceApi";
@@ -26,6 +28,10 @@ const { Text, Paragraph } = Typography;
  * Nút "Sửa trang" sửa tay chữ Hán / phiên âm / dịch nghĩa của trang đang xem.
  * KHÔNG ghi đè bản gốc: lần sửa đầu server fork 1 version "manual-edit"
  * (`editVersion`), viewer chuyển sang xem version đó; "Về bản gốc" quay lại.
+ * Nút "Thay ảnh" đổi ảnh gốc của trang (ảnh cũ vẫn còn trên MinIO); chữ và OCR
+ * giữ nguyên nên khung chữ cũ bị ẩn cho tới khi OCR lại.
+ * Nút "OCR lại trang" gọi Kim Hán Nôm (TỐN TIỀN, có hộp xác nhận) và ghi kết
+ * quả vào version sửa tay như "Sửa trang"; phiên âm/dịch cũ được báo chưa khớp.
  */
 export function PageViewer({ scanId }: { scanId: number }) {
   const { t } = useTranslation();
@@ -44,6 +50,17 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const viewVersionId = editVersion?.id;
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [replacing, setReplacing] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+  // Trang đã đổi ảnh trong phiên này: khung chữ (bbox) của ảnh cũ không còn khớp.
+  const [imageReplaced, setImageReplaced] = useState<number[]>([]);
+  const [ocrBusy, setOcrBusy] = useState(false);
+  const [ocrError, setOcrError] = useState<string | null>(null);
+  // Trang vừa OCR lại: phiên âm/dịch nghĩa còn là của chữ cũ.
+  const [ocrStale, setOcrStale] = useState<number[]>([]);
+  // Tăng để tải lại chi tiết trang (khung chữ mới) khi OCR ghi tại chỗ, version không đổi.
+  const [detailNonce, setDetailNonce] = useState(0);
 
   useEffect(() => {
     if (currentNumber === undefined) return;
@@ -59,7 +76,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
     return () => {
       cancelled = true;
     };
-  }, [scanId, currentNumber, viewVersionId]);
+  }, [scanId, currentNumber, viewVersionId, detailNonce]);
 
   useEffect(() => {
     let cancelled = false;
@@ -86,6 +103,61 @@ export function PageViewer({ scanId }: { scanId: number }) {
     });
     setSaveError(null);
     setEditing(true);
+  };
+
+  const onPickImage = async (file: File | undefined, current: GiaPhaPageView) => {
+    if (!file) return;
+    setReplacing(true);
+    setImageError(null);
+    try {
+      const result = await replaceScanPageImage(scanId, current.page_number, file);
+      setPages((prev) =>
+        prev.map((p) => (p.page_number === current.page_number ? { ...p, image_url: result.page.image_url } : p)),
+      );
+      setImageReplaced((prev) => (prev.includes(current.page_number) ? prev : [...prev, current.page_number]));
+    } catch (err) {
+      setImageError(err instanceof Error ? err.message : "Không thay được ảnh");
+    } finally {
+      setReplacing(false);
+      if (fileInput.current) fileInput.current.value = "";
+    }
+  };
+
+  const runOcr = (current: GiaPhaPageView) => {
+    Modal.confirm({
+      title: t("pageViewer.ocrConfirmTitle", { defaultValue: "OCR lại trang {{n}}?", n: current.page_number }),
+      content: t("pageViewer.ocrConfirmBody", {
+        defaultValue:
+          "Việc này gọi Kim Hán Nôm và TỐN TIỀN mỗi lần chạy. Kết quả lưu vào bản sửa tay, bản gốc giữ nguyên. Phiên âm và dịch nghĩa của trang sẽ chưa khớp chữ mới.",
+      }),
+      okText: t("pageViewer.ocrConfirmOk", { defaultValue: "OCR (tốn tiền)" }),
+      cancelText: t("pageViewer.cancel", { defaultValue: "Huỷ" }),
+      onOk: async () => {
+        setOcrBusy(true);
+        setOcrError(null);
+        try {
+          const result = await ocrScanPage(scanId, current.page_number, { versionId: viewVersionId });
+          setPages((prev) => prev.map((p) => (p.page_number === current.page_number ? { ...p, ...result.page } : p)));
+          setImageReplaced((prev) => prev.filter((n) => n !== current.page_number)); // khung chữ mới khớp ảnh hiện tại
+          setOcrStale((prev) =>
+            result.downstream_stale
+              ? prev.includes(current.page_number)
+                ? prev
+                : [...prev, current.page_number]
+              : prev,
+          );
+          if (result.forked) {
+            setEditVersion({ id: result.version.version_id, number: result.version.version_number });
+          } else {
+            setDetailNonce((n) => n + 1);
+          }
+        } catch (err) {
+          setOcrError(err instanceof Error ? err.message : "Không OCR được");
+        } finally {
+          setOcrBusy(false);
+        }
+      },
+    });
   };
 
   const saveEdit = async (current: GiaPhaPageView) => {
@@ -123,7 +195,8 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const withImages = pages.filter((p) => p.image_url).length;
   const loadedDetail = detail?.page_number === page.page_number ? detail : null;
   const voteMeta = loadedDetail?.ocr_vote_meta ? [loadedDetail.ocr_vote_meta as unknown as VoteMeta] : null;
-  const boxes = loadedDetail?.ocr_bbox ?? [];
+  const replacedImage = imageReplaced.includes(page.page_number);
+  const boxes = replacedImage ? [] : (loadedDetail?.ocr_bbox ?? []);
   const stale = isVoteMetaV2(loadedDetail?.ocr_vote_meta) && !!loadedDetail?.ocr_vote_meta.downstream_stale;
 
   return (
@@ -147,6 +220,25 @@ export function PageViewer({ scanId }: { scanId: number }) {
               </Button>
             </>
           )}
+          <input
+            ref={fileInput}
+            type="file"
+            hidden
+            accept="image/jpeg,image/png,image/webp,image/tiff"
+            data-testid="page-image-input"
+            onChange={(e) => void onPickImage(e.target.files?.[0], page)}
+          />
+          <Button
+            size="small"
+            icon={<PictureOutlined />}
+            loading={replacing}
+            onClick={() => fileInput.current?.click()}
+          >
+            {t("pageViewer.replaceImage", { defaultValue: "Thay ảnh" })}
+          </Button>
+          <Button size="small" icon={<ScanOutlined />} loading={ocrBusy} onClick={() => runOcr(page)}>
+            {t("pageViewer.ocr", { defaultValue: "OCR lại trang" })}
+          </Button>
           <Button size="small" type="primary" icon={<EditOutlined />} onClick={() => openEdit(page)}>
             {t("pageViewer.edit", { defaultValue: "Sửa trang" })}
           </Button>
@@ -159,6 +251,27 @@ export function PageViewer({ scanId }: { scanId: number }) {
           })}
         </Text>
       </div>
+      {ocrError && <Alert type="error" showIcon closable message={ocrError} onClose={() => setOcrError(null)} />}
+      {ocrStale.includes(page.page_number) && (
+        <Alert
+          type="warning"
+          showIcon
+          message={t("pageViewer.ocrStale", {
+            defaultValue: "Đã OCR lại trang này. Phiên âm và dịch nghĩa bên dưới vẫn là của chữ cũ, chưa khớp chữ mới.",
+          })}
+        />
+      )}
+      {imageError && <Alert type="error" showIcon closable message={imageError} onClose={() => setImageError(null)} />}
+      {replacedImage && (
+        <Alert
+          type="warning"
+          showIcon
+          message={t("pageViewer.imageReplaced", {
+            defaultValue:
+              "Đã thay ảnh trang này. Chữ và kết quả OCR vẫn của ảnh cũ nên khung chữ được ẩn; cần OCR lại để khớp ảnh mới. Ảnh cũ vẫn được giữ trên máy chủ.",
+          })}
+        />
+      )}
       <div className="grid gap-4 md:grid-cols-2">
         <Card size="small" title={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })}>
           {page.image_url ? (
@@ -184,7 +297,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
                   />
                 </figure>
               ) : (
-                loadedDetail && (
+                loadedDetail && !replacedImage && (
                   <Text type="secondary" className="text-xs">
                     {t("pageViewer.noBoxes", { defaultValue: "Chưa có khung chữ cho trang này." })}
                   </Text>
