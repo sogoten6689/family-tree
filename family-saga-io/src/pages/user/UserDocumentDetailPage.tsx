@@ -73,7 +73,10 @@ const UserDocumentDetailPage = () => {
       onOk: async () => {
         try {
           await deleteUserDocument(scan.id);
-          await queryClient.invalidateQueries({ queryKey: ["gia-pha"] }); // danh sách Gia phả đang cache không còn bộ này
+          await Promise.all([
+            queryClient.invalidateQueries({ queryKey: ["gia-pha"] }),
+            queryClient.invalidateQueries({ queryKey: ["gia-pha-summary"] }),
+          ]); // danh sách + thống kê Gia phả đang cache không còn bộ này
           navigate("/user/documents");
         } catch (err) {
           Modal.error({ title: err instanceof Error ? err.message : "Không xoá được bộ" });

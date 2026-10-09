@@ -80,3 +80,33 @@ export async function cloneGiaPhaVersion(
     body: JSON.stringify({ make_current: makeCurrent }),
   });
 }
+
+export interface GiaPhaSummary {
+  scope: "public" | "user" | "admin";
+  total: number;
+  built: number;
+  pending: number;
+  with_code: number;
+  without_code: number;
+  code_source: { catalogue: number; gemini: number; other: number };
+  public_trees: number;
+  nodes: number;
+  top_ho_toc: { ho_toc: string; count: number }[];
+  /** null với khách: không lộ số liệu riêng tư. */
+  pages: {
+    scans: number;
+    pages: number;
+    ocr_pages: number;
+    transliteration_pages: number;
+    translation_pages: number;
+    ocr_percent: number;
+    transliteration_percent: number;
+    translation_percent: number;
+  } | null;
+  generated_at: string;
+}
+
+/** Thống kê tóm tắt của phạm vi người xem (server cache 30 giây; refresh=true bỏ qua cache). */
+export async function getGiaPhaSummary(refresh = false): Promise<GiaPhaSummary> {
+  return apiRequest<GiaPhaSummary>(`/api/gia-pha/summary${refresh ? "?refresh=true" : ""}`);
+}

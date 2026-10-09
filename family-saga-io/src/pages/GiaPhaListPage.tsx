@@ -13,6 +13,7 @@ import {
   type SourceFilter,
   type StatusFilter,
 } from "@/lib/giaPhaSearch";
+import { GiaPhaSummaryCards } from "@/components/gia-pha/GiaPhaSummaryCards";
 import { formatTreeDate } from "@/lib/familyTreeUtils";
 
 export type GiaPhaListScope = "public" | "user" | "admin";
@@ -135,6 +136,8 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           )}
         </div>
       </div>
+
+      <GiaPhaSummaryCards compact className="mb-6" />
 
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <Input.Search

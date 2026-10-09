@@ -12,7 +12,7 @@ const ALL = [
 ];
 
 // Giả lập backend: lọc theo q (không dấu) và cắt trang như API thật.
-const api = vi.hoisted(() => ({ listGiaPha: vi.fn() }));
+const api = vi.hoisted(() => ({ listGiaPha: vi.fn(), getGiaPhaSummary: vi.fn() }));
 vi.mock("@/lib/giaPhaApi", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/giaPhaApi")>()),
   ...api,
@@ -52,6 +52,12 @@ describe("GiaPhaListPage (phân trang + tìm kiếm ở backend)", { timeout: 15
   beforeEach(() => {
     api.listGiaPha.mockReset();
     api.listGiaPha.mockImplementation(fakeBackend);
+    api.getGiaPhaSummary.mockReset();
+    api.getGiaPhaSummary.mockResolvedValue({
+      scope: "admin", total: 2, built: 1, pending: 1, with_code: 1, without_code: 1,
+      code_source: { catalogue: 1, gemini: 0, other: 0 }, public_trees: 0, nodes: 0, top_ho_toc: [], pages: null,
+      generated_at: "2026-10-09T10:00:00+00:00",
+    });
   });
 
   it("asks the backend for page 1 (size 10) and shows the count", async () => {
@@ -96,6 +102,13 @@ describe("GiaPhaListPage (phân trang + tìm kiếm ở backend)", { timeout: 15
     expect(lastParams()).toMatchObject({ q: "", page: 1 });
     expect((searchBox() as HTMLInputElement).value).toBe("");
     expect(screen.queryByRole("button", { name: /Xoá bộ lọc/ })).toBeNull(); // hết lọc → ẩn nút
+  });
+
+  it("shows the summary on top of the list (compact tiles) with its own request", async () => {
+    renderAt("/admin/gia-pha");
+    expect(await screen.findByText("Tổng số bộ gia phả")).toBeInTheDocument();
+    expect(api.getGiaPhaSummary).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText("Họ tộc nhiều bộ nhất")).toBeNull(); // chế độ gọn
   });
 
   it("does not show the clear button when nothing is filtered", async () => {

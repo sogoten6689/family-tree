@@ -43,7 +43,8 @@ const UserDocumentsPage = () => {
     setTrashError(null);
     try {
       await restoreUserDocument(item.id);
-      void queryClient.invalidateQueries({ queryKey: ["gia-pha"] }); // bộ vừa khôi phục phải hiện lại ở danh sách Gia phả
+      void queryClient.invalidateQueries({ queryKey: ["gia-pha"] }); // bộ vừa khôi phục phải hiện lại ở danh sách + thống kê Gia phả
+      void queryClient.invalidateQueries({ queryKey: ["gia-pha-summary"] });
       setTrash((prev) => (prev ?? []).filter((d) => d.id !== item.id));
       void load();
     } catch (err) {
