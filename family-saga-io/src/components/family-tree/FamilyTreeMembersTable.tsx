@@ -33,7 +33,7 @@ export function FamilyTreeMembersTable({ members, onSelectMember }: Props) {
         onChange={(event) => setKeyword(event.target.value)}
         className="mb-4 max-w-md"
       />
-      <Table
+      <Table scroll={{ x: "max-content" }}
         rowKey="id"
         size="small"
         dataSource={filteredMembers}

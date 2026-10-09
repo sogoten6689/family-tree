@@ -254,7 +254,7 @@ export function DocumentOcrPanel({ document }: Props) {
         </Button>
       </Space>
 
-      <Table
+      <Table scroll={{ x: "max-content" }}
         size="small"
         className="mb-4"
         loading={statusLoading}

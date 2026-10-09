@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Alert, Button, Card, Descriptions, Modal, Space, Spin, Tabs, Typography } from "antd";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,7 @@ const UserDocumentDetailPage = () => {
   const navigate = useNavigate();
   const { scanId } = useParams<{ scanId: string }>();
   const { isAdmin } = useAuth();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
   const [scan, setScan] = useState<UserScan | null>(null);
   const [loading, setLoading] = useState(true);
@@ -71,6 +73,10 @@ const UserDocumentDetailPage = () => {
       onOk: async () => {
         try {
           await deleteUserDocument(scan.id);
+          await Promise.all([
+            queryClient.invalidateQueries({ queryKey: ["gia-pha"] }),
+            queryClient.invalidateQueries({ queryKey: ["gia-pha-summary"] }),
+          ]); // danh sách + thống kê Gia phả đang cache không còn bộ này
           navigate("/user/documents");
         } catch (err) {
           Modal.error({ title: err instanceof Error ? err.message : "Không xoá được bộ" });

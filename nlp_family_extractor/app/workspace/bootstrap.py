@@ -46,6 +46,7 @@ def ensure_workspace_schema() -> None:
     _migrate_llm_import_columns(engine)
     _migrate_identifier_columns(engine)
     _migrate_soft_delete_columns(engine)
+    _migrate_indexes(engine)
 
 
 def _migrate_gia_pha_columns(engine) -> None:
@@ -135,6 +136,36 @@ def _migrate_soft_delete_columns(engine) -> None:
                 conn.execute(text(f"ALTER TABLE {table} ADD COLUMN deleted_at DATETIME NULL"))
             if "deleted_by" not in cols:
                 conn.execute(text(f"ALTER TABLE {table} ADD COLUMN deleted_by INT NULL"))
+
+
+# (bảng, tên index, các cột) — phải khớp Index(...) khai báo trong models.py.
+WORKSPACE_INDEXES: list[tuple[str, str, tuple[str, ...]]] = [
+    ("user_scans", "ix_user_scans_deleted_user_uploaded", ("deleted_at", "user_id", "uploaded_at")),
+    ("user_scans", "ix_user_scans_family_tree_id", ("family_tree_id",)),
+    ("gia_pha_page", "ix_gia_pha_page_scan_deleted_num", ("user_scan_id", "deleted_at", "page_number")),
+    ("gia_pha_version", "ix_gia_pha_version_scan_current", ("user_scan_id", "is_current")),
+    ("gia_pha_page_content", "ix_gia_pha_content_version_page", ("version_id", "page_id")),
+]
+
+
+def _migrate_indexes(engine) -> None:
+    """Thêm index còn thiếu trên bảng đã tồn tại (create_all không thêm index cho bảng cũ).
+    Idempotent: chỉ CREATE INDEX khi tên index chưa có. Lỗi 1 index (vd thiếu quyền) chỉ in cảnh
+    báo, không chặn khởi động; hàng/cột hiện có không bị đổi."""
+    for table, name, columns in WORKSPACE_INDEXES:
+        try:
+            with engine.begin() as conn:
+                have = conn.execute(
+                    text(
+                        "SELECT 1 FROM information_schema.STATISTICS "
+                        "WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = :t AND INDEX_NAME = :i LIMIT 1"
+                    ),
+                    {"t": table, "i": name},
+                ).fetchone()
+                if have is None:
+                    conn.execute(text(f"CREATE INDEX {name} ON {table} ({', '.join(columns)})"))
+        except Exception as exc:  # noqa: BLE001
+            print(f"[workspace] không tạo được index {name}: {exc}")
 
 
 def _migrate_user_scans_columns(engine) -> None:

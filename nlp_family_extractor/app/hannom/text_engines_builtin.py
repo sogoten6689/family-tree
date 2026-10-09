@@ -67,11 +67,11 @@ def _default_transliterate(text: str) -> list[str]:
 
 
 def _default_translate(prompt: str) -> str:
-    from app.config import get_google_api_key
+    from app.config import get_llm_api_key
     from app.gemini_client import GeminiClient
 
-    if not get_google_api_key():
-        raise RuntimeError("Chưa cấu hình GOOGLE_API_KEY (Admin › Cấu hình) — không dịch nghĩa được.")
+    if not get_llm_api_key():
+        raise RuntimeError("Chưa cấu hình API key LLM (GOOGLE_API_KEY hoặc RAMCLOUD_KEY, Admin › Cấu hình) — không dịch nghĩa được.")
     return GeminiClient().generate(prompt, task="translate", json_output=True, max_output_tokens=GEMINI_MAX_OUTPUT_TOKENS)
 
 

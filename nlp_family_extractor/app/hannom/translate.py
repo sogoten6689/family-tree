@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from app.config import get_google_api_key
+from app.config import get_llm_api_key
 from app.gemini_client import GeminiClient
 
 
@@ -34,8 +34,8 @@ def translate_to_modern_vietnamese(
     """
     if not transliteration_text or not transliteration_text.strip():
         return None, "Dịch nghĩa skipped: input rỗng"
-    if not get_google_api_key():
-        return None, "Dịch nghĩa skipped: GOOGLE_API_KEY not set"
+    if not get_llm_api_key():
+        return None, "Dịch nghĩa skipped: chưa có API key (GOOGLE_API_KEY hoặc RAMCLOUD_KEY theo LLM_PROVIDER)"
 
     try:
         client = GeminiClient()

@@ -34,6 +34,35 @@ def get_google_api_key() -> str | None:
     return GOOGLE_API_KEY
 
 
+def get_llm_provider() -> str:
+    """Nhà cung cấp LLM cho mọi lời gọi "Gemini" trong app: "google" (mặc định,
+    SDK google-genai + GOOGLE_API_KEY) hoặc "ramcloud" (API kiểu OpenAI của lab,
+    RAMCLOUD_KEY). Chọn qua setting LLM_PROVIDER (Admin › Developer › Cấu hình)
+    hoặc biến môi trường cùng tên; giá trị lạ → "google"."""
+    value = (_get_setting("LLM_PROVIDER") or os.getenv("LLM_PROVIDER") or "google").strip().lower()
+    return value if value in {"google", "ramcloud"} else "google"
+
+
+def get_ramcloud_key() -> str | None:
+    return _get_setting("RAMCLOUD_KEY") or os.getenv("RAMCLOUD_KEY") or None
+
+
+def get_ramcloud_base_url() -> str:
+    return (_get_setting("RAMCLOUD_BASE_URL") or os.getenv("RAMCLOUD_BASE_URL") or "https://ramclouds.me/v1").rstrip("/")
+
+
+def get_ramcloud_model() -> str:
+    return _get_setting("RAMCLOUD_MODEL") or os.getenv("RAMCLOUD_MODEL") or "gemini-3.8-flash"
+
+
+def get_llm_api_key() -> str | None:
+    """Khoá của nhà cung cấp LLM đang chọn — dùng để kiểm tra "đã cấu hình chưa"
+    trước khi gọi (thay cho get_google_api_key ở các chỗ không riêng Google)."""
+    if get_llm_provider() == "ramcloud":
+        return get_ramcloud_key()
+    return get_google_api_key()
+
+
 def _get_setting(key: str) -> str | None:
     """Đọc 1 setting runtime từ DB (Admin › Developer › Cấu hình), không
     cache — cùng pattern get_google_api_key(). Trả None nếu DB tắt/lỗi/chưa

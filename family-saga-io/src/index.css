@@ -253,3 +253,22 @@
   background: hsl(var(--sidebar-accent));
   border-color: hsl(var(--sidebar-foreground));
 }
+
+/* Điện thoại: banner "bước tiếp theo" (Alert có nút hành động) xếp dọc thay vì ép chữ vào cột hẹp
+ * bên cạnh nút. */
+@media (max-width: 640px) {
+  .flow-next-banner.ant-alert {
+    flex-wrap: wrap;
+  }
+  .flow-next-banner .ant-alert-section {
+    flex-basis: calc(100% - 32px);
+  }
+  .flow-next-banner .ant-alert-action {
+    flex-basis: 100%;
+    margin-inline-start: 0;
+    margin-top: 8px;
+  }
+  .flow-next-banner .ant-alert-action .ant-btn {
+    width: 100%;
+  }
+}

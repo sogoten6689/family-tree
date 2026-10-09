@@ -68,9 +68,9 @@ def engine_ready(name: str) -> tuple[bool, str | None]:
         except Exception as error:  # DB lỗi khi đọc credential
             return False, f"Không kiểm tra được token: {error}"
     if name == "gemini_vision":
-        from app.config import get_google_api_key
+        from app.config import get_llm_api_key
 
-        return (True, None) if get_google_api_key() else (False, "Chưa có GOOGLE_API_KEY.")
+        return (True, None) if get_llm_api_key() else (False, "Chưa có API key LLM (GOOGLE_API_KEY hoặc RAMCLOUD_KEY).")
     return False, "Engine chưa có cách kiểm tra cấu hình."
 
 

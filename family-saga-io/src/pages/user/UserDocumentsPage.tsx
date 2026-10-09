@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Alert, Button, List, Modal, Space, Spin, Table, Typography } from "antd";
 import { EyeOutlined, PlusOutlined, UndoOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ const UserDocumentsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { isAdmin } = useAuth();
+  const queryClient = useQueryClient();
   const [trashOpen, setTrashOpen] = useState(false);
   const [trash, setTrash] = useState<DeletedScan[] | null>(null);
   const [trashError, setTrashError] = useState<string | null>(null);
@@ -41,6 +43,8 @@ const UserDocumentsPage = () => {
     setTrashError(null);
     try {
       await restoreUserDocument(item.id);
+      void queryClient.invalidateQueries({ queryKey: ["gia-pha"] }); // bộ vừa khôi phục phải hiện lại ở danh sách + thống kê Gia phả
+      void queryClient.invalidateQueries({ queryKey: ["gia-pha-summary"] });
       setTrash((prev) => (prev ?? []).filter((d) => d.id !== item.id));
       void load();
     } catch (err) {

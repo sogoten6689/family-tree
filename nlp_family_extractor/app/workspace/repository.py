@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any, List, Optional
 
-from sqlalchemy import func, select
+from sqlalchemy import and_, case, func, select
 from sqlalchemy.orm import Session
 
 from app.auth.models import User, UserRole
@@ -78,6 +78,33 @@ class UserScanRepository:
             return {}
         stmt = select(UserScan).where(UserScan.family_tree_id.in_(tree_ids), UserScan.deleted_at.is_(None))
         return {scan.family_tree_id: scan for scan in self._db.scalars(stmt).all() if scan.family_tree_id}
+
+    def page_stats(self, user_id: Optional[int] = None) -> dict[str, int]:
+        """Tổng hợp trong 1 truy vấn: số bộ, số trang và số trang (ước tính theo bộ) đã có chữ Hán /
+        phiên âm / dịch nghĩa — không đọc nội dung văn bản về Python. user_id=None = mọi bộ."""
+
+        def pages_with(column) -> Any:
+            return func.coalesce(
+                func.sum(case((and_(column.is_not(None), column != ""), UserScan.page_count), else_=0)), 0
+            )
+
+        stmt = select(
+            func.count(UserScan.id),
+            func.coalesce(func.sum(UserScan.page_count), 0),
+            pages_with(UserScan.hannom_text),
+            pages_with(UserScan.transliteration_text),
+            pages_with(UserScan.source_text),
+        ).where(UserScan.deleted_at.is_(None))
+        if user_id is not None:
+            stmt = stmt.where(UserScan.user_id == user_id)
+        scans, pages, ocr, translit, translation = self._db.execute(stmt).one()
+        return {
+            "scans": int(scans or 0),
+            "pages": int(pages or 0),
+            "ocr_pages": int(ocr or 0),
+            "transliteration_pages": int(translit or 0),
+            "translation_pages": int(translation or 0),
+        }
 
     def count_by_user(self, user_id: int) -> int:
         stmt = (
@@ -258,6 +285,22 @@ class GiaPhaVersionRepository:
     def steps_for(self, version_id: int) -> List[GiaPhaVersionStep]:
         stmt = select(GiaPhaVersionStep).where(GiaPhaVersionStep.version_id == version_id)
         return list(self._db.scalars(stmt).all())
+
+    def get_many(self, version_ids: List[int]) -> dict[int, GiaPhaVersion]:
+        """Nhiều version trong 1 truy vấn (danh sách Gia phả: tránh N+1)."""
+        if not version_ids:
+            return {}
+        stmt = select(GiaPhaVersion).where(GiaPhaVersion.id.in_(set(version_ids)))
+        return {v.id: v for v in self._db.scalars(stmt).all()}
+
+    def steps_for_many(self, version_ids: List[int]) -> dict[int, List[GiaPhaVersionStep]]:
+        if not version_ids:
+            return {}
+        stmt = select(GiaPhaVersionStep).where(GiaPhaVersionStep.version_id.in_(set(version_ids)))
+        grouped: dict[int, List[GiaPhaVersionStep]] = {}
+        for step in self._db.scalars(stmt).all():
+            grouped.setdefault(step.version_id, []).append(step)
+        return grouped
 
     def create_version(
         self,

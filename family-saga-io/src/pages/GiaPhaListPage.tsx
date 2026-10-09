@@ -1,17 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Alert, Button, Empty, Input, Select, Space, Table, Tag, Typography } from "antd";
-import { BranchesOutlined, PlusOutlined, ReloadOutlined } from "@ant-design/icons";
+import { BranchesOutlined, ClearOutlined, PlusOutlined, ReloadOutlined } from "@ant-design/icons";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { listGiaPha, type GiaPhaItem } from "@/lib/giaPhaApi";
 import {
-  filterGiaPha,
+  EMPTY_FILTERS,
   type CodeFilter,
   type GiaPhaFilters,
   type SourceFilter,
   type StatusFilter,
 } from "@/lib/giaPhaSearch";
+import { GiaPhaSummaryCards } from "@/components/gia-pha/GiaPhaSummaryCards";
 import { formatTreeDate } from "@/lib/familyTreeUtils";
 
 export type GiaPhaListScope = "public" | "user" | "admin";
@@ -26,56 +28,84 @@ interface GiaPhaListPageProps {
  * chung 1 API `/api/gia-pha` (backend tự scope theo auth). `scope` chỉ quyết
  * định UI hiện gì (nút tải lên ẩn ở public), không gửi lên server.
  */
+const PAGE_SIZE = 10;
+const SEARCH_DEBOUNCE_MS = 300;
+const STALE_MS = 15_000;
+
 const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [items, setItems] = useState<GiaPhaItem[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PAGE_SIZE);
 
   // Từ khoá giữ trên URL (?q=) để chia sẻ link; bộ lọc chỉ trong trang.
   const [filters, setFilters] = useState<GiaPhaFilters>({
+    ...EMPTY_FILTERS,
     q: searchParams.get("q") ?? "",
-    status: "all",
-    code: "all",
-    source: "all",
   });
-  const visibleItems = useMemo(() => filterGiaPha(items, filters), [items, filters]);
+  // Gõ tới đâu cập nhật ô tìm tới đó, nhưng chỉ hỏi backend sau khi ngừng gõ 300 ms.
+  const [debouncedQ, setDebouncedQ] = useState(filters.q);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setDebouncedQ(filters.q), SEARCH_DEBOUNCE_MS);
+    return () => window.clearTimeout(timer);
+  }, [filters.q]);
+
+  const hasActiveFilter =
+    filters.q.trim() !== "" || filters.status !== "all" || filters.code !== "all" || filters.source !== "all";
+
+  const syncQueryToUrl = (q: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (q.trim()) next.set("q", q);
+    else next.delete("q");
+    setSearchParams(next, { replace: true });
+  };
   const updateFilters = (patch: Partial<GiaPhaFilters>) => {
     setFilters((prev) => ({ ...prev, ...patch }));
     setPage(1);
-    if (patch.q !== undefined) {
-      const next = new URLSearchParams(searchParams);
-      if (patch.q.trim()) next.set("q", patch.q);
-      else next.delete("q");
-      setSearchParams(next, { replace: true });
-    }
+    if (patch.q !== undefined) syncQueryToUrl(patch.q);
+  };
+  const clearFilters = () => {
+    setFilters(EMPTY_FILTERS);
+    setDebouncedQ("");
+    setPage(1);
+    syncQueryToUrl("");
+  };
+
+  // Phân trang + tìm kiếm + lọc do backend làm; React Query giữ cache theo từng tổ hợp tham số
+  // (quay lại trang cũ hiện ngay) và giữ dữ liệu cũ trong lúc tải trang mới.
+  const forceRefresh = useRef(false);
+  const { data, error, isFetching, refetch } = useQuery({
+    queryKey: ["gia-pha", scope, { page, pageSize, q: debouncedQ.trim(), status: filters.status, code: filters.code, source: filters.source }],
+    queryFn: () => {
+      const refresh = forceRefresh.current;
+      forceRefresh.current = false;
+      return listGiaPha({
+        page,
+        pageSize,
+        q: debouncedQ,
+        status: filters.status,
+        code: filters.code,
+        source: filters.source,
+        refresh,
+      });
+    },
+    staleTime: STALE_MS,
+    placeholderData: keepPreviousData,
+  });
+  const items = data?.items ?? [];
+  const total = data?.total ?? 0;
+  const totalAll = data?.total_all ?? total;
+  const loading = isFetching;
+  const errorMessage = error ? (error instanceof Error ? error.message : "Không tải được danh sách gia phả") : null;
+  const reload = () => {
+    forceRefresh.current = true;
+    void refetch();
   };
 
   const detailBase = scope === "admin" ? "/admin/gia-pha" : scope === "user" ? "/user/gia-pha" : "/gia-pha";
   const uploadPath = scope === "public" ? "/" : "/user/document-reader";
-
-  const load = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await listGiaPha();
-      setItems(response.items);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Không tải được danh sách gia phả");
-      setItems([]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    void load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scope]);
 
   const goToDetail = (item: GiaPhaItem) => {
     if (item.status === "built" && item.tree_id) {
@@ -96,7 +126,7 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           </Typography.Title>
         </div>
         <div className="flex gap-2">
-          <Button icon={<ReloadOutlined />} onClick={() => void load()} loading={loading}>
+          <Button icon={<ReloadOutlined />} onClick={reload} loading={loading}>
             {t("familyTree.reload", { defaultValue: "Tải lại" })}
           </Button>
           {scope !== "public" && (
@@ -106,6 +136,8 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           )}
         </div>
       </div>
+
+      <GiaPhaSummaryCards compact className="mb-6" />
 
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <Input.Search
@@ -152,31 +184,31 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
         <Typography.Text type="secondary">
           {t("giaPhaList.resultCount", {
             defaultValue: "{{shown}}/{{total}} bộ",
-            shown: visibleItems.length,
-            total: items.length,
+            shown: total,
+            total: totalAll,
           })}
         </Typography.Text>
+        {hasActiveFilter && (
+          <Button icon={<ClearOutlined />} onClick={clearFilters}>
+            {t("giaPhaList.clearFilters", { defaultValue: "Xoá bộ lọc" })}
+          </Button>
+        )}
       </div>
 
-      {error && (
-        <Alert
-          type="warning"
-          showIcon
-          className="mb-6"
-          message={error}
-          closable
-          onClose={() => setError(null)}
-        />
-      )}
+      {errorMessage && <Alert type="warning" showIcon className="mb-6" message={errorMessage} />}
 
-      <Table
+      <Table scroll={{ x: "max-content" }}
         rowKey="id"
         loading={loading}
-        dataSource={visibleItems}
+        dataSource={items}
         pagination={{
           current: page,
-          onChange: setPage,
-          pageSize: 10,
+          total,
+          pageSize,
+          onChange: (nextPage, nextSize) => {
+            setPage(nextSize !== pageSize ? 1 : nextPage);
+            setPageSize(nextSize);
+          },
           showSizeChanger: true,
           pageSizeOptions: ["10", "20", "50"],
         }}
@@ -184,7 +216,7 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           emptyText: (
             <Empty
               description={
-                items.length > 0
+                totalAll > 0
                   ? t("giaPhaList.noMatch", { defaultValue: "Không có bộ nào khớp tìm kiếm/bộ lọc" })
                   : t("giaPhaList.empty", { defaultValue: "Chưa có bộ gia phả nào" })
               }

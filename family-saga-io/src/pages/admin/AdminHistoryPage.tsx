@@ -28,7 +28,7 @@ const AdminHistoryPage = () => {
       <Typography.Title level={4}>
         {t("adminHistory.title", { defaultValue: "Lịch sử scan & truy vấn" })}
       </Typography.Title>
-      <Table
+      <Table scroll={{ x: "max-content" }}
         rowKey="request_id"
         loading={loading}
         dataSource={items}

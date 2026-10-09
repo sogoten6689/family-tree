@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional
+from datetime import datetime, timezone
+from typing import Any, Callable, Dict, List, Literal, Optional
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
@@ -17,7 +17,9 @@ from app.documents.schemas import DocumentListResponse, DocumentResponse
 from app.documents.storage import ObjectStorage
 from app.family_tree_store import FamilyTreeNotFoundError, FamilyTreeStoreError
 from app.workspace.models import GiaPhaVersion, GiaPhaVersionStep, OcrStatus, TreeStatus, UserScan
+from app.workspace.gia_pha_list import GIA_PHA_CACHE, MAX_PAGE_SIZE, filter_items, paginate
 from app.workspace.llm_import import add_coverage_warnings, parse_import
+from app.workspace.stats import STATS_CACHE, page_progress, summarize_items
 from app.workspace.repository import GiaPhaPageRepository, GiaPhaVersionRepository, UserScanRepository
 from app.workspace.utils import compute_generation_count
 
@@ -302,8 +304,50 @@ class GiaPhaItem(BaseModel):
 
 
 class GiaPhaListResponse(BaseModel):
+    total: int  # số bộ SAU khi lọc/tìm kiếm (dùng cho phân trang)
+    items: List[GiaPhaItem]  # chỉ trang hiện tại (hoặc tất cả nếu page_size=0)
+    total_all: Optional[int] = None  # số bộ TRƯỚC khi lọc (hiện "x/y bộ")
+    page: int = 1
+    page_size: int = 0  # 0 = không phân trang
+
+
+class HoTocCount(BaseModel):
+    ho_toc: str
+    count: int
+
+
+class CodeSourceCounts(BaseModel):
+    catalogue: int = 0
+    gemini: int = 0
+    other: int = 0
+
+
+class PageProgress(BaseModel):
+    scans: int
+    pages: int
+    ocr_pages: int
+    transliteration_pages: int
+    translation_pages: int
+    ocr_percent: float
+    transliteration_percent: float
+    translation_percent: float
+
+
+class GiaPhaSummary(BaseModel):
+    """Thống kê tóm tắt của phạm vi người xem (khách / user / admin), cache 30 giây."""
+
+    scope: str  # "public" | "user" | "admin"
     total: int
-    items: List[GiaPhaItem]
+    built: int
+    pending: int
+    with_code: int
+    without_code: int
+    code_source: CodeSourceCounts
+    public_trees: int
+    nodes: int
+    top_ho_toc: List[HoTocCount]
+    pages: Optional[PageProgress] = None  # None với khách (không lộ số liệu riêng tư)
+    generated_at: str
 
 
 class GiaPhaVersionCloneRequest(BaseModel):
@@ -371,13 +415,27 @@ def _item_version_from(version: GiaPhaVersion, steps: List[GiaPhaVersionStep]) -
     )
 
 
-def _scan_to_gia_pha_item(scan: UserScan, version_repo: GiaPhaVersionRepository) -> GiaPhaItem:
+def _version_lookup(version_repo: GiaPhaVersionRepository, version_ids: List[int]) -> Dict[int, ItemVersion]:
+    """Nạp trước version hiện tại + các bước của nhiều bộ trong 2 truy vấn (thay vì 2 truy vấn/bộ)."""
+    versions = version_repo.get_many(version_ids)
+    steps = version_repo.steps_for_many(list(versions))
+    return {vid: _item_version_from(v, steps.get(vid, [])) for vid, v in versions.items()}
+
+
+def _scan_to_gia_pha_item(
+    scan: UserScan,
+    version_repo: GiaPhaVersionRepository,
+    lookup: Optional[Dict[int, ItemVersion]] = None,
+) -> GiaPhaItem:
     gia_pha_id, pending = _scan_display_id(scan)
     current_version = None
     if scan.current_version_id:
-        version = version_repo.get(scan.current_version_id)
-        if version is not None:
-            current_version = _item_version_from(version, version_repo.steps_for(version.id))
+        if lookup is not None:
+            current_version = lookup.get(scan.current_version_id)
+        else:
+            version = version_repo.get(scan.current_version_id)
+            if version is not None:
+                current_version = _item_version_from(version, version_repo.steps_for(version.id))
     return GiaPhaItem(
         id=gia_pha_id,
         ma_dinh_danh_pending=pending,
@@ -398,6 +456,7 @@ def _tree_to_gia_pha_item(
     version_repo: Optional[GiaPhaVersionRepository] = None,
     *,
     expose_scan: bool = False,
+    lookup: Optional[Dict[int, ItemVersion]] = None,
 ) -> GiaPhaItem:
     """Cây đã dựng. Mã hiển thị lấy từ bộ gia phả nguồn (scan) — trước đây
     dùng id kỹ thuật của cây và ghi sai ma_dinh_danh_pending=False. Cây không
@@ -405,10 +464,13 @@ def _tree_to_gia_pha_item(
     expose_scan=False (khách): chỉ hiện mã, không lộ scan_id/version riêng tư."""
     display_id, pending = _scan_display_id(source_scan) if source_scan else (tree["id"], True)
     current_version = None
-    if expose_scan and source_scan is not None and version_repo is not None and source_scan.current_version_id:
-        version = version_repo.get(source_scan.current_version_id)
-        if version is not None:
-            current_version = _item_version_from(version, version_repo.steps_for(version.id))
+    if expose_scan and source_scan is not None and source_scan.current_version_id:
+        if lookup is not None:
+            current_version = lookup.get(source_scan.current_version_id)
+        elif version_repo is not None:
+            version = version_repo.get(source_scan.current_version_id)
+            if version is not None:
+                current_version = _item_version_from(version, version_repo.steps_for(version.id))
     return GiaPhaItem(
         id=display_id,
         ma_dinh_danh_pending=pending,
@@ -502,12 +564,19 @@ def create_workspace_router(
             items.append(response)
         return DocumentListResponse(total=len(items), items=items)
 
-    @router.get("/api/gia-pha", response_model=GiaPhaListResponse)
-    def list_gia_pha(
-        current_user: OptionalUser,
-        scans: UserScanRepository = Depends(scan_repo),
-        versions: GiaPhaVersionRepository = Depends(version_repo),
-    ) -> GiaPhaListResponse:
+    def _scope_key(current_user) -> str:
+        if current_user is None:
+            return "public"
+        if current_user.role == UserRole.ADMIN:
+            return "admin"
+        return f"user:{current_user.id}"
+
+    def _load_all_items(current_user, scans: UserScanRepository, versions: GiaPhaVersionRepository, *, refresh: bool = False):
+        """Danh sách Gia phả ĐẦY ĐỦ (chưa lọc) của phạm vi người xem; cache 20 giây trong bộ nhớ."""
+        scope_key = _scope_key(current_user)
+        all_items = None if refresh else GIA_PHA_CACHE.get(scope_key)
+        if all_items is not None:
+            return all_items
         store = get_tree_store()
         try:
             if current_user is None:
@@ -523,14 +592,72 @@ def create_workspace_router(
             _raise_store_error(error)
 
         source_scans = scans.by_family_tree_ids([tree["id"] for tree in trees])
-        items = [
-            _tree_to_gia_pha_item(
-                tree, source_scans.get(tree["id"]), versions, expose_scan=current_user is not None
-            )
+        expose = current_user is not None
+        version_ids = [sc.current_version_id for sc in pending_scans if sc.current_version_id]
+        if expose:
+            version_ids += [sc.current_version_id for sc in source_scans.values() if sc.current_version_id]
+        lookup = _version_lookup(versions, version_ids)
+        all_items = [
+            _tree_to_gia_pha_item(tree, source_scans.get(tree["id"]), versions, expose_scan=expose, lookup=lookup)
             for tree in trees
         ]
-        items.extend(_scan_to_gia_pha_item(scan, versions) for scan in pending_scans)
-        return GiaPhaListResponse(total=len(items), items=items)
+        all_items.extend(_scan_to_gia_pha_item(scan, versions, lookup) for scan in pending_scans)
+        GIA_PHA_CACHE.set(scope_key, all_items)
+        return all_items
+
+    @router.get("/api/gia-pha/summary", response_model=GiaPhaSummary)
+    def gia_pha_summary(
+        current_user: OptionalUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        refresh: bool = Query(False, description="true = bỏ qua cache"),
+    ) -> GiaPhaSummary:
+        """Thống kê tóm tắt (số bộ, đã dựng cây/chờ, có/chưa có mã, nguồn mã, nhân vật, họ tộc
+        nhiều nhất, tiến độ OCR/phiên âm/dịch). Cache 30 giây theo phạm vi, xoá khi có request ghi."""
+        scope_key = _scope_key(current_user)
+        cache_key = f"summary:{scope_key}"
+        cached = None if refresh else STATS_CACHE.get(cache_key)
+        if cached is not None:
+            return cached
+        data = summarize_items(_load_all_items(current_user, scans, versions, refresh=refresh))
+        pages = None
+        if current_user is not None:
+            only_user = None if current_user.role == UserRole.ADMIN else current_user.id
+            pages = PageProgress(**page_progress(scans.page_stats(only_user)))
+        result = GiaPhaSummary(
+            scope=scope_key.split(":")[0],
+            pages=pages,
+            generated_at=datetime.now(timezone.utc).isoformat(),
+            **data,
+        )
+        STATS_CACHE.set(cache_key, result)
+        return result
+
+    @router.get("/api/gia-pha", response_model=GiaPhaListResponse)
+    def list_gia_pha(
+        current_user: OptionalUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        page: int = Query(1, ge=1),
+        page_size: int = Query(0, ge=0, le=MAX_PAGE_SIZE, description="0 = không phân trang (trả tất cả)"),
+        q: str = Query("", max_length=200, description="Tìm theo mã/tên/họ, không phân biệt dấu"),
+        status: Literal["all", "built", "pending"] = "all",
+        code: Literal["all", "has", "none"] = "all",
+        source: Literal["all", "catalogue", "gemini"] = "all",
+        refresh: bool = Query(False, description="true = bỏ qua cache, đọc lại từ DB (nút Tải lại)"),
+    ) -> GiaPhaListResponse:
+        """Danh sách Gia phả: lọc + phân trang ở backend. Danh sách đầy đủ (chưa lọc) của mỗi
+        phạm vi (khách / admin / từng user) được cache 20 giây trong bộ nhớ và bị xoá ngay khi có
+        request ghi thành công (api.py); lọc và cắt trang chạy trên bản cache nên rẻ."""
+        all_items = _load_all_items(current_user, scans, versions, refresh=refresh)
+        matched = filter_items(all_items, q=q, status=status, code=code, source=source)
+        return GiaPhaListResponse(
+            total=len(matched),
+            items=paginate(matched, page, page_size),
+            total_all=len(all_items),
+            page=page,
+            page_size=page_size,
+        )
 
     @router.get("/api/gia-pha/{gia_pha_id}/versions", response_model=List[ItemVersion])
     def list_gia_pha_versions(
@@ -1239,6 +1366,10 @@ def create_workspace_router(
         current_user: CurrentUser,
         scans: UserScanRepository = Depends(scan_repo),
     ) -> UserStatsResponse:
+        cache_key = f"user_stats:{current_user.id}"
+        cached = STATS_CACHE.get(cache_key)
+        if cached is not None:
+            return cached
         store = get_tree_store()
         history_repo = get_history_repo()
         try:
@@ -1248,11 +1379,13 @@ def create_workspace_router(
         history_total = 0
         if history_repo.enabled:
             history_total, _ = history_repo.list_recent(1, user_id=current_user.id)
-        return UserStatsResponse(
+        result = UserStatsResponse(
             scanned_documents=scans.count_by_user(current_user.id),
             family_trees=len(trees),
             history_total=history_total,
         )
+        STATS_CACHE.set(cache_key, result)
+        return result
 
     @router.get("/api/user/documents", response_model=UserScanListResponse)
     def list_user_documents(
@@ -1391,6 +1524,9 @@ def create_workspace_router(
         scans: UserScanRepository = Depends(scan_repo),
         db: Session = Depends(get_db),
     ) -> AdminStatsResponse:
+        cached = STATS_CACHE.get("admin_stats")
+        if cached is not None:
+            return cached
         store = get_tree_store()
         history_repo = get_history_repo()
         try:
@@ -1399,21 +1535,21 @@ def create_workspace_router(
         except Exception as error:
             _raise_store_error(error)
 
-        from sqlalchemy import func, select
-        from app.workspace.models import UserScan
-
-        total_scans = int(db.scalar(select(func.count()).select_from(UserScan)) or 0)
+        # Không tính bộ đã xoá mềm (trước đây đếm cả chúng).
+        total_scans = scans.page_stats(None)["scans"]
         history_total = 0
         if history_repo.enabled:
             history_total, _ = history_repo.list_all(1)
 
-        return AdminStatsResponse(
+        result = AdminStatsResponse(
             total_trees=len(all_trees),
             public_trees=len(public_trees),
             total_users=users.count_users(),
             total_scans=total_scans,
             history_total=history_total,
         )
+        STATS_CACHE.set("admin_stats", result)
+        return result
 
     @router.get("/api/public/hannom-progress", response_model=HannomProgressResponse)
     def get_hannom_progress(

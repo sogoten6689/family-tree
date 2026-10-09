@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 from typing import Any
 
-from sqlalchemy import JSON, Boolean, DateTime, Enum, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, Boolean, DateTime, Enum, ForeignKey, Index, Integer, String, Text
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -28,6 +28,12 @@ class TreeStatus(str, enum.Enum):
 
 class UserScan(Base):
     __tablename__ = "user_scans"
+
+    # Danh sách/đếm bộ lọc theo (chưa xoá, chủ sở hữu) và sắp theo ngày upload; tra bộ theo cây.
+    __table_args__ = (
+        Index("ix_user_scans_deleted_user_uploaded", "deleted_at", "user_id", "uploaded_at"),
+        Index("ix_user_scans_family_tree_id", "family_tree_id"),
+    )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False, index=True)
@@ -108,6 +114,9 @@ class GiaPhaPage(Base):
 
     __tablename__ = "gia_pha_page"
 
+    # Liệt kê trang của 1 bộ (không tính trang xoá mềm) theo số trang.
+    __table_args__ = (Index("ix_gia_pha_page_scan_deleted_num", "user_scan_id", "deleted_at", "page_number"),)
+
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     user_scan_id: Mapped[int] = mapped_column(Integer, ForeignKey("user_scans.id"), nullable=False, index=True)
     page_number: Mapped[int] = mapped_column(Integer, nullable=False)
@@ -127,6 +136,9 @@ class GiaPhaVersion(Base):
     sao chép (fork) từ 1 version khác rồi sửa riêng — không ghi đè bản gốc."""
 
     __tablename__ = "gia_pha_version"
+
+    # Tìm version hiện tại của 1 bộ.
+    __table_args__ = (Index("ix_gia_pha_version_scan_current", "user_scan_id", "is_current"),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     user_scan_id: Mapped[int] = mapped_column(Integer, ForeignKey("user_scans.id"), nullable=False, index=True)
@@ -171,6 +183,9 @@ class GiaPhaPageContent(Base):
     pages[].l1_ocr/l2_phien_am/l3_dich_nghia của corpus JSON nghiên cứu."""
 
     __tablename__ = "gia_pha_page_content"
+
+    # Nội dung 1 trang theo 1 version (upsert, đọc trang).
+    __table_args__ = (Index("ix_gia_pha_content_version_page", "version_id", "page_id"),)
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     version_id: Mapped[int] = mapped_column(Integer, ForeignKey("gia_pha_version.id"), nullable=False, index=True)
