@@ -1557,40 +1557,56 @@ def create_workspace_router(
         db: Session = Depends(get_db),
     ) -> HannomProgressResponse:
         require_workspace_database()
-        from sqlalchemy import select
+        cached = STATS_CACHE.get("hannom_progress")
+        if cached is not None:
+            return cached
+        from sqlalchemy import and_, case, select
+
+        def has_text(column):
+            # Chỉ hỏi "có chữ không" ngay trong SQL: KHÔNG kéo cả nội dung LONGTEXT (mỗi bộ hàng trăm KB)
+            # về Python như trước — đó là lý do endpoint công khai này mất ~2,4 giây.
+            return case((and_(column.is_not(None), column != ""), True), else_=False)
 
         # Query scans từ hannom-corpus import
-        stmt = select(UserScan).filter(
-            UserScan.request_id.like(f"{HANNOM_CORPUS_REQUEST_ID_PREFIX}%"),
-            UserScan.deleted_at.is_(None),
+        stmt = (
+            select(
+                UserScan.file_name,
+                UserScan.title,
+                UserScan.page_count,
+                UserScan.ma_dinh_danh,
+                has_text(UserScan.hannom_text).label("has_ocr"),
+                has_text(UserScan.transliteration_text).label("has_translit"),
+                has_text(UserScan.source_text).label("has_translation"),
+            )
+            .where(UserScan.request_id.like(f"{HANNOM_CORPUS_REQUEST_ID_PREFIX}%"), UserScan.deleted_at.is_(None))
         )
-        hannom_scans = db.execute(stmt).scalars().all()
+        rows = sorted(db.execute(stmt).all(), key=lambda r: r.file_name)
 
-        total_books = len(hannom_scans)
-        total_pages = sum(s.page_count for s in hannom_scans)
-        pages_with_ocr = sum(s.page_count for s in hannom_scans if s.hannom_text)
-        pages_with_transliteration = sum(s.page_count for s in hannom_scans if s.transliteration_text)
-        pages_with_translation = sum(s.page_count for s in hannom_scans if s.source_text)
+        total_books = len(rows)
+        total_pages = sum(r.page_count for r in rows)
+        pages_with_ocr = sum(r.page_count for r in rows if r.has_ocr)
+        pages_with_transliteration = sum(r.page_count for r in rows if r.has_translit)
+        pages_with_translation = sum(r.page_count for r in rows if r.has_translation)
 
-        books = []
-        for scan in sorted(hannom_scans, key=lambda s: s.file_name):
-            doc_id = scan.file_name
-            books.append(HannomProgressItem(
-                doc_id=doc_id,
-                title_vn=scan.title,
-                page_count=scan.page_count,
-                has_ocr=bool(scan.hannom_text),
-                has_transliteration=bool(scan.transliteration_text),
-                has_translation=bool(scan.source_text),
-                ma_dinh_danh=scan.ma_dinh_danh,
+        books = [
+            HannomProgressItem(
+                doc_id=r.file_name,
+                title_vn=r.title,
+                page_count=r.page_count,
+                has_ocr=bool(r.has_ocr),
+                has_transliteration=bool(r.has_translit),
+                has_translation=bool(r.has_translation),
+                ma_dinh_danh=r.ma_dinh_danh,
                 flags=[],  # TODO: thêm flags từ corpus metadata
-            ))
+            )
+            for r in rows
+        ]
 
         ocr_pct = round(100 * pages_with_ocr / total_pages, 1) if total_pages > 0 else 0.0
         translit_pct = round(100 * pages_with_transliteration / total_pages, 1) if total_pages > 0 else 0.0
         trans_pct = round(100 * pages_with_translation / total_pages, 1) if total_pages > 0 else 0.0
 
-        return HannomProgressResponse(
+        result = HannomProgressResponse(
             total_books=total_books,
             total_pages=total_pages,
             pages_with_ocr=pages_with_ocr,
@@ -1601,6 +1617,8 @@ def create_workspace_router(
             translation_percent=trans_pct,
             books=books,
         )
+        STATS_CACHE.set("hannom_progress", result)
+        return result
 
     @router.get("/api/admin/history")
     def list_admin_history(
