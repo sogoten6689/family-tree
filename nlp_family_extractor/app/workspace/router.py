@@ -23,6 +23,7 @@ from app.workspace.utils import compute_generation_count
 
 # Phải khớp đúng tools/import_hannom_bilingual_corpus.py:REQUEST_ID_PREFIX
 HANNOM_CORPUS_REQUEST_ID_PREFIX = "hannom-corpus:"
+MANUAL_EDIT_SOURCE = "manual-edit"  # GiaPhaVersion.source của version do người sửa tay từng trang
 
 
 def require_workspace_database() -> None:
@@ -206,6 +207,23 @@ class GiaPhaPageDetail(GiaPhaPageView):
     ocr_vote_meta: Optional[Dict[str, Any]] = None
     # Khung chữ trên ảnh gốc [{bbox_xyxy, han, confidence, order}] — theo thứ tự đọc.
     ocr_bbox: Optional[List[Dict[str, Any]]] = None
+
+
+class GiaPhaPageEditRequest(BaseModel):
+    """Sửa tay chữ 1 trang. Trường None = giữ nguyên; "" = xoá trắng."""
+
+    hannom_text: Optional[str] = None
+    transliteration_text: Optional[str] = None
+    translation_text: Optional[str] = None
+    # None = sửa trên version hiện tại. Version không phải "manual-edit" thì
+    # không bị ghi đè — server fork ra version sửa tay mới và trả về.
+    version_id: Optional[int] = None
+
+
+class GiaPhaPageEditResult(BaseModel):
+    version: ItemVersion
+    page: GiaPhaPageView
+    forked: bool  # True = vừa tạo version sửa tay mới (client dùng version_id này cho các lần sửa sau)
 
 
 class MaDinhDanhAutoResult(BaseModel):
@@ -639,6 +657,64 @@ def create_workspace_router(
             translation_text=content.translation_text if content else None,
             ocr_vote_meta=meta,
             ocr_bbox=content.ocr_bbox if content and isinstance(content.ocr_bbox, list) else None,
+        )
+
+    @router.patch("/api/user/documents/{scan_id}/pages/{page_number}", response_model=GiaPhaPageEditResult)
+    def edit_scan_page(
+        scan_id: int,
+        page_number: int,
+        payload: GiaPhaPageEditRequest,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageEditResult:
+        """Sửa tay chữ Hán / phiên âm / dịch nghĩa của 1 trang. KHÔNG ghi đè
+        bản gốc: lần sửa đầu fork version mới (source="manual-edit", không đặt
+        làm hiện tại); các lần sau gửi version_id đó để sửa tại chỗ. Muốn
+        thành bản chính thì admin make-current. OCR/vote/bbox giữ nguyên làm
+        bằng chứng (có thể không còn khớp chữ đã sửa). Chủ bộ hoặc admin."""
+        if payload.hannom_text is None and payload.transliteration_text is None and payload.translation_text is None:
+            raise HTTPException(status_code=400, detail="Không có nội dung nào để sửa.")
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        base = versions.get(payload.version_id) if payload.version_id is not None else versions.get_current(scan.id)
+        if base is None or base.user_scan_id != scan.id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        forked = base.source != MANUAL_EDIT_SOURCE
+        target = base
+        if forked:
+            target = versions.create_derived_version(
+                user_scan_id=scan.id,
+                parent_version_id=base.id,
+                source=MANUAL_EDIT_SOURCE,
+                review_status=None,
+                note=f"Sửa tay (từ v{base.version_number})",
+                created_by=current_user.id,
+                text_step_status=None,
+            )
+        content = pages_repo.upsert_content(
+            version_id=target.id,
+            page_id=page.id,
+            hannom_text=payload.hannom_text,
+            transliteration_text=payload.transliteration_text,
+            translation_text=payload.translation_text,
+        )
+        if target.is_current:
+            pages_repo.sync_flat_cache(scans, scan.id, target.id)
+        return GiaPhaPageEditResult(
+            version=_item_version_from(versions.get(target.id), versions.steps_for(target.id)),
+            page=GiaPhaPageView(
+                page_number=page.page_number,
+                hannom_text=content.hannom_text,
+                transliteration_text=content.transliteration_text,
+                translation_text=content.translation_text,
+            ),
+            forked=forked,
         )
 
     @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)

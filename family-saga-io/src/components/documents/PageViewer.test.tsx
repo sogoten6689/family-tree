@@ -1,9 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import "@/i18n";
 
-const api = vi.hoisted(() => ({ listScanPages: vi.fn(), getScanPage: vi.fn() }));
+const api = vi.hoisted(() => ({ listScanPages: vi.fn(), getScanPage: vi.fn(), editScanPage: vi.fn() }));
 vi.mock("@/lib/userWorkspaceApi", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/userWorkspaceApi")>()),
   ...api,
@@ -132,5 +132,51 @@ describe("PageViewer", { timeout: 15000 }, () => {
     api.listScanPages.mockImplementation(() => Promise.reject(new Error("Tài liệu không tồn tại.")));
     render(<PageViewer scanId={1} />);
     expect(await screen.findByText("Tài liệu không tồn tại.")).toBeInTheDocument();
+  });
+
+  it("edits a page: sends only changed fields, forks a manual-edit version and switches to it", async () => {
+    const EDITED = [{ ...PAGES[0], hannom_text: "大尊國" }, PAGES[1]];
+    api.listScanPages.mockImplementation((_s: number, v?: number) => Promise.resolve(v === 7 ? EDITED : PAGES));
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.editScanPage.mockResolvedValue({
+      version: { version_id: 7, version_number: 3, is_current: false },
+      page: EDITED[0],
+      forked: true,
+    });
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.click(screen.getByRole("button", { name: /Sửa trang/ }));
+    fireEvent.change(await screen.findByLabelText("Chữ Hán Nôm"), { target: { value: "大尊國" } });
+    fireEvent.click(screen.getByRole("button", { name: "Lưu" }));
+    await waitFor(() => expect(api.editScanPage).toHaveBeenCalledTimes(1));
+    expect(api.editScanPage).toHaveBeenCalledWith(20, 1, { version_id: undefined, hannom_text: "大尊國" });
+    expect(await screen.findByText("Bản sửa tay v3")).toBeInTheDocument();
+    await waitFor(() => expect(api.listScanPages).toHaveBeenLastCalledWith(20, 7));
+    expect(await screen.findByText("大尊國")).toBeInTheDocument();
+  });
+
+  it("does not call the API when nothing changed", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.editScanPage.mockClear();
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.click(screen.getByRole("button", { name: /Sửa trang/ }));
+    fireEvent.click(await screen.findByRole("button", { name: "Lưu" }));
+    await waitFor(() => expect(screen.queryByRole("button", { name: "Lưu" })).not.toBeInTheDocument());
+    expect(api.editScanPage).not.toHaveBeenCalled();
+  });
+
+  it("shows the save error and keeps the dialog open", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.editScanPage.mockImplementation(() => Promise.reject(new Error("Tài liệu không tồn tại.")));
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.click(screen.getByRole("button", { name: /Sửa trang/ }));
+    fireEvent.change(await screen.findByLabelText("Phiên âm"), { target: { value: "Đại tôn" } });
+    fireEvent.click(screen.getByRole("button", { name: "Lưu" }));
+    expect(await screen.findByText("Tài liệu không tồn tại.")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Lưu" })).toBeInTheDocument();
   });
 });

@@ -329,11 +329,13 @@ class GiaPhaVersionRepository:
         review_status: Optional[str],
         note: Optional[str] = None,
         created_by: Optional[int] = None,
-        text_step_status: str = "pending",
+        text_step_status: Optional[str] = "pending",
     ) -> GiaPhaVersion:
         """Version mới từ nguồn ngoài (file LLM / engine phiên âm-dịch): copy
         toàn bộ nội dung version cha (giữ OCR), chưa đổi phiên âm/dịch nghĩa.
-        Không đặt làm version hiện tại; version cha giữ nguyên."""
+        `text_step_status=None` = giữ nguyên trạng thái bước phiên âm/dịch của
+        version cha (dùng khi chỉ sửa tay). Không đặt làm version hiện tại;
+        version cha giữ nguyên."""
         parent = self._db.get(GiaPhaVersion, parent_version_id)
         if parent is None or parent.user_scan_id != user_scan_id:
             raise ValueError(f"Version cha {parent_version_id} không thuộc bộ gia phả {user_scan_id}")
@@ -364,7 +366,10 @@ class GiaPhaVersionRepository:
             )
         parent_steps = {s.step_type: s.status for s in self.steps_for(parent.id)}
         for step in self.steps_for(version.id):
-            step.status = text_step_status if step.step_type in TEXT_STEP_TYPES else parent_steps.get(step.step_type, step.status)
+            if step.step_type in TEXT_STEP_TYPES and text_step_status is not None:
+                step.status = text_step_status
+            else:
+                step.status = parent_steps.get(step.step_type, step.status)
             self._db.add(step)
         self._db.add(version)
         self._db.commit()
