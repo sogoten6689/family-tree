@@ -80,7 +80,7 @@ describe("RoleLayout — menu theo vai trò, không theo URL", { timeout: 15000 
 
   it("guest sees only the core menu plus login/register", () => {
     renderAt("/gia-pha");
-    expect(menuLabels()).toEqual(["Tải lên & Phân tích", "Gia phả", "Hướng dẫn"]);
+    expect(menuLabels()).toEqual(["Tải lên & Phân tích", "Gia phả", "Trích xuất gia phả", "Hướng dẫn"]);
     expect(screen.getByText("Đăng nhập")).toBeInTheDocument();
   });
 
