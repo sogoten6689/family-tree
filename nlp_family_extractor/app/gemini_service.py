@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Optional
 
 from app.balkan_json import parse_balkan_json_array
 from app.balkan_prompt import build_balkan_normalization_prompt
-from app.config import get_google_api_key
+from app.config import get_llm_api_key
 from app.gemini_client import GeminiClient
 
 
@@ -19,8 +19,8 @@ def normalize_balkan_nodes(
         (nodes, None) khi thành công.
         ([], error_message) khi thiếu key, lỗi API hoặc JSON không parse được.
     """
-    if not get_google_api_key():
-        return [], "Gemini skipped: GOOGLE_API_KEY not set"
+    if not get_llm_api_key():
+        return [], "Gemini skipped: chưa có API key (GOOGLE_API_KEY hoặc RAMCLOUD_KEY theo LLM_PROVIDER)"
 
     try:
         client = GeminiClient()

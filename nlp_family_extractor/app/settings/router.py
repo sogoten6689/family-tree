@@ -21,6 +21,10 @@ router = APIRouter(prefix="/api/admin/settings", tags=["Admin - Cấu hình"])
 # Danh sách key gợi ý sẵn cho UI (không giới hạn — vẫn nhận key tuỳ ý qua PUT).
 KNOWN_SETTING_KEYS = [
     "GOOGLE_API_KEY",
+    "LLM_PROVIDER",
+    "RAMCLOUD_KEY",
+    "RAMCLOUD_BASE_URL",
+    "RAMCLOUD_MODEL",
     "HANNOM_PIPELINE_VERSION",
     "HANNOM_VOTE_ENGINES",
     "HANNOM_LAB_OCR_ID",

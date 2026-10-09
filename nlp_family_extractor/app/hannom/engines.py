@@ -71,10 +71,10 @@ def run_gemini_vision(file_bytes: bytes, filename: str, **_: Any) -> EngineResul
     credential mới. Prompt đã xác nhận hoạt động thật trên ảnh Hán-Nôm, xem
     research/hannom-bilingual-dataset/scripts/ocr_adapters/gemini.py."""
     try:
-        from app.config import get_google_api_key
+        from app.config import get_llm_api_key
         from app.gemini_client import GeminiClient
 
-        if not get_google_api_key():
+        if not get_llm_api_key():
             return None
         client = GeminiClient()
         mime_type = "image/png" if filename.lower().endswith(".png") else "image/jpeg"
