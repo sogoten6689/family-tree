@@ -122,7 +122,7 @@ export const FamilyTreeCytoscapeView = forwardRef<CytoscapeViewHandle, Props>(fu
           selector: "node:selected",
           style: {
             "border-width": 3,
-            "border-color": "#1677ff",
+            "border-color": "#0e7cdd",
           },
         },
       ],

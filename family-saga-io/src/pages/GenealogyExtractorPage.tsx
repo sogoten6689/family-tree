@@ -276,7 +276,7 @@ export default function GenealogyExtractorPage() {
                     padding: "12px 16px",
                     backgroundColor: "rgba(24, 144, 255, 0.1)",
                     borderRadius: "4px",
-                    borderLeft: "4px solid #1890ff",
+                    borderLeft: "4px solid #0e7cdd",
                   }}
                 >
                   <Text type="secondary">
@@ -295,7 +295,7 @@ export default function GenealogyExtractorPage() {
                     <Statistic
                       title="Nhân vật"
                       value={result.statistics.person_count}
-                      valueStyle={{ color: "#1890ff" }}
+                      valueStyle={{ color: "#0e7cdd" }}
                     />
                   </Col>
                   <Col xs={12}>
