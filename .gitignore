@@ -17,3 +17,11 @@ __pycache__/
 
 # Adapter engine phiên âm/dịch riêng của người dùng (có thể chứa khoá) — không commit
 nlp_family_extractor/app/hannom/text_engines_local.py
+
+# Biến môi trường local chứa mật khẩu (vd kết nối chỉ-đọc tới production qua SSH tunnel)
+.env.prod-readonly
+**/.env.prod-readonly
+.env.local
+**/.env.local
+.env.prod-tunnel
+**/.env.prod-tunnel
