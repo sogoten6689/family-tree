@@ -15,6 +15,7 @@ from app.auth.dependencies import get_current_user, get_optional_current_user
 from app.auth.models import User, UserRole
 from app.database import Base, get_db
 from app.workspace import models
+from app.workspace.gia_pha_list import GIA_PHA_CACHE
 from app.workspace.ma_dinh_danh import corpus_identifier_fields
 from app.workspace.repository import GiaPhaPageRepository, GiaPhaVersionRepository, UserScanRepository
 from app.workspace.router import require_workspace_database
@@ -156,6 +157,7 @@ class BackfillTest(_Db, unittest.TestCase):
 class TreeListShowsSourceCodeTest(_Db, unittest.TestCase):
     def setUp(self) -> None:
         super().setUp()
+        GIA_PHA_CACHE.clear()  # cache danh sách chung toàn tiến trình: không để test này thấy dữ liệu test khác
         scan = self.new_scan()
         self.scans.set_corpus_identifiers(scan, {"ma_dinh_danh": "F-B-PN-GiaThien-001-1930"})
         self.scans.update(scan, family_tree_id="tree-1")

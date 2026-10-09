@@ -448,6 +448,18 @@ app = FastAPI(
 
 app.include_router(auth_router)
 
+@app.middleware("http")
+async def _invalidate_gia_pha_cache_on_write(request, call_next):
+    """Mọi request ghi (POST/PUT/PATCH/DELETE) vào /api/ thành công → xoá cache danh sách Gia phả
+    để người dùng thấy thay đổi của chính mình ngay (cache chỉ để lướt/lọc nhanh)."""
+    response = await call_next(request)
+    if request.method in {"POST", "PUT", "PATCH", "DELETE"} and request.url.path.startswith("/api/") and response.status_code < 400:
+        from app.workspace.gia_pha_list import GIA_PHA_CACHE
+
+        GIA_PHA_CACHE.clear()
+    return response
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

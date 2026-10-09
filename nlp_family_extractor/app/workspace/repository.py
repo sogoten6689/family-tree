@@ -259,6 +259,22 @@ class GiaPhaVersionRepository:
         stmt = select(GiaPhaVersionStep).where(GiaPhaVersionStep.version_id == version_id)
         return list(self._db.scalars(stmt).all())
 
+    def get_many(self, version_ids: List[int]) -> dict[int, GiaPhaVersion]:
+        """Nhiều version trong 1 truy vấn (danh sách Gia phả: tránh N+1)."""
+        if not version_ids:
+            return {}
+        stmt = select(GiaPhaVersion).where(GiaPhaVersion.id.in_(set(version_ids)))
+        return {v.id: v for v in self._db.scalars(stmt).all()}
+
+    def steps_for_many(self, version_ids: List[int]) -> dict[int, List[GiaPhaVersionStep]]:
+        if not version_ids:
+            return {}
+        stmt = select(GiaPhaVersionStep).where(GiaPhaVersionStep.version_id.in_(set(version_ids)))
+        grouped: dict[int, List[GiaPhaVersionStep]] = {}
+        for step in self._db.scalars(stmt).all():
+            grouped.setdefault(step.version_id, []).append(step)
+        return grouped
+
     def create_version(
         self,
         *,

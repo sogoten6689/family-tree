@@ -636,6 +636,20 @@ class MySqlFamilyTreeStore(_FamilyTreeStoreBase):
             conn.execute(
                 text("UPDATE family_tree SET is_public = 1 WHERE id LIKE 'vpg-%' AND is_public = 0")
             )
+        self._ensure_indexes(conn)
+
+    def _ensure_indexes(self, conn) -> None:
+        """Index cho danh sách cây: theo chủ sở hữu và theo công khai + mới cập nhật. Idempotent."""
+        have = {row[2] for row in conn.execute(text("SHOW INDEX FROM family_tree")).fetchall()}
+        for name, columns in (
+            ("ix_family_tree_user_id", "user_id"),
+            ("ix_family_tree_public_updated", "is_public, updated_ts"),
+        ):
+            if name not in have:
+                try:
+                    conn.execute(text(f"CREATE INDEX {name} ON family_tree ({columns})"))
+                except Exception as exc:  # noqa: BLE001 — không chặn khởi động
+                    print(f"[family_tree] không tạo được index {name}: {exc}")
 
     # ------------------------------------------------------------------ #
     # Public CRUD API                                                      #
