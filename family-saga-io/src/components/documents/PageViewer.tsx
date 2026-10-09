@@ -1,6 +1,6 @@
-import { EditOutlined, FileImageOutlined } from "@ant-design/icons";
+import { EditOutlined, FileImageOutlined, PictureOutlined } from "@ant-design/icons";
 import { Alert, Button, Card, Empty, Image, Input, Modal, Pagination, Spin, Tag, Typography } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
@@ -10,6 +10,7 @@ import {
   editScanPage,
   getScanPage,
   listScanPages,
+  replaceScanPageImage,
   type GiaPhaPageDetail,
   type GiaPhaPageView,
 } from "@/lib/userWorkspaceApi";
@@ -26,6 +27,8 @@ const { Text, Paragraph } = Typography;
  * Nút "Sửa trang" sửa tay chữ Hán / phiên âm / dịch nghĩa của trang đang xem.
  * KHÔNG ghi đè bản gốc: lần sửa đầu server fork 1 version "manual-edit"
  * (`editVersion`), viewer chuyển sang xem version đó; "Về bản gốc" quay lại.
+ * Nút "Thay ảnh" đổi ảnh gốc của trang (ảnh cũ vẫn còn trên MinIO); chữ và OCR
+ * giữ nguyên nên khung chữ cũ bị ẩn cho tới khi OCR lại.
  */
 export function PageViewer({ scanId }: { scanId: number }) {
   const { t } = useTranslation();
@@ -44,6 +47,11 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const viewVersionId = editVersion?.id;
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [replacing, setReplacing] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+  // Trang đã đổi ảnh trong phiên này: khung chữ (bbox) của ảnh cũ không còn khớp.
+  const [imageReplaced, setImageReplaced] = useState<number[]>([]);
 
   useEffect(() => {
     if (currentNumber === undefined) return;
@@ -88,6 +96,24 @@ export function PageViewer({ scanId }: { scanId: number }) {
     setEditing(true);
   };
 
+  const onPickImage = async (file: File | undefined, current: GiaPhaPageView) => {
+    if (!file) return;
+    setReplacing(true);
+    setImageError(null);
+    try {
+      const result = await replaceScanPageImage(scanId, current.page_number, file);
+      setPages((prev) =>
+        prev.map((p) => (p.page_number === current.page_number ? { ...p, image_url: result.page.image_url } : p)),
+      );
+      setImageReplaced((prev) => (prev.includes(current.page_number) ? prev : [...prev, current.page_number]));
+    } catch (err) {
+      setImageError(err instanceof Error ? err.message : "Không thay được ảnh");
+    } finally {
+      setReplacing(false);
+      if (fileInput.current) fileInput.current.value = "";
+    }
+  };
+
   const saveEdit = async (current: GiaPhaPageView) => {
     // Chỉ gửi trường đã đổi; so với null coi như "" để không tạo version vì khác biệt rỗng.
     const payload: Parameters<typeof editScanPage>[2] = { version_id: viewVersionId };
@@ -123,7 +149,8 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const withImages = pages.filter((p) => p.image_url).length;
   const loadedDetail = detail?.page_number === page.page_number ? detail : null;
   const voteMeta = loadedDetail?.ocr_vote_meta ? [loadedDetail.ocr_vote_meta as unknown as VoteMeta] : null;
-  const boxes = loadedDetail?.ocr_bbox ?? [];
+  const replacedImage = imageReplaced.includes(page.page_number);
+  const boxes = replacedImage ? [] : (loadedDetail?.ocr_bbox ?? []);
   const stale = isVoteMetaV2(loadedDetail?.ocr_vote_meta) && !!loadedDetail?.ocr_vote_meta.downstream_stale;
 
   return (
@@ -147,6 +174,22 @@ export function PageViewer({ scanId }: { scanId: number }) {
               </Button>
             </>
           )}
+          <input
+            ref={fileInput}
+            type="file"
+            hidden
+            accept="image/jpeg,image/png,image/webp,image/tiff"
+            data-testid="page-image-input"
+            onChange={(e) => void onPickImage(e.target.files?.[0], page)}
+          />
+          <Button
+            size="small"
+            icon={<PictureOutlined />}
+            loading={replacing}
+            onClick={() => fileInput.current?.click()}
+          >
+            {t("pageViewer.replaceImage", { defaultValue: "Thay ảnh" })}
+          </Button>
           <Button size="small" type="primary" icon={<EditOutlined />} onClick={() => openEdit(page)}>
             {t("pageViewer.edit", { defaultValue: "Sửa trang" })}
           </Button>
@@ -159,6 +202,17 @@ export function PageViewer({ scanId }: { scanId: number }) {
           })}
         </Text>
       </div>
+      {imageError && <Alert type="error" showIcon closable message={imageError} onClose={() => setImageError(null)} />}
+      {replacedImage && (
+        <Alert
+          type="warning"
+          showIcon
+          message={t("pageViewer.imageReplaced", {
+            defaultValue:
+              "Đã thay ảnh trang này. Chữ và kết quả OCR vẫn của ảnh cũ nên khung chữ được ẩn; cần OCR lại để khớp ảnh mới. Ảnh cũ vẫn được giữ trên máy chủ.",
+          })}
+        />
+      )}
       <div className="grid gap-4 md:grid-cols-2">
         <Card size="small" title={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })}>
           {page.image_url ? (
@@ -184,7 +238,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
                   />
                 </figure>
               ) : (
-                loadedDetail && (
+                loadedDetail && !replacedImage && (
                   <Text type="secondary" className="text-xs">
                     {t("pageViewer.noBoxes", { defaultValue: "Chưa có khung chữ cho trang này." })}
                   </Text>

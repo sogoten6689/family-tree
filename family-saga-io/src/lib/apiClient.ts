@@ -50,7 +50,8 @@ export async function apiRequest<T>(
   accessToken?: string | null,
 ): Promise<T> {
   const headers = new Headers(options.headers);
-  if (!headers.has("Content-Type") && options.body) {
+  // FormData: để trình duyệt tự đặt Content-Type (multipart + boundary).
+  if (!headers.has("Content-Type") && options.body && !(options.body instanceof FormData)) {
     headers.set("Content-Type", "application/json");
   }
 

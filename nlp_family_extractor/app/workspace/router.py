@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
@@ -224,6 +224,12 @@ class GiaPhaPageEditResult(BaseModel):
     version: ItemVersion
     page: GiaPhaPageView
     forked: bool  # True = vừa tạo version sửa tay mới (client dùng version_id này cho các lần sửa sau)
+
+
+class GiaPhaPageImageResult(BaseModel):
+    page: GiaPhaPageView
+    # Key ảnh cũ — object vẫn còn trên MinIO (không xoá) nên khôi phục được.
+    previous_image_key: Optional[str] = None
 
 
 class MaDinhDanhAutoResult(BaseModel):
@@ -715,6 +721,71 @@ def create_workspace_router(
                 translation_text=content.translation_text,
             ),
             forked=forked,
+        )
+
+    @router.put("/api/user/documents/{scan_id}/pages/{page_number}/image", response_model=GiaPhaPageImageResult)
+    async def replace_scan_page_image(
+        scan_id: int,
+        page_number: int,
+        current_user: CurrentUser,
+        file: UploadFile = File(...),
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> GiaPhaPageImageResult:
+        """Thay ảnh gốc của 1 trang. Ảnh mới lên MinIO với key MỚI rồi mới đổi
+        key trong DB; object cũ giữ nguyên (không xoá) để hoàn tác. Loại ảnh
+        xét theo chữ ký đầu file (jpg/png/webp/tiff), không theo tên file.
+        Chữ và OCR của các version KHÔNG đổi — khung chữ cũ có thể không còn
+        khớp ảnh mới, cần OCR lại. Chủ bộ hoặc admin."""
+        import io
+        import os
+
+        from app.documents.storage import ObjectStorage, ObjectStorageError
+        from app.workspace.page_images import replacement_image_key, sniff_image
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        storage = ObjectStorage.from_env()
+        if not storage.config.enabled:
+            raise HTTPException(status_code=503, detail="Chưa cấu hình lưu trữ ảnh (MinIO).")
+        max_bytes = int(os.getenv("MINIO_MAX_UPLOAD_BYTES", str(50 * 1024 * 1024)))
+        content = await file.read(max_bytes + 1)
+        if not content:
+            raise HTTPException(status_code=400, detail="File ảnh rỗng.")
+        if len(content) > max_bytes:
+            raise HTTPException(status_code=400, detail=f"Ảnh vượt giới hạn {max_bytes} byte.")
+        kind = sniff_image(content)
+        if kind is None:
+            raise HTTPException(status_code=400, detail="Chỉ nhận ảnh JPG, PNG, WEBP hoặc TIFF.")
+        ext, content_type = kind
+        new_key = replacement_image_key(scan.id, page_number, ext)
+        try:
+            storage.upload_file(new_key, io.BytesIO(content), content_type=content_type, size=len(content))
+        except ObjectStorageError as error:
+            raise HTTPException(status_code=502, detail=f"Không tải ảnh lên được: {error}") from error
+        previous = page.image_file_key
+        page = pages_repo.set_image_key(page, new_key)
+        try:
+            image_url = storage.get_presigned_url(new_key)
+        except ObjectStorageError:
+            image_url = None
+        contents = {c.page_id: c for c in pages_repo.list_content_for_version(
+            versions.get_current(scan.id).id)} if versions.get_current(scan.id) else {}
+        c = contents.get(page.id)
+        return GiaPhaPageImageResult(
+            page=GiaPhaPageView(
+                page_number=page.page_number,
+                image_url=image_url,
+                hannom_text=c.hannom_text if c else None,
+                transliteration_text=c.transliteration_text if c else None,
+                translation_text=c.translation_text if c else None,
+            ),
+            previous_image_key=previous,
         )
 
     @router.post("/api/user/documents/{scan_id}/ma-dinh-danh/auto", response_model=MaDinhDanhAutoResult)

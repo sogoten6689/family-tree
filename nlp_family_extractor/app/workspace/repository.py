@@ -510,6 +510,13 @@ class GiaPhaPageRepository:
         self._db.refresh(page)
         return page
 
+    def set_image_key(self, page: GiaPhaPage, image_file_key: str) -> GiaPhaPage:
+        page.image_file_key = image_file_key
+        self._db.add(page)
+        self._db.commit()
+        self._db.refresh(page)
+        return page
+
     def upsert_content(
         self,
         *,

@@ -208,3 +208,23 @@ export async function editScanPage(
     body: JSON.stringify(payload),
   });
 }
+
+export interface GiaPhaPageImageResult {
+  page: GiaPhaPageView;
+  /** Key ảnh cũ — object vẫn còn trên MinIO (không xoá). */
+  previous_image_key: string | null;
+}
+
+/** Thay ảnh gốc của 1 trang (JPG/PNG/WEBP/TIFF). Chữ và OCR giữ nguyên. */
+export async function replaceScanPageImage(
+  scanId: number,
+  pageNumber: number,
+  file: File,
+): Promise<GiaPhaPageImageResult> {
+  const form = new FormData();
+  form.append("file", file);
+  return apiRequest<GiaPhaPageImageResult>(`/api/user/documents/${scanId}/pages/${pageNumber}/image`, {
+    method: "PUT",
+    body: form,
+  });
+}
