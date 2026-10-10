@@ -186,17 +186,22 @@ def _write_jsonl(path: Path, rows: list[dict]) -> None:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def build_dataset(
+def plan_splits(
     *,
     gold_dir: Path,
     human_dir: Path,
     stratified_path: Path,
-    output_dir: Path,
-    max_chars: int,
     val_ratio: float,
     seed: int,
     prefer_human: bool,
-) -> dict:
+) -> dict[str, list[tuple[int, str]]]:
+    """Kế hoạch chia tập THEO CÂY: {split: [(tree_id, "human"|"silver"), ...]}.
+
+    Dùng chung cho mọi bộ xuất (SFT chat, CoNLL...) để cùng một cây luôn rơi vào cùng một tập —
+    nếu mỗi bộ xuất tự chia thì train của bộ này có thể chứa cây nằm trong test của bộ kia.
+    5 cây ``split=test`` của stratified_sample.json bị loại khỏi train/val; phần còn lại chia
+    train/val theo cây bằng ``random.Random(seed)``.
+    """
     stratified = load_json(stratified_path) or {}
     test_ids = sorted(int(d["tree_id"]) for d in stratified.get("documents", []) if d.get("split") == "test")
     human_ids = {int(p.name) for p in human_dir.iterdir() if p.is_dir() and p.name.isdigit()}
@@ -210,14 +215,35 @@ def build_dataset(
     val_ids = sorted(shuffled[:n_val])
     train_ids = sorted(shuffled[n_val:])
 
-    splits: dict[str, list[dict]] = {}
-    stats: dict[str, dict] = {}
-    plan = {
+    return {
         "train": [(t, "human" if prefer_human and t in human_ids else "silver") for t in train_ids],
         "val": [(t, "human" if prefer_human and t in human_ids else "silver") for t in val_ids],
         "test_human": [(t, "human") for t in test_ids],
         "test_silver": [(t, "silver") for t in test_ids],
     }
+
+
+def build_dataset(
+    *,
+    gold_dir: Path,
+    human_dir: Path,
+    stratified_path: Path,
+    output_dir: Path,
+    max_chars: int,
+    val_ratio: float,
+    seed: int,
+    prefer_human: bool,
+) -> dict:
+    plan = plan_splits(
+        gold_dir=gold_dir,
+        human_dir=human_dir,
+        stratified_path=stratified_path,
+        val_ratio=val_ratio,
+        seed=seed,
+        prefer_human=prefer_human,
+    )
+    splits: dict[str, list[dict]] = {}
+    stats: dict[str, dict] = {}
     for split, items in plan.items():
         counters: Counter = Counter()
         rows: list[dict] = []

@@ -93,7 +93,7 @@ def parse_conll_file(filepath: str) -> List[Tuple[List[str], List[str]]]:
                     current_tags = []
                 continue
             
-            parts = line.split('\t')
+            parts = line.split()  # chấp nhận cả tab lẫn dấu cách (ví dụ ở trên dùng dấu cách; export_conll.py xuất tab)
             if len(parts) != 2:
                 continue  # Skip malformed lines
             

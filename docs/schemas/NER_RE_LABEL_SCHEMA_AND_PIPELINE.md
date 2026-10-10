@@ -191,15 +191,17 @@ Giá trị `source` thống nhất: `human` (gold) · `silver_gemini` · `silver
 
 - `start/end` là chỉ số ký tự trong `text`, `end` không bao gồm, và **bắt buộc** `text[start:end] == entity.text`.
 - Python đếm theo **code point**; trình duyệt (Label Studio) đếm theo **đơn vị UTF-16**. Hai cách khác nhau với ký tự ngoài mặt phẳng cơ bản (ví dụ nhiều chữ Nôm/Hán mở rộng như `𠊚`). Với văn bản Hán–Nôm điều này **có thể làm lệch offset**.
-- **Em chưa kiểm chứng** hành vi chính xác của Label Studio bản đang dùng. Cần một test với chuỗi chứa ký tự ngoài BMP trước khi tin offset xuất ra (xem pilot, [§8](#8-kế-hoạch-pilot-hán--đề-xuất)).
+- **Em chưa kiểm chứng** hành vi chính xác của Label Studio bản đang dùng với ký tự ngoài BMP.
+- **[ĐÃ CÓ] Cách xử lý không cần biết đáp án:** `research/label_studio_pipeline/export_conll.py` không tin offset mù quáng: thử theo code point; nếu lệch thì thử diễn giải như UTF-16 và đổi sang code point; vẫn lệch thì bỏ entity và ghi số lượng vào `stats.json` (`offset_ok`, `offset_utf16_converted`, `offset_mismatch_dropped`). Có test với chữ Nôm ngoài BMP.
+- **Đã chạy trên dữ liệu thật quốc ngữ (144 tài liệu: 121 train, 13 val, 5+5 test): 0 offset lệch, 0 phải đổi UTF-16.** Quốc ngữ không có ký tự ngoài BMP nên kết quả này **không chứng minh gì cho Hán**; Q1 vẫn mở cho đến khi có dữ liệu Hán thật.
 - Ghi chú trước đây của dự án: offset do Gemini tự trả **sai gần như toàn bộ**, phải khớp lại bằng chuỗi → luôn xác thực `text[start:end]`.
 
 ### 6.4 Sinh định dạng huấn luyện (từ `gold.training.json`)
 
 | Đầu ra | Dùng cho | Quy tắc **[ĐỀ XUẤT]** |
 |---|---|---|
-| CoNLL IOB2, **mức ký tự** | SikuBERT (Hán) | 1 ký tự = 1 dòng `ký_tự TAG`; `B-/I-` theo span; xuống dòng giữa các câu (tách theo `。`, `\n`) |
-| CoNLL IOB2, **mức từ** | PhoBERT (Việt) | Tách theo khoảng trắng; **PhoBERT thường cần văn bản đã tách từ** (VnCoreNLP) — chưa chốt có dùng không (câu hỏi mở Q2) |
+| CoNLL IOB2, **mức ký tự** | SikuBERT (Hán) | **[ĐÃ CÓ]** `export_conll.py files --unit char`: 1 ký tự = 1 dòng `ký_tự⇥TAG` (dấu tab); xuống dòng của OCR **bị bỏ qua** (một tên có thể vắt qua hai cột), câu cắt ở `。！？；` và ở tối đa 128 token, **không bao giờ cắt giữa entity** |
+| CoNLL IOB2, **mức từ** | PhoBERT (Việt) | **[ĐÃ CÓ]** `export_conll.py vi`: token = âm tiết/từ + dấu câu tách riêng, xuống dòng = hết câu, **chia tập theo cây giống hệt bộ SFT** (dùng chung `plan_splits`). **PhoBERT thường cần văn bản đã tách từ** (VnCoreNLP) — chưa chốt có dùng không (Q2) |
 | SFT chat (JSON) | LLM trích xuất | Đã có `build_llm_sft_dataset.py` cho Việt; cần bản cho Hán |
 | Cặp quan hệ (head, tail, type, câu) | Mô hình RE | Chưa có; sinh từ `relations` |
 
