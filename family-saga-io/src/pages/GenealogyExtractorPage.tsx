@@ -193,7 +193,7 @@ export default function GenealogyExtractorPage() {
                       onClick={() => setModelVersion("regex")}
                       disabled={loading}
                     >
-                      📊 MVP (60%)
+                      📊 Quy tắc (MVP)
                     </Button>
                     <Button
                       type={modelVersion === "phobert" ? "primary" : "default"}
@@ -201,7 +201,7 @@ export default function GenealogyExtractorPage() {
                       disabled={true}
                       title="Coming soon - Phobert fine-tuned"
                     >
-                      🚀 Phobert (90%)
+                      🚀 PhoBERT (chưa có)
                     </Button>
                     <Button
                       type={modelVersion === "sikubert" ? "primary" : "default"}
@@ -209,7 +209,7 @@ export default function GenealogyExtractorPage() {
                       disabled={true}
                       title="Coming soon - SikuBERT fine-tuned"
                     >
-                      🏯 SikuBERT (90%)
+                      🏯 SikuBERT (chưa có)
                     </Button>
                   </Button.Group>
                 </div>
