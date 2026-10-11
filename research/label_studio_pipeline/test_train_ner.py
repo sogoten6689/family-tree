@@ -59,7 +59,7 @@ def test_bootstrap_ci_brackets_point_estimate():
 
 def test_forbidden_model_refused(tmp_path):
     args = tn.argparse.Namespace(model="vinai/phobert-base-v2", data_dir=tmp_path, output_dir=tmp_path,
-                                 epochs=1, lr=1e-5, batch_size=1, max_length=8, seed=0)
+                                 epochs=1, lr=1e-5, batch_size=1, max_length=8, seed=0, test_split="test_human")
     with pytest.raises(SystemExit):
         tn.train(args)
 

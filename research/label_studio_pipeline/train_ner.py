@@ -179,7 +179,9 @@ def train(args: argparse.Namespace, log: Callable[[str], None] = print) -> dict:
     torch.manual_seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data_dir = Path(args.data_dir)
-    files = {s: data_dir / f"{s}.conll" for s in ("train", "dev", "test")}
+    # export_conll.py đặt tên val / test_human; hỗ trợ cả dev / test
+    pick = lambda *names: next((data_dir / f"{n}.conll" for n in names if (data_dir / f"{n}.conll").exists()), data_dir / f"{names[0]}.conll")
+    files = {"train": pick("train"), "dev": pick("dev", "val"), "test": pick(args.test_split, "test", "test_human")}
     missing = [str(p) for s, p in files.items() if s != "test" and not p.exists()]
     if missing:
         raise SystemExit(f"thiếu tệp: {missing}")
@@ -234,7 +236,7 @@ def train(args: argparse.Namespace, log: Callable[[str], None] = print) -> dict:
     best = AutoModelForTokenClassification.from_pretrained(out_dir).to(device)
     card = {
         "base_model": args.model, "task": "ner", "labels": LABEL_LIST, "best_epoch": best_epoch,
-        "hyperparameters": {k: getattr(args, k) for k in ("epochs", "lr", "batch_size", "max_length", "seed")},
+        "hyperparameters": {k: getattr(args, k) for k in ("epochs", "lr", "batch_size", "max_length", "seed", "test_split")},
         "data": {"dir": str(data_dir), "sha256": sha256_of([p for p in files.values() if p.exists()]),
                  "sentences": {s: len(v) for s, v in raw.items()}},
         "history": history,
@@ -261,6 +263,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--batch-size", type=int, default=16)
     ap.add_argument("--max-length", type=int, default=256)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--test-split", default="test_human", help="tên tệp test (không đuôi); mặc định test_human = gold người soát")
     train(ap.parse_args(argv))
     return 0
 
