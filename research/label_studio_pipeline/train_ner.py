@@ -168,6 +168,22 @@ def predict_tags(model, loader, id2label: dict[int, str], device) -> tuple[list[
     return gold, pred
 
 
+def predict_probs(model, loader, device) -> list[list[list[float]]]:
+    """Xác suất softmax của từng từ (subword đầu) theo từng nhãn, theo thứ tự câu của ``loader`` (không xáo trộn).
+    Lưu lại để thử gộp model / chỉnh ngưỡng / hậu xử lý ngoại tuyến, không cần huấn luyện lại."""
+    import torch
+    model.eval()
+    out: list[list[list[float]]] = []
+    with torch.no_grad():
+        for batch in loader:
+            batch = {k: v.to(device) for k, v in batch.items()}
+            probs = torch.softmax(model(input_ids=batch["input_ids"], attention_mask=batch["attention_mask"]).logits.float(), -1).cpu()
+            labels = batch["labels"].cpu()
+            for row_p, row_l in zip(probs, labels):
+                out.append([[round(float(x), 4) for x in row_p[i]] for i in range(len(row_l)) if row_l[i] != IGNORE_INDEX])
+    return out
+
+
 def train(args: argparse.Namespace, log: Callable[[str], None] = print) -> dict:
     import torch
     from torch.utils.data import DataLoader
@@ -248,6 +264,14 @@ def train(args: argparse.Namespace, log: Callable[[str], None] = print) -> dict:
         card["test"] = entity_prf(g, p)
         card["test"]["micro_f1_ci95_bootstrap"] = list(bootstrap_f1_ci(g, p))
         log(f"TEST micro-F1={card['test']['micro']['f1']} CI95={card['test']['micro_f1_ci95_bootstrap']}")
+    if getattr(args, "save_probs", False):
+        dump = {}
+        for split in ("dev", "test"):
+            if split in enc:
+                probs = predict_probs(best, make(split, False), device)
+                dump[split] = [{"words": raw[split][i][0][:len(p)], "gold": raw[split][i][1][:len(p)], "probs": p}
+                               for i, p in enumerate(probs)]
+        (out_dir / "probs.json").write_text(json.dumps(dump, ensure_ascii=False), encoding="utf-8")
     (out_dir / "label_list.json").write_text(json.dumps(LABEL_LIST, ensure_ascii=False, indent=2), encoding="utf-8")
     (out_dir / "model_card.json").write_text(json.dumps(card, ensure_ascii=False, indent=2), encoding="utf-8")
     return card
@@ -263,6 +287,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--batch-size", type=int, default=16)
     ap.add_argument("--max-length", type=int, default=256)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--save-probs", action="store_true", help="ghi probs.json (xác suất từng từ trên dev/test)")
     ap.add_argument("--test-split", default="test_human", help="tên tệp test (không đuôi); mặc định test_human = gold người soát")
     train(ap.parse_args(argv))
     return 0

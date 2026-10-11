@@ -67,3 +67,18 @@ def test_forbidden_model_refused(tmp_path):
 def test_collate_pads():
     b = tn.collate([{"input_ids": [0, 5, 1], "labels": [-100, 1, -100]}, {"input_ids": [0, 1], "labels": [-100, -100]}], 3)
     assert b["input_ids"].shape == (2, 3) and b["attention_mask"].tolist() == [[1, 1, 1], [1, 1, 0]]
+
+
+def test_predict_probs_shapes_and_ignore_index():
+    import torch
+
+    class Tiny(torch.nn.Module):
+        def forward(self, input_ids, attention_mask):
+            logits = torch.zeros(input_ids.shape[0], input_ids.shape[1], len(tn.LABEL_LIST))
+            logits[..., 1] = 3.0
+            return type("O", (), {"logits": logits})()
+
+    batch = tn.collate([{"input_ids": [0, 5, 6, 1], "labels": [-100, 1, 2, -100]}], 3)
+    out = tn.predict_probs(Tiny(), [batch], torch.device("cpu"))
+    assert len(out) == 1 and len(out[0]) == 2 and len(out[0][0]) == len(tn.LABEL_LIST)
+    assert abs(sum(out[0][0]) - 1.0) < 1e-2 and out[0][0][1] > 0.5

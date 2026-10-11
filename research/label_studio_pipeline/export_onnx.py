@@ -58,6 +58,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     ap.add_argument("--output-dir", type=Path, required=True)
     ap.add_argument("--sample-conll", type=Path, required=True, help="CoNLL để lấy câu mẫu đối chiếu/đo tốc độ")
     ap.add_argument("--samples", type=int, default=100)
+    ap.add_argument("--quantize-gather", action="store_true",
+                    help="lượng tử hoá cả bảng embedding (Gather) — bắt buộc với XLM-R (vocab 250k) để file không phình ~1GB")
     args = ap.parse_args(argv)
     out = args.output_dir
     out.mkdir(parents=True, exist_ok=True)
@@ -71,7 +73,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         model, (dummy, torch.ones_like(dummy)), str(fp32), input_names=["input_ids", "attention_mask"],
         output_names=["logits"], dynamic_axes={"input_ids": {0: "b", 1: "s"}, "attention_mask": {0: "b", 1: "s"}, "logits": {0: "b", 1: "s"}},
         opset_version=17, dynamo=False)
-    quantize_dynamic(str(fp32), str(int8), weight_type=QuantType.QInt8)
+    kwargs = {"op_types_to_quantize": ["MatMul", "Gather"]} if args.quantize_gather else {}
+    quantize_dynamic(str(fp32), str(int8), weight_type=QuantType.QInt8, **kwargs)
 
     sents = read_sentences(args.sample_conll, args.samples)
     sessions = {n: ort.InferenceSession(str(p), providers=["CPUExecutionProvider"]) for n, p in (("fp32", fp32), ("int8", int8))}
@@ -102,7 +105,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "note": "đo trên máy chạy script, KHÔNG phải VPS",
     }
     (out / "onnx_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    for name in ("tokenizer.json", "label_list.json", "model_card.json", "config.json", "vocab.txt", "bpe.codes"):
+    for name in ("tokenizer.json", "label_list.json", "model_card.json", "config.json", "vocab.txt", "bpe.codes", "sentencepiece.bpe.model"):
         if (args.model_dir / name).exists():
             shutil.copy(args.model_dir / name, out / name)
     print(json.dumps(report, ensure_ascii=False, indent=2))
