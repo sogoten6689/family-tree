@@ -109,3 +109,6 @@ Cùng 5 lượt kiểm chéo theo cây, 25 cây người soát, F1 gộp mức t
 - Sau đổi: `/api/genealogy/extract` 200, **0,18–0,28 s** cho đoạn ~130 ký tự (lần đầu 4,7 s do nạp model); `/health` 200; không lỗi trong log; RAM trống ~21 GB.
 - Hoàn tác: `models/ner_vi` → `ner_vi.xlmr`, `ner_vi.bak` → `ner_vi`, restart backend.
 - Sửa nhãn: `model_info.model_name` lấy theo `base_model` trong model_card (trước đó ghi cứng "PhoBERT").
+
+### 12/10/2026 — gợi ý nhãn lại bằng XLM-R (hướng soát thêm PER_NAME/LOC)
+Chạy `prelabel_with_model.py` bằng model XLM-R trên 114 cây chưa người soát → `data/03_derived/prelabel_xlmr_v1/` (`tasks.json` + `priority.csv`, model_version `ner-onnx:xlm-roberta-base`). Ghi `model_version` theo `base_model` trong model_card. PR #14's bản PhoBERT cũ ở `prelabel_phobert_v1/` giữ để đối chiếu.

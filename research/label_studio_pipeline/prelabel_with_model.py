@@ -39,7 +39,7 @@ def _build_label_region(*, region_id: str, start: int, end: int, span_text: str,
         "value": {"start": start, "end": end, "text": span_text, "labels": [label], "score": score},
     }
 
-MODEL_VERSION = "phobert-ner-onnx-v1"
+MODEL_VERSION = "ner-onnx"  # nối thêm base_model từ model_card khi chạy
 _NER_FILE = Path(__file__).resolve().parents[2] / "nlp_family_extractor" / "app" / "ner" / "phobert_onnx.py"
 
 
@@ -51,7 +51,7 @@ def load_ner_model(model_dir: Path):
     return module.NerModel(model_dir)
 
 
-def build_task(doc: dict, entities: list[dict], tree_id: Optional[int] = None) -> dict:
+def build_task(doc: dict, entities: list[dict], tree_id: Optional[int] = None, model_version: str = MODEL_VERSION) -> dict:
     """Task Label Studio: văn bản + một prediction; mỗi vùng mang độ tin cậy của model."""
     text = doc["text"]
     result = []
@@ -63,7 +63,7 @@ def build_task(doc: dict, entities: list[dict], tree_id: Optional[int] = None) -
     data = {"text": text, "title": doc.get("title", ""), "source_url": doc.get("source_url", "")}
     if tree_id is not None:
         data["tree_id"] = tree_id
-    return {"data": data, "predictions": [{"model_version": MODEL_VERSION, "score": mean, "result": result}]}
+    return {"data": data, "predictions": [{"model_version": model_version, "score": mean, "result": result}]}
 
 
 def agreement(model_entities: Iterable[dict], other_entities: Iterable[dict]) -> dict:
@@ -79,7 +79,11 @@ def agreement(model_entities: Iterable[dict], other_entities: Iterable[dict]) ->
 
 def run(model_dir: Path, docs_dir: Path, exclude_dir: Optional[Path], output_dir: Path, limit: Optional[int],
         extract: Optional[Callable[[str], list[dict]]] = None, progress: Callable[[str], None] = print) -> dict:
-    extract = extract or load_ner_model(model_dir).extract
+    model_version = MODEL_VERSION
+    if extract is None:
+        model = load_ner_model(model_dir)
+        extract = model.extract
+        model_version = f"{MODEL_VERSION}:{(model.info or {}).get('base_model', 'unknown')}"
     excluded = {p.name for p in exclude_dir.iterdir() if p.is_dir()} if exclude_dir and exclude_dir.exists() else set()
     trees = sorted((p for p in docs_dir.iterdir() if (p / "gold.training.json").exists() and p.name not in excluded),
                    key=lambda p: int(p.name) if p.name.isdigit() else 0)
@@ -90,7 +94,7 @@ def run(model_dir: Path, docs_dir: Path, exclude_dir: Optional[Path], output_dir
         doc = json.loads((tree / "gold.training.json").read_text(encoding="utf-8"))
         entities = extract(doc["text"])
         tid = int(tree.name) if tree.name.isdigit() else None
-        tasks.append(build_task(doc, entities, tid))
+        tasks.append(build_task(doc, entities, tid, model_version))
         ag = agreement(entities, doc.get("entities") or [])
         rows.append({"tree_id": tree.name, "chars": len(doc["text"]), "model_entities": ag["model"], "gemini_entities": ag["existing"],
                      "agree": ag["agree"], "agreement_f1": ag["f1"],
@@ -104,7 +108,7 @@ def run(model_dir: Path, docs_dir: Path, exclude_dir: Optional[Path], output_dir
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else ["tree_id"])
         w.writeheader()
         w.writerows(rows)
-    summary = {"trees": len(tasks), "excluded_human": len(excluded), "model_version": MODEL_VERSION,
+    summary = {"trees": len(tasks), "excluded_human": len(excluded), "model_version": model_version,
                "entities": sum(r["model_entities"] for r in rows)}
     (output_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return summary
