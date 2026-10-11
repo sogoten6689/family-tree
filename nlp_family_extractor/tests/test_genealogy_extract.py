@@ -29,11 +29,17 @@ class GenealogyExtractEndpointTest(unittest.TestCase):
         self.assertEqual(data["model_info"]["model_name"], "FamilyExtractor-Regex-MVP")
 
     def test_untrained_models_are_refused_instead_of_faking_a_label(self) -> None:
-        for version in ("phobert", "sikubert"):
-            body = self.post(model_version=version).json()
-            self.assertFalse(body["success"])
-            self.assertIn("chưa được huấn luyện", body["error"])
-            self.assertIsNone(body["data"])
+        body = self.post(model_version="sikubert").json()  # chưa có model Hán
+        self.assertFalse(body["success"])
+        self.assertIn("chưa được huấn luyện", body["error"])
+        self.assertIsNone(body["data"])
+
+    def test_phobert_without_deployed_model_is_refused(self) -> None:
+        import os
+        os.environ.pop("NER_MODEL_DIR_VI", None)
+        body = self.post(model_version="phobert").json()
+        self.assertFalse(body["success"])
+        self.assertIn("chưa sẵn sàng", body["error"])
 
     def test_hannom_is_refused_by_the_vietnamese_rule_extractor(self) -> None:
         body = self.post(text="始祖清閑公配陳氏生子敏達", language="hannom").json()

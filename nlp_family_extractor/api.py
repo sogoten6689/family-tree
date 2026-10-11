@@ -309,7 +309,7 @@ class GenealogyExtractRequest(BaseModel):
     )
     model_version: Literal["regex", "phobert", "sikubert"] = Field(
         default="regex",
-        description="Model version: 'regex' (bộ quy tắc, tiếng Việt — hiện duy nhất chạy được); 'phobert'/'sikubert' chưa có model đã huấn luyện",
+        description="'regex' (bộ quy tắc, tiếng Việt); 'phobert' (NER PhoBERT, tiếng Việt, cần cấu hình NER_MODEL_DIR_VI); 'sikubert' chưa có model",
     )
 
 
@@ -317,6 +317,10 @@ class GenealogyExtractionResult(BaseModel):
     persons: List[str] = Field(description="Danh sách nhân vật được trích xuất")
     person_years: Dict[str, Optional[int]] = Field(description="Năm sinh/mất của mỗi nhân vật")
     relations: List[Dict[str, Any]] = Field(description="Danh sách quan hệ gia đình")
+    entities: List[Dict[str, Any]] = Field(
+        default_factory=list,
+        description="Thực thể NER (chỉ model thật): label, text, start, end, confidence",
+    )
     statistics: Dict[str, int] = Field(description="Thống kê: số nhân vật, số quan hệ")
     model_info: Dict[str, str] = Field(
         description="Thông tin model được sử dụng: model_name, model_version"
@@ -1302,6 +1306,44 @@ async def analyze_family_image(
 # Genealogy Parser API (Regex MVP + Dual-model Ready)
 # ============================================================================
 
+def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
+    """NER bằng PhoBERT (ONNX int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
+    from app.ner import NerUnavailable, get_ner_model
+
+    try:
+        model = get_ner_model("vi")
+    except NerUnavailable as error:
+        return GenealogyExtractResponse(success=False, error=f"Model PhoBERT chưa sẵn sàng: {error}")
+    try:
+        entities = model.extract(text)
+    except Exception as error:
+        return GenealogyExtractResponse(success=False, error=f"Lỗi chạy model PhoBERT: {error}")
+
+    persons: List[str] = []
+    for ent in entities:
+        if ent["label"] == "PER_NAME" and ent["text"] not in persons:
+            persons.append(ent["text"])
+    card = model.info or {}
+    metrics = (card.get("test") or card.get("dev") or {}).get("micro", {})
+    return GenealogyExtractResponse(
+        success=True,
+        data=GenealogyExtractionResult(
+            persons=persons,
+            person_years={name: None for name in persons},
+            relations=[],
+            entities=entities,
+            statistics={"person_count": len(persons), "relation_count": 0, "entity_count": len(entities)},
+            model_info={
+                "model_name": "PhoBERT-base NER (ONNX int8)",
+                "model_version": str(card.get("base_model", "vinai/phobert-base")),
+                "language": "vietnamese",
+                "note": "Chỉ trích thực thể; chưa có quan hệ. F1 kiểm chéo ≈ 0,54 — dùng làm gợi ý, cần người soát lại.",
+                **({"f1_reported": str(metrics["f1"])} if "f1" in metrics else {}),
+            },
+        ),
+    )
+
+
 @app.post(
     "/api/genealogy/extract",
     response_model=GenealogyExtractResponse,
@@ -1322,12 +1364,14 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
     if not text:
         raise HTTPException(status_code=400, detail="Text cannot be empty")
 
+    if req.model_version == "phobert" and req.language == "vietnamese":
+        return _extract_with_phobert(text)
     if req.model_version != "regex":
         return GenealogyExtractResponse(
             success=False,
             error=(
-                f"Model '{req.model_version}' chưa được huấn luyện/triển khai. "
-                "Hiện chỉ có bộ trích xuất quy tắc ('regex') cho tiếng Việt."
+                f"Model '{req.model_version}' cho ngôn ngữ '{req.language}' chưa được huấn luyện/triển khai. "
+                "Hiện có: 'regex' và 'phobert' (tiếng Việt)."
             ),
         )
     if req.language == "hannom":
