@@ -76,3 +76,9 @@ Kết quả thô trên Drive: `family_tree_ner/cv_results/` và `cv_results_2sta
 - Phát hiện sau deploy: model_info trả `f1_reported` = dev F1 (0,6458) lạc quan → PR #13 bỏ trường này.
 - CI: test `PageViewer.test.tsx` chập chờn (lần đầu lỗi, chạy lại qua; commit chỉ đổi tài liệu) → đã tạo việc riêng để sửa.
 - Hoàn tác: đổi tên/xoá `models/ner_vi` trên VPS → endpoint tự trả "chưa sẵn sàng".
+
+### 11/10/2026 — hướng (a): model gợi ý nhãn cho cây chưa soát
+Công cụ `research/label_studio_pipeline/prelabel_with_model.py` (chạy model cục bộ, không tốn tiền, không gọi mạng) → `tasks.json` (task Label Studio có predictions, mỗi vùng có điểm tin cậy) + `priority.csv` (cây nên soát trước).
+Chạy trên 114 cây chưa người soát (bỏ 25 cây đã soát): **4.200 thực thể** (LOC 2.132 · DATE 957 · PER_NAME 723 · GENERATION 379 · ORDER 9); độ tin cậy ≥0,9: 2.575 · 0,6–0,9: 1.296 · <0,6: 329; 4 cây không ra thực thể nào.
+So với nhãn Gemini hiện có (6.379 thực thể): trùng khớp tuyệt đối 1.292 (P 0,31 / R 0,20) — thấp là điều dự kiến vì nhãn Gemini nhiễu và nhiều hơn (precision của Gemini so với người chỉ ≈0,30). Model chưa soát nên cần người xem, nhất là PER_NAME (model ít hơn nhiều so với Gemini: 723 vs LOC 2.132 — có thể bỏ sót tên).
+Đầu ra nằm ở `data/03_derived/prelabel_phobert_v1/` (gitignore). Cách dùng: Import `tasks.json` vào project Label Studio mới, mở `priority.csv` để chọn thứ tự soát.
