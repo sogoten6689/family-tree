@@ -1333,8 +1333,8 @@ def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
             entities=entities,
             statistics={"person_count": len(persons), "relation_count": 0, "entity_count": len(entities)},
             model_info={
-                "model_name": "PhoBERT-base NER (ONNX int8)",
-                "model_version": str(card.get("base_model", "vinai/phobert-base")),
+                "model_name": f"{card.get('base_model', 'NER')} NER (ONNX int8)",
+                "model_version": str(card.get("base_model", "unknown")),
                 "language": "vietnamese",
                 # Con số tin cậy là F1 kiểm chéo 5 lượt trên 25 cây (docs/planning/NER_WORK_LOG.md), KHÔNG phải dev F1 của model_card.
                 "note": "Chỉ trích thực thể; chưa có quan hệ. F1 kiểm chéo ≈ 0,54 — dùng làm gợi ý, cần người soát lại.",

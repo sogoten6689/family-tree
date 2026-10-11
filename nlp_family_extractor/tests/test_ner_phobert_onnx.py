@@ -90,7 +90,7 @@ def test_endpoint_phobert(monkeypatch, tmp_path):
     r = client.post("/api/genealogy/extract", json=body).json()
     assert r["success"] is True
     assert r["data"]["persons"] == ["ab"] and r["data"]["entities"][0]["label"] == "PER_NAME" and r["data"]["relations"] == []
-    assert "PhoBERT" in r["data"]["model_info"]["model_name"]
+    assert "NER" in r["data"]["model_info"]["model_name"]
 
     body["model_version"] = "sikubert"
     assert client.post("/api/genealogy/extract", json=body).json()["success"] is False
