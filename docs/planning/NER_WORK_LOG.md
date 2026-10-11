@@ -55,3 +55,16 @@ Xem mục "Tiến độ tiếp theo" bên dưới (cập nhật theo từng bư�
 2. Merge PR #12 → Jenkins build lại backend (image sẽ có `onnxruntime`); compose đã mount `./models:/app/models:ro` và đặt `NER_MODEL_DIR_VI`.
 3. Kiểm tra: chọn nút "PhoBERT NER (thử nghiệm)" trên /genealogy-extractor.
 Hoàn tác: gỡ thư mục `models/ner_vi` → endpoint tự trả "chưa sẵn sàng", các chức năng khác không đổi.
+
+### 11/10/2026 (tiếp) — thử huấn luyện 2 giai đoạn (nhãn Gemini → nhãn người)
+Giai đoạn 1: học trước trên 103 cây nhãn Gemini (không gồm 25 cây người soát, để tránh rò rỉ), dev F1 ≈ 0,59 (trên nhãn Gemini).
+Giai đoạn 2: tinh chỉnh bằng nhãn người, cùng 5 lượt kiểm chéo với lần trước (so sánh trực tiếp).
+
+| | Gộp 25 cây | PER_NAME | LOC | DATE | GENERATION | ORDER | Từng lượt |
+|---|---|---|---|---|---|---|---|
+| Chỉ nhãn người | **0,538** | 0,39 | **0,49** | 0,78 | 0,68 | 0,15 | 0,56 / 0,54 / 0,40 / 0,64 / 0,48 |
+| 2 giai đoạn | 0,526 | **0,46** | 0,40 | **0,80** | **0,71** | 0,30 | 0,54 / 0,57 / 0,36 / 0,65 / 0,43 |
+
+**Kết luận (tin cậy vừa):** không có cải thiện tổng thể (0,526 so với 0,538, chênh nhỏ hơn dao động giữa các lượt). Học trước trên nhãn máy làm PER_NAME khá hơn (+0,07) nhưng LOC tệ hơn (−0,09): đúng với phát hiện nhãn Gemini nhiễu nặng ở LOC. Không đáng đổi quy trình; **bản dùng vẫn là huấn luyện chỉ trên nhãn người**.
+Gợi ý nếu muốn tăng tiếp: (1) thêm gold người soát, nhất là PER_NAME/LOC; (2) lọc nhãn LOC của Gemini trước khi học trước (chỉ giữ PER_NAME/DATE/GENERATION); (3) chạy nhiều seed để biết dao động thật.
+Kết quả thô trên Drive: `family_tree_ner/cv_results/` và `cv_results_2stage/`.
