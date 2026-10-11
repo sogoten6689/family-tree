@@ -94,3 +94,20 @@ def test_endpoint_phobert(monkeypatch, tmp_path):
 
     body["model_version"] = "sikubert"
     assert client.post("/api/genealogy/extract", json=body).json()["success"] is False
+
+
+def test_tokenizer_json_path_and_loader_choice(tmp_path):
+    from tokenizers import Tokenizer, models, pre_tokenizers
+
+    vocab = {"<s>": 0, "<pad>": 1, "</s>": 2, "<unk>": 3, "▁ab": 4, "▁c": 5}
+    tok = Tokenizer(models.WordLevel(vocab, unk_token="<unk>"))
+    tok.pre_tokenizer = pre_tokenizers.Metaspace()
+    d = make_model_dir(tmp_path)
+    tok.save(str(d / "tokenizer.json"))
+    t = pn.load_tokenizer(d)
+    assert isinstance(t, pn.HFTokenizerJson)
+    assert t.word_ids("ab") == [4] and t.word_ids("zzz") == [3]
+    assert (t.cls_id, t.pad_id, t.sep_id, t.unk_id) == (0, 1, 2, 3)
+    # không có tokenizer.json → quay về PhoBERT BPE
+    (d / "tokenizer.json").unlink()
+    assert isinstance(pn.load_tokenizer(d), pn.PhobertBpe)

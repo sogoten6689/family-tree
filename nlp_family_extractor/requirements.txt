@@ -16,3 +16,4 @@ pypdfium2>=4.30.0
 Pillow>=10.0.0
 rapidfuzz>=3.0.0
 onnxruntime>=1.19.0
+tokenizers>=0.19.0

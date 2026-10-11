@@ -1,12 +1,12 @@
-"""NER tiếng Việt: PhoBERT đã fine-tune, xuất ONNX int8, chạy bằng onnxruntime trên CPU.
+"""NER tiếng Việt: encoder đã fine-tune (PhoBERT hoặc XLM-RoBERTa), xuất ONNX int8, chạy bằng onnxruntime trên CPU.
 
-Không cần torch/transformers: tokenizer BPE của PhoBERT được cài lại thuần Python và đã đối chiếu với
-``PhobertTokenizer`` của HuggingFace (test_ner_phobert_onnx.py). Cách chia từ/câu phải KHỚP với lúc huấn luyện
+Không cần torch/transformers. Tokenizer: PhoBERT → BPE cài lại thuần Python (đã đối chiếu ``PhobertTokenizer`` HF);
+XLM-RoBERTa (có ``tokenizer.json`` trong thư mục model) → thư viện ``tokenizers`` (nhẹ, không cần transformers). Cách chia từ/câu phải KHỚP với lúc huấn luyện
 (``research/label_studio_pipeline/export_conll.py``: mức âm tiết + dấu câu, câu kết thúc bằng ``.!?;`` hoặc xuống dòng,
 tối đa 128 token/câu).
 
-Thư mục model (``NER_MODEL_DIR_VI``) cần: ``model.int8.onnx``, ``vocab.txt``, ``bpe.codes``, ``label_list.json``
-(``model_card.json`` nếu có sẽ được trả trong ``info``).
+Thư mục model (``NER_MODEL_DIR_VI``) cần: ``model.int8.onnx``, ``label_list.json`` và MỘT trong hai bộ tokenizer:
+``vocab.txt`` + ``bpe.codes`` (PhoBERT) hoặc ``tokenizer.json`` (XLM-R). ``model_card.json`` (nếu có) được trả trong ``info``.
 """
 
 from __future__ import annotations
@@ -96,6 +96,26 @@ class PhobertBpe:
         return [self.encoder.get(p, self.unk_id) for p in self.tokenize_word(word)] or [self.unk_id]
 
 
+class HFTokenizerJson:
+    """Tokenizer XLM-R/BERT-họ dùng ``tokenizer.json`` qua thư viện ``tokenizers`` (cùng kết quả ``AutoTokenizer``)."""
+
+    def __init__(self, tokenizer_json: Path, config_json: Optional[Path] = None):
+        from tokenizers import Tokenizer
+
+        self._tok = Tokenizer.from_file(str(tokenizer_json))
+        vocab = self._tok.get_vocab()
+        self.cls_id, self.pad_id, self.sep_id, self.unk_id = (vocab.get(t, d) for t, d in (("<s>", 0), ("<pad>", 1), ("</s>", 2), ("<unk>", 3)))
+
+    def word_ids(self, word: str) -> list[int]:
+        return list(self._tok.encode(word, add_special_tokens=False).ids) or [self.unk_id]
+
+
+def load_tokenizer(model_dir: Path):
+    if (Path(model_dir) / "tokenizer.json").exists():
+        return HFTokenizerJson(Path(model_dir) / "tokenizer.json")
+    return PhobertBpe(Path(model_dir) / "vocab.txt", Path(model_dir) / "bpe.codes")
+
+
 # --------------------------------------------------------------------------- chia từ / câu
 
 
@@ -149,7 +169,7 @@ class NerModel:
     def __init__(self, model_dir: Path, *, session=None):
         self.model_dir = Path(model_dir)
         self.labels: list[str] = json.loads((self.model_dir / "label_list.json").read_text(encoding="utf-8"))
-        self.tokenizer = PhobertBpe(self.model_dir / "vocab.txt", self.model_dir / "bpe.codes")
+        self.tokenizer = load_tokenizer(self.model_dir)
         if session is None:
             try:
                 import onnxruntime as ort
@@ -217,7 +237,8 @@ def get_ner_model(language: str = "vi") -> NerModel:
     if not path:
         raise NerUnavailable(f"Chưa cấu hình {env or 'model cho ngôn ngữ ' + language}")
     d = Path(path)
-    missing = [n for n in ("model.int8.onnx", "vocab.txt", "bpe.codes", "label_list.json") if not (d / n).exists()]
+    need = ["model.int8.onnx", "label_list.json"] + ([] if (d / "tokenizer.json").exists() else ["vocab.txt", "bpe.codes"])
+    missing = [n for n in need if not (d / n).exists()]
     if missing:
         raise NerUnavailable(f"Thiếu tệp model trong {d}: {', '.join(missing)}")
     with _lock:
