@@ -10,6 +10,15 @@ interface ModelInfo {
   model_name: string;
   model_version: string;
   language: string;
+  note?: string;
+}
+
+interface NerEntity {
+  label: string;
+  text: string;
+  start: number;
+  end: number;
+  confidence: number;
 }
 
 interface GenealogyResult {
@@ -21,9 +30,11 @@ interface GenealogyResult {
     tail: string;
     confidence: number;
   }>;
+  entities?: NerEntity[];
   statistics: {
     person_count: number;
     relation_count: number;
+    entity_count?: number;
   };
   model_info: ModelInfo;
 }
@@ -193,15 +204,15 @@ export default function GenealogyExtractorPage() {
                       onClick={() => setModelVersion("regex")}
                       disabled={loading}
                     >
-                      📊 MVP (60%)
+                      📊 Quy tắc (MVP)
                     </Button>
                     <Button
                       type={modelVersion === "phobert" ? "primary" : "default"}
                       onClick={() => setModelVersion("phobert")}
-                      disabled={true}
-                      title="Coming soon - Phobert fine-tuned"
+                      disabled={loading}
+                      title="PhoBERT NER (thử nghiệm): chỉ trích thực thể, chưa có quan hệ"
                     >
-                      🚀 Phobert (90%)
+                      🚀 PhoBERT NER (thử nghiệm)
                     </Button>
                     <Button
                       type={modelVersion === "sikubert" ? "primary" : "default"}
@@ -209,7 +220,7 @@ export default function GenealogyExtractorPage() {
                       disabled={true}
                       title="Coming soon - SikuBERT fine-tuned"
                     >
-                      🏯 SikuBERT (90%)
+                      🏯 SikuBERT (chưa có)
                     </Button>
                   </Button.Group>
                 </div>
@@ -286,7 +297,8 @@ export default function GenealogyExtractorPage() {
                   </Text>
                   <br />
                   <Text type="secondary" style={{ fontSize: "12px", marginTop: "4px", display: "block" }}>
-                    Độ chính xác: ~60% (MVP regex) | Phiên bản tiếp theo: 90%+ (Phobert + SikuBERT fine-tuned)
+                    {result.model_info.note ??
+                      "Bộ quy tắc: kết quả chỉ mang tính tham khảo, cần người soát lại."}
                   </Text>
                 </div>
 
@@ -335,6 +347,33 @@ export default function GenealogyExtractorPage() {
                         </div>
                       ),
                     },
+                    ...(result.entities && result.entities.length > 0
+                      ? [
+                          {
+                            key: "entities",
+                            label: `Thực thể (${result.entities.length})`,
+                            children: (
+                              <Table
+                                columns={[
+                                  { title: "Nhãn", dataIndex: "label", key: "label", render: (v: string) => <Tag>{v}</Tag> },
+                                  { title: "Nội dung", dataIndex: "text", key: "text" },
+                                  {
+                                    title: "Độ tin cậy",
+                                    dataIndex: "confidence",
+                                    key: "confidence",
+                                    render: (v: number) => `${Math.round(v * 100)}%`,
+                                  },
+                                ]}
+                                dataSource={result.entities}
+                                rowKey={(r: NerEntity) => `${r.start}-${r.end}-${r.label}`}
+                                pagination={{ pageSize: 20, hideOnSinglePage: true }}
+                                size="small"
+                                scroll={{ x: true }}
+                              />
+                            ),
+                          },
+                        ]
+                      : []),
                     {
                       key: "relations",
                       label: "Quan hệ",

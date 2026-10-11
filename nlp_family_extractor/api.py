@@ -309,7 +309,7 @@ class GenealogyExtractRequest(BaseModel):
     )
     model_version: Literal["regex", "phobert", "sikubert"] = Field(
         default="regex",
-        description="Model version: 'regex' (MVP, 60%), 'phobert' (fine-tuned, 90%), 'sikubert' (fine-tuned, 90%)",
+        description="'regex' (bộ quy tắc, tiếng Việt); 'phobert' (NER PhoBERT, tiếng Việt, cần cấu hình NER_MODEL_DIR_VI); 'sikubert' chưa có model",
     )
 
 
@@ -317,6 +317,10 @@ class GenealogyExtractionResult(BaseModel):
     persons: List[str] = Field(description="Danh sách nhân vật được trích xuất")
     person_years: Dict[str, Optional[int]] = Field(description="Năm sinh/mất của mỗi nhân vật")
     relations: List[Dict[str, Any]] = Field(description="Danh sách quan hệ gia đình")
+    entities: List[Dict[str, Any]] = Field(
+        default_factory=list,
+        description="Thực thể NER (chỉ model thật): label, text, start, end, confidence",
+    )
     statistics: Dict[str, int] = Field(description="Thống kê: số nhân vật, số quan hệ")
     model_info: Dict[str, str] = Field(
         description="Thông tin model được sử dụng: model_name, model_version"
@@ -1302,6 +1306,44 @@ async def analyze_family_image(
 # Genealogy Parser API (Regex MVP + Dual-model Ready)
 # ============================================================================
 
+def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
+    """NER bằng PhoBERT (ONNX int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
+    from app.ner import NerUnavailable, get_ner_model
+
+    try:
+        model = get_ner_model("vi")
+    except NerUnavailable as error:
+        return GenealogyExtractResponse(success=False, error=f"Model PhoBERT chưa sẵn sàng: {error}")
+    try:
+        entities = model.extract(text)
+    except Exception as error:
+        return GenealogyExtractResponse(success=False, error=f"Lỗi chạy model PhoBERT: {error}")
+
+    persons: List[str] = []
+    for ent in entities:
+        if ent["label"] == "PER_NAME" and ent["text"] not in persons:
+            persons.append(ent["text"])
+    card = model.info or {}
+    metrics = (card.get("test") or card.get("dev") or {}).get("micro", {})
+    return GenealogyExtractResponse(
+        success=True,
+        data=GenealogyExtractionResult(
+            persons=persons,
+            person_years={name: None for name in persons},
+            relations=[],
+            entities=entities,
+            statistics={"person_count": len(persons), "relation_count": 0, "entity_count": len(entities)},
+            model_info={
+                "model_name": "PhoBERT-base NER (ONNX int8)",
+                "model_version": str(card.get("base_model", "vinai/phobert-base")),
+                "language": "vietnamese",
+                "note": "Chỉ trích thực thể; chưa có quan hệ. F1 kiểm chéo ≈ 0,54 — dùng làm gợi ý, cần người soát lại.",
+                **({"f1_reported": str(metrics["f1"])} if "f1" in metrics else {}),
+            },
+        ),
+    )
+
+
 @app.post(
     "/api/genealogy/extract",
     response_model=GenealogyExtractResponse,
@@ -1310,71 +1352,67 @@ async def analyze_family_image(
 )
 def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
     """
-    Extract genealogy (persons, relationships, years) from Vietnamese or Hán-Nôm text.
+    Trích xuất nhân vật, quan hệ và năm sinh/mất từ văn bản gia phả.
 
-    Supports:
-    - language="vietnamese": Vietnamese genealogy text (MVP regex-based)
-    - language="hannom": Classical Chinese / Hán-Nôm genealogy text (MVP regex-based)
-
-    Returns: persons, relationships (spouse/parent/sibling), birth/death years, model info.
-
-    Current model: FamilyExtractor (regex MVP)
-    - Accuracy: ~60% on diverse genealogy data
-    - Next phase: Fine-tuned Phobert (Vietnamese) + SikuBERT (Hán-Nôm) for 90%+ accuracy
+    Hiện chỉ có **một** bộ trích xuất thật: ``FamilyExtractor`` (quy tắc/regex, dành cho **tiếng Việt**).
+    - ``model_version="regex"`` + ``language="vietnamese"``: chạy bình thường.
+    - ``model_version="phobert"`` / ``"sikubert"``: **chưa có model đã huấn luyện** → trả ``success=false``
+      kèm lý do, KHÔNG gán nhãn model giả. (Kế hoạch: docs/planning/model_integration_and_data_quality_plan.md.)
+    - ``language="hannom"``: bộ quy tắc không hiểu chữ Hán → ``success=false`` kèm lý do.
     """
-    if req.language not in ["vietnamese", "hannom"]:
-        raise HTTPException(
-            status_code=400,
-            detail="Language must be 'vietnamese' or 'hannom'",
-        )
-
     text = req.text.strip()
     if not text:
         raise HTTPException(status_code=400, detail="Text cannot be empty")
 
+    if req.model_version == "phobert" and req.language == "vietnamese":
+        return _extract_with_phobert(text)
+    if req.model_version != "regex":
+        return GenealogyExtractResponse(
+            success=False,
+            error=(
+                f"Model '{req.model_version}' cho ngôn ngữ '{req.language}' chưa được huấn luyện/triển khai. "
+                "Hiện có: 'regex' và 'phobert' (tiếng Việt)."
+            ),
+        )
+    if req.language == "hannom":
+        return GenealogyExtractResponse(
+            success=False,
+            error=(
+                "Bộ trích xuất quy tắc ('regex') chưa hỗ trợ văn bản Hán-Nôm; "
+                "cần model NER Hán (SikuBERT) — chưa có."
+            ),
+        )
+
     try:
         from app.domains.extraction.extractor import FamilyExtractor
 
-        extractor = FamilyExtractor()
-        result = extractor.extract(text)
+        result = FamilyExtractor().parse(text)
 
-        persons = [p.name for p in result["persons"]]
-        person_years = {}
-        for person in result["persons"]:
-            birth_year = person.birth_year or person.approximate_birth_year
-            person_years[person.name] = birth_year
+        # parse() trả dict {"people": [...], "relationships": [...]}; cùng một người có thể xuất hiện nhiều lần
+        # (mỗi lần nhắc tên tạo một bản ghi) → gộp theo tên, giữ năm sinh/mất đầu tiên khác rỗng.
+        id_to_name: Dict[str, str] = {}
+        persons: List[str] = []
+        person_years: Dict[str, Optional[int]] = {}
+        for person in result["people"]:
+            name = person["full_name"]
+            id_to_name[person["id"]] = name
+            if name not in person_years:
+                persons.append(name)
+                person_years[name] = None
+            if person_years[name] is None:
+                person_years[name] = person.get("birth_year") or person.get("death_year")
 
-        relations = [
-            {
-                "head": rel.head.name,
-                "type": rel.type.value,
-                "tail": rel.tail.name,
-                "confidence": 0.6,
-            }
-            for rel in result["relations"]
-        ]
-
-        # Select model based on version
-        model_version_num = "1.0.0"
-        if req.model_version == "phobert":
-            if req.language == "vietnamese":
-                model_name = "Phobert-Fine-tuned (Vietnamese)"
-                model_version_num = "2.0.0"
-            else:
-                model_name = "Phobert-Fine-tuned (Not supported for Hán-Nôm)"
-                model_version_num = "2.0.0"
-        elif req.model_version == "sikubert":
-            if req.language == "hannom":
-                model_name = "SikuBERT-Fine-tuned (Hán-Nôm)"
-                model_version_num = "2.0.0"
-            else:
-                model_name = "SikuBERT-Fine-tuned (Not supported for Vietnamese)"
-                model_version_num = "2.0.0"
-        else:  # regex (default)
-            model_name = "FamilyExtractor-Regex-MVP"
-            if req.language == "hannom":
-                model_name = "FamilyExtractor-Regex-MVP (Hán-Nôm)"
-            model_version_num = "1.0.0"
+        relations: List[Dict[str, Any]] = []
+        seen_relations = set()
+        for rel in result["relationships"]:
+            head, tail = id_to_name.get(rel["from_id"]), id_to_name.get(rel["to_id"])
+            key = (head, rel["type"], tail)
+            if head is None or tail is None or head == tail or key in seen_relations:
+                continue
+            seen_relations.add(key)
+            relations.append(
+                {"head": head, "type": rel["type"], "tail": tail, "confidence": rel.get("confidence", 0.6)}
+            )
 
         return GenealogyExtractResponse(
             success=True,
@@ -1382,13 +1420,10 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
                 persons=persons,
                 person_years=person_years,
                 relations=relations,
-                statistics={
-                    "person_count": len(persons),
-                    "relation_count": len(relations),
-                },
+                statistics={"person_count": len(persons), "relation_count": len(relations)},
                 model_info={
-                    "model_name": model_name,
-                    "model_version": model_version_num,
+                    "model_name": "FamilyExtractor-Regex-MVP",
+                    "model_version": "1.0.0",
                     "language": req.language,
                 },
             ),
