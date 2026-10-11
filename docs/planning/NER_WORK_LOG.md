@@ -82,3 +82,23 @@ Công cụ `research/label_studio_pipeline/prelabel_with_model.py` (chạy model
 Chạy trên 114 cây chưa người soát (bỏ 25 cây đã soát): **4.200 thực thể** (LOC 2.132 · DATE 957 · PER_NAME 723 · GENERATION 379 · ORDER 9); độ tin cậy ≥0,9: 2.575 · 0,6–0,9: 1.296 · <0,6: 329; 4 cây không ra thực thể nào.
 So với nhãn Gemini hiện có (6.379 thực thể): trùng khớp tuyệt đối 1.292 (P 0,31 / R 0,20) — thấp là điều dự kiến vì nhãn Gemini nhiễu và nhiều hơn (precision của Gemini so với người chỉ ≈0,30). Model chưa soát nên cần người xem, nhất là PER_NAME (model ít hơn nhiều so với Gemini: 723 vs LOC 2.132 — có thể bỏ sót tên).
 Đầu ra nằm ở `data/03_derived/prelabel_phobert_v1/` (gitignore). Cách dùng: Import `tasks.json` vào project Label Studio mới, mở `priority.csv` để chọn thứ tự soát.
+
+### 12/10/2026 — tối ưu kết quả: đổi sang XLM-RoBERTa-base
+Cùng 5 lượt kiểm chéo theo cây, 25 cây người soát, F1 gộp mức thực thể (strict). Mọi lần chạy lưu xác suất (`probs.json`) để phân tích ngoại tuyến (`analyze_probs.py`, không tốn GPU).
+
+| Cấu hình | F1 gộp | PER_NAME | GENERATION | DATE | LOC | ORDER |
+|---|---|---|---|---|---|---|
+| PhoBERT-base (chạy lại, trùng khít lần trước → tái lập được) | 0,539 | 0,39 | 0,69 | 0,78 | 0,48 | 0,15 |
+| **XLM-R-base** seed 42 / 1 / 2 | 0,614 / 0,621 / 0,593 → **TB 0,609 ± 0,012** | 0,40 | 0,67 | 0,80–0,86 | **0,62** | 0–0,15 |
+| XLM-R-base, gộp 3 seed (trung bình xác suất) | 0,630 | 0,39 | 0,65 | 0,86 | 0,64 | 0,17 |
+| XLM-R-base + PhoBERT gộp | 0,585–0,621 (không hơn XLM-R riêng) | | | | | |
+| XLM-R-large (lượt 0 duy nhất) | 0,563 (< base 0,667; 22 phút/lượt) → bỏ | | | | | |
+
+- XLM-R-base hơn PhoBERT-base **+0,074 F1, khoảng tin cậy 95% bootstrap theo câu [+0,042; +0,106]**, thắng ở cả 5 lượt; phần tăng nằm chủ yếu ở **LOC (0,48 → 0,62)**; PER_NAME vẫn yếu (~0,40) ở mọi cấu hình.
+- Chỉnh ngưỡng tin cậy (chọn trên 4 lượt, đánh giá lượt còn lại): +0,005–0,013 → không đáng. Gộp 3 seed +0,02 nhưng chậm gấp 3 → chưa dùng.
+- Giả thuyết (chưa kiểm chứng): PhoBERT được huấn luyện trên văn bản đã tách từ, trong khi dữ liệu ở đây là mức âm tiết → bất lợi; XLM-R dùng sentencepiece nên không bị ảnh hưởng.
+- Lưu ý: trên 1 câu ví dụ tự soạn XLM-R bỏ sót "Đời thứ 3" và cắt tên ("Văn An") — một mẫu không đổi kết luận từ 25 cây, nhưng nên theo dõi.
+
+**Bản cuối** (22 cây train / 3 dev, 20 epoch, seed 42): ONNX int8 **278 MB** (đã lượng tử hoá cả bảng embedding; fp32 là 1,1 GB), khớp bản gốc 99,0%. Tốc độ trên **VPS** (1.701 ký tự): **1 luồng 1,70 s; 4 luồng 0,63 s** (PhoBERT: 1,49 s / 0,73 s). Tệp: `data/03_derived/models/xlmr_ner_v1/` (model.int8.onnx, tokenizer.json, label_list.json, model_card.json, onnx_report.json). Backend hỗ trợ `tokenizer.json` (thư viện `tokenizers`; khớp `AutoTokenizer` trên 2.259 từ thật, 0 khác biệt).
+
+**Triển khai (CHƯA làm — cần anh Lâm cho phép):** (1) merge PR chứa mã backend mới (đọc `tokenizer.json`) → Jenkins build; (2) đổi tên `models/ner_vi` → `models/ner_vi.bak` trên VPS, chép 4 tệp XLM-R vào `models/ner_vi/`; (3) `docker restart family-tree-backend` (model nạp một lần khi chạy). Hoàn tác: trả `ner_vi.bak` về và restart.
