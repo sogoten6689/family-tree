@@ -102,3 +102,10 @@ Cùng 5 lượt kiểm chéo theo cây, 25 cây người soát, F1 gộp mức t
 **Bản cuối** (22 cây train / 3 dev, 20 epoch, seed 42): ONNX int8 **278 MB** (đã lượng tử hoá cả bảng embedding; fp32 là 1,1 GB), khớp bản gốc 99,0%. Tốc độ trên **VPS** (1.701 ký tự): **1 luồng 1,70 s; 4 luồng 0,63 s** (PhoBERT: 1,49 s / 0,73 s). Tệp: `data/03_derived/models/xlmr_ner_v1/` (model.int8.onnx, tokenizer.json, label_list.json, model_card.json, onnx_report.json). Backend hỗ trợ `tokenizer.json` (thư viện `tokenizers`; khớp `AutoTokenizer` trên 2.259 từ thật, 0 khác biệt).
 
 **Triển khai (CHƯA làm — cần anh Lâm cho phép):** (1) merge PR chứa mã backend mới (đọc `tokenizer.json`) → Jenkins build; (2) đổi tên `models/ner_vi` → `models/ner_vi.bak` trên VPS, chép 4 tệp XLM-R vào `models/ner_vi/`; (3) `docker restart family-tree-backend` (model nạp một lần khi chạy). Hoàn tác: trả `ner_vi.bak` về và restart.
+
+### 12/10/2026 — ĐÃ ĐỔI prod sang XLM-R-base (theo đồng ý của anh Lâm)
+- PR #16 merge; Jenkins build; kiểm tra PhoBERT vẫn chạy với mã mới (tokenizers 0.23.3, onnxruntime 1.31.0 trong container).
+- VPS: `models/ner_vi` (PhoBERT) → `models/ner_vi.bak`; `models/ner_vi/` = XLM-R (model.int8.onnx 278 MB, tokenizer.json, label_list.json, model_card.json); `docker restart family-tree-backend`.
+- Sau đổi: `/api/genealogy/extract` 200, **0,18–0,28 s** cho đoạn ~130 ký tự (lần đầu 4,7 s do nạp model); `/health` 200; không lỗi trong log; RAM trống ~21 GB.
+- Hoàn tác: `models/ner_vi` → `ner_vi.xlmr`, `ner_vi.bak` → `ner_vi`, restart backend.
+- Sửa nhãn: `model_info.model_name` lấy theo `base_model` trong model_card (trước đó ghi cứng "PhoBERT").

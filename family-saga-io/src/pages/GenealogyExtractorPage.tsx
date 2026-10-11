@@ -210,9 +210,9 @@ export default function GenealogyExtractorPage() {
                       type={modelVersion === "phobert" ? "primary" : "default"}
                       onClick={() => setModelVersion("phobert")}
                       disabled={loading}
-                      title="PhoBERT NER (thử nghiệm): chỉ trích thực thể, chưa có quan hệ"
+                      title="Model NER đã huấn luyện (thử nghiệm): chỉ trích thực thể, chưa có quan hệ"
                     >
-                      🚀 PhoBERT NER (thử nghiệm)
+                      🚀 Model NER (thử nghiệm)
                     </Button>
                     <Button
                       type={modelVersion === "sikubert" ? "primary" : "default"}
