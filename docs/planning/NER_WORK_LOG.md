@@ -68,3 +68,11 @@ Giai đoạn 2: tinh chỉnh bằng nhãn người, cùng 5 lượt kiểm chéo
 **Kết luận (tin cậy vừa):** không có cải thiện tổng thể (0,526 so với 0,538, chênh nhỏ hơn dao động giữa các lượt). Học trước trên nhãn máy làm PER_NAME khá hơn (+0,07) nhưng LOC tệ hơn (−0,09): đúng với phát hiện nhãn Gemini nhiễu nặng ở LOC. Không đáng đổi quy trình; **bản dùng vẫn là huấn luyện chỉ trên nhãn người**.
 Gợi ý nếu muốn tăng tiếp: (1) thêm gold người soát, nhất là PER_NAME/LOC; (2) lọc nhãn LOC của Gemini trước khi học trước (chỉ giữ PER_NAME/DATE/GENERATION); (3) chạy nhiều seed để biết dao động thật.
 Kết quả thô trên Drive: `family_tree_ner/cv_results/` và `cv_results_2stage/`.
+
+### 11/10/2026 — ĐÃ DEPLOY bản thử lên production (theo đồng ý của anh Lâm)
+- PR #12 merge 14:54 UTC; Jenkins build backend + frontend; chỉ có 1 lần 502 thoáng qua lúc thay container.
+- Model int8 (5 tệp, 135 MB) đặt ở `/var/jenkins_home/workspace/family-tree/models/ner_vi/` trên VPS (ghi qua container tạm vì thư mục thuộc root); compose mount `./models:/app/models:ro`.
+- Kiểm tra sau deploy: `POST /api/genealogy/extract` `model_version=phobert` → 200, 0,16 s cho đoạn ~130 ký tự, nhận đúng PER_NAME/GENERATION/DATE/LOC; `regex` vẫn chạy; `/health` 200; bundle giao diện có nút "PhoBERT NER".
+- Phát hiện sau deploy: model_info trả `f1_reported` = dev F1 (0,6458) lạc quan → PR #13 bỏ trường này.
+- CI: test `PageViewer.test.tsx` chập chờn (lần đầu lỗi, chạy lại qua; commit chỉ đổi tài liệu) → đã tạo việc riêng để sửa.
+- Hoàn tác: đổi tên/xoá `models/ner_vi` trên VPS → endpoint tự trả "chưa sẵn sàng".
