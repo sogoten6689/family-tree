@@ -36,3 +36,22 @@ DATE 0,78 · GENERATION 0,68 · LOC 0,49 · PER_NAME 0,39 · ORDER 0,15 (chỉ 1
 Xem mục "Tiến độ tiếp theo" bên dưới (cập nhật theo từng bước).
 
 ## 6. Tiến độ tiếp theo
+
+### 11/10/2026 (tiếp) — tích hợp backend + đo trên VPS
+| Việc | Kết quả (đã đo) |
+|---|---|
+| Tải `onnx_final.zip` (525 MB) từ Drive; lấy bản int8 | khớp từng byte với Drive |
+| `app/ner/phobert_onnx.py`: tokenizer BPE thuần Python + onnxruntime | đối chiếu với `PhobertTokenizer` HF trên **2.259 từ thật: 0 khác biệt** |
+| Chạy thử model thật trên máy dev | đoạn ví dụ ra đúng PER_NAME/LOC/GENERATION; 25 ms |
+| Endpoint `/api/genealogy/extract` `model_version=phobert` | trả `entities` (nhãn, nội dung, offset, độ tin cậy); chưa có quan hệ; thiếu model → "chưa sẵn sàng" |
+| UI: nút "PhoBERT NER (thử nghiệm)" + tab "Thực thể" | frontend 118 test qua; build qua |
+| Backend test | 259 qua |
+| **Đo trên VPS** (container tạm từ image backend, 1.701 ký tự = 490 từ) | **1 luồng: 1,49 s; 4 luồng: 0,73 s** (trung vị 10 lần). Thư mục tạm đã xoá. |
+
+Ước tính (chưa đo): văn bản 2.400 ký tự ≈ 1–2 s với 4 luồng. VPS còn chạy dịch vụ khác nên có thể dao động.
+
+### Cách triển khai bản thử (chưa thực hiện — cần anh Lâm cho phép merge/deploy)
+1. Chép 5 tệp (`model.int8.onnx`, `vocab.txt`, `bpe.codes`, `label_list.json`, `model_card.json`) vào `<repo trên VPS>/models/ner_vi/`.
+2. Merge PR #12 → Jenkins build lại backend (image sẽ có `onnxruntime`); compose đã mount `./models:/app/models:ro` và đặt `NER_MODEL_DIR_VI`.
+3. Kiểm tra: chọn nút "PhoBERT NER (thử nghiệm)" trên /genealogy-extractor.
+Hoàn tác: gỡ thư mục `models/ner_vi` → endpoint tự trả "chưa sẵn sàng", các chức năng khác không đổi.
