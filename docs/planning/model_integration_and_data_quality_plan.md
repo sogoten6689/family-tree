@@ -78,3 +78,15 @@ Quy trình đánh giá: dev/test cố định theo dòng họ; báo F1 strict + 
 1. Duyệt hướng: PhoBERT-base (Việt) trước, SikuBERT (Hán) sau?
 2. Cho phép thí điểm gán nhãn trước bằng LLM (RamCloud) cho bao nhiêu cây? (tốn tiền)
 3. Chọn nơi huấn luyện: Colab hay RunPod?
+
+## 8. Kết quả thực nghiệm (11/10/2026, PhoBERT-base, Colab T4)
+
+| Thí nghiệm | Dữ liệu train | Test | micro-F1 (strict) |
+|---|---|---|---|
+| A. Train trộn | 121 cây, chủ yếu nhãn Gemini chưa soát | 5 cây người soát (238 thực thể) | 0,357 (CI95 0,29–0,42) |
+| B. Kiểm chéo 5 lượt | chỉ nhãn người soát (~17 cây/lượt) | gộp 25 cây (692 thực thể) | **0,538** (P 0,50 / R 0,59); từng lượt 0,40–0,64 |
+
+B theo nhãn: DATE 0,78 · GENERATION 0,68 · LOC 0,49 · PER_NAME 0,39 · ORDER 0,15 (chỉ 11 mẫu).
+Lưu ý: A và B không dùng cùng tập test nên so sánh chỉ mang tính gợi ý; gold người soát được tạo từ sửa nhãn Gemini nên có thể bị neo.
+Kết luận: nhãn người soát dù ít vẫn hơn nhiều nhãn máy; hướng đi đúng là tăng gold người soát. PER_NAME còn yếu (R 0,38).
+Mã tái lập: `export_cv_folds.py`, `train_ner.py`, `notebooks/train_ner_cv_colab.ipynb`.
