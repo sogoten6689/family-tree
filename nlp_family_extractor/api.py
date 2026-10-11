@@ -1324,7 +1324,6 @@ def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
         if ent["label"] == "PER_NAME" and ent["text"] not in persons:
             persons.append(ent["text"])
     card = model.info or {}
-    metrics = (card.get("test") or card.get("dev") or {}).get("micro", {})
     return GenealogyExtractResponse(
         success=True,
         data=GenealogyExtractionResult(
@@ -1337,8 +1336,8 @@ def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
                 "model_name": "PhoBERT-base NER (ONNX int8)",
                 "model_version": str(card.get("base_model", "vinai/phobert-base")),
                 "language": "vietnamese",
+                # Con số tin cậy là F1 kiểm chéo 5 lượt trên 25 cây (docs/planning/NER_WORK_LOG.md), KHÔNG phải dev F1 của model_card.
                 "note": "Chỉ trích thực thể; chưa có quan hệ. F1 kiểm chéo ≈ 0,54 — dùng làm gợi ý, cần người soát lại.",
-                **({"f1_reported": str(metrics["f1"])} if "f1" in metrics else {}),
             },
         ),
     )
