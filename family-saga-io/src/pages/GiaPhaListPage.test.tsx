@@ -145,6 +145,23 @@ describe("GiaPhaListPage (phân trang + tìm kiếm ở backend)", { timeout: 15
     await waitFor(() => expect(lastParams()).toMatchObject({ sort: "title", page: 1 }));
   });
 
+  it("shows the page count and renders real links so Cmd/Ctrl-click can open a new tab", async () => {
+    api.listGiaPha.mockImplementation(async () => ({
+      total: 1, total_all: 1, page: 1, page_size: 10,
+      items: [{ ...ALL[0], scan_id: 22, page_count: 131, tree_id: "tree-1" }],
+    }));
+    const open = vi.spyOn(window, "open").mockReturnValue(null);
+    renderAt("/admin/gia-pha");
+    const link = await screen.findByRole("link", { name: "Phan gia công phả" });
+    expect(link).toHaveAttribute("href", "/admin/gia-pha/tree-1");
+    expect(screen.getByText("131")).toBeInTheDocument();
+    fireEvent.click(link, { metaKey: true });
+    expect(open).not.toHaveBeenCalled(); // để trình duyệt tự mở tab từ liên kết thật
+    fireEvent.click(screen.getByText("131"), { ctrlKey: true });
+    expect(open).toHaveBeenCalledWith("/admin/gia-pha/tree-1", "_blank", "noopener");
+    open.mockRestore();
+  });
+
   it("'Tải lại' bypasses the server cache", async () => {
     renderAt("/admin/gia-pha");
     await screen.findByText("Phan gia công phả");

@@ -24,6 +24,7 @@ export interface GiaPhaItem {
   is_public?: boolean | null;
   updated_at: string;
   scan_id?: number | null;
+  page_count?: number | null;
   tree_id?: string | null;
   node_count?: number | null;
   current_version?: ItemVersion | null;

@@ -298,6 +298,7 @@ class GiaPhaItem(BaseModel):
     is_public: Optional[bool] = None
     updated_at: str
     scan_id: Optional[int] = None
+    page_count: Optional[int] = None  # số trang của bản quét nguồn (khách không thấy)
     tree_id: Optional[str] = None
     node_count: Optional[int] = None
     current_version: Optional[ItemVersion] = None
@@ -445,6 +446,7 @@ def _scan_to_gia_pha_item(
         status="built" if scan.tree_status == TreeStatus.CREATED else "pending",
         updated_at=scan.uploaded_at.isoformat(),
         scan_id=scan.id,
+        page_count=scan.page_count,
         tree_id=scan.family_tree_id,
         current_version=current_version,
     )
@@ -481,6 +483,7 @@ def _tree_to_gia_pha_item(
         is_public=bool(tree.get("is_public")),
         updated_at=tree["updated_at"],
         scan_id=source_scan.id if (expose_scan and source_scan is not None) else None,
+        page_count=source_scan.page_count if (expose_scan and source_scan is not None) else None,
         tree_id=tree["id"],
         node_count=tree.get("node_count"),
         current_version=current_version,

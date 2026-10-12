@@ -107,6 +107,11 @@ class ListEndpointTest(_Db, unittest.TestCase):
         self.assertEqual(asc, sorted(asc))
         self.assertEqual(self.client.get("/api/gia-pha", params={"sort": "bogus"}).status_code, 422)
 
+    def test_items_expose_page_count(self) -> None:
+        item0 = self.get()["items"][0]
+        self.assertIn("page_count", item0)
+        self.assertIsInstance(item0["page_count"], int)
+
     def test_default_returns_everything_for_old_callers(self) -> None:
         body = self.get()
         self.assertEqual((body["total"], len(body["items"]), body["page_size"]), (25, 25, 0))
