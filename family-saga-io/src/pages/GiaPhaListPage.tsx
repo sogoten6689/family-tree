@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Alert, Button, Empty, Input, Select, Space, Table, Tag, Typography } from "antd";
 import { BranchesOutlined, ClearOutlined, PlusOutlined, ReloadOutlined } from "@ant-design/icons";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { listGiaPha, type GiaPhaItem } from "@/lib/giaPhaApi";
@@ -32,6 +32,24 @@ const PAGE_SIZE = 10;
 const SEARCH_DEBOUNCE_MS = 300;
 const STALE_MS = 15_000;
 
+/** Liên kết thật để chuột phải / chuột giữa / Cmd-Ctrl+bấm mở tab mới; bấm thường để hàng xử lý. */
+function RowLink({ href, className, children }: { href: string | null; className?: string; children: ReactNode }) {
+  if (!href) return <div className={className}>{children}</div>;
+  return (
+    <Link
+      to={href}
+      className={className}
+      onClick={(event) => {
+        // Cmd/Ctrl/Shift + bấm: để trình duyệt tự mở tab; bấm thường: hàng đã tự chuyển trang.
+        if (event.metaKey || event.ctrlKey || event.shiftKey) event.stopPropagation();
+        else event.preventDefault();
+      }}
+    >
+      {children}
+    </Link>
+  );
+}
+
 const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -39,6 +57,11 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
+  // Mặc định: ID giảm dần (bản mới nhất ở trên cùng); bấm tiêu đề cột để đổi.
+  const [sort, setSort] = useState<{ field: "scan_id" | "title" | "updated_at"; order: "asc" | "desc" }>({
+    field: "scan_id",
+    order: "desc",
+  });
 
   // Từ khoá giữ trên URL (?q=) để chia sẻ link; bộ lọc chỉ trong trang.
   const [filters, setFilters] = useState<GiaPhaFilters>({
@@ -77,7 +100,7 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   // (quay lại trang cũ hiện ngay) và giữ dữ liệu cũ trong lúc tải trang mới.
   const forceRefresh = useRef(false);
   const { data, error, isFetching, refetch } = useQuery({
-    queryKey: ["gia-pha", scope, { page, pageSize, q: debouncedQ.trim(), status: filters.status, code: filters.code, source: filters.source }],
+    queryKey: ["gia-pha", scope, { page, pageSize, q: debouncedQ.trim(), status: filters.status, code: filters.code, source: filters.source, sort: sort.field, order: sort.order }],
     queryFn: () => {
       const refresh = forceRefresh.current;
       forceRefresh.current = false;
@@ -88,6 +111,8 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
         status: filters.status,
         code: filters.code,
         source: filters.source,
+        sort: sort.field,
+        order: sort.order,
         refresh,
       });
     },
@@ -107,14 +132,17 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   const detailBase = scope === "admin" ? "/admin/gia-pha" : scope === "user" ? "/user/gia-pha" : "/gia-pha";
   const uploadPath = scope === "public" ? "/" : "/user/document-reader";
 
-  const goToDetail = (item: GiaPhaItem) => {
-    if (item.status === "built" && item.tree_id) {
-      navigate(`${detailBase}/${item.tree_id}`);
-      return;
-    }
-    if (item.status === "pending" && item.scan_id != null) {
-      navigate(`/user/documents/${item.scan_id}`);
-    }
+  const detailHref = (item: GiaPhaItem): string | null => {
+    if (item.status === "built" && item.tree_id) return `${detailBase}/${item.tree_id}`;
+    if (item.status === "pending" && item.scan_id != null) return `/user/documents/${item.scan_id}`;
+    return null;
+  };
+  // Bấm thường = chuyển trang; giữ Cmd/Ctrl (hoặc chuột giữa trên liên kết) = mở tab mới.
+  const goToDetail = (item: GiaPhaItem, event?: { metaKey?: boolean; ctrlKey?: boolean }) => {
+    const href = detailHref(item);
+    if (!href) return;
+    if (event?.metaKey || event?.ctrlKey) window.open(href, "_blank", "noopener");
+    else navigate(href);
   };
 
   return (
@@ -224,29 +252,47 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
             />
           ),
         }}
-        onRow={(record) => ({ onClick: () => goToDetail(record) })}
+        onChange={(_pagination, _filters, sorter, extra) => {
+          if (extra.action !== "sort") return;
+          const single = Array.isArray(sorter) ? sorter[0] : sorter;
+          const field = single?.columnKey as typeof sort.field | undefined;
+          // Bỏ sắp xếp (bấm lần thứ ba) = quay về mặc định.
+          setSort(single?.order && field ? { field, order: single.order === "ascend" ? "asc" : "desc" } : { field: "scan_id", order: "desc" });
+          setPage(1);
+        }}
+        onRow={(record) => ({ onClick: (event) => goToDetail(record, event) })}
         rowClassName={() => "cursor-pointer"}
         columns={[
-          ...(scope === "admin"
+          ...(scope !== "public"
             ? [
                 {
                   title: t("giaPhaList.columnPages", { defaultValue: "Trang" }).toUpperCase(),
                   key: "page_count",
                   width: 80,
                   align: "right" as const,
-                  render: () => "—",
+                  render: (_: unknown, record: GiaPhaItem) => record.page_count ?? "—",
                 },
               ]
             : []),
           {
             title: t("giaPhaList.columnId", { defaultValue: "Mã" }).toUpperCase(),
             dataIndex: "id",
+            key: "scan_id",
             width: 220,
+            sorter: true,
+            sortOrder: sort.field === "scan_id" ? (sort.order === "asc" ? "ascend" : "descend") : null,
             render: (_: string, record: GiaPhaItem) => (
               <div className="flex items-center gap-2">
                 <BranchesOutlined className="text-primary" />
                 <div>
-                  <div className="font-mono text-xs">{record.id}</div>
+                  <RowLink href={detailHref(record)} className="font-mono text-xs">
+                    {record.id}
+                  </RowLink>
+                  {record.scan_id != null && (
+                    <div className="text-[11px] text-muted-foreground" data-testid="scan-id">
+                      ID: {record.scan_id}
+                    </div>
+                  )}
                   {record.ma_dinh_danh_nguon === "gemini" && (
                     <Tag color="gold" className="!text-[10px] !leading-4 !mt-0.5">
                       {t("maDinhDanh.sourceGemini", { defaultValue: "Tự tạo (Gemini)" })}
@@ -264,6 +310,10 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           {
             title: t("giaPhaList.columnTitle", { defaultValue: "Tên" }).toUpperCase(),
             dataIndex: "title",
+            key: "title",
+            render: (value: string, record: GiaPhaItem) => <RowLink href={detailHref(record)}>{value}</RowLink>,
+            sorter: true,
+            sortOrder: sort.field === "title" ? (sort.order === "asc" ? "ascend" : "descend") : null,
           },
           ...(scope === "admin"
             ? [
@@ -295,6 +345,9 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           {
             title: t("giaPhaList.columnUpdated", { defaultValue: "Cập nhật" }).toUpperCase(),
             dataIndex: "updated_at",
+            key: "updated_at",
+            sorter: true,
+            sortOrder: sort.field === "updated_at" ? (sort.order === "asc" ? "ascend" : "descend") : null,
             width: 140,
             render: (value: string) => formatTreeDate(value),
           },

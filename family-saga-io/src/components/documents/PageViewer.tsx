@@ -1,11 +1,12 @@
 import { DeleteOutlined, EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined, UndoOutlined } from "@ant-design/icons";
-import { Alert, Button, Card, Empty, Image, Input, List, Modal, Pagination, Spin, Tag, Typography } from "antd";
+import { Alert, Button, Card, Empty, Input, List, Modal, Pagination, Spin, Tag, Typography } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
-import { BoundingBoxOverlay } from "@/components/documents/BoundingBoxOverlay";
+import { PageEnginesPanel } from "@/components/documents/PageEnginesPanel";
+import { ZoomableImage } from "@/components/documents/ZoomableImage";
 import {
   deleteScanPage,
   editScanPage,
@@ -345,7 +346,10 @@ export function PageViewer({ scanId }: { scanId: number }) {
             <div className="page-viewer-images">
               <figure>
                 <figcaption>{t("pageViewer.original", { defaultValue: "Ảnh gốc" })}</figcaption>
-                <Image src={page.image_url} alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })} />
+                <ZoomableImage
+                  imageUrl={page.image_url}
+                  alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })}
+                />
               </figure>
               {boxes.length > 0 ? (
                 <figure>
@@ -355,11 +359,10 @@ export function PageViewer({ scanId }: { scanId: number }) {
                       n: boxes.length,
                     })}
                   </figcaption>
-                  <BoundingBoxOverlay
+                  <ZoomableImage
                     imageUrl={page.image_url}
                     alt={t("pageViewer.boxesAlt", { defaultValue: "Trang {{n}} có khung chữ", n: page.page_number })}
                     bbox={boxes}
-                    showBoxes
                     showOrder
                   />
                 </figure>
@@ -388,6 +391,17 @@ export function PageViewer({ scanId }: { scanId: number }) {
               </Paragraph>
             )}
           </Card>
+          <PageEnginesPanel
+            scanId={scanId}
+            pageNumber={page.page_number}
+            versionId={viewVersionId}
+            refreshKey={detailNonce}
+            onRan={(result) => {
+              // Engine mới nằm trong version sửa tay: chuyển sang xem version đó và tải lại chi tiết trang.
+              setEditVersion({ id: result.version.version_id, number: result.version.version_number });
+              setDetailNonce((n) => n + 1);
+            }}
+          />
           {detailError && <Alert type="warning" showIcon message={detailError} />}
           {stale && (
             <Alert

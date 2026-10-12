@@ -7,7 +7,7 @@ from fastapi.testclient import TestClient
 import api
 from app.auth.dependencies import get_current_user, get_optional_current_user
 from app.database import get_db
-from app.workspace.gia_pha_list import GIA_PHA_CACHE, TtlCache, filter_items, normalize_for_search, paginate
+from app.workspace.gia_pha_list import GIA_PHA_CACHE, TtlCache, filter_items, normalize_for_search, paginate, sort_items
 from app.workspace.router import require_workspace_database
 from tests.test_corpus_identifiers import _Db
 
@@ -35,6 +35,16 @@ class PureLogicTest(unittest.TestCase):
         self.assertEqual(filter_items(items, code="none"), [b])
         self.assertEqual(filter_items(items, source="gemini"), [c])
         self.assertEqual(filter_items(items, q="  "), items)
+
+    def test_sort_default_is_scan_id_desc_and_missing_last(self) -> None:
+        def row(scan_id, title="x"):
+            return SimpleNamespace(scan_id=scan_id, title=title, updated_at=None)
+
+        rows = [row(2), row(None), row(10), row(1)]
+        self.assertEqual([r.scan_id for r in sort_items(rows)], [10, 2, 1, None])
+        self.assertEqual([r.scan_id for r in sort_items(rows, order="asc")], [1, 2, 10, None])  # thiếu giá trị vẫn cuối
+        by_title = sort_items([row(1, "Đoàn"), row(2, "Chu"), row(3, "An")], sort="title", order="asc")
+        self.assertEqual([r.title for r in by_title], ["An", "Chu", "Đoàn"])
 
     def test_paginate(self) -> None:
         data = list(range(1, 11))
@@ -89,6 +99,18 @@ class ListEndpointTest(_Db, unittest.TestCase):
         last = self.get(page=3, page_size=10)
         self.assertEqual(len(last["items"]), 5)
         self.assertEqual(self.get(page=9, page_size=10)["items"], [])
+
+    def test_default_order_is_newest_scan_first_and_sort_params_validated(self) -> None:
+        ids = [i["scan_id"] for i in self.get()["items"]]
+        self.assertEqual(ids, sorted(ids, reverse=True))
+        asc = [i["scan_id"] for i in self.get(order="asc")["items"]]
+        self.assertEqual(asc, sorted(asc))
+        self.assertEqual(self.client.get("/api/gia-pha", params={"sort": "bogus"}).status_code, 422)
+
+    def test_items_expose_page_count(self) -> None:
+        item0 = self.get()["items"][0]
+        self.assertIn("page_count", item0)
+        self.assertIsInstance(item0["page_count"], int)
 
     def test_default_returns_everything_for_old_callers(self) -> None:
         body = self.get()

@@ -24,6 +24,7 @@ export interface GiaPhaItem {
   is_public?: boolean | null;
   updated_at: string;
   scan_id?: number | null;
+  page_count?: number | null;
   tree_id?: string | null;
   node_count?: number | null;
   current_version?: ItemVersion | null;
@@ -47,6 +48,9 @@ export interface GiaPhaListParams {
   status?: string;
   code?: string;
   source?: string;
+  /** Mặc định: scan_id giảm dần (bản mới nhất ở trên). */
+  sort?: "scan_id" | "title" | "updated_at";
+  order?: "asc" | "desc";
   /** true = bỏ qua cache của server (nút Tải lại). */
   refresh?: boolean;
 }
@@ -61,6 +65,8 @@ export async function listGiaPha(params: GiaPhaListParams = {}): Promise<GiaPhaL
     const value = params[key];
     if (value && value !== "all") query.set(key, value);
   }
+  if (params.sort && params.sort !== "scan_id") query.set("sort", params.sort);
+  if (params.order && params.order !== "desc") query.set("order", params.order);
   if (params.refresh) query.set("refresh", "true");
   const suffix = query.toString();
   return apiRequest<GiaPhaListResponse>(`/api/gia-pha${suffix ? `?${suffix}` : ""}`);

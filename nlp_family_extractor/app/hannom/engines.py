@@ -87,7 +87,43 @@ def run_gemini_vision(file_bytes: bytes, filename: str, **_: Any) -> EngineResul
         return None
 
 
+GOOGLE_VISION_URL = "https://vision.googleapis.com/v1/images:annotate"
+
+
+def run_google_vision(file_bytes: bytes, filename: str, **_: Any) -> EngineResult | None:
+    """Google Cloud Vision (DOCUMENT_TEXT_DETECTION, gợi ý chữ Hán phồn thể). Cần biến môi trường
+    GOOGLE_VISION_API_KEY (khoá Cloud Vision, khác khoá Gemini). Lỗi/không có chữ -> None."""
+    import base64
+    import os
+
+    key = os.environ.get("GOOGLE_VISION_API_KEY", "").strip()
+    if not key:
+        return None
+    body = {
+        "requests": [
+            {
+                "image": {"content": base64.b64encode(file_bytes).decode("ascii")},
+                "features": [{"type": "DOCUMENT_TEXT_DETECTION"}],
+                "imageContext": {"languageHints": ["zh-Hant", "vi"]},
+            }
+        ]
+    }
+    try:
+        response = httpx.post(GOOGLE_VISION_URL, params={"key": key}, json=body, timeout=httpx.Timeout(90.0, connect=20.0))
+        response.raise_for_status()
+        annotation = (response.json().get("responses") or [{}])[0].get("fullTextAnnotation") or {}
+        lines = [line.strip() for line in (annotation.get("text") or "").splitlines() if line.strip()]
+        return EngineResult(engine="google_vision", lines=lines) if lines else None
+    except Exception:
+        return None
+
+
 ENGINE_REGISTRY: dict[str, Callable[..., EngineResult | None]] = {
     "kimhannom": run_kimhannom,
     "gemini_vision": run_gemini_vision,
+}
+# Engine chỉ chạy thủ công cho từng trang (nút "Chạy engine" ở trang xem tài liệu), KHÔNG nằm trong
+# pipeline vote tự động nên không đưa vào ENGINE_REGISTRY (cấu hình bật/tắt của Admin).
+PAGE_ONLY_ENGINES: dict[str, Callable[..., EngineResult | None]] = {
+    "google_vision": run_google_vision,
 }

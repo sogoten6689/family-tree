@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import "@/i18n";
 
-const api = vi.hoisted(() => ({ listScanPages: vi.fn(), getScanPage: vi.fn(), editScanPage: vi.fn(), replaceScanPageImage: vi.fn(), ocrScanPage: vi.fn() }));
+const api = vi.hoisted(() => ({ listScanPages: vi.fn(), getScanPage: vi.fn(), editScanPage: vi.fn(), replaceScanPageImage: vi.fn(), ocrScanPage: vi.fn(), listPageEngines: vi.fn(() => Promise.resolve([])), runPageEngine: vi.fn() }));
 vi.mock("@/lib/userWorkspaceApi", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/userWorkspaceApi")>()),
   ...api,

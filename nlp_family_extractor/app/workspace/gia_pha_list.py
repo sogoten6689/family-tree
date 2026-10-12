@@ -16,6 +16,7 @@ T = TypeVar("T")
 STATUS_VALUES = {"all", "built", "pending"}
 CODE_VALUES = {"all", "has", "none"}
 SOURCE_VALUES = {"all", "catalogue", "gemini"}
+SORT_FIELDS = {"scan_id", "title", "updated_at"}
 MAX_PAGE_SIZE = 200
 
 
@@ -54,6 +55,20 @@ def filter_items(
                 continue
         result.append(item)
     return result
+
+
+def sort_items(items: Sequence[Any], *, sort: str = "scan_id", order: str = "desc") -> List[Any]:
+    """Sắp xếp toàn bộ danh sách (trước khi cắt trang). Mặc định: ID bản quét giảm dần, bản mới nhất ở trên.
+    Bộ không có giá trị sắp xếp (ví dụ khách không thấy scan_id) luôn nằm cuối, cả khi đảo chiều."""
+    reverse = order == "desc"
+
+    def value(item: Any) -> Any:
+        raw = getattr(item, sort, None)
+        return normalize_for_search(raw) if sort == "title" and raw is not None else raw
+
+    present = [i for i in items if value(i) is not None]
+    missing = [i for i in items if value(i) is None]
+    return sorted(present, key=value, reverse=reverse) + missing
 
 
 def paginate(items: Sequence[T], page: int, page_size: int) -> List[T]:

@@ -98,6 +98,26 @@ export async function getUserDocument(scanId: number): Promise<UserScan> {
   return apiRequest<UserScan>(`/api/user/documents/${scanId}`);
 }
 
+export interface DocumentNeighbor {
+  id: number;
+  title: string;
+  ma_dinh_danh?: string | null;
+}
+
+export interface DocumentNeighbors {
+  /** Tài liệu có ID nhỏ hơn liền kề (null = đang ở đầu). */
+  prev: DocumentNeighbor | null;
+  /** Tài liệu có ID lớn hơn liền kề (null = đang ở cuối). */
+  next: DocumentNeighbor | null;
+  position: number;
+  total: number;
+}
+
+/** Tài liệu liền trước / liền sau (theo ID) trong các tài liệu người dùng xem được. */
+export async function getDocumentNeighbors(scanId: number): Promise<DocumentNeighbors> {
+  return apiRequest<DocumentNeighbors>(`/api/user/documents/${scanId}/neighbors`);
+}
+
 export async function updateUserDocument(
   scanId: number,
   payload: Partial<{
@@ -249,6 +269,45 @@ export async function ocrScanPage(
   return apiRequest<GiaPhaPageOcrResult>(`/api/user/documents/${scanId}/pages/${pageNumber}/ocr`, {
     method: "POST",
     body: JSON.stringify({ engine: "kimhannom", confirm_paid: true, version_id: options.versionId }),
+  });
+}
+
+export interface PageEngineStatus {
+  name: string;
+  label: string;
+  /** Trang này đã có kết quả của engine. */
+  present: boolean;
+  /** Server có adapter chạy engine này. */
+  runnable: boolean;
+  /** Đã đủ cấu hình (token/khoá) để chạy ngay. */
+  ready: boolean;
+  reason?: string | null;
+  paid: boolean;
+}
+
+export interface PageEngineRunResult {
+  version: { version_id: number; version_number: number; is_current: boolean };
+  forked: boolean;
+  engine: string;
+  text: string;
+}
+
+/** Engine OCR nào đã có / chưa có kết quả cho 1 trang, và engine nào chạy bổ sung được. */
+export async function listPageEngines(scanId: number, pageNumber: number, versionId?: number): Promise<PageEngineStatus[]> {
+  const suffix = versionId !== undefined ? `?version_id=${versionId}` : "";
+  return apiRequest<PageEngineStatus[]>(`/api/user/documents/${scanId}/pages/${pageNumber}/engines${suffix}`);
+}
+
+/** Chạy BỔ SUNG 1 engine cho 1 trang — TỐN TIỀN, server đòi confirm_paid. Chỉ thêm vào danh sách OCR theo engine. */
+export async function runPageEngine(
+  scanId: number,
+  pageNumber: number,
+  engine: string,
+  options: { versionId?: number } = {},
+): Promise<PageEngineRunResult> {
+  return apiRequest<PageEngineRunResult>(`/api/user/documents/${scanId}/pages/${pageNumber}/ocr-engine`, {
+    method: "POST",
+    body: JSON.stringify({ engine, confirm_paid: true, version_id: options.versionId }),
   });
 }
 

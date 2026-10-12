@@ -307,9 +307,9 @@ class GenealogyExtractRequest(BaseModel):
         default="vietnamese",
         description="Ngôn ngữ của văn bản: 'vietnamese' hoặc 'hannom'",
     )
-    model_version: Literal["regex", "phobert", "sikubert"] = Field(
-        default="regex",
-        description="'regex' (bộ quy tắc, tiếng Việt); 'phobert' (NER PhoBERT, tiếng Việt, cần cấu hình NER_MODEL_DIR_VI); 'sikubert' chưa có model",
+    model_version: Literal["ner", "phobert", "sikubert"] = Field(
+        default="ner",
+        description="'ner' (model NER đã huấn luyện cho tiếng Việt, cần cấu hình NER_MODEL_DIR_VI; 'phobert' là tên cũ, coi như 'ner'); 'sikubert' (chữ Hán) chưa có model",
     )
 
 
@@ -1306,18 +1306,18 @@ async def analyze_family_image(
 # Genealogy Parser API (Regex MVP + Dual-model Ready)
 # ============================================================================
 
-def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
-    """NER bằng PhoBERT (ONNX int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
+def _extract_with_ner(text: str) -> GenealogyExtractResponse:
+    """NER bằng model đã huấn luyện (ONNX int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
     from app.ner import NerUnavailable, get_ner_model
 
     try:
         model = get_ner_model("vi")
     except NerUnavailable as error:
-        return GenealogyExtractResponse(success=False, error=f"Model PhoBERT chưa sẵn sàng: {error}")
+        return GenealogyExtractResponse(success=False, error=f"Model NER chưa sẵn sàng: {error}")
     try:
         entities = model.extract(text)
     except Exception as error:
-        return GenealogyExtractResponse(success=False, error=f"Lỗi chạy model PhoBERT: {error}")
+        return GenealogyExtractResponse(success=False, error=f"Lỗi chạy model NER: {error}")
 
     persons: List[str] = []
     for ent in entities:
@@ -1351,84 +1351,20 @@ def _extract_with_phobert(text: str) -> GenealogyExtractResponse:
 )
 def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
     """
-    Trích xuất nhân vật, quan hệ và năm sinh/mất từ văn bản gia phả.
+    Trích xuất **thực thể** (tên người, địa danh, ngày tháng, đời, thứ bậc) từ văn bản gia phả bằng model NER đã huấn luyện.
 
-    Hiện chỉ có **một** bộ trích xuất thật: ``FamilyExtractor`` (quy tắc/regex, dành cho **tiếng Việt**).
-    - ``model_version="regex"`` + ``language="vietnamese"``: chạy bình thường.
-    - ``model_version="phobert"`` / ``"sikubert"``: **chưa có model đã huấn luyện** → trả ``success=false``
-      kèm lý do, KHÔNG gán nhãn model giả. (Kế hoạch: docs/planning/model_integration_and_data_quality_plan.md.)
-    - ``language="hannom"``: bộ quy tắc không hiểu chữ Hán → ``success=false`` kèm lý do.
+    - ``language="vietnamese"`` + ``model_version="ner"`` (hoặc tên cũ ``"phobert"``): chạy model hiện hành (``NER_MODEL_DIR_VI``).
+    - ``model_version="sikubert"`` / ``language="hannom"``: chưa có model chữ Hán → ``success=false`` kèm lý do (không giả lập).
+    - Chưa có quan hệ cha/mẹ/vợ chồng (chưa huấn luyện model quan hệ).
+    Không còn bộ trích xuất quy tắc (regex) ở endpoint này.
     """
     text = req.text.strip()
     if not text:
         raise HTTPException(status_code=400, detail="Text cannot be empty")
 
-    if req.model_version == "phobert" and req.language == "vietnamese":
-        return _extract_with_phobert(text)
-    if req.model_version != "regex":
+    if req.model_version == "sikubert" or req.language == "hannom":
         return GenealogyExtractResponse(
             success=False,
-            error=(
-                f"Model '{req.model_version}' cho ngôn ngữ '{req.language}' chưa được huấn luyện/triển khai. "
-                "Hiện có: 'regex' và 'phobert' (tiếng Việt)."
-            ),
+            error="Chưa có model NER cho chữ Hán-Nôm (SikuBERT chưa được huấn luyện). Hiện chỉ hỗ trợ tiếng Việt.",
         )
-    if req.language == "hannom":
-        return GenealogyExtractResponse(
-            success=False,
-            error=(
-                "Bộ trích xuất quy tắc ('regex') chưa hỗ trợ văn bản Hán-Nôm; "
-                "cần model NER Hán (SikuBERT) — chưa có."
-            ),
-        )
-
-    try:
-        from app.domains.extraction.extractor import FamilyExtractor
-
-        result = FamilyExtractor().parse(text)
-
-        # parse() trả dict {"people": [...], "relationships": [...]}; cùng một người có thể xuất hiện nhiều lần
-        # (mỗi lần nhắc tên tạo một bản ghi) → gộp theo tên, giữ năm sinh/mất đầu tiên khác rỗng.
-        id_to_name: Dict[str, str] = {}
-        persons: List[str] = []
-        person_years: Dict[str, Optional[int]] = {}
-        for person in result["people"]:
-            name = person["full_name"]
-            id_to_name[person["id"]] = name
-            if name not in person_years:
-                persons.append(name)
-                person_years[name] = None
-            if person_years[name] is None:
-                person_years[name] = person.get("birth_year") or person.get("death_year")
-
-        relations: List[Dict[str, Any]] = []
-        seen_relations = set()
-        for rel in result["relationships"]:
-            head, tail = id_to_name.get(rel["from_id"]), id_to_name.get(rel["to_id"])
-            key = (head, rel["type"], tail)
-            if head is None or tail is None or head == tail or key in seen_relations:
-                continue
-            seen_relations.add(key)
-            relations.append(
-                {"head": head, "type": rel["type"], "tail": tail, "confidence": rel.get("confidence", 0.6)}
-            )
-
-        return GenealogyExtractResponse(
-            success=True,
-            data=GenealogyExtractionResult(
-                persons=persons,
-                person_years=person_years,
-                relations=relations,
-                statistics={"person_count": len(persons), "relation_count": len(relations)},
-                model_info={
-                    "model_name": "FamilyExtractor-Regex-MVP",
-                    "model_version": "1.0.0",
-                    "language": req.language,
-                },
-            ),
-        )
-    except Exception as error:
-        return GenealogyExtractResponse(
-            success=False,
-            error=f"Genealogy extraction error: {str(error)}",
-        )
+    return _extract_with_ner(text)

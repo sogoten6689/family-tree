@@ -21,6 +21,7 @@ import AppShell from "@/layouts/AppShell";
 import { useCoreNavItems } from "@/layouts/useCoreNavItems";
 import { CORE_NAV_PATHS, isCoreNavKey, resolveMenuKey, roleHomePath, type NavRole } from "@/config/coreNav";
 import { DEVELOPER_NAV_ITEMS, getDeveloperNavItem, isDeveloperPath } from "@/config/developerRoutes";
+import { buildBreadcrumb } from "@/config/breadcrumbs";
 import { getPageTitleKey } from "@/config/pages";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -104,16 +105,13 @@ const RoleLayout = () => {
       ? t("docReader.pageTitle", { defaultValue: "Phòng đọc tư liệu gia phả" })
       : t(getPageTitleKey(location.pathname), { defaultValue: t("common.appName") });
 
-  const breadcrumbItems = useMemo(() => {
-    const items: { title: React.ReactNode }[] = [
-      { title: <Link to={roleHomePath(role)}>{t("common.backHome", { defaultValue: "Trang chủ" })}</Link> },
-    ];
-    if (role === "admin") items.push({ title: t("admin.zoneTitle", { defaultValue: "Quản trị" }) });
-    if (role === "user") items.push({ title: t("user.zoneTitle", { defaultValue: "Người dùng" }) });
-    if (developerItem) items.push({ title: t("admin.developer.menu", { defaultValue: "Developer" }) });
-    items.push({ title: pageTitle });
-    return items;
-  }, [role, t, developerItem, pageTitle]);
+  const breadcrumbItems = useMemo(
+    () =>
+      buildBreadcrumb(location.pathname, location.search, role, (key, defaultValue) => t(key, { defaultValue })).map((crumb) => ({
+        title: crumb.to ? <Link to={crumb.to}>{crumb.label}</Link> : crumb.label,
+      })),
+    [location.pathname, location.search, role, t],
+  );
 
   if (isLoading) {
     // Chưa biết vai trò — không hiện tạm menu Guest rồi đổi (nhấp nháy).
