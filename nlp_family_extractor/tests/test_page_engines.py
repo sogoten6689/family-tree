@@ -133,3 +133,66 @@ class PageEnginesEndpointTest(_PagesApi, unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+BOX = {"bbox_xyxy": [1, 2, 30, 40], "han": "新", "confidence": 0.9, "order": 1}
+
+
+class PageEngineBoxesTest(PageEnginesEndpointTest):
+    """Engine có trả khung chữ (Kim Hán Nôm Lab) không được làm mất khung."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.kim = mock.Mock(return_value=EngineResult(engine="kimhannom", lines=["新", "字"], bbox=[BOX]))
+        self.kim_reg = mock.patch.dict(hannom_engines.ENGINE_REGISTRY, {"kimhannom": self.kim})
+        self.kim_reg.start()
+        self.pages = GiaPhaPageRepository(self.db)
+
+    def tearDown(self) -> None:
+        self.kim_reg.stop()
+        super().tearDown()
+
+    def run_kim(self, n: int = 1, **extra):
+        res = self.client.post(self.url(n, "ocr-engine"), json={"engine": "kim_hannom_lab", "confirm_paid": True, **extra})
+        self.assertEqual(res.status_code, 200, res.text)
+        return res.json()
+
+    def content(self, version_id: int, n: int):
+        pid = self.pages.list_by_scan(self.scan.id)[n - 1].id
+        return next(c for c in self.pages.list_content_for_version(version_id) if c.page_id == pid)
+
+    def test_page_with_text_but_no_boxes_gets_boxes_and_keeps_text(self) -> None:
+        body = self.run_kim(1)
+        self.assertEqual((body["adopted_text"], body["box_count"]), (False, 1))
+        new = self.content(body["version"]["version_id"], 1)
+        self.assertEqual(new.ocr_bbox, [BOX])
+        self.assertEqual(new.hannom_text, "漢1")  # chữ chính giữ nguyên
+        self.assertIn("kim_hannom_lab", new.ocr_vote_meta["engines"])
+
+    def test_image_only_page_adopts_text_and_boxes(self) -> None:
+        # Giống sách mới chỉ nhập ảnh: trang chưa có chữ, chưa có khung.
+        page = self.pages.list_by_scan(self.scan.id)[1]
+        content = next(c for c in self.pages.list_content_for_version(self.version.id) if c.page_id == page.id)
+        content.hannom_text = None
+        self.db.add(content)
+        self.db.commit()
+        body = self.run_kim(2)
+        self.assertEqual((body["adopted_text"], body["box_count"]), (True, 1))
+        new = self.content(body["version"]["version_id"], 2)
+        self.assertEqual((new.hannom_text, new.ocr_bbox), ("新\n字", [BOX]))
+
+    def test_existing_boxes_are_not_replaced(self) -> None:
+        first = self.run_kim(1)
+        vid = first["version"]["version_id"]
+        content = self.content(vid, 1)
+        content.ocr_bbox = [{"bbox_xyxy": [9, 9, 9, 9], "han": "舊", "order": 1}]
+        self.db.add(content)
+        self.db.commit()
+        again = self.run_kim(1, version_id=vid)
+        self.assertEqual(again["box_count"], 0)
+        self.assertEqual(self.content(vid, 1).ocr_bbox[0]["han"], "舊")  # khung cũ giữ nguyên
+
+    def test_engine_without_boxes_leaves_boxes_untouched(self) -> None:
+        body = self.client.post(self.url(1, "ocr-engine"), json={"engine": "gemini", "confirm_paid": True}).json()
+        self.assertEqual((body["adopted_text"], body["box_count"]), (False, 0))
+        self.assertIsNone(self.content(body["version"]["version_id"], 1).ocr_bbox)

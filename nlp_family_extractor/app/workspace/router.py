@@ -299,6 +299,8 @@ class PageEngineRunResult(BaseModel):
     forked: bool
     engine: str
     text: str
+    adopted_text: bool = False  # trang chưa có chữ chính → kết quả engine này trở thành chữ chính
+    box_count: int = 0  # số khung chữ đã lưu cho trang (0 = không lưu / engine không trả khung)
 
 
 class DocumentNeighbor(BaseModel):
@@ -1223,9 +1225,10 @@ def create_workspace_router(
         versions: GiaPhaVersionRepository = Depends(version_repo),
         pages_repo: GiaPhaPageRepository = Depends(page_repo),
     ) -> PageEngineRunResult:
-        """Chạy BỔ SUNG 1 engine OCR cho 1 trang (TỐN TIỀN, cần confirm_paid=true). Kết quả chỉ thêm vào
-        danh sách OCR theo engine của trang (version sửa tay, bản gốc giữ nguyên); chữ chính, khung chữ,
-        phiên âm và dịch nghĩa KHÔNG đổi, vote không chạy lại. Chủ bộ hoặc admin."""
+        """Chạy BỔ SUNG 1 engine OCR cho 1 trang (TỐN TIỀN, cần confirm_paid=true). Kết quả được thêm vào
+        danh sách OCR theo engine của trang (version sửa tay, bản gốc giữ nguyên). Trang chưa có chữ thì
+        kết quả này thành chữ chính (kèm khung chữ nếu engine trả); trang đã có chữ thì chữ chính, phiên âm,
+        dịch nghĩa KHÔNG đổi và vote không chạy lại — chỉ bổ sung khung chữ khi trang chưa có. Chủ bộ hoặc admin."""
         from app.documents.storage import ObjectStorage, ObjectStorageError
         from app.workspace import page_engines as pe
         from app.workspace.page_images import is_storage_key
@@ -1281,9 +1284,19 @@ def create_workspace_router(
                 text_step_status=None,
             )
         current = next((c for c in pages_repo.list_content_for_version(target.id) if c.page_id == page.id), None)
+        boxes = (result.bbox or []) if result else []
+        has_text = bool(current and (current.hannom_text or "").strip())
+        has_boxes = bool(current and isinstance(current.ocr_bbox, list) and current.ocr_bbox)
+        # Trang CHƯA có chữ (ví dụ sách mới chỉ nhập ảnh): kết quả đầu tiên trở thành chữ chính, kèm khung chữ.
+        # Trang đã có chữ: chữ chính giữ nguyên; chỉ bổ sung khung chữ nếu trang chưa có khung nào
+        # (engine như Kim Hán Nôm trả khung, các engine khác thì không).
+        adopt_text = not has_text
+        save_boxes = bool(boxes) and (adopt_text or not has_boxes)
         pages_repo.upsert_content(
             version_id=target.id,
             page_id=page.id,
+            hannom_text=text if adopt_text else None,
+            ocr_bbox=boxes if save_boxes else None,
             ocr_vote_meta=pe.merge_engine_text(current.ocr_vote_meta if current else None, engine.name, text),
         )
         return PageEngineRunResult(
@@ -1291,6 +1304,8 @@ def create_workspace_router(
             forked=forked,
             engine=engine.name,
             text=text,
+            adopted_text=adopt_text,
+            box_count=len(boxes) if save_boxes else 0,
         )
 
     @router.put("/api/user/documents/{scan_id}/pages/{page_number}/image", response_model=GiaPhaPageImageResult)

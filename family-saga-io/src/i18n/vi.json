@@ -733,7 +733,7 @@
   },
   "pageViewer": {
     "original": "Ảnh gốc",
-    "boxes": "Khung chữ (Paddle) — {{n}} khung, số = thứ tự đọc",
+    "boxes": "Khung chữ — {{n}} khung, số = thứ tự đọc",
     "boxesAlt": "Trang {{n}} có khung chữ",
     "noBoxes": "Chưa có khung chữ cho trang này.",
     "stale": "Chữ Hán trang này đã đổi sau khi vote lại — phiên âm / dịch nghĩa có thể chưa khớp.",
