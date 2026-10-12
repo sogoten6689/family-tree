@@ -14,6 +14,11 @@ type BoundingBoxOverlayProps = {
   bbox: BBoxItem[];
   showBoxes: boolean;
   showOrder?: boolean;
+  /**
+   * Cỡ hiển thị: "width" (mặc định, vừa bề ngang khung), "screen" (vừa cả màn hình, không cuộn),
+   * "natural" (kích thước thật của ảnh, cuộn để xem).
+   */
+  fit?: "width" | "screen" | "natural";
 };
 
 /**
@@ -21,7 +26,7 @@ type BoundingBoxOverlayProps = {
  * pixel của ảnh GỐC (naturalWidth/Height), không phải pixel hiển thị — nên
  * phải đo kích thước hiển thị thật của <img> rồi scale lại mỗi box.
  */
-export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes, showOrder = false }: BoundingBoxOverlayProps) {
+export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes, showOrder = false, fit = "width" }: BoundingBoxOverlayProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [size, setSize] = useState<{ natW: number; natH: number; dispW: number; dispH: number } | null>(null);
 
@@ -41,13 +46,19 @@ export function BoundingBoxOverlay({ imageUrl, alt, bbox, showBoxes, showOrder =
   const scaleY = size && size.natH ? size.dispH / size.natH : 1;
 
   return (
-    <div style={{ position: "relative", display: "inline-block", lineHeight: 0, maxWidth: "100%" }}>
+    <div style={{ position: "relative", display: "inline-block", lineHeight: 0, maxWidth: fit === "natural" ? "none" : "100%" }}>
       <img
         ref={imgRef}
         src={imageUrl}
         alt={alt}
         onLoad={measure}
-        style={{ maxWidth: "100%", display: "block" }}
+        style={
+          fit === "natural"
+            ? { maxWidth: "none", display: "block" }
+            : fit === "screen"
+              ? { maxWidth: "100%", maxHeight: "78vh", display: "block" }
+              : { maxWidth: "100%", display: "block" }
+        }
       />
       {showBoxes &&
         size &&

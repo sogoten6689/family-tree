@@ -1,11 +1,11 @@
 import { DeleteOutlined, EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined, UndoOutlined } from "@ant-design/icons";
-import { Alert, Button, Card, Empty, Image, Input, List, Modal, Pagination, Spin, Tag, Typography } from "antd";
+import { Alert, Button, Card, Empty, Input, List, Modal, Pagination, Spin, Tag, Typography } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
-import { BoundingBoxOverlay } from "@/components/documents/BoundingBoxOverlay";
+import { ZoomableImage } from "@/components/documents/ZoomableImage";
 import {
   deleteScanPage,
   editScanPage,
@@ -345,7 +345,10 @@ export function PageViewer({ scanId }: { scanId: number }) {
             <div className="page-viewer-images">
               <figure>
                 <figcaption>{t("pageViewer.original", { defaultValue: "Ảnh gốc" })}</figcaption>
-                <Image src={page.image_url} alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })} />
+                <ZoomableImage
+                  imageUrl={page.image_url}
+                  alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })}
+                />
               </figure>
               {boxes.length > 0 ? (
                 <figure>
@@ -355,11 +358,10 @@ export function PageViewer({ scanId }: { scanId: number }) {
                       n: boxes.length,
                     })}
                   </figcaption>
-                  <BoundingBoxOverlay
+                  <ZoomableImage
                     imageUrl={page.image_url}
                     alt={t("pageViewer.boxesAlt", { defaultValue: "Trang {{n}} có khung chữ", n: page.page_number })}
                     bbox={boxes}
-                    showBoxes
                     showOrder
                   />
                 </figure>
