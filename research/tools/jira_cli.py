@@ -8,6 +8,7 @@ Lệnh đọc chạy thẳng; lệnh ghi (comment, move) chỉ chạy khi có --
   python research/tools/jira_cli.py list [--jql "..."]
   python research/tools/jira_cli.py get SCRUM-1
   python research/tools/jira_cli.py comment SCRUM-1 "nội dung" --yes
+  python research/tools/jira_cli.py describe SP-1 mo_ta.txt --yes   (## tiêu đề, - gạch đầu dòng)
   python research/tools/jira_cli.py move SCRUM-1 "Done" --yes
 """
 from __future__ import annotations
@@ -47,6 +48,29 @@ def _adf(text: str) -> dict:
     return {"type": "doc", "version": 1, "content": [{"type": "paragraph", "content": [{"type": "text", "text": text}]}]}
 
 
+def _adf_blocks(text: str) -> dict:
+    """Văn bản đơn giản -> ADF: dòng '## ' là tiêu đề, '- ' là gạch đầu dòng, còn lại là đoạn."""
+    content, bullets = [], []
+
+    def flush():
+        if bullets:
+            content.append({"type": "bulletList", "content": [
+                {"type": "listItem", "content": [{"type": "paragraph", "content": [{"type": "text", "text": b}]}]} for b in bullets]})
+            bullets.clear()
+
+    for line in text.splitlines():
+        if line.startswith("- "):
+            bullets.append(line[2:].strip())
+            continue
+        flush()
+        if line.startswith("## "):
+            content.append({"type": "heading", "attrs": {"level": 3}, "content": [{"type": "text", "text": line[3:].strip()}]})
+        elif line.strip():
+            content.append({"type": "paragraph", "content": [{"type": "text", "text": line.strip()}]})
+    flush()
+    return {"type": "doc", "version": 1, "content": content}
+
+
 def _plain(node) -> str:
     if isinstance(node, dict):
         return node.get("text", "") + "".join(_plain(c) for c in node.get("content", []))
@@ -65,6 +89,7 @@ def main() -> None:
     p = sub.add_parser("list"); p.add_argument("--jql", default=f"project = {PROJECT} ORDER BY created DESC")
     p = sub.add_parser("get"); p.add_argument("key")
     p = sub.add_parser("comment"); p.add_argument("key"); p.add_argument("text"); p.add_argument("--yes", action="store_true")
+    p = sub.add_parser("describe"); p.add_argument("key"); p.add_argument("file"); p.add_argument("--yes", action="store_true")
     p = sub.add_parser("move"); p.add_argument("key"); p.add_argument("status"); p.add_argument("--yes", action="store_true")
     args = parser.parse_args()
 
@@ -88,6 +113,11 @@ def main() -> None:
         _need_yes(args)
         _request("POST", f"/rest/api/3/issue/{args.key}/comment", {"body": _adf(args.text)})
         print("đã bình luận")
+    elif args.cmd == "describe":
+        _need_yes(args)
+        with open(args.file, encoding="utf-8") as fh:
+            _request("PUT", f"/rest/api/3/issue/{args.key}", {"fields": {"description": _adf_blocks(fh.read())}})
+        print("đã ghi mô tả")
     elif args.cmd == "move":
         _need_yes(args)
         transitions = _request("GET", f"/rest/api/3/issue/{args.key}/transitions")["transitions"]
