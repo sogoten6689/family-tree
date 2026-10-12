@@ -9,6 +9,7 @@ Lệnh đọc chạy thẳng; lệnh ghi (comment, move) chỉ chạy khi có --
   python research/tools/jira_cli.py get SCRUM-1
   python research/tools/jira_cli.py comment SCRUM-1 "nội dung" --yes
   python research/tools/jira_cli.py describe SP-1 mo_ta.txt --yes   (## tiêu đề, - gạch đầu dòng)
+  python research/tools/jira_cli.py create "tiêu đề" mo_ta.txt --yes   (--type Task)
   python research/tools/jira_cli.py move SCRUM-1 "Done" --yes
 """
 from __future__ import annotations
@@ -90,6 +91,7 @@ def main() -> None:
     p = sub.add_parser("get"); p.add_argument("key")
     p = sub.add_parser("comment"); p.add_argument("key"); p.add_argument("text"); p.add_argument("--yes", action="store_true")
     p = sub.add_parser("describe"); p.add_argument("key"); p.add_argument("file"); p.add_argument("--yes", action="store_true")
+    p = sub.add_parser("create"); p.add_argument("summary"); p.add_argument("file"); p.add_argument("--type", default="Task"); p.add_argument("--yes", action="store_true")
     p = sub.add_parser("move"); p.add_argument("key"); p.add_argument("status"); p.add_argument("--yes", action="store_true")
     args = parser.parse_args()
 
@@ -118,6 +120,13 @@ def main() -> None:
         with open(args.file, encoding="utf-8") as fh:
             _request("PUT", f"/rest/api/3/issue/{args.key}", {"fields": {"description": _adf_blocks(fh.read())}})
         print("đã ghi mô tả")
+    elif args.cmd == "create":
+        _need_yes(args)
+        with open(args.file, encoding="utf-8") as fh:
+            description = _adf_blocks(fh.read())
+        issue = _request("POST", "/rest/api/3/issue", {"fields": {
+            "project": {"key": PROJECT}, "summary": args.summary, "issuetype": {"name": args.type}, "description": description}})
+        print(f"đã tạo {issue['key']}: {SITE}/browse/{issue['key']}")
     elif args.cmd == "move":
         _need_yes(args)
         transitions = _request("GET", f"/rest/api/3/issue/{args.key}/transitions")["transitions"]
