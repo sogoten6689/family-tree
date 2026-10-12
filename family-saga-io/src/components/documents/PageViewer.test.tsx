@@ -49,6 +49,24 @@ describe("PageViewer", { timeout: 15000 }, () => {
   // hiện Alert (đối chứng 02/10/2026: bỏ beforeEach → 4/4 pass; chưa rõ cơ chế
   // bên trong vitest). Mỗi test tự đặt kết quả giả nên không rò trạng thái.
 
+  it("zoom view: next/previous page buttons change the page without closing the view", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    fireEvent.click(screen.getByRole("button", { name: /Phóng to: Trang 1/ }));
+    expect(await screen.findByTestId("zoom-position")).toHaveTextContent("1/2");
+    expect(screen.getByRole("button", { name: /Trang trước/ })).toBeDisabled();
+    fireEvent.click(screen.getByRole("button", { name: /Trang sau/ }));
+    await waitFor(() => expect(screen.getByTestId("zoom-position")).toHaveTextContent("2/2"));
+    // Trang 2 chưa có ảnh: khung vẫn mở và báo rõ, nút "Trang sau" khoá ở trang cuối, "Trang trước" quay lại được.
+    expect(screen.getByTestId("zoom-body")).toHaveTextContent("Chưa có ảnh cho trang này");
+    expect(screen.getByRole("button", { name: /Trang sau/ })).toBeDisabled();
+    fireEvent.click(screen.getByRole("button", { name: /Trang trước/ }));
+    await waitFor(() => expect(screen.getByTestId("zoom-position")).toHaveTextContent("1/2"));
+    expect(screen.getByTestId("zoom-body").querySelector("img")).toHaveAttribute("src", PAGES[0].image_url);
+  });
+
   it("shows the page image next to its texts and the image count", async () => {
     api.listScanPages.mockResolvedValue(PAGES);
     api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
