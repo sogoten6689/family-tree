@@ -746,5 +746,10 @@
     "page": "Trang {{n}}",
     "noImage": "Chưa có ảnh cho trang này",
     "none": "Chưa có"
+  },
+  "breadcrumb": {
+    "detail": "Chi tiết",
+    "document": "Tài liệu",
+    "edit": "Chỉnh sửa"
   }
 }
