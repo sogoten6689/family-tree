@@ -746,5 +746,10 @@
     "page": "Page {{n}}",
     "noImage": "No image for this page yet",
     "none": "None"
+  },
+  "breadcrumb": {
+    "detail": "Details",
+    "document": "Document",
+    "edit": "Edit"
   }
 }
