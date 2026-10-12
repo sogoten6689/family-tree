@@ -68,8 +68,9 @@ services:
       HANNOM_EMAIL: ${HANNOM_EMAIL:-}
       HANNOM_PASSWORD: ${HANNOM_PASSWORD:-}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
-      GOOGLE_VISION_API_KEY: ${GOOGLE_VISION_API_KEY:-}      # Hoặc token tĩnh / token lấy runtime qua /api/developer/hannom/fetch-token
+      # Hoặc token tĩnh / token lấy runtime qua /api/developer/hannom/fetch-token
       HANNOM_API_TOKEN: ${HANNOM_API_TOKEN:-}
+      GOOGLE_VISION_API_KEY: ${GOOGLE_VISION_API_KEY:-}  # engine OCR Google Vision (chạy bổ sung từng trang)
     depends_on:
       mysql:
         condition: service_healthy
