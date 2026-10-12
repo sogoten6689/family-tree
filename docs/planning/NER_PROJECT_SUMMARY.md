@@ -33,14 +33,15 @@ Cập nhật: 12/10/2026 · Chi tiết số liệu từng bước: `NER_WORK_LOG
 - **PR**: #12–#17 đã merge. **#18** (prelabel ghi model_version) chờ merge — chỉ công cụ/tài liệu, không đổi production.
 - **Điểm yếu lớn nhất**: PER_NAME F1 ≈ 0,40 ở mọi cấu hình. Địa danh 0,62, ngày tháng ~0,80, đời ~0,67, thứ bậc chưa đo được (chỉ 11 mẫu).
 - **Hạn chế dữ liệu**: gold người soát mới 25 cây (692 thực thể); gold này tạo từ sửa nhãn Gemini nên có thể bị neo (F1 thật có thể thấp hơn chút).
-- **Chưa làm**: SikuBERT/chữ Hán (chưa có gold chữ Hán), model quan hệ, kiểm thử quy mô lớn.
+- **Quan hệ (RE)**: đã thử baseline nhãn yếu Gemini → **F1 0,18, chưa dùng được** (chi tiết ở `NER_WORK_LOG.md`, PR #20); cần nhãn quan hệ do người soát (mục tiêu ≥ 300).
+- **Chưa làm**: SikuBERT/chữ Hán (chưa có gold chữ Hán), kiểm thử quy mô lớn.
 
 ## 4. Kế hoạch tiếp theo
 
-1. **Anh Lâm soát thêm nhãn** (việc quyết định nhất): import `data/03_derived/prelabel_xlmr_v1/tasks.json` vào Label Studio, soát theo `priority.csv` (cây 229, 1695, 1717, 243, 1636 trước); ưu tiên **PER_NAME** (model dễ bỏ sót/cắt tên), rồi LOC. Xuất cây đã soát bằng `export_ls_gold.py`.
+1. **Anh Lâm soát thêm nhãn** (việc quyết định nhất): import `data/03_derived/prelabel_xlmr_v1/tasks.json` vào Label Studio, soát theo `priority.csv` (cây 229, 1695, 1717, 243, 1636 trước); ưu tiên **PER_NAME** (model dễ bỏ sót/cắt tên), rồi LOC, và **ghi cả quan hệ cha/mẹ/vợ chồng**. Xuất cây đã soát bằng `export_ls_gold.py`.
 2. **Huấn luyện lại** (em làm, hỏi trước vì tốn tiền Colab): `prepare_retrain.py` → notebook CV → bản cuối → xuất ONNX. Chỉ thay prod nếu F1 kiểm chéo gộp ≥ 0,609 và PER_NAME không tụt.
 3. **Thay model trên prod** (cần anh cho phép): chép 4 tệp vào `models/ner_vi/` trên VPS (giữ bản cũ làm `.bak`), restart backend. Hoàn tác ~1 phút.
-4. **Quan hệ (RE)**: sau khi NER ổn (ví dụ PER_NAME ≥ 0,6), huấn luyện phân loại quan hệ FATHER_OF/MOTHER_OF/SPOUSE; dựng cây từ thực thể + quan hệ.
+4. **Quan hệ (RE)**: baseline nhãn yếu đã thử (F1 0,18, không đạt). Làm lại sau khi anh soát **quan hệ** song song với tên người (≥ 300 quan hệ); xem xét đặc trưng cấu trúc / mô hình theo câu; rồi dựng cây từ thực thể + quan hệ.
 5. **Chữ Hán (SikuBERT)**: gán nhãn thí điểm 10–20 trang trước (có thể tốn tiền nếu dùng LLM gợi ý), kiểm tra lỗi lệch offset UTF-16 (câu hỏi Q1 còn mở).
 6. **Dọn kỹ thuật** (nhỏ): hai test giao diện chập chờn (`PageViewer.test.tsx`, `LlmImportPanel.test.tsx`) làm CI hay phải chạy lại; 3 lỗi `prefer-const` trong `theme/colorUtils.ts`; tên tham số `model_version="phobert"` của API nay thực chất chọn "model NER hiện hành" (cân nhắc đổi tên, giữ tương thích).
 
