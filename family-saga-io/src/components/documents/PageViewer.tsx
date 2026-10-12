@@ -358,7 +358,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
                 <figure>
                   <figcaption>
                     {t("pageViewer.boxes", {
-                      defaultValue: "Khung chữ (Paddle) — {{n}} khung, số = thứ tự đọc",
+                      defaultValue: "Khung chữ — {{n}} khung, số = thứ tự đọc",
                       n: boxes.length,
                     })}
                   </figcaption>
@@ -401,9 +401,11 @@ export function PageViewer({ scanId }: { scanId: number }) {
             versionId={viewVersionId}
             refreshKey={detailNonce}
             onRan={(result) => {
-              // Engine mới nằm trong version sửa tay: chuyển sang xem version đó và tải lại chi tiết trang.
+              // Engine mới nằm trong version sửa tay: chuyển sang xem version đó, tải lại chi tiết trang
+              // và danh sách trang (trang chưa có chữ có thể vừa nhận chữ chính từ engine).
               setEditVersion({ id: result.version.version_id, number: result.version.version_number });
               setDetailNonce((n) => n + 1);
+              setListNonce((n) => n + 1);
             }}
           />
           {detailError && <Alert type="warning" showIcon message={detailError} />}

@@ -49,6 +49,24 @@ describe("PageViewer", { timeout: 15000 }, () => {
   // hiện Alert (đối chứng 02/10/2026: bỏ beforeEach → 4/4 pass; chưa rõ cơ chế
   // bên trong vitest). Mỗi test tự đặt kết quả giả nên không rò trạng thái.
 
+  it("running an engine from the panel reloads the page list (an image-only page may get its first text and boxes)", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
+    api.listPageEngines.mockResolvedValue([
+      { name: "kim_hannom_lab", label: "Kim Hán Nôm Lab", present: false, runnable: true, ready: true, reason: null, paid: true },
+    ]);
+    api.runPageEngine.mockResolvedValue({ version: { version_id: 77, version_number: 3, is_current: false }, forked: true, engine: "kim_hannom_lab", text: "新", adopted_text: true, box_count: 4 });
+    render(<PageViewer scanId={20} />);
+    await screen.findByText("大尊圖");
+    const before = api.listScanPages.mock.calls.length;
+    fireEvent.click(await screen.findByRole("button", { name: "Chạy" }));
+    fireEvent.click(await screen.findByRole("button", { name: /Chạy \(tốn tiền\)/ }));
+    await waitFor(() => expect(api.runPageEngine).toHaveBeenCalled());
+    await waitFor(() => expect(api.listScanPages.mock.calls.length).toBeGreaterThan(before)); // tải lại danh sách trang
+    expect(api.listScanPages).toHaveBeenLastCalledWith(20, 77); // và xem bản sửa tay vừa tạo
+    api.listPageEngines.mockImplementation(() => Promise.resolve([])); // không để mock rò sang test sau (file này không reset mock)
+  });
+
   it("zoom view: next/previous page buttons change the page without closing the view", async () => {
     api.listScanPages.mockResolvedValue(PAGES);
     api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));
@@ -207,12 +225,12 @@ describe("PageViewer", { timeout: 15000 }, () => {
       previous_image_key: "gia-pha/20/pages/001.jpg",
     });
     render(<PageViewer scanId={20} />);
-    await screen.findByText(/Khung chữ \(Paddle\)/);
+    await screen.findByText(/Khung chữ — /);
     const file = new File([new Uint8Array([137, 80, 78, 71])], "moi.png", { type: "image/png" });
     fireEvent.change(screen.getByTestId("page-image-input"), { target: { files: [file] } });
     await waitFor(() => expect(api.replaceScanPageImage).toHaveBeenCalledWith(20, 1, file));
     expect(await screen.findByText(/Đã thay ảnh trang này/)).toBeInTheDocument();
-    expect(screen.queryByText(/Khung chữ \(Paddle\)/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Khung chữ — /)).not.toBeInTheDocument();
     expect(screen.getByRole("img", { name: "Trang 1" })).toHaveAttribute("src", "https://minio/gia-pha/20/pages/001-ab12cd34.png?sig");
   });
 

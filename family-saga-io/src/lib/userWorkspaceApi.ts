@@ -290,6 +290,10 @@ export interface PageEngineRunResult {
   forked: boolean;
   engine: string;
   text: string;
+  /** Trang chưa có chữ → kết quả engine trở thành chữ chính. */
+  adopted_text?: boolean;
+  /** Số khung chữ đã lưu cho trang (0 = không lưu). */
+  box_count?: number;
 }
 
 /** Engine OCR nào đã có / chưa có kết quả cho 1 trang, và engine nào chạy bổ sung được. */
