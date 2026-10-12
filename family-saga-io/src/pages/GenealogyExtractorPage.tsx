@@ -63,7 +63,7 @@ export default function GenealogyExtractorPage() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("persons");
   const [language, setLanguage] = useState<"vietnamese" | "hannom">("vietnamese");
-  const [modelVersion, setModelVersion] = useState<"regex" | "phobert" | "sikubert">("regex");
+  const [modelVersion, setModelVersion] = useState<"ner" | "sikubert">("ner");
 
   const handleExtract = async () => {
     if (!text.trim()) {
@@ -200,15 +200,8 @@ export default function GenealogyExtractorPage() {
                   <label style={{ marginRight: "12px", fontWeight: 500 }}>Model Version:</label>
                   <Button.Group>
                     <Button
-                      type={modelVersion === "regex" ? "primary" : "default"}
-                      onClick={() => setModelVersion("regex")}
-                      disabled={loading}
-                    >
-                      📊 Quy tắc (MVP)
-                    </Button>
-                    <Button
-                      type={modelVersion === "phobert" ? "primary" : "default"}
-                      onClick={() => setModelVersion("phobert")}
+                      type={modelVersion === "ner" ? "primary" : "default"}
+                      onClick={() => setModelVersion("ner")}
                       disabled={loading}
                       title="Model NER đã huấn luyện (thử nghiệm): chỉ trích thực thể, chưa có quan hệ"
                     >
@@ -297,8 +290,7 @@ export default function GenealogyExtractorPage() {
                   </Text>
                   <br />
                   <Text type="secondary" style={{ fontSize: "12px", marginTop: "4px", display: "block" }}>
-                    {result.model_info.note ??
-                      "Bộ quy tắc: kết quả chỉ mang tính tham khảo, cần người soát lại."}
+                    {result.model_info.note ?? "Kết quả chỉ mang tính gợi ý, cần người soát lại."}
                   </Text>
                 </div>
 
@@ -423,17 +415,17 @@ export default function GenealogyExtractorPage() {
       <Card style={{ marginTop: "24px" }}>
         <Title level={5}>ℹ️ Thông Tin</Title>
         <Paragraph>
-          <strong>Độ chính xác:</strong> 60% trên dữ liệu gia phả đa dạng (phiên bản MVP)
+          <strong>Mô hình:</strong> NER đã huấn luyện trên gia phả tiếng Việt (XLM-RoBERTa-base, chạy ONNX trên CPU)
         </Paragraph>
         <Paragraph>
-          <strong>Hỗ trợ:</strong> Tiếng Việt (Vietnamese only)
+          <strong>Độ chính xác:</strong> F1 kiểm chéo ≈ 0,61 (địa danh ~0,62, ngày tháng ~0,80, tên người ~0,40 — còn yếu)
         </Paragraph>
         <Paragraph>
-          <strong>Tốc độ:</strong> &lt;1ms per document
+          <strong>Hỗ trợ:</strong> Tiếng Việt. Chữ Hán-Nôm (SikuBERT) chưa có model.
         </Paragraph>
         <Paragraph>
-          <strong>Giới hạn:</strong> Parser dựa trên regex - hiệu suất giảm trên văn bản phức tạp. Sẽ được nâng cấp
-          thành phiên bản ML-based cho độ chính xác 90%+ trong tương lai.
+          <strong>Giới hạn:</strong> chỉ nhận diện thực thể (tên người, địa danh, ngày tháng, đời, thứ bậc); chưa có quan hệ
+          cha/mẹ/vợ chồng. Kết quả là gợi ý, cần người soát lại.
         </Paragraph>
       </Card>
     </div>
