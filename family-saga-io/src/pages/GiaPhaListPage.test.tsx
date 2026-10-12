@@ -132,6 +132,19 @@ describe("GiaPhaListPage (phân trang + tìm kiếm ở backend)", { timeout: 15
     expect(lastParams()).toMatchObject({ page: 2, pageSize: 10 });
   });
 
+  it("shows the scan ID under the code and sorts newest-first by default; clicking a header re-sorts on the backend", async () => {
+    api.listGiaPha.mockImplementation(async () => ({
+      total: 2, total_all: 2, page: 1, page_size: 10,
+      items: [{ ...ALL[0], scan_id: 22 }, { ...ALL[1], scan_id: 21 }],
+    }));
+    renderAt("/admin/gia-pha");
+    await screen.findByText("Phan gia công phả");
+    expect(screen.getByText("ID: 22")).toBeInTheDocument();
+    expect(lastParams()).toMatchObject({ sort: "scan_id", order: "desc" });
+    fireEvent.click(screen.getAllByText("TÊN")[0]);
+    await waitFor(() => expect(lastParams()).toMatchObject({ sort: "title", page: 1 }));
+  });
+
   it("'Tải lại' bypasses the server cache", async () => {
     renderAt("/admin/gia-pha");
     await screen.findByText("Phan gia công phả");

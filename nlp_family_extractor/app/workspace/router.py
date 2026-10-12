@@ -17,7 +17,7 @@ from app.documents.schemas import DocumentListResponse, DocumentResponse
 from app.documents.storage import ObjectStorage
 from app.family_tree_store import FamilyTreeNotFoundError, FamilyTreeStoreError
 from app.workspace.models import GiaPhaVersion, GiaPhaVersionStep, OcrStatus, TreeStatus, UserScan
-from app.workspace.gia_pha_list import GIA_PHA_CACHE, MAX_PAGE_SIZE, filter_items, paginate
+from app.workspace.gia_pha_list import GIA_PHA_CACHE, MAX_PAGE_SIZE, filter_items, paginate, sort_items
 from app.workspace.llm_import import add_coverage_warnings, parse_import
 from app.workspace.stats import STATS_CACHE, page_progress, summarize_items
 from app.workspace.repository import GiaPhaPageRepository, GiaPhaVersionRepository, UserScanRepository
@@ -644,13 +644,15 @@ def create_workspace_router(
         status: Literal["all", "built", "pending"] = "all",
         code: Literal["all", "has", "none"] = "all",
         source: Literal["all", "catalogue", "gemini"] = "all",
+        sort: Literal["scan_id", "title", "updated_at"] = "scan_id",
+        order: Literal["asc", "desc"] = "desc",
         refresh: bool = Query(False, description="true = bỏ qua cache, đọc lại từ DB (nút Tải lại)"),
     ) -> GiaPhaListResponse:
         """Danh sách Gia phả: lọc + phân trang ở backend. Danh sách đầy đủ (chưa lọc) của mỗi
         phạm vi (khách / admin / từng user) được cache 20 giây trong bộ nhớ và bị xoá ngay khi có
         request ghi thành công (api.py); lọc và cắt trang chạy trên bản cache nên rẻ."""
         all_items = _load_all_items(current_user, scans, versions, refresh=refresh)
-        matched = filter_items(all_items, q=q, status=status, code=code, source=source)
+        matched = sort_items(filter_items(all_items, q=q, status=status, code=code, source=source), sort=sort, order=order)
         return GiaPhaListResponse(
             total=len(matched),
             items=paginate(matched, page, page_size),

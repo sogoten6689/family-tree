@@ -39,6 +39,11 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
+  // Mặc định: ID giảm dần (bản mới nhất ở trên cùng); bấm tiêu đề cột để đổi.
+  const [sort, setSort] = useState<{ field: "scan_id" | "title" | "updated_at"; order: "asc" | "desc" }>({
+    field: "scan_id",
+    order: "desc",
+  });
 
   // Từ khoá giữ trên URL (?q=) để chia sẻ link; bộ lọc chỉ trong trang.
   const [filters, setFilters] = useState<GiaPhaFilters>({
@@ -77,7 +82,7 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
   // (quay lại trang cũ hiện ngay) và giữ dữ liệu cũ trong lúc tải trang mới.
   const forceRefresh = useRef(false);
   const { data, error, isFetching, refetch } = useQuery({
-    queryKey: ["gia-pha", scope, { page, pageSize, q: debouncedQ.trim(), status: filters.status, code: filters.code, source: filters.source }],
+    queryKey: ["gia-pha", scope, { page, pageSize, q: debouncedQ.trim(), status: filters.status, code: filters.code, source: filters.source, sort: sort.field, order: sort.order }],
     queryFn: () => {
       const refresh = forceRefresh.current;
       forceRefresh.current = false;
@@ -88,6 +93,8 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
         status: filters.status,
         code: filters.code,
         source: filters.source,
+        sort: sort.field,
+        order: sort.order,
         refresh,
       });
     },
@@ -224,6 +231,14 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
             />
           ),
         }}
+        onChange={(_pagination, _filters, sorter, extra) => {
+          if (extra.action !== "sort") return;
+          const single = Array.isArray(sorter) ? sorter[0] : sorter;
+          const field = single?.columnKey as typeof sort.field | undefined;
+          // Bỏ sắp xếp (bấm lần thứ ba) = quay về mặc định.
+          setSort(single?.order && field ? { field, order: single.order === "ascend" ? "asc" : "desc" } : { field: "scan_id", order: "desc" });
+          setPage(1);
+        }}
         onRow={(record) => ({ onClick: () => goToDetail(record) })}
         rowClassName={() => "cursor-pointer"}
         columns={[
@@ -241,12 +256,20 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           {
             title: t("giaPhaList.columnId", { defaultValue: "Mã" }).toUpperCase(),
             dataIndex: "id",
+            key: "scan_id",
             width: 220,
+            sorter: true,
+            sortOrder: sort.field === "scan_id" ? (sort.order === "asc" ? "ascend" : "descend") : null,
             render: (_: string, record: GiaPhaItem) => (
               <div className="flex items-center gap-2">
                 <BranchesOutlined className="text-primary" />
                 <div>
                   <div className="font-mono text-xs">{record.id}</div>
+                  {record.scan_id != null && (
+                    <div className="text-[11px] text-muted-foreground" data-testid="scan-id">
+                      ID: {record.scan_id}
+                    </div>
+                  )}
                   {record.ma_dinh_danh_nguon === "gemini" && (
                     <Tag color="gold" className="!text-[10px] !leading-4 !mt-0.5">
                       {t("maDinhDanh.sourceGemini", { defaultValue: "Tự tạo (Gemini)" })}
@@ -264,6 +287,9 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           {
             title: t("giaPhaList.columnTitle", { defaultValue: "Tên" }).toUpperCase(),
             dataIndex: "title",
+            key: "title",
+            sorter: true,
+            sortOrder: sort.field === "title" ? (sort.order === "asc" ? "ascend" : "descend") : null,
           },
           ...(scope === "admin"
             ? [
@@ -295,6 +321,9 @@ const GiaPhaListPage = ({ scope }: GiaPhaListPageProps) => {
           {
             title: t("giaPhaList.columnUpdated", { defaultValue: "Cập nhật" }).toUpperCase(),
             dataIndex: "updated_at",
+            key: "updated_at",
+            sorter: true,
+            sortOrder: sort.field === "updated_at" ? (sort.order === "asc" ? "ascend" : "descend") : null,
             width: 140,
             render: (value: string) => formatTreeDate(value),
           },
