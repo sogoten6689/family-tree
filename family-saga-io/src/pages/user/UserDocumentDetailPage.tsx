@@ -11,6 +11,7 @@ import { OcrStatusTag, TreeStatusTag } from "@/components/flow/StatusTags";
 import DocumentReaderPage from "@/pages/DocumentReaderPage";
 import { LlmImportPanel } from "@/components/documents/LlmImportPanel";
 import { MaDinhDanhField } from "@/components/documents/MaDinhDanhField";
+import { DocumentNeighborNav } from "@/components/documents/DocumentNeighborNav";
 import { PageViewer } from "@/components/documents/PageViewer";
 import { useAuth } from "@/contexts/AuthContext";
 import { computeFlowProgressForScan } from "@/lib/flowProgress";
@@ -147,7 +148,11 @@ const UserDocumentDetailPage = () => {
           <Typography.Title level={4} className="!mb-0">
             {scan.title}
           </Typography.Title>
-          <Space>
+          <Space wrap>
+            <DocumentNeighborNav
+              scanId={scan.id}
+              onGo={(id) => navigate(`/user/documents/${id}${searchParams.get("tab") ? `?tab=${searchParams.get("tab")}` : ""}`)}
+            />
             {isAdmin && (
               <Button danger onClick={confirmDeleteDocument}>
                 {t("userDocuments.delete", { defaultValue: "Xoá bộ" })}
