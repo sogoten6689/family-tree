@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
 import { PageEnginesPanel } from "@/components/documents/PageEnginesPanel";
-import { ZoomableImage } from "@/components/documents/ZoomableImage";
+import { PageZoomModal, ZoomableImage } from "@/components/documents/ZoomableImage";
 import {
   deleteScanPage,
   editScanPage,
@@ -46,6 +46,8 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
+  // Khung phóng to ảnh (ảnh gốc hoặc ảnh khung chữ) — giữ ở đây để chuyển trang không làm đóng khung.
+  const [zoom, setZoom] = useState<"original" | "boxes" | null>(null);
   // Chi tiết (OCR từng engine + vote) tải theo trang — bộ lớn có tới 233 trang.
   const [detail, setDetail] = useState<GiaPhaPageDetail | null>(null);
   const [detailError, setDetailError] = useState<string | null>(null);
@@ -349,6 +351,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
                 <ZoomableImage
                   imageUrl={page.image_url}
                   alt={t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })}
+                  onOpen={() => setZoom("original")}
                 />
               </figure>
               {boxes.length > 0 ? (
@@ -364,6 +367,7 @@ export function PageViewer({ scanId }: { scanId: number }) {
                     alt={t("pageViewer.boxesAlt", { defaultValue: "Trang {{n}} có khung chữ", n: page.page_number })}
                     bbox={boxes}
                     showOrder
+                    onOpen={() => setZoom("boxes")}
                   />
                 </figure>
               ) : (
@@ -426,6 +430,25 @@ export function PageViewer({ scanId }: { scanId: number }) {
           )}
         </div>
       </div>
+      {zoom !== null && (
+        <PageZoomModal
+          open={zoom !== null}
+          onClose={() => setZoom(null)}
+          imageUrl={page.image_url ?? null}
+          alt={
+            zoom === "boxes"
+              ? t("pageViewer.boxesAlt", { defaultValue: "Trang {{n}} có khung chữ", n: page.page_number })
+              : t("pageViewer.page", { defaultValue: "Trang {{n}}", n: page.page_number })
+          }
+          bbox={zoom === "boxes" ? boxes : undefined}
+          showOrder
+          position={`${index + 1}/${pages.length}`}
+          hasPrev={index > 0}
+          hasNext={index < pages.length - 1}
+          onPrev={() => setIndex((i) => Math.max(0, i - 1))}
+          onNext={() => setIndex((i) => Math.min(pages.length - 1, i + 1))}
+        />
+      )}
       <Modal
         open={trashOpen}
         title={t("pageViewer.trashTitle", { defaultValue: "Trang đã xoá" })}
