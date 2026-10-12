@@ -278,6 +278,29 @@ class GiaPhaPageOcrResult(BaseModel):
     downstream_stale: bool
 
 
+class PageEngineStatus(BaseModel):
+    name: str
+    label: str
+    present: bool  # trang này đã có kết quả của engine
+    runnable: bool  # server có adapter chạy engine này
+    ready: bool  # đã đủ cấu hình (token/khoá) để chạy ngay
+    reason: Optional[str] = None  # vì sao chưa chạy được
+    paid: bool = True
+
+
+class PageEngineRunRequest(BaseModel):
+    engine: str
+    confirm_paid: bool = False  # chạy engine gọi API ngoài, TỐN TIỀN
+    version_id: Optional[int] = None
+
+
+class PageEngineRunResult(BaseModel):
+    version: ItemVersion
+    forked: bool
+    engine: str
+    text: str
+
+
 class MaDinhDanhAutoResult(BaseModel):
     ma_dinh_danh: Optional[str] = None
     ma_dinh_danh_nguon: Optional[str] = None
@@ -1135,6 +1158,126 @@ def create_workspace_router(
             engine="kimhannom",
             box_count=len(bbox),
             downstream_stale=stale,
+        )
+
+    @router.get("/api/user/documents/{scan_id}/pages/{page_number}/engines", response_model=List[PageEngineStatus])
+    def page_engines(
+        scan_id: int,
+        page_number: int,
+        current_user: CurrentUser,
+        version_id: Optional[int] = Query(None),
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> List[PageEngineStatus]:
+        """Mỗi engine OCR đã biết: trang này đã có kết quả chưa, và có chạy bổ sung được không."""
+        from app.workspace import page_engines as pe
+
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        version = versions.get(version_id) if version_id is not None else versions.get_current(scan.id)
+        if version is None or version.user_scan_id != scan.id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        content = next((c for c in pages_repo.list_content_for_version(version.id) if c.page_id == page.id), None)
+        have = pe.present_engines(content.ocr_vote_meta if content else None)
+        result = []
+        for engine in pe.PAGE_ENGINES:
+            ready, reason = pe.readiness(engine)
+            result.append(
+                PageEngineStatus(
+                    name=engine.name,
+                    label=engine.label,
+                    present=engine.name in have,
+                    runnable=pe.runner_for(engine) is not None,
+                    ready=ready,
+                    reason=reason or None,
+                    paid=engine.paid,
+                )
+            )
+        return result
+
+    @router.post("/api/user/documents/{scan_id}/pages/{page_number}/ocr-engine", response_model=PageEngineRunResult)
+    def run_page_engine(
+        scan_id: int,
+        page_number: int,
+        payload: PageEngineRunRequest,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+        versions: GiaPhaVersionRepository = Depends(version_repo),
+        pages_repo: GiaPhaPageRepository = Depends(page_repo),
+    ) -> PageEngineRunResult:
+        """Chạy BỔ SUNG 1 engine OCR cho 1 trang (TỐN TIỀN, cần confirm_paid=true). Kết quả chỉ thêm vào
+        danh sách OCR theo engine của trang (version sửa tay, bản gốc giữ nguyên); chữ chính, khung chữ,
+        phiên âm và dịch nghĩa KHÔNG đổi, vote không chạy lại. Chủ bộ hoặc admin."""
+        from app.documents.storage import ObjectStorage, ObjectStorageError
+        from app.workspace import page_engines as pe
+        from app.workspace.page_images import is_storage_key
+
+        engine = pe.BY_NAME.get(payload.engine)
+        if engine is None:
+            raise HTTPException(status_code=400, detail=f"Engine không tồn tại: {payload.engine}.")
+        runner = pe.runner_for(engine)
+        if runner is None:
+            raise HTTPException(status_code=409, detail=pe.readiness(engine)[1] or "Server chưa chạy được engine này.")
+        ready, reason = pe.readiness(engine)
+        if not ready:
+            raise HTTPException(status_code=409, detail=reason or "Engine chưa đủ cấu hình.")
+        if engine.paid and not payload.confirm_paid:
+            raise HTTPException(status_code=400, detail=f"{engine.label} tốn tiền: cần xác nhận (confirm_paid=true).")
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        page = next((p for p in pages_repo.list_by_scan(scan.id) if p.page_number == page_number), None)
+        if page is None:
+            raise HTTPException(status_code=404, detail="Không có trang này.")
+        base = versions.get(payload.version_id) if payload.version_id is not None else versions.get_current(scan.id)
+        if base is None or base.user_scan_id != scan.id:
+            raise HTTPException(status_code=404, detail="Không tìm thấy version.")
+        if not is_storage_key(page.image_file_key):
+            raise HTTPException(status_code=409, detail="Ảnh trang này chưa lên MinIO nên chưa OCR được.")
+        storage = ObjectStorage.from_env()
+        if not storage.config.enabled:
+            raise HTTPException(status_code=503, detail="Chưa cấu hình lưu trữ ảnh (MinIO).")
+        try:
+            image = storage.read_file_bytes(page.image_file_key)
+        except ObjectStorageError as error:
+            raise HTTPException(status_code=502, detail=f"Không đọc được ảnh: {error}") from error
+        if not image:
+            raise HTTPException(status_code=409, detail="File ảnh trên MinIO rỗng.")
+
+        # Gọi engine TRƯỚC khi tạo version: lỗi/không có chữ thì không để lại version rác.
+        result = runner(image, page.image_file_key.rsplit("/", 1)[-1])
+        text = "\n".join(result.lines).strip() if result else ""
+        if not text:
+            raise HTTPException(status_code=502, detail=f"{engine.label} không trả về chữ (kiểm tra khoá, hạn mức hoặc kết nối).")
+
+        forked = base.source != MANUAL_EDIT_SOURCE
+        target = base
+        if forked:
+            target = versions.create_derived_version(
+                user_scan_id=scan.id,
+                parent_version_id=base.id,
+                source=MANUAL_EDIT_SOURCE,
+                review_status=None,
+                note=f"Bổ sung OCR {engine.label} cho trang {page_number} (từ v{base.version_number})",
+                created_by=current_user.id,
+                text_step_status=None,
+            )
+        current = next((c for c in pages_repo.list_content_for_version(target.id) if c.page_id == page.id), None)
+        pages_repo.upsert_content(
+            version_id=target.id,
+            page_id=page.id,
+            ocr_vote_meta=pe.merge_engine_text(current.ocr_vote_meta if current else None, engine.name, text),
+        )
+        return PageEngineRunResult(
+            version=_item_version_from(versions.get(target.id), versions.steps_for(target.id)),
+            forked=forked,
+            engine=engine.name,
+            text=text,
         )
 
     @router.put("/api/user/documents/{scan_id}/pages/{page_number}/image", response_model=GiaPhaPageImageResult)

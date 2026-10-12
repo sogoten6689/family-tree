@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { PipelineStepsPanel, type VoteMeta } from "@/components/documents/PipelineStepsPanel";
 import { isVoteMetaV2 } from "@/components/documents/voteMetaV2";
+import { PageEnginesPanel } from "@/components/documents/PageEnginesPanel";
 import { ZoomableImage } from "@/components/documents/ZoomableImage";
 import {
   deleteScanPage,
@@ -390,6 +391,17 @@ export function PageViewer({ scanId }: { scanId: number }) {
               </Paragraph>
             )}
           </Card>
+          <PageEnginesPanel
+            scanId={scanId}
+            pageNumber={page.page_number}
+            versionId={viewVersionId}
+            refreshKey={detailNonce}
+            onRan={(result) => {
+              // Engine mới nằm trong version sửa tay: chuyển sang xem version đó và tải lại chi tiết trang.
+              setEditVersion({ id: result.version.version_id, number: result.version.version_number });
+              setDetailNonce((n) => n + 1);
+            }}
+          />
           {detailError && <Alert type="warning" showIcon message={detailError} />}
           {stale && (
             <Alert
