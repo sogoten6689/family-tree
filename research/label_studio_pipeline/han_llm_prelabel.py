@@ -19,8 +19,10 @@ import argparse
 import json
 import os
 import sys
+import threading
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
@@ -193,7 +195,7 @@ def to_ls_task(doc: Dict[str, Any]) -> Dict[str, Any]:
     return {"data": data, "predictions": [{"model_version": doc["model_version"], "result": result}]}
 
 
-def run(tasks_path: Path, out_dir: Path, *, limit: Optional[int] = None, model: str = MODEL, provider: str = PROVIDER, ask=None, progress=print) -> Dict[str, Any]:
+def run(tasks_path: Path, out_dir: Path, *, limit: Optional[int] = None, model: str = MODEL, provider: str = PROVIDER, workers: int = 1, ask=None, progress=print) -> Dict[str, Any]:
     ask = ask or (lambda text: call_llm(text, model, provider=provider))
     tasks = json.loads(tasks_path.read_text(encoding="utf-8"))
     if limit:
@@ -201,24 +203,34 @@ def run(tasks_path: Path, out_dir: Path, *, limit: Optional[int] = None, model: 
     gold_dir = out_dir / "gold"
     gold_dir.mkdir(parents=True, exist_ok=True)
     docs, errors, tokens = [], 0, {"prompt": 0, "completion": 0}
-    for number, task in enumerate(tasks, 1):
+    lock = threading.Lock()
+    done = 0
+
+    def work(task: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        nonlocal errors, done
         data = task["data"]
         path = gold_dir / f"{data['doc_id']}.json"
         if path.exists():
-            docs.append(json.loads(path.read_text(encoding="utf-8")))
-            continue
+            return json.loads(path.read_text(encoding="utf-8"))
         try:
             doc = label_page(data, ask, model)
         except Exception as error:  # noqa: BLE001 — một trang lỗi không dừng cả lô
-            errors += 1
-            progress(f"trang {data['doc_id']}: lỗi {str(error)[:140]}")
-            continue
+            with lock:
+                errors += 1
+                progress(f"trang {data['doc_id']}: lỗi {str(error)[:140]}")
+            return None
         path.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
         usage = doc["stats"]["usage"] or {}
-        tokens["prompt"] += usage.get("prompt_tokens", 0)
-        tokens["completion"] += usage.get("completion_tokens", 0)
-        docs.append(doc)
-        progress(f"[{number}/{len(tasks)}] {data['doc_id']}: {len(doc['entities'])} thực thể, {len(doc['relations'])} quan hệ, {doc['stats']['unmatched']} không khớp chuỗi")
+        with lock:
+            tokens["prompt"] += usage.get("prompt_tokens", 0)
+            tokens["completion"] += usage.get("completion_tokens", 0)
+            done += 1
+            if done % 25 == 0:
+                progress(f"đã gán {done} trang mới ({tokens['prompt'] + tokens['completion']} token)")
+        return doc
+
+    with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+        docs = [d for d in pool.map(work, tasks) if d is not None]
     (out_dir / "tasks.json").write_text(json.dumps([to_ls_task(d) for d in docs], ensure_ascii=False, indent=1), encoding="utf-8")
     labels: Dict[str, int] = {}
     for d in docs:
@@ -247,11 +259,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--tasks", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--workers", type=int, default=1, help="số luồng gọi song song (mặc định 1)")
     parser.add_argument("--provider", choices=sorted(PROVIDERS), default=PROVIDER)
     parser.add_argument("--model", help="mặc định theo nhà cung cấp")
     args = parser.parse_args(argv)
     model = args.model or PROVIDERS[args.provider]["model"]
-    print(json.dumps(run(args.tasks, args.out, limit=args.limit, model=model, provider=args.provider), ensure_ascii=False, indent=2))
+    print(json.dumps(run(args.tasks, args.out, limit=args.limit, model=model, provider=args.provider, workers=args.workers), ensure_ascii=False, indent=2))
     return 0
 
 

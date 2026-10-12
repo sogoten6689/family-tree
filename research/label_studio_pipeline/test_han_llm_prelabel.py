@@ -100,3 +100,13 @@ def test_run_skips_done_pages_and_writes_report(tmp_path):
     h.run(path, out, ask=ask, progress=lambda *_: None)  # chạy lại: không gọi thêm
     assert len(calls) == 2
     assert len(json.loads((out / "tasks.json").read_text(encoding="utf-8"))) == 2
+
+
+def test_run_with_workers_labels_every_page_once(tmp_path):
+    tasks = [{"data": {"text": TEXT, "doc_id": f"han-1-p{i:03d}"}} for i in range(1, 9)]
+    path = tmp_path / "tasks.json"
+    path.write_text(json.dumps(tasks), encoding="utf-8")
+    answer = json.dumps({"entities": [{"text": "清閑公", "label": "PER_NAME"}], "relations": []})
+    report = h.run(path, tmp_path / "out", workers=4, ask=lambda t: (answer, {"prompt_tokens": 1, "completion_tokens": 1}), progress=lambda *_: None)
+    assert report["pages_labeled"] == 8 and report["entities"] == 8
+    assert report["tokens_this_run"] == {"prompt": 8, "completion": 8}
