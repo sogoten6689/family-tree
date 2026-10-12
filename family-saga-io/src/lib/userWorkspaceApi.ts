@@ -98,6 +98,26 @@ export async function getUserDocument(scanId: number): Promise<UserScan> {
   return apiRequest<UserScan>(`/api/user/documents/${scanId}`);
 }
 
+export interface DocumentNeighbor {
+  id: number;
+  title: string;
+  ma_dinh_danh?: string | null;
+}
+
+export interface DocumentNeighbors {
+  /** Tài liệu có ID nhỏ hơn liền kề (null = đang ở đầu). */
+  prev: DocumentNeighbor | null;
+  /** Tài liệu có ID lớn hơn liền kề (null = đang ở cuối). */
+  next: DocumentNeighbor | null;
+  position: number;
+  total: number;
+}
+
+/** Tài liệu liền trước / liền sau (theo ID) trong các tài liệu người dùng xem được. */
+export async function getDocumentNeighbors(scanId: number): Promise<DocumentNeighbors> {
+  return apiRequest<DocumentNeighbors>(`/api/user/documents/${scanId}/neighbors`);
+}
+
 export async function updateUserDocument(
   scanId: number,
   payload: Partial<{

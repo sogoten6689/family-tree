@@ -301,6 +301,19 @@ class PageEngineRunResult(BaseModel):
     text: str
 
 
+class DocumentNeighbor(BaseModel):
+    id: int
+    title: str
+    ma_dinh_danh: Optional[str] = None
+
+
+class DocumentNeighbors(BaseModel):
+    prev: Optional[DocumentNeighbor] = None  # tài liệu có ID nhỏ hơn liền kề
+    next: Optional[DocumentNeighbor] = None  # tài liệu có ID lớn hơn liền kề
+    position: int  # thứ tự theo ID tăng dần trong các tài liệu người này xem được
+    total: int
+
+
 class MaDinhDanhAutoResult(BaseModel):
     ma_dinh_danh: Optional[str] = None
     ma_dinh_danh_nguon: Optional[str] = None
@@ -1575,6 +1588,33 @@ def create_workspace_router(
         if scan is None:
             raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
         return UserScanResponse.model_validate(scan)
+
+    @router.get("/api/user/documents/{scan_id}/neighbors", response_model=DocumentNeighbors)
+    def get_document_neighbors(
+        scan_id: int,
+        current_user: CurrentUser,
+        scans: UserScanRepository = Depends(scan_repo),
+    ) -> DocumentNeighbors:
+        """Tài liệu liền trước / liền sau (theo ID) trong các tài liệu người dùng này xem được
+        (admin: tất cả; user: của mình; bỏ tài liệu đã xoá mềm) — để chuyển nhanh giữa các trang chi tiết."""
+        scan = scans.get_accessible(current_user, scan_id)
+        if scan is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+        visible = scans.list_all() if current_user.role == UserRole.ADMIN else scans.list_by_user(current_user.id)
+        ordered = sorted(visible, key=lambda item: item.id)
+        index = next((i for i, item in enumerate(ordered) if item.id == scan.id), None)
+        if index is None:
+            raise HTTPException(status_code=404, detail="Tài liệu không tồn tại.")
+
+        def neighbor(item) -> DocumentNeighbor:
+            return DocumentNeighbor(id=item.id, title=item.title, ma_dinh_danh=item.ma_dinh_danh)
+
+        return DocumentNeighbors(
+            prev=neighbor(ordered[index - 1]) if index > 0 else None,
+            next=neighbor(ordered[index + 1]) if index + 1 < len(ordered) else None,
+            position=index + 1,
+            total=len(ordered),
+        )
 
     @router.patch("/api/user/documents/{scan_id}", response_model=UserScanResponse)
     def update_user_document(
