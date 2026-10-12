@@ -85,6 +85,45 @@ describe("PageViewer", { timeout: 15000 }, () => {
     expect(screen.getByTestId("zoom-body").querySelector("img")).toHaveAttribute("src", PAGES[0].image_url);
   });
 
+  it("boxes per model: a selector switches between the built-in boxes and each engine's boxes", async () => {
+    const box = (order: number) => ({ order, bbox_xyxy: [10 * order, 20, 10 * order + 8, 90], han: "字", confidence: 0.9 });
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) =>
+      Promise.resolve({
+        ...detailFor(n),
+        ocr_bbox: n === 1 ? [box(1), box(2)] : null,
+        ocr_bbox_engines: n === 1 ? { kim_hannom_lab: [box(1), box(2), box(3), box(4), box(5)] } : null,
+      }),
+    );
+    render(<PageViewer scanId={20} />);
+    // Mặc định: khung có sẵn (2 khung).
+    expect(await screen.findByText(/Khung chữ — 2 khung/)).toBeInTheDocument();
+    expect(screen.getByText("Khung có sẵn (2)")).toBeInTheDocument();
+    expect(screen.getByText("Kim Hán Nôm Lab (5)")).toBeInTheDocument();
+    // Chọn Kim Hán Nôm Lab → 5 khung.
+    fireEvent.click(screen.getByText("Kim Hán Nôm Lab (5)"));
+    expect(await screen.findByText(/Khung chữ — 5 khung/)).toBeInTheDocument();
+  });
+
+  it("boxes per model: no selector when the page has a single set of boxes", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) =>
+      Promise.resolve({ ...detailFor(n), ocr_bbox: [{ order: 1, bbox_xyxy: [1, 2, 3, 4], han: "字" }], ocr_bbox_engines: null }),
+    );
+    render(<PageViewer scanId={20} />);
+    expect(await screen.findByText(/Khung chữ — 1 khung/)).toBeInTheDocument();
+    expect(screen.queryByText(/Khung có sẵn \(/)).not.toBeInTheDocument();
+  });
+
+  it("boxes per model: only engine boxes (no built-in boxes) are shown with their own label", async () => {
+    api.listScanPages.mockResolvedValue(PAGES);
+    api.getScanPage.mockImplementation((_s: number, n: number) =>
+      Promise.resolve({ ...detailFor(n), ocr_bbox: null, ocr_bbox_engines: { kim_hannom_lab: [{ order: 1, bbox_xyxy: [1, 2, 3, 4], han: "字" }, { order: 2, bbox_xyxy: [5, 2, 7, 4], han: "字" }] } }),
+    );
+    render(<PageViewer scanId={20} />);
+    expect(await screen.findByText(/Khung chữ — 2 khung/)).toBeInTheDocument();
+  });
+
   it("shows the page image next to its texts and the image count", async () => {
     api.listScanPages.mockResolvedValue(PAGES);
     api.getScanPage.mockImplementation((_s: number, n: number) => Promise.resolve(detailFor(n)));

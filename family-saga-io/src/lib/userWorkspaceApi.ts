@@ -193,6 +193,8 @@ export interface GiaPhaPageDetail extends GiaPhaPageView {
   ocr_vote_meta: Record<string, unknown> | null;
   /** Khung chữ trên ảnh gốc theo thứ tự đọc (Paddle) — null nếu bộ chưa có. */
   ocr_bbox?: BBoxItem[] | null;
+  /** Khung chữ theo từng engine chạy bổ sung (khoá = tên engine). */
+  ocr_bbox_engines?: Record<string, BBoxItem[]> | null;
 }
 
 /** 1 trang đầy đủ (ảnh + chữ + OCR/vote) — tải khi mở trang đó. */

@@ -638,6 +638,7 @@ class GiaPhaPageRepository:
         ocr_bbox: Optional[List[dict[str, Any]]] = None,
         ocr_vote_meta: Optional[dict[str, Any]] = None,
         clear_vote_meta: bool = False,
+        ocr_bbox_engine: Optional[tuple[str, List[dict[str, Any]]]] = None,
     ) -> GiaPhaPageContent:
         content = self._db.scalar(
             select(GiaPhaPageContent).where(
@@ -654,6 +655,10 @@ class GiaPhaPageRepository:
             content.translation_text = translation_text
         if ocr_bbox is not None:
             content.ocr_bbox = ocr_bbox
+        if ocr_bbox_engine is not None:
+            engine_name, engine_boxes = ocr_bbox_engine
+            # Gán lại cả dict (không sửa tại chỗ) để SQLAlchemy nhận ra cột JSON đã đổi.
+            content.ocr_bbox_engines = {**(content.ocr_bbox_engines or {}), engine_name: engine_boxes}
         if ocr_vote_meta is not None:
             content.ocr_vote_meta = ocr_vote_meta
         elif clear_vote_meta:

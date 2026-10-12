@@ -57,6 +57,7 @@ class PageEnginesEndpointTest(_PagesApi, unittest.TestCase):
         self.storage = mock.Mock()
         self.storage.config.enabled = True
         self.storage.read_file_bytes.return_value = b"\xff\xd8\xffIMG"
+        self.storage.get_presigned_url.side_effect = lambda key: f"https://minio/{key}?sig"
         self.patch = mock.patch("app.documents.storage.ObjectStorage.from_env", return_value=self.storage)
         self.patch.start()
         pages = GiaPhaPageRepository(self.db)
@@ -181,7 +182,7 @@ class PageEngineBoxesTest(PageEnginesEndpointTest):
         new = self.content(body["version"]["version_id"], 2)
         self.assertEqual((new.hannom_text, new.ocr_bbox), ("新\n字", [BOX]))
 
-    def test_existing_boxes_are_not_replaced(self) -> None:
+    def test_existing_main_boxes_are_kept_but_engine_boxes_are_stored_separately(self) -> None:
         first = self.run_kim(1)
         vid = first["version"]["version_id"]
         content = self.content(vid, 1)
@@ -189,8 +190,22 @@ class PageEngineBoxesTest(PageEnginesEndpointTest):
         self.db.add(content)
         self.db.commit()
         again = self.run_kim(1, version_id=vid)
-        self.assertEqual(again["box_count"], 0)
-        self.assertEqual(self.content(vid, 1).ocr_bbox[0]["han"], "舊")  # khung cũ giữ nguyên
+        self.assertEqual(again["box_count"], 1)
+        after = self.content(vid, 1)
+        self.assertEqual(after.ocr_bbox[0]["han"], "舊")  # khung chính có sẵn giữ nguyên
+        self.assertEqual(after.ocr_bbox_engines, {"kim_hannom_lab": [BOX]})  # khung theo engine lưu riêng
+
+    def test_engine_boxes_merge_per_engine_and_are_returned_by_page_detail(self) -> None:
+        body = self.run_kim(1)
+        vid = body["version"]["version_id"]
+        content = self.content(vid, 1)
+        content.ocr_bbox_engines = {"paddle_v6": [{"bbox_xyxy": [5, 5, 6, 6], "han": "P", "order": 1}]}
+        self.db.add(content)
+        self.db.commit()
+        self.run_kim(1, version_id=vid)  # chạy lại Kim: thêm/ghi đè khoá của Kim, không đụng khoá khác
+        detail = self.client.get(self.url(1, "") .rstrip("/") + f"?version_id={vid}").json()
+        self.assertEqual(set(detail["ocr_bbox_engines"]), {"paddle_v6", "kim_hannom_lab"})
+        self.assertEqual(detail["ocr_bbox_engines"]["paddle_v6"][0]["han"], "P")
 
     def test_engine_without_boxes_leaves_boxes_untouched(self) -> None:
         body = self.client.post(self.url(1, "ocr-engine"), json={"engine": "gemini", "confirm_paid": True}).json()
