@@ -109,3 +109,12 @@ Cùng 5 lượt kiểm chéo theo cây, 25 cây người soát, F1 gộp mức t
 - Sau đổi: `/api/genealogy/extract` 200, **0,18–0,28 s** cho đoạn ~130 ký tự (lần đầu 4,7 s do nạp model); `/health` 200; không lỗi trong log; RAM trống ~21 GB.
 - Hoàn tác: `models/ner_vi` → `ner_vi.xlmr`, `ner_vi.bak` → `ner_vi`, restart backend.
 - Sửa nhãn: `model_info.model_name` lấy theo `base_model` trong model_card (trước đó ghi cứng "PhoBERT").
+
+
+### 12/10/2026 — RE (quan hệ) baseline nhãn yếu: KHÔNG đạt
+Phân loại cặp tên người (đầu/đuôi có đánh dấu `<h>`/`<t>`) bằng XLM-R-base; nhãn: NONE/FATHER_OF/MOTHER_OF/SPOUSE (SPOUSE không phân biệt chiều). Mã: `build_re_dataset.py`, `train_re.py`, notebook `train_re_colab.ipynb`.
+- Dữ liệu: train 103 cây nhãn Gemini (454 cặp dương, 1.362 âm sau lấy mẫu âm 3:1), dev 11 cây, **test = 10 cây người soát có quan hệ (30 quan hệ: 27 cha-con, 2 vợ chồng, 1 mẹ-con)**. Cửa sổ 300 ký tự → bỏ lỡ 47% quan hệ train, 30% quan hệ test (trần recall đầu-cuối ≈ 70%).
+- Kết quả test: **F1 0,18** (P 0,12; recall trong cửa sổ 0,38; recall đầu-cuối 0,27); CI95 bootstrap theo cây [0,05; 0,29]. Theo loại: FATHER_OF 6/18 đúng nhưng đoán 58 cặp; MOTHER_OF 1/1; SPOUSE 1/2.
+- Lỗi chính: dương giả cha-con (52/59 FP), nhiều cặp đảo chiều (A→B và B→A cùng được đoán) hoặc anh em cùng họ. Ngưỡng xác suất 0,5–0,97 chỉ đạt F1 0,16–0,21.
+- Kết luận (tin cậy vừa — test chỉ 30 mẫu, nhưng chênh lệch so với mục tiêu rất lớn): **chưa đưa RE lên web**. Nhãn Gemini nhiễu + quá ít nhãn người. Hướng đi: anh soát **quan hệ** song song với tên người (≥ 300 quan hệ), cân nhắc thêm đặc trưng cấu trúc (thứ tự xuất hiện, đời, mốc xuống dòng) và/hoặc mô hình hoá theo câu thay vì theo cặp.
+- Chi phí: 1 lượt Colab ≈ 12 phút GPU; runtime đã xoá.
