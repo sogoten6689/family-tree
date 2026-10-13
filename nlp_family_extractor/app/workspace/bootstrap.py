@@ -103,8 +103,11 @@ def _migrate_llm_import_columns(engine) -> None:
             conn.execute(
                 text("CREATE INDEX ix_gia_pha_version_review_status ON gia_pha_version (review_status)")
             )
-        if "pairs" not in _existing_columns(conn, "gia_pha_page_content"):
+        content_cols = _existing_columns(conn, "gia_pha_page_content")
+        if "pairs" not in content_cols:
             conn.execute(text("ALTER TABLE gia_pha_page_content ADD COLUMN pairs JSON NULL"))
+        if "ocr_bbox_engines" not in content_cols:
+            conn.execute(text("ALTER TABLE gia_pha_page_content ADD COLUMN ocr_bbox_engines JSON NULL"))
 
 
 def _migrate_identifier_columns(engine) -> None:

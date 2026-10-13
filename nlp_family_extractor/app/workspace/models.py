@@ -194,6 +194,9 @@ class GiaPhaPageContent(Base):
     transliteration_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
     translation_text: Mapped[str | None] = mapped_column(LONGTEXT, nullable=True)
     ocr_bbox: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)
+    # Khung chữ theo TỪNG engine: {"kim_hannom_lab": [{bbox_xyxy, han, confidence, order}], ...}. `ocr_bbox` là bộ khung
+    # có sẵn từ lúc nhập kho (PaddleOCR) và khung của "OCR lại trang"; engine chạy bổ sung ghi vào đây.
+    ocr_bbox_engines: Mapped[dict[str, list[dict[str, Any]]] | None] = mapped_column(JSON, nullable=True)
     ocr_vote_meta: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
     # Cặp câu [{cn, sv, vi}] của version nhập từ LLM — nguồn dữ liệu train.
     pairs: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON, nullable=True)

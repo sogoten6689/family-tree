@@ -209,6 +209,8 @@ class GiaPhaPageDetail(GiaPhaPageView):
     ocr_vote_meta: Optional[Dict[str, Any]] = None
     # Khung chữ trên ảnh gốc [{bbox_xyxy, han, confidence, order}] — theo thứ tự đọc.
     ocr_bbox: Optional[List[Dict[str, Any]]] = None
+    # Khung chữ theo từng engine chạy bổ sung (khoá = tên engine), cùng dạng với ocr_bbox.
+    ocr_bbox_engines: Optional[Dict[str, List[Dict[str, Any]]]] = None
 
 
 class GiaPhaPageEditRequest(BaseModel):
@@ -1023,6 +1025,7 @@ def create_workspace_router(
             translation_text=content.translation_text if content else None,
             ocr_vote_meta=meta,
             ocr_bbox=content.ocr_bbox if content and isinstance(content.ocr_bbox, list) else None,
+            ocr_bbox_engines=content.ocr_bbox_engines if content and isinstance(content.ocr_bbox_engines, dict) else None,
         )
 
     @router.patch("/api/user/documents/{scan_id}/pages/{page_number}", response_model=GiaPhaPageEditResult)
@@ -1291,12 +1294,15 @@ def create_workspace_router(
         # Trang đã có chữ: chữ chính giữ nguyên; chỉ bổ sung khung chữ nếu trang chưa có khung nào
         # (engine như Kim Hán Nôm trả khung, các engine khác thì không).
         adopt_text = not has_text
-        save_boxes = bool(boxes) and (adopt_text or not has_boxes)
+        # Khung của engine luôn được lưu RIÊNG theo tên engine (để chọn xem theo model); khung "chính" của trang
+        # (ocr_bbox, dùng khi chưa chọn engine) chỉ đặt khi trang chưa có khung nào hoặc đang nhận chữ chính từ engine.
+        set_main_boxes = bool(boxes) and (adopt_text or not has_boxes)
         pages_repo.upsert_content(
             version_id=target.id,
             page_id=page.id,
             hannom_text=text if adopt_text else None,
-            ocr_bbox=boxes if save_boxes else None,
+            ocr_bbox=boxes if set_main_boxes else None,
+            ocr_bbox_engine=(engine.name, boxes) if boxes else None,
             ocr_vote_meta=pe.merge_engine_text(current.ocr_vote_meta if current else None, engine.name, text),
         )
         return PageEngineRunResult(
@@ -1305,7 +1311,7 @@ def create_workspace_router(
             engine=engine.name,
             text=text,
             adopted_text=adopt_text,
-            box_count=len(boxes) if save_boxes else 0,
+            box_count=len(boxes),
         )
 
     @router.put("/api/user/documents/{scan_id}/pages/{page_number}/image", response_model=GiaPhaPageImageResult)

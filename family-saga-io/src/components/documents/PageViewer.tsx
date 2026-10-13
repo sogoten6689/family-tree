@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined, FileImageOutlined, PictureOutlined, ScanOutlined, UndoOutlined } from "@ant-design/icons";
-import { Alert, Button, Card, Empty, Input, List, Modal, Pagination, Spin, Tag, Typography } from "antd";
+import { Alert, Button, Card, Empty, Input, List, Modal, Pagination, Segmented, Spin, Tag, Typography } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -25,6 +25,14 @@ import "./ReaderWorkspace.css";
 
 const { Text, Paragraph } = Typography;
 
+/** Tên hiển thị của engine có khung chữ (khoá = tên lưu trong ocr_bbox_engines). */
+const BOX_ENGINE_LABELS: Record<string, string> = {
+  kim_hannom_lab: "Kim Hán Nôm Lab",
+  paddle_v6: "PaddleOCR",
+  google_vision: "Google Vision",
+};
+const DEFAULT_BOXES_KEY = "default";
+
 /**
  * Xem từng trang của bộ gia phả: ảnh gốc (link tạm từ MinIO, bấm để phóng to)
  * cạnh chữ Hán / phiên âm / dịch nghĩa của version hiện tại. Chỉ chủ bộ hoặc
@@ -48,6 +56,8 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const [index, setIndex] = useState(0);
   // Khung phóng to ảnh (ảnh gốc hoặc ảnh khung chữ) — giữ ở đây để chuyển trang không làm đóng khung.
   const [zoom, setZoom] = useState<"original" | "boxes" | null>(null);
+  // Bộ khung chữ đang xem: "default" (khung có sẵn) hoặc tên engine đã chạy bổ sung (xem theo model).
+  const [boxEngine, setBoxEngine] = useState<string>(DEFAULT_BOXES_KEY);
   // Chi tiết (OCR từng engine + vote) tải theo trang — bộ lớn có tới 233 trang.
   const [detail, setDetail] = useState<GiaPhaPageDetail | null>(null);
   const [detailError, setDetailError] = useState<string | null>(null);
@@ -259,7 +269,16 @@ export function PageViewer({ scanId }: { scanId: number }) {
   const loadedDetail = detail?.page_number === page.page_number ? detail : null;
   const voteMeta = loadedDetail?.ocr_vote_meta ? [loadedDetail.ocr_vote_meta as unknown as VoteMeta] : null;
   const replacedImage = imageReplaced.includes(page.page_number);
-  const boxes = replacedImage ? [] : (loadedDetail?.ocr_bbox ?? []);
+  const boxSets: { key: string; label: string; boxes: NonNullable<GiaPhaPageDetail["ocr_bbox"]> }[] = [];
+  if (loadedDetail?.ocr_bbox?.length) {
+    boxSets.push({ key: DEFAULT_BOXES_KEY, label: t("pageViewer.boxesDefault", { defaultValue: "Khung có sẵn" }), boxes: loadedDetail.ocr_bbox });
+  }
+  for (const [name, list] of Object.entries(loadedDetail?.ocr_bbox_engines ?? {})) {
+    if (list.length) boxSets.push({ key: name, label: BOX_ENGINE_LABELS[name] ?? name, boxes: list });
+  }
+  // Giữ engine đang chọn khi chuyển trang; trang không có bộ đó thì dùng bộ đầu tiên.
+  const activeBoxSet = boxSets.find((set) => set.key === boxEngine) ?? boxSets[0];
+  const boxes = replacedImage ? [] : (activeBoxSet?.boxes ?? []);
   const stale = isVoteMetaV2(loadedDetail?.ocr_vote_meta) && !!loadedDetail?.ocr_vote_meta.downstream_stale;
 
   return (
@@ -362,6 +381,16 @@ export function PageViewer({ scanId }: { scanId: number }) {
                       n: boxes.length,
                     })}
                   </figcaption>
+                  {boxSets.length > 1 && (
+                    <Segmented
+                      size="small"
+                      className="mb-2"
+                      aria-label={t("pageViewer.boxesEngine", { defaultValue: "Khung chữ theo model" })}
+                      value={activeBoxSet?.key}
+                      onChange={(value) => setBoxEngine(String(value))}
+                      options={boxSets.map((set) => ({ value: set.key, label: `${set.label} (${set.boxes.length})` }))}
+                    />
+                  )}
                   <ZoomableImage
                     imageUrl={page.image_url}
                     alt={t("pageViewer.boxesAlt", { defaultValue: "Trang {{n}} có khung chữ", n: page.page_number })}
