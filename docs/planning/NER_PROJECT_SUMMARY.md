@@ -43,7 +43,7 @@ Cập nhật: 12/10/2026 · Chi tiết số liệu từng bước: `NER_WORK_LOG
 3. **Thay model trên prod** (cần anh cho phép): chép 4 tệp vào `models/ner_vi/` trên VPS (giữ bản cũ làm `.bak`), restart backend. Hoàn tác ~1 phút.
 4. **Quan hệ (RE)**: baseline nhãn yếu đã thử (F1 0,18, không đạt). Làm lại sau khi anh soát **quan hệ** song song với tên người (≥ 300 quan hệ); xem xét đặc trưng cấu trúc / mô hình theo câu; rồi dựng cây từ thực thể + quan hệ.
 5. **Chữ Hán (SikuBERT)**: gán nhãn thí điểm 10–20 trang trước (có thể tốn tiền nếu dùng LLM gợi ý), kiểm tra lỗi lệch offset UTF-16 (câu hỏi Q1 còn mở).
-6. **Dọn kỹ thuật** (nhỏ): hai test giao diện chập chờn (`PageViewer.test.tsx`, `LlmImportPanel.test.tsx`) làm CI hay phải chạy lại; 3 lỗi `prefer-const` trong `theme/colorUtils.ts`; tên tham số `model_version="phobert"` của API nay thực chất chọn "model NER hiện hành" (cân nhắc đổi tên, giữ tương thích).
+6. **Dọn kỹ thuật** (nhỏ): test giao diện chập chờn `PageViewer.test.tsx` làm CI hay phải chạy lại (`LlmImportPanel.test.tsx` đã bị xoá theo quyết định của anh Lâm ngày 13/10/2026, nên bảng điều khiển phiên bản/nhập LLM hiện không có test tự động); 3 lỗi `prefer-const` trong `theme/colorUtils.ts`; tên tham số `model_version="phobert"` của API nay thực chất chọn "model NER hiện hành" (cân nhắc đổi tên, giữ tương thích).
 
 ## 5. Quyết định còn chờ
 
