@@ -35,12 +35,12 @@ BOOKS: List[Dict[str, str]] = [
     {"doc_id": "temple-nguyen-khoa-q1", "folder": "temple_nom/nguyen-khoa-q1/pages", "title": "Nguyễn Khoa thế phổ (quyển 1)"},
     {"doc_id": "temple-nguyen-khoa-q2", "folder": "temple_nom/nguyen-khoa-q2/pages", "title": "Nguyễn Khoa thế phổ (quyển 2)"},
     {"doc_id": "bulac-hoang-105", "folder": "bulac/ARC.HOANG.105/pages", "title": "Gia phả các dòng họ (BULAC 105)"},
-    {"doc_id": "bulac-hoang-119", "folder": "bulac/ARC.HOANG.119/pages", "title": "Gia phả (BULAC 119)"},
-    {"doc_id": "bulac-hoang-129", "folder": "bulac/ARC.HOANG.129/pages", "title": "Đoàn thị thực lục (BULAC 129)"},
-    {"doc_id": "bulac-hoang-13", "folder": "bulac/ARC.HOANG.13/pages", "title": "Đoàn thị thực lục (BULAC 13)"},
+    {"doc_id": "bulac-hoang-119", "folder": "bulac/ARC.HOANG.119/pages", "title": "Gia phả họ Đỗ, Phan (BULAC 119)"},
+    # ARC.HOANG.129 = Yên Lãng thượng thư công gia phả: đã có trên web (tài liệu #21, request_id hxh-129) nên KHÔNG nhập lại.
+    {"doc_id": "bulac-hoang-13", "folder": "bulac/ARC.HOANG.13/pages", "title": "Đoàn thị thực lục — Hồng Hà văn sĩ gia phả (BULAC 13)"},
     {"doc_id": "bulac-hoang-16", "folder": "bulac/ARC.HOANG.16/pages", "title": "Ngô gia thế phả (BULAC 16)"},
-    {"doc_id": "bulac-hoang-73", "folder": "bulac/ARC.HOANG.73/pages", "title": "Đặng gia thế phả (BULAC 73)"},
-    {"doc_id": "bulac-hoang-76", "folder": "bulac/ARC.HOANG.76/pages", "title": "Gia phả (BULAC 76)"},
+    {"doc_id": "bulac-hoang-73", "folder": "bulac/ARC.HOANG.73/pages", "title": "Đặng gia thế phả 1600–2000 (BULAC 73)"},
+    {"doc_id": "bulac-hoang-76", "folder": "bulac/ARC.HOANG.76/pages", "title": "Gia phả họ Nguyễn ở xã Vy Viễn, huyện Nghi Xuân (BULAC 76)"},
     {"doc_id": "nlv-1042", "folder": "nlv_veridian/nlvnpf-1042/pages", "title": "Đỗ tộc gia phả (NLV 1042)"},
 ]
 
