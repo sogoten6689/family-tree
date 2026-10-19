@@ -167,27 +167,15 @@ Mẹo: không cần kéo hết 5,3 GB nếu chỉ code. Có thể `GIT_LFS_SKIP_
 
 ---
 
-## 7. Điều CHƯA nằm trên GitHub (kiểm tra ngày 19/10)
+## 7. Tình trạng đẩy lên GitHub (cập nhật 19/10)
 
-Các mục sau chỉ có ở máy cũ. Cần commit và push, và việc commit/push cần anh Lâm cho phép.
+Đã đẩy hết, ở cả hai repo.
 
-**Repo code** (nhánh `feat/train-sikubert`, worktree `han-genealogy-data-collection-4d42b6`):
-
-| File | Trạng thái |
-|---|---|
-| `research/label_studio_pipeline/build_han_colab_notebook.py` | sửa chưa commit |
-| `docs/planning/han_nom_gia_pha_data_discovery.md` | mới, chưa commit |
-| `docs/SETUP_MAY_MOI.md` (file này) | mới, chưa commit |
-| `research/notebooks/train_ner_sweep_embedded_colab.ipynb`, `..._nodrive_colab.ipynb` | mới, chưa commit |
-| `work/facebook_group/` (ảnh bìa, ảnh bài viết, `make_assets.py`) | mới, chưa commit |
-| `.claude/` | cấu hình local, không commit |
-
-**Repo dữ liệu** (`data/`, nhánh `main`):
-- Đang **ahead 1 commit** so với `origin/main`, chưa push.
-- Có file sửa chưa commit: `00_raw/hannom/books_catalog.json`, `nomfoundation/catalog.json`, `nomfoundation/summary.json`.
-- Có thư mục mới chưa theo dõi: `00_raw/hannom/bulac/`, `00_raw/hannom/nlv_veridian/`, và một số `nomfoundation/volumes/*` (308, 309, 595, 716, và `pages/` của 429, 855).
-- Các bộ `03_derived/han_*` **chưa thấy** trong danh sách file đã theo dõi, nên có thể chưa lên GitHub.
-- Notebook `data/03_derived/han_ner_v1/train_han_ner_colab_v2.ipynb` có nhúng dữ liệu, chưa rõ nên đưa lên repo nào.
+- **Repo code:** PR #38 đã merge vào `master`. Tài liệu kế hoạch, file này, ảnh nhóm Facebook và các notebook đã nằm trên `master`.
+- **Repo dữ liệu (`main`):** đã đẩy thành 6 commit nhỏ (GitHub từ chối gói lớn hơn 2 GiB mỗi lần đẩy). Gồm `temple_nom`, `related`, BULAC, NLV, mô hình NER, tập SFT, các bộ `han_*`, review, sách, ops.
+- **Git LFS:** PDF, `*.safetensors` và `03_derived/models/**/*.onnx` đi qua LFS (khoảng 1 GB). Gói LFS miễn phí là 1 GB, nên lưu ý khi kéo nhiều lần.
+- **Không đưa lên:** `.claude/` (cấu hình local) và mọi `.env` (xem mục 2).
+- **Khi cần đẩy thêm dữ liệu lớn:** chia thành nhiều commit nhỏ, mỗi lần đẩy dưới 2 GiB.
 
 ---
 
