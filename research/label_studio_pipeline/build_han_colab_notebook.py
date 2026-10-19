@@ -40,6 +40,13 @@ def cell(kind: str, source: str) -> dict:
     return base | ({"execution_count": None, "outputs": []} if kind == "code" else {})
 
 
+def form_cell(source: str) -> dict:
+    """Ô code ẩn mã (cellView=form): Colab không dựng cả khối base64 hàng MB trong trình soạn thảo, nên trang nhẹ hơn nhiều."""
+    c = cell("code", source)
+    c["metadata"] = {"cellView": "form", "id": "du-lieu"}
+    return c
+
+
 def build(data_dir: Path) -> dict:
     models = json.dumps(MODELS, ensure_ascii=False)
     cells = [
@@ -47,7 +54,7 @@ def build(data_dir: Path) -> dict:
              "**Tốn tiền (GPU Colab).** Dữ liệu là NHÃN MÁY (Gemini) nên F1 kiểm chéo chỉ đo mô hình học được nhãn máy tới đâu, "
              "KHÔNG phải độ chính xác thật. Kiểm chéo 5 lượt theo SÁCH + bản cuối trên 15 trang test (nhãn người sẽ chấm sau). "
              "Không cần Drive. Ô cuối tự ngắt runtime."),
-        cell("code", "import base64\nopen('/content/han_data.zip','wb').write(base64.b64decode('" + pack(data_dir) + "'))\nprint('đã ghi han_data.zip')\n"),
+        form_cell("#@title Dữ liệu nhúng sẵn (không cần mở)\nimport base64\nopen('/content/han_data.zip','wb').write(base64.b64decode('" + pack(data_dir) + "'))\nprint('đã ghi han_data.zip')\n"),
         cell("code", '!pip -q install "transformers>=4.40" sentencepiece\n'
              "import torch; assert torch.cuda.is_available(), 'Chưa bật GPU (Runtime > Change runtime type > T4)'\n"
              "major, minor = (int(x) for x in torch.__version__.split('+')[0].split('.')[:2])\n"
@@ -57,11 +64,20 @@ def build(data_dir: Path) -> dict:
              f"MODELS = {models}\nEPOCHS, BATCH = {EPOCHS}, {BATCH}\nos.makedirs('/content/results', exist_ok=True)\n"
              "def run(model, data_dir, out, extra=()):\n"
              "    t = time.time()\n"
-             "    cmd = ['python', '/content/train_ner.py', '--model', model['name'], '--data-dir', data_dir, '--output-dir', out,\n"
+             "    cmd = ['python', '-u', '/content/train_ner.py', '--model', model['name'], '--data-dir', data_dir, '--output-dir', out,\n"
              "           '--test-split', 'test', '--epochs', str(EPOCHS), '--lr', str(model['lr']), '--batch-size', str(BATCH),\n"
              "           '--max-length', str(model['max_length']), *extra]\n"
-             "    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)\n"
+             "    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)\n"
+             "    for line in proc.stdout:\n"
+             "        if line.startswith(('epoch', 'TEST', 'thiết bị')) or 'Error' in line or 'Traceback' in line:\n"
+             "            print('     ', line.rstrip(), flush=True)\n"
+             "    proc.wait()\n"
+             "    assert proc.returncode == 0, f'train_ner lỗi (mã {proc.returncode})'\n"
              "    return time.time() - t\n"
+             "def compact(card):\n"
+             "    t = card['test']\n"
+             "    return json.dumps({'micro': t['micro'], 'labels': {k: [v['tp'], v['fp'], v['fn']] for k, v in t['per_label'].items()}}, ensure_ascii=False)\n"
+             "print('mỗi lượt in dòng KET_QUA: giữ lại nếu runtime bị ngắt')\n"
              "for m in MODELS:\n"
              "    for k in range(5):\n"
              "        out = f'/content/out/{m[\"tag\"]}_fold{k}'\n"
@@ -70,7 +86,8 @@ def build(data_dir: Path) -> dict:
              "        shutil.copy(f'{out}/model_card.json', f'/content/results/{m[\"tag\"]}_fold{k}_model_card.json')\n"
              "        shutil.rmtree(out)\n"
              "        t = card['test']['micro']\n"
-             "        print(f'{m[\"tag\"]} fold{k}: test F1={t[\"f1\"]} P={t[\"precision\"]} R={t[\"recall\"]} ({secs/60:.1f} phút)', flush=True)\n"),
+             "        print(f'{m[\"tag\"]} fold{k}: test F1={t[\"f1\"]} P={t[\"precision\"]} R={t[\"recall\"]} ({secs/60:.1f} phút)', flush=True)\n"
+             "        print('KET_QUA', m['tag'], k, compact(card), flush=True)\n"),
         cell("code", "from collections import Counter\n"
              "def prf(d):\n"
              "    p = d['tp']/(d['tp']+d['fp']) if d['tp']+d['fp'] else 0; r = d['tp']/(d['tp']+d['fn']) if d['tp']+d['fn'] else 0\n"
@@ -95,7 +112,8 @@ def build(data_dir: Path) -> dict:
              "    for name in ('model_card.json', 'probs.json', 'label_list.json'):\n"
              "        shutil.copy(f'{out}/{name}', f'/content/results/{m[\"tag\"]}_final_{name}')\n"
              "    shutil.rmtree(out)\n"
-             "    print(f'{m[\"tag\"]} BẢN CUỐI: dev F1={card[\"dev\"][\"micro\"][\"f1\"]}  test15(nhãn máy) F1={card[\"test\"][\"micro\"][\"f1\"]} ({secs/60:.1f} phút)', flush=True)\n"),
+             "    print(f'{m[\"tag\"]} BẢN CUỐI: dev F1={card[\"dev\"][\"micro\"][\"f1\"]}  test15(nhãn máy) F1={card[\"test\"][\"micro\"][\"f1\"]} ({secs/60:.1f} phút)', flush=True)\n"
+             "    print('KET_QUA_CUOI', m['tag'], compact(card), flush=True)\n"),
         cell("code", "!cd /content/results && zip -qr /content/han_ner_results.zip . && ls -la /content/han_ner_results.zip\n"
              "from google.colab import files\nfiles.download('/content/han_ner_results.zip')\n"),
         cell("code", "from google.colab import runtime\nruntime.unassign()   # NGẮT RUNTIME để dừng tính tiền\n"),
