@@ -21,6 +21,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pilot-file", type=Path, default=None)
     parser.add_argument("--tree-id", type=int, action="append", dest="tree_ids")
     parser.add_argument("--no-labels", action="store_true", help="Skip labels/ subfolder.")
+    parser.add_argument("--no-fix-encoding", action="store_true", help="Không sửa Phả ký bảng mã cũ TCVN3/VNI.")
     parser.add_argument("--all-valid", action="store_true", help="Export all valid trees in source-dir.")
     return parser
 
@@ -52,6 +53,7 @@ def main() -> None:
         export_dir=args.export_dir,
         labels_dir=None if args.no_labels else args.labels_dir,
         include_labels=not args.no_labels,
+        fix_encoding=not args.no_fix_encoding,
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
