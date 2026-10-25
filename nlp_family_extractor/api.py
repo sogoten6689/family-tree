@@ -18,7 +18,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.auth.bootstrap import bootstrap_auth
 from app.auth.dependencies import AdminUser, CurrentUser, OptionalUser
 from app.auth.router import router as auth_router
-from app.database import database_enabled, database_init_error, get_db, init_database, session_scope
+from app.database import DatabaseUnavailable, database_enabled, database_init_error, get_db, init_database, session_scope
 from app.documents.bootstrap import bootstrap_documents
 from app.documents.router import create_documents_router
 from app.documents.storage import ObjectStorage, ObjectStorageError
@@ -451,6 +451,15 @@ app = FastAPI(
 )
 
 app.include_router(auth_router)
+
+
+@app.exception_handler(DatabaseUnavailable)
+async def _database_unavailable(_request, _exc):
+    """Route cần DB khi chưa cấu hình MySQL → 503 (cùng thông báo với /api/login), không phải 500."""
+    from fastapi.responses import JSONResponse
+
+    return JSONResponse(status_code=503, content={"detail": "Database chưa được cấu hình. Thiết lập biến môi trường MYSQL_*."})
+
 
 @app.middleware("http")
 async def _invalidate_gia_pha_cache_on_write(request, call_next):
