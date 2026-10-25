@@ -7,6 +7,10 @@ tối đa 128 token/câu).
 
 Thư mục model (``NER_MODEL_DIR_VI``) cần: ``model.int8.onnx``, ``label_list.json`` và MỘT trong hai bộ tokenizer:
 ``vocab.txt`` + ``bpe.codes`` (PhoBERT) hoặc ``tokenizer.json`` (XLM-R). ``model_card.json`` (nếu có) được trả trong ``info``.
+
+Chữ Hán (``NER_MODEL_DIR_HAN``, SikuBERT): cùng bộ tệp nhưng bắt buộc ``tokenizer.json`` (BERT, [CLS]/[SEP]). Mức KÝ TỰ:
+mỗi ký tự không phải khoảng trắng là một "từ"; câu hết sau ``。`` và tối đa 128 ký tự — khớp
+``data/03_derived/han_ner_v1/han_final/*.conll`` (``。`` chỉ xuất hiện ở cuối câu; câu dài nhất 128; xuống dòng không tách câu).
 """
 
 from __future__ import annotations
@@ -24,6 +28,11 @@ _SENTENCE_END = frozenset(".!?;")
 MAX_TOKENS_PER_SENTENCE = 128
 MAX_SEQ_LEN = 256
 _PIECE = re.compile(r"\S+\n?")
+_HAN_SENTENCE_END = frozenset("。")
+MAX_CHARS_PER_HAN_SENTENCE = 128
+_SPECIALS = {  # (tên RoBERTa, tên BERT, id mặc định)
+    "cls_id": ("<s>", "[CLS]", 0), "pad_id": ("<pad>", "[PAD]", 1), "sep_id": ("</s>", "[SEP]", 2), "unk_id": ("<unk>", "[UNK]", 3),
+}
 
 
 class NerUnavailable(RuntimeError):
@@ -97,14 +106,15 @@ class PhobertBpe:
 
 
 class HFTokenizerJson:
-    """Tokenizer XLM-R/BERT-họ dùng ``tokenizer.json`` qua thư viện ``tokenizers`` (cùng kết quả ``AutoTokenizer``)."""
+    """Tokenizer XLM-R/BERT (SikuBERT) dùng ``tokenizer.json`` qua thư viện ``tokenizers`` (cùng kết quả ``AutoTokenizer``)."""
 
     def __init__(self, tokenizer_json: Path, config_json: Optional[Path] = None):
         from tokenizers import Tokenizer
 
         self._tok = Tokenizer.from_file(str(tokenizer_json))
         vocab = self._tok.get_vocab()
-        self.cls_id, self.pad_id, self.sep_id, self.unk_id = (vocab.get(t, d) for t, d in (("<s>", 0), ("<pad>", 1), ("</s>", 2), ("<unk>", 3)))
+        for attr, (roberta, bert, default) in _SPECIALS.items():
+            setattr(self, attr, vocab.get(roberta, vocab.get(bert, default)))
 
     def word_ids(self, word: str) -> list[int]:
         return list(self._tok.encode(word, add_special_tokens=False).ids) or [self.unk_id]
@@ -128,6 +138,21 @@ class Word:
 
 def split_words(text: str) -> list[Word]:
     return [Word(m.group(), m.start(), m.end()) for m in _WORD_TOKEN.finditer(text)]
+
+
+def split_chars(text: str) -> list[Word]:
+    """Chữ Hán: mỗi ký tự không phải khoảng trắng là một "từ" (offset theo code point)."""
+    return [Word(ch, i, i + 1) for i, ch in enumerate(text) if not ch.isspace()]
+
+
+def split_han_sentences(words: Sequence[Word], max_chars: int = MAX_CHARS_PER_HAN_SENTENCE) -> list[tuple[int, int]]:
+    """Hết câu sau ``。``; câu dài hơn ``max_chars`` ký tự bị cắt thành từng khúc ``max_chars``."""
+    out, start = [], 0
+    for i, w in enumerate(words):
+        if w.text in _HAN_SENTENCE_END or i - start + 1 == max_chars or i == len(words) - 1:
+            out.append((start, i + 1))
+            start = i + 1
+    return out
 
 
 def split_sentences(text: str, words: Sequence[Word], max_tokens: int = MAX_TOKENS_PER_SENTENCE) -> list[tuple[int, int]]:
@@ -166,8 +191,9 @@ def bio_to_spans(tags: Sequence[str]) -> list[tuple[int, int, str]]:
 
 
 class NerModel:
-    def __init__(self, model_dir: Path, *, session=None):
+    def __init__(self, model_dir: Path, *, session=None, language: str = "vi"):
         self.model_dir = Path(model_dir)
+        self.language = language
         self.labels: list[str] = json.loads((self.model_dir / "label_list.json").read_text(encoding="utf-8"))
         self.tokenizer = load_tokenizer(self.model_dir)
         if session is None:
@@ -209,9 +235,14 @@ class NerModel:
 
     def extract(self, text: str) -> list[dict]:
         """Trả về danh sách thực thể: ``{label, text, start, end, confidence}`` (offset theo code point của ``text``)."""
-        words = split_words(text)
+        if self.language == "han":
+            words = split_chars(text)
+            ranges = split_han_sentences(words)
+        else:
+            words = split_words(text)
+            ranges = split_sentences(text, words)
         entities: list[dict] = []
-        for a, b in split_sentences(text, words):
+        for a, b in ranges:
             sent = words[a:b]
             tags, conf = self.predict_sentence(sent)
             for s, e, label in bio_to_spans(tags):
@@ -232,16 +263,20 @@ _cache: dict[str, NerModel] = {}
 
 def get_ner_model(language: str = "vi") -> NerModel:
     """Nạp model (một lần, an toàn đa luồng). Chưa cấu hình/thiếu tệp → ``NerUnavailable``."""
-    env = {"vi": "NER_MODEL_DIR_VI"}.get(language)
+    env = {"vi": "NER_MODEL_DIR_VI", "han": "NER_MODEL_DIR_HAN"}.get(language)
     path = os.getenv(env, "") if env else ""
     if not path:
         raise NerUnavailable(f"Chưa cấu hình {env or 'model cho ngôn ngữ ' + language}")
     d = Path(path)
-    need = ["model.int8.onnx", "label_list.json"] + ([] if (d / "tokenizer.json").exists() else ["vocab.txt", "bpe.codes"])
+    if language == "han" or (d / "tokenizer.json").exists():
+        need = ["model.int8.onnx", "label_list.json", "tokenizer.json"]
+    else:
+        need = ["model.int8.onnx", "label_list.json", "vocab.txt", "bpe.codes"]
     missing = [n for n in need if not (d / n).exists()]
     if missing:
         raise NerUnavailable(f"Thiếu tệp model trong {d}: {', '.join(missing)}")
+    key = f"{language}:{path}"
     with _lock:
-        if path not in _cache:
-            _cache[path] = NerModel(d)
-        return _cache[path]
+        if key not in _cache:
+            _cache[key] = NerModel(d, language=language)
+        return _cache[key]

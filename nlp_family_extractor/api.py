@@ -309,7 +309,7 @@ class GenealogyExtractRequest(BaseModel):
     )
     model_version: Literal["ner", "phobert", "sikubert"] = Field(
         default="ner",
-        description="'ner' (model NER đã huấn luyện cho tiếng Việt, cần cấu hình NER_MODEL_DIR_VI; 'phobert' là tên cũ, coi như 'ner'); 'sikubert' (chữ Hán) chưa có model",
+        description="'ner' (model NER đã huấn luyện cho tiếng Việt, cần cấu hình NER_MODEL_DIR_VI; 'phobert' là tên cũ, coi như 'ner'); 'sikubert' (chữ Hán, cần cấu hình NER_MODEL_DIR_HAN)",
     )
 
 
@@ -1315,13 +1315,25 @@ async def analyze_family_image(
 # Genealogy Parser API (Regex MVP + Dual-model Ready)
 # ============================================================================
 
-def _extract_with_ner(text: str) -> GenealogyExtractResponse:
+_NER_NOTES = {
+    # Con số tin cậy là F1 kiểm chéo 5 lượt trên 25 cây (docs/planning/NER_WORK_LOG.md), KHÔNG phải dev F1 của model_card.
+    "vi": "Chỉ trích thực thể; chưa có quan hệ. F1 kiểm chéo ≈ 0,54 — dùng làm gợi ý, cần người soát lại.",
+    "han": (
+        "Chỉ trích thực thể; chưa có quan hệ. Model học trên NHÃN MÁY (Gemini gán), CHƯA được người soát; "
+        "F1 0,715 là so với nhãn máy trên 15 trang test, không phải so với nhãn người — chỉ dùng làm gợi ý."
+    ),
+}
+
+
+def _extract_with_ner(text: str, language: str = "vi") -> GenealogyExtractResponse:
     """NER bằng model đã huấn luyện (ONNX int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
     from app.ner import NerUnavailable, get_ner_model
 
     try:
-        model = get_ner_model("vi")
+        model = get_ner_model(language)
     except NerUnavailable as error:
+        if language == "han":
+            return GenealogyExtractResponse(success=False, error=f"Model NER chữ Hán (SikuBERT) chưa sẵn sàng: {error}")
         return GenealogyExtractResponse(success=False, error=f"Model NER chưa sẵn sàng: {error}")
     try:
         entities = model.extract(text)
@@ -1333,6 +1345,7 @@ def _extract_with_ner(text: str) -> GenealogyExtractResponse:
         if ent["label"] == "PER_NAME" and ent["text"] not in persons:
             persons.append(ent["text"])
     card = model.info or {}
+    base_model = card.get("base_model", "SikuBERT" if language == "han" else "NER")
     return GenealogyExtractResponse(
         success=True,
         data=GenealogyExtractionResult(
@@ -1342,11 +1355,10 @@ def _extract_with_ner(text: str) -> GenealogyExtractResponse:
             entities=entities,
             statistics={"person_count": len(persons), "relation_count": 0, "entity_count": len(entities)},
             model_info={
-                "model_name": f"{card.get('base_model', 'NER')} NER (ONNX int8)",
+                "model_name": f"{base_model} NER (ONNX int8)",
                 "model_version": str(card.get("base_model", "unknown")),
-                "language": "vietnamese",
-                # Con số tin cậy là F1 kiểm chéo 5 lượt trên 25 cây (docs/planning/NER_WORK_LOG.md), KHÔNG phải dev F1 của model_card.
-                "note": "Chỉ trích thực thể; chưa có quan hệ. F1 kiểm chéo ≈ 0,54 — dùng làm gợi ý, cần người soát lại.",
+                "language": "hannom" if language == "han" else "vietnamese",
+                "note": _NER_NOTES[language],
             },
         ),
     )
@@ -1363,7 +1375,8 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
     Trích xuất **thực thể** (tên người, địa danh, ngày tháng, đời, thứ bậc) từ văn bản gia phả bằng model NER đã huấn luyện.
 
     - ``language="vietnamese"`` + ``model_version="ner"`` (hoặc tên cũ ``"phobert"``): chạy model hiện hành (``NER_MODEL_DIR_VI``).
-    - ``model_version="sikubert"`` / ``language="hannom"``: chưa có model chữ Hán → ``success=false`` kèm lý do (không giả lập).
+    - ``model_version="sikubert"`` / ``language="hannom"``: model chữ Hán mức ký tự (``NER_MODEL_DIR_HAN``, SikuBERT học trên
+      nhãn máy Gemini, chưa người soát). Chưa cấu hình/thiếu tệp → ``success=false`` kèm lý do (không giả lập).
     - Chưa có quan hệ cha/mẹ/vợ chồng (chưa huấn luyện model quan hệ).
     Không còn bộ trích xuất quy tắc (regex) ở endpoint này.
     """
@@ -1372,8 +1385,5 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
         raise HTTPException(status_code=400, detail="Text cannot be empty")
 
     if req.model_version == "sikubert" or req.language == "hannom":
-        return GenealogyExtractResponse(
-            success=False,
-            error="Chưa có model NER cho chữ Hán-Nôm (SikuBERT chưa được huấn luyện). Hiện chỉ hỗ trợ tiếng Việt.",
-        )
+        return _extract_with_ner(text, "han")
     return _extract_with_ner(text)
