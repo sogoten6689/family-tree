@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Kết quả đề tài gia phả Hán Nôm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: một cột văn bản kiểu bản thảo luận văn, mục lục đầu trang, bảng kiểu booktabs, sơ đồ quy trình ngang cuộn được */
+:root {
+  --bg: #f6f7f9;
+  --paper: #ffffff;
+  --ink: #1b2230;
+  --muted: #586172;
+  --rule: #d6dbe3;
+  --accent: #1f4e79;
+  --accent-soft: #e6eef6;
+  --seal: #a8382a;
+  --seal-soft: #f7e9e6;
+  --ok: #2b7656;
+  --ok-soft: #e4f2ea;
+  --wait: #8a6512;
+  --wait-soft: #f6efdc;
+  --serif: "Source Serif 4", "Noto Serif", "Songti TC", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --paper: #181e27; --ink: #e5e8ed; --muted: #9aa3b1; --rule: #2d3542;
+    --accent: #86b4e0; --accent-soft: #1d2b3b; --seal: #e38676; --seal-soft: #3a2220;
+    --ok: #6fc79d; --ok-soft: #18302a; --wait: #e0bb62; --wait-soft: #332a14; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --paper: #181e27; --ink: #e5e8ed; --muted: #9aa3b1; --rule: #2d3542;
+  --accent: #86b4e0; --accent-soft: #1d2b3b; --seal: #e38676; --seal-soft: #3a2220;
+  --ok: #6fc79d; --ok-soft: #18302a; --wait: #e0bb62; --wait-soft: #332a14; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--serif); font-size: 17px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+.sheet {
+  max-width: 820px; margin: 0 auto; background: var(--paper);
+  border: 1px solid var(--rule); border-radius: 4px;
+  padding: clamp(24px, 6vw, 64px) clamp(18px, 6vw, 72px);
+}
+.front { text-align: center; display: grid; gap: 10px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+.kicker { font-family: var(--sans); font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: clamp(26px, 4.4vw, 36px); line-height: 1.25; margin: 6px 0 2px; font-weight: 700; text-wrap: balance; }
+.en { font-style: italic; color: var(--muted); font-size: 16px; text-wrap: balance; }
+.meta { font-family: var(--sans); font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 6px; }
+.meta b { color: var(--ink); font-weight: 500; }
+.status {
+  font-family: var(--sans); font-size: 13.5px; line-height: 1.5; text-align: left;
+  background: var(--wait-soft); color: var(--ink); border-left: 3px solid var(--wait);
+  padding: 10px 14px; margin-top: 14px; border-radius: 2px;
+}
+.abstract { margin: 28px 0 8px; }
+.abstract h2 { font-family: var(--sans); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; text-align: center; font-weight: 600; }
+.abstract p { margin: 0; text-align: justify; hyphens: auto; }
+.kw { font-family: var(--sans); font-size: 14px; color: var(--muted); margin-top: 10px; }
+.kw b { color: var(--ink); font-weight: 600; }
+nav.toc { margin: 28px 0 8px; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+nav.toc h2 { font-family: var(--sans); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+nav.toc ol { margin: 0; padding: 0; list-style: none; columns: 2 240px; column-gap: 32px; font-family: var(--sans); font-size: 14.5px; }
+nav.toc li { break-inside: avoid; padding: 2px 0; }
+nav.toc a { color: var(--ink); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--accent); text-decoration: underline; }
+nav.toc span { font-family: var(--mono); font-size: 12.5px; color: var(--muted); display: inline-block; width: 2.2em; }
+section { margin-top: 40px; }
+h2.sec { font-size: 23px; line-height: 1.3; margin: 0 0 12px; display: flex; gap: 12px; align-items: baseline; text-wrap: balance; }
+h2.sec .n { font-family: var(--mono); font-size: 15px; color: var(--accent); font-weight: 500; flex: none; }
+h3 { font-size: 18px; margin: 22px 0 6px; }
+p { margin: 0 0 12px; }
+ul, ol.plain { margin: 0 0 12px; padding-left: 1.3em; }
+li { margin: 3px 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rq { display: grid; gap: 14px; margin: 14px 0; }
+.rq-item { display: grid; grid-template-columns: 56px 1fr; gap: 4px 14px; }
+.rq-item .id { font-family: var(--mono); font-size: 14px; color: var(--accent); padding-top: 3px; }
+.rq-item .q { font-weight: 600; }
+.rq-item .h { grid-column: 2; color: var(--muted); font-size: 15.5px; }
+.rq-item .h i { font-style: normal; font-family: var(--sans); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.tablewrap { overflow-x: auto; margin: 14px 0 6px; }
+table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14px; line-height: 1.45; min-width: 520px; }
+caption { caption-side: top; text-align: left; font-family: var(--serif); font-size: 15px; color: var(--muted); padding-bottom: 8px; }
+caption b { color: var(--ink); }
+thead th { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); text-align: left; font-weight: 600; padding: 7px 10px 7px 0; vertical-align: bottom; }
+tbody td { padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 13px; }
+.note { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 4px 0 14px; }
+.chip { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 500; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.wait { background: var(--wait-soft); color: var(--wait); }
+.chip.seal { background: var(--seal-soft); color: var(--seal); }
+.chip.acc { background: var(--accent-soft); color: var(--accent); }
+figure { margin: 18px 0; }
+figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+figcaption b { color: var(--ink); }
+.flow { overflow-x: auto; padding-bottom: 4px; }
+.flow svg { display: block; min-width: 680px; width: 100%; height: auto; }
+.flow .box { fill: var(--paper); stroke: var(--rule); stroke-width: 1.2; }
+.flow .box.core { stroke: var(--accent); stroke-width: 1.6; fill: var(--accent-soft); }
+.flow .t { fill: var(--ink); font-family: var(--sans); font-size: 13px; font-weight: 600; }
+.flow .s { fill: var(--muted); font-family: var(--sans); font-size: 11px; }
+.flow .arrow { stroke: var(--muted); stroke-width: 1.3; fill: none; }
+.flow .head { fill: var(--muted); }
+.flow .vote { stroke: var(--seal); stroke-dasharray: 4 3; stroke-width: 1.2; fill: none; }
+.flow .vt { fill: var(--seal); font-family: var(--sans); font-size: 11.5px; }
+.def { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 10px 0 14px; }
+.def dt { font-family: var(--sans); font-weight: 600; font-size: 14.5px; }
+.def dd { margin: 0; }
+.chapters { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 10px; }
+.chapters li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; }
+.chapters .c { font-family: var(--sans); font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .04em; padding-top: 2px; }
+.chapters b { display: block; }
+.chapters span { color: var(--muted); font-size: 15.5px; }
+.refs { padding-left: 2.2em; font-size: 15px; }
+.refs li { margin: 6px 0; }
+.pages { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 20px; font-family: var(--sans); font-size: 13px; margin: 0 0 22px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.pages a { color: var(--muted); text-decoration: none; }
+.pages a:hover, .pages a:focus-visible { color: var(--accent); text-decoration: underline; }
+.pages a[aria-current] { color: var(--ink); font-weight: 600; }
+.foot { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 13px; color: var(--muted); }
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .rq-item { grid-template-columns: 1fr; }
+  .rq-item .h { grid-column: 1; }
+  .def { grid-template-columns: 1fr; gap: 2px; }
+  .def dd { margin-bottom: 8px; }
+  .chapters li { grid-template-columns: 1fr; gap: 0; }
+  .abstract p { text-align: left; }
+}
+</style>
+<style>
+.legend3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 14px 0; }
+.legend3 div { font-family: var(--sans); font-size: 13.5px; line-height: 1.5; border-top: 2px solid var(--rule); padding-top: 8px; color: var(--muted); }
+.legend3 div.h { border-color: var(--ok); }
+.legend3 div.m { border-color: var(--seal); }
+.legend3 div.t { border-color: var(--accent); }
+.legend3 b { display: block; color: var(--ink); font-weight: 600; }
+.findings { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 12px; }
+.findings li { display: grid; grid-template-columns: 112px 1fr; gap: 14px; align-items: baseline; }
+.findings .v { font-family: var(--mono); font-size: 22px; color: var(--accent); text-align: right; font-variant-numeric: tabular-nums; }
+.findings .v small { display: block; font-family: var(--sans); font-size: 11.5px; color: var(--muted); letter-spacing: .04em; }
+.chart { overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.chart .grid { stroke: var(--rule); stroke-width: 1; }
+.chart .axis { stroke: var(--ink); stroke-width: 1; }
+.chart .lbl { fill: var(--muted); font-family: var(--mono); font-size: 11px; }
+.chart .flbl { fill: var(--ink); font-family: var(--sans); font-size: 12px; }
+.chart .val { fill: var(--ink); font-family: var(--mono); font-size: 11px; }
+.chart .b0 { fill: var(--rule); }
+.chart .b1 { fill: var(--accent); }
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--sans); font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+.key i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; }
+.key .k0 { background: var(--rule); }
+.key .k1 { background: var(--accent); }
+.verdict { margin: 12px 0; display: grid; gap: 14px; }
+.verdict > div { display: grid; grid-template-columns: 56px 1fr; gap: 4px 14px; }
+.verdict .id { font-family: var(--mono); font-size: 14px; color: var(--accent); padding-top: 3px; }
+.verdict .conf { grid-column: 2; font-family: var(--sans); font-size: 13px; }
+tr.hi td { font-weight: 600; }
+@media (max-width: 560px) {
+  .findings li { grid-template-columns: 1fr; gap: 0; }
+  .findings .v { text-align: left; }
+  .verdict > div { grid-template-columns: 1fr; }
+  .verdict .conf { grid-column: 1; }
+}
+</style>
+
+</head>
+<body>
+<article class="sheet">
+  <nav class="pages" aria-label="Các trang của đề tài">
+    <a href="de-cuong.html">Đề cương</a>
+    <a href="ket-qua.html" aria-current="page">Kết quả</a>
+    <a href="hoi-nghi.html">Hội nghị</a>
+    <a href="goi-viec.html">Gói việc sinh viên</a>
+  </nav>
+  <header class="front">
+    <div class="kicker">Báo cáo kết quả nghiên cứu · Số liệu đến 26/10/2026</div>
+    <h1>Kết quả đề tài: trích xuất thực thể và quan hệ từ văn bản gia phả Hán Nôm</h1>
+    <div class="en">Experimental results on named entity and kinship relation extraction from Sino-Nom genealogies</div>
+    <div class="meta">
+      <span>Học viên: <b>Lam Nguyen</b></span>
+      <span>Đề tài: <b>Mô hình xây dựng tự động cây gia phả từ văn bản gia phả Hán Nôm</b></span>
+    </div>
+    <div class="status">
+      <b>Cách đọc số liệu.</b> Mọi con số trong trang do bộ chấm của dự án tính (<code>implement/evaluate.py</code>). Mỗi kết quả được ghi rõ đo trên loại nhãn nào. Nhãn máy chỉ cho biết mô hình tái tạo nhãn máy tốt đến đâu, <b>không phải độ chính xác thật</b>. Ô "—" là chưa đo; trang không điền số ước lượng.
+    </div>
+  </header>
+
+  <section class="abstract" aria-labelledby="abs">
+    <h2 id="abs">Tóm tắt kết quả</h2>
+    <ul class="findings">
+      <li><div class="v">0,615<small>F1 · nhãn người</small></div><div><b>NER tiếng Việt.</b> XLM-R base đạt F1 gộp 0,615 khi kiểm chéo 5 lượt theo cây trên 25 cây nhãn người; PhoBERT base đạt 0,538. Thêm 103 cây nhãn bán tự động để tiền huấn luyện không cải thiện kết quả (0,595 so với 0,594; t = −0,36).</div></li>
+      <li><div class="v">0,658<small>F1 · nhãn máy</small></div><div><b>NER chữ Hán.</b> SikuBERT đạt F1 0,658 khi kiểm chéo 5 lượt theo sách, vượt baseline từ điển (0,232) ở cả 5 lượt (t = 10,8). Đo trên nhãn máy Gemini; độ chính xác thật đang chờ 15 trang người soát.</div></li>
+      <li><div class="v">28/30<small>quan hệ vắt dòng</small></div><div><b>Trích xuất quan hệ.</b> 28/30 quan hệ do người gán nằm vắt qua nhiều dòng. Luật dựa trên dấu hiệu ngôn ngữ chỉ đạt F1 0,015 trên chuẩn vàng mức cây. Quan hệ gia tộc nằm chủ yếu ở <i>cấu trúc</i> văn bản, không nằm trong câu.</div></li>
+      <li><div class="v">1.524<small>quan hệ neo</small></div><div><b>Chuẩn vàng mức cây.</b> Từ phả hệ của 342 cây, đề tài thu được 1.524 quan hệ có cả hai tên xuất hiện trong phả ký. Nguồn này lớn gấp khoảng 50 lần nhãn người, và khớp nhãn người ở mức F1 0,472.</div></li>
+    </ul>
+  </section>
+
+  <nav class="toc" aria-label="Mục lục">
+    <h2>Mục lục</h2>
+    <ol>
+      <li><a href="#r1"><span>1</span>Thang đo và loại nhãn</a></li>
+      <li><a href="#r2"><span>2</span>Dữ liệu và tiền xử lý</a></li>
+      <li><a href="#r3"><span>3</span>NER chữ Hán</a></li>
+      <li><a href="#r4"><span>4</span>NER tiếng Việt</a></li>
+      <li><a href="#r5"><span>5</span>Trích xuất quan hệ</a></li>
+      <li><a href="#r6"><span>6</span>Hệ thống và kiểm thử</a></li>
+      <li><a href="#r7"><span>7</span>Bảng tổng hợp</a></li>
+      <li><a href="#r8"><span>8</span>Thảo luận</a></li>
+      <li><a href="#r9"><span>9</span>Hạn chế và hướng tiếp theo</a></li>
+    </ol>
+  </nav>
+
+  <section id="r1">
+    <h2 class="sec"><span class="n">1</span>Thang đo và loại nhãn</h2>
+    <p>NER được chấm theo P/R/F1 mức thực thể: một dự đoán chỉ tính là đúng khi khớp chính xác cả ranh giới lẫn loại. RE được chấm trên bộ ba (đầu, quan hệ, cuối), trong đó <code>SPOUSE</code> tính không hướng. Dữ liệu chia theo sách (chữ Hán) hoặc theo cây (tiếng Việt). Khoảng tin cậy 95% tính bằng bootstrap. Chênh lệch giữa hai hệ thống được kiểm định bằng t-test ghép cặp theo lượt (df = 4).</p>
+    <div class="legend3">
+      <div class="h"><b>Nhãn người</b>25 cây tiếng Việt do người soát. Đây là thước đo duy nhất phản ánh độ chính xác thật.</div>
+      <div class="m"><b>Nhãn máy / bán tự động</b>Do Gemini gán, hoặc do <code>gold_builder</code> ghép Gemini với luật. Ở tiếng Việt, loại nhãn này chỉ khớp nhãn người ở mức F1 0,400.</div>
+      <div class="t"><b>Chuẩn vàng mức cây</b>Quan hệ suy ra từ phả hệ đi kèm mỗi cây, chỉ giữ cặp có cả hai tên trong phả ký. Chưa được người soát.</div>
+    </div>
+  </section>
+
+  <section id="r2">
+    <h2 class="sec"><span class="n">2</span>Dữ liệu và tiền xử lý</h2>
+    <h3>2.1 Kiểm tra chất lượng nhãn tiếng Việt</h3>
+    <p>Trên 139 cây có thực thể (4.954 thực thể), offset của mọi thực thể đều khớp đúng chuỗi gốc, không có cặp thực thể chồng lấn; không có quan hệ trỏ ra ngoài, tự tham chiếu hay trùng cạnh. Độ dài văn bản có trung vị 2.168 ký tự và tối đa 84.540 ký tự, nên văn bản phải được cắt đoạn trước khi đưa vào mô hình.</p>
+    <p>Đối chiếu trên 25 cây có cả hai phiên bản: nhãn bán tự động chấm bằng nhãn người đạt <b>F1 0,400</b> (P 0,359; R 0,451). Theo loại: GENERATION 0,894, ORDER 0,579, PER_NAME 0,497, DATE 0,279, LOC 0,245.</p>
+    <h3>2.2 Văn bản ở bảng mã tiếng Việt cũ</h3>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 1.</b> Kết quả chuyển bảng mã cho phả ký (342 cây).</caption>
+        <thead><tr><th>Chỉ tiêu</th><th class="num">Giá trị</th></tr></thead>
+        <tbody>
+          <tr><td>Cây có phả ký ở bảng mã cũ (TCVN3, VNI, nhiều cây trộn với Unicode theo dòng)</td><td class="num">23 / 342 (6,7%)</td></tr>
+          <tr><td>Cây sửa được</td><td class="num">18 / 23</td></tr>
+          <tr><td>Độ phủ từ vựng trước → sau khi sửa</td><td class="num">0,17–0,82 → 0,89–1,00</td></tr>
+          <tr><td>Dòng Unicode bị thay đổi nhầm</td><td class="num">0</td></tr>
+          <tr><td>Quan hệ neo được thêm vào chuẩn vàng mức cây (trên các cây này)</td><td class="num">26 → 43</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Bộ chuyển mã đã được đưa vào bước xuất dữ liệu, giữ bản gốc ở <code>pha_ky.raw.txt</code>. Với TCVN3, nhãn có sẵn được lấy lại theo vị trí, vì phép chuyển giữ nguyên độ dài. Với VNI, cây có nhãn được giữ nguyên để offset không bị lệch.</p>
+  </section>
+
+  <section id="r3">
+    <h2 class="sec"><span class="n">3</span>NER chữ Hán</h2>
+    <p>Thiết lập: kiểm chéo 5 lượt theo sách, 20 sách, mỗi sách vào tập kiểm tra đúng một lần. SikuBERT được huấn luyện 6 epoch mỗi lượt trên GPU T4, tổng 17,7 phút. Baseline là từ điển, không học máy; độ dài mục từ tối thiểu được chọn trên tập phát triển. <span class="chip seal">nhãn máy Gemini</span></p>
+    <figure>
+      <div class="key"><span><i class="k0"></i>Baseline từ điển</span><span><i class="k1"></i>SikuBERT</span></div>
+      <div class="chart" role="img" aria-label="F1 theo từng lượt. Baseline từ điển: 0,205; 0,275; 0,232; 0,189; 0,258. SikuBERT: 0,734; 0,625; 0,623; 0,748; 0,661.">
+        <svg viewBox="0 0 640 256" xmlns="http://www.w3.org/2000/svg">
+          <line class="grid" x1="56" x2="620" y1="20" y2="20"/>
+          <line class="grid" x1="56" x2="620" y1="70" y2="70"/>
+          <line class="grid" x1="56" x2="620" y1="120" y2="120"/>
+          <line class="grid" x1="56" x2="620" y1="170" y2="170"/>
+          <text class="lbl" x="48" y="24" text-anchor="end">0,8</text>
+          <text class="lbl" x="48" y="74" text-anchor="end">0,6</text>
+          <text class="lbl" x="48" y="124" text-anchor="end">0,4</text>
+          <text class="lbl" x="48" y="174" text-anchor="end">0,2</text>
+          <text class="lbl" x="48" y="224" text-anchor="end">0</text>
+          <rect class="b0" x="80.4" y="168.75" width="30" height="51.25"/>
+          <rect class="b1" x="114.4" y="36.5" width="30" height="183.5"/>
+          <text class="val" x="95.4" y="163" text-anchor="middle">,205</text>
+          <text class="val" x="129.4" y="31" text-anchor="middle">,734</text>
+          <rect class="b0" x="193.2" y="151.25" width="30" height="68.75"/>
+          <rect class="b1" x="227.2" y="63.75" width="30" height="156.25"/>
+          <text class="val" x="208.2" y="146" text-anchor="middle">,275</text>
+          <text class="val" x="242.2" y="58" text-anchor="middle">,625</text>
+          <rect class="b0" x="306" y="162" width="30" height="58"/>
+          <rect class="b1" x="340" y="64.25" width="30" height="155.75"/>
+          <text class="val" x="321" y="156" text-anchor="middle">,232</text>
+          <text class="val" x="355" y="59" text-anchor="middle">,623</text>
+          <rect class="b0" x="418.8" y="172.75" width="30" height="47.25"/>
+          <rect class="b1" x="452.8" y="33" width="30" height="187"/>
+          <text class="val" x="433.8" y="167" text-anchor="middle">,189</text>
+          <text class="val" x="467.8" y="28" text-anchor="middle">,748</text>
+          <rect class="b0" x="531.6" y="155.5" width="30" height="64.5"/>
+          <rect class="b1" x="565.6" y="54.75" width="30" height="165.25"/>
+          <text class="val" x="546.6" y="150" text-anchor="middle">,258</text>
+          <text class="val" x="580.6" y="49" text-anchor="middle">,661</text>
+          <line class="axis" x1="56" x2="620" y1="220" y2="220"/>
+          <text class="flbl" x="112.4" y="240" text-anchor="middle">Lượt 1</text>
+          <text class="flbl" x="225.2" y="240" text-anchor="middle">Lượt 2</text>
+          <text class="flbl" x="338" y="240" text-anchor="middle">Lượt 3</text>
+          <text class="flbl" x="450.8" y="240" text-anchor="middle">Lượt 4</text>
+          <text class="flbl" x="563.6" y="240" text-anchor="middle">Lượt 5</text>
+        </svg>
+      </div>
+      <figcaption><b>Hình 1.</b> F1 trên tập kiểm tra của từng lượt kiểm chéo theo sách. SikuBERT cao hơn baseline từ điển trung bình 0,446 F1 mỗi lượt (0,35–0,56; t = 10,8; df = 4).</figcaption>
+    </figure>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 2.</b> NER chữ Hán, kiểm chéo 5 lượt theo sách. <span class="chip seal">nhãn máy</span></caption>
+        <thead><tr><th>Hệ thống</th><th class="num">P</th><th class="num">R</th><th class="num">F1 gộp</th><th class="num">ORDER</th><th class="num">DATE</th><th class="num">PER_NAME</th><th class="num">GEN.</th><th class="num">LOC</th></tr></thead>
+        <tbody>
+          <tr><td>Baseline từ điển</td><td class="num">—</td><td class="num">—</td><td class="num">0,232*</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr class="hi"><td>SikuBERT, 6 epoch</td><td class="num">0,640</td><td class="num">0,677</td><td class="num">0,658</td><td class="num">0,746</td><td class="num">0,717</td><td class="num">0,667</td><td class="num">0,655</td><td class="num">0,531</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">* Trung bình F1 của 5 lượt. Tổng tp/fp/fn của SikuBERT là 14.563 / 8.198 / 6.956, trên khoảng 21.500 thực thể nhãn máy trong tập kiểm tra.</p>
+    <h3>3.1 Mô hình cuối <code>sikubert-family</code></h3>
+    <p>Mô hình cuối được huấn luyện trên toàn bộ nhãn máy (2.548 câu). Epoch tốt nhất theo tập phát triển là epoch 5, với F1 phát triển 0,627. Trên 15 trang kiểm tra (38 câu), mô hình đạt <b>F1 0,715</b> (CI95 0,649–0,780) so với nhãn máy <span class="chip seal">nhãn máy</span>. Phép chấm trên nhãn người <span class="chip wait">đang chờ soát</span> đã chuẩn bị sẵn: công cụ ánh xạ nhãn ký tự về offset trang đã được kiểm, tái tạo đúng 293/293 thực thể.</p>
+    <p>Trên tập <code>han_final/test</code> nhỏ (38 câu), baseline từ điển đạt 0,444. Con số này chênh nhiều so với trung bình kiểm chéo 0,232, nên đề tài dùng kiểm chéo theo sách làm số chính. Tập 38 câu chỉ dùng để tham khảo.</p>
+  </section>
+
+  <section id="r4">
+    <h2 class="sec"><span class="n">4</span>NER tiếng Việt</h2>
+    <p>Thiết lập: kiểm chéo 5 lượt theo cây trên 25 cây nhãn người (692 thực thể). Tập kiểm tra không chứa nhãn tự động. <span class="chip ok">nhãn người</span></p>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 3.</b> NER tiếng Việt, kiểm chéo 5 lượt theo cây.</caption>
+        <thead><tr><th>Hệ thống</th><th class="num">P</th><th class="num">R</th><th class="num">F1 gộp</th><th>F1 từng lượt</th></tr></thead>
+        <tbody>
+          <tr class="hi"><td>XLM-R base (lần chạy đầu)</td><td class="num">0,593</td><td class="num">0,639</td><td class="num">0,615</td><td>—</td></tr>
+          <tr><td>PhoBERT base</td><td class="num">—</td><td class="num">—</td><td class="num">0,538</td><td>—</td></tr>
+          <tr><td>A. XLM-R, chỉ nhãn người (chạy lại)</td><td class="num">0,575</td><td class="num">0,614</td><td class="num">0,594</td><td class="num">,607 ,515 ,582 ,686 ,574</td></tr>
+          <tr><td>B. XLM-R hai giai đoạn (+103 cây bán tự động)</td><td class="num">0,529</td><td class="num">0,679</td><td class="num">0,595</td><td class="num">,608 ,615 ,440 ,665 ,568</td></tr>
+          <tr><td>Baseline từ điển (tập phát triển 75 câu)</td><td class="num">—</td><td class="num">—</td><td class="num">0,231</td><td>CI95 0,066–0,424</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 4.</b> F1 theo loại thực thể, A so với B.</caption>
+        <thead><tr><th>Cấu hình</th><th class="num">PER_NAME</th><th class="num">LOC</th><th class="num">DATE</th><th class="num">GENERATION</th><th class="num">ORDER (n = 11)</th></tr></thead>
+        <tbody>
+          <tr><td>A. Chỉ nhãn người</td><td class="num">0,356</td><td class="num">0,612</td><td class="num">0,791</td><td class="num">0,640</td><td class="num">0,267</td></tr>
+          <tr><td>B. Hai giai đoạn</td><td class="num">0,499</td><td class="num">0,524</td><td class="num">0,858</td><td class="num">0,650</td><td class="num">0,387</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Chênh lệch F1 theo lượt giữa B và A là −0,014 ± sd 0,087 (t = −0,36; df = 4), không có ý nghĩa thống kê. Kết quả này phù hợp với thí nghiệm trước đó trên PhoBERT hai giai đoạn (0,526 so với 0,538). Theo loại thực thể, B tăng recall (+0,065) nhưng giảm precision (−0,046); PER_NAME tăng 0,143 trong khi LOC giảm 0,088. Đây mới là gợi ý cho việc bỏ phiếu theo loại, chưa được kiểm định.</p>
+    <p>Hai lần chạy cùng cấu hình chỉ nhãn người cho 0,615 và 0,594. Độ dao động khoảng 0,02 này là ngưỡng dưới để diễn giải mọi chênh lệch.</p>
+    <p><b>Một đính chính phương pháp.</b> Trước đó, mô hình đang chạy (XLM-R ONNX int8) từng được đo F1 0,268 trên 98 cây. Sau khi kiểm lại, 98 cây này hoá ra là nhãn bán tự động, nên con số đó không phản ánh chất lượng mô hình và kết luận đã được rút lại. Sự cố này là lý do mọi kết quả trong trang đều ghi kèm loại nhãn.</p>
+  </section>
+
+  <section id="r5">
+    <h2 class="sec"><span class="n">5</span>Trích xuất quan hệ (tiếng Việt)</h2>
+    <h3>5.1 Quan hệ nằm ở đâu trong văn bản</h3>
+    <p>Trong 25 cây nhãn người, <b>28/30 quan hệ</b> có hai thực thể nằm ở hai dòng khác nhau, cách nhau trung vị 132 ký tự và tối đa 2.382 ký tự. Phả ký thường viết dưới dạng danh sách: tên cha ở một dòng, tên các con ở các dòng sau. Vì vậy bất kỳ phương pháp RE nào chỉ xét trong phạm vi một câu, dù là luật hay mô hình, cũng chỉ bắt được tối đa 2/30 quan hệ.</p>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 5.</b> RE với thực thể chuẩn vàng, trên hai chuẩn đánh giá.</caption>
+        <thead><tr><th>Hệ thống</th><th>Chuẩn đánh giá</th><th class="num">P</th><th class="num">R</th><th class="num">F1</th></tr></thead>
+        <tbody>
+          <tr><td>Luật mức câu</td><td><span class="chip ok">25 cây người</span></td><td class="num">0,000</td><td class="num">0,000</td><td class="num">0,000</td></tr>
+          <tr><td>Luật mức tài liệu v2</td><td><span class="chip ok">25 cây người</span></td><td class="num">0,000</td><td class="num">0,000</td><td class="num">0,000</td></tr>
+          <tr><td>Nhãn bán tự động</td><td><span class="chip ok">25 cây người</span></td><td class="num">0,170</td><td class="num">0,933</td><td class="num">0,287</td></tr>
+          <tr><td>Luật mức tài liệu v2</td><td><span class="chip seal">dev, 114 cây tự động</span></td><td class="num">0,648</td><td class="num">0,126</td><td class="num">0,211</td></tr>
+          <tr><td>Luật mức câu</td><td><span class="chip acc">mức cây, 139 cây</span></td><td class="num">0,021</td><td class="num">0,009</td><td class="num">0,013</td></tr>
+          <tr><td>Luật mức tài liệu v2</td><td><span class="chip acc">mức cây, 139 cây</span></td><td class="num">0,018</td><td class="num">0,013</td><td class="num">0,015</td></tr>
+          <tr><td>Nhãn bán tự động†</td><td><span class="chip acc">mức cây, 139 cây</span></td><td class="num">0,179</td><td class="num">0,705</td><td class="num">0,286</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">† Phép đo này có tính vòng tròn: <code>gold_builder</code> đã dùng phả hệ để khớp tên khi tạo nhãn. Luật mức tài liệu được xây trên tập phát triển và chấm trên 25 cây người đúng một lần.</p>
+    <h3>5.2 Chuẩn vàng mức cây</h3>
+    <p>Từ phả hệ của 342 cây (72.484 quan hệ, suy ra bằng luật <code>generation_stack</code>, độ tin cậy 0,65), chỉ giữ các cặp mà cả hai tên đều xuất hiện trong phả ký, thu được <b>1.524 quan hệ neo vào văn bản</b>: FATHER_OF 1.512, MOTHER_OF 10, SPOUSE 2. Trên 25 cây có nhãn người (42 quan hệ neo), nhãn người khớp chuẩn vàng mức cây với P 0,567, R 0,405, <b>F1 0,472</b>. 13/30 quan hệ do người gán không có trong phả hệ: đó là quan hệ chỉ nêu trong văn xuôi, hoặc tên được viết khác đi.</p>
+  </section>
+
+  <section id="r6">
+    <h2 class="sec"><span class="n">6</span>Hệ thống và kiểm thử</h2>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 6.</b> Tình trạng hệ thống và kiểm thử (25–26/10/2026).</caption>
+        <thead><tr><th>Hạng mục</th><th>Kết quả</th></tr></thead>
+        <tbody>
+          <tr><td>API trích xuất, tiếng Việt</td><td>Chạy XLM-R ONNX int8. Lượng tử hoá giữ 99,03% nhãn trùng với bản torch.</td></tr>
+          <tr><td>API trích xuất, chữ Hán</td><td>Đã hỗ trợ nạp mô hình chữ Hán qua cấu hình. Mô hình <code>sikubert-family</code> (433 MB) đã lưu nhưng chưa xuất ONNX.</td></tr>
+          <tr><td>Trích xuất quan hệ trong API</td><td>Trả danh sách rỗng, không giả lập kết quả. Đang chờ chọn hướng RE.</td></tr>
+          <tr><td>Bộ kiểm thử hộp đen qua HTTP</td><td>46 kiểm thử đạt khi không có cơ sở dữ liệu; 42 kiểm thử đạt với MySQL tạm. Kiểm thử theo 4 vai: khách, người dùng A và B, quản trị.</td></tr>
+          <tr><td>Kiểm thử backend / frontend</td><td>316 đạt, 2 bỏ qua / 135 đạt; CI 4/4 đạt.</td></tr>
+          <tr><td>Lỗi phát hiện nhờ bộ kiểm thử</td><td>Khi không có cơ sở dữ liệu, route quản trị trả 500 thay vì 503. Đã sửa.</td></tr>
+          <tr><td>Chi phí GPU (Colab T4)</td><td>Khoảng 116 phút: 80,6 phút cho thí nghiệm hai giai đoạn, 17,7 phút cho kiểm chéo SikuBERT, khoảng 18 phút cho mô hình cuối.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="r7">
+    <h2 class="sec"><span class="n">7</span>Bảng tổng hợp</h2>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 7.</b> Kết quả theo đặc tả đánh giá (SPEC §0.7). "—" là chưa đo.</caption>
+        <thead><tr><th>Hệ thống</th><th>Quy trình</th><th class="num">NER F1</th><th class="num">RE F1</th><th>Cây đúng</th><th>Loại nhãn</th></tr></thead>
+        <tbody>
+          <tr><td>Baseline từ điển</td><td>han</td><td class="num">0,232</td><td class="num">—</td><td>—</td><td><span class="chip seal">máy</span></td></tr>
+          <tr><td><code>sikubert-family</code> (kiểm chéo)</td><td>han</td><td class="num">0,658</td><td class="num">—</td><td>—</td><td><span class="chip seal">máy</span></td></tr>
+          <tr><td><code>sikubert-family</code> (15 trang)</td><td>han</td><td class="num">0,715</td><td class="num">—</td><td>—</td><td><span class="chip seal">máy</span></td></tr>
+          <tr><td><code>sikubert-family</code> (15 trang)</td><td>han</td><td class="num">—</td><td class="num">—</td><td>—</td><td><span class="chip wait">chờ soát</span></td></tr>
+          <tr><td>XLM-R base</td><td>vi</td><td class="num">0,615</td><td class="num">—</td><td>—</td><td><span class="chip ok">người</span></td></tr>
+          <tr><td>PhoBERT base</td><td>vi</td><td class="num">0,538</td><td class="num">—</td><td>—</td><td><span class="chip ok">người</span></td></tr>
+          <tr><td>Luật RE mức tài liệu</td><td>vi</td><td class="num">—</td><td class="num">0,000 / 0,015</td><td>—</td><td><span class="chip ok">người</span> / <span class="chip acc">mức cây</span></td></tr>
+          <tr><td>Nhãn bán tự động</td><td>vi</td><td class="num">0,400</td><td class="num">0,287</td><td>—</td><td><span class="chip ok">người</span></td></tr>
+          <tr><td><code>phobert-family</code> (đóng gói)</td><td>vi</td><td class="num">—</td><td class="num">—</td><td>—</td><td></td></tr>
+          <tr><td>Gemini · Kim Hán Nôm · Bỏ phiếu</td><td>vi/han</td><td class="num">—</td><td class="num">—</td><td>—</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="r8">
+    <h2 class="sec"><span class="n">8</span>Thảo luận</h2>
+    <div class="verdict">
+      <div><div class="id">RQ1</div><div>Mô hình huấn luyện trước vượt rõ baseline từ điển ở cả hai ngôn ngữ. Ở tiếng Việt, với 25 cây nhãn người, XLM-R (0,615) cao hơn PhoBERT (0,538). Kết quả này chưa ủng hộ giả thuyết rằng mô hình theo miền ngôn ngữ luôn tốt hơn mô hình đa ngữ khi dữ liệu nhỏ. Ở chữ Hán, chưa so được với XLM-R và chưa có nhãn người.</div><div class="conf"><span class="chip ok">tin cậy cao</span> với chênh lệch so với baseline; <span class="chip wait">tin cậy vừa</span> với thứ hạng XLM-R / PhoBERT (mẫu nhỏ).</div></div>
+      <div><div class="id">RQ2</div><div>Quan hệ gia tộc trong gia phả nằm chủ yếu ở cấu trúc trình bày (danh sách theo đời, sơ đồ dạng văn bản) và cần đồng tham chiếu. RE mức câu có trần khoảng 2/30. Hướng phù hợp là phân tích cấu trúc văn bản hoặc giám sát xa từ chuẩn vàng mức cây.</div><div class="conf"><span class="chip ok">tin cậy cao</span> với phân bố quan hệ; <span class="chip wait">tin cậy vừa</span> với phương pháp nên chọn.</div></div>
+      <div><div class="id">RQ3</div><div>Chưa đo. Kết quả theo loại ở Bảng 4 cho thấy các cấu hình mạnh ở những loại thực thể khác nhau, đây là điều kiện cần để bỏ phiếu theo loại có lợi.</div><div class="conf"><span class="chip acc">chưa có bằng chứng</span></div></div>
+      <div><div class="id">RQ4</div><div>Đã có chuẩn đánh giá (1.524 quan hệ neo), nhưng chưa có hệ thống RE đủ tốt để đo chất lượng cây.</div><div class="conf"><span class="chip acc">chưa có bằng chứng</span></div></div>
+    </div>
+    <h3>Các yếu tố đe doạ tính hợp lệ</h3>
+    <ul>
+      <li><b>Hợp lệ nội tại.</b> Nhãn chữ Hán là nhãn máy, nên F1 0,658–0,715 đo mức tái tạo nhãn Gemini. Ở tiếng Việt, nhãn máy chỉ khớp nhãn người ở mức 0,40, nên độ chính xác thật của mô hình chữ Hán có thể thấp hơn đáng kể.</li>
+      <li><b>Hợp lệ thống kê.</b> Mỗi lượt kiểm chéo tiếng Việt chỉ có 5 cây; ORDER chỉ có 11 thực thể; RE chỉ có 30 quan hệ. Mọi chênh lệch nhỏ hơn khoảng 0,03 không được diễn giải.</li>
+      <li><b>Hợp lệ cấu trúc.</b> Nhãn quan hệ của người trộn quan hệ nêu trong văn xuôi với quan hệ theo sơ đồ, có thể trái với hướng dẫn gán nhãn. Chuẩn vàng mức cây chủ yếu gồm quan hệ cha–con.</li>
+      <li><b>Hợp lệ ngoại tại.</b> Dữ liệu tiếng Việt chủ yếu đến từ một nguồn (VietnamGiaPha). Dữ liệu chữ Hán gồm 20 sách và chưa được đối chiếu với 59 PDF trên máy của lab.</li>
+    </ul>
+  </section>
+
+  <section id="r9">
+    <h2 class="sec"><span class="n">9</span>Hạn chế và hướng tiếp theo</h2>
+    <ol class="plain">
+      <li>Soát tay 15 trang kiểm tra chữ Hán (293 thực thể), rồi chấm <code>sikubert-family</code> trên nhãn người. Đây là bước có giá trị khoa học cao nhất hiện nay.</li>
+      <li>Chọn hướng RE cùng thầy hướng dẫn: phân tích cấu trúc văn bản, giám sát xa từ chuẩn vàng mức cây, hoặc dựng cây từ bố cục trang ảnh.</li>
+      <li>Soát thêm cây tiếng Việt. Đây là cách duy nhất đã được chứng minh làm tăng dữ liệu thật; thêm nhãn bán tự động không giúp ích.</li>
+      <li>Xuất <code>sikubert-family</code> sang ONNX và tích hợp vào API; đóng gói <code>phobert-family</code> hoặc chọn XLM-R làm mô hình tiếng Việt chính.</li>
+      <li>Thử nghiệm bỏ phiếu với Kim Hán Nôm và Gemini trên cùng tập kiểm tra có nhãn người.</li>
+    </ol>
+  </section>
+
+  <div class="foot">Nguồn số liệu: <code>family-tree-harness/results/</code>, <code>research/FINDINGS.md</code> §1–15. Đề cương nghiên cứu được trình bày ở trang “Đề cương luận văn”.</div>
+</article>
+
+</body>
+</html>

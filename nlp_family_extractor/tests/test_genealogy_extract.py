@@ -28,10 +28,12 @@ class GenealogyExtractEndpointTest(unittest.TestCase):
         os.environ.pop("NER_MODEL_DIR_VI", None)
         self.assertIn("chưa sẵn sàng", self.post(model_version="phobert").json()["error"])
 
-    def test_sikubert_and_hannom_are_refused(self) -> None:
+    def test_sikubert_and_hannom_refused_without_han_model(self) -> None:
+        os.environ.pop("NER_MODEL_DIR_HAN", None)
         for body in (self.post(model_version="sikubert").json(), self.post(text="始祖清閑公配陳氏生子敏達", language="hannom").json()):
             self.assertFalse(body["success"])
-            self.assertIn("Hán-Nôm", body["error"])
+            self.assertIn("chữ Hán", body["error"])
+            self.assertIn("NER_MODEL_DIR_HAN", body["error"])
             self.assertIsNone(body["data"])
 
     def test_empty_text_is_a_400(self) -> None:

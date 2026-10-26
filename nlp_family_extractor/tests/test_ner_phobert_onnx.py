@@ -86,7 +86,12 @@ def test_endpoint_phobert(monkeypatch, tmp_path):
     r = client.post("/api/genealogy/extract", json=body).json()
     assert r["success"] is False and "chưa sẵn sàng" in r["error"]
 
-    monkeypatch.setattr("app.ner.get_ner_model", lambda lang="vi": fake_model(tmp_path))
+    def only_vi(lang="vi"):
+        if lang != "vi":
+            raise pn.NerUnavailable(f"Chưa cấu hình model cho {lang}")
+        return fake_model(tmp_path)
+
+    monkeypatch.setattr("app.ner.get_ner_model", only_vi)
     r = client.post("/api/genealogy/extract", json=body).json()
     assert r["success"] is True
     assert r["data"]["persons"] == ["ab"] and r["data"]["entities"][0]["label"] == "PER_NAME" and r["data"]["relations"] == []

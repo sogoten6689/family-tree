@@ -66,9 +66,13 @@ def get_engine() -> Engine:
     return _engine
 
 
+class DatabaseUnavailable(RuntimeError):
+    """Chưa cấu hình/không kết nối được DB. API trả 503 (handler trong api.py) thay vì 500."""
+
+
 def get_db() -> Generator[Session, None, None]:
     if _SessionLocal is None:
-        raise RuntimeError(_init_error or "Database is not initialized.")
+        raise DatabaseUnavailable(_init_error or "Database is not initialized.")
 
     db = _SessionLocal()
     try:

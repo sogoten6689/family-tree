@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Đề cương luận văn gia phả Hán Nôm</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: một cột văn bản kiểu bản thảo luận văn, mục lục đầu trang, bảng kiểu booktabs, sơ đồ quy trình ngang cuộn được */
+:root {
+  --bg: #f6f7f9;
+  --paper: #ffffff;
+  --ink: #1b2230;
+  --muted: #586172;
+  --rule: #d6dbe3;
+  --accent: #1f4e79;
+  --accent-soft: #e6eef6;
+  --seal: #a8382a;
+  --seal-soft: #f7e9e6;
+  --ok: #2b7656;
+  --ok-soft: #e4f2ea;
+  --wait: #8a6512;
+  --wait-soft: #f6efdc;
+  --serif: "Source Serif 4", "Noto Serif", "Songti TC", Georgia, serif;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --paper: #181e27; --ink: #e5e8ed; --muted: #9aa3b1; --rule: #2d3542;
+    --accent: #86b4e0; --accent-soft: #1d2b3b; --seal: #e38676; --seal-soft: #3a2220;
+    --ok: #6fc79d; --ok-soft: #18302a; --wait: #e0bb62; --wait-soft: #332a14; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --paper: #181e27; --ink: #e5e8ed; --muted: #9aa3b1; --rule: #2d3542;
+  --accent: #86b4e0; --accent-soft: #1d2b3b; --seal: #e38676; --seal-soft: #3a2220;
+  --ok: #6fc79d; --ok-soft: #18302a; --wait: #e0bb62; --wait-soft: #332a14; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--serif); font-size: 17px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+.sheet {
+  max-width: 820px; margin: 0 auto; background: var(--paper);
+  border: 1px solid var(--rule); border-radius: 4px;
+  padding: clamp(24px, 6vw, 64px) clamp(18px, 6vw, 72px);
+}
+.front { text-align: center; display: grid; gap: 10px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+.kicker { font-family: var(--sans); font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: clamp(26px, 4.4vw, 36px); line-height: 1.25; margin: 6px 0 2px; font-weight: 700; text-wrap: balance; }
+.en { font-style: italic; color: var(--muted); font-size: 16px; text-wrap: balance; }
+.meta { font-family: var(--sans); font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 6px; }
+.meta b { color: var(--ink); font-weight: 500; }
+.status {
+  font-family: var(--sans); font-size: 13.5px; line-height: 1.5; text-align: left;
+  background: var(--wait-soft); color: var(--ink); border-left: 3px solid var(--wait);
+  padding: 10px 14px; margin-top: 14px; border-radius: 2px;
+}
+.abstract { margin: 28px 0 8px; }
+.abstract h2 { font-family: var(--sans); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; text-align: center; font-weight: 600; }
+.abstract p { margin: 0; text-align: justify; hyphens: auto; }
+.kw { font-family: var(--sans); font-size: 14px; color: var(--muted); margin-top: 10px; }
+.kw b { color: var(--ink); font-weight: 600; }
+nav.toc { margin: 28px 0 8px; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+nav.toc h2 { font-family: var(--sans); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+nav.toc ol { margin: 0; padding: 0; list-style: none; columns: 2 240px; column-gap: 32px; font-family: var(--sans); font-size: 14.5px; }
+nav.toc li { break-inside: avoid; padding: 2px 0; }
+nav.toc a { color: var(--ink); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--accent); text-decoration: underline; }
+nav.toc span { font-family: var(--mono); font-size: 12.5px; color: var(--muted); display: inline-block; width: 2.2em; }
+section { margin-top: 40px; }
+h2.sec { font-size: 23px; line-height: 1.3; margin: 0 0 12px; display: flex; gap: 12px; align-items: baseline; text-wrap: balance; }
+h2.sec .n { font-family: var(--mono); font-size: 15px; color: var(--accent); font-weight: 500; flex: none; }
+h3 { font-size: 18px; margin: 22px 0 6px; }
+p { margin: 0 0 12px; }
+ul, ol.plain { margin: 0 0 12px; padding-left: 1.3em; }
+li { margin: 3px 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rq { display: grid; gap: 14px; margin: 14px 0; }
+.rq-item { display: grid; grid-template-columns: 56px 1fr; gap: 4px 14px; }
+.rq-item .id { font-family: var(--mono); font-size: 14px; color: var(--accent); padding-top: 3px; }
+.rq-item .q { font-weight: 600; }
+.rq-item .h { grid-column: 2; color: var(--muted); font-size: 15.5px; }
+.rq-item .h i { font-style: normal; font-family: var(--sans); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.tablewrap { overflow-x: auto; margin: 14px 0 6px; }
+table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 14px; line-height: 1.45; min-width: 520px; }
+caption { caption-side: top; text-align: left; font-family: var(--serif); font-size: 15px; color: var(--muted); padding-bottom: 8px; }
+caption b { color: var(--ink); }
+thead th { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); text-align: left; font-weight: 600; padding: 7px 10px 7px 0; vertical-align: bottom; }
+tbody td { padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 13px; }
+.note { font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 4px 0 14px; }
+.chip { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 500; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.wait { background: var(--wait-soft); color: var(--wait); }
+.chip.seal { background: var(--seal-soft); color: var(--seal); }
+.chip.acc { background: var(--accent-soft); color: var(--accent); }
+figure { margin: 18px 0; }
+figcaption { font-size: 15px; color: var(--muted); margin-top: 8px; }
+figcaption b { color: var(--ink); }
+.flow { overflow-x: auto; padding-bottom: 4px; }
+.flow svg { display: block; min-width: 680px; width: 100%; height: auto; }
+.flow .box { fill: var(--paper); stroke: var(--rule); stroke-width: 1.2; }
+.flow .box.core { stroke: var(--accent); stroke-width: 1.6; fill: var(--accent-soft); }
+.flow .t { fill: var(--ink); font-family: var(--sans); font-size: 13px; font-weight: 600; }
+.flow .s { fill: var(--muted); font-family: var(--sans); font-size: 11px; }
+.flow .arrow { stroke: var(--muted); stroke-width: 1.3; fill: none; }
+.flow .head { fill: var(--muted); }
+.flow .vote { stroke: var(--seal); stroke-dasharray: 4 3; stroke-width: 1.2; fill: none; }
+.flow .vt { fill: var(--seal); font-family: var(--sans); font-size: 11.5px; }
+.def { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 10px 0 14px; }
+.def dt { font-family: var(--sans); font-weight: 600; font-size: 14.5px; }
+.def dd { margin: 0; }
+.chapters { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 10px; }
+.chapters li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; }
+.chapters .c { font-family: var(--sans); font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .04em; padding-top: 2px; }
+.chapters b { display: block; }
+.chapters span { color: var(--muted); font-size: 15.5px; }
+.refs { padding-left: 2.2em; font-size: 15px; }
+.refs li { margin: 6px 0; }
+.pages { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 20px; font-family: var(--sans); font-size: 13px; margin: 0 0 22px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.pages a { color: var(--muted); text-decoration: none; }
+.pages a:hover, .pages a:focus-visible { color: var(--accent); text-decoration: underline; }
+.pages a[aria-current] { color: var(--ink); font-weight: 600; }
+.foot { margin-top: 44px; padding-top: 14px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 13px; color: var(--muted); }
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .rq-item { grid-template-columns: 1fr; }
+  .rq-item .h { grid-column: 1; }
+  .def { grid-template-columns: 1fr; gap: 2px; }
+  .def dd { margin-bottom: 8px; }
+  .chapters li { grid-template-columns: 1fr; gap: 0; }
+  .abstract p { text-align: left; }
+}
+</style>
+
+</head>
+<body>
+<article class="sheet">
+  <nav class="pages" aria-label="Các trang của đề tài">
+    <a href="de-cuong.html" aria-current="page">Đề cương</a>
+    <a href="ket-qua.html">Kết quả</a>
+    <a href="hoi-nghi.html">Hội nghị</a>
+    <a href="goi-viec.html">Gói việc sinh viên</a>
+  </nav>
+  <header class="front">
+    <div class="kicker">Đề cương luận văn thạc sĩ · Bản nháp</div>
+    <h1>Mô hình xây dựng tự động cây gia phả từ văn bản gia phả Hán Nôm</h1>
+    <div class="en">Automatic construction of family trees from Sino-Nom genealogical texts</div>
+    <div class="meta">
+      <span>Học viên: <b>Lam Nguyen</b></span>
+      <span>Ngành: <b>Khoa học máy tính (cao học)</b></span>
+      <span>Cập nhật: <b>26/10/2026</b></span>
+    </div>
+    <div class="status">
+      <b>Tình trạng văn bản.</b> Đây là bản đề cương tổng hợp từ tài liệu đề tài (<code>docs/thesis/business.md</code>), ghi chú các buổi họp với thầy hướng dẫn (20/07–21/09/2026) và đặc tả kỹ thuật của dự án. Văn bản <b>chưa được giảng viên hướng dẫn duyệt</b>; những mục còn chờ thầy xác nhận được ghi rõ ở §12.
+    </div>
+  </header>
+
+  <section class="abstract" aria-labelledby="abs">
+    <h2 id="abs">Tóm tắt</h2>
+    <p>Gia phả Hán Nôm lưu giữ thông tin về dòng họ, quan hệ huyết thống, thế thứ, quê quán và niên đại của từng cá nhân, nhưng phần lớn vẫn tồn tại dưới dạng văn bản cổ khó tra cứu. Đề tài đề xuất một mô hình tự động chuyển văn bản gia phả (chữ Hán hoặc tiếng Việt) thành dữ liệu gia phả có cấu trúc, gồm ba bước: nhận dạng thực thể có tên (NER), trích xuất quan hệ gia tộc (RE) và dựng cây. Mô hình được đóng gói thành hai quy trình theo ngôn ngữ: <code>sikubert-family</code> cho chữ Hán, xây trên SikuBERT, và <code>phobert-family</code> cho tiếng Việt, xây trên PhoBERT; XLM-R làm mô hình đối chứng. Kết quả của mô hình được bỏ phiếu cùng hai nguồn ngoài (Lab Kim Hán Nôm và Gemini). Đánh giá dùng P/R/F1 khớp chính xác, kiểm chéo theo sách hoặc theo cây để tránh rò rỉ dữ liệu, khoảng tin cậy bootstrap, và một chuẩn vàng (gold) mức cây suy ra từ phả hệ có sẵn.</p>
+    <div class="kw"><b>Từ khoá:</b> gia phả Hán Nôm · nhận dạng thực thể · trích xuất quan hệ · SikuBERT · PhoBERT · giám sát xa · bỏ phiếu đa mô hình</div>
+  </section>
+
+  <nav class="toc" aria-label="Mục lục">
+    <h2>Mục lục</h2>
+    <ol>
+      <li><a href="#s1"><span>1</span>Tính cấp thiết của đề tài</a></li>
+      <li><a href="#s2"><span>2</span>Mục tiêu nghiên cứu</a></li>
+      <li><a href="#s3"><span>3</span>Câu hỏi và giả thuyết nghiên cứu</a></li>
+      <li><a href="#s4"><span>4</span>Đối tượng và phạm vi</a></li>
+      <li><a href="#s5"><span>5</span>Tổng quan nghiên cứu liên quan</a></li>
+      <li><a href="#s6"><span>6</span>Dữ liệu nghiên cứu</a></li>
+      <li><a href="#s7"><span>7</span>Phương pháp đề xuất</a></li>
+      <li><a href="#s8"><span>8</span>Thiết kế thực nghiệm và đánh giá</a></li>
+      <li><a href="#s9"><span>9</span>Đóng góp dự kiến</a></li>
+      <li><a href="#s10"><span>10</span>Bố cục luận văn dự kiến</a></li>
+      <li><a href="#s11"><span>11</span>Kế hoạch thực hiện</a></li>
+      <li><a href="#s12"><span>12</span>Rủi ro và vấn đề còn mở</a></li>
+      <li><a href="#s13"><span>13</span>Tài liệu tham khảo chính</a></li>
+    </ol>
+  </nav>
+
+  <section id="s1">
+    <h2 class="sec"><span class="n">1</span>Tính cấp thiết của đề tài</h2>
+    <p>Gia phả là nguồn sử liệu quan trọng của văn hoá Việt Nam: ngoài danh sách tên người, văn bản gia phả ghi thế thứ (đời), thứ bậc trong nhà, chức tước, ngày giỗ và địa danh. Phần lớn tư liệu được viết bằng chữ Hán hoặc chữ Nôm, theo cách trình bày riêng của từng dòng họ (phả ký văn xuôi, phả đồ dạng sơ đồ, danh sách theo đời). Việc chuyển các văn bản này thành dữ liệu số có cấu trúc hiện chủ yếu làm thủ công, tốn nhiều công sức và đòi hỏi người đọc được Hán Nôm.</p>
+    <p>Về mặt khoa học, đây là bài toán trích xuất thông tin trên văn bản cổ và ít tài nguyên. Khảo sát của nhóm (09/2026) không tìm thấy mô hình hay bộ dữ liệu mã nguồn mở nào giải quyết trọn vẹn bài toán <i>văn bản gia phả → cây gia phả có cấu trúc</i>, kể cả cho gia phả chữ Hán của Trung Quốc. Đã có các thành phần riêng lẻ, như mô hình ngôn ngữ cổ văn (SikuBERT, GuwenBERT), công cụ tách từ cổ văn (Jiayan) và nghiên cứu chuẩn hoá quan hệ thân tộc (CBDB), nhưng chưa có công trình nào ghép chúng thành quy trình được đánh giá định lượng cho gia phả Việt Nam. Đó là khoảng trống mà đề tài hướng tới.</p>
+  </section>
+
+  <section id="s2">
+    <h2 class="sec"><span class="n">2</span>Mục tiêu nghiên cứu</h2>
+    <h3>2.1 Mục tiêu tổng quát</h3>
+    <p>Xây dựng và đánh giá một mô hình AI, cung cấp dưới dạng API, nhận văn bản gia phả chữ Hán hoặc tiếng Việt và trả về dữ liệu gia phả có cấu trúc: người, quan hệ, đời, ngày tháng và địa danh. Kết quả phục vụ lưu trữ, tra cứu và bảo tồn di sản.</p>
+    <h3>2.2 Mục tiêu cụ thể</h3>
+    <ol class="plain">
+      <li>Phân tích đặc trưng ngôn ngữ và cấu trúc trình bày của văn bản gia phả, đặc biệt là cách quan hệ gia tộc được biểu đạt (trong câu, qua danh sách theo đời, hay qua sơ đồ).</li>
+      <li>Xây dựng bộ dữ liệu gán nhãn thực thể và quan hệ, có chuẩn vàng do người soát và quy tắc chia dữ liệu không rò rỉ.</li>
+      <li>Huấn luyện và so sánh mô hình NER cho hai ngôn ngữ: SikuBERT cho chữ Hán, PhoBERT cho tiếng Việt, với XLM-R và một baseline từ điển làm đối chứng.</li>
+      <li>Thiết kế phương pháp trích xuất quan hệ phù hợp với cấu trúc thật của gia phả, và đánh giá phương pháp đó trên chuẩn vàng mức cây.</li>
+      <li>Đánh giá xem việc bỏ phiếu giữa mô hình của đề tài và các nguồn ngoài có nâng chất lượng so với từng nguồn đơn lẻ hay không.</li>
+      <li>Đóng gói mô hình thành API và tích hợp vào hệ thống web minh hoạ: tải tư liệu → trích xuất → dựng cây → xem và xuất dữ liệu.</li>
+    </ol>
+  </section>
+
+  <section id="s3">
+    <h2 class="sec"><span class="n">3</span>Câu hỏi và giả thuyết nghiên cứu</h2>
+    <div class="rq">
+      <div class="rq-item">
+        <div class="id">RQ1</div>
+        <div class="q">Mô hình ngôn ngữ huấn luyện trước trên đúng miền ngôn ngữ (SikuBERT cho cổ văn Hán, PhoBERT cho tiếng Việt) có nhận dạng thực thể gia phả tốt hơn mô hình đa ngữ (XLM-R) và baseline từ điển không?</div>
+        <div class="h"><i>Giả thuyết</i>Mô hình theo miền vượt baseline từ điển một khoảng có ý nghĩa thống kê. So với XLM-R, chênh lệch phụ thuộc vào cỡ dữ liệu gán nhãn và cần kiểm định.</div>
+      </div>
+      <div class="rq-item">
+        <div class="id">RQ2</div>
+        <div class="q">Quan hệ gia tộc trong gia phả nằm chủ yếu ở mức câu, mức tài liệu hay ở cấu trúc trình bày (danh sách theo đời, sơ đồ)? Phương pháp RE nào phù hợp với phân bố đó?</div>
+        <div class="h"><i>Giả thuyết</i>Phần lớn quan hệ vượt ra ngoài phạm vi một câu, nên RE mức câu có trần thấp. Cách tiếp cận dựa vào cấu trúc văn bản, hoặc giám sát xa từ phả hệ có sẵn, sẽ hiệu quả hơn.</div>
+      </div>
+      <div class="rq-item">
+        <div class="id">RQ3</div>
+        <div class="q">Bỏ phiếu giữa mô hình của đề tài, Lab Kim Hán Nôm và Gemini có cho F1 cao hơn thành viên tốt nhất không?</div>
+        <div class="h"><i>Giả thuyết</i>Bỏ phiếu theo từng loại thực thể có lợi khi các nguồn mắc những loại lỗi khác nhau. Giả thuyết này được kiểm định trên cùng tập kiểm tra.</div>
+      </div>
+      <div class="rq-item">
+        <div class="id">RQ4</div>
+        <div class="q">Mô hình dựng được cây đúng đến mức nào, đo bằng tỉ lệ cạnh cha–con và vợ–chồng khớp chuẩn vàng mức cây, và số vi phạm ràng buộc dựng cây?</div>
+        <div class="h"><i>Giả thuyết</i>Chất lượng cây phụ thuộc vào RE nhiều hơn vào NER, vì một quan hệ sai làm hỏng cả một nhánh cây.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h2 class="sec"><span class="n">4</span>Đối tượng và phạm vi</h2>
+    <dl class="def">
+      <dt>Đối tượng</dt>
+      <dd>Văn bản gia phả viết bằng chữ Hán (tông phả, tộc phả) và bằng tiếng Việt hiện đại (phả ký, phả hệ), ở dạng văn bản số hoặc đã qua OCR.</dd>
+      <dt>Thực thể</dt>
+      <dd>Năm loại: <code>PER_NAME</code> (tên người), <code>LOC</code> (địa danh), <code>DATE</code> (ngày tháng, niên hiệu), <code>GENERATION</code> (đời), <code>ORDER</code> (thứ bậc trong nhà).</dd>
+      <dt>Quan hệ</dt>
+      <dd>Ba quan hệ cơ bản, theo khung chuẩn hoá thân tộc của CBDB: <code>FATHER_OF</code>, <code>MOTHER_OF</code> và <code>SPOUSE</code> (đối xứng). Quan hệ anh chị em được suy ra từ việc có chung cha mẹ.</dd>
+      <dt>Trong phạm vi</dt>
+      <dd>NER, RE, dựng cây, đánh giá định lượng, đóng gói API, tích hợp vào hệ thống web minh hoạ.</dd>
+      <dt>Ngoài phạm vi</dt>
+      <dd>Huấn luyện mô hình OCR mới, vì đề tài dùng OCR có sẵn của lab; dịch nghĩa Hán → Việt, vì đây là hạ tầng chung của nhóm và dùng Qwen; nhận dạng chữ Nôm viết tay; khai thác thương mại.</dd>
+    </dl>
+  </section>
+
+  <section id="s5">
+    <h2 class="sec"><span class="n">5</span>Tổng quan nghiên cứu liên quan</h2>
+    <h3>5.1 Mô hình ngôn ngữ huấn luyện trước</h3>
+    <p><b>SikuBERT</b> được huấn luyện tiếp trên bộ <i>Tứ khố toàn thư</i> nên phù hợp với cổ văn Hán phồn thể. Một nghiên cứu được nhóm khảo sát ghi nhận họ GuwenBERT thua SikuBERT và SikuRoBERTa trên tác vụ cổ văn. <b>PhoBERT</b> (Nguyen &amp; Nguyen, 2020) là mô hình đơn ngữ tiếng Việt, cần tách từ trước khi đưa vào mô hình. <b>XLM-R</b> (Conneau và cộng sự, 2020) là mô hình đa ngữ, được dùng làm đối chứng chung cho cả hai ngôn ngữ.</p>
+    <h3>5.2 Trích xuất thông tin trên văn bản cổ Hán</h3>
+    <p>Các thành phần đã được nhóm chạy thử (09/2026) gồm: Jiayan tách từ cổ văn tốt trên chữ phồn thể; <code>guwen-ner</code> nhận 0/4 thực thể trên câu phồn thể thử nghiệm; XunziLLM có khả năng trích thông tin người, sự kiện, địa điểm nhưng chưa chạy thử được và giấy phép chưa rõ. Các benchmark cổ văn như EvaHan là tham chiếu cho cách đánh giá.</p>
+    <h3>5.3 Chuẩn hoá quan hệ thân tộc</h3>
+    <p>Nghiên cứu chuẩn hoá quan hệ thân tộc của <b>China Biographical Database (CBDB)</b> đưa các quan hệ thân tộc Hán cổ về ba quan hệ cơ bản: cha–con, mẹ–con, chồng–vợ. Đề tài dùng khung này làm cơ sở cho tập nhãn quan hệ.</p>
+    <h3>5.4 Khoảng trống</h3>
+    <p>Chưa có công trình nào được công bố kèm mã nguồn mở thực hiện trọn quy trình từ văn bản gia phả đến cây gia phả, có đánh giá định lượng trên chuẩn vàng của người soát, cho gia phả Việt Nam ở cả chữ Hán lẫn tiếng Việt.</p>
+  </section>
+
+  <section id="s6">
+    <h2 class="sec"><span class="n">6</span>Dữ liệu nghiên cứu</h2>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 1.</b> Các nguồn dữ liệu hiện có (số liệu đếm trực tiếp, 24–25/10/2026).</caption>
+        <thead><tr><th>Nguồn</th><th>Quy mô</th><th>Loại nhãn</th><th>Vai trò</th></tr></thead>
+        <tbody>
+          <tr><td>NER chữ Hán, mức ký tự</td><td>20 sách · 1.147 trang · 2.548 câu huấn luyện</td><td><span class="chip seal">nhãn máy (Gemini)</span></td><td>Huấn luyện SikuBERT; kiểm chéo 5 lượt theo sách</td></tr>
+          <tr><td>Tập kiểm tra chữ Hán</td><td>15 trang · 293 thực thể</td><td><span class="chip wait">chờ người soát</span></td><td>Chuẩn vàng chữ Hán đầu tiên</td></tr>
+          <tr><td>Gia phả tiếng Việt, nhãn người</td><td>25 cây · 692 thực thể · 30 quan hệ</td><td><span class="chip ok">nhãn người</span></td><td>Chuẩn vàng NER/RE tiếng Việt</td></tr>
+          <tr><td>Gia phả tiếng Việt, bán tự động</td><td>114 cây</td><td><span class="chip seal">bán tự động</span></td><td>Tiền huấn luyện, tập phát triển</td></tr>
+          <tr><td>Phả hệ VietnamGiaPha</td><td>342 cây có phả ký và phả hệ · 1.524 quan hệ neo vào văn bản</td><td><span class="chip acc">suy từ cấu trúc</span></td><td>Chuẩn vàng mức cây; giám sát xa cho RE</td></tr>
+          <tr><td>Tư liệu gốc (máy Windows của lab)</td><td>96 tệp trong 4 thư mục, gồm 59 PDF tông phả chữ Hán</td><td>chưa gán nhãn</td><td>Nguồn mở rộng dữ liệu chữ Hán</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Nhãn máy và nhãn bán tự động chỉ dùng để huấn luyện. Mọi con số được báo cáo là độ chính xác phải đo trên nhãn người. Ở tiếng Việt, nhãn bán tự động chỉ khớp nhãn người ở mức F1 0,40.</p>
+    <p>Tiền xử lý: 23/342 phả ký tiếng Việt ở bảng mã cũ (TCVN3, VNI). Đề tài xây bộ chuyển mã theo từng dòng, chọn bản chuyển có độ phủ từ vựng cao nhất, và giữ nguyên offset nhãn khi chuyển TCVN3.</p>
+  </section>
+
+  <section id="s7">
+    <h2 class="sec"><span class="n">7</span>Phương pháp đề xuất</h2>
+    <figure>
+      <div class="flow" role="img" aria-label="Sơ đồ quy trình: văn bản vào, nhận dạng thực thể, trích xuất quan hệ, dựng cây, xuất JSON; Kim Hán Nôm và Gemini bỏ phiếu ở bước nhận dạng thực thể và trích xuất quan hệ">
+        <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+          <rect class="box" x="8" y="40" width="128" height="64" rx="4"/>
+          <text class="t" x="72" y="66" text-anchor="middle">Văn bản vào</text>
+          <text class="s" x="72" y="84" text-anchor="middle">chữ Hán · tiếng Việt</text>
+          <rect class="box core" x="172" y="40" width="128" height="64" rx="4"/>
+          <text class="t" x="236" y="66" text-anchor="middle">NER</text>
+          <text class="s" x="236" y="84" text-anchor="middle">5 loại thực thể</text>
+          <rect class="box core" x="336" y="40" width="128" height="64" rx="4"/>
+          <text class="t" x="400" y="66" text-anchor="middle">RE</text>
+          <text class="s" x="400" y="84" text-anchor="middle">cha · mẹ · vợ chồng</text>
+          <rect class="box core" x="500" y="40" width="120" height="64" rx="4"/>
+          <text class="t" x="560" y="66" text-anchor="middle">Dựng cây</text>
+          <text class="s" x="560" y="84" text-anchor="middle">luật ràng buộc</text>
+          <rect class="box" x="656" y="40" width="96" height="64" rx="4"/>
+          <text class="t" x="704" y="66" text-anchor="middle">JSON</text>
+          <text class="s" x="704" y="84" text-anchor="middle">gia phả</text>
+          <path class="arrow" d="M136 72 H170" marker-end="url(#ah)"/>
+          <path class="arrow" d="M300 72 H334" marker-end="url(#ah)"/>
+          <path class="arrow" d="M464 72 H498" marker-end="url(#ah)"/>
+          <path class="arrow" d="M620 72 H654" marker-end="url(#ah)"/>
+          <rect class="vote" x="172" y="140" width="292" height="44" rx="4"/>
+          <text class="vt" x="318" y="160" text-anchor="middle">Bỏ phiếu: Lab Kim Hán Nôm · Gemini</text>
+          <text class="s" x="318" y="176" text-anchor="middle">kèm số phiếu và độ đồng thuận</text>
+          <path class="vote" d="M236 140 V106"/>
+          <path class="vote" d="M400 140 V106"/>
+          <text class="s" x="236" y="26" text-anchor="middle">sikubert-family · phobert-family</text>
+        </svg>
+      </div>
+      <figcaption><b>Hình 1.</b> Quy trình đề xuất. Các khối viền đậm là phần đóng góp chính của đề tài. Mỗi ngôn ngữ dùng một quy trình riêng, chọn qua tham số <code>pipeline</code>.</figcaption>
+    </figure>
+    <h3>7.1 Nhận dạng thực thể</h3>
+    <p>NER được giải như bài toán gán nhãn chuỗi theo lược đồ BIO. Với chữ Hán, nhãn gán ở mức ký tự, nên không cần tách từ. Mô hình được tinh chỉnh từ SikuBERT (cho chữ Hán) hoặc PhoBERT (cho tiếng Việt); văn bản dài được cắt đoạn theo giới hạn độ dài của mô hình. Khi triển khai, mô hình được xuất sang ONNX lượng tử hoá int8 để giảm độ trễ.</p>
+    <h3>7.2 Trích xuất quan hệ</h3>
+    <p>Đề tài so sánh ba hướng: (a) luật ngôn ngữ mức câu và mức tài liệu, (b) phân tích cấu trúc văn bản (dòng "Đời N", thụt lề, đánh số) để dựng cây trực tiếp, và (c) mô hình RE học bằng giám sát xa, trong đó cặp tên có quan hệ trong phả hệ và cùng xuất hiện trong phả ký được dùng làm nhãn yếu. Hướng chính sẽ được chọn dựa trên kết quả đo ở RQ2.</p>
+    <h3>7.3 Dựng cây và kiểm định</h3>
+    <p>Quan hệ được chuyển thành đồ thị, trong đó nút là cá nhân và cạnh là quan hệ. Đồ thị phải thoả các ràng buộc: không tự liên kết, không trùng cạnh, mỗi người tối đa một cha và một mẹ, chênh tuổi cha–con hợp lý. Mã định danh tài liệu (<code>ma_dinh_danh</code>) theo quy ước đã được thầy xác nhận.</p>
+    <h3>7.4 Bỏ phiếu đa nguồn</h3>
+    <p>Kết quả của mô hình được đối chiếu với Lab Kim Hán Nôm (giới hạn lượt gọi) và Gemini (qua công cụ điều khiển trình duyệt có sẵn). Offset từ các nguồn ngoài được khớp lại bằng chuỗi trước khi bỏ phiếu. Bỏ phiếu thực hiện theo thực thể, có xét trọng số theo loại thực thể. Nguồn nào lỗi thì được báo ra trong kết quả, không bị bỏ qua.</p>
+  </section>
+
+  <section id="s8">
+    <h2 class="sec"><span class="n">8</span>Thiết kế thực nghiệm và đánh giá</h2>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 2.</b> Chỉ số đánh giá.</caption>
+        <thead><tr><th>Khối</th><th>Chỉ số</th><th>Cách tính</th></tr></thead>
+        <tbody>
+          <tr><td>NER</td><td>P, R, F1 micro và theo loại</td><td>Khớp chính xác ranh giới và loại thực thể</td></tr>
+          <tr><td>RE</td><td>P, R, F1 trên bộ ba</td><td>(đầu, quan hệ, cuối); <code>SPOUSE</code> tính không hướng</td></tr>
+          <tr><td>Cây</td><td>Tỉ lệ cạnh khớp; số vi phạm</td><td>So với chuẩn vàng mức cây suy từ phả hệ</td></tr>
+          <tr><td>Bỏ phiếu</td><td>ΔF1 so với thành viên tốt nhất; độ đồng thuận</td><td>Trên cùng tập kiểm tra</td></tr>
+          <tr><td>Vận hành</td><td>Độ trễ, chi phí trên mỗi trang, tỉ lệ lỗi</td><td>Đo qua API</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Nguyên tắc đánh giá</h3>
+    <ol class="plain">
+      <li>Chia dữ liệu theo <b>sách</b> (chữ Hán) hoặc theo <b>cây</b> (tiếng Việt), để các trang của cùng một tài liệu không vừa nằm trong tập huấn luyện vừa nằm trong tập kiểm tra.</li>
+      <li>Kiểm chéo 5 lượt; báo F1 gộp, F1 từng lượt và khoảng tin cậy 95% bằng bootstrap.</li>
+      <li>Tập kiểm tra không được dùng để chỉnh tham số; số epoch và ngưỡng được chọn trên tập phát triển.</li>
+      <li>Mọi so sánh đều kèm baseline: từ điển và XLM-R cho NER; luật và "không quan hệ" cho RE. Chênh lệch giữa hai hệ thống được kiểm định bằng t-test ghép cặp theo lượt.</li>
+      <li>Chênh lệch nhỏ hơn khoảng 0,03 F1 không được diễn giải, vì độ dao động giữa các lần chạy cùng cấu hình đo được khoảng 0,02.</li>
+      <li>Có một cổng chống tụt: phiên bản mới không được có F1 thấp hơn phiên bản tốt nhất trước đó trên cùng tập kiểm tra. Việc này được kiểm tự động bằng bộ kiểm thử hộp đen qua HTTP.</li>
+    </ol>
+  </section>
+
+  <section id="s9">
+    <h2 class="sec"><span class="n">9</span>Đóng góp dự kiến</h2>
+    <dl class="def">
+      <dt>Dữ liệu</dt>
+      <dd>Bộ dữ liệu NER/RE gia phả song song cho chữ Hán và tiếng Việt, có quy tắc chia không rò rỉ, chuẩn vàng của người soát và chuẩn vàng mức cây.</dd>
+      <dt>Phương pháp</dt>
+      <dd>Bằng chứng định lượng về vị trí của quan hệ gia tộc trong văn bản gia phả, và một phương pháp RE phù hợp với cấu trúc đó (mức tài liệu hoặc giám sát xa).</dd>
+      <dt>Mô hình</dt>
+      <dd>Hai mô hình <code>sikubert-family</code> và <code>phobert-family</code>, cung cấp qua API, có bảng đánh giá so với baseline.</dd>
+      <dt>Hệ thống</dt>
+      <dd>Quy trình hoàn chỉnh từ tư liệu đến cây, tích hợp vào ứng dụng web, có bộ kiểm thử tích hợp đi kèm.</dd>
+    </dl>
+  </section>
+
+  <section id="s10">
+    <h2 class="sec"><span class="n">10</span>Bố cục luận văn dự kiến</h2>
+    <ul class="chapters">
+      <li><div class="c">Mở đầu</div><div><b>Đặt vấn đề, mục tiêu, phạm vi</b><span>Tính cấp thiết, câu hỏi nghiên cứu, đóng góp.</span></div></li>
+      <li><div class="c">Chương 1</div><div><b>Tổng quan</b><span>Gia phả Hán Nôm và đặc trưng văn bản; NER/RE trên văn bản cổ; mô hình ngôn ngữ theo miền; chuẩn hoá quan hệ thân tộc.</span></div></li>
+      <li><div class="c">Chương 2</div><div><b>Dữ liệu</b><span>Thu thập, tiền xử lý (OCR, bảng mã), quy tắc gán nhãn, chuẩn vàng của người soát và chuẩn vàng mức cây, thống kê bộ dữ liệu.</span></div></li>
+      <li><div class="c">Chương 3</div><div><b>Mô hình đề xuất</b><span>NER (SikuBERT, PhoBERT), RE, dựng cây, bỏ phiếu đa nguồn.</span></div></li>
+      <li><div class="c">Chương 4</div><div><b>Thực nghiệm và đánh giá</b><span>Thiết lập, kết quả, phân tích lỗi, thảo luận về các yếu tố đe doạ tính hợp lệ của kết quả.</span></div></li>
+      <li><div class="c">Chương 5</div><div><b>Hệ thống ứng dụng</b><span>Kiến trúc API, tích hợp web, kiểm thử.</span></div></li>
+      <li><div class="c">Kết luận</div><div><b>Kết luận và hướng phát triển</b><span>Hạn chế, mở rộng sang chữ Nôm, dựng cây từ bố cục trang ảnh.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="s11">
+    <h2 class="sec"><span class="n">11</span>Kế hoạch thực hiện</h2>
+    <div class="tablewrap">
+      <table>
+        <caption><b>Bảng 3.</b> Các giai đoạn và tình trạng tại 26/10/2026. Mốc thời gian cụ thể sẽ chốt với thầy hướng dẫn.</caption>
+        <thead><tr><th>Giai đoạn</th><th>Nội dung</th><th>Tình trạng</th></tr></thead>
+        <tbody>
+          <tr><td>GĐ1</td><td>Khảo sát, phân tích đặc trưng văn bản, quy ước mã định danh</td><td><span class="chip ok">xong</span></td></tr>
+          <tr><td>GĐ2</td><td>Thu thập dữ liệu, OCR, gán nhãn máy, chuẩn hoá bảng mã</td><td><span class="chip ok">xong</span></td></tr>
+          <tr><td>GĐ3</td><td>Bộ chấm, baseline, kiểm chéo NER (tiếng Việt và chữ Hán)</td><td><span class="chip ok">xong</span></td></tr>
+          <tr><td>GĐ4</td><td>Người soát 15 trang chữ Hán; đo SikuBERT trên nhãn người</td><td><span class="chip wait">đang chờ soát</span></td></tr>
+          <tr><td>GĐ5</td><td>Chọn hướng RE; huấn luyện RE; đánh giá cây</td><td><span class="chip wait">chờ quyết định</span></td></tr>
+          <tr><td>GĐ6</td><td>Bỏ phiếu đa nguồn (Kim Hán Nôm, Gemini)</td><td><span class="chip acc">chưa bắt đầu</span></td></tr>
+          <tr><td>GĐ7</td><td>Đóng gói API, tích hợp web, kiểm thử hệ thống</td><td><span class="chip acc">một phần</span></td></tr>
+          <tr><td>GĐ8</td><td>Viết luận văn, chuẩn bị bảo vệ</td><td><span class="chip acc">chưa bắt đầu</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s12">
+    <h2 class="sec"><span class="n">12</span>Rủi ro và vấn đề còn mở</h2>
+    <h3>12.1 Rủi ro</h3>
+    <ul>
+      <li><b>Nhãn chữ Hán là nhãn máy.</b> Toàn bộ nhãn chữ Hán hiện do Gemini gán và chưa có trang nào được người soát. Mọi số đo chữ Hán vì vậy chỉ cho biết mô hình tái tạo nhãn máy tốt đến đâu, chưa phải độ chính xác thật. Cách giảm: soát 15 trang làm chuẩn vàng.</li>
+      <li><b>Chuẩn vàng tiếng Việt nhỏ.</b> Chỉ có 25 cây nhãn người và 30 quan hệ, nên khoảng tin cậy rộng. Cách giảm: dùng chuẩn vàng mức cây (1.524 quan hệ) và soát thêm cây.</li>
+      <li><b>Hạn mức nguồn ngoài.</b> Kim Hán Nôm có giới hạn lượt gọi; công cụ Gemini qua trình duyệt dễ hỏng khi giao diện thay đổi.</li>
+      <li><b>Tài nguyên tính toán.</b> Huấn luyện chạy trên GPU thuê theo giờ (Colab T4), nên số lần thử nghiệm bị giới hạn.</li>
+    </ul>
+    <h3>12.2 Vấn đề cần thầy hướng dẫn xác nhận</h3>
+    <ol class="plain">
+      <li>Câu đóng góp chính và trọng số giữa phần dịch nghĩa (hạ tầng chung của nhóm) và phần trích xuất, dựng cây (phần riêng của đề tài).</li>
+      <li>Định nghĩa RE: quan hệ nêu trong văn xuôi hay quan hệ theo sơ đồ phả hệ. Chuẩn vàng hiện có trộn cả hai.</li>
+      <li>Quy tắc gán nhãn chữ Hán, vì chưa được thầy duyệt.</li>
+      <li>Ý của thầy về "bài toán song song": dữ liệu song ngữ hay xử lý song song.</li>
+    </ol>
+  </section>
+
+  <section id="s13">
+    <h2 class="sec"><span class="n">13</span>Tài liệu tham khảo chính</h2>
+    <ol class="refs">
+      <li>Conneau, A., et al. (2020). Unsupervised Cross-lingual Representation Learning at Scale. <i>Proceedings of ACL 2020</i>.</li>
+      <li>Nguyen, D. Q., &amp; Nguyen, A. T. (2020). PhoBERT: Pre-trained language models for Vietnamese. <i>Findings of EMNLP 2020</i>.</li>
+      <li>Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. <i>Proceedings of NAACL-HLT 2019</i>.</li>
+      <li>SikuBERT / SikuRoBERTa: mô hình ngôn ngữ huấn luyện trên <i>Tứ khố toàn thư</i>. Thông tin trích dẫn đầy đủ sẽ bổ sung.</li>
+      <li>China Biographical Database (CBDB), Harvard University: nghiên cứu chuẩn hoá quan hệ thân tộc. Thông tin trích dẫn đầy đủ sẽ bổ sung.</li>
+      <li>Mintz, M., et al. (2009). Distant supervision for relation extraction without labeled data. <i>Proceedings of ACL-IJCNLP 2009</i>.</li>
+    </ol>
+    <p class="note">Danh mục đầy đủ đang được tổng hợp trong <code>docs/thesis/RESEARCH_SOURCES.md</code>.</p>
+  </section>
+
+  <div class="foot">Bản đề cương nháp, tổng hợp từ tài liệu trong repo <code>family-tree</code> và <code>family-tree-harness</code>. Kết quả thực nghiệm được trình bày ở trang “Kết quả đề tài”.</div>
+</article>
+
+</body>
+</html>
