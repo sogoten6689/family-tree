@@ -1,7 +1,7 @@
 // CI/CD cho family-tree (frontend family-saga-io + backend nlp_family_extractor)
-// trên VPS qua Jenkins. Song song với .github/workflows/deploy.yml (GitHub
-// Actions SSH vào VPS) — cả 2 cùng chạy đúng logic build-all.sh --up, theo
-// yêu cầu người dùng dùng cả 2 cơ chế CI/CD. Domain public:
+// trên VPS qua Jenkins (job `family-tree`). Đây là nơi deploy duy nhất:
+// .github/workflows/deploy.yml chỉ còn kiểm tra build, job SSH deploy đã bỏ
+// ngày 26/10/2026. Domain public:
 // https://giapha.kimtudien.com.vn (nginx trên VPS proxy vào container
 // family-tree-nginx, publish ở host port 87 — xem infra/docker-compose.yml).
 //

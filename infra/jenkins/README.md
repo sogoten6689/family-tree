@@ -1,12 +1,21 @@
-# Jenkins — backup + pull dữ liệu mới hàng tuần
+# Jenkins — deploy, backup và pull dữ liệu mới
 
-CI/CD hiện tại của repo dùng **GitHub Actions** (`.github/workflows/`) cho
-build/deploy khi push lên `master`/`main`. Hai job dưới đây chạy trên
-**Jenkins** (`cicd.kimtudien.com.vn`), tách riêng vì là job định kỳ
-(cron), không gắn với sự kiện push code.
+**Deploy production chạy trên Jenkins** (`cicd.kimtudien.com.vn`), job
+`family-tree`. Job này lấy `master`, chạy `./infra/scripts/build-all.sh --up`
+trên VPS rồi kiểm tra `/health` qua container `family-tree-nginx`. Cấu hình
+pipeline nằm ở [`Jenkinsfile`](../../Jenkinsfile) ở root repo; cách thiết lập
+job xem `docs/planning/vps_jenkins_deploy_guide.md` (mục B3).
+
+**GitHub Actions** (`.github/workflows/`) chỉ còn kiểm tra build và test cho
+PR và push lên `master`/`main`. Job SSH deploy cũ trong `deploy.yml` đã bỏ
+ngày 26/10/2026, vì GitHub Actions không kết nối được VPS (`dial tcp … i/o
+timeout` ở mọi lần chạy), trong khi Jenkins vẫn deploy bình thường.
+
+Các job trên Jenkins (hai job sau là job định kỳ chạy theo cron, không gắn với sự kiện push code):
 
 | Job | File | Lịch | Việc làm |
 |---|---|---|---|
+| `family-tree` | [`Jenkinsfile`](../../Jenkinsfile) | khi `master` có commit mới (kích hoạt cấu hình trong Jenkins UI) | Build + deploy backend và frontend lên VPS, health check |
 | `family-tree-backup-weekly` | [`Jenkinsfile.backup`](./Jenkinsfile.backup) | CN ~02:00 | Dump MySQL (`family_tree`) + tar volume MinIO, lưu trên VPS (`~/backups/family-tree/`), tự xoá backup > 60 ngày |
 | `family-tree-vgp-pull-weekly` | [`Jenkinsfile.vgp-pull`](./Jenkinsfile.vgp-pull) | CN ~03:00 (sau backup) | Gọi lại `POST /api/vietnamgiapha/crawl-sync` đã có sẵn để tìm + đồng bộ cây gia phả mới trên VietnamGiaPha |
 
@@ -17,13 +26,13 @@ trên trang mỗi build (không cần SSH/scp thủ công). Bản đầy đủ +
 lâu dài vẫn giữ trên VPS (Jenkins chỉ giữ 8 build gần nhất để đỡ tốn đĩa,
 xem `buildDiscarder` trong Jenkinsfile.backup).
 
-## Vì sao 2 job tách riêng, không gộp 1
+## Vì sao 2 job định kỳ tách riêng, không gộp 1
 
 - Backup nên chạy trước, không phụ thuộc mạng ngoài (chỉ đọc/ghi local).
 - Pull VGP gọi ra internet (site nguồn) + Kim Hán Nôm nếu `attach_documents`
   kích hoạt OCR — có thể chậm/lỗi mạng, không nên chặn backup nếu nó fail.
 
-## Thiết lập lần đầu trên Jenkins UI
+## Thiết lập lần đầu trên Jenkins UI (2 job định kỳ)
 
 1. **Tạo 2 credentials** (Manage Jenkins → Credentials → System → Global):
    - `vps-ssh-key` — loại **SSH Username with private key**. Username =
