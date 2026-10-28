@@ -17,6 +17,9 @@ Tầng không DB cũng nằm trong lệnh pytest của CI (~7 giây); test `requ
 ## Phát hiện từ harness
 - Không có MySQL, `GET /api/family-trees` từng trả **500** (do `get_db()` ném `RuntimeError`). Đã sửa 25/10/2026: `get_db()` ném `DatabaseUnavailable` (lớp con `RuntimeError`) và `api.py` trả 503. Test: `tests/test_database_unavailable.py`.
 
+## Tham số `pipeline` của `/api/genealogy/extract` (SPEC §0)
+`pipeline="vi"` → `xlmr-family` (`NER_MODEL_DIR_VI`), `pipeline="han"` → `sikubert-family` (`NER_MODEL_DIR_HAN`); giá trị khác → 422. Bỏ trống thì suy ra từ `language`/`model_version` như cũ (`phobert` vẫn = `ner`). `data.model_info` có thêm `name` (ưu tiên `NER_MODEL_NAME_VI`/`_HAN`, rồi `name` trong `model_card.json`) và `pipeline`. Test: `tests/test_genealogy_extract.py`.
+
 ## Model NER chữ Hán (`NER_MODEL_DIR_HAN`)
 `POST /api/genealogy/extract` với `language="hannom"` **hoặc** `model_version="sikubert"` chạy SikuBERT mức ký tự
 (`app/ner/phobert_onnx.py`, `language="han"`). Chưa đặt biến / thiếu tệp → `success=false`, `error` nêu rõ biến/tệp thiếu (không giả lập).

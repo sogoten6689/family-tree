@@ -311,6 +311,14 @@ class GenealogyExtractRequest(BaseModel):
         default="ner",
         description="'ner' (model NER đã huấn luyện cho tiếng Việt, cần cấu hình NER_MODEL_DIR_VI; 'phobert' là tên cũ, coi như 'ner'); 'sikubert' (chữ Hán, cần cấu hình NER_MODEL_DIR_HAN)",
     )
+    pipeline: Optional[Literal["vi", "han"]] = Field(
+        default=None,
+        description=(
+            "Quy trình (SPEC §0): 'vi' → xlmr-family (NER_MODEL_DIR_VI), 'han' → sikubert-family (NER_MODEL_DIR_HAN). "
+            "Có thì được ưu tiên hơn language/model_version; bỏ trống thì suy ra từ language/model_version như cũ. "
+            "Giá trị khác → 422."
+        ),
+    )
 
 
 class GenealogyExtractionResult(BaseModel):
@@ -323,7 +331,7 @@ class GenealogyExtractionResult(BaseModel):
     )
     statistics: Dict[str, int] = Field(description="Thống kê: số nhân vật, số quan hệ")
     model_info: Dict[str, str] = Field(
-        description="Thông tin model được sử dụng: model_name, model_version"
+        description="Thông tin model được sử dụng: name (xlmr-family / sikubert-family), pipeline (vi / han), model_name, model_version, language, note"
     )
 
 
@@ -1325,6 +1333,24 @@ _NER_NOTES = {
 }
 
 
+# Tên model theo SPEC §0: model nền + hậu tố "-family". Ưu tiên biến môi trường, rồi "name" trong model_card.json.
+_PIPELINE_MODEL_NAMES = {"vi": "xlmr-family", "han": "sikubert-family"}
+
+
+def _pipeline_model_name(pipeline: str, card: Dict[str, Any]) -> str:
+    env = os.getenv(f"NER_MODEL_NAME_{pipeline.upper()}", "").strip()
+    return env or str(card.get("name") or _PIPELINE_MODEL_NAMES[pipeline])
+
+
+def _resolve_pipeline(req: "GenealogyExtractRequest") -> str:
+    """``pipeline`` nếu client gửi; không thì suy ra từ ``language``/``model_version`` (tương thích client cũ)."""
+    if req.pipeline:
+        return req.pipeline
+    if req.model_version == "sikubert" or req.language == "hannom":
+        return "han"
+    return "vi"
+
+
 def _extract_with_ner(text: str, language: str = "vi") -> GenealogyExtractResponse:
     """NER bằng model đã huấn luyện (ONNX, mặc định int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
     from app.ner import NerUnavailable, get_ner_model
@@ -1355,7 +1381,9 @@ def _extract_with_ner(text: str, language: str = "vi") -> GenealogyExtractRespon
             entities=entities,
             statistics={"person_count": len(persons), "relation_count": 0, "entity_count": len(entities)},
             model_info={
-                "model_name": f"{base_model} NER (ONNX {model.precision})",
+                "name": _pipeline_model_name(language, card),
+                "pipeline": language,
+                "model_name": f"{base_model} NER (ONNX {getattr(model, 'precision', 'int8')})",
                 "model_version": str(card.get("base_model", "unknown")),
                 "language": "hannom" if language == "han" else "vietnamese",
                 "note": _NER_NOTES[language],
@@ -1374,9 +1402,11 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
     """
     Trích xuất **thực thể** (tên người, địa danh, ngày tháng, đời, thứ bậc) từ văn bản gia phả bằng model NER đã huấn luyện.
 
-    - ``language="vietnamese"`` + ``model_version="ner"`` (hoặc tên cũ ``"phobert"``): chạy model hiện hành (``NER_MODEL_DIR_VI``).
-    - ``model_version="sikubert"`` / ``language="hannom"``: model chữ Hán mức ký tự (``NER_MODEL_DIR_HAN``, SikuBERT học trên
-      nhãn máy Gemini, chưa người soát). Chưa cấu hình/thiếu tệp → ``success=false`` kèm lý do (không giả lập).
+    - ``pipeline="vi"`` → ``xlmr-family`` (``NER_MODEL_DIR_VI``); ``pipeline="han"`` → ``sikubert-family`` (``NER_MODEL_DIR_HAN``).
+      ``pipeline`` khác → 422. Có ``pipeline`` thì nó quyết định, bỏ qua ``language``/``model_version``.
+    - Không gửi ``pipeline`` (client cũ): ``language="vietnamese"`` + ``model_version="ner"`` (hoặc tên cũ ``"phobert"``) → ``vi``;
+      ``model_version="sikubert"`` / ``language="hannom"`` → ``han`` (SikuBERT mức ký tự, học trên nhãn máy Gemini, chưa người soát).
+    - ``model_info.name``/``model_info.pipeline`` cho biết model đã chạy. Chưa cấu hình/thiếu tệp → ``success=false`` kèm lý do (không giả lập).
     - Chưa có quan hệ cha/mẹ/vợ chồng (chưa huấn luyện model quan hệ).
     Không còn bộ trích xuất quy tắc (regex) ở endpoint này.
     """
@@ -1384,6 +1414,4 @@ def extract_genealogy(req: GenealogyExtractRequest) -> GenealogyExtractResponse:
     if not text:
         raise HTTPException(status_code=400, detail="Text cannot be empty")
 
-    if req.model_version == "sikubert" or req.language == "hannom":
-        return _extract_with_ner(text, "han")
-    return _extract_with_ner(text)
+    return _extract_with_ner(text, _resolve_pipeline(req))
