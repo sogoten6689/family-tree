@@ -1326,7 +1326,7 @@ _NER_NOTES = {
 
 
 def _extract_with_ner(text: str, language: str = "vi") -> GenealogyExtractResponse:
-    """NER bằng model đã huấn luyện (ONNX int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
+    """NER bằng model đã huấn luyện (ONNX, mặc định int8). Mới có **thực thể**; quan hệ (cha/mẹ/vợ chồng) chưa có model nên để trống."""
     from app.ner import NerUnavailable, get_ner_model
 
     try:
@@ -1355,7 +1355,7 @@ def _extract_with_ner(text: str, language: str = "vi") -> GenealogyExtractRespon
             entities=entities,
             statistics={"person_count": len(persons), "relation_count": 0, "entity_count": len(entities)},
             model_info={
-                "model_name": f"{base_model} NER (ONNX int8)",
+                "model_name": f"{base_model} NER (ONNX {model.precision})",
                 "model_version": str(card.get("base_model", "unknown")),
                 "language": "hannom" if language == "han" else "vietnamese",
                 "note": _NER_NOTES[language],

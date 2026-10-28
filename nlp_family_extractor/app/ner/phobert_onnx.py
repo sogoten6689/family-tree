@@ -5,8 +5,10 @@ XLM-RoBERTa (có ``tokenizer.json`` trong thư mục model) → thư viện ``to
 (``research/label_studio_pipeline/export_conll.py``: mức âm tiết + dấu câu, câu kết thúc bằng ``.!?;`` hoặc xuống dòng,
 tối đa 128 token/câu).
 
-Thư mục model (``NER_MODEL_DIR_VI``) cần: ``model.int8.onnx``, ``label_list.json`` và MỘT trong hai bộ tokenizer:
+Thư mục model (``NER_MODEL_DIR_VI``) cần: tệp ONNX, ``label_list.json`` và MỘT trong hai bộ tokenizer:
 ``vocab.txt`` + ``bpe.codes`` (PhoBERT) hoặc ``tokenizer.json`` (XLM-R). ``model_card.json`` (nếu có) được trả trong ``info``.
+Tệp ONNX mặc định ``model.int8.onnx``; đổi bằng ``NER_ONNX_FILE_VI`` / ``NER_ONNX_FILE_HAN`` (vd. ``model.onnx`` fp32 cho chữ Hán:
+int8 làm SikuBERT mất ~23% thực thể so với torch, fp32 khớp 100% — family-tree-harness FINDINGS §17).
 
 Chữ Hán (``NER_MODEL_DIR_HAN``, SikuBERT): cùng bộ tệp nhưng bắt buộc ``tokenizer.json`` (BERT, [CLS]/[SEP]). Mức KÝ TỰ:
 mỗi ký tự không phải khoảng trắng là một "từ"; câu hết sau ``。`` và tối đa 128 ký tự — khớp
@@ -29,6 +31,7 @@ MAX_TOKENS_PER_SENTENCE = 128
 MAX_SEQ_LEN = 256
 _PIECE = re.compile(r"\S+\n?")
 _HAN_SENTENCE_END = frozenset("。")
+DEFAULT_ONNX_FILE = "model.int8.onnx"
 MAX_CHARS_PER_HAN_SENTENCE = 128
 _SPECIALS = {  # (tên RoBERTa, tên BERT, id mặc định)
     "cls_id": ("<s>", "[CLS]", 0), "pad_id": ("<pad>", "[PAD]", 1), "sep_id": ("</s>", "[SEP]", 2), "unk_id": ("<unk>", "[UNK]", 3),
@@ -191,9 +194,11 @@ def bio_to_spans(tags: Sequence[str]) -> list[tuple[int, int, str]]:
 
 
 class NerModel:
-    def __init__(self, model_dir: Path, *, session=None, language: str = "vi"):
+    def __init__(self, model_dir: Path, *, session=None, language: str = "vi", onnx_file: str = DEFAULT_ONNX_FILE):
         self.model_dir = Path(model_dir)
         self.language = language
+        self.onnx_file = onnx_file
+        self.precision = "int8" if "int8" in onnx_file else "fp32"
         self.labels: list[str] = json.loads((self.model_dir / "label_list.json").read_text(encoding="utf-8"))
         self.tokenizer = load_tokenizer(self.model_dir)
         if session is None:
@@ -203,7 +208,7 @@ class NerModel:
                 raise NerUnavailable("Thiếu thư viện onnxruntime") from error
             opts = ort.SessionOptions()
             opts.intra_op_num_threads = int(os.getenv("NER_THREADS", "4"))
-            session = ort.InferenceSession(str(self.model_dir / "model.int8.onnx"), opts, providers=["CPUExecutionProvider"])
+            session = ort.InferenceSession(str(self.model_dir / onnx_file), opts, providers=["CPUExecutionProvider"])
         self.session = session
         card = self.model_dir / "model_card.json"
         self.info = json.loads(card.read_text(encoding="utf-8")) if card.exists() else {}
@@ -268,15 +273,16 @@ def get_ner_model(language: str = "vi") -> NerModel:
     if not path:
         raise NerUnavailable(f"Chưa cấu hình {env or 'model cho ngôn ngữ ' + language}")
     d = Path(path)
+    onnx_file = os.getenv(f"NER_ONNX_FILE_{language.upper()}", "") or DEFAULT_ONNX_FILE
     if language == "han" or (d / "tokenizer.json").exists():
-        need = ["model.int8.onnx", "label_list.json", "tokenizer.json"]
+        need = [onnx_file, "label_list.json", "tokenizer.json"]
     else:
-        need = ["model.int8.onnx", "label_list.json", "vocab.txt", "bpe.codes"]
+        need = [onnx_file, "label_list.json", "vocab.txt", "bpe.codes"]
     missing = [n for n in need if not (d / n).exists()]
     if missing:
         raise NerUnavailable(f"Thiếu tệp model trong {d}: {', '.join(missing)}")
-    key = f"{language}:{path}"
+    key = f"{language}:{path}:{onnx_file}"
     with _lock:
         if key not in _cache:
-            _cache[key] = NerModel(d, language=language)
+            _cache[key] = NerModel(d, language=language, onnx_file=onnx_file)
         return _cache[key]
