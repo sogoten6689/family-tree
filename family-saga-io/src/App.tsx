@@ -27,6 +27,7 @@ import UserFamilyTreeDetailPage from "./pages/user/UserFamilyTreeDetailPage";
 import UserProfilePage from "./pages/user/UserProfilePage";
 import EditDocumentPage from "./pages/EditDocumentPage";
 import NotFound from "./pages/NotFound";
+import DefenseReviewPage from "./pages/research/DefenseReviewPage";
 import ForbiddenPage from "./pages/ForbiddenPage";
 import HannomConfigPage from "./pages/developer/HannomConfigPage";
 import SettingsPage from "./pages/developer/SettingsPage";
@@ -76,6 +77,7 @@ const AppContent = () => (
               <Route path="/huong-dan" element={<GuidePage />} />
               <Route path="/gia-pha" element={<GiaPhaListPage scope="public" />} />
               <Route path="/gia-pha/:treeId" element={<PublicFamilyTreePage />} />
+              <Route path="/nghien-cuu/on-tap" element={<DefenseReviewPage />} />
 
               {/* ── User (đã đăng nhập) ── */}
               <Route
