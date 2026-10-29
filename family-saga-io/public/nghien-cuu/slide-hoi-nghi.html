@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Quan hệ gia tộc nằm ở đâu trong văn bản gia phả?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<style>
+/* Mỗi slide là khung 1920×1080 cố định, thu phóng vừa cửa sổ; phím ←/→, Space, Home/End để lật */
+html, body { margin: 0; height: 100%; background: #11151b; overflow: hidden; }
+#stage { position: fixed; inset: 0 0 56px 0; overflow: hidden; }
+#deck { width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%; transform-origin: center center; }
+#deck > section { position: absolute; inset: 0; box-sizing: border-box; overflow: hidden; }
+#deck > section:not(.on) { display: none !important; }
+#deck h1, #deck h2, #deck h3, #deck p, #deck ul, #deck ol, #deck table { margin: 0; }
+#deck h1 { line-height: 1.1; } #deck h2 { line-height: 1.15; } #deck h3 { line-height: 1.2; } #deck p { line-height: 1.4; }
+#deck table { border-collapse: collapse; width: 100%; }
+#deck th, #deck td { padding: 0.35em 0.6em; border-bottom: 1px solid #d6dbe3; vertical-align: top; }
+#deck th { border-top: 2px solid #1b2230; border-bottom: 1px solid #1b2230; font-weight: 600; }
+#bar { position: fixed; left: 0; right: 0; bottom: 0; height: 56px; display: flex; align-items: center; justify-content: center; gap: 16px;
+  font: 15px "Be Vietnam Pro", system-ui, sans-serif; color: #c9d3e0; }
+#bar button { font: inherit; color: #f7f5f0; background: #1f2a38; border: 1px solid #2d3542; border-radius: 6px; padding: 6px 14px; cursor: pointer; }
+#bar button:focus-visible { outline: 2px solid #86b4e0; outline-offset: 2px; }
+#bar a { color: #9fbfe0; }
+#count { font-variant-numeric: tabular-nums; min-width: 5em; text-align: center; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="deck">
+<section id="cover" data-transition="fade" style="background:#1b2230;color:#f7f5f0;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<p style="font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#9fbfe0">[Tên hội nghị] · 11/2026</p>
+<div style="display:flex;flex-direction:column;gap:32px">
+<h1 style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;line-height:1.1;color:#f7f5f0">Quan hệ gia tộc nằm ở đâu trong văn bản gia phả?</h1>
+<p style="font-size:32px;line-height:1.4;color:#c9d3e0">Phân tích phân bố quan hệ và chuẩn vàng mức cây cho trích xuất quan hệ trên gia phả tiếng Việt</p>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:end">
+<p style="font-size:32px;color:#f7f5f0"><b>Lam Nguyen</b><br><span style="color:#c9d3e0">Học viên cao học · [Khoa, Trường]</span></p>
+<p style="font-size:24px;color:#c9d3e0;text-align:right">Người hướng dẫn: [Tên thầy]</p>
+</div>
+</section>
+<section id="boi-canh" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Bối cảnh</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Gia phả là văn bản viết ra để lưu một cái cây</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Nguồn</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Tông phả Hán Nôm và bản dịch tiếng Việt; nhiều dòng họ đã số hoá phả ký lên web</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Nhu cầu</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Dựng lại cây người (ai là con ai, vợ chồng ai) để tra cứu, nối dòng họ, nghiên cứu lịch sử</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Khó khăn</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Dựng tay tốn công; các công cụ trích xuất phổ biến được thiết kế cho văn xuôi tin tức, không cho gia phả</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">2 / 20</p>
+</section>
+<section id="bai-toan" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Bài toán</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Từ văn bản đến tập bộ ba quan hệ</h2>
+<div style="display:flex;align-items:center;gap:24px">
+<div style="flex:1;background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600">Văn bản D</h3>
+<p style="font-size:24px;color:#4a5568">Phả ký một dòng họ</p>
+</div>
+<svg aria-hidden="true" width="72" height="36" viewBox="0 0 72 36" style="flex:none"><path d="M0 12h44V0l28 18-28 18V24H0z" fill="#1f4e79"/></svg>
+<div style="flex:1;background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600">Thực thể E</h3>
+<p style="font-size:24px;color:#4a5568">Tên người, đời, thứ bậc, ngày, nơi</p>
+</div>
+<svg aria-hidden="true" width="72" height="36" viewBox="0 0 72 36" style="flex:none"><path d="M0 12h44V0l28 18-28 18V24H0z" fill="#1f4e79"/></svg>
+<div style="flex:1;background:#e8edf3;border:2px solid #1f4e79;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Quan hệ R</h3>
+<p style="font-size:24px;color:#4a5568">R ⊆ E × E × {cha, mẹ, vợ chồng}</p>
+</div>
+<svg aria-hidden="true" width="72" height="36" viewBox="0 0 72 36" style="flex:none"><path d="M0 12h44V0l28 18-28 18V24H0z" fill="#1f4e79"/></svg>
+<div style="flex:1;background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600">Cây</h3>
+<p style="font-size:24px;color:#4a5568">Ràng buộc: mỗi người tối đa một cha</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.45;color:#4a5568">Bài này tập trung vào bước <b style="color:#1b2230">trích xuất quan hệ (RE)</b>, với thực thể cho sẵn (thực thể vàng) để tách lỗi RE khỏi lỗi nhận dạng thực thể.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">3 / 20</p>
+</section>
+<section id="cau-hoi" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Câu hỏi nghiên cứu</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Ba câu hỏi</h2>
+<div style="display:flex;flex-direction:column;gap:0">
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:28px 0;border-top:2px solid #1b2230">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:44px;font-weight:700;color:#1f4e79">Q1</p>
+<p style="font-size:32px;line-height:1.4">Quan hệ gia tộc được biểu đạt <b>trong câu</b>, hay qua <b>cấu trúc trình bày</b> (danh sách theo đời, sơ đồ)?</p>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:28px 0;border-top:1px solid #d6dbe3">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:44px;font-weight:700;color:#1f4e79">Q2</p>
+<p style="font-size:32px;line-height:1.4">Trích xuất quan hệ trong phạm vi câu đạt tối đa bao nhiêu trên gia phả?</p>
+</div>
+<div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:28px 0;border-top:1px solid #d6dbe3;border-bottom:1px solid #d6dbe3">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:44px;font-weight:700;color:#1f4e79">Q3</p>
+<p style="font-size:32px;line-height:1.4">Có tạo được chuẩn đánh giá RE lớn và rẻ từ phả hệ đã có sẵn, thay cho gán tay không?</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">4 / 20</p>
+</section>
+<section id="du-lieu" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Dữ liệu</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Ba lớp dữ liệu, độ tin cậy khác nhau</h2>
+<table style="font-size:28px;color:#1b2230">
+<tr><th style="width:34%;text-align:left">Lớp</th><th style="width:22%;text-align:right">Quy mô</th><th style="width:44%;text-align:left">Ghi chú</th></tr>
+<tr><td>Cây có phả ký + phả hệ</td><td style="text-align:right">342 cây</td><td>Nguồn VGP; phả hệ là cây hiển thị, chưa người soát</td></tr>
+<tr><td>Nhãn người</td><td style="text-align:right">25 cây · 692 thực thể · 30 quan hệ</td><td>Chuẩn vàng duy nhất do người gán</td></tr>
+<tr><td>Nhãn bán tự động</td><td style="text-align:right">114 cây</td><td>Gemini + luật + phả hệ; chỉ dùng để phát triển, không để chấm</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.45;color:#4a5568">Văn bản dài: trung vị 2.168 ký tự, dài nhất 84.540 ký tự.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">5 / 20 · Nguồn: thống kê kho dữ liệu đề tài, 25/10/2026</p>
+</section>
+<section id="bang-ma" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Tiền xử lý</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">6,7% văn bản ở bảng mã cũ, trộn theo từng dòng</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:48px">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-size:28px;color:#4a5568">Ví dụ đọc sai bảng mã</p>
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:40px;background:#f7e9e6;color:#a8382a;padding:24px 32px;border-radius:12px">Gia ph¶ hä Hoµng<br>LÔØI NOÙI ÑAÀU</p>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">TCVN3 (dòng 1) và VNI (dòng 2) bị đọc như CP1252. Nhiều văn bản trộn với Unicode theo từng dòng.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-size:28px;color:#4a5568">Cách sửa: chuyển từng dòng, chọn bản có độ phủ từ vựng cao nhất</p>
+<table style="font-size:28px">
+<tr><th style="width:55%;text-align:left">Chỉ số</th><th style="width:45%;text-align:right">Kết quả</th></tr>
+<tr><td>Cây bị lỗi</td><td style="text-align:right">23 / 342</td></tr>
+<tr><td>Sửa được</td><td style="text-align:right">18 / 23</td></tr>
+<tr><td>Độ phủ từ vựng</td><td style="text-align:right">0,17–0,82 → 0,89–1,00</td></tr>
+<tr><td>Dòng Unicode bị đổi</td><td style="text-align:right">0</td></tr>
+</table>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">6 / 20 · Độ phủ từ vựng = tỉ lệ âm tiết có trong từ vựng của 319 cây sạch</p>
+</section>
+<section id="thuoc-do" style="background:#e8edf3;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Bài học về thước đo</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Nhãn máy không dùng được làm chuẩn chấm</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="background:#f7f5f0;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;color:#1f4e79">0,40</p>
+<p style="font-size:28px;line-height:1.4;color:#4a5568">F1 của nhãn bán tự động khi chấm bằng nhãn người (25 cây)</p>
+</div>
+<div style="background:#f7f5f0;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;color:#a8382a">0,268</p>
+<p style="font-size:28px;line-height:1.4;color:#4a5568">Cùng một mô hình NER, chấm bằng nhãn bán tự động</p>
+</div>
+<div style="background:#f7f5f0;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;color:#2b7656">0,615</p>
+<p style="font-size:28px;line-height:1.4;color:#4a5568">Cấu hình đó, kiểm chéo 5 lượt theo cây trên nhãn người</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.45">Nguyên tắc của bài: <b>mọi con số chất lượng đều chấm trên nhãn người</b>; chia dữ liệu theo cây để tránh rò rỉ.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">7 / 20 · Theo loại, nhãn bán tự động: GENERATION 0,894 nhưng LOC 0,245</p>
+</section>
+<section id="so-28" data-transition="fade" style="background:#1f4e79;color:#f7f5f0;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#c9d3e0">Phát hiện 1</p>
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:240px;font-weight:700;line-height:1;color:#f7f5f0">28 / 30</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#f7f5f0">quan hệ do người gán nằm vắt qua nhiều dòng</h2>
+<p style="font-size:32px;line-height:1.4;color:#c9d3e0">Khoảng cách giữa hai tên: trung vị 132 ký tự, xa nhất 2.382 ký tự.</p>
+</section>
+<section id="vi-du" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Ví dụ</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Phả ký viết thành danh sách theo đời</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:28px;font-weight:600;color:#1f4e79">Đời thứ 3</p>
+<p style="font-size:28px">3.1 <b>Nguyễn Văn A</b></p>
+<p style="font-size:28px;color:#4a5568">Vợ: <b style="color:#1b2230">Trần Thị B</b></p>
+<p style="font-size:28px;color:#4a5568">Mộ táng tại xứ đồng …</p>
+<p style="font-size:28px;font-weight:600;color:#1f4e79">Đời thứ 4</p>
+<p style="font-size:28px">4.1 <b>Nguyễn Văn C</b>, con trưởng</p>
+<p style="font-size:28px">4.2 <b>Nguyễn Văn D</b></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;line-height:1.45">Không câu nào nói “C là con của A”. Quan hệ đến từ <b>vị trí</b>: C đứng ở đời 4, ngay sau nhánh của A ở đời 3.</p>
+<p style="font-size:32px;line-height:1.45">Quan hệ vợ chồng đến từ dòng “Vợ:” nằm dưới tên chồng.</p>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Mẫu khác: “con ông Thuỷ tổ”, nhắc lại cách 38 dòng, cần đồng tham chiếu.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">9 / 20 · Minh hoạ dựng lại theo cấu trúc thật; tên người đã thay</p>
+</section>
+<section id="tran-cau" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Hệ quả</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Trần của mọi phương pháp RE trong phạm vi câu</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:160px;font-weight:700;line-height:1;color:#a8382a">≤ 0,067</p>
+<p style="font-size:32px;line-height:1.4;color:#4a5568">Độ phủ (recall) tối đa = 2 / 30, dù là luật hay mô hình học sâu, nếu chỉ xét từng câu</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-size:32px;line-height:1.45">Đây là giới hạn của <b>cách đặt bài toán</b>, không phải của mô hình.</p>
+<p style="font-size:32px;line-height:1.45">Muốn bắt được quan hệ, đơn vị xử lý phải là <b>tài liệu</b> hoặc <b>cấu trúc dòng</b>.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">10 / 20 · Trên 25 cây nhãn người, 30 quan hệ</p>
+</section>
+<section id="luat" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Kiểm chứng</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Luật theo gợi ý ngôn ngữ không bắt được quan hệ nào</h2>
+<table style="font-size:28px;color:#1b2230">
+<tr><th style="width:40%;text-align:left">Hệ thống (thực thể vàng)</th><th style="width:24%;text-align:left">Tập chấm</th><th style="width:12%;text-align:right">P</th><th style="width:12%;text-align:right">R</th><th style="width:12%;text-align:right">F1</th></tr>
+<tr><td>Luật mức câu</td><td>25 cây người</td><td style="text-align:right">0,000</td><td style="text-align:right">0,000</td><td style="text-align:right">0,000</td></tr>
+<tr><td>Luật mức tài liệu v2</td><td>dev 114 cây tự động</td><td style="text-align:right">0,648</td><td style="text-align:right">0,126</td><td style="text-align:right">0,211</td></tr>
+<tr style="background:#f7e9e6"><td>Luật mức tài liệu v2</td><td>25 cây người</td><td style="text-align:right">0,000</td><td style="text-align:right">0,000</td><td style="text-align:right">0,000</td></tr>
+<tr><td>Nhãn bán tự động</td><td>25 cây người</td><td style="text-align:right">0,170</td><td style="text-align:right">0,933</td><td style="text-align:right">0,287</td></tr>
+</table>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Quy trình: luật phát triển trên 114 cây tự động, không nhìn 25 cây người; tập người chỉ chấm <b style="color:#1b2230">một lần</b>.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">11 / 20 · Luật mức câu: 0 đúng / 9 sai / 30 bỏ sót; luật v2: 0 / 10 / 30</p>
+</section>
+<section id="chan-doan" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Chẩn đoán lỗi</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Quan hệ người gán đến từ đâu?</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Sơ đồ dạng chữ</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Tên đứng riêng từng dòng, nối cha–con, vợ–chồng theo vị trí. Luật ngôn ngữ không có tín hiệu nào để bám.</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Đồng tham chiếu</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">“con ông Thuỷ tổ”, “con Doãn Khuê” nhắc lại người đã nêu ở rất xa phía trên.</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#a8382a">Lỗi của luật</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Cả 10 dự đoán sai đến từ một đoạn: “có … con cháu” bị bắt nhầm là liệt kê con.</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.45">RE từ văn xuôi và RE “theo sơ đồ” là <b>hai bài toán khác nhau</b>; chuẩn vàng hiện trộn cả hai.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">12 / 20 · Chẩn đoán làm sau khi chấm, không dùng để sửa luật</p>
+</section>
+<section id="so-1524" data-transition="fade" style="background:#1f4e79;color:#f7f5f0;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#c9d3e0">Phát hiện 2</p>
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:240px;font-weight:700;line-height:1;color:#f7f5f0">1.524</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#f7f5f0">quan hệ neo vào văn bản, lấy từ phả hệ có sẵn</h2>
+<p style="font-size:32px;line-height:1.4;color:#c9d3e0">Gấp khoảng 50 lần 30 quan hệ do người gán, không tốn công gán tay.</p>
+</section>
+<section id="cach-dung" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Phương pháp</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Dựng chuẩn vàng mức cây</h2>
+<div style="display:flex;align-items:center;gap:24px">
+<div style="flex:1;background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:56px;font-weight:700;color:#1f4e79">72.484</p>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">quan hệ suy từ phả hệ hiển thị của 342 cây</p>
+</div>
+<svg aria-hidden="true" width="72" height="36" viewBox="0 0 72 36" style="flex:none"><path d="M0 12h44V0l28 18-28 18V24H0z" fill="#1f4e79"/></svg>
+<div style="flex:1;background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:600">Chuẩn hoá tên</h3>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">Bỏ danh xưng, ngoặc, dấu câu; nút “A - B” = người chính + vợ/chồng</p>
+</div>
+<svg aria-hidden="true" width="72" height="36" viewBox="0 0 72 36" style="flex:none"><path d="M0 12h44V0l28 18-28 18V24H0z" fill="#1f4e79"/></svg>
+<div style="flex:1;background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:600">Neo văn bản</h3>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">Giữ cặp khi cả hai tên có trong phả ký</p>
+</div>
+<svg aria-hidden="true" width="72" height="36" viewBox="0 0 72 36" style="flex:none"><path d="M0 12h44V0l28 18-28 18V24H0z" fill="#1f4e79"/></svg>
+<div style="flex:1;background:#e8edf3;border:2px solid #1f4e79;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:56px;font-weight:700;color:#1f4e79">1.524</p>
+<p style="font-size:24px;line-height:1.4;color:#4a5568">quan hệ neo: cha 1.512, mẹ 10, vợ chồng 2</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.45">Chấm theo <b>cặp tên chuẩn hoá</b>, không theo vị trí ký tự, nên áp được cho mọi hệ thống trích xuất.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">14 / 20 · Phả hệ suy bằng luật xếp chồng theo đời, độ tin cậy 0,65, chưa người soát</p>
+</section>
+<section id="kiem-chung" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Kiểm chứng chéo</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Chuẩn mức cây và nhãn người đồng ý một phần</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;color:#1f4e79">0,567</p>
+<p style="font-size:28px;color:#4a5568">Precision</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;color:#1f4e79">0,405</p>
+<p style="font-size:28px;color:#4a5568">Recall</p>
+</div>
+<div style="background:#e8edf3;border:2px solid #1f4e79;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:96px;font-weight:700;color:#1f4e79">0,472</p>
+<p style="font-size:28px;color:#4a5568">F1 · khoảng tin cậy: [chưa tính]</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.45">Nhãn người chấm bằng chuẩn mức cây trên 25 cây có cả hai (42 quan hệ neo). <b>13/30</b> quan hệ người không có trong phả hệ: quan hệ chỉ có trong văn xuôi, hoặc tên viết khác.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">15 / 20</p>
+</section>
+<section id="benchmark" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Chấm trên chuẩn mức cây</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Trên tập lớn hơn, kết luận không đổi</h2>
+<table style="font-size:28px;color:#1b2230">
+<tr><th style="width:52%;text-align:left">Hệ thống (139 cây, 227 quan hệ neo)</th><th style="width:16%;text-align:right">P</th><th style="width:16%;text-align:right">R</th><th style="width:16%;text-align:right">F1</th></tr>
+<tr><td>Luật mức câu</td><td style="text-align:right">0,021</td><td style="text-align:right">0,009</td><td style="text-align:right">0,013</td></tr>
+<tr><td>Luật mức tài liệu v2</td><td style="text-align:right">0,018</td><td style="text-align:right">0,013</td><td style="text-align:right">0,015</td></tr>
+<tr><td>Nhãn bán tự động*</td><td style="text-align:right">0,179</td><td style="text-align:right">0,705</td><td style="text-align:right">0,286</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.45">Luật dựa trên gợi ý ngôn ngữ đạt <b>F1 ≈ 0,01–0,02</b> trên cả hai chuẩn: nhãn người và chuẩn mức cây.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">16 / 20 · * Không so sánh công bằng được: nhãn bán tự động đã dùng phả hệ để khớp tên (vòng tròn)</p>
+</section>
+<section id="y-nghia" style="background:#e8edf3;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Ý nghĩa</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">RE trên gia phả là bài toán cấu trúc tài liệu</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="background:#f7f5f0;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Cho người làm hệ thống</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Đừng bắt đầu bằng mô hình RE mức câu. Hãy khai thác danh sách theo đời, đánh số, thụt lề và dòng “Vợ:”.</p>
+</div>
+<div style="background:#f7f5f0;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Cho người làm đánh giá</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Phả hệ có sẵn cho chuẩn đánh giá cha–con lớn, rẻ. Nhãn máy không được dùng làm chuẩn chấm.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">17 / 20</p>
+</section>
+<section id="han-che" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#a8382a">Hạn chế</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Những gì kết quả này chưa nói được</h2>
+<div style="display:flex;flex-direction:column;gap:0">
+<p style="font-size:32px;line-height:1.4;padding:24px 0;border-top:1px solid #d6dbe3"><b>Mẫu nhãn người nhỏ:</b> 30 quan hệ trên 25 cây; khoảng tin cậy rộng.</p>
+<p style="font-size:32px;line-height:1.4;padding:24px 0;border-top:1px solid #d6dbe3"><b>Chuẩn mức cây lệch loại:</b> 1.512/1.524 là cha–con; mẹ và vợ chồng vẫn cần nhãn người.</p>
+<p style="font-size:32px;line-height:1.4;padding:24px 0;border-top:1px solid #d6dbe3"><b>Chưa người soát:</b> phả hệ suy bằng luật, độ tin cậy 0,65; chưa đo độ đồng thuận giữa người gán.</p>
+<p style="font-size:32px;line-height:1.4;padding:24px 0;border-top:1px solid #d6dbe3;border-bottom:1px solid #d6dbe3"><b>Phạm vi:</b> một nguồn web, chỉ tiếng Việt; chưa thử trên chữ Hán.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">18 / 20</p>
+</section>
+<section id="huong-tiep" style="background:#f7f5f0;color:#1b2230;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#1f4e79">Hướng tiếp theo</p>
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15">Từ phân tích sang phương pháp</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">RE theo bố cục</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Phân tích “Đời N”, đánh số, thụt lề thành khung cây; mô hình chọn cha/mẹ cho mỗi người.</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Giám sát xa</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Học từ 1.524 quan hệ neo; bóc tách từng thành phần để đo đóng góp.</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6dbe3;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;color:#1f4e79">Mở rộng</h3>
+<p style="font-size:28px;line-height:1.45;color:#4a5568">Người soát mẫu chuẩn mức cây, đo độ đồng thuận; sang chữ Hán, dựng cây từ bố cục trang OCR.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#6b7280">19 / 20</p>
+</section>
+<section id="ket-luan" data-transition="fade" style="background:#1b2230;color:#f7f5f0;font-family:'Be Vietnam Pro', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<h2 style="font-family:'Source Serif 4', Georgia, serif;font-size:64px;font-weight:600;line-height:1.15;color:#f7f5f0">Kết luận</h2>
+<div style="display:flex;flex-direction:column;gap:32px">
+<p style="font-size:36px;line-height:1.4;color:#f7f5f0"><b style="color:#9fbfe0">1.</b> Quan hệ gia tộc nằm ở <b>cấu trúc</b>: 28/30 vắt qua dòng.</p>
+<p style="font-size:36px;line-height:1.4;color:#f7f5f0"><b style="color:#9fbfe0">2.</b> RE mức câu có trần recall ≈ 0,067; luật ngôn ngữ đạt F1 ≈ 0,01.</p>
+<p style="font-size:36px;line-height:1.4;color:#f7f5f0"><b style="color:#9fbfe0">3.</b> Phả hệ có sẵn cho chuẩn vàng mức cây 1.524 quan hệ, khớp nhãn người F1 0,472.</p>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:end">
+<p style="font-family:'Source Serif 4', Georgia, serif;font-size:56px;color:#f7f5f0">Xin cảm ơn</p>
+<p style="font-size:24px;color:#c9d3e0;text-align:right">Lam Nguyen · [email liên hệ]</p>
+</div>
+</section>
+</div></div>
+<nav id="bar" aria-label="Điều khiển trình chiếu">
+<a href="hoi-nghi.html">← Trang hội nghị</a>
+<button id="prev" aria-label="Slide trước">‹</button><span id="count" aria-live="polite"></span><button id="next" aria-label="Slide sau">›</button>
+<button id="full">Toàn màn hình</button>
+</nav>
+<script>
+const slides = [...document.querySelectorAll('#deck > section')];
+const deckEl = document.getElementById('deck'), stage = document.getElementById('stage');
+let i = 0;
+function show(n) {
+  i = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, k) => s.classList.toggle('on', k === i));
+  document.getElementById('count').textContent = (i + 1) + ' / ' + slides.length;
+  history.replaceState(null, '', '#' + (i + 1));
+}
+function fit() {
+  const r = stage.getBoundingClientRect();
+  deckEl.style.transform = 'translate(-50%, -50%) scale(' + Math.min(r.width / 1920, r.height / 1080) + ')';
+}
+document.getElementById('prev').onclick = () => show(i - 1);
+document.getElementById('next').onclick = () => show(i + 1);
+document.getElementById('full').onclick = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+stage.onclick = e => { if (!e.target.closest('a')) show(e.clientX > innerWidth / 2 ? i + 1 : i - 1); };
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+  else if (e.key === 'Home') show(0);
+  else if (e.key === 'End') show(slides.length - 1);
+});
+addEventListener('resize', fit);
+addEventListener('hashchange', () => { const n = parseInt(location.hash.slice(1), 10); if (n && n - 1 !== i) show(n - 1); });
+fit(); show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+</script>
+</body>
+</html>
