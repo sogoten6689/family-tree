@@ -261,6 +261,18 @@ export const FLASHCARDS: FlashCard[] = [
     ],
     gap: "Giải thích mới là giả thuyết; chưa đo trên VPS.",
   },
+  {
+    id: "l5",
+    axis: "limits",
+    question: "22.602 cặp Hán–Việt trong corpus song song là gì? Dùng để chiếu nhãn được không?",
+    answer: [
+      "Là cặp dòng, không phải câu: 21.238 cặp 'model' do Gemini dịch từng dòng chữ Hán đã OCR rồi ghép theo thứ tự dòng (dich_nghia.py).",
+      "Còn lại: 1.282 cặp 'llm_draft' (độ tin cậy thấp) và chỉ 82 cặp lấy từ bản dịch có sẵn trong sách; 0 cặp do thuật toán dóng hàng (heuristic, bertalign).",
+      "Nằm ở 20/32 tài liệu, 1.268/1.991 trang. Vế Hán là OCR đã vote, chưa phải chữ người soát.",
+      "Chiếu nhãn Việt → Hán qua các cặp này vẫn phụ thuộc gián tiếp vào Gemini, đúng điều RQ3 muốn tránh.",
+    ],
+    gap: "Chưa có trường đánh dấu cặp nào đã được sinh viên soát; chưa đo chất lượng dịch hay dóng hàng. Không gọi là '22.602 cặp câu đã dóng hàng'.",
+  },
 
   // ── Trục 5 ──
   {
@@ -281,7 +293,7 @@ export const FLASHCARDS: FlashCard[] = [
     answer: [
       "A: RQ1 — kiểm định ghép cặp, phân tích lỗi, PhoBERT tách từ VnCoreNLP, đường học; song song soát 15 trang chữ Hán (293 thực thể).",
       "B: RQ4 — khung cây từ bố cục, rồi mô hình chọn cha/mẹ học từ phả hệ.",
-      "C: RQ2, RQ3 — tri thức miền, lọc nhãn nhiễu, chiếu nhãn qua 22.602 cặp câu song ngữ.",
+      "C: RQ2, RQ3 — tri thức miền, lọc nhãn nhiễu, chiếu nhãn qua cặp dòng Hán–Việt (phải dùng phần đã soát, vì 94% vế Việt là bản dịch Gemini).",
       "D: RQ5 — đánh giá đầu–cuối.",
     ],
   },
@@ -466,6 +478,7 @@ export const QUIZ: QuizItem[] = [
   { id: "z16", question: "Baseline từ điển chữ Hán, CV5 theo sách: F1?", options: ["0,444", "0,231", "0,232", "0,173"], answer: 2, explain: "0,232. 0,444 là trên han_final/test 38 câu; 0,231 là từ điển tiếng Việt." },
   { id: "z17", question: "Bộ sửa bảng mã cũ sửa được bao nhiêu cây?", options: ["18/23", "23/342", "319/342", "5/23"], answer: 0, explain: "18/23 cây. 23/342 là số cây dùng bảng mã cũ; 319 là con số đo sai ban đầu đã đính chính." },
   { id: "z18", question: "API chữ Hán fp32: độ trễ trung vị mỗi request (máy Mac i9)?", options: ["30 ms", "111 ms", "2,0 s", "48 ms"], answer: 1, explain: "111 ms (p95 125 ms). 2,0 s là request đầu do nạp mô hình. Chưa đo trên VPS." },
+  { id: "z19", question: "Trong 22.602 cặp Hán–Việt, bao nhiêu cặp lấy từ bản dịch có sẵn trong sách?", options: ["82", "1.282", "21.238", "22.602"], answer: 0, explain: "82 cặp human_book_page. 21.238 cặp là Gemini dịch từng dòng, 1.282 cặp là llm_draft độ tin cậy thấp." },
 ];
 
 export interface ErrorStatement {
@@ -488,6 +501,7 @@ export const ERROR_STATEMENTS: ErrorStatement[] = [
   { id: "s10", statement: "Chuẩn vàng mức cây có 1.524 quan hệ, đủ để đánh giá FATHER_OF, MOTHER_OF và SPOUSE.", correct: false, explain: "FATHER_OF 1.512, MOTHER_OF 10, SPOUSE 2: gần như chỉ đo được cha–con." },
   { id: "s11", statement: "Nhãn bán tự động có recall quan hệ 0,93 nên là nguồn RE tốt.", correct: false, explain: "Precision chỉ 0,17 (28 đúng, 137 thừa), F1 0,287." },
   { id: "s12", statement: "SikuBERT hơn từ điển 0,446 F1 mỗi lượt (t = 10,8), chứng tỏ mô hình học được quy luật nhất quán của nhãn máy.", correct: true, explain: "Đúng, với điều kiện nói rõ: 'của nhãn máy', không chứng minh mô hình đúng với người." },
+  { id: "s13", statement: "Corpus có 22.602 cặp câu Hán–Việt đã dóng hàng, nên chiếu nhãn tiếng Việt sang chữ Hán không phụ thuộc Gemini.", correct: false, explain: "Là cặp dòng; 94% vế Việt do Gemini dịch từng dòng OCR, chỉ 82 cặp từ bản dịch trong sách. Chiếu nhãn qua đó vẫn phụ thuộc Gemini." },
 ];
 
 export interface GlossaryTerm {
@@ -787,6 +801,14 @@ export const GLOSSARY: GlossaryTerm[] = [
     term: "Hiệu ứng neo (anchoring)",
     meaning: "Khi người gán nhãn xuất phát từ nhãn gợi ý của máy, họ có xu hướng giữ nguyên gợi ý, làm nhãn người bị kéo theo máy.",
     inThesis: "Quan sát trên 25 cây: người chỉ thêm, không xoá nhãn gợi ý.",
+  },
+  {
+    id: "g-align",
+    group: "Dữ liệu và nhãn",
+    term: "Corpus song song, dóng hàng câu (alignment)",
+    meaning: "Corpus song song là văn bản gốc đi kèm bản dịch. Dóng hàng là tìm câu nào của bản gốc ứng với câu nào của bản dịch, thường bằng thuật toán (vd bertalign).",
+    inThesis: "22.602 cặp Hán–Việt chủ yếu do Gemini dịch từng dòng OCR rồi ghép theo thứ tự dòng, không qua dóng hàng; chỉ 82 cặp từ bản dịch trong sách.",
+    remember: "Nói 'cặp dòng, phần lớn dịch máy', đừng nói 'cặp câu đã dóng hàng'.",
   },
   {
     id: "g-encoding",
