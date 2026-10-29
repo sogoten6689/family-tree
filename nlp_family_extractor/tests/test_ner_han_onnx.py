@@ -99,6 +99,35 @@ def test_get_ner_model_han_unavailable(monkeypatch, tmp_path):
         pn.get_ner_model("han")
 
 
+def test_get_ner_model_han_onnx_file_option(monkeypatch, tmp_path):
+    # SikuBERT chạy fp32 (int8 mất ~23% thực thể): NER_ONNX_FILE_HAN chọn tệp, mặc định vẫn model.int8.onnx.
+    monkeypatch.setattr(pn, "_cache", {})
+    make_model_dir(tmp_path)
+    (tmp_path / "model.int8.onnx").write_bytes(b"")
+    monkeypatch.setenv("NER_MODEL_DIR_HAN", str(tmp_path))
+    monkeypatch.setenv("NER_ONNX_FILE_HAN", "model.onnx")
+    with pytest.raises(pn.NerUnavailable, match="model.onnx"):
+        pn.get_ner_model("han")
+
+    opened = []
+
+    class FakeOrt:
+        class SessionOptions:
+            intra_op_num_threads = 1
+
+        @staticmethod
+        def InferenceSession(path, *_, **__):
+            opened.append(Path(path).name)
+            return FakeSession()
+
+    monkeypatch.setitem(__import__("sys").modules, "onnxruntime", FakeOrt)
+    (tmp_path / "model.onnx").write_bytes(b"")
+    m = pn.get_ner_model("han")
+    assert opened == ["model.onnx"] and m.precision == "fp32"
+    monkeypatch.delenv("NER_ONNX_FILE_HAN")
+    assert pn.get_ner_model("han").precision == "int8" and opened == ["model.onnx", "model.int8.onnx"]
+
+
 def test_endpoint_hannom(monkeypatch, tmp_path):
     import api
 
@@ -123,7 +152,7 @@ def test_endpoint_hannom(monkeypatch, tmp_path):
     assert data["persons"] == ["清閑", "陳氏"] and data["relations"] == []
     assert [(e["start"], e["end"]) for e in data["entities"]] == [(2, 4), (7, 9)]
     info = data["model_info"]
-    assert info["language"] == "hannom" and "SikuBERT" in info["model_name"]
+    assert info["language"] == "hannom" and "SikuBERT" in info["model_name"] and "ONNX int8" in info["model_name"]
     assert "NHÃN MÁY" in info["note"] and "Gemini" in info["note"] and "CHƯA được người soát" in info["note"]
     assert "chưa có quan hệ" in info["note"]
 
