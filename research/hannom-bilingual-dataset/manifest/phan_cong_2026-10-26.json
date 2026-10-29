@@ -1,0 +1,50 @@
+{
+  "dot": "2026-10-26",
+  "de_tai": "Building a Chinese-Vietnamese parallel corpus on Genealogy",
+  "nguon": "docs/lab/note_meeting_weekly/26_10_2026/26_10_2026.md",
+  "sinh_vien": [
+    {
+      "slug": "ha-dang-khoi",
+      "ho_ten": "Hà Đăng Khôi",
+      "soat": ["pdf-1005-tran", "nom-833", "nom-557"],
+      "ocr": ["nguyen-khoa-q2", "hxh-16"],
+      "dich_may": [],
+      "dich_nguoi": [
+        {"doc_id": "hoang-toc-luoc-bien", "ten": "Hoàng tộc lược biên", "cho_windows": "Family_HánViệt/Hoang Toc Luoc Bien.pdf"}
+      ]
+    },
+    {
+      "slug": "duong-phan-minh-tri",
+      "ho_ten": "Dương Phan Minh Trí",
+      "soat": ["pdf-1000-mai", "nom-855", "nom-865", "nom-1255"],
+      "ocr": ["hxh-105"],
+      "dich_may": [],
+      "dich_nguoi": [
+        {"doc_id": "docx-tran-200", "ten": "Gia phả họ Trần 200 + ảnh chữ Hán A.Phuong",
+         "tep_local": ["data/00_raw/du_lieu_han_nom_moi/24_8_2026/gia pha ho tran 200.docx",
+                       "data/00_raw/du_lieu_han_nom_moi/24_8_2026/docx-tran-200-toan-van.md"],
+         "cho_windows": "Family_HánViệt/A.Phuong/ (26 ảnh)"}
+      ]
+    },
+    {
+      "slug": "phan-nhat-minh",
+      "ho_ten": "Phan Nhật Minh",
+      "soat": ["pdf-1001-la", "nom-207", "nom-1158", "nom-147", "gpc-dang-1928", "nom-429", "docx-nguyen-van"],
+      "ocr": ["nguyen-khoa-q1", "nom-595", "nlv-1042"],
+      "dich_may": ["hxh-129"],
+      "dich_nguoi": []
+    },
+    {
+      "slug": "nguyen-van-phuc",
+      "ho_ten": "Nguyễn Văn Phúc",
+      "soat": ["nom-208", "nom-1256", "nom-84", "nom-563", "nom-854"],
+      "ocr": ["hxh-73", "nom-716", "nom-309", "nom-308", "hxh-13"],
+      "dich_may": [],
+      "dich_nguoi": [
+        {"doc_id": "pdf-phan-gia-cong-pha", "ten": "Phan gia công phả",
+         "pdf_local": "data/04_external/sach/phan_gia_cong_pha/Phan_Gia_Cong_Pha.pdf",
+         "trang_ban_dich_pdf": [19, 74]}
+      ]
+    }
+  ]
+}
