@@ -72,6 +72,32 @@ export const FLASHCARDS: FlashCard[] = [
       "Bảng mã cũ: 23/342 cây (6,7%) dùng TCVN3/VNI, nhiều cây trộn với Unicode theo từng dòng.",
     ],
   },
+  {
+    id: "m5",
+    axis: "motivation",
+    question: "Dữ liệu gia phả khác gì dữ liệu NER/RE thông thường (tin tức, Wikipedia)?",
+    answer: [
+      "Mục đích: văn bản viết ra để lưu một cây người; mỗi phả ký VGP đi kèm một phả hệ (342 cây).",
+      "Quan hệ nằm ở bố cục (danh sách theo đời, đánh số, dòng 'Vợ:'), không ở câu: 28/30 quan hệ nhãn người vắt qua nhiều dòng.",
+      "Loại thực thể riêng: GENERATION, ORDER, tên húy/tự/hiệu, tước hiệu; ngày theo niên hiệu, can chi, âm lịch.",
+      "Một người nhiều tên, trùng tên qua các đời, nhắc lại rất xa ('con ông Thuỷ tổ' cách 38 dòng).",
+      "Ràng buộc logic có sẵn: mỗi người tối đa một cha, đời con = đời cha + 1, con sinh sau cha.",
+      "Chữ viết: Hán văn cổ, Nôm, bản dịch; OCR; 23/342 cây (6,7%) ở bảng mã cũ. Văn bản dài: trung vị 2.168 ký tự, tối đa 84.540.",
+      "Mỗi dòng họ một văn phong, ít tài nguyên (25 cây nhãn người), và là dữ liệu về người thường nên nhạy cảm riêng tư.",
+    ],
+  },
+  {
+    id: "m6",
+    axis: "motivation",
+    question: "Từ những khác biệt của dữ liệu gia phả, vì sao fine-tune mô hình chuẩn là chưa đủ?",
+    answer: [
+      "Mô hình chuẩn xử lý theo câu, trong khi quan hệ nằm ở bố cục → RE dựa trên bố cục (RQ4); RE mức câu có trần 2/30.",
+      "Ngày theo niên hiệu, can chi, chức tước có mẫu cố định → đưa tri thức miền vào mô hình (RQ2).",
+      "Cây có ràng buộc logic → dùng ràng buộc khi dựng cây và đo lỗi lan truyền (RQ5).",
+      "Có phả hệ sẵn → giám sát xa, chuẩn vàng mức cây 1.524 quan hệ thay cho gán tay.",
+    ],
+    gap: "Các cải tiến RQ2, RQ4, RQ5 mới là đề xuất, chưa có số đo.",
+  },
 
   // ── Trục 2 ──
   {
@@ -217,6 +243,29 @@ export const FLASHCARDS: FlashCard[] = [
       "Tập test han_final chỉ 38 câu → dùng CV theo sách làm số chính.",
     ],
   },
+  {
+    id: "e7",
+    axis: "experiment",
+    question: "Vì sao không dùng bộ NER tiếng Việt có sẵn (ví dụ VLSP) để huấn luyện hoặc đánh giá?",
+    answer: [
+      "Bộ có sẵn là tin tức, nhãn PER/LOC/ORG; không có GENERATION, ORDER, DATE theo niên hiệu, can chi.",
+      "Lệch miền: tên người trong gia phả đi kèm tước hiệu, tên tự, tên hiệu, cách gọi theo thứ bậc.",
+      "Nên phải xây tập nhãn người riêng (25 cây, 692 thực thể) và chấm theo cây.",
+    ],
+    gap: "Chưa có thí nghiệm chuyển miền từ bộ tin tức sang gia phả để chứng minh bằng số.",
+  },
+  {
+    id: "e8",
+    axis: "experiment",
+    question: "Phả hệ trên web có đáng tin để làm chuẩn đánh giá không? Có thiên lệch không?",
+    answer: [
+      "Phả hệ suy bằng luật xếp chồng theo đời, độ tin cậy 0,65, chưa người soát.",
+      "Kiểm chứng chéo: nhãn người khớp chuẩn mức cây F1 0,472 (P 0,567, R 0,405); 13/30 quan hệ người không có trong phả hệ.",
+      "Thiên lệch loại: FATHER_OF 1.512, MOTHER_OF 10, SPOUSE 2 → chỉ đo tốt quan hệ cha–con.",
+      "Cách dùng đúng: làm tín hiệu giám sát xa và thước đo phụ quy mô lớn, không thay chuẩn vàng do người gán.",
+    ],
+    gap: "Chưa có khoảng tin cậy cho F1 0,472 và chưa có người soát một mẫu phả hệ.",
+  },
 
   // ── Trục 4 ──
   {
@@ -273,6 +322,17 @@ export const FLASHCARDS: FlashCard[] = [
     ],
     gap: "Chưa có trường đánh dấu cặp nào đã được sinh viên soát; chưa đo chất lượng dịch hay dóng hàng. Không gọi là '22.602 cặp câu đã dóng hàng'.",
   },
+  {
+    id: "l6",
+    axis: "limits",
+    question: "Gia phả viết dạng văn xuôi, không có danh sách theo đời thì sao?",
+    answer: [
+      "RE dựa trên bố cục mất tác dụng vì không có cấu trúc để bám: đây là điều kiện biên phải thừa nhận.",
+      "Khi đó cần RE mức tài liệu kèm đồng tham chiếu; luật mức tài liệu hiện chỉ đạt F1 0,015, nên đây là phần còn mở.",
+      "Tỉ lệ phả ký dạng văn xuôi thuần trong kho chưa được đếm.",
+    ],
+    gap: "Chưa đo tỉ lệ phả ký không có danh sách theo đời.",
+  },
 
   // ── Trục 5 ──
   {
@@ -306,7 +366,28 @@ export const FLASHCARDS: FlashCard[] = [
       "Đây là hướng mở rộng tự nhiên của RQ4.",
     ],
     gap: "Chưa làm; chỉ là hướng phát triển.",
+  },  {
+    id: "a4",
+    axis: "application",
+    question: "Dữ liệu gia phả có vấn đề riêng tư hay bản quyền không?",
+    answer: [
+      "Có: gia phả ghi tên người thường, có thể còn sống, kèm ngày sinh, nơi ở.",
+      "Cách xử lý trong đề tài: ví dụ trình bày công khai dùng tên giả; dữ liệu trong data/ không đưa lên repo công khai.",
+      "Nguồn là web VGP và sách số hoá; phạm vi dùng là nghiên cứu.",
+    ],
+    gap: "Chưa có văn bản xác nhận quyền dùng dữ liệu từ nguồn; cần hỏi thầy cách ghi trong luận văn.",
   },
+  {
+    id: "a5",
+    axis: "application",
+    question: "Phương pháp có dùng được cho gia phả Trung Quốc, Hàn Quốc không?",
+    answer: [
+      "Cấu trúc danh sách theo đời và phả hệ đi kèm là đặc điểm chung của gia phả Đông Á, nên hướng RE dựa trên bố cục có thể chuyển được.",
+      "Phần chữ Hán của đề tài đã dùng SikuBERT (huấn luyện trước trên văn ngôn cổ).",
+    ],
+    gap: "Chưa thử trên gia phả nước khác; chỉ nêu như hướng phát triển.",
+  },
+
 ];
 
 export interface MockQuestion {
@@ -478,7 +559,8 @@ export const QUIZ: QuizItem[] = [
   { id: "z16", question: "Baseline từ điển chữ Hán, CV5 theo sách: F1?", options: ["0,444", "0,231", "0,232", "0,173"], answer: 2, explain: "0,232. 0,444 là trên han_final/test 38 câu; 0,231 là từ điển tiếng Việt." },
   { id: "z17", question: "Bộ sửa bảng mã cũ sửa được bao nhiêu cây?", options: ["18/23", "23/342", "319/342", "5/23"], answer: 0, explain: "18/23 cây. 23/342 là số cây dùng bảng mã cũ; 319 là con số đo sai ban đầu đã đính chính." },
   { id: "z18", question: "API chữ Hán fp32: độ trễ trung vị mỗi request (máy Mac i9)?", options: ["30 ms", "111 ms", "2,0 s", "48 ms"], answer: 1, explain: "111 ms (p95 125 ms). 2,0 s là request đầu do nạp mô hình. Chưa đo trên VPS." },
-  { id: "z19", question: "Trong 22.602 cặp Hán–Việt, bao nhiêu cặp lấy từ bản dịch có sẵn trong sách?", options: ["82", "1.282", "21.238", "22.602"], answer: 0, explain: "82 cặp human_book_page. 21.238 cặp là Gemini dịch từng dòng, 1.282 cặp là llm_draft độ tin cậy thấp." },
+  { id: "z19", question: "Trong 22.602 cặp Hán–Việt, bao nhiêu cặp lấy từ bản dịch có sẵn trong sách?", options: ["82", "1.282", "21.238", "22.602"], answer: 0, explain: "82 cặp human_book_page. 21.238 cặp là Gemini dịch từng dòng, 1.282 cặp là llm_draft độ tin cậy thấp." },  { id: "z20", question: "Độ dài trung vị một phả ký (ký tự)?", options: ["132", "2.168", "2.382", "84.540"], answer: 1, explain: "2.168 ký tự, dài nhất 84.540. 132 và 2.382 là khoảng cách trung vị và lớn nhất giữa hai tên trong một quan hệ." },
+
 ];
 
 export interface ErrorStatement {
@@ -501,7 +583,9 @@ export const ERROR_STATEMENTS: ErrorStatement[] = [
   { id: "s10", statement: "Chuẩn vàng mức cây có 1.524 quan hệ, đủ để đánh giá FATHER_OF, MOTHER_OF và SPOUSE.", correct: false, explain: "FATHER_OF 1.512, MOTHER_OF 10, SPOUSE 2: gần như chỉ đo được cha–con." },
   { id: "s11", statement: "Nhãn bán tự động có recall quan hệ 0,93 nên là nguồn RE tốt.", correct: false, explain: "Precision chỉ 0,17 (28 đúng, 137 thừa), F1 0,287." },
   { id: "s12", statement: "SikuBERT hơn từ điển 0,446 F1 mỗi lượt (t = 10,8), chứng tỏ mô hình học được quy luật nhất quán của nhãn máy.", correct: true, explain: "Đúng, với điều kiện nói rõ: 'của nhãn máy', không chứng minh mô hình đúng với người." },
-  { id: "s13", statement: "Corpus có 22.602 cặp câu Hán–Việt đã dóng hàng, nên chiếu nhãn tiếng Việt sang chữ Hán không phụ thuộc Gemini.", correct: false, explain: "Là cặp dòng; 94% vế Việt do Gemini dịch từng dòng OCR, chỉ 82 cặp từ bản dịch trong sách. Chiếu nhãn qua đó vẫn phụ thuộc Gemini." },
+  { id: "s13", statement: "Corpus có 22.602 cặp câu Hán–Việt đã dóng hàng, nên chiếu nhãn tiếng Việt sang chữ Hán không phụ thuộc Gemini.", correct: false, explain: "Là cặp dòng; 94% vế Việt do Gemini dịch từng dòng OCR, chỉ 82 cặp từ bản dịch trong sách. Chiếu nhãn qua đó vẫn phụ thuộc Gemini." },  { id: "s14", statement: "Có thể chia dữ liệu ngẫu nhiên theo câu, vì các câu trong gia phả độc lập với nhau.", correct: false, explain: "Mỗi dòng họ một văn phong và tên riêng; chia theo câu gây rò rỉ, F1 cao ảo. Phải chia theo cây/sách." },
+  { id: "s15", statement: "Gia phả là văn bản viết để lưu một cây người, nên quan hệ chủ yếu nằm ở bố cục chứ không ở câu.", correct: true, explain: "Đúng: 28/30 quan hệ nhãn người vắt qua nhiều dòng." },
+
 ];
 
 export interface GlossaryTerm {
