@@ -267,6 +267,21 @@ export const FLASHCARDS: FlashCard[] = [
     gap: "Chưa có khoảng tin cậy cho F1 0,472 và chưa có người soát một mẫu phả hệ.",
   },
 
+  {
+    id: "e9",
+    axis: "experiment",
+    question: "Đề tài khai thác được bao nhiêu thực thể, bao nhiêu quan hệ?",
+    answer: [
+      "Phải tách hai loại số: dữ liệu đã gán nhãn (để huấn luyện, đánh giá) và số mô hình tự trích từ kho. Em chỉ có số đo cho loại thứ nhất.",
+      "Thực thể tiếng Việt: 25 cây nhãn người có 692 thực thể (chuẩn vàng tin được nhất). Thư mục gold 139 cây có 4.954 thực thể, phần lớn là nhãn bán tự động.",
+      "Thực thể chữ Hán: khoảng 21.800 thực thể nhãn máy Gemini, mức ký tự, trên 20 sách (train 18.040, dev 3.479, test 293; em cộng từ bảng FINDINGS §2). Chưa trang nào người soát.",
+      "Quan hệ tiếng Việt: 30 quan hệ nhãn người; 895 quan hệ trong 139 tài liệu (FATHER_OF 577, MOTHER_OF 163, SPOUSE 155; 57 tài liệu không có quan hệ nào).",
+      "Quan hệ từ phả hệ web: 342 cây suy ra 72.484 quan hệ (luật xếp chồng theo đời, độ tin cậy 0,65, chưa soát). Giữ cặp có cả hai tên trong Phả ký thì còn 1.524 quan hệ neo văn bản (FATHER_OF 1.512).",
+      "Quan hệ chữ Hán: 4.171 quan hệ nhãn máy trên 1.162 trang, chưa soát, chưa có chuẩn vàng.",
+    ],
+    gap: "Chưa chạy mô hình trên toàn kho nên chưa có số \"hệ thống trích được bao nhiêu\". Số thực thể chữ Hán là nhãn máy, không phải số đúng. Chuẩn vàng quan hệ người chỉ có 30.",
+  },
+
   // ── Trục 4 ──
   {
     id: "l1",
@@ -529,6 +544,20 @@ export const MOCK_QUESTIONS: MockQuestion[] = [
     trap: "Trả lời theo cảm nhận mà không đưa số 28/30.",
     model:
       "Dạ, vì em đo được 28/30 quan hệ nhãn người vắt qua nhiều dòng, khoảng cách trung vị 132 ký tự. Phả ký viết dạng danh sách: cha một dòng, các con các dòng sau. Nên mọi RE trong phạm vi một câu có trần 2/30, và thực tế luật mức câu được 0/30.",
+  },
+  {
+    id: "q10",
+    axis: "experiment",
+    question: "Hệ thống của em khai thác được bao nhiêu thực thể và quan hệ?",
+    mustHave: [
+      "Tách số đã gán nhãn với số mô hình trích ra; số mô hình trích trên toàn kho chưa đo",
+      "Chuẩn vàng người: 25 cây, 692 thực thể, 30 quan hệ",
+      "Quy mô bán tự động: 4.954 thực thể, 895 quan hệ (139 cây); chữ Hán khoảng 21.800 thực thể và 4.171 quan hệ nhãn máy",
+      "Chuẩn mức cây: 1.524 quan hệ neo văn bản lọc từ 72.484 quan hệ của 342 cây",
+    ],
+    trap: "Đọc một con số lớn (72.484 hay 21.800) như thể hệ thống đã trích đúng ngần ấy.",
+    model:
+      "Dạ, em xin tách hai loại số. Về dữ liệu, chuẩn vàng do người gán có 25 cây, 692 thực thể và 30 quan hệ. Nhãn bán tự động tiếng Việt có 4.954 thực thể và 895 quan hệ trên 139 cây. Chữ Hán có khoảng 21.800 thực thể và 4.171 quan hệ, đều là nhãn máy chưa soát. Ở mức cây, em lọc 72.484 quan hệ phả hệ của 342 cây xuống còn 1.524 quan hệ có neo trong văn bản. Còn số hệ thống tự trích trên toàn kho thì em chưa chạy và chưa đo. Nếu chạy thì em phải báo kèm độ chính xác: NER tiếng Việt khoảng 0,6 F1, RE dựa trên luật gần 0.",
   },
 ];
 
