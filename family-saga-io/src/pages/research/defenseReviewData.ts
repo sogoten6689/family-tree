@@ -193,6 +193,20 @@ export const FLASHCARDS: FlashCard[] = [
     gap: "Chưa thử trên nguồn ngoài VGP; MOTHER_OF/SPOUSE và RE chữ Hán chưa có chuẩn vàng.",
   },
 
+  {
+    id: "p8",
+    axis: "method",
+    question: "Căn cứ vào đâu để đề xuất hướng nghiên cứu và đưa ra kết quả?",
+    answer: [
+      "Căn cứ 1, dữ liệu đo trực tiếp: 25 cây nhãn người (692 thực thể, 30 quan hệ), 342 cây phả hệ VGP, 20 sách chữ Hán (1.147 trang). Chuẩn vàng đã kiểm: 4.954 thực thể khớp offset 100%, 0 quan hệ lỗi.",
+      "Căn cứ 2, cách đo thống nhất: một bộ chấm chung (implement/evaluate.py) cho mọi hệ thống; chia theo cây/sách để tránh rò rỉ; kiểm chéo 5 lượt; khoảng tin cậy bootstrap; t-test cặp; chạy lại để biết dao động (~0,02). Bảng SUMMARY.md sinh tự động từ kết quả.",
+      "Căn cứ 3, so với mốc: baseline từ điển (Hán CV5 0,232), luật RE, so XLM-R với PhoBERT (0,615 và 0,538) cùng thiết lập.",
+      "Căn cứ 4, phân tích lỗi dẫn tới đề xuất: 28/30 quan hệ vắt dòng → luật mức câu 0/30, mức tài liệu 0,015 → RE phải dựa vào bố cục (RQ4). Nhãn bán tự động chỉ khớp nhãn người 0,40 → không dùng làm thước đo. Thêm 103 cây bán tự động không tăng F1 (t = −0,36).",
+      "Căn cứ 5, quy ước do thầy xác nhận (biên bản họp) và hướng dẫn gán nhãn của nhóm.",
+    ],
+    gap: "RQ4 mới là đề xuất dựa trên số đo lỗi, chưa có kết quả thực nghiệm. Phần tổng quan tài liệu (công trình NER/RE gia phả, văn bản lịch sử) chưa chuẩn bị đủ để làm căn cứ lý thuyết.",
+  },
+
   // ── Trục 3 ──
   {
     id: "e1",
@@ -586,6 +600,20 @@ export const MOCK_QUESTIONS: MockQuestion[] = [
     trap: "Lấy ví dụ tự đặt ra thay vì đoạn thật trong dữ liệu.",
     model:
       "Dạ, ví dụ cây 1622 họ Hoàng. Dưới tiêu đề \"Đời 4\" có dòng \"Hoàng Húy Tức\", sinh 1886. Dòng sau có \"Phạm Thị Còi: vợ ông Hoàng Húy Tức\". Dưới \"Đời 5\" có \"Hoàng Văn Ánh: con ông Hoàng Húy Tức và bà Phạm Thị Còi\". Thực thể gồm tên người, đời, năm, quê quán. Từ đó ra bốn quan hệ: Tức là chồng của Còi, Tức là cha của Ánh, Còi là mẹ của Ánh, Ánh là chồng của Sáo. Tên cha ở dòng 7 mà câu nói quan hệ ở dòng 19, nên một mô hình chỉ đọc từng câu không thấy được quan hệ này.",
+  },
+  {
+    id: "q12",
+    axis: "method",
+    question: "Em căn cứ vào đâu mà đề xuất hướng RE dựa trên bố cục? Có phải chỉ là cảm nhận?",
+    mustHave: [
+      "Căn cứ là số đo: 28/30 quan hệ vắt dòng, trung vị 132 ký tự",
+      "Đã thử luật mức câu (0/30) và mức tài liệu (0,015) trên cùng bộ chấm",
+      "Có sẵn tín hiệu giám sát xa: 342 cây VGP, 1.524 quan hệ neo văn bản",
+      "Thừa nhận RQ4 chưa có kết quả thực nghiệm",
+    ],
+    trap: "Nói như thể RQ4 đã chứng minh được hiệu quả.",
+    model:
+      "Dạ, em không đề xuất theo cảm nhận mà theo số đo. Em đo được 28/30 quan hệ do người gán vắt qua nhiều dòng. Em đã thử luật mức câu và mức tài liệu trên cùng một bộ chấm, kết quả lần lượt 0/30 và F1 0,015. Mặt khác em có sẵn 342 cây phả hệ, lọc được 1.524 quan hệ có tên trong văn bản để làm giám sát xa. Từ đó em đề xuất RE dựa trên bố cục. Em xin nói rõ là hướng này chưa có kết quả thực nghiệm, đó là bước tiếp theo.",
   },
 ];
 
