@@ -99,6 +99,21 @@ export const FLASHCARDS: FlashCard[] = [
     gap: "Các cải tiến RQ2, RQ4, RQ5 mới là đề xuất, chưa có số đo.",
   },
 
+  {
+    id: "m7",
+    axis: "motivation",
+    question: "Cho ví dụ thực thể và quan hệ trên một đoạn gia phả thật.",
+    answer: [
+      "Cây 1622 (họ Hoàng), dòng 7–22 của Phả ký: \"Đời 4\" / \"Hoàng Húy Tức\" / \"+ Sinh năm Bính Tuất (1886)\" / \"Phạm Thị Còi\" / \": vợ ông Hoàng Húy Tức\" / \"Đời 5\" / \"Hoàng Văn Ánh\" / \": con ông Hoàng Húy Tức và bà Phạm Thị Còi\" / \"Phạm Thị Sáo\" / \": vợ thứ 2 ông Hoàng Văn Ánh\".",
+      "Thực thể người gán: PER_NAME (Hoàng Húy Tức, Phạm Thị Còi, Hoàng Văn Ánh, Phạm Thị Sáo); GENERATION (Đời 4, Đời 5); DATE (1886, 1969); LOC (Cao An, Cẩm Giàng, Hải Dương ở dòng quê quán).",
+      "ORDER lấy ở cây khác, vd cây 122: \"con thứ ba\", cây 1546: \"con trai trưởng\".",
+      "Bốn quan hệ người gán: (Hoàng Húy Tức, SPOUSE, Phạm Thị Còi); (Hoàng Húy Tức, FATHER_OF, Hoàng Văn Ánh); (Phạm Thị Còi, MOTHER_OF, Hoàng Văn Ánh); (Hoàng Văn Ánh, SPOUSE, Phạm Thị Sáo).",
+      "Vì sao RE mức câu thất bại: tên cha ở dòng 7, câu \"con ông Hoàng Húy Tức\" ở dòng 19, cách 12 dòng. Mỗi tên đứng một dòng riêng, quan hệ nằm ở dòng chú thích bên dưới và ở tiêu đề \"Đời N\".",
+      "Điểm khó: \"Húy\" là chữ chỉ tên kiêng nhưng nằm trong tên; \"Tức\" ở đoạn mở đầu là cùng người (đồng tham chiếu); nhãn DATE chỉ lấy năm dương lịch, bỏ \"Bính Tuất\".",
+    ],
+    gap: "Cách đọc chữ \"Húy\" và việc DATE chỉ lấy năm là em quan sát trên ví dụ này, chưa đếm trên cả 25 cây và chưa có quy ước gán nhãn được thầy duyệt cho hai điểm này.",
+  },
+
   // ── Trục 2 ──
   {
     id: "p1",
@@ -176,6 +191,20 @@ export const FLASHCARDS: FlashCard[] = [
       "Chuẩn vàng mức cây gần như chỉ có cha–con: FATHER_OF 1.512, MOTHER_OF 10, SPOUSE 2.",
     ],
     gap: "Chưa thử trên nguồn ngoài VGP; MOTHER_OF/SPOUSE và RE chữ Hán chưa có chuẩn vàng.",
+  },
+
+  {
+    id: "p8",
+    axis: "method",
+    question: "Căn cứ vào đâu để đề xuất hướng nghiên cứu và đưa ra kết quả?",
+    answer: [
+      "Căn cứ 1, dữ liệu đo trực tiếp: 25 cây nhãn người (692 thực thể, 30 quan hệ), 342 cây phả hệ VGP, 20 sách chữ Hán (1.147 trang). Chuẩn vàng đã kiểm: 4.954 thực thể khớp offset 100%, 0 quan hệ lỗi.",
+      "Căn cứ 2, cách đo thống nhất: một bộ chấm chung (implement/evaluate.py) cho mọi hệ thống; chia theo cây/sách để tránh rò rỉ; kiểm chéo 5 lượt; khoảng tin cậy bootstrap; t-test cặp; chạy lại để biết dao động (~0,02). Bảng SUMMARY.md sinh tự động từ kết quả.",
+      "Căn cứ 3, so với mốc: baseline từ điển (Hán CV5 0,232), luật RE, so XLM-R với PhoBERT (0,615 và 0,538) cùng thiết lập.",
+      "Căn cứ 4, phân tích lỗi dẫn tới đề xuất: 28/30 quan hệ vắt dòng → luật mức câu 0/30, mức tài liệu 0,015 → RE phải dựa vào bố cục (RQ4). Nhãn bán tự động chỉ khớp nhãn người 0,40 → không dùng làm thước đo. Thêm 103 cây bán tự động không tăng F1 (t = −0,36).",
+      "Căn cứ 5, quy ước do thầy xác nhận (biên bản họp) và hướng dẫn gán nhãn của nhóm.",
+    ],
+    gap: "RQ4 mới là đề xuất dựa trên số đo lỗi, chưa có kết quả thực nghiệm. Phần tổng quan tài liệu (công trình NER/RE gia phả, văn bản lịch sử) chưa chuẩn bị đủ để làm căn cứ lý thuyết.",
   },
 
   // ── Trục 3 ──
@@ -265,6 +294,20 @@ export const FLASHCARDS: FlashCard[] = [
       "Cách dùng đúng: làm tín hiệu giám sát xa và thước đo phụ quy mô lớn, không thay chuẩn vàng do người gán.",
     ],
     gap: "Chưa có khoảng tin cậy cho F1 0,472 và chưa có người soát một mẫu phả hệ.",
+  },
+
+  {
+    id: "e9",
+    axis: "experiment",
+    question: "Đề tài khai thác được bao nhiêu thực thể, bao nhiêu quan hệ?",
+    answer: [
+      "Có hai loại số. Loại 1: số đã có nhãn, dùng để dạy và chấm mô hình. Loại 2: số mô hình tự tìm trên toàn kho gia phả. Loại 2 em chưa chạy.",
+      "Loại 1 nhớ theo ba tầng, từ tin nhất đến kém tin nhất.",
+      "Tầng 1, người gán tay: 25 cây tiếng Việt, 692 thực thể, 30 quan hệ.",
+      "Tầng 2, máy gán, người chưa soát: tiếng Việt 4.954 thực thể, 895 quan hệ; chữ Hán khoảng 21.800 thực thể, 4.171 quan hệ.",
+      "Tầng 3, lấy từ cây phả hệ trên web: 1.524 quan hệ có cả hai tên trong văn bản, gần như toàn cha–con (lọc từ 72.484 quan hệ của 342 cây).",
+    ],
+    gap: "Chưa chạy mô hình trên toàn kho nên chưa có số \"hệ thống trích được bao nhiêu\". Số chữ Hán là nhãn máy, không phải số đúng.",
   },
 
   // ── Trục 4 ──
@@ -529,6 +572,48 @@ export const MOCK_QUESTIONS: MockQuestion[] = [
     trap: "Trả lời theo cảm nhận mà không đưa số 28/30.",
     model:
       "Dạ, vì em đo được 28/30 quan hệ nhãn người vắt qua nhiều dòng, khoảng cách trung vị 132 ký tự. Phả ký viết dạng danh sách: cha một dòng, các con các dòng sau. Nên mọi RE trong phạm vi một câu có trần 2/30, và thực tế luật mức câu được 0/30.",
+  },
+  {
+    id: "q10",
+    axis: "experiment",
+    question: "Hệ thống của em khai thác được bao nhiêu thực thể và quan hệ?",
+    mustHave: [
+      "Tách số đã có nhãn với số mô hình tự trích; số tự trích trên toàn kho chưa đo",
+      "Người gán tay: 692 thực thể, 30 quan hệ (25 cây)",
+      "Máy gán chưa soát: Việt 4.954 thực thể, 895 quan hệ; Hán khoảng 21.800 thực thể, 4.171 quan hệ",
+      "Từ cây phả hệ web: 1.524 quan hệ có neo văn bản",
+    ],
+    trap: "Đọc một con số lớn (72.484 hay 21.800) như thể hệ thống đã trích đúng ngần ấy.",
+    model:
+      "Dạ, em chia làm ba tầng. Người gán tay có 692 thực thể và 30 quan hệ trên 25 cây. Máy gán, chưa người soát, có 4.954 thực thể và 895 quan hệ tiếng Việt, khoảng 21.800 thực thể chữ Hán. Từ cây phả hệ trên web em lấy được 1.524 quan hệ cha–con có tên trong văn bản. Còn số mô hình tự trích trên toàn kho thì em chưa chạy, và nếu chạy em phải báo kèm độ chính xác.",
+  },
+  {
+    id: "q11",
+    axis: "motivation",
+    question: "Em cho hội đồng xem một ví dụ cụ thể: thực thể là gì, quan hệ là gì?",
+    mustHave: [
+      "Đọc đoạn thật cây 1622: Hoàng Húy Tức, vợ Phạm Thị Còi, con Hoàng Văn Ánh",
+      "Kể đủ 5 loại thực thể với ví dụ",
+      "Kể 3 loại quan hệ, chiều mũi tên (cha → con), SPOUSE hai chiều",
+      "Chỉ ra quan hệ nằm cách 12 dòng, nên mức câu không bắt được",
+    ],
+    trap: "Lấy ví dụ tự đặt ra thay vì đoạn thật trong dữ liệu.",
+    model:
+      "Dạ, ví dụ cây 1622 họ Hoàng. Dưới tiêu đề \"Đời 4\" có dòng \"Hoàng Húy Tức\", sinh 1886. Dòng sau có \"Phạm Thị Còi: vợ ông Hoàng Húy Tức\". Dưới \"Đời 5\" có \"Hoàng Văn Ánh: con ông Hoàng Húy Tức và bà Phạm Thị Còi\". Thực thể gồm tên người, đời, năm, quê quán. Từ đó ra bốn quan hệ: Tức là chồng của Còi, Tức là cha của Ánh, Còi là mẹ của Ánh, Ánh là chồng của Sáo. Tên cha ở dòng 7 mà câu nói quan hệ ở dòng 19, nên một mô hình chỉ đọc từng câu không thấy được quan hệ này.",
+  },
+  {
+    id: "q12",
+    axis: "method",
+    question: "Em căn cứ vào đâu mà đề xuất hướng RE dựa trên bố cục? Có phải chỉ là cảm nhận?",
+    mustHave: [
+      "Căn cứ là số đo: 28/30 quan hệ vắt dòng, trung vị 132 ký tự",
+      "Đã thử luật mức câu (0/30) và mức tài liệu (0,015) trên cùng bộ chấm",
+      "Có sẵn tín hiệu giám sát xa: 342 cây VGP, 1.524 quan hệ neo văn bản",
+      "Thừa nhận RQ4 chưa có kết quả thực nghiệm",
+    ],
+    trap: "Nói như thể RQ4 đã chứng minh được hiệu quả.",
+    model:
+      "Dạ, em không đề xuất theo cảm nhận mà theo số đo. Em đo được 28/30 quan hệ do người gán vắt qua nhiều dòng. Em đã thử luật mức câu và mức tài liệu trên cùng một bộ chấm, kết quả lần lượt 0/30 và F1 0,015. Mặt khác em có sẵn 342 cây phả hệ, lọc được 1.524 quan hệ có tên trong văn bản để làm giám sát xa. Từ đó em đề xuất RE dựa trên bố cục. Em xin nói rõ là hướng này chưa có kết quả thực nghiệm, đó là bước tiếp theo.",
   },
 ];
 
