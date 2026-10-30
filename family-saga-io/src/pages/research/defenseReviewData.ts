@@ -572,6 +572,7 @@ export const MOCK_QUESTIONS: MockQuestion[] = [
     trap: "Đọc một con số lớn (72.484 hay 21.800) như thể hệ thống đã trích đúng ngần ấy.",
     model:
       "Dạ, em chia làm ba tầng. Người gán tay có 692 thực thể và 30 quan hệ trên 25 cây. Máy gán, chưa người soát, có 4.954 thực thể và 895 quan hệ tiếng Việt, khoảng 21.800 thực thể chữ Hán. Từ cây phả hệ trên web em lấy được 1.524 quan hệ cha–con có tên trong văn bản. Còn số mô hình tự trích trên toàn kho thì em chưa chạy, và nếu chạy em phải báo kèm độ chính xác.",
+  },
   {
     id: "q11",
     axis: "motivation",
