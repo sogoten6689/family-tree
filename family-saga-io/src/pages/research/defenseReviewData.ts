@@ -207,6 +207,21 @@ export const FLASHCARDS: FlashCard[] = [
     gap: "RQ4 mới là đề xuất dựa trên số đo lỗi, chưa có kết quả thực nghiệm. Phần tổng quan tài liệu (công trình NER/RE gia phả, văn bản lịch sử) chưa chuẩn bị đủ để làm căn cứ lý thuyết.",
   },
 
+  {
+    id: "p9",
+    axis: "method",
+    question: "Đề tài đã tham khảo, kế thừa những nghiên cứu nào? Khác họ ở đâu?",
+    answer: [
+      "Mô hình nền (kế thừa trực tiếp): XLM-R (Conneau và cộng sự, ACL 2020), PhoBERT (Nguyen & Nguyen, Findings EMNLP 2020), SikuBERT (ĐH Nông nghiệp Nam Kinh, huấn luyện trên Tứ khố toàn thư). Chọn SikuBERT còn dựa trên bài đo GuwenBERT thua SikuBERT (doi:10.1093/llc/fqad016).",
+      "NER văn bản lịch sử: khảo sát của Ehrmann và cộng sự (ACM Computing Surveys, 2023) nêu cùng khó khăn như đề tài: văn bản cũ, nhiễu OCR, thiếu dữ liệu nhãn. Khảo sát này không bàn RE.",
+      "Trích xuất chữ Hán cổ: CHisIEC (Tang và cộng sự, LREC-COLING 2024): 13 sách Nhị thập tứ sử, 14.194 thực thể, 8.609 quan hệ, 12 loại quan hệ. Dữ liệu là sử, không phải gia phả.",
+      "Trích xuất gia đình, họ hàng: quan hệ thân tộc từ cáo phó (ACL Anthology W19-3201, 1.809 cáo phó); sách gia đình đã OCR (Embley & Nagy, DAS 2018). Đều là văn xuôi tiếng Anh.",
+      "RE mức tài liệu: DocRED (Yao và cộng sự, ACL 2019). Giám sát xa: Mintz và cộng sự (ACL 2009), đề tài dùng phả hệ VGP thay cho Freebase. RE theo bố cục: dòng LayoutLM trên biểu mẫu (FUNSD).",
+      "Điểm khác: chưa tìm thấy công trình NER/RE trên gia phả tiếng Việt hoặc gia phả Hán Nôm. Quan hệ gia phả nằm ở bố cục danh sách theo đời (28/30 vắt dòng), không phải trong câu như DocRED, cũng không phải biểu mẫu như FUNSD.",
+    ],
+    gap: "Chưa có chương tổng quan viết hoàn chỉnh; danh sách trên là tìm nhanh ngày 01/11/2026, chưa đọc toàn văn từng bài và chưa so số trực tiếp với bài nào. \"Chưa tìm thấy\" không có nghĩa là không có.",
+  },
+
   // ── Trục 3 ──
   {
     id: "e1",
@@ -614,6 +629,20 @@ export const MOCK_QUESTIONS: MockQuestion[] = [
     trap: "Nói như thể RQ4 đã chứng minh được hiệu quả.",
     model:
       "Dạ, em không đề xuất theo cảm nhận mà theo số đo. Em đo được 28/30 quan hệ do người gán vắt qua nhiều dòng. Em đã thử luật mức câu và mức tài liệu trên cùng một bộ chấm, kết quả lần lượt 0/30 và F1 0,015. Mặt khác em có sẵn 342 cây phả hệ, lọc được 1.524 quan hệ có tên trong văn bản để làm giám sát xa. Từ đó em đề xuất RE dựa trên bố cục. Em xin nói rõ là hướng này chưa có kết quả thực nghiệm, đó là bước tiếp theo.",
+  },
+  {
+    id: "q13",
+    axis: "method",
+    question: "PhoBERT báo cáo tốt hơn XLM-R trên NER tiếng Việt. Sao kết quả của em ngược lại?",
+    mustHave: [
+      "Thừa nhận bài PhoBERT (Findings EMNLP 2020) báo PhoBERT hơn XLM-R",
+      "Số của em: XLM-R 0,615, PhoBERT 0,538, cùng 5 lượt theo cây",
+      "Giả thuyết chưa kiểm: PhoBERT cần văn bản đã tách từ, còn API của em tách theo âm tiết",
+      "Giả thuyết khác: văn bản gia phả cũ, tên người lạ, khác dữ liệu tin tức",
+    ],
+    trap: "Khẳng định PhoBERT kém hơn nói chung, hoặc đưa giả thuyết như thể đã chứng minh.",
+    model:
+      "Dạ, đúng là bài PhoBERT báo PhoBERT hơn XLM-R trên NER tiếng Việt. Trên dữ liệu của em, cùng 5 lượt kiểm chéo theo cây, XLM-R được 0,615 còn PhoBERT 0,538. Em có hai giả thuyết nhưng chưa kiểm. Thứ nhất, PhoBERT được huấn luyện trên văn bản đã tách từ, trong khi bộ tách của em chỉ tách theo âm tiết. Thứ hai, văn bản gia phả cũ và nhiều tên người lạ, khác với dữ liệu tin tức trong bài gốc. Để kiểm, em sẽ chạy lại PhoBERT sau khi tách từ bằng VnCoreNLP.",
   },
 ];
 
