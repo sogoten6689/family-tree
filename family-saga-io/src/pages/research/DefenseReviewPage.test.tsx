@@ -1,7 +1,11 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render as rtlRender, screen } from "@testing-library/react";
+import type { ReactElement } from "react";
+import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { AXES, ERROR_STATEMENTS, FLASHCARDS, GLOSSARY, GLOSSARY_GROUPS, MOCK_QUESTIONS, QUIZ } from "./defenseReviewData";
+
+const render = (ui: ReactElement) => rtlRender(<MemoryRouter>{ui}</MemoryRouter>);
 
 if (typeof globalThis.ResizeObserver === "undefined") {
   globalThis.ResizeObserver = class {
@@ -38,6 +42,11 @@ describe("ngân hàng câu hỏi ôn tập", () => {
 
 describe("DefenseReviewPage", () => {
   beforeEach(() => window.localStorage.clear());
+
+  it("có nút quay về trang cha /nghien-cuu/quan-ly", () => {
+    render(<DefenseReviewPage />);
+    expect(screen.getByRole("link", { name: "← Thông tin nghiên cứu" }).getAttribute("href")).toBe("/nghien-cuu/quan-ly");
+  }, 30000);
 
   it("tìm khái niệm không dấu", () => {
     render(<DefenseReviewPage />);

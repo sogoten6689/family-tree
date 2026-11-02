@@ -282,6 +282,16 @@ const QaTab = ({ filters }: { filters: Filters }) => {
 
 const ALL = { label: "Tất cả", value: "all" } as const;
 
+/** Trang này là trang cha của mọi trang nghiên cứu; các trang con đều có nút quay về đây. */
+const CHILD_PAGES = [
+  { href: "/nghien-cuu/de-cuong.html", label: "Đề cương", desc: "Tên đề tài, mục tiêu, khung chương" },
+  { href: "/nghien-cuu/ket-qua.html", label: "Kết quả", desc: "Báo cáo số liệu đã đo" },
+  { href: "/nghien-cuu/on-tap", label: "Ôn tập bảo vệ", desc: "Thẻ hỏi–đáp, trắc nghiệm, phản biện", spa: true },
+  { href: "/nghien-cuu/hoi-nghi.html", label: "Hội nghị", desc: "Bài báo cáo hội nghị" },
+  { href: "/nghien-cuu/slide-hoi-nghi.html", label: "Slide hội nghị", desc: "20 slide trình chiếu" },
+  { href: "/nghien-cuu/goi-viec.html", label: "Gói việc sinh viên", desc: "Phân công dữ liệu cho sinh viên" },
+];
+
 const ResearchHubPage = () => {
   const [filters, setFilters] = useState<Filters>({ query: "", rq: "all", status: "all", label: "all" });
   const set = <K extends keyof Filters>(k: K) => (v: Filters[K]) => setFilters((f) => ({ ...f, [k]: v }));
@@ -299,9 +309,20 @@ const ResearchHubPage = () => {
       <Typography.Title level={2}>Thông tin nghiên cứu</Typography.Title>
       <Typography.Paragraph type="secondary">
         Gom câu hỏi nghiên cứu, giả thuyết, phương pháp, kết quả và câu hỏi ôn tập của luận văn. Nội dung chốt ngày {viDate(UPDATED_AT)}, lấy
-        từ kết quả đã đo của đề tài; chưa được thầy duyệt. Xem thêm: <Link to="/nghien-cuu/on-tap">ôn tập bảo vệ</Link> ·{" "}
-        <a href="/nghien-cuu/de-cuong.html">đề cương</a> · <a href="/nghien-cuu/ket-qua.html">kết quả</a>.
+        từ kết quả đã đo của đề tài; chưa được thầy duyệt.
       </Typography.Paragraph>
+      <nav aria-label="Các trang con của đề tài" style={{ marginBottom: 16 }}>
+        <Space wrap size={[8, 8]}>
+          {CHILD_PAGES.map((p) => (
+            <Card key={p.href} size="small" style={{ width: 200 }}>
+              {p.spa ? <Link to={p.href}>{p.label}</Link> : <a href={p.href}>{p.label}</a>}
+              <Typography.Paragraph type="secondary" style={{ margin: "4px 0 0", fontSize: 12 }}>
+                {p.desc}
+              </Typography.Paragraph>
+            </Card>
+          ))}
+        </Space>
+      </nav>
       <Space wrap style={{ marginBottom: 16 }}>
         <Input.Search
           allowClear
