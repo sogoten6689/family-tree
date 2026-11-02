@@ -74,6 +74,22 @@ Ngoài ra response `analyze` có thêm:
 - `request_id`: mã request duy nhất
 - `created_at`: thời điểm xử lý (UTC ISO)
 
+## Đối chiếu dóng hàng của sinh viên
+
+Trang web `/nghien-cuu/doi-chieu` (không cần đăng nhập) đọc API chỉ-đọc `/api/public/doi-chieu`.
+Dữ liệu không nằm trong git: đặt ở `data/doi_chieu/` (thư mục `data/` của backend, đã mount vào container)
+hoặc trỏ biến môi trường `DOI_CHIEU_DIR`. Chưa có thư mục thì trang báo "Chưa có bài nộp nào".
+
+```
+doi_chieu/danh_muc.json                        {"<ma-cuon>": {"ten": "Tên cuốn", "link": "https://drive…"}}
+doi_chieu/<sinh-vien>/meta.json                {"ten": "Họ tên"}   (tuỳ chọn)
+doi_chieu/<sinh-vien>/<ma-cuon>/*_parallel.tsv bài nộp: <Hán>\t<Việt>
+doi_chieu/<sinh-vien>/<ma-cuon>/cap_cau.csv    bản máy, chép từ gói lab soat/<ma-cuon>/
+doi_chieu/<sinh-vien>/<ma-cuon>/anh/           ảnh trang (tuỳ chọn)
+```
+
+Mọi thứ trong thư mục này ai có link cũng xem được. Nhãn chấm mẫu chỉ lưu trong trình duyệt người chấm.
+
 ## Lịch sử request
 
 Backend hỗ trợ 2 tầng lưu lịch sử request:

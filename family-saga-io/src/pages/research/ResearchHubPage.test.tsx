@@ -74,7 +74,7 @@ describe("dữ liệu thông tin nghiên cứu", () => {
 });
 
 describe("ResearchHubPage", () => {
-  it("là trang cha: dẫn tới đủ 6 trang con", () => {
+  it("là trang cha: dẫn tới đủ 7 trang con", () => {
     renderPage();
     const nav = screen.getByRole("navigation", { name: "Các trang con của đề tài" });
     const hrefs = [...nav.querySelectorAll("a")].map((a) => a.getAttribute("href"));
@@ -85,6 +85,7 @@ describe("ResearchHubPage", () => {
       "/nghien-cuu/hoi-nghi.html",
       "/nghien-cuu/slide-hoi-nghi.html",
       "/nghien-cuu/goi-viec.html",
+      "/nghien-cuu/doi-chieu",
     ]);
   }, 30000);
 
