@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Alert, Button, Card, Image, Popover, Progress, Radio, Select, Space, Statistic, Table, Tabs, Tag, Typography } from "antd";
+import { Alert, Button, Card, Image, Pagination, Popover, Progress, Radio, Select, Space, Statistic, Table, Tabs, Tag, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
@@ -103,6 +103,7 @@ const bookColumns = (onOpen: (book: string) => void): ColumnsType<BookSummary> =
   { title: "Hợp lệ", dataIndex: "valid" },
   { title: "Lỗi định dạng", dataIndex: "format_errors" },
   { title: "Trang có bản máy", dataIndex: "machine_pages" },
+  { title: "Ảnh trang", dataIndex: "image_pages" },
   {
     title: "Độ phủ OCR",
     dataIndex: "ocr_coverage",
@@ -111,8 +112,8 @@ const bookColumns = (onOpen: (book: string) => void): ColumnsType<BookSummary> =
   {
     title: "",
     render: (_, b) => (
-      <Button size="small" disabled={!b.tsv && !b.machine_rows} onClick={() => onOpen(b.id)}>
-        Đối chiếu
+      <Button size="small" disabled={!b.tsv && !b.machine_rows && !b.image_pages} onClick={() => onOpen(b.id)}>
+        {b.tsv || b.machine_rows ? "Đối chiếu" : "Xem ảnh"}
       </Button>
     ),
   },
@@ -287,6 +288,26 @@ const GradeTab = ({ detail, threshold }: { detail: BookDetail; threshold: number
   );
 };
 
+const PagesTab = ({ detail }: { detail: BookDetail }) => {
+  const [index, setIndex] = useState(0);
+  const page = detail.pages[index];
+  if (!page) return <Typography.Text type="secondary">Chưa có ảnh trang trên máy chủ.</Typography.Text>;
+  return (
+    <Space orientation="vertical" align="center" style={{ width: "100%" }}>
+      <Pagination
+        simple
+        current={index + 1}
+        total={detail.pages.length}
+        pageSize={1}
+        onChange={(n) => setIndex(n - 1)}
+        showSizeChanger={false}
+      />
+      <Typography.Text type="secondary">Trang {page}</Typography.Text>
+      <Image src={pageImageUrl(detail.student, detail.book, page)} alt={`Trang ${page}`} style={{ maxWidth: "100%", maxHeight: "80vh" }} />
+    </Space>
+  );
+};
+
 const BookView = ({ student, book, threshold, onBack }: { student: string; book: string; threshold: number; onBack: () => void }) => {
   const { data, error, isLoading } = useQuery({ queryKey: ["doi-chieu", student, book], queryFn: () => getBook(student, book) });
   if (error) return <Alert type="error" showIcon title="Không tải được cuốn" description={String(error)} />;
@@ -303,7 +324,12 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
         </Space>
       }
     >
-      {data && (
+      {data && !data.tsv && !data.stats.machine_rows ? (
+        <>
+          <Typography.Paragraph type="secondary">Cuốn này chưa có bản máy và chưa có bài nộp; dưới đây là ảnh trang.</Typography.Paragraph>
+          <PagesTab detail={data} />
+        </>
+      ) : data ? (
         <>
           <Space wrap size="large" style={{ marginBottom: 12 }}>
             <Statistic title="Cặp" value={data.stats.pairs} />
@@ -317,10 +343,11 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
               { key: "pairs", label: "Cặp song song", children: <PairsTab detail={data} /> },
               { key: "missing", label: `Bản máy chưa dóng (${data.missing.length})`, children: <MissingTab detail={data} /> },
               { key: "grade", label: "Chấm mẫu lỗi", children: <GradeTab detail={data} threshold={threshold} /> },
+              { key: "pages", label: `Ảnh trang (${data.pages.length})`, children: <PagesTab detail={data} /> },
             ]}
           />
         </>
-      )}
+      ) : null}
     </Card>
   );
 };
@@ -347,7 +374,7 @@ const DoiChieuPage = () => {
       ) : (
         <Card loading={isLoading}>
           {data && data.students.length === 0 ? (
-            <Alert type="info" showIcon title="Chưa có bài nộp nào" description="Máy chủ chưa có thư mục dữ liệu đối chiếu (DOI_CHIEU_DIR)." />
+            <Alert type="info" showIcon title="Chưa có bài nộp nào" description="Máy chủ chưa có cuốn nào trong thư mục dữ liệu đối chiếu." />
           ) : (
             <Table
               rowKey="id"

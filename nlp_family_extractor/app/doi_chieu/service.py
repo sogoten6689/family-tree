@@ -27,6 +27,8 @@ ERROR_THRESHOLD = 0.30
 MIN_BLOCK = 3
 
 SLUG_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$")
+PAGE_RE = re.compile(r"[0-9A-Za-z_-]{1,20}")
+IMAGE_EXTS = (".jpg", ".jpeg", ".png")
 HAN_RE = re.compile(r"[㐀-䶿一-鿿豈-﫿\U00020000-\U0003ffff]")
 _cache: dict[tuple, dict] = {}
 _cache_lock = Lock()
@@ -247,7 +249,9 @@ def overview(root: Path) -> dict:
         for bdir in sorted(p for p in sdir.iterdir() if p.is_dir() and is_slug(p.name)):
             book = load_book(bdir)
             info = names.get(bdir.name, {"ten": None, "link": None})
-            books.append({"id": bdir.name, **info, "tsv": book["tsv"], **book["stats"]})
+            books.append(
+                {"id": bdir.name, **info, "tsv": book["tsv"], **book["stats"], "image_pages": len(page_names(bdir))}
+            )
         valid = sum(b["valid"] for b in books)
         students.append(
             {
@@ -270,11 +274,19 @@ def book_dir(root: Path, student: str, book: str) -> Path | None:
     return path if path.is_dir() else None
 
 
+def page_names(bdir: Path) -> list[str]:
+    """Tên các trang có ảnh, để xem ảnh cả khi cuốn chưa có bản máy."""
+    anh = bdir / "anh"
+    if not anh.is_dir():
+        return []
+    return sorted(p.stem for p in anh.iterdir() if p.suffix.lower() in IMAGE_EXTS and PAGE_RE.fullmatch(p.stem))
+
+
 def page_image(root: Path, student: str, book: str, page: str) -> Path | None:
     bdir = book_dir(root, student, book)
-    if bdir is None or not re.fullmatch(r"[0-9A-Za-z_-]{1,20}", page):
+    if bdir is None or not PAGE_RE.fullmatch(page):
         return None
-    for ext in (".jpg", ".jpeg", ".png"):
+    for ext in IMAGE_EXTS:
         path = bdir / "anh" / f"{page}{ext}"
         if path.is_file():
             return path

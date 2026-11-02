@@ -31,7 +31,12 @@ def get_book(student: str, book: str) -> dict:
     bdir = service.book_dir(root, student, book)
     if bdir is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Không tìm thấy cuốn.")
-    return {"student": student, "book": book, **service.book_info(root, book), **service.load_book(bdir)}
+    return {
+        "student": student,
+        "book": book,
+        **service.book_info(root, book), **service.load_book(bdir),
+        "pages": service.page_names(bdir),
+    }
 
 
 @router.get("/{student}/{book}/anh/{page}")

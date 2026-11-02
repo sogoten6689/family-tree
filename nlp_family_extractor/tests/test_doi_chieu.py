@@ -69,6 +69,7 @@ class DoiChieuApiTest(unittest.TestCase):
         (student,) = body["students"]
         self.assertEqual((student["ten"], student["pairs"], student["valid"]), ("Sinh viên A", 5, 2))
         self.assertEqual(student["books"][0]["machine_pages"], 2)
+        self.assertEqual(student["books"][0]["image_pages"], 1)
         self.assertEqual(student["books"][0]["ten"], "Cuốn một")
         self.assertTrue(student["books"][0]["link"].startswith("https://drive.google.com/"))
 
@@ -87,6 +88,14 @@ class DoiChieuApiTest(unittest.TestCase):
         self.assertGreater(second["coverage"], 0.5)
         # Cột trang 002 không cặp nào phủ tới → ứng viên thiếu.
         self.assertEqual([m["trang"] for m in body["missing"]], ["002"])
+
+    def test_book_without_machine_lists_images(self) -> None:
+        anh = Path(os.environ["DOI_CHIEU_DIR"]) / "sv-a" / "hxh-1" / "anh"
+        anh.mkdir(parents=True)
+        for name in ["002.jpg", "001.png", "ghi_chu.txt"]:
+            (anh / name).write_bytes(b"x")
+        body = self.client.get("/api/public/doi-chieu/sv-a/hxh-1").json()
+        self.assertEqual((body["pages"], body["stats"]["machine_rows"]), (["001", "002"], 0))
 
     def test_image_and_bad_paths(self) -> None:
         self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1/anh/001").status_code, 200)

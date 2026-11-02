@@ -80,6 +80,7 @@ describe("trang đối chiếu", () => {
                   machine_rows: 20,
                   machine_pages: 2,
                   ocr_coverage: 0.5,
+                  image_pages: 2,
                 },
               ],
               valid: 1500,
@@ -101,6 +102,26 @@ describe("trang đối chiếu", () => {
     fireEvent.click(screen.getByRole("button", { name: /expand row/i }));
     expect(await screen.findByText("Đoàn tộc phả")).toBeTruthy();
     expect(screen.getByRole("link", { name: /Bản gốc/ }).getAttribute("href")).toBe("https://drive.google.com/file/d/x/view");
+  });
+
+  it("cuốn chưa có bản máy thì xem lần lượt ảnh trang", async () => {
+    const detail = {
+      student: "sv-a",
+      book: "hxh-1",
+      ten: "Ngô gia thế phả",
+      link: null,
+      tsv: null,
+      pairs: [],
+      missing: [],
+      pages: ["001", "002"],
+      stats: { pairs: 0, valid: 0, format_errors: 0, machine_rows: 0, machine_pages: 0, ocr_coverage: null },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify(detail), { status: 200 })));
+    renderPage("/nghien-cuu/doi-chieu?sv=sv-a&cuon=hxh-1");
+    expect(await screen.findByText("Trang 001")).toBeTruthy();
+    expect(screen.getByRole("img", { name: "Trang 001" }).getAttribute("src")).toContain("/sv-a/hxh-1/anh/001");
+    fireEvent.click(screen.getByTitle("Next Page"));
+    expect(await screen.findByText("Trang 002")).toBeTruthy();
   });
 
   it("báo khi máy chủ chưa có dữ liệu", async () => {
