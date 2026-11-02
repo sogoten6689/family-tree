@@ -85,7 +85,7 @@ doi_chieu/danh_muc.json                        {"<ma-cuon>": {"ten": "Tên cuố
 doi_chieu/<sinh-vien>/meta.json                {"ten": "Họ tên"}   (tuỳ chọn)
 doi_chieu/<sinh-vien>/<ma-cuon>/*_parallel.tsv bài nộp: <Hán>\t<Việt>
 doi_chieu/<sinh-vien>/<ma-cuon>/cap_cau.csv    bản máy, chép từ gói lab soat/<ma-cuon>/
-doi_chieu/<sinh-vien>/<ma-cuon>/anh/           ảnh trang (tuỳ chọn)
+doi_chieu/<sinh-vien>/<ma-cuon>/anh/           ảnh trang (tuỳ chọn; cuốn chưa có bản máy vẫn xem được ảnh)
 ```
 
 Mọi thứ trong thư mục này ai có link cũng xem được. Nhãn chấm mẫu chỉ lưu trong trình duyệt người chấm.

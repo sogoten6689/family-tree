@@ -16,6 +16,8 @@ export interface BookSummary extends BookInfo {
   machine_pages: number;
   /** Tỷ lệ chữ Hán OCR của cuốn đã có cặp sinh viên phủ tới; null khi chưa có bản máy. */
   ocr_coverage: number | null;
+  /** Số ảnh trang có trên máy chủ (xem được cả khi chưa có bản máy). */
+  image_pages: number;
 }
 
 export interface StudentSummary {
@@ -59,7 +61,9 @@ export interface BookDetail extends BookInfo {
   tsv: string | null;
   pairs: AlignedPair[];
   missing: MissingRow[];
-  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link">;
+  /** Tên các trang có ảnh, theo thứ tự. */
+  pages: string[];
+  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "image_pages">;
 }
 
 const BASE = "/api/public/doi-chieu";
