@@ -1,6 +1,12 @@
 import { apiRequest, getBackendBaseUrl } from "@/lib/apiClient";
 
-export interface BookSummary {
+/** Tên đầy đủ và link bản gốc lấy từ danh_muc.json; null khi chưa khai báo. */
+export interface BookInfo {
+  ten: string | null;
+  link: string | null;
+}
+
+export interface BookSummary extends BookInfo {
   id: string;
   tsv: string | null;
   pairs: number;
@@ -47,13 +53,13 @@ export interface MissingRow {
   viet: string;
 }
 
-export interface BookDetail {
+export interface BookDetail extends BookInfo {
   student: string;
   book: string;
   tsv: string | null;
   pairs: AlignedPair[];
   missing: MissingRow[];
-  stats: Omit<BookSummary, "id" | "tsv">;
+  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link">;
 }
 
 const BASE = "/api/public/doi-chieu";

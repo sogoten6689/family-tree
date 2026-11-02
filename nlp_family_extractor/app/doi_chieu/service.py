@@ -2,6 +2,7 @@
 
 Bố cục thư mục (không nằm trong git, đặt qua biến môi trường DOI_CHIEU_DIR):
 
+    <DOI_CHIEU_DIR>/danh_muc.json                    {"<ma-cuon>": {"ten", "link"}}  (tuỳ chọn)
     <DOI_CHIEU_DIR>/<sinh-vien>/meta.json            {"ten": "Họ tên"}  (tuỳ chọn)
     <DOI_CHIEU_DIR>/<sinh-vien>/<ma-cuon>/*.tsv      bài nộp: <Hán>\t<Việt> mỗi dòng
     <DOI_CHIEU_DIR>/<sinh-vien>/<ma-cuon>/cap_cau.csv  bản máy từ gói lab (mỗi dòng một cột chữ)
@@ -212,13 +213,41 @@ def _student_name(student_dir: Path) -> str:
     return student_dir.name
 
 
+def catalogue(root: Path) -> dict[str, dict]:
+    """Tên đầy đủ và link bản gốc của từng cuốn, đọc từ <root>/danh_muc.json:
+    {"<ma-cuon>": {"ten": "...", "link": "https://..."}}. Thiếu tệp hoặc hỏng → {}."""
+    path = root / "danh_muc.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    if not isinstance(data, dict):
+        return {}
+    out = {}
+    for key, item in data.items():
+        if not isinstance(item, dict):
+            continue
+        link = item.get("link")
+        out[key] = {
+            "ten": item.get("ten") if isinstance(item.get("ten"), str) else None,
+            "link": link if isinstance(link, str) and link.startswith("https://") else None,
+        }
+    return out
+
+
+def book_info(root: Path, book: str) -> dict:
+    return catalogue(root).get(book, {"ten": None, "link": None})
+
+
 def overview(root: Path) -> dict:
     students = []
+    names = catalogue(root)
     for sdir in sorted(p for p in root.iterdir() if p.is_dir() and is_slug(p.name)):
         books = []
         for bdir in sorted(p for p in sdir.iterdir() if p.is_dir() and is_slug(p.name)):
             book = load_book(bdir)
-            books.append({"id": bdir.name, "tsv": book["tsv"], **book["stats"]})
+            info = names.get(bdir.name, {"ten": None, "link": None})
+            books.append({"id": bdir.name, **info, "tsv": book["tsv"], **book["stats"]})
         valid = sum(b["valid"] for b in books)
         students.append(
             {

@@ -50,6 +50,8 @@ class DoiChieuApiTest(unittest.TestCase):
         (book / "cap_cau.csv").write_text(MACHINE, encoding="utf-8")
         (book / "nom-1_parallel.tsv").write_text(TSV, encoding="utf-8")
         (book / "anh" / "001.jpg").write_bytes(b"\xff\xd8jpg")
+        catalogue = {"nom-1": {"ten": "Cuốn một", "link": "https://drive.google.com/file/d/x/view"}, "nom-2": {"link": "javascript:x"}}
+        (root / "danh_muc.json").write_text(json.dumps(catalogue), encoding="utf-8")
         self.old = os.environ.get("DOI_CHIEU_DIR")
         os.environ["DOI_CHIEU_DIR"] = str(root)
         self.client = TestClient(api.app)
@@ -67,9 +69,17 @@ class DoiChieuApiTest(unittest.TestCase):
         (student,) = body["students"]
         self.assertEqual((student["ten"], student["pairs"], student["valid"]), ("Sinh viên A", 5, 2))
         self.assertEqual(student["books"][0]["machine_pages"], 2)
+        self.assertEqual(student["books"][0]["ten"], "Cuốn một")
+        self.assertTrue(student["books"][0]["link"].startswith("https://drive.google.com/"))
+
+    def test_catalogue_drops_non_https_links(self) -> None:
+        cat = service.catalogue(Path(os.environ["DOI_CHIEU_DIR"]))
+        self.assertIsNone(cat["nom-2"]["link"])
+        self.assertEqual(service.book_info(Path(os.environ["DOI_CHIEU_DIR"]), "khong-co"), {"ten": None, "link": None})
 
     def test_book_links_machine_rows_by_han(self) -> None:
         body = self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()
+        self.assertEqual(body["ten"], "Cuốn một")
         first, second = body["pairs"][:2]
         self.assertEqual(first["trang"], ["001"])
         self.assertIn("ông về", first["may_viet"])

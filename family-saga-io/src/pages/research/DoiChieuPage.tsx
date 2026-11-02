@@ -77,8 +77,27 @@ const studentColumns = (target: number): ColumnsType<StudentSummary> => [
   },
 ];
 
+const SourceLink = ({ link }: { link: string | null }) =>
+  link ? (
+    <a href={link} target="_blank" rel="noreferrer">
+      Bản gốc ↗
+    </a>
+  ) : (
+    <Typography.Text type="secondary">bản gốc trong gói lab</Typography.Text>
+  );
+
 const bookColumns = (onOpen: (book: string) => void): ColumnsType<BookSummary> => [
-  { title: "Cuốn", dataIndex: "id" },
+  {
+    title: "Cuốn",
+    render: (_, b) => (
+      <Space orientation="vertical" size={0}>
+        <span>{b.ten ?? b.id}</span>
+        <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+          {b.id} · <SourceLink link={b.link} />
+        </Typography.Text>
+      </Space>
+    ),
+  },
   { title: "Tệp nộp", dataIndex: "tsv", render: (t: string | null) => t ?? <Typography.Text type="secondary">chưa nộp</Typography.Text> },
   { title: "Cặp", dataIndex: "pairs" },
   { title: "Hợp lệ", dataIndex: "valid" },
@@ -278,8 +297,9 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
         <Space>
           <Button onClick={onBack}>← Danh sách</Button>
           <span>
-            {student} / {book}
+            {data?.ten ?? book} <Typography.Text type="secondary">({student} / {book})</Typography.Text>
           </span>
+          {data && <SourceLink link={data.link} />}
         </Space>
       }
     >

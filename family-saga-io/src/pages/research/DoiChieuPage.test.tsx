@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
@@ -64,7 +64,30 @@ describe("trang đối chiếu", () => {
         JSON.stringify({
           target: 2000,
           error_threshold: 0.3,
-          students: [{ id: "sv-a", ten: "Sinh viên A", books: [], valid: 1500, pairs: 1600, format_errors: 3, submitted: 2 }],
+          students: [
+            {
+              id: "sv-a",
+              ten: "Sinh viên A",
+              books: [
+                {
+                  id: "nom-1",
+                  ten: "Đoàn tộc phả",
+                  link: "https://drive.google.com/file/d/x/view",
+                  tsv: "nom-1_parallel.tsv",
+                  pairs: 10,
+                  valid: 9,
+                  format_errors: 1,
+                  machine_rows: 20,
+                  machine_pages: 2,
+                  ocr_coverage: 0.5,
+                },
+              ],
+              valid: 1500,
+              pairs: 1600,
+              format_errors: 3,
+              submitted: 2,
+            },
+          ],
         }),
         { status: 200 },
       ),
@@ -75,6 +98,9 @@ describe("trang đối chiếu", () => {
     expect(screen.getByText("1.500")).toBeTruthy();
     const headers = new Headers(fetchMock.mock.calls[0][1].headers);
     expect(headers.has("Authorization")).toBe(false);
+    fireEvent.click(screen.getByRole("button", { name: /expand row/i }));
+    expect(await screen.findByText("Đoàn tộc phả")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /Bản gốc/ }).getAttribute("href")).toBe("https://drive.google.com/file/d/x/view");
   });
 
   it("báo khi máy chủ chưa có dữ liệu", async () => {
