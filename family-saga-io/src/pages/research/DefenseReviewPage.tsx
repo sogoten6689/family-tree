@@ -1,6 +1,7 @@
 import { CheckCircleOutlined, CloseCircleOutlined, RedoOutlined, WarningOutlined } from "@ant-design/icons";
 import { Alert, Button, Card, Checkbox, Input, Progress, Radio, Segmented, Space, Tabs, Tag, Typography } from "antd";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   AXES,
@@ -376,9 +377,10 @@ const DefenseReviewPage = () => {
 
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", width: "100%" }}>
+      <Link to="/nghien-cuu/quan-ly">← Thông tin nghiên cứu</Link>
       <Typography.Title level={2}>Ôn tập bảo vệ luận văn</Typography.Title>
       <Typography.Paragraph type="secondary">
-        Câu hỏi phản biện theo 5 trục, số liệu lấy từ kết quả đã đo của đề tài (đến 28/10/2026). Tiến độ chỉ lưu trong trình duyệt này. Xem câu hỏi nghiên cứu, phương pháp và kết quả ở <a href="/nghien-cuu/quan-ly">trang thông tin nghiên cứu</a>.
+        Câu hỏi phản biện theo 5 trục, số liệu lấy từ kết quả đã đo của đề tài (đến 28/10/2026). Tiến độ chỉ lưu trong trình duyệt này. Xem câu hỏi nghiên cứu, phương pháp và kết quả ở <Link to="/nghien-cuu/quan-ly">trang thông tin nghiên cứu</Link>.
       </Typography.Paragraph>
       <Alert
         style={{ marginBottom: 16 }}
