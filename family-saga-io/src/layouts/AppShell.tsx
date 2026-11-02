@@ -1,14 +1,14 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Breadcrumb, Button, Drawer, Layout, Menu, Space, Typography } from "antd";
+import { Breadcrumb, Button, Drawer, Layout, Menu, Space, Tooltip, Typography } from "antd";
 import type { BreadcrumbProps, MenuProps } from "antd";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Outlet } from "react-router-dom";
+import { ExperimentOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Link, Outlet } from "react-router-dom";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useNarrowScreen } from "@/hooks/useNarrowScreen";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 const SIDEBAR_WIDTH = 250;
 
@@ -155,6 +155,14 @@ const AppShell = ({
         <Content className="p-3 sm:p-6 min-h-[calc(100vh-56px)] sm:min-h-[calc(100vh-64px)]">
           <Outlet />
         </Content>
+        {/* Lối tắt nhỏ tới trang thông tin nghiên cứu của luận văn. */}
+        <Footer className="!py-2 !px-3 sm:!px-6 text-right">
+          <Tooltip title="Thông tin nghiên cứu">
+            <Link to="/nghien-cuu/quan-ly" aria-label="Thông tin nghiên cứu" className="text-muted-foreground">
+              <ExperimentOutlined />
+            </Link>
+          </Tooltip>
+        </Footer>
       </Layout>
     </Layout>
   );

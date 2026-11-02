@@ -378,7 +378,7 @@ const DefenseReviewPage = () => {
     <div style={{ maxWidth: 900, margin: "0 auto", width: "100%" }}>
       <Typography.Title level={2}>Ôn tập bảo vệ luận văn</Typography.Title>
       <Typography.Paragraph type="secondary">
-        Câu hỏi phản biện theo 5 trục, số liệu lấy từ kết quả đã đo của đề tài (đến 28/10/2026). Tiến độ chỉ lưu trong trình duyệt này.
+        Câu hỏi phản biện theo 5 trục, số liệu lấy từ kết quả đã đo của đề tài (đến 28/10/2026). Tiến độ chỉ lưu trong trình duyệt này. Xem câu hỏi nghiên cứu, phương pháp và kết quả ở <a href="/nghien-cuu/quan-ly">trang thông tin nghiên cứu</a>.
       </Typography.Paragraph>
       <Alert
         style={{ marginBottom: 16 }}
