@@ -3,10 +3,14 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 from fastapi.testclient import TestClient
 
 import api
+from app.auth.dependencies import get_current_user
+from app.auth.models import UserRole
+from app.database import get_db
 from app.doi_chieu import service
 
 MACHINE = """id,trang,dong,han,viet_may,viet_sua,trang_thai,ghi_chu,align_method,confidence
@@ -106,3 +110,117 @@ class DoiChieuApiTest(unittest.TestCase):
     def test_no_data_dir_returns_empty(self) -> None:
         os.environ["DOI_CHIEU_DIR"] = str(Path(self.tmp.name) / "khong-ton-tai")
         self.assertEqual(self.client.get("/api/public/doi-chieu").json()["students"], [])
+
+
+class SoatApiTest(unittest.TestCase):
+    URL = "/api/doi-chieu/sv-a/nom-1/soat"
+
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.book = Path(self.tmp.name) / "sv-a" / "nom-1"
+        self.book.mkdir(parents=True)
+        (self.book / "cap_cau.csv").write_text(MACHINE, encoding="utf-8")
+        self.old = os.environ.get("DOI_CHIEU_DIR")
+        os.environ["DOI_CHIEU_DIR"] = self.tmp.name
+        api.app.dependency_overrides[get_db] = lambda: None
+        self.client = TestClient(api.app)
+        self.login(UserRole.ADMIN)
+
+    def tearDown(self) -> None:
+        api.app.dependency_overrides.clear()
+        if self.old is None:
+            os.environ.pop("DOI_CHIEU_DIR", None)
+        else:
+            os.environ["DOI_CHIEU_DIR"] = self.old
+        self.tmp.cleanup()
+
+    def login(self, role: UserRole) -> None:
+        user = SimpleNamespace(role=role, email="nguoi-soat@example.test")
+        api.app.dependency_overrides[get_current_user] = lambda: user
+
+    def save(self, rows: list[dict], da_soat: list[str], phien_ban: int = 0):
+        return self.client.put(self.URL, json={"rows": rows, "da_soat": da_soat, "phien_ban": phien_ban})
+
+    @staticmethod
+    def row(trang: str, han: str, viet: str, bo: bool = False) -> dict:
+        return {"trang": trang, "han": han, "viet": viet, "bo": bo}
+
+    def valid_count(self) -> int:
+        return self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()["stats"]["valid"]
+
+    def test_requires_admin(self) -> None:
+        api.app.dependency_overrides.pop(get_current_user)
+        self.assertEqual(self.client.get(self.URL).status_code, 401)
+        self.assertEqual(self.client.post(f"{self.URL}/nop").status_code, 401)
+        self.login(UserRole.USER)
+        self.assertEqual(self.client.get(self.URL).status_code, 403)
+        self.assertEqual(self.save([], []).status_code, 403)
+        self.assertEqual(self.client.post(f"{self.URL}/nop").status_code, 403)
+        self.assertFalse((self.book / "soat_nhap.json").exists())
+
+    def test_first_load_comes_from_machine_rows(self) -> None:
+        body = self.client.get(self.URL).json()
+        self.assertEqual(body["phien_ban"], 0)
+        self.assertEqual(body["da_soat"], [])
+        self.assertEqual(len(body["rows"]), 3)
+        self.assertEqual(body["rows"][0]["viet"], "ông về đổi họ tên tránh đi về sau người Minh")
+
+    def test_draft_does_not_count_until_submitted(self) -> None:
+        saved = self.save([self.row("001", "公回。", "Ông về.")], ["001"]).json()
+        self.assertEqual((saved["phien_ban"], saved["nguoi_soat"]), (1, "nguoi-soat@example.test"))
+        self.assertEqual(self.client.get(self.URL).json()["rows"][0]["han"], "公回。")
+        self.assertEqual(self.valid_count(), 0)
+
+    def test_stale_version_is_rejected(self) -> None:
+        self.assertEqual(self.save([self.row("001", "公回。", "Ông về.")], []).status_code, 200)
+        stale = self.save([self.row("001", "改。", "Đổi.")], [], phien_ban=0)
+        self.assertEqual(stale.status_code, 409)
+        self.assertEqual(self.client.get(self.URL).json()["rows"][0]["han"], "公回。")
+
+    def test_submit_writes_only_confirmed_pages(self) -> None:
+        rows = [
+            self.row("001", "公回。", "Ông về."),
+            self.row("001", "R.42", "số trang", bo=True),
+            self.row("001", "", ""),
+            self.row("002", "未審。", "Bản máy chưa soát."),
+        ]
+        self.save(rows, ["001"])
+        body = self.client.post(f"{self.URL}/nop").json()
+        self.assertEqual((body["nop"], body["so_cap"], body["tsv"]), (True, 1, "nom-1_parallel.tsv"))
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公回。\tÔng về.\n")
+        self.assertEqual(self.valid_count(), 1)
+
+    def test_tab_and_newline_inside_cell_do_not_break_line(self) -> None:
+        self.save([self.row("001", "公回\t改姓", "Ông về\nđổi họ")], ["001"])
+        self.client.post(f"{self.URL}/nop")
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公回 改姓\tÔng về đổi họ\n")
+
+    def test_format_errors_block_submit(self) -> None:
+        self.save([self.row("001", "公回。", "Ông về 字."), self.row("001", "改。", "")], ["001"])
+        body = self.client.post(f"{self.URL}/nop").json()
+        self.assertFalse(body["nop"])
+        self.assertEqual([e["loi"] for e in body["loi"]], [["vế Việt lẫn chữ Hán"], ["thiếu một vế"]])
+        self.assertFalse((self.book / "nom-1_parallel.tsv").exists())
+
+    def test_nothing_confirmed_is_not_submitted(self) -> None:
+        self.save([self.row("001", "公回。", "Ông về.")], [])
+        body = self.client.post(f"{self.URL}/nop").json()
+        self.assertEqual((body["nop"], body["so_cap"]), (False, 0))
+        self.assertFalse((self.book / "nom-1_parallel.tsv").exists())
+
+    def test_resubmit_keeps_previous_version(self) -> None:
+        self.save([self.row("001", "公回。", "Ông về.")], ["001"])
+        self.client.post(f"{self.URL}/nop")
+        self.save([self.row("001", "公歸。", "Ông trở về.")], ["001"], phien_ban=1)
+        self.client.post(f"{self.URL}/nop")
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公歸。\tÔng trở về.\n")
+        (old,) = (self.book / "lich_su").glob("*.tsv")
+        self.assertEqual(old.read_text(encoding="utf-8"), "公回。\tÔng về.\n")
+        self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()["tsv"], "nom-1_parallel.tsv")
+
+    def test_existing_submission_is_not_overwritten_from_machine(self) -> None:
+        tsv = self.book / "bai_cua_sinh_vien.tsv"
+        tsv.write_text("公回。\tÔng về.\n", encoding="utf-8")
+        self.assertEqual(self.client.get(self.URL).status_code, 409)
+        self.assertEqual(self.save([self.row("001", "改。", "Đổi.")], ["001"]).status_code, 409)
+        self.assertEqual(tsv.read_text(encoding="utf-8"), "公回。\tÔng về.\n")

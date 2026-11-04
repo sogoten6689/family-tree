@@ -4,6 +4,10 @@ import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGrading";
+import { countSubmittable, mergeWithNext, splitRow, stripKeys, withKeys } from "./soatRows";
+
+const auth = vi.hoisted(() => ({ isAdmin: false }));
+vi.mock("@/contexts/AuthContext", () => ({ useAuth: () => auth }));
 
 if (typeof globalThis.ResizeObserver === "undefined") {
   globalThis.ResizeObserver = class {
@@ -132,4 +136,104 @@ describe("trang đối chiếu", () => {
     renderPage();
     expect(await screen.findByText("Chưa có bài nộp nào")).toBeTruthy();
   });
+});
+
+describe("thao tác dòng soát", () => {
+  const rows = () =>
+    withKeys([
+      { trang: "001", han: "公回改", viet: "Ông về đổi", bo: false },
+      { trang: "002", han: "姓名", viet: "họ tên", bo: false },
+    ]);
+
+  it("ghép với dòng kế tiếp, kể cả sang trang sau, giữ trang đầu", () => {
+    const r = rows();
+    expect(stripKeys(mergeWithNext(r, r[0].key))).toEqual([{ trang: "001", han: "公回改姓名", viet: "Ông về đổi họ tên", bo: false }]);
+    expect(mergeWithNext(r, r[1].key)).toBe(r);
+  });
+
+  it("tách tại con trỏ của từng ô", () => {
+    const r = rows();
+    const out = stripKeys(splitRow(r, r[0].key, 2, 6));
+    expect(out[0]).toMatchObject({ han: "公回", viet: "Ông về" });
+    expect(out[1]).toMatchObject({ trang: "001", han: "改", viet: "đổi" });
+    expect(out).toHaveLength(3);
+  });
+
+  it("chỉ đếm dòng thuộc trang đã xác nhận, không bị bỏ, không rỗng", () => {
+    const list = [
+      { trang: "001", han: "公", viet: "Ông", bo: false },
+      { trang: "001", han: "R.42", viet: "", bo: true },
+      { trang: "001", han: " ", viet: "", bo: false },
+      { trang: "002", han: "改", viet: "Đổi", bo: false },
+    ];
+    expect(countSubmittable(list, ["001"])).toBe(1);
+    expect(countSubmittable(list, [])).toBe(0);
+  });
+});
+
+describe("thẻ Soát", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    auth.isAdmin = false;
+  });
+
+  const book = {
+    student: "sv-a",
+    book: "nom-1",
+    ten: "Cuốn một",
+    link: null,
+    tsv: null,
+    pairs: [],
+    missing: [],
+    pages: ["001"],
+    stats: { pairs: 0, valid: 0, format_errors: 0, machine_rows: 1, machine_pages: 1, ocr_coverage: 0 },
+  };
+  const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
+
+  const open = () => {
+    const calls: { method: string; url: string; body?: string }[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string, init?: RequestInit) => {
+        const method = init?.method ?? "GET";
+        calls.push({ method, url, body: init?.body as string | undefined });
+        if (url.endsWith("/soat/nop")) return json({ nop: true, so_cap: 1, loi: [], ly_do: null, tsv: "nom-1_parallel.tsv" });
+        if (url.endsWith("/soat") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 1 });
+        if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han: "公回", viet: "Ông về", bo: false }], da_soat: [], phien_ban: 0 });
+        return json(book);
+      }),
+    );
+    render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <MemoryRouter initialEntries={["/nghien-cuu/doi-chieu?sv=sv-a&cuon=nom-1"]}>
+          <DoiChieuPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    return calls;
+  };
+
+  it("không hiện với người chưa phải admin", async () => {
+    open();
+    await screen.findByRole("tab", { name: /Ảnh trang/ });
+    expect(screen.queryByRole("tab", { name: "Soát" })).toBeNull();
+  });
+
+  it("admin xác nhận trang, lưu nháp rồi mới nộp", async () => {
+    auth.isAdmin = true;
+    const calls = open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    const han = await screen.findByLabelText("Hán dòng 1");
+    expect(screen.getByRole("button", { name: /Nộp 0 cặp/ }).hasAttribute("disabled")).toBe(true);
+
+    fireEvent.change(han, { target: { value: "公回。" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: /đã soát xong trang này/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Nộp 1 cặp/ }));
+    fireEvent.click(await screen.findByRole("button", { name: "Nộp" }));
+
+    await screen.findByText("Đã nộp 1 cặp vào nom-1_parallel.tsv.");
+    const writes = calls.filter((c) => c.method !== "GET");
+    expect(writes.map((c) => c.method)).toEqual(["PUT", "POST"]);
+    expect(JSON.parse(writes[0].body!)).toMatchObject({ da_soat: ["001"], phien_ban: 0, rows: [{ han: "公回。" }] });
+  }, 20000); // nhiều thành phần antd trong jsdom: ~2 giây khi chạy riêng, vượt 5 giây khi cả bộ test chạy song song
 });

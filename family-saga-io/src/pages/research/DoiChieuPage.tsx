@@ -14,6 +14,7 @@ import {
   type MissingRow,
   type StudentSummary,
 } from "@/lib/doiChieuApi";
+import { useAuth } from "@/contexts/AuthContext";
 
 import {
   VERDICT_LABEL,
@@ -26,6 +27,7 @@ import {
   toCsv,
   type Verdict,
 } from "./doiChieuGrading";
+import SoatTab from "./SoatTab";
 
 const pct = (x: number | null | undefined) => (x == null ? "—" : `${Math.round(x * 100)}%`);
 
@@ -310,6 +312,7 @@ const PagesTab = ({ detail }: { detail: BookDetail }) => {
 
 const BookView = ({ student, book, threshold, onBack }: { student: string; book: string; threshold: number; onBack: () => void }) => {
   const { data, error, isLoading } = useQuery({ queryKey: ["doi-chieu", student, book], queryFn: () => getBook(student, book) });
+  const { isAdmin } = useAuth();
   if (error) return <Alert type="error" showIcon title="Không tải được cuốn" description={String(error)} />;
   return (
     <Card
@@ -344,6 +347,7 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
               { key: "missing", label: `Bản máy chưa dóng (${data.missing.length})`, children: <MissingTab detail={data} /> },
               { key: "grade", label: "Chấm mẫu lỗi", children: <GradeTab detail={data} threshold={threshold} /> },
               { key: "pages", label: `Ảnh trang (${data.pages.length})`, children: <PagesTab detail={data} /> },
+              ...(isAdmin ? [{ key: "soat", label: "Soát", children: <SoatTab detail={data} /> }] : []),
             ]}
           />
         </>
