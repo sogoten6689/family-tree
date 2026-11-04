@@ -8,6 +8,10 @@ lớp phủ, số lượng ghi ở trường `thieu`.
 
     .venv-paddleocr/bin/python nlp_family_extractor/tools/tao_khung_doi_chieu.py <thu-muc-cuon> [--ban-tam 0.466,0.523]
 
+Paddle hay bỏ sót cột mờ và chú lề. Có thể đưa thêm ô cột do Gemini trả (`--o-cot <thu-muc>`, mỗi trang một hoặc nhiều
+tệp <trang>*.txt|json, câu lệnh ở GEMINI_COLUMN_PROMPT; công cụ này không tự gọi Gemini vì đó là việc tốn tiền). Mỗi trang
+thử các nguồn rồi giữ nguồn có nhiều chữ tách được từ nét mực nhất, nên trang dày mà Gemini làm kém vẫn dùng Paddle.
+
 Sau khi tạo, nên vẽ thử vài trang lên ảnh: độ phủ cao chưa chắc chữ đã nằm đúng chỗ. tq-347 dùng --ban-tam như trên.
 """
 from __future__ import annotations
@@ -27,6 +31,16 @@ COARSE_SIDE = 1600
 MAX_BOX_OVERLAP = 0.3
 MIN_GLYPH_RATIO = 0.5
 MIN_PAGE_MATCH = 0.2
+# Dải mực phải có mặt ở ít nhất từng này phần hàng của ô; đường kẻ ngang chỉ chiếm vài hàng nên không tạo dải.
+MIN_BAND_INK = 0.04
+MIN_BAND_RATIO, MAX_BAND_RATIO = 0.35, 1.7
+MAX_SNAP_RATIO = 0.9
+GEMINI_COLUMN_RE = re.compile(r'"box_2d":\s*\[\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\][^{}]*?"chu":\s*"([^"]*)"')
+GEMINI_COLUMN_PROMPT = """Đây là ảnh một trang đôi của gia phả in khắc, hai trang mở ra, chữ viết dọc, đọc từ phải sang trái.
+Tìm MỌI cột chữ Hán trên ảnh, kể cả cột mờ, cột chữ nhỏ và chú bên lề. Nếu một cột có hai hàng chữ nhỏ song song thì coi mỗi hàng là một cột. Bỏ qua cột bản tâm ở giữa ảnh, đường viền và vết bẩn.
+Với mỗi cột, trả về ô bao sát phần mực của cột đó và chép nguyên văn chữ trong cột.
+Tọa độ là box_2d = [ymin, xmin, ymax, xmax], số nguyên từ 0 đến 1000, tính theo toàn bộ ảnh.
+Chỉ trả về JSON, không thêm lời: {"cot": [{"box_2d": [ymin, xmin, ymax, xmax], "chu": "..."}]}, theo thứ tự đọc từ phải sang trái."""
 
 
 def han_only(text: str) -> str:
@@ -250,10 +264,18 @@ def _positions(box: dict, read_at: list[int], cells: list[list[int]]) -> tuple[l
     return [char_box(box, j) for j in read_at], False
 
 
-def locate_rows(rows: list[str], boxes: list[dict], gutter: tuple[int, int] | None = None, ink=None) -> tuple[list[dict], int]:
-    """Dóng cả trang bản máy vào các khung theo thứ tự đọc. Trả về các chữ có vị trí và số chữ thiếu."""
+def locate_rows(
+    rows: list[str], boxes: list[dict], gutter: tuple[int, int] | None = None, ink=None, keep_order: bool = False
+) -> tuple[list[dict], int]:
+    """Dóng cả trang bản máy vào các khung theo thứ tự đọc. Trả về các chữ có vị trí và số chữ thiếu.
+
+    `keep_order`: khung đã đúng thứ tự đọc sẵn (ô cột của Gemini), không sắp lại theo tọa độ. Chú lề hai tầng
+    trên dưới sẽ bị sắp sai nếu chỉ dựa vào tọa độ.
+    """
     text = "".join(han_only(row) for row in rows)
-    ordered = reading_order(boxes, gutter)
+    ordered = boxes if keep_order else reading_order(boxes, gutter)
+    if not ordered:
+        return [], len(text)
     seq = [(b, j) for b, box in enumerate(ordered) for j in range(len(box["text"]))]
     read = [ordered[b]["text"][j] for b, j in seq]
     pairs = _common_subsequence(text, read)
@@ -291,6 +313,96 @@ def locate_rows(rows: list[str], boxes: list[dict], gutter: tuple[int, int] | No
     return [c for _, c in chars], len(text) - len(chars)
 
 
+def parse_gemini_columns(reply: str) -> list[tuple[list[int], str]]:
+    """Lấy các cột từ câu trả lời của Gemini. Đọc từng mục vì JSON trả về hay hỏng (thừa `"label":`)."""
+    return [([int(v) for v in m[:4]], m[4]) for m in GEMINI_COLUMN_RE.findall(reply)]
+
+
+def gemini_boxes(columns: list[tuple[list[int], str]], width: int, height: int, gutter: tuple[int, int] | None = None) -> list[dict]:
+    """Đổi tọa độ thang 1000 sang điểm ảnh, bỏ ô rỗng và ô nằm trong bản tâm."""
+    boxes = []
+    for (y0, x0, y1, x1), raw in columns:
+        text = han_only(raw)
+        box = [round(x0 * width / 1000), round(y0 * height / 1000), round(x1 * width / 1000), round(y1 * height / 1000)]
+        if not text or box[2] <= box[0] or box[3] <= box[1]:
+            continue
+        if gutter and gutter[0] <= (box[0] + box[2]) / 2 <= gutter[1]:
+            continue
+        boxes.append({"box": box, "text": text, "raw": raw})
+    return boxes
+
+
+def snap_columns(boxes: list[dict], ink) -> list[dict]:
+    """Dời ô cột về dải mực gần nhất. Giữ bề rộng ô vì dải mực hẹp hơn cỡ chữ thật; không có dải hợp lý thì giữ nguyên."""
+    if not boxes:
+        return []
+    widths = sorted(b["box"][2] - b["box"][0] for b in boxes)
+    typical = widths[len(widths) // 2]
+    choices = []
+    for i, box in enumerate(boxes):
+        x0, y0, x1, y1 = box["box"]
+        low, high = max(0, x0 - typical), min(ink.shape[1], x1 + typical)
+        crop = ink[max(0, y0) : y1, low:high]
+        if crop.size == 0:
+            continue
+        for a, b in _runs(crop.mean(axis=0) > MIN_BAND_INK):
+            if MIN_BAND_RATIO * typical <= b - a <= MAX_BAND_RATIO * typical:
+                distance = abs((low + a + low + b) / 2 - (x0 + x1) / 2)
+                if distance <= MAX_SNAP_RATIO * typical:
+                    choices.append((distance, i, (low + a, low + b)))
+    taken: dict[int, tuple[int, int]] = {}
+    used: list[tuple[int, int, int, int]] = []
+    # Ô gần dải nhất được chọn trước; hai ô cùng tầng không dùng chung một dải.
+    for _, i, band in sorted(choices, key=lambda c: c[0]):
+        y0, y1 = boxes[i]["box"][1], boxes[i]["box"][3]
+        clash = any(
+            min(band[1], ux1) - max(band[0], ux0) > 0.5 * (band[1] - band[0]) and min(y1, uy1) - max(y0, uy0) > 0.3 * (y1 - y0)
+            for ux0, ux1, uy0, uy1 in used
+        )
+        if i not in taken and not clash:
+            taken[i] = band
+            used.append((band[0], band[1], y0, y1))
+    out = []
+    for i, box in enumerate(boxes):
+        x0, y0, x1, y1 = box["box"]
+        if i in taken:
+            band = taken[i]
+            half = max(x1 - x0, band[1] - band[0] + 8) // 2
+            middle = (band[0] + band[1]) // 2
+            x0, x1 = max(0, middle - half), min(ink.shape[1], middle + half)
+        out.append({**box, "box": [x0, y0, x1, y1]})
+    return out
+
+
+def _exact_count(chars: list[dict]) -> int:
+    return sum("u" not in c for c in chars)
+
+
+def best_source(
+    rows: list[str], paddle: list[dict], columns: list[tuple[list[int], str]], width: int, height: int, gutter: tuple[int, int] | None, ink
+) -> tuple[list[dict], int, str]:
+    """Thử mọi nguồn ô của một trang, giữ nguồn có nhiều chữ tách từ nét mực nhất; hòa thì lấy nguồn đặt được nhiều chữ hơn."""
+    chars, missing = locate_rows(rows, paddle, gutter, ink)
+    candidates = [(chars, missing, "paddle")]
+    boxes = gemini_boxes(columns, width, height, gutter)
+    if boxes:
+        for name, variant in (("gemini", boxes), ("gemini-doi", snap_columns(boxes, ink))):
+            chars, missing = locate_rows(rows, variant, gutter, ink, keep_order=True)
+            candidates.append((chars, missing, name))
+    return max(candidates, key=lambda c: (_exact_count(c[0]), len(c[0])))
+
+
+def read_gemini_columns(folder: Path, page: str) -> list[tuple[list[int], str]]:
+    """Cột của một trang trong thư mục câu trả lời. Một trang gọi nhiều lần thì giữ lần đọc được nhiều chữ nhất."""
+    best: list[tuple[list[int], str]] = []
+    for path in sorted(folder.glob(f"{page}*")):
+        if path.suffix in (".txt", ".json"):
+            columns = parse_gemini_columns(path.read_text(encoding="utf-8"))
+            if sum(len(han_only(raw)) for _, raw in columns) > sum(len(han_only(raw)) for _, raw in best):
+                best = columns
+    return best
+
+
 def read_rows(book_dir: Path) -> dict[str, list[str]]:
     rows: dict[str, list[str]] = {}
     with (book_dir / "cap_cau.csv").open(encoding="utf-8-sig", newline="") as f:
@@ -318,6 +430,7 @@ def main() -> None:
         type=lambda v: tuple(float(x) for x in v.split(",")),
         help="dải bản tâm theo tỉ lệ chiều rộng ảnh, ví dụ 0.445,0.53 (sách đóng hai trang một ảnh)",
     )
+    parser.add_argument("--o-cot", type=Path, help="thư mục câu trả lời ô cột của Gemini, xem GEMINI_COLUMN_PROMPT")
     args = parser.parse_args()
 
     import numpy as np
@@ -344,14 +457,15 @@ def main() -> None:
             ink = np.array(img.convert("L")) < INK_THRESHOLD
         gutter = (args.ban_tam[0] * width, args.ban_tam[1] * width) if args.ban_tam else None
         boxes = merge_boxes(detect(image, ocr), detect(image, ocr_coarse), han_only("".join(page_rows)))
-        chars, missing = locate_rows(page_rows, boxes, gutter, ink)
-        payload = {"rong": width, "cao": height, "chu": chars, "thieu": missing}
+        columns = read_gemini_columns(args.o_cot, page) if args.o_cot else []
+        chars, missing, source = best_source(page_rows, boxes, columns, width, height, gutter, ink)
+        payload = {"rong": width, "cao": height, "chu": chars, "thieu": missing, "nguon": source}
         (out_dir / f"{page}.json").write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
         total += len(chars) + missing
         placed += len(chars)
         rough = sum("u" in c for c in chars)
         estimated += rough
-        print(f"{page}: định vị {len(chars)}/{len(chars) + missing} chữ, {rough} chữ ước lượng")
+        print(f"{page}: định vị {len(chars)}/{len(chars) + missing} chữ, {rough} chữ ước lượng, nguồn {source}")
     print(f"Tổng: {placed}/{total} chữ ({placed / total:.1%}), {estimated} chữ ước lượng" if total else "Không có chữ nào.")
 
 
