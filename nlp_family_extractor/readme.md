@@ -86,9 +86,14 @@ doi_chieu/<sinh-vien>/meta.json                {"ten": "Họ tên"}   (tuỳ ch�
 doi_chieu/<sinh-vien>/<ma-cuon>/*_parallel.tsv bài nộp: <Hán>\t<Việt>
 doi_chieu/<sinh-vien>/<ma-cuon>/cap_cau.csv    bản máy, chép từ gói lab soat/<ma-cuon>/
 doi_chieu/<sinh-vien>/<ma-cuon>/anh/           ảnh trang (tuỳ chọn; cuốn chưa có bản máy vẫn xem được ảnh)
+doi_chieu/<sinh-vien>/<ma-cuon>/soat_nhap.json nháp của thẻ Soát (admin), không tính vào số liệu
+doi_chieu/<sinh-vien>/<ma-cuon>/lich_su/       các bản TSV cũ, giữ lại mỗi lần nộp từ thẻ Soát
 ```
 
-Mọi thứ trong thư mục này ai có link cũng xem được. Nhãn chấm mẫu chỉ lưu trong trình duyệt người chấm.
+Mọi thứ trong thư mục này ai có link cũng xem được, trừ nháp của thẻ Soát. Nhãn chấm mẫu chỉ lưu trong trình duyệt người chấm.
+
+Thẻ **Soát** chỉ hiện với admin đã đăng nhập, gọi API `/api/doi-chieu/<sinh-vien>/<ma-cuon>/soat` (đọc và lưu nháp) và `.../soat/nop` (nộp).
+Khi nộp, chỉ dòng thuộc trang đã xác nhận mới vào `<ma-cuon>_parallel.tsv`. Backend cần quyền ghi vào thư mục này.
 
 ## Lịch sử request
 

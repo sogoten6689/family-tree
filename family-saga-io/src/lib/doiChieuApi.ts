@@ -75,3 +75,37 @@ export const getBook = (student: string, book: string) =>
 
 export const pageImageUrl = (student: string, book: string, page: string) =>
   `${getBackendBaseUrl()}${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/anh/${encodeURIComponent(page)}`;
+
+export interface SoatRow {
+  trang: string;
+  han: string;
+  viet: string;
+  /** Dòng không dùng (số trang, dấu thư viện…): không vào tệp nộp nhưng vẫn phục hồi được. */
+  bo: boolean;
+}
+
+export interface SoatDraft {
+  rows: SoatRow[];
+  /** Các trang người soát đã xác nhận; chỉ dòng của các trang này mới được nộp. */
+  da_soat: string[];
+  phien_ban: number;
+}
+
+export interface NopResult {
+  nop: boolean;
+  so_cap: number;
+  ly_do: string | null;
+  tsv?: string;
+  loi: { trang: string; han: string; viet: string; loi: string[] }[];
+}
+
+const soatPath = (student: string, book: string) =>
+  `/api/doi-chieu/${encodeURIComponent(student)}/${encodeURIComponent(book)}/soat`;
+
+export const getSoat = (student: string, book: string) => apiRequest<SoatDraft>(soatPath(student, book));
+
+export const saveSoat = (student: string, book: string, draft: SoatDraft) =>
+  apiRequest<SoatDraft>(soatPath(student, book), { method: "PUT", body: JSON.stringify(draft) });
+
+export const nopSoat = (student: string, book: string) =>
+  apiRequest<NopResult>(`${soatPath(student, book)}/nop`, { method: "POST" });
