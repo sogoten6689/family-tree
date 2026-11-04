@@ -1,17 +1,17 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Alert, Button, Checkbox, Image, Input, Popconfirm, Segmented, Select, Space, Tag, Typography } from "antd";
+import { Alert, Button, Checkbox, Input, Popconfirm, Segmented, Select, Space, Tag, Typography } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { getKhung, getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type NopResult } from "@/lib/doiChieuApi";
 
 import { draftChars } from "./lopPhu";
-import SoatOverlay from "./SoatOverlay";
+import SoatOverlay, { type OverlayMode } from "./SoatOverlay";
 import { countSubmittable, mergeWithNext, newRow, splitRow, stripKeys, withKeys, type EditRow } from "./soatRows";
 
 type Carets = Record<number, { han?: number; viet?: number }>;
-type ImageView = "anh" | "keo" | "song";
 
 const rowInputId = (key: number) => `soat-han-${key}`;
+const rowVietId = (key: number) => `soat-viet-${key}`;
 
 const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const { student, book } = detail;
@@ -32,7 +32,8 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [page, setPage] = useState<string | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
   const [result, setResult] = useState<NopResult | null>(null);
-  const [view, setView] = useState<ImageView>("anh");
+  const [view, setView] = useState<OverlayMode>("anh");
+  const [marks, setMarks] = useState(true);
   const carets = useRef<Carets>({});
 
   useEffect(() => {
@@ -60,7 +61,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const { data: khung } = useQuery({
     queryKey: ["soat-khung", student, book, page],
     queryFn: () => getKhung(student, book, page as string),
-    enabled: !!page && view !== "anh",
+    enabled: !!page,
     staleTime: Infinity,
     retry: false,
   });
@@ -196,46 +197,57 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-start" }}>
           <div
             style={{
-              flex: view === "song" ? "1 1 100%" : view === "keo" ? "2 1 560px" : "1 1 380px",
+              flex: view === "song" ? "1 1 100%" : view === "anh" ? "1 1 380px" : "2 1 560px",
               minWidth: 0,
               position: view === "song" ? "static" : "sticky",
               top: 8,
             }}
           >
-            <Segmented<ImageView>
-              style={{ marginBottom: 8 }}
-              value={view}
-              onChange={setView}
-              options={[
-                { value: "anh", label: "Ảnh gốc" },
-                { value: "keo", label: "Kéo so sánh" },
-                { value: "song", label: "Xem song song" },
-              ]}
-            />
+            <Space wrap style={{ marginBottom: 8 }}>
+              <Segmented<OverlayMode>
+                value={view}
+                onChange={setView}
+                options={[
+                  { value: "anh", label: "Ảnh gốc" },
+                  { value: "keo", label: "Kéo so sánh" },
+                  { value: "song", label: "Xem song song" },
+                  { value: "dich", label: "Kéo bản dịch" },
+                ]}
+              />
+              <Checkbox checked={marks} onChange={(e) => setMarks(e.target.checked)}>
+                Hiện ô chữ và số dòng
+              </Checkbox>
+            </Space>
             {!detail.pages.includes(page) ? (
               <Typography.Text type="secondary">Trang này không có ảnh.</Typography.Text>
-            ) : view !== "anh" && khung ? (
+            ) : (
               <>
-                <Typography.Paragraph type="secondary" style={{ margin: "0 0 8px" }}>
-                  Vị trí chữ là ước lượng, ảnh gốc vẫn là chuẩn. Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy.
-                  Bấm vào chữ để tới dòng của nó.
-                  {khung.thieu > 0 && ` Còn ${khung.thieu} chữ chưa định vị được nên không hiện ở đây.`}
-                </Typography.Paragraph>
+                {khung === null && view !== "anh" && view !== "dich" && (
+                  <Alert type="info" showIcon style={{ marginBottom: 8 }} title="Trang này chưa có dữ liệu vị trí chữ." />
+                )}
+                {khung && (
+                  <Typography.Paragraph type="secondary" style={{ margin: "0 0 8px" }}>
+                    Ô chữ do máy tách, ảnh gốc vẫn là chuẩn; ô nét đứt là vị trí ước lượng. Số màu xanh là số dòng ở phần soát.
+                    {(view === "keo" || view === "song") && (
+                      <>
+                        {" "}Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy. Bấm vào chữ để tới dòng của nó.
+                      </>
+                    )}
+                    {view === "dich" && " Bấm vào một dòng dịch để tới ô tiếng Việt của dòng đó."}
+                    {khung.thieu > 0 && ` Còn ${khung.thieu} chữ chưa định vị được nên không có ô.`}
+                  </Typography.Paragraph>
+                )}
                 <SoatOverlay
-                  mode={view}
+                  mode={khung || view === "anh" || view === "dich" ? view : "anh"}
                   imageUrl={pageImageUrl(student, book, page)}
                   khung={khung}
                   draft={overlayDraft}
+                  rows={pageRows}
+                  marks={marks}
                   page={page}
                   onPick={(key) => document.getElementById(rowInputId(key))?.focus()}
+                  onPickTranslation={(key) => document.getElementById(rowVietId(key))?.focus()}
                 />
-              </>
-            ) : (
-              <>
-                {view !== "anh" && khung === null && (
-                  <Alert type="info" showIcon style={{ marginBottom: 8 }} title="Trang này chưa có dữ liệu vị trí chữ." />
-                )}
-                <Image src={pageImageUrl(student, book, page)} alt={`Trang ${page}`} style={{ width: "100%" }} />
               </>
             )}
           </div>
@@ -260,6 +272,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                     }}
                   />
                   <Input.TextArea
+                    id={rowVietId(r.key)}
                     aria-label={`Việt dòng ${i + 1}`}
                     autoSize
                     value={r.viet}
