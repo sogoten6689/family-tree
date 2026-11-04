@@ -88,6 +88,7 @@ doi_chieu/<sinh-vien>/<ma-cuon>/cap_cau.csv    bản máy, chép từ gói lab s
 doi_chieu/<sinh-vien>/<ma-cuon>/anh/           ảnh trang (tuỳ chọn; cuốn chưa có bản máy vẫn xem được ảnh)
 doi_chieu/<sinh-vien>/<ma-cuon>/soat_nhap.json nháp của thẻ Soát (admin), không tính vào số liệu
 doi_chieu/<sinh-vien>/<ma-cuon>/lich_su/       các bản TSV cũ, giữ lại mỗi lần nộp từ thẻ Soát
+doi_chieu/<sinh-vien>/<ma-cuon>/khung/<trang>.json  vị trí từng chữ cho lớp phủ, tạo bằng tools/tao_khung_doi_chieu.py
 ```
 
 Mọi thứ trong thư mục này ai có link cũng xem được, trừ nháp của thẻ Soát. Nhãn chấm mẫu chỉ lưu trong trình duyệt người chấm.

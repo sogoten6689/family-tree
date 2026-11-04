@@ -1,4 +1,4 @@
-import { apiRequest, getBackendBaseUrl } from "@/lib/apiClient";
+import { ApiError, apiRequest, getBackendBaseUrl } from "@/lib/apiClient";
 
 /** Tên đầy đủ và link bản gốc lấy từ danh_muc.json; null khi chưa khai báo. */
 export interface BookInfo {
@@ -101,6 +101,22 @@ export interface NopResult {
 
 const soatPath = (student: string, book: string) =>
   `/api/doi-chieu/${encodeURIComponent(student)}/${encodeURIComponent(book)}/soat`;
+
+/** Vị trí từng chữ trên ảnh, theo pixel ảnh gốc. */
+export interface KhungTrang {
+  rong: number;
+  cao: number;
+  chu: { c: string; b: [number, number, number, number] }[];
+  /** Số chữ bản máy không định vị được, không có trên lớp phủ. */
+  thieu: number;
+}
+
+/** null khi trang chưa có dữ liệu vị trí chữ. */
+export const getKhung = (student: string, book: string, page: string) =>
+  apiRequest<KhungTrang>(`${soatPath(student, book)}/khung/${encodeURIComponent(page)}`).catch((e: unknown) => {
+    if (e instanceof ApiError && e.status === 404) return null;
+    throw e;
+  });
 
 export const getSoat = (student: string, book: string) => apiRequest<SoatDraft>(soatPath(student, book));
 
