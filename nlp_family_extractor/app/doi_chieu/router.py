@@ -84,6 +84,14 @@ def get_soat(student: str, book: str, _: AdminUser) -> dict:
         raise HTTPException(status.HTTP_409_CONFLICT, detail=_SUBMITTED) from exc
 
 
+@admin_router.get("/{student}/{book}/soat/khung/{page}")
+def get_khung(student: str, book: str, page: str, _: AdminUser) -> dict:
+    data = soat.positions(_book_dir(student, book), page)
+    if data is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Trang này chưa có dữ liệu vị trí chữ.")
+    return data
+
+
 @admin_router.put("/{student}/{book}/soat")
 def put_soat(student: str, book: str, payload: SoatDraft, user: AdminUser) -> dict:
     rows = [row.model_dump() for row in payload.rows]

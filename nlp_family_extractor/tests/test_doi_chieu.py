@@ -218,6 +218,17 @@ class SoatApiTest(unittest.TestCase):
         self.assertEqual(old.read_text(encoding="utf-8"), "公回。\tÔng về.\n")
         self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()["tsv"], "nom-1_parallel.tsv")
 
+    def test_positions_require_admin_and_file(self) -> None:
+        url = f"{self.URL}/khung/001"
+        self.assertEqual(self.client.get(url).status_code, 404)
+        (self.book / "khung").mkdir()
+        payload = {"rong": 100, "cao": 200, "chu": [{"c": "公", "b": [1, 2, 3, 4]}], "thieu": 0}
+        (self.book / "khung" / "001.json").write_text(json.dumps(payload), encoding="utf-8")
+        self.assertEqual(self.client.get(url).json(), payload)
+        self.assertEqual(self.client.get(f"{self.URL}/khung/..%2F..%2Fmeta").status_code, 404)
+        self.login(UserRole.USER)
+        self.assertEqual(self.client.get(url).status_code, 403)
+
     def test_existing_submission_is_not_overwritten_from_machine(self) -> None:
         tsv = self.book / "bai_cua_sinh_vien.tsv"
         tsv.write_text("公回。\tÔng về.\n", encoding="utf-8")

@@ -1,12 +1,17 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Alert, Button, Checkbox, Image, Input, Popconfirm, Select, Space, Tag, Typography } from "antd";
+import { Alert, Button, Checkbox, Image, Input, Popconfirm, Segmented, Select, Space, Tag, Typography } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type NopResult } from "@/lib/doiChieuApi";
+import { getKhung, getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type NopResult } from "@/lib/doiChieuApi";
 
+import { draftChars } from "./lopPhu";
+import SoatOverlay from "./SoatOverlay";
 import { countSubmittable, mergeWithNext, newRow, splitRow, stripKeys, withKeys, type EditRow } from "./soatRows";
 
 type Carets = Record<number, { han?: number; viet?: number }>;
+type ImageView = "anh" | "keo" | "song";
+
+const rowInputId = (key: number) => `soat-han-${key}`;
 
 const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const { student, book } = detail;
@@ -27,6 +32,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [page, setPage] = useState<string | null>(null);
   const [problem, setProblem] = useState<string | null>(null);
   const [result, setResult] = useState<NopResult | null>(null);
+  const [view, setView] = useState<ImageView>("anh");
   const carets = useRef<Carets>({});
 
   useEffect(() => {
@@ -50,6 +56,21 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
     (rows ?? []).forEach((r) => seen.add(r.trang));
     return [...seen].sort();
   }, [detail.pages, rows]);
+
+  const { data: khung } = useQuery({
+    queryKey: ["soat-khung", student, book, page],
+    queryFn: () => getKhung(student, book, page as string),
+    enabled: !!page && view !== "anh",
+    staleTime: Infinity,
+    retry: false,
+  });
+
+  // Gồm cả trang kề để theo được câu đã ghép qua trang.
+  const overlayDraft = useMemo(() => {
+    const i = page ? pages.indexOf(page) : -1;
+    const near = new Set(pages.slice(Math.max(i - 1, 0), i + 2));
+    return draftChars((rows ?? []).filter((r) => near.has(r.trang)));
+  }, [rows, page, pages]);
 
   if (isLoading) return <Typography.Text type="secondary">Đang tải nháp…</Typography.Text>;
   if (error) return <Alert type="error" showIcon title="Không mở được thẻ Soát" description={String(error)} />;
@@ -173,11 +194,49 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
 
       {page && (
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-start" }}>
-          <div style={{ flex: "1 1 380px", minWidth: 0, position: "sticky", top: 8 }}>
-            {detail.pages.includes(page) ? (
-              <Image src={pageImageUrl(student, book, page)} alt={`Trang ${page}`} style={{ width: "100%" }} />
-            ) : (
+          <div
+            style={{
+              flex: view === "song" ? "1 1 100%" : view === "keo" ? "2 1 560px" : "1 1 380px",
+              minWidth: 0,
+              position: view === "song" ? "static" : "sticky",
+              top: 8,
+            }}
+          >
+            <Segmented<ImageView>
+              style={{ marginBottom: 8 }}
+              value={view}
+              onChange={setView}
+              options={[
+                { value: "anh", label: "Ảnh gốc" },
+                { value: "keo", label: "Kéo so sánh" },
+                { value: "song", label: "Xem song song" },
+              ]}
+            />
+            {!detail.pages.includes(page) ? (
               <Typography.Text type="secondary">Trang này không có ảnh.</Typography.Text>
+            ) : view !== "anh" && khung ? (
+              <>
+                <SoatOverlay
+                  mode={view}
+                  imageUrl={pageImageUrl(student, book, page)}
+                  khung={khung}
+                  draft={overlayDraft}
+                  page={page}
+                  onPick={(key) => document.getElementById(rowInputId(key))?.focus()}
+                />
+                <Typography.Paragraph type="secondary" style={{ margin: "8px 0 0" }}>
+                  Vị trí chữ là ước lượng, ảnh gốc vẫn là chuẩn. Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy.
+                  Bấm vào chữ để tới dòng của nó.
+                  {khung.thieu > 0 && ` Còn ${khung.thieu} chữ chưa định vị được nên không hiện ở đây.`}
+                </Typography.Paragraph>
+              </>
+            ) : (
+              <>
+                {view !== "anh" && khung === null && (
+                  <Alert type="info" showIcon style={{ marginBottom: 8 }} title="Trang này chưa có dữ liệu vị trí chữ." />
+                )}
+                <Image src={pageImageUrl(student, book, page)} alt={`Trang ${page}`} style={{ width: "100%" }} />
+              </>
             )}
           </div>
           <Space orientation="vertical" style={{ flex: "1 1 460px", minWidth: 0 }} size="small">
@@ -188,6 +247,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
               return (
                 <div key={r.key} style={{ borderBottom: "1px solid rgba(128,128,128,0.3)", paddingBottom: 8, opacity: r.bo ? 0.45 : 1 }}>
                   <Input.TextArea
+                    id={rowInputId(r.key)}
                     aria-label={`Hán dòng ${i + 1}`}
                     lang="zh-Hant"
                     autoSize

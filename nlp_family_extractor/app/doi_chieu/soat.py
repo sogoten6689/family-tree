@@ -30,6 +30,14 @@ class SubmittedOutsideDraft(Exception):
     """Cuốn đã có bài nộp từ nguồn khác: bắt đầu nháp từ bản máy sẽ ghi đè mất bài đó."""
 
 
+def positions(bdir: Path, page: str) -> dict | None:
+    """Vị trí chữ của một trang, do tools/tao_khung_doi_chieu.py tạo; chưa có thì None."""
+    if not service.PAGE_RE.fullmatch(page):
+        return None
+    path = bdir / "khung" / f"{page}.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else None
+
+
 def _write_atomic(path: Path, text: str) -> None:
     tmp = path.with_name(path.name + ".tmp")
     tmp.write_text(text, encoding="utf-8")

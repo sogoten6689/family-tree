@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGrading";
+import { alignToAnchors, draftChars } from "./lopPhu";
 import { countSubmittable, mergeWithNext, splitRow, stripKeys, withKeys } from "./soatRows";
 
 const auth = vi.hoisted(() => ({ isAdmin: false }));
@@ -171,6 +172,33 @@ describe("thao tác dòng soát", () => {
   });
 });
 
+describe("đặt chữ lên lớp phủ", () => {
+  const draft = (text: string, trang = "001", rowKey = 1) => Array.from(text).map((ch) => ({ ch, rowKey, trang }));
+  const shown = (r: ReturnType<typeof alignToAnchors>) => r.map((p) => p?.ch ?? "_").join("");
+
+  it("chữ sửa nằm đúng vị trí và được đánh dấu", () => {
+    const out = alignToAnchors(Array.from("三條嶺憲之七中"), draft("三條嶺卷之七中"), "001");
+    expect(shown(out)).toBe("三條嶺卷之七中");
+    expect(out.map((p) => p!.changed)).toEqual([false, false, false, true, false, false, false]);
+  });
+
+  it("bỏ dấu câu do người soát thêm", () => {
+    const chars = draftChars([{ key: 1, trang: "001", han: "公回，改姓。", viet: "", bo: false }]);
+    expect(chars.map((c) => c.ch).join("")).toBe("公回改姓");
+    expect(draftChars([{ key: 2, trang: "001", han: "R.42 漢", viet: "", bo: true }])).toEqual([]);
+  });
+
+  it("dòng đã xoá chữ thì vị trí đó để trống", () => {
+    expect(shown(alignToAnchors(Array.from("公回改姓"), draft("公姓"), "001"))).toBe("公__姓");
+  });
+
+  it("câu ghép qua trang: lấy đúng phần có trên ảnh, không kéo chữ trang kề vào", () => {
+    const rows = [...draft("前頁文字", "001"), ...draft("公回改姓", "001"), ...draft("後頁文字", "003")];
+    expect(shown(alignToAnchors(Array.from("公回改姓"), rows, "002"))).toBe("公回改姓");
+    expect(shown(alignToAnchors(Array.from("甲回改丙"), [...draft("前頁", "001"), ...draft("回改", "002"), ...draft("後頁", "003")], "002"))).toBe("_回改_");
+  });
+});
+
 describe("thẻ Soát", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
@@ -197,6 +225,7 @@ describe("thẻ Soát", () => {
       vi.fn(async (url: string, init?: RequestInit) => {
         const method = init?.method ?? "GET";
         calls.push({ method, url, body: init?.body as string | undefined });
+        if (url.includes("/soat/khung/")) return json({ rong: 100, cao: 100, chu: [{ c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }], thieu: 3 });
         if (url.endsWith("/soat/nop")) return json({ nop: true, so_cap: 1, loi: [], ly_do: null, tsv: "nom-1_parallel.tsv" });
         if (url.endsWith("/soat") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 1 });
         if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han: "公回", viet: "Ông về", bo: false }], da_soat: [], phien_ban: 0 });
@@ -218,6 +247,23 @@ describe("thẻ Soát", () => {
     await screen.findByRole("tab", { name: /Ảnh trang/ });
     expect(screen.queryByRole("tab", { name: "Soát" })).toBeNull();
   });
+
+  it("lớp phủ hiện chữ đang sửa, có đường chia, và xem song song", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    const han = await screen.findByLabelText("Hán dòng 1");
+    fireEvent.click(screen.getByText("Kéo so sánh"));
+    expect(await screen.findByTestId("duong-chia")).toBeTruthy();
+    const svg = await screen.findByRole("img", { name: "Chữ phục dựng trang 001" });
+    expect(svg.textContent).toBe("公回");
+    fireEvent.change(han, { target: { value: "公歸" } });
+    expect(svg.textContent).toBe("公歸");
+    expect(screen.getByText(/Còn 3 chữ chưa định vị được/)).toBeTruthy();
+    fireEvent.click(screen.getByText("Xem song song"));
+    expect(screen.queryByTestId("duong-chia")).toBeNull();
+    expect(screen.getByRole("img", { name: "Chữ phục dựng trang 001" })).toBeTruthy();
+  }, 20000);
 
   it("admin xác nhận trang, lưu nháp rồi mới nộp", async () => {
     auth.isAdmin = true;
