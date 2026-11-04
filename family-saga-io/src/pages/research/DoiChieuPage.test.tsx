@@ -6,6 +6,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGrading";
 import { alignToAnchors, draftChars } from "./lopPhu";
 import { countSubmittable, mergeWithNext, splitRow, stripKeys, withKeys } from "./soatRows";
+import SoatOverlay from "./SoatOverlay";
 
 const auth = vi.hoisted(() => ({ isAdmin: false }));
 vi.mock("@/contexts/AuthContext", () => ({ useAuth: () => auth }));
@@ -255,15 +256,67 @@ describe("thẻ Soát", () => {
     const han = await screen.findByLabelText("Hán dòng 1");
     fireEvent.click(screen.getByText("Kéo so sánh"));
     expect(await screen.findByTestId("duong-chia")).toBeTruthy();
-    const svg = await screen.findByRole("img", { name: "Chữ phục dựng trang 001" });
-    expect(svg.textContent).toBe("公回");
+    await screen.findByRole("img", { name: "Chữ phục dựng trang 001" });
+    const glyphs = () => screen.getAllByTestId("chu").map((t) => t.textContent).join("");
+    expect(glyphs()).toBe("公回");
     fireEvent.change(han, { target: { value: "公歸" } });
-    expect(svg.textContent).toBe("公歸");
+    expect(glyphs()).toBe("公歸");
     expect(screen.getByText(/Còn 3 chữ chưa định vị được/)).toBeTruthy();
     fireEvent.click(screen.getByText("Xem song song"));
     expect(screen.queryByTestId("duong-chia")).toBeNull();
     expect(screen.getByRole("img", { name: "Chữ phục dựng trang 001" })).toBeTruthy();
   }, 20000);
+
+  it("ảnh gốc có ô từng chữ và số dòng, tắt được", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    expect(await screen.findAllByTestId("o-chu")).toHaveLength(2);
+    expect(screen.getAllByTestId("so-dong").map((t) => t.textContent)).toEqual(["1"]);
+    fireEvent.click(screen.getByRole("checkbox", { name: "Hiện ô chữ và số dòng" }));
+    expect(screen.queryByTestId("o-chu")).toBeNull();
+    expect(screen.queryByTestId("so-dong")).toBeNull();
+  }, 20000);
+
+  it("kéo bản dịch hiện dòng ngang có số, đổi theo ô Việt, bấm dòng tới ô đó", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    const viet = await screen.findByLabelText("Việt dòng 1");
+    fireEvent.click(screen.getByText("Kéo bản dịch"));
+    expect(await screen.findByTestId("duong-chia")).toBeTruthy();
+    const line = () => screen.getByTestId("dong-dich");
+    expect(line().textContent).toBe("1Ông về");
+    fireEvent.change(viet, { target: { value: "" } });
+    expect(line().textContent).toBe("1(chưa có bản dịch)");
+    fireEvent.click(line());
+    expect(document.activeElement).toBe(viet);
+  }, 20000);
+
+  it("trang chưa có vị trí chữ vẫn kéo được bản dịch, không có ô và số trên ảnh", () => {
+    render(
+      <SoatOverlay
+        mode="dich"
+        imageUrl="/anh.jpg"
+        khung={null}
+        draft={[]}
+        rows={[
+          { key: 7, viet: "Ông về", bo: false },
+          { key: 8, viet: "R.42", bo: true },
+          { key: 9, viet: "Đổi họ", bo: false },
+        ]}
+        marks
+        page="001"
+        onPick={() => {}}
+        onPickTranslation={() => {}}
+      />,
+    );
+    expect(screen.queryByTestId("o-chu")).toBeNull();
+    // Dòng bỏ không hiện nhưng vẫn giữ số, để số khớp với số ở phần soát.
+    expect(screen.getAllByTestId("dong-dich").map((d) => d.textContent)).toEqual(["1Ông về", "3Đổi họ"]);
+    expect(screen.getByTestId("duong-chia")).toBeTruthy();
+  });
 
   it("admin xác nhận trang, lưu nháp rồi mới nộp", async () => {
     auth.isAdmin = true;
