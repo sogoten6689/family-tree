@@ -216,6 +216,11 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
               <Typography.Text type="secondary">Trang này không có ảnh.</Typography.Text>
             ) : view !== "anh" && khung ? (
               <>
+                <Typography.Paragraph type="secondary" style={{ margin: "0 0 8px" }}>
+                  Vị trí chữ là ước lượng, ảnh gốc vẫn là chuẩn. Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy.
+                  Bấm vào chữ để tới dòng của nó.
+                  {khung.thieu > 0 && ` Còn ${khung.thieu} chữ chưa định vị được nên không hiện ở đây.`}
+                </Typography.Paragraph>
                 <SoatOverlay
                   mode={view}
                   imageUrl={pageImageUrl(student, book, page)}
@@ -224,11 +229,6 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                   page={page}
                   onPick={(key) => document.getElementById(rowInputId(key))?.focus()}
                 />
-                <Typography.Paragraph type="secondary" style={{ margin: "8px 0 0" }}>
-                  Vị trí chữ là ước lượng, ảnh gốc vẫn là chuẩn. Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy.
-                  Bấm vào chữ để tới dòng của nó.
-                  {khung.thieu > 0 && ` Còn ${khung.thieu} chữ chưa định vị được nên không hiện ở đây.`}
-                </Typography.Paragraph>
               </>
             ) : (
               <>

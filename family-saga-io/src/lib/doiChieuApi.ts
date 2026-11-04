@@ -106,7 +106,8 @@ const soatPath = (student: string, book: string) =>
 export interface KhungTrang {
   rong: number;
   cao: number;
-  chu: { c: string; b: [number, number, number, number] }[];
+  /** `u`: vị trí ước lượng, không tách được từ nét mực. */
+  chu: { c: string; b: [number, number, number, number]; u?: number }[];
   /** Số chữ bản máy không định vị được, không có trên lớp phủ. */
   thieu: number;
 }
