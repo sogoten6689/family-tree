@@ -33,7 +33,7 @@ const TextPage = ({
       viewBox={`0 0 ${khung.rong} ${khung.cao}`}
       style={{ display: "block", width: "100%", height: "auto", background: PAPER }}
     >
-      {khung.chu.map(({ b }, i) => {
+      {khung.chu.map(({ b, u }, i) => {
         const p = placed[i];
         if (!p) return null;
         const [x0, y0, x1, y1] = b;
@@ -42,7 +42,8 @@ const TextPage = ({
             key={i}
             x={(x0 + x1) / 2}
             y={(y0 + y1) / 2}
-            fontSize={Math.min(x1 - x0, y1 - y0) * 0.92}
+            // Khung sát nét nên chữ dẹt như 一 có một chiều rất nhỏ; khung ước lượng thì rộng bằng cả cột.
+            fontSize={(u ? Math.min(x1 - x0, y1 - y0) : Math.max(x1 - x0, y1 - y0)) * 0.95}
             fontFamily='"Noto Serif TC", "Songti TC", "SimSun", serif'
             textAnchor="middle"
             dominantBaseline="central"
