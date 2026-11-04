@@ -1,6 +1,18 @@
+import numpy as np
 import pytest
 
-from tools.tao_khung_doi_chieu import box_cells, char_box, locate_rows, merge_boxes, reading_order
+from tools.tao_khung_doi_chieu import (
+    best_source,
+    box_cells,
+    char_box,
+    gemini_boxes,
+    locate_rows,
+    merge_boxes,
+    parse_gemini_columns,
+    read_gemini_columns,
+    reading_order,
+    snap_columns,
+)
 
 
 def box(text, x0=100, y0=0, x1=120):
@@ -150,3 +162,75 @@ def test_small_real_box_on_cover_is_not_noise():
     title = {"box": [100, 0, 400, 1000], "text": "鄂氏宗譜"}
     small = {"box": [150, 1000, 250, 1200], "text": "卷之"}
     assert len(reading_order([title, small])) == 2
+
+
+def ink_columns(*columns):
+    """Trang giả 300x200; mỗi cột là (x0, x1, số chữ), mỗi chữ cao 20, cách nhau 10."""
+    ink = np.zeros((200, 300), bool)
+    for x0, x1, count in columns:
+        for k in range(count):
+            ink[10 + 30 * k : 30 + 30 * k, x0:x1] = True
+    return ink
+
+
+def test_parse_gemini_columns_survives_broken_json():
+    reply = 'JSON\n{"cot": [{"box_2d": [1, 2, 3, 4], "chu": "公回"}, {"box_2d": [5, 6, 7, 8], "label": "chu": "改姓"}]}'
+    assert parse_gemini_columns(reply) == [([1, 2, 3, 4], "公回"), ([5, 6, 7, 8], "改姓")]
+    assert parse_gemini_columns("(rỗng)") == []
+
+
+def test_gemini_boxes_scales_and_drops_gutter_and_empty():
+    columns = [([100, 800, 500, 900], "公回"), ([100, 480, 500, 520], "卷十"), ([100, 100, 500, 200], "（）")]
+    boxes = gemini_boxes(columns, 1000, 2000, gutter=(450, 550))
+    assert [b["box"] for b in boxes] == [[800, 200, 900, 1000]]
+
+
+def test_read_gemini_columns_keeps_reply_with_most_chars(tmp_path):
+    (tmp_path / "003_1.txt").write_text('"box_2d": [1, 2, 3, 4], "chu": "公"', encoding="utf-8")
+    (tmp_path / "003_2.txt").write_text('"box_2d": [1, 2, 3, 4], "chu": "公回"', encoding="utf-8")
+    (tmp_path / "004_1.txt").write_text('"box_2d": [1, 2, 3, 4], "chu": "公回改"', encoding="utf-8")
+    assert read_gemini_columns(tmp_path, "003") == [([1, 2, 3, 4], "公回")]
+    assert read_gemini_columns(tmp_path, "005") == []
+
+
+def test_snap_moves_box_onto_ink_and_two_boxes_do_not_share_a_band():
+    ink = ink_columns((200, 220, 3), (150, 170, 3))
+    boxes = [{"box": [190, 0, 215, 100], "text": "公回改"}, {"box": [195, 0, 220, 100], "text": "姓名字"}]
+    snapped = snap_columns(boxes, ink)
+    centers = [(b["box"][0] + b["box"][2]) / 2 for b in snapped]
+    assert centers[1] == 210
+    # Dải còn lại quá xa ô thứ nhất nên ô này giữ nguyên, không đè lên dải đã có chủ.
+    assert centers[0] == 202.5
+
+
+def test_snap_keeps_box_when_no_band_is_near():
+    box_ = {"box": [10, 0, 30, 100], "text": "公"}
+    assert snap_columns([box_], ink_columns((200, 220, 3)))[0]["box"] == [10, 0, 30, 100]
+
+
+def test_best_source_picks_gemini_when_paddle_misses_column():
+    ink = ink_columns((200, 220, 3), (150, 170, 3))
+    paddle = [{"box": [195, 0, 225, 100], "text": "公回改"}]
+    columns = [([0, 650, 500, 750], "公回改"), ([0, 483, 500, 583], "姓名字")]
+    chars, missing, source = best_source(["公回改姓名字"], paddle, columns, 300, 200, None, ink)
+    assert source.startswith("gemini")
+    assert missing == 0
+    assert "".join(c["c"] for c in chars) == "公回改姓名字"
+    assert all("u" not in c for c in chars)
+
+
+def test_best_source_keeps_paddle_when_gemini_is_not_better_or_absent():
+    ink = ink_columns((200, 220, 3))
+    paddle = [{"box": [195, 0, 225, 100], "text": "公回改"}]
+    assert best_source(["公回改"], paddle, [], 300, 200, None, ink)[2] == "paddle"
+    assert best_source(["公回改"], paddle, [([0, 650, 500, 750], "公回改")], 300, 200, None, ink)[2] == "paddle"
+
+
+def test_keep_order_uses_given_order_for_two_tier_margin_notes():
+    upper = {"box": [200, 0, 220, 20], "text": "公"}
+    lower_right = {"box": [210, 30, 230, 50], "text": "回"}
+    lower_left = {"box": [180, 30, 200, 50], "text": "改"}
+    chars, missing = locate_rows(["公回改"], [upper, lower_right, lower_left], keep_order=True)
+    assert missing == 0
+    assert [c["b"][1] for c in chars] == [0, 30, 30]
+    assert locate_rows(["公"], [], keep_order=True) == ([], 1)
