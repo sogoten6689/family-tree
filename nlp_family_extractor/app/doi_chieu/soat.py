@@ -17,6 +17,7 @@ from threading import Lock
 from app.doi_chieu import service
 
 DRAFT_NAME = "soat_nhap.json"
+SUGGESTION_NAME = "goi_y.json"
 HISTORY_DIR = "lich_su"
 _CELL_BREAK_RE = re.compile(r"\s*[\t\r\n]+\s*")
 _write_lock = Lock()
@@ -51,18 +52,24 @@ def _read_draft(bdir: Path) -> dict | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _read_suggestions(bdir: Path) -> dict:
+    """Gợi ý do tools/bo_sung_danh_dau.py tạo, theo mã dòng. Tệp riêng để không đụng vào bài người soát đang sửa."""
+    path = bdir / SUGGESTION_NAME
+    return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+
+
 def load(bdir: Path) -> dict:
     """Nháp hiện có; chưa có thì dựng từ bản máy, mỗi cột chữ một dòng."""
     draft = _read_draft(bdir)
     if draft is not None:
-        return {"ban_tam": {}, **draft}
+        return {"ban_tam": {}, **draft, "goi_y": _read_suggestions(bdir)}
     if service.load_book(bdir)["tsv"]:
         raise SubmittedOutsideDraft
     rows = [
         {"trang": r["trang"], "han": r["han"], "viet": r["viet"], "bo": False}
         for r in service.read_machine(bdir / "cap_cau.csv")
     ]
-    return {"rows": rows, "da_soat": [], "phien_ban": 0, "ban_tam": {}}
+    return {"rows": rows, "da_soat": [], "phien_ban": 0, "ban_tam": {}, "goi_y": _read_suggestions(bdir)}
 
 
 def save(

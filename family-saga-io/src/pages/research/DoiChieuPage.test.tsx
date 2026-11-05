@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGrading";
 import { alignToAnchors, draftChars } from "./lopPhu";
-import { countSubmittable, mergeWithNext, splitRow, stripKeys, withKeys } from "./soatRows";
+import { countSubmittable, mergeWithNext, splitRow, stripKeys, suspectOf, toggleMark, withKeys, type EditRow } from "./soatRows";
 import SoatOverlay from "./SoatOverlay";
 
 const auth = vi.hoisted(() => ({ isAdmin: false }));
@@ -173,6 +173,39 @@ describe("thao tác dòng soát", () => {
   });
 });
 
+describe("đánh dấu dòng", () => {
+  const row = (over: Partial<EditRow>): EditRow => ({ key: 1, trang: "001", han: "公回", viet: "Ông về", bo: false, ...over });
+
+  it("nhận ra dòng chưa dịch, lẫn chữ Hán, chưa chắc, chữ không đọc được", () => {
+    expect(suspectOf(row({}))).toBeNull();
+    expect(suspectOf(row({ viet: "  " }))?.reason).toBe("Chưa có bản dịch");
+    expect(suspectOf(row({ viet: "lầu蜃" }))?.reason).toBe("Bản dịch lẫn chữ Hán");
+    expect(suspectOf(row({ viet: "Ông về (không chắc)" }))?.reason).toBe("Bản dịch có chỗ chưa chắc");
+    expect(suspectOf(row({ han: "公[?]" }))).toEqual({ kind: "ocr", reason: "Chữ Hán có chỗ không đọc được" });
+    expect(suspectOf(row({ viet: "", bo: true }))).toBeNull();
+    expect(suspectOf(row({ han: "", viet: "" }))).toBeNull();
+  });
+
+  it("bấm lại đúng loại thì tắt, mã giữ nguyên", () => {
+    const on = toggleMark(row({}), "ocr");
+    expect(on.danh_dau).toBe("ocr");
+    expect(on.ma).toBeTruthy();
+    expect(toggleMark(row({ danh_dau: "ocr", ma: "a1" }), "ocr").danh_dau).toBeUndefined();
+    expect(toggleMark(row({ danh_dau: "ocr", ma: "a1" }), "chua_dich")).toEqual({ danh_dau: "chua_dich", ma: "a1" });
+  });
+
+  it("ghép giữ dấu của dòng sau; tách cho mỗi nửa một mã riêng", () => {
+    const merged = mergeWithNext([row({ key: 1 }), row({ key: 2, danh_dau: "ocr", ma: "b2", ghi_chu: "mờ" })], 1);
+    expect(merged[0]).toMatchObject({ danh_dau: "ocr", ma: "b2", ghi_chu: "mờ" });
+    const split = splitRow([row({ danh_dau: "ocr", ma: "a1" })], 1, 1, 2);
+    expect(split[0].ma).toBe("a1");
+    expect(split[1].danh_dau).toBe("ocr");
+    expect(split[1].ma).toBeTruthy();
+    expect(split[1].ma).not.toBe("a1");
+    expect(splitRow([row({})], 1, 1, 2)[1].ma).toBeUndefined();
+  });
+});
+
 describe("đặt chữ lên lớp phủ", () => {
   const draft = (text: string, trang = "001", rowKey = 1) => Array.from(text).map((ch) => ({ ch, rowKey, trang }));
   const shown = (r: ReturnType<typeof alignToAnchors>) => r.map((p) => p?.ch ?? "_").join("");
@@ -219,7 +252,7 @@ describe("thẻ Soát", () => {
   };
   const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
 
-  const open = (banTam?: unknown) => {
+  const open = (banTam?: unknown, goiY?: unknown, han = "公回", viet = "Ông về", extra: object = {}) => {
     const calls: { method: string; url: string; body?: string }[] = [];
     vi.stubGlobal(
       "fetch",
@@ -229,7 +262,7 @@ describe("thẻ Soát", () => {
         if (url.includes("/soat/khung/")) return json({ rong: 100, cao: 100, chu: [{ c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }], thieu: 3, ban_tam: banTam });
         if (url.endsWith("/soat/nop")) return json({ nop: true, so_cap: 1, loi: [], ly_do: null, tsv: "nom-1_parallel.tsv" });
         if (url.endsWith("/soat") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 1 });
-        if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han: "公回", viet: "Ông về", bo: false }], da_soat: [], phien_ban: 0 });
+        if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han, viet, bo: false, ...extra }], da_soat: [], phien_ban: 0, goi_y: goiY ?? {} });
         return json(book);
       }),
     );
@@ -368,6 +401,61 @@ describe("thẻ Soát", () => {
     expect(line.style.left).toBe("calc(25% - 7px)");
     drag("pointermove", 150);
     expect(line.style.left).toBe("calc(75% - 7px)");
+  }, 20000);
+
+  it("đánh dấu dòng: tô ô trên ảnh, có ghi chú, lưu vào nháp, bấm lại thì tắt", async () => {
+    auth.isAdmin = true;
+    const calls = open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    await screen.findAllByTestId("o-chu");
+    expect(document.querySelectorAll("[data-danh-dau]")).toHaveLength(0);
+    fireEvent.click(screen.getByRole("button", { name: "OCR không rõ" }));
+    expect(document.querySelectorAll("[data-danh-dau]")).toHaveLength(2);
+    expect(screen.getByTestId("danh-sach-danh-dau").textContent).toContain("Đã đánh dấu 1 dòng");
+    fireEvent.change(screen.getByLabelText("Ghi chú dòng 1"), { target: { value: "chữ thứ hai mờ" } });
+    fireEvent.click(screen.getByRole("button", { name: "Lưu nháp" }));
+    await screen.findByRole("button", { name: "Đã lưu" });
+    const row = JSON.parse(calls.find((c) => c.method === "PUT")?.body ?? "{}").rows[0];
+    expect(row).toMatchObject({ danh_dau: "ocr", ghi_chu: "chữ thứ hai mờ" });
+    expect(row.ma).toMatch(/^[A-Za-z0-9_-]{1,40}$/);
+    fireEvent.click(screen.getByRole("button", { name: "OCR không rõ" }));
+    expect(document.querySelectorAll("[data-danh-dau]")).toHaveLength(0);
+    expect(screen.queryByLabelText("Ghi chú dòng 1")).toBeNull();
+  }, 20000);
+
+  it("máy nghi dòng chưa dịch, đánh dấu cả loạt được", async () => {
+    auth.isAdmin = true;
+    open(undefined, undefined, "公回", "");
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    expect(screen.getByText("Máy nghi: Chưa có bản dịch", { selector: "[data-testid='dong-soat'] *" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Đánh dấu cả 1 dòng máy nghi" }));
+    expect(screen.getByRole("button", { name: "Chưa dịch" }).getAttribute("aria-pressed")).toBe("true");
+  }, 20000);
+
+  it("gợi ý không tự ghi đè; nhận thì điền vào ô và tắt dấu; bỏ thì ẩn", async () => {
+    auth.isAdmin = true;
+    open(undefined, { a1: { han: "公歸", viet: "Ông trở về", lan: 2 } }, "公回", "Ông về", { danh_dau: "ocr", ma: "a1" });
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    const han = (await screen.findByLabelText("Hán dòng 1")) as HTMLTextAreaElement;
+    expect(screen.getByTestId("goi-y").textContent).toContain("公歸");
+    expect(han.value).toBe("公回");
+    fireEvent.click(screen.getByRole("button", { name: "Dùng chữ Hán này" }));
+    expect(han.value).toBe("公歸");
+    expect(screen.getByRole("button", { name: "OCR không rõ" }).getAttribute("aria-pressed")).toBe("false");
+    expect(screen.getByTestId("goi-y").textContent).not.toContain("公歸");
+    fireEvent.click(screen.getByRole("button", { name: "Bỏ gợi ý" }));
+    expect(screen.queryByTestId("goi-y")).toBeNull();
+    expect((screen.getByLabelText("Việt dòng 1") as HTMLTextAreaElement).value).toBe("Ông về");
+  }, 20000);
+
+  it("gợi ý đã bỏ không hiện lại, trừ khi có lần chạy mới", async () => {
+    auth.isAdmin = true;
+    open(undefined, { a1: { viet: "Mới", lan: 1 } }, "公回", "Ông về", { ma: "a1", bo_goi_y: 1 });
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    expect(screen.queryByTestId("goi-y")).toBeNull();
   }, 20000);
 
   it("trang không có bản tâm thì không có ô sửa bản tâm", async () => {

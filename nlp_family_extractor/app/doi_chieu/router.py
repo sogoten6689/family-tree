@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Annotated
+from typing import Annotated, Literal
 
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import FileResponse
@@ -59,6 +59,11 @@ class SoatRow(BaseModel):
     han: str = Field(max_length=5000)
     viet: str = Field(max_length=10000)
     bo: bool = False
+    # Đánh dấu để chạy bổ sung; không vào TSV. `ma` nối dòng với gợi ý, vì dòng có thể bị ghép, tách, sửa.
+    danh_dau: Literal["chua_dich", "ocr"] | None = None
+    ghi_chu: str | None = Field(default=None, max_length=500)
+    ma: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{1,40}$")
+    bo_goi_y: int | None = Field(default=None, ge=0)
 
 
 _Page = Annotated[str, StringConstraints(pattern=f"^{service.PAGE_RE.pattern}$")]
@@ -101,7 +106,7 @@ def get_khung(student: str, book: str, page: str, _: AdminUser) -> dict:
 
 @admin_router.put("/{student}/{book}/soat")
 def put_soat(student: str, book: str, payload: SoatDraft, user: AdminUser) -> dict:
-    rows = [row.model_dump() for row in payload.rows]
+    rows = [row.model_dump(exclude_none=True) for row in payload.rows]
     try:
         return soat.save(_book_dir(student, book), rows, payload.da_soat, payload.phien_ban, user.email, payload.ban_tam)
     except soat.VersionConflict as exc:
