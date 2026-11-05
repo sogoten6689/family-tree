@@ -14,6 +14,7 @@ export interface OverlayRow {
   key: number;
   viet: string;
   bo: boolean;
+  danh_dau?: string | null;
 }
 
 const PAPER = "#ffffff";
@@ -21,6 +22,7 @@ const INK = "#111111";
 const CHANGED = "#d4380d";
 const BOX = "#1677ff";
 const BOX_ESTIMATED = "#d46b08";
+const FLAGGED = "rgba(250, 173, 20, 0.35)";
 const NUMBER = "#0958d9";
 
 interface RowLabel {
@@ -79,7 +81,7 @@ const Numbers = ({ labels, size, onPick }: { labels: RowLabel[]; size: number; o
 );
 
 /** Ô quanh từng chữ và số dòng, vẽ đè lên ảnh; không nhận chuột để vẫn phóng to được ảnh. */
-const BoxLayer = ({ khung, labels }: { khung: KhungTrang; labels: RowLabel[] }) => (
+const BoxLayer = ({ khung, labels, flagged }: { khung: KhungTrang; labels: RowLabel[]; flagged: boolean[] }) => (
   <svg
     aria-hidden
     viewBox={`0 0 ${khung.rong} ${khung.cao}`}
@@ -93,7 +95,8 @@ const BoxLayer = ({ khung, labels }: { khung: KhungTrang; labels: RowLabel[] }) 
         y={b[1]}
         width={b[2] - b[0]}
         height={b[3] - b[1]}
-        fill="none"
+        fill={flagged[i] ? FLAGGED : "none"}
+        data-danh-dau={flagged[i] || undefined}
         stroke={u ? BOX_ESTIMATED : BOX}
         strokeWidth={1}
         strokeDasharray={u ? "3 2" : undefined}
@@ -283,7 +286,12 @@ const SoatOverlay = ({
     </Space.Compact>
   );
 
-  const layer = marks && khung ? <BoxLayer khung={khung} labels={labels} /> : null;
+  const flagged = useMemo(() => {
+    const keys = new Set(rows.filter((r) => r.danh_dau).map((r) => r.key));
+    return placed.map((p) => !!p && keys.has(p.rowKey));
+  }, [rows, placed]);
+
+  const layer = marks && khung ? <BoxLayer khung={khung} labels={labels} flagged={flagged} /> : null;
   const framed = (picture: ReactNode) => (
     <div style={{ position: "relative", lineHeight: 0 }}>
       {picture}

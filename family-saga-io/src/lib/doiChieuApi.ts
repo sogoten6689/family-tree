@@ -82,6 +82,23 @@ export interface SoatRow {
   viet: string;
   /** Dòng không dùng (số trang, dấu thư viện…): không vào tệp nộp nhưng vẫn phục hồi được. */
   bo: boolean;
+  /** Đánh dấu để chạy bổ sung; không vào tệp nộp. */
+  danh_dau?: DanhDau | null;
+  ghi_chu?: string | null;
+  /** Mã nối dòng với gợi ý, tạo khi đánh dấu. */
+  ma?: string | null;
+  /** Lần chạy của gợi ý mà người soát đã bỏ. */
+  bo_goi_y?: number | null;
+}
+
+export type DanhDau = "chua_dich" | "ocr";
+
+/** Gợi ý do lần chạy bổ sung tạo, chỉ hiện để người soát nhận hoặc bỏ. */
+export interface GoiY {
+  han?: string;
+  viet?: string;
+  lan: number;
+  luc?: string;
 }
 
 export interface SoatDraft {
@@ -91,6 +108,8 @@ export interface SoatDraft {
   phien_ban: number;
   /** Chữ bản tâm đã sửa theo trang; không vào tệp nộp, không tính vào số cặp. */
   ban_tam?: Record<string, string>;
+  /** Chỉ có khi đọc nháp; không gửi lại khi lưu. */
+  goi_y?: Record<string, GoiY>;
 }
 
 export interface NopResult {

@@ -171,6 +171,27 @@ class SoatApiTest(unittest.TestCase):
         self.assertEqual(self.client.get(self.URL).json()["rows"][0]["han"], "公回。")
         self.assertEqual(self.valid_count(), 0)
 
+    def test_marks_are_saved_but_never_submitted(self) -> None:
+        marked = {**self.row("001", "公回", "Ông về"), "danh_dau": "ocr", "ma": "a1", "ghi_chu": "mờ"}
+        saved = self.save([marked, self.row("001", "改", "Đổi")], ["001"]).json()
+        self.assertEqual(saved["rows"][0], marked)
+        self.assertNotIn("danh_dau", saved["rows"][1])
+        self.assertTrue(self.client.post(f"{self.URL}/nop").json()["nop"])
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公回\tÔng về\n改\tĐổi\n")
+
+    def test_bad_mark_is_rejected(self) -> None:
+        for extra in ({"danh_dau": "khac"}, {"ma": "../x"}, {"ghi_chu": "x" * 501}):
+            self.assertEqual(self.save([{**self.row("001", "公", "Ông"), **extra}], []).status_code, 422)
+
+    def test_suggestions_come_from_their_own_file_and_are_not_saved_in_draft(self) -> None:
+        self.assertEqual(self.client.get(self.URL).json()["goi_y"], {})
+        (self.book / "goi_y.json").write_text(json.dumps({"a1": {"viet": "Gợi ý", "lan": 1}}), encoding="utf-8")
+        self.assertEqual(self.client.get(self.URL).json()["goi_y"], {"a1": {"viet": "Gợi ý", "lan": 1}})
+        marked = {**self.row("001", "公", ""), "danh_dau": "chua_dich", "ma": "a1"}
+        self.save([marked], [])
+        self.assertEqual(self.client.get(self.URL).json()["goi_y"], {"a1": {"viet": "Gợi ý", "lan": 1}})
+        self.assertNotIn("goi_y", json.loads((self.book / "soat_nhap.json").read_text(encoding="utf-8")))
+
     def test_gutter_text_is_saved_but_never_submitted(self) -> None:
         self.assertEqual(self.client.get(self.URL).json()["ban_tam"], {})
         body = {"rows": [self.row("001", "公回", "Ông về")], "da_soat": ["001"], "phien_ban": 0, "ban_tam": {"001": "鄂氏宗譜 卷十"}}

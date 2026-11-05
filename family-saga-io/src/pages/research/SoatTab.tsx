@@ -2,16 +2,18 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Alert, Button, Checkbox, Input, Popconfirm, Segmented, Select, Space, Tag, Typography } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { getKhung, getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type NopResult } from "@/lib/doiChieuApi";
+import { getKhung, getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type DanhDau, type NopResult } from "@/lib/doiChieuApi";
 
 import { draftChars } from "./lopPhu";
 import SoatOverlay, { BAN_TAM_KEY, type OverlayMode } from "./SoatOverlay";
-import { countSubmittable, mergeWithNext, newRow, splitRow, stripKeys, withKeys, type EditRow } from "./soatRows";
+import { countSubmittable, mergeWithNext, newRow, splitRow, stripKeys, suspectOf, toggleMark, withKeys, type EditRow } from "./soatRows";
 
 type Carets = Record<number, { han?: number; viet?: number }>;
 
 const rowInputId = (key: number) => `soat-han-${key}`;
 const rowVietId = (key: number) => `soat-viet-${key}`;
+const MARK_LABEL: Record<DanhDau, string> = { chua_dich: "Chưa dịch", ocr: "OCR không rõ" };
+const MARK_COLOR: Record<DanhDau, string> = { chua_dich: "gold", ocr: "volcano" };
 
 const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const { student, book } = detail;
@@ -36,6 +38,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [view, setView] = useState<OverlayMode>("anh");
   const [marks, setMarks] = useState(true);
   const carets = useRef<Carets>({});
+  const [focusKey, setFocusKey] = useState<number | null>(null);
 
   useEffect(() => {
     if (!data || rows) return;
@@ -59,6 +62,16 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
     (rows ?? []).forEach((r) => seen.add(r.trang));
     return [...seen].sort();
   }, [detail.pages, rows]);
+
+  // Từ danh sách đánh dấu: tới trang rồi mới có ô để nhảy vào.
+  useEffect(() => {
+    if (focusKey === null) return;
+    const input = document.getElementById(rowInputId(focusKey));
+    if (!input) return;
+    input.focus();
+    input.scrollIntoView?.({ block: "center" });
+    setFocusKey(null);
+  }, [focusKey, page]);
 
   const { data: khung } = useQuery({
     queryKey: ["soat-khung", student, book, page],
@@ -129,6 +142,32 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const pageBanTam = (page != null ? banTam[page] : undefined) ?? machineBanTam ?? "";
   const gutterMissing = khung?.ban_tam?.thieu ?? 0;
 
+  const suggestions = data?.goi_y ?? {};
+  const pendingSuggestion = (r: EditRow) => {
+    const s = r.ma ? suggestions[r.ma] : undefined;
+    if (!s || (r.bo_goi_y ?? 0) >= s.lan) return null;
+    const han = s.han && s.han !== r.han ? s.han : undefined;
+    const viet = s.viet && s.viet !== r.viet ? s.viet : undefined;
+    return han || viet ? { han, viet, lan: s.lan } : null;
+  };
+  const markedRows = rows.filter((r) => r.danh_dau && !r.bo);
+  const suspects = rows.filter((r) => !r.danh_dau && suspectOf(r));
+  const withSuggestion = rows.filter((r) => pendingSuggestion(r)).length;
+  const rowNumber = (r: EditRow) => rows.filter((x) => x.trang === r.trang).findIndex((x) => x.key === r.key) + 1;
+  const openRow = async (r: EditRow) => {
+    if (r.trang === page || (await persist())) {
+      setPage(r.trang);
+      setFocusKey(r.key);
+    }
+  };
+  const markAllSuspects = () =>
+    edit(
+      rows.map((r) => {
+        const suspect = r.danh_dau ? null : suspectOf(r);
+        return suspect ? { ...r, ...toggleMark(r, suspect.kind) } : r;
+      }),
+    );
+
   const addRowToPage = () => {
     if (!page) return;
     const lastIndex = rows.map((r) => r.trang).lastIndexOf(page);
@@ -196,6 +235,33 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
             )
           }
         />
+      )}
+
+      {(markedRows.length > 0 || suspects.length > 0) && (
+        <details data-testid="danh-sach-danh-dau">
+          <summary style={{ cursor: "pointer" }}>
+            Đã đánh dấu {markedRows.length} dòng · máy nghi {suspects.length} dòng · có gợi ý {withSuggestion} dòng
+          </summary>
+          <Space orientation="vertical" size={2} style={{ marginTop: 8, width: "100%" }}>
+            {suspects.length > 0 && (
+              <Button size="small" onClick={markAllSuspects}>
+                Đánh dấu cả {suspects.length} dòng máy nghi
+              </Button>
+            )}
+            {[...markedRows, ...suspects].map((r) => (
+              <div key={r.key}>
+                <Button type="link" size="small" style={{ padding: 0 }} onClick={() => void openRow(r)}>
+                  Trang {r.trang} dòng {rowNumber(r)}
+                </Button>{" "}
+                {r.danh_dau ? <Tag color={MARK_COLOR[r.danh_dau]}>{MARK_LABEL[r.danh_dau]}</Tag> : <Tag>Máy nghi: {suspectOf(r)?.reason}</Tag>}
+                <span lang="zh-Hant">{r.han.slice(0, 30)}</span>
+              </div>
+            ))}
+          </Space>
+          <Typography.Paragraph type="secondary" style={{ margin: "8px 0 0" }}>
+            Lần chạy bổ sung làm ở máy, chỉ gồm các dòng đã đánh dấu đã lưu nháp. Kết quả hiện thành gợi ý trong từng dòng; tải lại trang để thấy gợi ý mới.
+          </Typography.Paragraph>
+        </details>
       )}
 
       {page && (
@@ -280,8 +346,20 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
             {pageRows.map((r, i) => {
               const isLast = rows[rows.length - 1].key === r.key;
               const crosses = i === pageRows.length - 1 && !isLast;
+              const suspect = suspectOf(r);
+              const suggestion = pendingSuggestion(r);
               return (
-                <div key={r.key} style={{ borderBottom: "1px solid rgba(128,128,128,0.3)", paddingBottom: 8, opacity: r.bo ? 0.45 : 1 }}>
+                <div
+                  key={r.key}
+                  data-testid="dong-soat"
+                  style={{
+                    borderBottom: "1px solid rgba(128,128,128,0.3)",
+                    borderLeft: r.danh_dau ? "3px solid #faad14" : undefined,
+                    paddingLeft: r.danh_dau ? 8 : undefined,
+                    paddingBottom: 8,
+                    opacity: r.bo ? 0.45 : 1,
+                  }}
+                >
                   <Input.TextArea
                     id={rowInputId(r.key)}
                     aria-label={`Hán dòng ${i + 1}`}
@@ -328,7 +406,55 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                     <Button size="small" onClick={() => patch(r.key, { bo: !r.bo })}>
                       {r.bo ? "Dùng lại" : "Bỏ dòng này"}
                     </Button>
+                    {(Object.keys(MARK_LABEL) as DanhDau[]).map((kind) => (
+                      <Button
+                        key={kind}
+                        size="small"
+                        disabled={r.bo}
+                        aria-pressed={r.danh_dau === kind}
+                        type={r.danh_dau === kind ? "primary" : "default"}
+                        onClick={() => patch(r.key, toggleMark(r, kind))}
+                      >
+                        {MARK_LABEL[kind]}
+                      </Button>
+                    ))}
+                    {suspect && !r.danh_dau && <Tag color="warning">Máy nghi: {suspect.reason}</Tag>}
                   </Space>
+                  {r.danh_dau && (
+                    <Input
+                      size="small"
+                      aria-label={`Ghi chú dòng ${i + 1}`}
+                      placeholder="Ghi chú cho lần chạy bổ sung, ví dụ: chữ thứ ba bị mờ"
+                      maxLength={500}
+                      value={r.ghi_chu ?? ""}
+                      style={{ marginTop: 4 }}
+                      onChange={(e) => patch(r.key, { ghi_chu: e.target.value })}
+                    />
+                  )}
+                  {suggestion && (
+                    <div data-testid="goi-y" style={{ marginTop: 6, padding: 8, border: "1px dashed #faad14", borderRadius: 6 }}>
+                      <Typography.Text type="secondary">Gợi ý của máy, chưa áp dụng:</Typography.Text>
+                      {suggestion.han && (
+                        <div style={{ marginTop: 4 }}>
+                          <span lang="zh-Hant">{suggestion.han}</span>{" "}
+                          <Button size="small" onClick={() => patch(r.key, { han: suggestion.han, danh_dau: undefined })}>
+                            Dùng chữ Hán này
+                          </Button>
+                        </div>
+                      )}
+                      {suggestion.viet && (
+                        <div style={{ marginTop: 4 }}>
+                          {suggestion.viet}{" "}
+                          <Button size="small" onClick={() => patch(r.key, { viet: suggestion.viet, danh_dau: undefined })}>
+                            Dùng bản dịch này
+                          </Button>
+                        </div>
+                      )}
+                      <Button size="small" type="link" style={{ padding: 0, marginTop: 4 }} onClick={() => patch(r.key, { bo_goi_y: suggestion.lan })}>
+                        Bỏ gợi ý
+                      </Button>
+                    </div>
+                  )}
                 </div>
               );
             })}
