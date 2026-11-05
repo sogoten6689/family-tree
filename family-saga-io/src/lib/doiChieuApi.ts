@@ -127,12 +127,22 @@ const soatPath = (student: string, book: string) =>
 export interface KhungTrang {
   rong: number;
   cao: number;
-  /** `u`: vị trí ước lượng, không tách được từ nét mực. */
-  chu: { c: string; b: [number, number, number, number]; u?: number }[];
+  /** `u`: vị trí ước lượng, không tách được từ nét mực. `n`: ô do người soát chỉnh hoặc thêm. */
+  chu: { c: string; b: [number, number, number, number]; u?: number; n?: "sua" | "them" }[];
   /** Số chữ bản máy không định vị được, không có trên lớp phủ. */
   thieu: number;
   /** Cột in giữa ảnh (tên sách, số quyển, số trang), không thuộc các dòng soát. */
   ban_tam?: { text: string; chu: KhungTrang["chu"]; thieu: number };
+  /** Trang này đang dùng ô người soát đã sửa, không phải ô máy. */
+  da_sua?: boolean;
+  /** Phiên bản phần ô đã sửa; chưa sửa thì không có, tức là 0. */
+  phien_ban?: number;
+}
+
+export interface KhungSua {
+  chu: KhungTrang["chu"];
+  ban_tam_chu?: KhungTrang["chu"];
+  phien_ban: number;
 }
 
 /** null khi trang chưa có dữ liệu vị trí chữ. */
@@ -141,6 +151,13 @@ export const getKhung = (student: string, book: string, page: string) =>
     if (e instanceof ApiError && e.status === 404) return null;
     throw e;
   });
+
+export const saveKhung = (student: string, book: string, page: string, edit: KhungSua) =>
+  apiRequest<KhungTrang>(`${soatPath(student, book)}/khung/${encodeURIComponent(page)}`, { method: "PUT", body: JSON.stringify(edit) });
+
+/** Quay về ô máy; bản đã sửa được máy chủ giữ trong lịch sử. */
+export const restoreKhung = (student: string, book: string, page: string, phienBan: number) =>
+  apiRequest<KhungTrang>(`${soatPath(student, book)}/khung/${encodeURIComponent(page)}?phien_ban=${phienBan}`, { method: "DELETE" });
 
 export const getSoat = (student: string, book: string) => apiRequest<SoatDraft>(soatPath(student, book));
 

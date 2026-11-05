@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGrading";
 import { alignToAnchors, draftChars } from "./lopPhu";
+import { boxColor, boxFrom, insertIndex, moveBox } from "./oChu";
 import { countSubmittable, mergeWithNext, splitRow, stripKeys, suspectOf, toggleMark, withKeys, type EditRow } from "./soatRows";
 import SoatOverlay from "./SoatOverlay";
 
@@ -233,6 +234,43 @@ describe("đặt chữ lên lớp phủ", () => {
   });
 });
 
+describe("tính toán ô chữ", () => {
+  const cells = [
+    { b: [80, 10, 90, 20] },
+    { b: [80, 30, 90, 40] },
+    { b: [50, 10, 60, 20] },
+    { b: [50, 30, 60, 40] },
+  ] as { b: [number, number, number, number] }[];
+
+  it("chèn ô mới đúng thứ tự đọc: cột phải sang trái, trên xuống dưới", () => {
+    expect(insertIndex(cells, [80, 21, 90, 29])).toBe(1);
+    expect(insertIndex(cells, [80, 50, 90, 60])).toBe(2);
+    expect(insertIndex(cells, [50, 1, 60, 8])).toBe(2);
+    expect(insertIndex(cells, [95, 10, 99, 20])).toBe(0);
+    expect(insertIndex(cells, [65, 10, 75, 20])).toBe(2);
+    expect(insertIndex(cells, [10, 10, 20, 20])).toBe(4);
+    expect(insertIndex([], [10, 10, 20, 20])).toBe(0);
+  });
+
+  it("ô luôn nằm trong ảnh, toạ độ nguyên, không ngược và không rỗng", () => {
+    expect(boxFrom([30.4, 40.6], [10.2, 20.1], 100, 100)).toEqual([10, 20, 30, 41]);
+    expect(boxFrom([-5, -5], [200, 200], 100, 100)).toEqual([0, 0, 100, 100]);
+    expect(boxFrom([100, 100], [100, 100], 100, 100)).toEqual([99, 99, 100, 100]);
+    expect(boxFrom([5, 5], [5, 5], 100, 100)).toEqual([5, 5, 6, 6]);
+  });
+
+  it("dời ô giữ nguyên cỡ và dừng ở mép ảnh", () => {
+    expect(moveBox([10, 10, 30, 20], 5, -3, 100, 100)).toEqual([15, 7, 35, 17]);
+    expect(moveBox([10, 10, 30, 20], 500, -500, 100, 100)).toEqual([80, 0, 100, 10]);
+  });
+
+  it("ô người chỉnh có màu riêng", () => {
+    expect(boxColor({ n: "sua" })).toBe(boxColor({ n: "them", u: 1 }));
+    expect(boxColor({ n: "sua" })).not.toBe(boxColor({ u: 1 }));
+    expect(boxColor({ u: 1 })).not.toBe(boxColor({}));
+  });
+});
+
 describe("thẻ Soát", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
@@ -252,14 +290,21 @@ describe("thẻ Soát", () => {
   };
   const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
 
-  const open = (banTam?: unknown, goiY?: unknown, han = "公回", viet = "Ông về", extra: object = {}) => {
+  const open = (banTam?: unknown, goiY?: unknown, han = "公回", viet = "Ông về", extra: object = {}, khungExtra: object = {}) => {
     const calls: { method: string; url: string; body?: string }[] = [];
     vi.stubGlobal(
       "fetch",
       vi.fn(async (url: string, init?: RequestInit) => {
         const method = init?.method ?? "GET";
         calls.push({ method, url, body: init?.body as string | undefined });
-        if (url.includes("/soat/khung/")) return json({ rong: 100, cao: 100, chu: [{ c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }], thieu: 3, ban_tam: banTam });
+        if (url.includes("/soat/khung/")) {
+          const machine = { rong: 100, cao: 100, chu: [{ c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }], thieu: 3, ban_tam: banTam };
+          if (method === "PUT") {
+            const sent = JSON.parse(init?.body as string);
+            return json({ ...machine, chu: sent.chu, da_sua: true, phien_ban: sent.phien_ban + 1 });
+          }
+          return json(method === "DELETE" ? machine : { ...machine, ...khungExtra });
+        }
         if (url.endsWith("/soat/nop")) return json({ nop: true, so_cap: 1, loi: [], ly_do: null, tsv: "nom-1_parallel.tsv" });
         if (url.endsWith("/soat") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 1 });
         if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han, viet, bo: false, ...extra }], da_soat: [], phien_ban: 0, goi_y: goiY ?? {} });
@@ -275,6 +320,115 @@ describe("thẻ Soát", () => {
     );
     return calls;
   };
+
+  describe("sửa ô chữ", () => {
+    const mouse = (el: Element, type: string, x: number, y: number) =>
+      fireEvent(el, new MouseEvent(type, { bubbles: true, clientX: x, clientY: y }));
+
+    const openEditor = async (khungExtra: object = {}, banTam?: unknown) => {
+      auth.isAdmin = true;
+      const calls = open(banTam, undefined, "公回", "Ông về", {}, khungExtra);
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Sửa ô chữ" }));
+      const svg = await screen.findByTestId("vung-sua-o");
+      svg.getBoundingClientRect = () => ({ left: 0, top: 0, width: 100, height: 100 }) as DOMRect;
+      return { calls, svg };
+    };
+    const drag = (start: Element, svg: Element, from: [number, number], to: [number, number]) => {
+      mouse(start, "pointerdown", ...from);
+      mouse(svg, "pointermove", ...to);
+      mouse(svg, "pointerup", ...to);
+    };
+    const saved = (calls: { method: string; url: string; body?: string }[]) => {
+      const put = calls.filter((c) => c.method === "PUT" && c.url.includes("/soat/khung/001"));
+      return JSON.parse(put[put.length - 1].body as string);
+    };
+    const saveBoxes = async () => {
+      fireEvent.click(screen.getByRole("button", { name: "Lưu ô chữ" }));
+      await screen.findByRole("button", { name: "Đã lưu ô chữ" });
+    };
+
+    it("vẽ ô mới, gõ chữ rồi lưu, ô được chèn đúng thứ tự đọc", async () => {
+      const { calls, svg } = await openEditor();
+      drag(svg, svg, [50, 10], [70, 30]);
+      fireEvent.change(screen.getByLabelText("Chữ trong ô"), { target: { value: "歸" } });
+      await saveBoxes();
+      expect(saved(calls)).toEqual({
+        chu: [{ c: "歸", b: [50, 10, 70, 30], n: "them" }, { c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }],
+        phien_ban: 0,
+      });
+    }, 20000);
+
+    it("ô mới chưa có chữ thì không lưu; bấm nhầm ở chỗ trống không sinh ô", async () => {
+      const { calls, svg } = await openEditor();
+      drag(svg, svg, [60, 60], [61, 61]);
+      expect(screen.getAllByTestId("o-sua")).toHaveLength(2);
+      drag(svg, svg, [50, 10], [70, 30]);
+      expect(screen.getAllByTestId("o-sua")).toHaveLength(3);
+      fireEvent.click(screen.getByRole("button", { name: "Lưu ô chữ" }));
+      expect(await screen.findByText(/Còn ô chưa có chữ/)).toBeTruthy();
+      expect(calls.some((c) => c.method === "PUT")).toBe(false);
+    }, 20000);
+
+    it("kéo để dời, kéo góc để đổi cỡ, ô được đánh dấu người chỉnh và bỏ dấu ước lượng", async () => {
+      const { calls, svg } = await openEditor({ chu: [{ c: "公", b: [10, 10, 30, 30], u: 1 }, { c: "回", b: [10, 30, 30, 50] }] });
+      drag(screen.getAllByTestId("o-sua")[0], svg, [20, 20], [25, 15]);
+      drag(screen.getAllByTestId("goc-o")[2], svg, [35, 25], [50, 60]);
+      await saveBoxes();
+      expect(saved(calls).chu[0]).toEqual({ c: "公", b: [15, 5, 50, 60], n: "sua" });
+      expect(saved(calls).chu[1]).toEqual({ c: "回", b: [10, 30, 30, 50] });
+    }, 20000);
+
+    it("xoá bằng nút và phím Delete, hoàn tác lấy lại, phím Delete trong ô gõ chữ không xoá ô", async () => {
+      const { svg } = await openEditor();
+      const boxes = () => screen.getAllByTestId("o-sua");
+      mouse(boxes()[0], "pointerdown", 20, 20);
+      mouse(svg, "pointerup", 20, 20);
+      fireEvent.keyDown(screen.getByLabelText("Chữ trong ô"), { key: "Delete" });
+      expect(boxes()).toHaveLength(2);
+      fireEvent.keyDown(window, { key: "Delete" });
+      expect(boxes()).toHaveLength(1);
+      fireEvent.click(screen.getByRole("button", { name: "Hoàn tác" }));
+      expect(boxes()).toHaveLength(2);
+      mouse(boxes()[1], "pointerdown", 20, 40);
+      mouse(svg, "pointerup", 20, 40);
+      fireEvent.click(screen.getByRole("button", { name: "Xoá ô" }));
+      expect(boxes()).toHaveLength(1);
+    }, 20000);
+
+    it("khoá đổi trang khi đang sửa; thoát khi chưa lưu phải xác nhận", async () => {
+      const { svg } = await openEditor();
+      expect(screen.getByLabelText("Chọn trang").closest(".ant-select-disabled")).toBeTruthy();
+      drag(svg, svg, [50, 10], [70, 30]);
+      fireEvent.click(screen.getByRole("button", { name: "Thoát sửa ô" }));
+      expect(screen.getByTestId("sua-o-chu")).toBeTruthy();
+      fireEvent.click(await screen.findByRole("button", { name: "Bỏ thay đổi" }));
+      expect(screen.queryByTestId("sua-o-chu")).toBeNull();
+      expect(screen.getAllByTestId("o-chu")).toHaveLength(2);
+    }, 20000);
+
+    it("khôi phục ô máy gửi đúng phiên bản và hiện lại ô máy", async () => {
+      const { calls } = await openEditor({ da_sua: true, phien_ban: 2, chu: [{ c: "公", b: [1, 1, 5, 5], n: "sua" }] });
+      expect(screen.getAllByTestId("o-sua")).toHaveLength(1);
+      fireEvent.click(screen.getByRole("button", { name: "Khôi phục ô máy" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Khôi phục" }));
+      await vi.waitFor(() => expect(screen.getAllByTestId("o-sua")).toHaveLength(2));
+      const del = calls.find((c) => c.method === "DELETE");
+      expect(del?.url).toContain("/soat/khung/001?phien_ban=2");
+      expect(screen.queryByRole("button", { name: "Khôi phục ô máy" })).toBeNull();
+    }, 20000);
+
+    it("ô vẽ trong khoảng cột bản tâm thuộc về bản tâm, không lẫn vào chữ chính", async () => {
+      const banTam = { text: "鄂氏", chu: [{ c: "鄂", b: [50, 10, 60, 20] }, { c: "氏", b: [50, 40, 60, 50] }], thieu: 0 };
+      const { calls, svg } = await openEditor({}, banTam);
+      drag(svg, svg, [51, 25], [59, 35]);
+      fireEvent.change(screen.getByLabelText("Chữ trong ô"), { target: { value: "宗" } });
+      await saveBoxes();
+      const body = saved(calls);
+      expect(body.chu).toHaveLength(2);
+      expect(body.ban_tam_chu.map((c: { c: string }) => c.c)).toEqual(["鄂", "宗", "氏"]);
+    }, 20000);
+  });
 
   it("không hiện với người chưa phải admin", async () => {
     open();

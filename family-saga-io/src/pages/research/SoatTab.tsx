@@ -2,10 +2,11 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Alert, Button, Checkbox, Input, Popconfirm, Segmented, Select, Space, Tag, Typography } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { getKhung, getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type DanhDau, type NopResult } from "@/lib/doiChieuApi";
+import { getKhung, getSoat, nopSoat, pageImageUrl, restoreKhung, saveKhung, saveSoat, type BookDetail, type DanhDau, type KhungTrang, type NopResult } from "@/lib/doiChieuApi";
 
 import { draftChars } from "./lopPhu";
 import SoatOverlay, { BAN_TAM_KEY, type OverlayMode } from "./SoatOverlay";
+import SuaOChu from "./SuaOChu";
 import { countSubmittable, mergeWithNext, newRow, splitRow, stripKeys, suspectOf, toggleMark, withKeys, type EditRow } from "./soatRows";
 
 type Carets = Record<number, { han?: number; viet?: number }>;
@@ -14,6 +15,7 @@ const rowInputId = (key: number) => `soat-han-${key}`;
 const rowVietId = (key: number) => `soat-viet-${key}`;
 const MARK_LABEL: Record<DanhDau, string> = { chua_dich: "Chưa dịch", ocr: "OCR không rõ" };
 const MARK_COLOR: Record<DanhDau, string> = { chua_dich: "gold", ocr: "volcano" };
+const LEAVE_BOX_EDIT = "Đang sửa ô chữ: lưu hoặc thoát sửa ô trước khi sang trang khác.";
 
 const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const { student, book } = detail;
@@ -37,6 +39,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [result, setResult] = useState<NopResult | null>(null);
   const [view, setView] = useState<OverlayMode>("anh");
   const [marks, setMarks] = useState(true);
+  const [editingBoxes, setEditingBoxes] = useState(false);
   const carets = useRef<Carets>({});
   const [focusKey, setFocusKey] = useState<number | null>(null);
 
@@ -117,7 +120,16 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   };
 
   const goTo = async (next: string) => {
+    if (editingBoxes) {
+      setProblem(LEAVE_BOX_EDIT);
+      return;
+    }
     if (await persist()) setPage(next);
+  };
+
+  const keepKhung = (next: KhungTrang) => {
+    queryClient.setQueryData(["soat-khung", student, book, page], next);
+    return next;
   };
 
   const submit = async () => {
@@ -155,6 +167,10 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const withSuggestion = rows.filter((r) => pendingSuggestion(r)).length;
   const rowNumber = (r: EditRow) => rows.filter((x) => x.trang === r.trang).findIndex((x) => x.key === r.key) + 1;
   const openRow = async (r: EditRow) => {
+    if (editingBoxes && r.trang !== page) {
+      setProblem(LEAVE_BOX_EDIT);
+      return;
+    }
     if (r.trang === page || (await persist())) {
       setPage(r.trang);
       setFocusKey(r.key);
@@ -179,13 +195,13 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   return (
     <Space orientation="vertical" style={{ width: "100%" }} size="middle">
       <Space wrap>
-        <Button disabled={pageIndex <= 0 || busy} onClick={() => void goTo(pages[pageIndex - 1])}>
+        <Button disabled={pageIndex <= 0 || busy || editingBoxes} onClick={() => void goTo(pages[pageIndex - 1])}>
           ← Trang trước
         </Button>
         <Select
           aria-label="Chọn trang"
           value={page}
-          disabled={busy}
+          disabled={busy || editingBoxes}
           style={{ width: 210 }}
           onChange={(p) => void goTo(p)}
           options={pages.map((p) => ({
@@ -193,7 +209,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
             label: `Trang ${p} · ${rows.filter((r) => r.trang === p).length} dòng${confirmed.includes(p) ? " ✓" : ""}`,
           }))}
         />
-        <Button disabled={pageIndex < 0 || pageIndex >= pages.length - 1 || busy} onClick={() => void goTo(pages[pageIndex + 1])}>
+        <Button disabled={pageIndex < 0 || pageIndex >= pages.length - 1 || busy || editingBoxes} onClick={() => void goTo(pages[pageIndex + 1])}>
           Trang sau →
         </Button>
         <Button onClick={() => void persist()} disabled={!dirty || busy}>
@@ -268,58 +284,78 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-start" }}>
           <div
             style={{
-              flex: view === "song" ? "1 1 100%" : view === "anh" ? "1 1 380px" : "2 1 560px",
+              // Chỉnh ô cần ảnh lớn, nên chế độ sửa ô chiếm cả hàng như xem song song.
+              flex: view === "song" || editingBoxes ? "1 1 100%" : view === "anh" ? "1 1 380px" : "2 1 560px",
               minWidth: 0,
-              position: view === "song" ? "static" : "sticky",
+              position: view === "song" || editingBoxes ? "static" : "sticky",
               top: 8,
             }}
           >
-            <Space wrap style={{ marginBottom: 8 }}>
-              <Segmented<OverlayMode>
-                value={view}
-                onChange={setView}
-                options={[
-                  { value: "anh", label: "Ảnh gốc" },
-                  { value: "keo", label: "Kéo so sánh" },
-                  { value: "song", label: "Xem song song" },
-                  { value: "dich", label: "Kéo bản dịch" },
-                ]}
+            {editingBoxes && khung ? (
+              <SuaOChu
+                key={page}
+                khung={khung}
+                imageUrl={pageImageUrl(student, book, page)}
+                page={page}
+                onSave={async (change) => keepKhung(await saveKhung(student, book, page, change))}
+                onRestore={async (phienBan) => keepKhung(await restoreKhung(student, book, page, phienBan))}
+                onClose={() => setEditingBoxes(false)}
               />
-              <Checkbox checked={marks} onChange={(e) => setMarks(e.target.checked)}>
-                Hiện ô chữ và số dòng
-              </Checkbox>
-            </Space>
-            {!detail.pages.includes(page) ? (
-              <Typography.Text type="secondary">Trang này không có ảnh.</Typography.Text>
             ) : (
               <>
-                {khung === null && view !== "anh" && view !== "dich" && (
-                  <Alert type="info" showIcon style={{ marginBottom: 8 }} title="Trang này chưa có dữ liệu vị trí chữ." />
-                )}
-                {khung && (
-                  <Typography.Paragraph type="secondary" style={{ margin: "0 0 8px" }}>
-                    Ô chữ do máy tách, ảnh gốc vẫn là chuẩn; ô nét đứt là vị trí ước lượng. Số màu xanh là số dòng ở phần soát.
-                    {(view === "keo" || view === "song") && (
-                      <>
-                        {" "}Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy. Bấm vào chữ để tới dòng của nó.
-                      </>
+                <Space wrap style={{ marginBottom: 8 }}>
+                  <Segmented<OverlayMode>
+                    value={view}
+                    onChange={setView}
+                    options={[
+                      { value: "anh", label: "Ảnh gốc" },
+                      { value: "keo", label: "Kéo so sánh" },
+                      { value: "song", label: "Xem song song" },
+                      { value: "dich", label: "Kéo bản dịch" },
+                    ]}
+                  />
+                  <Checkbox checked={marks} onChange={(e) => setMarks(e.target.checked)}>
+                    Hiện ô chữ và số dòng
+                  </Checkbox>
+                  {khung && detail.pages.includes(page) && (
+                    <Button size="small" onClick={() => setEditingBoxes(true)}>
+                      Sửa ô chữ
+                    </Button>
+                  )}
+                </Space>
+                {!detail.pages.includes(page) ? (
+                  <Typography.Text type="secondary">Trang này không có ảnh.</Typography.Text>
+                ) : (
+                  <>
+                    {khung === null && view !== "anh" && view !== "dich" && (
+                      <Alert type="info" showIcon style={{ marginBottom: 8 }} title="Trang này chưa có dữ liệu vị trí chữ." />
                     )}
-                    {view === "dich" && " Bấm vào một dòng dịch để tới ô tiếng Việt của dòng đó."}
-                    {khung.thieu + gutterMissing > 0 && ` Còn ${khung.thieu + gutterMissing} chữ chưa định vị được nên không có ô.`}
-                  </Typography.Paragraph>
+                    {khung && (
+                      <Typography.Paragraph type="secondary" style={{ margin: "0 0 8px" }}>
+                        Ô chữ do máy tách, ảnh gốc vẫn là chuẩn; ô nét đứt là vị trí ước lượng{khung.da_sua ? ", ô xanh lá do người chỉnh" : ""}. Số màu xanh là số dòng ở phần soát.
+                        {(view === "keo" || view === "song") && (
+                          <>
+                            {" "}Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy. Bấm vào chữ để tới dòng của nó.
+                          </>
+                        )}
+                        {view === "dich" && " Bấm vào một dòng dịch để tới ô tiếng Việt của dòng đó."}
+                        {khung.thieu + gutterMissing > 0 && ` Còn ${khung.thieu + gutterMissing} chữ chưa định vị được nên không có ô.`}
+                      </Typography.Paragraph>
+                    )}
+                    <SoatOverlay
+                      mode={khung || view === "anh" || view === "dich" ? view : "anh"}
+                      imageUrl={pageImageUrl(student, book, page)}
+                      khung={khung}
+                      banTam={pageBanTam}
+                      draft={overlayDraft}
+                      rows={pageRows}
+                      marks={marks}
+                      page={page}
+                      onPick={(key) => document.getElementById(rowInputId(key))?.focus()}
+                      onPickTranslation={(key) => document.getElementById(rowVietId(key))?.focus()}
+                    />
+                  </>
                 )}
-                <SoatOverlay
-                  mode={khung || view === "anh" || view === "dich" ? view : "anh"}
-                  imageUrl={pageImageUrl(student, book, page)}
-                  khung={khung}
-                  banTam={pageBanTam}
-                  draft={overlayDraft}
-                  rows={pageRows}
-                  marks={marks}
-                  page={page}
-                  onPick={(key) => document.getElementById(rowInputId(key))?.focus()}
-                  onPickTranslation={(key) => document.getElementById(rowVietId(key))?.focus()}
-                />
               </>
             )}
           </div>
