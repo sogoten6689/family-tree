@@ -55,17 +55,20 @@ def load(bdir: Path) -> dict:
     """Nháp hiện có; chưa có thì dựng từ bản máy, mỗi cột chữ một dòng."""
     draft = _read_draft(bdir)
     if draft is not None:
-        return draft
+        return {"ban_tam": {}, **draft}
     if service.load_book(bdir)["tsv"]:
         raise SubmittedOutsideDraft
     rows = [
         {"trang": r["trang"], "han": r["han"], "viet": r["viet"], "bo": False}
         for r in service.read_machine(bdir / "cap_cau.csv")
     ]
-    return {"rows": rows, "da_soat": [], "phien_ban": 0}
+    return {"rows": rows, "da_soat": [], "phien_ban": 0, "ban_tam": {}}
 
 
-def save(bdir: Path, rows: list[dict], da_soat: list[str], phien_ban: int, nguoi_soat: str) -> dict:
+def save(
+    bdir: Path, rows: list[dict], da_soat: list[str], phien_ban: int, nguoi_soat: str, ban_tam: dict[str, str] | None = None
+) -> dict:
+    """`ban_tam`: chữ bản tâm đã sửa theo trang, không bao giờ vào TSV. None nghĩa là giữ nguyên (trang web bản cũ)."""
     with _write_lock:
         current = _read_draft(bdir)
         if (current["phien_ban"] if current else 0) != phien_ban:
@@ -76,6 +79,7 @@ def save(bdir: Path, rows: list[dict], da_soat: list[str], phien_ban: int, nguoi
             "rows": rows,
             "da_soat": sorted(set(da_soat)),
             "phien_ban": phien_ban + 1,
+            "ban_tam": ban_tam if ban_tam is not None else (current or {}).get("ban_tam", {}),
             "nguoi_soat": nguoi_soat,
             "luu_luc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         }

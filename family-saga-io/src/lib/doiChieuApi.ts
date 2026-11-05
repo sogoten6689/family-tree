@@ -89,6 +89,8 @@ export interface SoatDraft {
   /** Các trang người soát đã xác nhận; chỉ dòng của các trang này mới được nộp. */
   da_soat: string[];
   phien_ban: number;
+  /** Chữ bản tâm đã sửa theo trang; không vào tệp nộp, không tính vào số cặp. */
+  ban_tam?: Record<string, string>;
 }
 
 export interface NopResult {
@@ -110,6 +112,8 @@ export interface KhungTrang {
   chu: { c: string; b: [number, number, number, number]; u?: number }[];
   /** Số chữ bản máy không định vị được, không có trên lớp phủ. */
   thieu: number;
+  /** Cột in giữa ảnh (tên sách, số quyển, số trang), không thuộc các dòng soát. */
+  ban_tam?: { text: string; chu: KhungTrang["chu"]; thieu: number };
 }
 
 /** null khi trang chưa có dữ liệu vị trí chữ. */

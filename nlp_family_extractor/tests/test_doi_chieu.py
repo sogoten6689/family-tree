@@ -171,6 +171,29 @@ class SoatApiTest(unittest.TestCase):
         self.assertEqual(self.client.get(self.URL).json()["rows"][0]["han"], "公回。")
         self.assertEqual(self.valid_count(), 0)
 
+    def test_gutter_text_is_saved_but_never_submitted(self) -> None:
+        self.assertEqual(self.client.get(self.URL).json()["ban_tam"], {})
+        body = {"rows": [self.row("001", "公回", "Ông về")], "da_soat": ["001"], "phien_ban": 0, "ban_tam": {"001": "鄂氏宗譜 卷十"}}
+        self.assertEqual(self.client.put(self.URL, json=body).status_code, 200)
+        self.assertEqual(self.client.get(self.URL).json()["ban_tam"], {"001": "鄂氏宗譜 卷十"})
+        self.assertTrue(self.client.post(f"{self.URL}/nop").json()["nop"])
+        self.assertEqual(self.valid_count(), 1)
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公回\tÔng về\n")
+
+    def test_save_from_old_page_keeps_gutter_text(self) -> None:
+        body = {"rows": [], "da_soat": [], "phien_ban": 0, "ban_tam": {"001": "鄂氏"}}
+        self.client.put(self.URL, json=body)
+        self.assertEqual(self.save([], [], phien_ban=1).json()["ban_tam"], {"001": "鄂氏"})
+
+    def test_gutter_page_key_is_validated(self) -> None:
+        body = {"rows": [], "da_soat": [], "phien_ban": 0, "ban_tam": {"../x": "鄂氏"}}
+        self.assertEqual(self.client.put(self.URL, json=body).status_code, 422)
+
+    def test_draft_saved_before_gutter_loads_with_empty_gutter(self) -> None:
+        (self.book / "soat_nhap.json").write_text(json.dumps({"rows": [], "da_soat": [], "phien_ban": 2}), encoding="utf-8")
+        body = self.client.get(self.URL).json()
+        self.assertEqual((body["ban_tam"], body["phien_ban"]), ({}, 2))
+
     def test_stale_version_is_rejected(self) -> None:
         self.assertEqual(self.save([self.row("001", "公回。", "Ông về.")], []).status_code, 200)
         stale = self.save([self.row("001", "改。", "Đổi.")], [], phien_ban=0)
