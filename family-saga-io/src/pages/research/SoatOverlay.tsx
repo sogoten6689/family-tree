@@ -1,5 +1,5 @@
-import { Image, Slider } from "antd";
-import { useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { Button, Image, Slider, Space } from "antd";
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode, type UIEvent } from "react";
 
 import type { KhungTrang } from "@/lib/doiChieuApi";
 
@@ -29,6 +29,11 @@ interface RowLabel {
   x: number;
   y: number;
 }
+
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 5;
+const ZOOM_STEP = 1.25;
+const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z));
 
 const numberSize = (khung: KhungTrang) => khung.rong / 50;
 
@@ -201,7 +206,9 @@ const SoatOverlay = ({
   onPickTranslation: (rowKey: number) => void;
 }) => {
   const [split, setSplit] = useState(50);
+  const [zoom, setZoom] = useState(1);
   const box = useRef<HTMLDivElement>(null);
+  const panes = useRef<(HTMLDivElement | null)[]>([]);
 
   const numbers = useMemo(() => new Map(rows.map((r, i) => [r.key, i + 1])), [rows]);
   const placed = useMemo(() => {
@@ -223,6 +230,59 @@ const SoatOverlay = ({
     if (rect?.width) setSplit(Math.min(100, Math.max(0, ((e.clientX - rect.left) / rect.width) * 100)));
   };
 
+  // Giữ Ctrl (hoặc chụm hai ngón trên bàn di chuột) rồi cuộn để phóng to. React gắn wheel ở chế độ không chặn được, nên gắn tay.
+  useEffect(() => {
+    const zoomByWheel = (e: WheelEvent) => {
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      setZoom((z) => clampZoom(z * Math.exp(-e.deltaY * 0.01)));
+    };
+    const nodes = panes.current.filter((n): n is HTMLDivElement => !!n);
+    nodes.forEach((n) => n.addEventListener("wheel", zoomByWheel, { passive: false }));
+    return () => nodes.forEach((n) => n.removeEventListener("wheel", zoomByWheel));
+  }, [mode]);
+
+  /** Xem song song: cuộn một bên thì bên kia theo, để luôn nhìn cùng một chỗ trên trang. */
+  const followScroll = (e: UIEvent<HTMLDivElement>) => {
+    const { scrollLeft, scrollTop } = e.currentTarget;
+    panes.current.forEach((n) => {
+      if (n && n !== e.currentTarget && (n.scrollLeft !== scrollLeft || n.scrollTop !== scrollTop)) {
+        n.scrollLeft = scrollLeft;
+        n.scrollTop = scrollTop;
+      }
+    });
+  };
+
+  const pane = (index: number, content: ReactNode, sync = false) => (
+    <div
+      ref={(n) => {
+        panes.current[index] = n;
+      }}
+      data-testid="khung-xem"
+      onScroll={sync ? followScroll : undefined}
+      // Chưa phóng to thì không tạo thanh cuộn riêng, trang cuộn như cũ.
+      style={zoom > 1 ? { overflow: "auto", maxHeight: "80vh", minWidth: 0 } : { minWidth: 0 }}
+    >
+      <div data-testid="noi-dung-xem" style={{ width: `${zoom * 100}%` }}>
+        {content}
+      </div>
+    </div>
+  );
+
+  const zoomBar = (
+    <Space.Compact style={{ marginBottom: 8 }}>
+      <Button size="small" aria-label="Thu nhỏ" disabled={zoom <= MIN_ZOOM} onClick={() => setZoom(clampZoom(zoom / ZOOM_STEP))}>
+        −
+      </Button>
+      <Button size="small" title="Về 100%" onClick={() => setZoom(1)}>
+        {Math.round(zoom * 100)}%
+      </Button>
+      <Button size="small" aria-label="Phóng to" disabled={zoom >= MAX_ZOOM} onClick={() => setZoom(clampZoom(zoom * ZOOM_STEP))}>
+        +
+      </Button>
+    </Space.Compact>
+  );
+
   const layer = marks && khung ? <BoxLayer khung={khung} labels={labels} /> : null;
   const framed = (picture: ReactNode) => (
     <div style={{ position: "relative", lineHeight: 0 }}>
@@ -235,55 +295,92 @@ const SoatOverlay = ({
     <TextPage khung={khung} placed={placed} labels={labels} showNumbers={marks} page={page} onPick={onPick} />
   );
 
-  if (mode === "anh") return framed(<Image src={imageUrl} alt={`Trang ${page}`} width="100%" style={{ width: "100%" }} />);
+  if (mode === "anh") {
+    return (
+      <>
+        {zoomBar}
+        {pane(0, framed(<Image src={imageUrl} alt={`Trang ${page}`} width="100%" style={{ width: "100%" }} />))}
+      </>
+    );
+  }
 
   if (mode === "song") {
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-        {image}
-        {text}
-      </div>
+      <>
+        {zoomBar}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+          {pane(0, image, true)}
+          {pane(1, text, true)}
+        </div>
+      </>
     );
   }
 
   const visibleRows = rows.filter((r) => !r.bo);
   return (
     <>
-      <div ref={box} style={{ position: "relative", userSelect: "none" }}>
-        {image}
-        {mode === "keo" ? (
-          <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 0 0 ${split}%)` }}>{text}</div>
-        ) : (
-          // Bản dịch đọc ngang nên co theo phần còn lại, thay vì bị cắt mất đầu dòng.
-          <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, left: `${split}%`, overflow: "auto", background: PAPER }}>
-            <TranslationList rows={visibleRows} numbers={numbers} page={page} onPick={onPickTranslation} />
+      {zoomBar}
+      {pane(
+        0,
+        <div ref={box} style={{ position: "relative", userSelect: "none" }}>
+          {image}
+          {mode === "keo" ? (
+            <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 0 0 ${split}%)` }}>{text}</div>
+          ) : (
+            // Bản dịch đọc ngang nên co theo phần còn lại, thay vì bị cắt mất đầu dòng.
+            <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, left: `${split}%`, overflow: "auto", background: PAPER }}>
+              <TranslationList rows={visibleRows} numbers={numbers} page={page} onPick={onPickTranslation} />
+            </div>
+          )}
+          <div
+            data-testid="duong-chia"
+            title="Kéo qua lại để so ảnh với chữ"
+            onPointerDown={(e) => {
+              e.currentTarget.setPointerCapture?.(e.pointerId);
+              moveTo(e);
+            }}
+            onPointerMove={(e) => {
+              if (e.buttons) moveTo(e);
+            }}
+            style={{
+              position: "absolute",
+              top: 0,
+              bottom: 0,
+              left: `calc(${split}% - 7px)`,
+              width: 14,
+              cursor: "ew-resize",
+              touchAction: "none",
+            }}
+          >
+            <div style={{ position: "absolute", top: 0, bottom: 0, left: 6, width: 2, background: CHANGED }} />
+            {/* Giữa làn đỏ; khi phóng to thì dính giữa phần đang nhìn thấy để cuộn không mất nút. */}
+            <div
+              data-testid="nut-keo"
+              aria-hidden
+              style={{
+                position: zoom > 1 ? "sticky" : "absolute",
+                top: "50%",
+                marginTop: -18,
+                marginLeft: -11,
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                background: CHANGED,
+                color: PAPER,
+                border: `2px solid ${PAPER}`,
+                boxShadow: "0 1px 4px rgba(0,0,0,0.45)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 18,
+                lineHeight: 1,
+              }}
+            >
+              ↔
+            </div>
           </div>
-        )}
-        <div
-          data-testid="duong-chia"
-          title="Kéo qua lại để so ảnh với chữ"
-          onPointerDown={(e) => {
-            e.currentTarget.setPointerCapture?.(e.pointerId);
-            moveTo(e);
-          }}
-          onPointerMove={(e) => {
-            if (e.buttons) moveTo(e);
-          }}
-          style={{
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: `calc(${split}% - 7px)`,
-            width: 14,
-            cursor: "ew-resize",
-            touchAction: "none",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <div style={{ width: 2, background: CHANGED }} />
-        </div>
-      </div>
+        </div>,
+      )}
       <Slider aria-label="Vị trí đường chia" value={Math.round(split)} onChange={setSplit} tooltip={{ open: false }} />
     </>
   );

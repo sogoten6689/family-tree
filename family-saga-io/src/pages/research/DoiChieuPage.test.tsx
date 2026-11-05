@@ -316,6 +316,60 @@ describe("thẻ Soát", () => {
     expect(JSON.parse(put?.body ?? "{}").rows).toHaveLength(1);
   }, 20000);
 
+  it("phóng to, thu nhỏ, về 100%, ở mọi chế độ giữ nguyên mức đã chọn", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    const width = () => screen.getAllByTestId("noi-dung-xem")[0].style.width;
+    const zoomOut = await screen.findByRole("button", { name: "Thu nhỏ" });
+    expect(width()).toBe("100%");
+    expect((zoomOut as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(screen.getByRole("button", { name: "Phóng to" }));
+    expect(width()).toBe("125%");
+    fireEvent.click(screen.getByText("Xem song song"));
+    expect(screen.getAllByTestId("noi-dung-xem").map((n) => n.style.width)).toEqual(["125%", "125%"]);
+    fireEvent.click(screen.getByRole("button", { name: "125%" }));
+    expect(width()).toBe("100%");
+    for (let i = 0; i < 12; i++) {
+      const more = screen.getByRole("button", { name: "Phóng to" }) as HTMLButtonElement;
+      if (!more.disabled) fireEvent.click(more);
+    }
+    expect(width()).toBe("500%");
+  }, 20000);
+
+  it("xem song song: cuộn một bên thì bên kia cuộn theo", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    fireEvent.click(await screen.findByText("Xem song song"));
+    fireEvent.click(await screen.findByRole("button", { name: "Phóng to" }));
+    const [left, right] = screen.getAllByTestId("khung-xem");
+    left.scrollLeft = 40;
+    left.scrollTop = 25;
+    fireEvent.scroll(left);
+    expect([right.scrollLeft, right.scrollTop]).toEqual([40, 25]);
+  }, 20000);
+
+  it("kéo từ nút giữa làn đỏ cũng di chuyển đường chia", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    fireEvent.click(await screen.findByText("Kéo so sánh"));
+    const line = await screen.findByTestId("duong-chia");
+    const area = line.parentElement as HTMLElement;
+    area.getBoundingClientRect = () => ({ left: 0, width: 200, top: 0, height: 100, right: 200, bottom: 100, x: 0, y: 0, toJSON: () => ({}) });
+    // jsdom chưa có PointerEvent nên dùng MouseEvent mang đúng tên sự kiện để giữ clientX.
+    const drag = (type: string, clientX: number) =>
+      fireEvent(screen.getByTestId("nut-keo"), new MouseEvent(type, { bubbles: true, clientX, buttons: 1 }));
+    drag("pointerdown", 50);
+    expect(line.style.left).toBe("calc(25% - 7px)");
+    drag("pointermove", 150);
+    expect(line.style.left).toBe("calc(75% - 7px)");
+  }, 20000);
+
   it("trang không có bản tâm thì không có ô sửa bản tâm", async () => {
     auth.isAdmin = true;
     open();
