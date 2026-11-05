@@ -15,6 +15,7 @@ const rowInputId = (key: number) => `soat-han-${key}`;
 const rowVietId = (key: number) => `soat-viet-${key}`;
 const MARK_LABEL: Record<DanhDau, string> = { chua_dich: "Chưa dịch", ocr: "OCR không rõ" };
 const MARK_COLOR: Record<DanhDau, string> = { chua_dich: "gold", ocr: "volcano" };
+const ACTIVE_ROW = { outline: "2px solid #1677ff", outlineOffset: 2, borderRadius: 6 };
 const LEAVE_BOX_EDIT = "Đang sửa ô chữ: lưu hoặc thoát sửa ô trước khi sang trang khác.";
 
 const SoatTab = ({ detail }: { detail: BookDetail }) => {
@@ -41,6 +42,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [view, setView] = useState<OverlayMode>("anh");
   const [marks, setMarks] = useState(true);
   const [editingBoxes, setEditingBoxes] = useState(false);
+  const [activeKey, setActiveKey] = useState<number | null>(null);
   const carets = useRef<Carets>({});
   const [focusKey, setFocusKey] = useState<number | null>(null);
 
@@ -127,6 +129,13 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
       return;
     }
     if (await persist()) setPage(next);
+  };
+
+  const goToRow = (key: number, inputId: (key: number) => string) => {
+    setActiveKey(key);
+    const input = document.getElementById(inputId(key));
+    input?.focus();
+    input?.scrollIntoView?.({ block: "center" });
   };
 
   const keepKhung = (next: KhungTrang) => {
@@ -304,6 +313,11 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                 khung={khung}
                 imageUrl={pageImageUrl(student, book, page)}
                 page={page}
+                draft={overlayDraft}
+                banTam={pageBanTam}
+                rows={pageRows}
+                activeKey={activeKey}
+                onHighlight={setActiveKey}
                 onSave={async (change) => keepKhung(await saveKhung(student, book, page, change))}
                 onRestore={async (phienBan) => keepKhung(await restoreKhung(student, book, page, phienBan))}
                 onClose={() => setEditingBoxes(false)}
@@ -342,9 +356,10 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                         Ô chữ do máy tách, ảnh gốc vẫn là chuẩn; ô nét đứt là vị trí ước lượng{khung.da_sua ? ", ô xanh lá do người chỉnh" : ""}. Số màu xanh là số dòng ở phần soát.
                         {(view === "keo" || view === "song") && (
                           <>
-                            {" "}Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy. Bấm vào chữ để tới dòng của nó.
+                            {" "}Chữ <span style={{ color: "#d4380d" }}>đỏ</span> là chữ đã sửa so với bản máy. 
                           </>
                         )}
+                        {" "}Bấm vào ô, chữ hoặc số để tới dòng của nó; bấm vào một dòng ở phần soát thì các ô của dòng đó sáng lên.
                         {view === "dich" && " Bấm vào một dòng dịch để tới ô tiếng Việt của dòng đó."}
                         {khung.thieu + gutterMissing > 0 && ` Còn ${khung.thieu + gutterMissing} chữ chưa định vị được nên không có ô.`}
                       </Typography.Paragraph>
@@ -354,13 +369,14 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                       imageUrl={pageImageUrl(student, book, page)}
                       khung={khung}
                       banTam={pageBanTam}
-                  banTamViet={machineBanTam !== undefined ? pageBanTamViet : null}
+                      banTamViet={machineBanTam !== undefined ? pageBanTamViet : null}
                       draft={overlayDraft}
                       rows={pageRows}
                       marks={marks}
                       page={page}
-                      onPick={(key) => document.getElementById(rowInputId(key))?.focus()}
-                      onPickTranslation={(key) => document.getElementById(rowVietId(key))?.focus()}
+                      activeKey={activeKey}
+                      onPick={(key) => goToRow(key, rowInputId)}
+                      onPickTranslation={(key) => goToRow(key, rowVietId)}
                     />
                   </>
                 )}
@@ -369,7 +385,12 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
           </div>
           <Space orientation="vertical" style={{ flex: "1 1 460px", minWidth: 0 }} size="small">
             {machineBanTam !== undefined && (
-              <div style={{ borderBottom: "1px solid rgba(128,128,128,0.3)", paddingBottom: 8 }}>
+              <div
+                data-testid="khoi-ban-tam"
+                data-dang-chon={activeKey === BAN_TAM_KEY || undefined}
+                onFocusCapture={() => setActiveKey(BAN_TAM_KEY)}
+                style={{ borderBottom: "1px solid rgba(128,128,128,0.3)", paddingBottom: 8, ...(activeKey === BAN_TAM_KEY ? ACTIVE_ROW : {}) }}
+              >
                 <Typography.Text type="secondary">Bản tâm (cột in giữa ảnh): có đủ chữ Hán và bản dịch thì thành một cặp khi nộp</Typography.Text>
                 <Input.TextArea
                   id={rowInputId(BAN_TAM_KEY)}
@@ -409,12 +430,15 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                 <div
                   key={r.key}
                   data-testid="dong-soat"
+                  data-dang-chon={activeKey === r.key || undefined}
+                  onFocusCapture={() => setActiveKey(r.key)}
                   style={{
                     borderBottom: "1px solid rgba(128,128,128,0.3)",
                     borderLeft: r.danh_dau ? "3px solid #faad14" : undefined,
                     paddingLeft: r.danh_dau ? 8 : undefined,
                     paddingBottom: 8,
                     opacity: r.bo ? 0.45 : 1,
+                    ...(activeKey === r.key ? ACTIVE_ROW : {}),
                   }}
                 >
                   <Input.TextArea

@@ -1,6 +1,9 @@
 /** Đặt chữ người soát đang sửa vào vị trí chữ trên ảnh. Vị trí lấy từ bản máy, nên phải dóng hai chuỗi. */
 import type { SoatRow } from "@/lib/doiChieuApi";
 
+/** Khóa giả của cột bản tâm: không phải dòng soát nên không có số dòng, bấm vào thì tới ô sửa bản tâm. */
+export const BAN_TAM_KEY = -1;
+
 const HAN_RE = /[㐀-䶿一-鿿豈-﫿\u{20000}-\u{3ffff}]/u;
 
 export interface DraftChar {
@@ -74,3 +77,13 @@ export const alignToAnchors = (anchors: string[], draft: DraftChar[], page: stri
   }
   return out;
 };
+
+/** Đặt chữ cho mọi ô của trang: ô chữ chính trước, ô bản tâm sau. */
+export const placeOnPage = (body: string[], gutter: string[], draft: DraftChar[], banTam: string, page: string): (Placed | null)[] => {
+  const gutterDraft = draftChars([{ key: BAN_TAM_KEY, trang: page, han: banTam, viet: "", bo: false }]);
+  return [...alignToAnchors(body, draft, page), ...alignToAnchors(gutter, gutterDraft, page)];
+};
+
+/** Dòng của từng ô; null là chưa gán được. Ô bản tâm luôn thuộc bản tâm, kể cả khi chữ chưa khớp. */
+export const rowKeysOf = (placed: (Placed | null)[], bodyCount: number): (number | null)[] =>
+  placed.map((p, i) => (i >= bodyCount ? BAN_TAM_KEY : (p?.rowKey ?? null)));

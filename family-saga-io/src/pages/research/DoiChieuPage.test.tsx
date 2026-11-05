@@ -432,6 +432,90 @@ describe("thẻ Soát", () => {
     }, 20000);
   });
 
+  describe("làm sáng hai chiều giữa dòng và ô", () => {
+    const openSoat = async (han = "公回", banTam?: unknown) => {
+      auth.isAdmin = true;
+      open(banTam, undefined, han);
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      await screen.findByLabelText("Hán dòng 1");
+      await screen.findAllByTestId("o-chu");
+    };
+    const lit = () => screen.getAllByTestId("o-chu").filter((o) => o.getAttribute("data-dang-chon"));
+
+    it("nhấn vào ô dòng soát thì mọi ô của dòng sáng lên, ở cả ô tiếng Việt", async () => {
+      await openSoat();
+      expect(lit()).toHaveLength(0);
+      fireEvent.focus(screen.getByLabelText("Việt dòng 1"));
+      expect(lit()).toHaveLength(2);
+      expect(screen.getByTestId("dong-soat").getAttribute("data-dang-chon")).toBeTruthy();
+    }, 20000);
+
+    it("nhấn ô trên ảnh thì tới dòng của nó, dòng và các ô cùng sáng", async () => {
+      await openSoat();
+      fireEvent.click(screen.getAllByTestId("o-chu")[1]);
+      expect(document.activeElement).toBe(screen.getByLabelText("Hán dòng 1"));
+      expect(lit()).toHaveLength(2);
+      expect(screen.getByTestId("dong-soat").getAttribute("data-dang-chon")).toBeTruthy();
+    }, 20000);
+
+    it("ô chưa gán được thì báo rõ, không nhảy tới dòng nào", async () => {
+      await openSoat("");
+      fireEvent.click(screen.getAllByTestId("o-chu")[0]);
+      expect(screen.getByTestId("o-chua-gan")).toBeTruthy();
+      expect(screen.getByTestId("dong-soat").getAttribute("data-dang-chon")).toBeNull();
+    }, 20000);
+
+    it("ô bản tâm thuộc bản tâm kể cả khi chữ chưa khớp, không lẫn với dòng soát", async () => {
+      await openSoat("公回", { text: "鄂", chu: [{ c: "鄂", b: [50, 10, 60, 20] }, { c: "氏", b: [50, 20, 60, 30] }], thieu: 0 });
+      fireEvent.click(screen.getAllByTestId("o-chu")[3]);
+      expect(document.activeElement).toBe(screen.getByLabelText("Bản tâm"));
+      expect(lit()).toHaveLength(2);
+      expect(screen.getByTestId("khoi-ban-tam").getAttribute("data-dang-chon")).toBeTruthy();
+      expect(screen.getByTestId("dong-soat").getAttribute("data-dang-chon")).toBeNull();
+    }, 20000);
+
+    it("thẻ Kéo bản dịch làm sáng dòng dịch đang chọn và các ô của nó", async () => {
+      await openSoat();
+      fireEvent.click(screen.getByText("Kéo bản dịch"));
+      fireEvent.click(await screen.findByTestId("dong-dich"));
+      expect(document.activeElement).toBe(screen.getByLabelText("Việt dòng 1"));
+      expect(screen.getByTestId("dong-dich").getAttribute("data-dang-chon")).toBeTruthy();
+      expect(lit()).toHaveLength(2);
+    }, 20000);
+
+    it("chế độ sửa ô hiện số dòng, cho biết ô thuộc dòng nào và làm sáng cả dòng", async () => {
+      await openSoat();
+      fireEvent.click(screen.getByRole("button", { name: "Sửa ô chữ" }));
+      const svg = await screen.findByTestId("vung-sua-o");
+      svg.getBoundingClientRect = () => ({ left: 0, top: 0, width: 100, height: 100 }) as DOMRect;
+      expect(screen.getAllByTestId("so-dong").map((n) => n.textContent)).toEqual(["1"]);
+      const click = (el: Element, type: string) => fireEvent(el, new MouseEvent(type, { bubbles: true, clientX: 20, clientY: 40 }));
+      click(screen.getAllByTestId("o-sua")[1], "pointerdown");
+      click(svg, "pointerup");
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc dòng 1.");
+      expect(screen.getAllByTestId("o-sua").filter((o) => o.getAttribute("data-dang-chon"))).toHaveLength(2);
+      expect(screen.getByTestId("dong-soat").getAttribute("data-dang-chon")).toBeTruthy();
+      expect(document.activeElement).not.toBe(screen.getByLabelText("Hán dòng 1"));
+    }, 20000);
+
+    it("ô mới vẽ được gán theo thứ tự đọc; chữ khác dòng soát vẫn được coi là chữ bị thay, không báo chưa gán", async () => {
+      auth.isAdmin = true;
+      open(undefined, undefined, "公回歸");
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      fireEvent.click(await screen.findByRole("button", { name: "Sửa ô chữ" }));
+      const svg = await screen.findByTestId("vung-sua-o");
+      svg.getBoundingClientRect = () => ({ left: 0, top: 0, width: 100, height: 100 }) as DOMRect;
+      const at = (el: Element, type: string, x: number, y: number) => fireEvent(el, new MouseEvent(type, { bubbles: true, clientX: x, clientY: y }));
+      at(svg, "pointerdown", 10, 55);
+      at(svg, "pointermove", 30, 75);
+      at(svg, "pointerup", 30, 75);
+      fireEvent.change(screen.getByLabelText("Chữ trong ô"), { target: { value: "歸" } });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc dòng 1.");
+      fireEvent.change(screen.getByLabelText("Chữ trong ô"), { target: { value: "龍" } });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc dòng 1.");
+    }, 20000);
+  });
+
   describe("bản dịch bản tâm", () => {
     const banTam = { text: "鄂氏", chu: [], thieu: 0 };
     const openGutter = async (viet?: string) => {
