@@ -6,10 +6,14 @@ from tools.tao_khung_doi_chieu import (
     box_cells,
     char_box,
     gemini_boxes,
+    gutter_boxes_of,
+    gutter_chars,
+    gutter_template,
     locate_rows,
     merge_boxes,
     parse_gemini_columns,
     read_gemini_columns,
+    read_gutter_text,
     reading_order,
     snap_columns,
 )
@@ -234,3 +238,55 @@ def test_keep_order_uses_given_order_for_two_tier_margin_notes():
     assert missing == 0
     assert [c["b"][1] for c in chars] == [0, 30, 30]
     assert locate_rows(["公"], [], keep_order=True) == ([], 1)
+
+
+GUTTER_PAGES = [
+    [[100, 10, 160, 90], [120, 200, 160, 280]],
+    [[110, 12, 170, 92], [130, 202, 170, 282]],
+    [[90, 8, 150, 88]],
+]
+
+
+def test_gutter_template_keeps_group_a_page_missed():
+    template = gutter_template(GUTTER_PAGES)
+    assert len(template) == 2
+    assert template[0][1] <= 10 and template[1][3] >= 280
+
+
+def test_gutter_chars_follow_ink_and_shift_with_each_page():
+    ink = np.zeros((300, 300), bool)
+    for top in (20, 50):
+        ink[top : top + 25, 105:135] = True
+    ink[210:240, 110:140] = True
+    result = gutter_chars("鄂氏 卷", [[90, 8, 150, 88]], gutter_template(GUTTER_PAGES), ink)
+    assert result["thieu"] == 0
+    assert [c["c"] for c in result["chu"]] == list("鄂氏卷")
+    assert result["chu"][0]["b"] == [105, 20, 135, 45]
+    assert all("u" not in c for c in result["chu"])
+
+
+def test_gutter_border_counted_as_glyph_falls_back_to_estimate():
+    ink = np.zeros((300, 300), bool)
+    ink[12:15, 95:145] = True  # viền: nếu tính là một chữ thì cả cụm lệch
+    ink[40:80, 105:135] = True
+    ink[210:240, 110:140] = True
+    result = gutter_chars("鄂氏 卷", [[90, 8, 150, 88]], gutter_template(GUTTER_PAGES), ink)
+    assert [c.get("u") for c in result["chu"][:2]] == [1, 1]
+    assert result["chu"][0]["b"][3] == result["chu"][1]["b"][1]
+
+
+def test_gutter_group_count_mismatch_places_nothing():
+    ink = np.zeros((300, 300), bool)
+    result = gutter_chars("鄂氏卷", [[90, 8, 150, 88]], gutter_template(GUTTER_PAGES), ink)
+    assert result == {"chu": [], "thieu": 3}
+
+
+def test_gutter_boxes_of_drops_outside_band_and_specks():
+    boxes = [{"box": [100, 0, 120, 100], "text": "公"}, {"box": [300, 0, 320, 100], "text": "公"}, {"box": [100, 0, 120, 20], "text": "公"}]
+    assert gutter_boxes_of(boxes, (90, 130)) == [[100, 0, 120, 100]]
+
+
+def test_read_gutter_text_skips_empty_and_absent(tmp_path):
+    (tmp_path / "002.json").write_text('{"ban_tam": "鄂氏 卷十"}', encoding="utf-8")
+    (tmp_path / "001.json").write_text('{"ban_tam": ""}', encoding="utf-8")
+    assert read_gutter_text(tmp_path, ["001", "002", "003"]) == {"002": "鄂氏 卷十"}

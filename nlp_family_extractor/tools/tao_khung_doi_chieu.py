@@ -12,6 +12,9 @@ Paddle hay bỏ sót cột mờ và chú lề. Có thể đưa thêm ô cột do
 tệp <trang>*.txt|json, câu lệnh ở GEMINI_COLUMN_PROMPT; công cụ này không tự gọi Gemini vì đó là việc tốn tiền). Mỗi trang
 thử các nguồn rồi giữ nguồn có nhiều chữ tách được từ nét mực nhất, nên trang dày mà Gemini làm kém vẫn dùng Paddle.
 
+Cột bản tâm giữa ảnh (tên sách, số quyển, số trang) không thuộc các dòng soát. Có `--chu-ban-tam <thu-muc>` (mỗi trang một tệp
+<trang>.json có trường `ban_tam`, các cụm cách nhau bằng dấu cách) và `--ban-tam` thì tệp khung có thêm trường `ban_tam`.
+
 Sau khi tạo, nên vẽ thử vài trang lên ảnh: độ phủ cao chưa chắc chữ đã nằm đúng chỗ. tq-347 dùng --ban-tam như trên.
 """
 from __future__ import annotations
@@ -35,6 +38,12 @@ MIN_PAGE_MATCH = 0.2
 MIN_BAND_INK = 0.04
 MIN_BAND_RATIO, MAX_BAND_RATIO = 0.35, 1.7
 MAX_SNAP_RATIO = 0.9
+GUTTER_GROUP_GAP = 100
+GUTTER_MAX_OFFSET = 120
+GUTTER_MIN_HEIGHT = 60
+GUTTER_PAD = 12
+GUTTER_MIN_CELL_RATIO = 0.3
+GUTTER_MAX_GAP_RATIO = 0.3
 GEMINI_COLUMN_RE = re.compile(r'"box_2d":\s*\[\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\][^{}]*?"chu":\s*"([^"]*)"')
 GEMINI_COLUMN_PROMPT = """Đây là ảnh một trang đôi của gia phả in khắc, hai trang mở ra, chữ viết dọc, đọc từ phải sang trái.
 Tìm MỌI cột chữ Hán trên ảnh, kể cả cột mờ, cột chữ nhỏ và chú bên lề. Nếu một cột có hai hàng chữ nhỏ song song thì coi mỗi hàng là một cột. Bỏ qua cột bản tâm ở giữa ảnh, đường viền và vết bẩn.
@@ -403,6 +412,109 @@ def read_gemini_columns(folder: Path, page: str) -> list[tuple[list[int], str]]:
     return best
 
 
+def gutter_template(pages: list[list[list[int]]]) -> list[list[int]]:
+    """Vị trí các cụm chữ trong bản tâm, dạng [lệch trái, trên, lệch phải, dưới], lệch tính từ tâm cột.
+
+    Bản tâm in cùng một ván nên các trang giống nhau về chiều dọc, chỉ xê dịch ngang theo từng ảnh. `pages` là khung
+    Paddle trong dải bản tâm của từng trang. Trang nào Paddle sót một cụm vẫn lấy được vị trí từ các trang khác.
+    """
+    boxes = sorted((b for page in pages for b in page), key=lambda b: b[1] + b[3])
+    if not boxes:
+        return []
+    clusters = [[boxes[0]]]
+    for box in boxes[1:]:
+        if (box[1] + box[3]) - (clusters[-1][-1][1] + clusters[-1][-1][3]) > GUTTER_GROUP_GAP * 2:
+            clusters.append([])
+        clusters[-1].append(box)
+    clusters = [c for c in clusters if len(c) >= len(pages) / 2]
+    if not clusters:
+        return []
+    first = clusters[0]
+    centers = {}
+    for page in pages:
+        own = [b for b in page if any(b is f for f in first)]
+        if own:
+            centers[id(page)] = sorted((b[0] + b[2]) / 2 for b in own)[len(own) // 2]
+    template = []
+    for cluster in clusters:
+        offsets = [
+            (b[0] - centers[id(page)], b[2] - centers[id(page)])
+            for page in pages
+            if id(page) in centers
+            for b in page
+            if any(b is c for c in cluster) and abs((b[0] + b[2]) / 2 - centers[id(page)]) <= GUTTER_MAX_OFFSET
+        ]
+        if not offsets:
+            continue
+        trim = len(cluster) * 3 // 10
+        top = sorted(b[1] for b in cluster)[trim]
+        bottom = sorted(b[3] for b in cluster)[-1 - trim]
+        left = sorted(o[0] for o in offsets)[len(offsets) // 2]
+        right = sorted(o[1] for o in offsets)[len(offsets) // 2]
+        template.append([round(left) - GUTTER_PAD, top - GUTTER_PAD, round(right) + GUTTER_PAD, bottom + GUTTER_PAD])
+    return template
+
+
+def _plausible_cells(cells: list[list[int]], count: int) -> bool:
+    """Đủ số ô, không ô nào quá thấp, không hở lớn: viền hay đuôi cá bị tính thành chữ thì cả cụm lệch đi một chữ."""
+    if len(cells) != count:
+        return False
+    if count == 1:
+        return True
+    average = (cells[-1][3] - cells[0][1]) / count
+    gaps = (b[1] - a[3] for a, b in zip(cells, cells[1:]))
+    return all(c[3] - c[1] >= GUTTER_MIN_CELL_RATIO * average for c in cells) and all(g <= GUTTER_MAX_GAP_RATIO * average for g in gaps)
+
+
+def gutter_chars(text: str, boxes: list[list[int]], template: list[list[int]], ink) -> dict:
+    """Vị trí chữ bản tâm của một trang. Không khớp mẫu thì không đoán: mọi chữ tính vào `thieu`."""
+    groups = [g for g in (han_only(part) for part in text.split()) if g]
+    count = sum(len(g) for g in groups)
+    first = [b for b in boxes if template and template[0][1] <= (b[1] + b[3]) / 2 <= template[0][3]]
+    if not first or len(groups) != len(template):
+        return {"chu": [], "thieu": count}
+    center = sorted((b[0] + b[2]) / 2 for b in first)[len(first) // 2]
+    chars = []
+    for group, (left, top, right, bottom) in zip(groups, template):
+        window = [round(center + left), top, round(center + right), bottom]
+        cells = box_cells({"box": window}, ink)
+        if _plausible_cells(cells, len(group)):
+            chars += [{"c": ch, "b": cell} for ch, cell in zip(group, cells)]
+            continue
+        own = [b for b in boxes if top <= (b[1] + b[3]) / 2 <= bottom and window[0] <= (b[0] + b[2]) / 2 <= window[2]]
+        if own:
+            area = max(own, key=lambda b: (b[2] - b[0]) * (b[3] - b[1]))
+        elif cells:
+            area = [min(c[0] for c in cells), min(c[1] for c in cells), max(c[2] for c in cells), max(c[3] for c in cells)]
+        else:
+            area = window
+        chars += [
+            {"c": ch, "b": char_box({"box": area}, k, len(group)), "u": 1}
+            for k, ch in enumerate(group)
+        ]
+    return {"chu": chars, "thieu": 0}
+
+
+def gutter_boxes_of(boxes: list[dict], gutter: tuple[float, float]) -> list[list[int]]:
+    """Khung Paddle nằm trong dải bản tâm, bỏ khung quá thấp (vết bẩn, nét rời)."""
+    return [
+        b["box"]
+        for b in boxes
+        if gutter[0] <= (b["box"][0] + b["box"][2]) / 2 <= gutter[1] and b["box"][3] - b["box"][1] >= GUTTER_MIN_HEIGHT
+    ]
+
+
+def read_gutter_text(folder: Path, pages) -> dict[str, str]:
+    """Chữ bản tâm từng trang, trang không có thì bỏ qua."""
+    out = {}
+    for page in pages:
+        path = folder / f"{page}.json"
+        text = json.loads(path.read_text(encoding="utf-8")).get("ban_tam", "") if path.is_file() else ""
+        if text.strip():
+            out[page] = text.strip()
+    return out
+
+
 def read_rows(book_dir: Path) -> dict[str, list[str]]:
     rows: dict[str, list[str]] = {}
     with (book_dir / "cap_cau.csv").open(encoding="utf-8-sig", newline="") as f:
@@ -430,6 +542,7 @@ def main() -> None:
         type=lambda v: tuple(float(x) for x in v.split(",")),
         help="dải bản tâm theo tỉ lệ chiều rộng ảnh, ví dụ 0.445,0.53 (sách đóng hai trang một ảnh)",
     )
+    parser.add_argument("--chu-ban-tam", type=Path, help="thư mục <trang>.json có trường ban_tam (chữ của cột bản tâm)")
     parser.add_argument("--o-cot", type=Path, help="thư mục câu trả lời ô cột của Gemini, xem GEMINI_COLUMN_PROMPT")
     args = parser.parse_args()
 
@@ -449,17 +562,30 @@ def main() -> None:
     rows = read_rows(args.book_dir)
     out_dir = args.book_dir / "khung"
     out_dir.mkdir(exist_ok=True)
+    images = {
+        page: next(p for p in (args.book_dir / "anh" / f"{page}{e}" for e in (".jpg", ".jpeg", ".png")) if p.is_file())
+        for page in rows
+    }
+    detected = {page: (detect(images[page], ocr), detect(images[page], ocr_coarse)) for page in sorted(rows)}
+    gutters = {}
+    for page, image in images.items():
+        with Image.open(image) as img:
+            gutters[page] = (args.ban_tam[0] * img.width, args.ban_tam[1] * img.width) if args.ban_tam else None
+    gutter_text = read_gutter_text(args.chu_ban_tam, rows) if args.chu_ban_tam and args.ban_tam else {}
+    gutter_own = {page: gutter_boxes_of(detected[page][0] + detected[page][1], gutters[page]) for page in gutter_text}
+    template = gutter_template(list(gutter_own.values()))
     total = placed = estimated = 0
     for page, page_rows in sorted(rows.items()):
-        image = next(p for p in (args.book_dir / "anh" / f"{page}{e}" for e in (".jpg", ".jpeg", ".png")) if p.is_file())
-        with Image.open(image) as img:
+        with Image.open(images[page]) as img:
             width, height = img.size
             ink = np.array(img.convert("L")) < INK_THRESHOLD
-        gutter = (args.ban_tam[0] * width, args.ban_tam[1] * width) if args.ban_tam else None
-        boxes = merge_boxes(detect(image, ocr), detect(image, ocr_coarse), han_only("".join(page_rows)))
+        gutter = gutters[page]
+        boxes = merge_boxes(*detected[page], han_only("".join(page_rows)))
         columns = read_gemini_columns(args.o_cot, page) if args.o_cot else []
         chars, missing, source = best_source(page_rows, boxes, columns, width, height, gutter, ink)
         payload = {"rong": width, "cao": height, "chu": chars, "thieu": missing, "nguon": source}
+        if page in gutter_text:
+            payload["ban_tam"] = {"text": gutter_text[page], **gutter_chars(gutter_text[page], gutter_own[page], template, ink)}
         (out_dir / f"{page}.json").write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
         total += len(chars) + missing
         placed += len(chars)

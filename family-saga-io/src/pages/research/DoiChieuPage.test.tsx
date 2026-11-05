@@ -219,14 +219,14 @@ describe("thẻ Soát", () => {
   };
   const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
 
-  const open = () => {
+  const open = (banTam?: unknown) => {
     const calls: { method: string; url: string; body?: string }[] = [];
     vi.stubGlobal(
       "fetch",
       vi.fn(async (url: string, init?: RequestInit) => {
         const method = init?.method ?? "GET";
         calls.push({ method, url, body: init?.body as string | undefined });
-        if (url.includes("/soat/khung/")) return json({ rong: 100, cao: 100, chu: [{ c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }], thieu: 3 });
+        if (url.includes("/soat/khung/")) return json({ rong: 100, cao: 100, chu: [{ c: "公", b: [10, 10, 30, 30] }, { c: "回", b: [10, 30, 30, 50] }], thieu: 3, ban_tam: banTam });
         if (url.endsWith("/soat/nop")) return json({ nop: true, so_cap: 1, loi: [], ly_do: null, tsv: "nom-1_parallel.tsv" });
         if (url.endsWith("/soat") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 1 });
         if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han: "公回", viet: "Ông về", bo: false }], da_soat: [], phien_ban: 0 });
@@ -294,12 +294,44 @@ describe("thẻ Soát", () => {
     expect(document.activeElement).toBe(viet);
   }, 20000);
 
+  it("bản tâm có ô và chữ riêng, sửa được, lưu riêng, không có số dòng", async () => {
+    auth.isAdmin = true;
+    const calls = open({ text: "鄂氏", chu: [{ c: "鄂", b: [50, 10, 70, 30] }, { c: "氏", b: [50, 30, 70, 50], u: 1 }], thieu: 0 });
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    const gutter = (await screen.findByLabelText("Bản tâm")) as HTMLTextAreaElement;
+    expect(gutter.value).toBe("鄂氏");
+    expect(await screen.findAllByTestId("o-chu")).toHaveLength(4);
+    expect(screen.getAllByTestId("so-dong").map((t) => t.textContent)).toEqual(["1"]);
+    fireEvent.click(screen.getByText("Xem song song"));
+    const glyphs = () => screen.getAllByTestId("chu").map((t) => t.textContent).join("");
+    expect(glyphs()).toBe("公回鄂氏");
+    fireEvent.change(gutter, { target: { value: "鄂民" } });
+    expect(glyphs()).toBe("公回鄂民");
+    fireEvent.click(screen.getAllByTestId("chu")[3]);
+    expect(document.activeElement).toBe(gutter);
+    fireEvent.click(screen.getByRole("button", { name: "Lưu nháp" }));
+    await screen.findByRole("button", { name: "Đã lưu" });
+    const put = calls.find((c) => c.method === "PUT");
+    expect(JSON.parse(put?.body ?? "{}").ban_tam).toEqual({ "001": "鄂民" });
+    expect(JSON.parse(put?.body ?? "{}").rows).toHaveLength(1);
+  }, 20000);
+
+  it("trang không có bản tâm thì không có ô sửa bản tâm", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    await screen.findByLabelText("Hán dòng 1");
+    await screen.findAllByTestId("o-chu");
+    expect(screen.queryByLabelText("Bản tâm")).toBeNull();
+  }, 20000);
+
   it("trang chưa có vị trí chữ vẫn kéo được bản dịch, không có ô và số trên ảnh", () => {
     render(
       <SoatOverlay
         mode="dich"
         imageUrl="/anh.jpg"
         khung={null}
+        banTam=""
         draft={[]}
         rows={[
           { key: 7, viet: "Ông về", bo: false },

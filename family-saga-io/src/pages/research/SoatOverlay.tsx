@@ -3,9 +3,12 @@ import { useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type
 
 import type { KhungTrang } from "@/lib/doiChieuApi";
 
-import { alignToAnchors, type DraftChar, type Placed } from "./lopPhu";
+import { alignToAnchors, draftChars, type DraftChar, type Placed } from "./lopPhu";
 
 export type OverlayMode = "anh" | "keo" | "song" | "dich";
+
+/** Khóa giả của cột bản tâm: không phải dòng soát nên không có số dòng, bấm vào thì tới ô sửa bản tâm. */
+export const BAN_TAM_KEY = -1;
 
 export interface OverlayRow {
   key: number;
@@ -174,7 +177,8 @@ const TranslationList = ({
 const SoatOverlay = ({
   mode,
   imageUrl,
-  khung,
+  khung: khungGoc,
+  banTam,
   draft,
   rows,
   marks,
@@ -186,6 +190,8 @@ const SoatOverlay = ({
   imageUrl: string;
   /** null hoặc chưa có: trang chưa có dữ liệu vị trí chữ, chỉ hiện ảnh và bản dịch. */
   khung: KhungTrang | null | undefined;
+  /** Chữ bản tâm đang sửa của trang này. */
+  banTam: string;
   draft: DraftChar[];
   /** Các dòng của trang này theo đúng thứ tự, số dòng tính từ đây. */
   rows: OverlayRow[];
@@ -198,7 +204,18 @@ const SoatOverlay = ({
   const box = useRef<HTMLDivElement>(null);
 
   const numbers = useMemo(() => new Map(rows.map((r, i) => [r.key, i + 1])), [rows]);
-  const placed = useMemo(() => (khung ? alignToAnchors(khung.chu.map((c) => c.c), draft, page) : []), [khung, draft, page]);
+  const placed = useMemo(() => {
+    if (!khungGoc) return [];
+    const body = alignToAnchors(khungGoc.chu.map((c) => c.c), draft, page);
+    const gutter = khungGoc.ban_tam?.chu ?? [];
+    const gutterDraft = draftChars([{ key: BAN_TAM_KEY, trang: page, han: banTam, viet: "", bo: false }]);
+    return [...body, ...alignToAnchors(gutter.map((c) => c.c), gutterDraft, page)];
+  }, [khungGoc, banTam, draft, page]);
+  // Ô bản tâm đi cùng ô thường; rowLabels bỏ qua chúng vì BAN_TAM_KEY không có số dòng.
+  const khung = useMemo(
+    () => khungGoc && { ...khungGoc, chu: [...khungGoc.chu, ...(khungGoc.ban_tam?.chu ?? [])] },
+    [khungGoc],
+  );
   const labels = useMemo(() => (khung ? rowLabels(khung, placed, numbers) : []), [khung, placed, numbers]);
 
   const moveTo = (e: ReactPointerEvent) => {

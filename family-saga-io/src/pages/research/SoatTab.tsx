@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { getKhung, getSoat, nopSoat, pageImageUrl, saveSoat, type BookDetail, type NopResult } from "@/lib/doiChieuApi";
 
 import { draftChars } from "./lopPhu";
-import SoatOverlay, { type OverlayMode } from "./SoatOverlay";
+import SoatOverlay, { BAN_TAM_KEY, type OverlayMode } from "./SoatOverlay";
 import { countSubmittable, mergeWithNext, newRow, splitRow, stripKeys, withKeys, type EditRow } from "./soatRows";
 
 type Carets = Record<number, { han?: number; viet?: number }>;
@@ -27,6 +27,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [rows, setRows] = useState<EditRow[] | null>(null);
   const [confirmed, setConfirmed] = useState<string[]>([]);
   const [version, setVersion] = useState(0);
+  const [banTam, setBanTam] = useState<Record<string, string>>({});
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(false);
   const [page, setPage] = useState<string | null>(null);
@@ -42,6 +43,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
     setRows(loaded);
     setConfirmed(data.da_soat);
     setVersion(data.phien_ban);
+    setBanTam(data.ban_tam ?? {});
     setPage(detail.pages[0] ?? loaded[0]?.trang ?? null);
   }, [data, rows, detail.pages]);
 
@@ -88,7 +90,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
     if (!dirty) return true;
     setBusy(true);
     try {
-      const saved = await saveSoat(student, book, { rows: stripKeys(rows), da_soat: confirmed, phien_ban: version });
+      const saved = await saveSoat(student, book, { rows: stripKeys(rows), da_soat: confirmed, phien_ban: version, ban_tam: banTam });
       setVersion(saved.phien_ban);
       setDirty(false);
       setProblem(null);
@@ -123,6 +125,9 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const pageRows = rows.filter((r) => r.trang === page);
   const isConfirmed = page != null && confirmed.includes(page);
   const toSubmit = countSubmittable(rows, confirmed);
+  const machineBanTam = khung?.ban_tam?.text;
+  const pageBanTam = (page != null ? banTam[page] : undefined) ?? machineBanTam ?? "";
+  const gutterMissing = khung?.ban_tam?.thieu ?? 0;
 
   const addRowToPage = () => {
     if (!page) return;
@@ -234,13 +239,14 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                       </>
                     )}
                     {view === "dich" && " Bấm vào một dòng dịch để tới ô tiếng Việt của dòng đó."}
-                    {khung.thieu > 0 && ` Còn ${khung.thieu} chữ chưa định vị được nên không có ô.`}
+                    {khung.thieu + gutterMissing > 0 && ` Còn ${khung.thieu + gutterMissing} chữ chưa định vị được nên không có ô.`}
                   </Typography.Paragraph>
                 )}
                 <SoatOverlay
                   mode={khung || view === "anh" || view === "dich" ? view : "anh"}
                   imageUrl={pageImageUrl(student, book, page)}
                   khung={khung}
+                  banTam={pageBanTam}
                   draft={overlayDraft}
                   rows={pageRows}
                   marks={marks}
@@ -252,6 +258,24 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
             )}
           </div>
           <Space orientation="vertical" style={{ flex: "1 1 460px", minWidth: 0 }} size="small">
+            {machineBanTam !== undefined && (
+              <div style={{ borderBottom: "1px solid rgba(128,128,128,0.3)", paddingBottom: 8 }}>
+                <Typography.Text type="secondary">Bản tâm (cột in giữa ảnh, không tính vào số cặp)</Typography.Text>
+                <Input.TextArea
+                  id={rowInputId(BAN_TAM_KEY)}
+                  aria-label="Bản tâm"
+                  lang="zh-Hant"
+                  autoSize
+                  maxLength={500}
+                  value={pageBanTam}
+                  style={{ fontSize: 16, marginTop: 4 }}
+                  onChange={(e) => {
+                    setBanTam({ ...banTam, [page]: e.target.value });
+                    setDirty(true);
+                  }}
+                />
+              </div>
+            )}
             {pageRows.length === 0 && <Typography.Text type="secondary">Trang này không có dòng nào của máy.</Typography.Text>}
             {pageRows.map((r, i) => {
               const isLast = rows[rows.length - 1].key === r.key;

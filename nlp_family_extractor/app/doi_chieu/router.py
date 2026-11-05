@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+from typing import Annotated
+
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import FileResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, StringConstraints
 
 from app.auth.dependencies import AdminUser
 from app.doi_chieu import service, soat
@@ -59,10 +61,15 @@ class SoatRow(BaseModel):
     bo: bool = False
 
 
+_Page = Annotated[str, StringConstraints(pattern=f"^{service.PAGE_RE.pattern}$")]
+_BanTam = Annotated[str, StringConstraints(max_length=500)]
+
+
 class SoatDraft(BaseModel):
     rows: list[SoatRow] = Field(max_length=50000)
     da_soat: list[str] = Field(max_length=5000)
     phien_ban: int = Field(ge=0)
+    ban_tam: dict[_Page, _BanTam] | None = Field(default=None, max_length=5000)
 
 
 def _book_dir(student: str, book: str):
@@ -96,7 +103,7 @@ def get_khung(student: str, book: str, page: str, _: AdminUser) -> dict:
 def put_soat(student: str, book: str, payload: SoatDraft, user: AdminUser) -> dict:
     rows = [row.model_dump() for row in payload.rows]
     try:
-        return soat.save(_book_dir(student, book), rows, payload.da_soat, payload.phien_ban, user.email)
+        return soat.save(_book_dir(student, book), rows, payload.da_soat, payload.phien_ban, user.email, payload.ban_tam)
     except soat.VersionConflict as exc:
         detail = "Nháp đã được lưu ở nơi khác (tab hoặc máy khác). Tải lại trang rồi làm tiếp."
         raise HTTPException(status.HTTP_409_CONFLICT, detail=detail) from exc
