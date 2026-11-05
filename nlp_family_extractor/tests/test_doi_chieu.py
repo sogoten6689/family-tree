@@ -192,7 +192,7 @@ class SoatApiTest(unittest.TestCase):
         self.assertEqual(self.client.get(self.URL).json()["goi_y"], {"a1": {"viet": "Gợi ý", "lan": 1}})
         self.assertNotIn("goi_y", json.loads((self.book / "soat_nhap.json").read_text(encoding="utf-8")))
 
-    def test_gutter_text_is_saved_but_never_submitted(self) -> None:
+    def test_gutter_text_without_translation_is_saved_but_not_submitted(self) -> None:
         self.assertEqual(self.client.get(self.URL).json()["ban_tam"], {})
         body = {"rows": [self.row("001", "公回", "Ông về")], "da_soat": ["001"], "phien_ban": 0, "ban_tam": {"001": "鄂氏宗譜 卷十"}}
         self.assertEqual(self.client.put(self.URL, json=body).status_code, 200)
@@ -200,6 +200,65 @@ class SoatApiTest(unittest.TestCase):
         self.assertTrue(self.client.post(f"{self.URL}/nop").json()["nop"])
         self.assertEqual(self.valid_count(), 1)
         self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公回\tÔng về\n")
+
+    def gutter_book(self) -> None:
+        (self.book / "khung").mkdir()
+        for page, text in (("001", "鄂氏 一"), ("002", "鄂氏 二")):
+            payload = {"rong": 10, "cao": 10, "chu": [], "thieu": 0, "ban_tam": {"text": text, "chu": [], "thieu": 0}}
+            (self.book / "khung" / f"{page}.json").write_text(json.dumps(payload), encoding="utf-8")
+        (self.book / "khung" / "._001.json").write_bytes(b"\x00rac")
+        (self.book / "ban_tam_dich.json").write_text(json.dumps({"001": "Họ Ngạc, tờ 1"}), encoding="utf-8")
+
+    def test_machine_gutter_and_prepared_translation_are_listed(self) -> None:
+        self.gutter_book()
+        self.assertEqual(
+            self.client.get(self.URL).json()["ban_tam_may"],
+            {"001": {"han": "鄂氏 一", "viet": "Họ Ngạc, tờ 1"}, "002": {"han": "鄂氏 二"}},
+        )
+
+    def test_gutter_with_translation_becomes_a_pair_at_top_of_confirmed_page_only(self) -> None:
+        self.gutter_book()
+        self.save([self.row("001", "公回。", "Ông về."), self.row("002", "改。", "Đổi.")], ["001"])
+        self.assertEqual(self.client.post(f"{self.URL}/nop").json()["so_cap"], 2)
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "鄂氏 一\tHọ Ngạc, tờ 1\n公回。\tÔng về.\n")
+        self.assertEqual(self.valid_count(), 2)
+        self.assertNotIn("ban_tam_may", json.loads((self.book / "soat_nhap.json").read_text(encoding="utf-8")))
+
+    def test_reviewer_gutter_edits_win_and_clearing_translation_removes_the_pair(self) -> None:
+        self.gutter_book()
+        rows = [self.row("001", "公回。", "Ông về."), self.row("002", "改。", "Đổi.")]
+        body = {
+            "rows": rows,
+            "da_soat": ["001", "002"],
+            "phien_ban": 0,
+            "ban_tam": {"002": "鄂氏 卷二"},
+            "ban_tam_viet": {"001": "", "002": "Họ Ngạc, quyển 2"},
+        }
+        self.assertEqual(self.client.put(self.URL, json=body).status_code, 200)
+        self.assertTrue(self.client.post(f"{self.URL}/nop").json()["nop"])
+        self.assertEqual(
+            (self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"),
+            "公回。\tÔng về.\n鄂氏 卷二\tHọ Ngạc, quyển 2\n改。\tĐổi.\n",
+        )
+
+    def test_gutter_translation_with_han_blocks_submit_and_names_the_page(self) -> None:
+        self.gutter_book()
+        body = {"rows": [self.row("001", "公回。", "Ông về.")], "da_soat": ["001"], "phien_ban": 0, "ban_tam_viet": {"001": "Họ 鄂"}}
+        self.client.put(self.URL, json=body)
+        answer = self.client.post(f"{self.URL}/nop").json()
+        self.assertFalse(answer["nop"])
+        self.assertEqual([(e["trang"], e["han"]) for e in answer["loi"]], [("001", "鄂氏 一")])
+
+    def test_confirmed_page_with_only_gutter_is_still_submitted(self) -> None:
+        self.gutter_book()
+        self.save([], ["001"])
+        self.assertEqual(self.client.post(f"{self.URL}/nop").json()["so_cap"], 1)
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "鄂氏 一\tHọ Ngạc, tờ 1\n")
+
+    def test_save_from_old_page_keeps_gutter_translation(self) -> None:
+        body = {"rows": [], "da_soat": [], "phien_ban": 0, "ban_tam_viet": {"001": "Họ Ngạc"}}
+        self.client.put(self.URL, json=body)
+        self.assertEqual(self.save([], [], phien_ban=1).json()["ban_tam_viet"], {"001": "Họ Ngạc"})
 
     def test_save_from_old_page_keeps_gutter_text(self) -> None:
         body = {"rows": [], "da_soat": [], "phien_ban": 0, "ban_tam": {"001": "鄂氏"}}

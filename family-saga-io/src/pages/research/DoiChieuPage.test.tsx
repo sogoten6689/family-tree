@@ -290,7 +290,7 @@ describe("thẻ Soát", () => {
   };
   const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
 
-  const open = (banTam?: unknown, goiY?: unknown, han = "公回", viet = "Ông về", extra: object = {}, khungExtra: object = {}) => {
+  const open = (banTam?: unknown, goiY?: unknown, han = "公回", viet = "Ông về", extra: object = {}, khungExtra: object = {}, soatExtra: object = {}) => {
     const calls: { method: string; url: string; body?: string }[] = [];
     vi.stubGlobal(
       "fetch",
@@ -307,7 +307,7 @@ describe("thẻ Soát", () => {
         }
         if (url.endsWith("/soat/nop")) return json({ nop: true, so_cap: 1, loi: [], ly_do: null, tsv: "nom-1_parallel.tsv" });
         if (url.endsWith("/soat") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 1 });
-        if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han, viet, bo: false, ...extra }], da_soat: [], phien_ban: 0, goi_y: goiY ?? {} });
+        if (url.endsWith("/soat")) return json({ rows: [{ trang: "001", han, viet, bo: false, ...extra }], da_soat: [], phien_ban: 0, goi_y: goiY ?? {}, ...soatExtra });
         return json(book);
       }),
     );
@@ -322,15 +322,17 @@ describe("thẻ Soát", () => {
   };
 
   describe("sửa ô chữ", () => {
+    // Truy vấn theo vai trò trên antd chậm, máy CI bận có thể vượt mức chờ mặc định 1 giây.
+    const SLOW = { timeout: 8000 };
     const mouse = (el: Element, type: string, x: number, y: number) =>
       fireEvent(el, new MouseEvent(type, { bubbles: true, clientX: x, clientY: y }));
 
     const openEditor = async (khungExtra: object = {}, banTam?: unknown) => {
       auth.isAdmin = true;
       const calls = open(banTam, undefined, "公回", "Ông về", {}, khungExtra);
-      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
-      fireEvent.click(await screen.findByRole("button", { name: "Sửa ô chữ" }));
-      const svg = await screen.findByTestId("vung-sua-o");
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }, SLOW));
+      fireEvent.click(await screen.findByRole("button", { name: "Sửa ô chữ" }, SLOW));
+      const svg = await screen.findByTestId("vung-sua-o", undefined, SLOW);
       svg.getBoundingClientRect = () => ({ left: 0, top: 0, width: 100, height: 100 }) as DOMRect;
       return { calls, svg };
     };
@@ -345,7 +347,7 @@ describe("thẻ Soát", () => {
     };
     const saveBoxes = async () => {
       fireEvent.click(screen.getByRole("button", { name: "Lưu ô chữ" }));
-      await screen.findByRole("button", { name: "Đã lưu ô chữ" });
+      await screen.findByRole("button", { name: "Đã lưu ô chữ" }, SLOW);
     };
 
     it("vẽ ô mới, gõ chữ rồi lưu, ô được chèn đúng thứ tự đọc", async () => {
@@ -427,6 +429,46 @@ describe("thẻ Soát", () => {
       const body = saved(calls);
       expect(body.chu).toHaveLength(2);
       expect(body.ban_tam_chu.map((c: { c: string }) => c.c)).toEqual(["鄂", "宗", "氏"]);
+    }, 20000);
+  });
+
+  describe("bản dịch bản tâm", () => {
+    const banTam = { text: "鄂氏", chu: [], thieu: 0 };
+    const openGutter = async (viet?: string) => {
+      auth.isAdmin = true;
+      const calls = open(banTam, undefined, "公回", "Ông về", {}, {}, { ban_tam_may: { "001": { han: "鄂氏", ...(viet ? { viet } : {}) } } });
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      return { calls, input: (await screen.findByLabelText("Bản dịch bản tâm")) as HTMLTextAreaElement };
+    };
+    const confirmPage = () => fireEvent.click(screen.getByRole("checkbox", { name: "Tôi đã soát xong trang này" }));
+
+    it("điền sẵn bản dịch, sửa rồi lưu, không gửi lại phần của máy", async () => {
+      const { calls, input } = await openGutter("Họ Ngạc");
+      expect(input.value).toBe("Họ Ngạc");
+      fireEvent.change(input, { target: { value: "Gia phả họ Ngạc" } });
+      fireEvent.click(screen.getByRole("button", { name: "Lưu nháp" }));
+      await screen.findByRole("button", { name: "Đã lưu" });
+      const body = JSON.parse(calls.find((c) => c.method === "PUT")?.body as string);
+      expect(body.ban_tam_viet).toEqual({ "001": "Gia phả họ Ngạc" });
+      expect(body.ban_tam_may).toBeUndefined();
+    }, 20000);
+
+    it("số cặp sẽ nộp tính cả bản tâm khi có đủ hai vế", async () => {
+      const { input } = await openGutter("Họ Ngạc");
+      confirmPage();
+      expect(screen.getByRole("button", { name: "Nộp 2 cặp" })).toBeTruthy();
+      fireEvent.change(input, { target: { value: "  " } });
+      expect(screen.getByRole("button", { name: "Nộp 1 cặp" })).toBeTruthy();
+    }, 20000);
+
+    it("thẻ Kéo bản dịch hiện dòng bản tâm không đánh số, bấm vào tới ô dịch của nó", async () => {
+      const { input } = await openGutter("Họ Ngạc");
+      fireEvent.click(screen.getByText("Kéo bản dịch"));
+      const line = await screen.findByTestId("dong-dich-ban-tam");
+      expect(line.textContent).toContain("Họ Ngạc");
+      expect(screen.getAllByTestId("dong-dich")).toHaveLength(1);
+      fireEvent.click(line);
+      expect(document.activeElement).toBe(input);
     }, 20000);
   });
 

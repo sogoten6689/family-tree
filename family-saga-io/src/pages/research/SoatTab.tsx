@@ -32,6 +32,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const [confirmed, setConfirmed] = useState<string[]>([]);
   const [version, setVersion] = useState(0);
   const [banTam, setBanTam] = useState<Record<string, string>>({});
+  const [banTamViet, setBanTamViet] = useState<Record<string, string>>({});
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(false);
   const [page, setPage] = useState<string | null>(null);
@@ -50,6 +51,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
     setConfirmed(data.da_soat);
     setVersion(data.phien_ban);
     setBanTam(data.ban_tam ?? {});
+    setBanTamViet(data.ban_tam_viet ?? {});
     setPage(detail.pages[0] ?? loaded[0]?.trang ?? null);
   }, [data, rows, detail.pages]);
 
@@ -106,7 +108,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
     if (!dirty) return true;
     setBusy(true);
     try {
-      const saved = await saveSoat(student, book, { rows: stripKeys(rows), da_soat: confirmed, phien_ban: version, ban_tam: banTam });
+      const saved = await saveSoat(student, book, { rows: stripKeys(rows), da_soat: confirmed, phien_ban: version, ban_tam: banTam, ban_tam_viet: banTamViet });
       setVersion(saved.phien_ban);
       setDirty(false);
       setProblem(null);
@@ -149,9 +151,14 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
   const pageIndex = page ? pages.indexOf(page) : -1;
   const pageRows = rows.filter((r) => r.trang === page);
   const isConfirmed = page != null && confirmed.includes(page);
-  const toSubmit = countSubmittable(rows, confirmed);
+  const machineGutters = data?.ban_tam_may ?? {};
+  const gutterHan = (p: string) => banTam[p] ?? machineGutters[p]?.han ?? "";
+  const gutterViet = (p: string) => banTamViet[p] ?? machineGutters[p]?.viet ?? "";
+  // Khớp với máy chủ: bản tâm chỉ thành cặp khi có đủ hai vế.
+  const toSubmit = countSubmittable(rows, confirmed) + confirmed.filter((p) => gutterHan(p).trim() && gutterViet(p).trim()).length;
   const machineBanTam = khung?.ban_tam?.text;
   const pageBanTam = (page != null ? banTam[page] : undefined) ?? machineBanTam ?? "";
+  const pageBanTamViet = page != null ? gutterViet(page) : "";
   const gutterMissing = khung?.ban_tam?.thieu ?? 0;
 
   const suggestions = data?.goi_y ?? {};
@@ -347,6 +354,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                       imageUrl={pageImageUrl(student, book, page)}
                       khung={khung}
                       banTam={pageBanTam}
+                  banTamViet={machineBanTam !== undefined ? pageBanTamViet : null}
                       draft={overlayDraft}
                       rows={pageRows}
                       marks={marks}
@@ -362,7 +370,7 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
           <Space orientation="vertical" style={{ flex: "1 1 460px", minWidth: 0 }} size="small">
             {machineBanTam !== undefined && (
               <div style={{ borderBottom: "1px solid rgba(128,128,128,0.3)", paddingBottom: 8 }}>
-                <Typography.Text type="secondary">Bản tâm (cột in giữa ảnh, không tính vào số cặp)</Typography.Text>
+                <Typography.Text type="secondary">Bản tâm (cột in giữa ảnh): có đủ chữ Hán và bản dịch thì thành một cặp khi nộp</Typography.Text>
                 <Input.TextArea
                   id={rowInputId(BAN_TAM_KEY)}
                   aria-label="Bản tâm"
@@ -373,6 +381,19 @@ const SoatTab = ({ detail }: { detail: BookDetail }) => {
                   style={{ fontSize: 16, marginTop: 4 }}
                   onChange={(e) => {
                     setBanTam({ ...banTam, [page]: e.target.value });
+                    setDirty(true);
+                  }}
+                />
+                <Input.TextArea
+                  id={rowVietId(BAN_TAM_KEY)}
+                  aria-label="Bản dịch bản tâm"
+                  autoSize
+                  maxLength={1000}
+                  placeholder="Bản dịch bản tâm"
+                  value={pageBanTamViet}
+                  style={{ marginTop: 4 }}
+                  onChange={(e) => {
+                    setBanTamViet({ ...banTamViet, [page]: e.target.value });
                     setDirty(true);
                   }}
                 />
