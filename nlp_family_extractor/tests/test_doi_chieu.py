@@ -273,6 +273,69 @@ class SoatApiTest(unittest.TestCase):
         self.login(UserRole.USER)
         self.assertEqual(self.client.get(url).status_code, 403)
 
+    def machine_boxes(self) -> dict:
+        (self.book / "khung").mkdir()
+        payload = {
+            "rong": 100,
+            "cao": 200,
+            "chu": [{"c": "公", "b": [1, 2, 3, 4], "u": 1}],
+            "thieu": 2,
+            "ban_tam": {"text": "鄂", "chu": [{"c": "鄂", "b": [5, 6, 7, 8]}], "thieu": 1},
+        }
+        (self.book / "khung" / "001.json").write_text(json.dumps(payload), encoding="utf-8")
+        return payload
+
+    def test_edited_boxes_replace_machine_boxes_but_keep_machine_file(self) -> None:
+        machine = self.machine_boxes()
+        url = f"{self.URL}/khung/001"
+        body = {
+            "chu": [{"c": "公", "b": [1, 2, 9, 9], "n": "sua"}, {"c": "回", "b": [10, 10, 20, 20], "n": "them"}],
+            "ban_tam_chu": [],
+            "phien_ban": 0,
+        }
+        saved = self.client.put(url, json=body).json()
+        self.assertEqual(saved["chu"], body["chu"])
+        self.assertEqual((saved["thieu"], saved["da_sua"], saved["phien_ban"]), (1, True, 1))
+        self.assertEqual((saved["ban_tam"]["chu"], saved["ban_tam"]["text"]), ([], "鄂"))
+        self.assertEqual(self.client.get(url).json(), saved)
+        self.assertEqual(json.loads((self.book / "khung" / "001.json").read_text(encoding="utf-8")), machine)
+
+    def test_restoring_boxes_returns_machine_and_keeps_edit_in_history(self) -> None:
+        machine = self.machine_boxes()
+        url = f"{self.URL}/khung/001"
+        self.client.put(url, json={"chu": [], "phien_ban": 0})
+        self.assertEqual(self.client.delete(url, params={"phien_ban": 0}).status_code, 409)
+        self.assertEqual(self.client.delete(url, params={"phien_ban": 1}).json(), machine)
+        self.assertEqual(self.client.get(url).json(), machine)
+        (old,) = (self.book / "khung_sua" / "lich_su").glob("001_*.json")
+        self.assertEqual(json.loads(old.read_text(encoding="utf-8"))["chu"], [])
+
+    def test_stale_or_invalid_box_edit_is_rejected(self) -> None:
+        self.machine_boxes()
+        url = f"{self.URL}/khung/001"
+        self.assertEqual(self.client.put(url, json={"chu": [], "phien_ban": 0}).status_code, 200)
+        self.assertEqual(self.client.put(url, json={"chu": [], "phien_ban": 0}).status_code, 409)
+        for cell in ({"c": "公", "b": [0, 0, 101, 5]}, {"c": "公", "b": [5, 0, 1, 5]}, {"c": "", "b": [0, 0, 1, 1]}, {"c": "公", "b": [0, 0, 1, 1], "n": "x"}):
+            self.assertEqual(self.client.put(url, json={"chu": [cell], "phien_ban": 1}).status_code, 422)
+
+    def test_box_edit_needs_machine_positions_and_admin(self) -> None:
+        url = f"{self.URL}/khung/001"
+        self.assertEqual(self.client.put(url, json={"chu": [], "phien_ban": 0}).status_code, 404)
+        self.assertEqual(self.client.delete(url, params={"phien_ban": 0}).status_code, 404)
+        self.assertEqual(self.client.put(f"{self.URL}/khung/..%2F..%2Fmeta", json={"chu": [], "phien_ban": 0}).status_code, 404)
+        self.machine_boxes()
+        self.login(UserRole.USER)
+        self.assertEqual(self.client.put(url, json={"chu": [], "phien_ban": 0}).status_code, 403)
+        self.assertEqual(self.client.delete(url, params={"phien_ban": 0}).status_code, 403)
+        self.assertFalse((self.book / "khung_sua").exists())
+
+    def test_box_edit_does_not_change_submission(self) -> None:
+        self.machine_boxes()
+        self.save([self.row("001", "公回。", "Ông về.")], ["001"])
+        self.client.put(f"{self.URL}/khung/001", json={"chu": [], "phien_ban": 0})
+        self.assertEqual(self.client.post(f"{self.URL}/nop").json()["so_cap"], 1)
+        self.assertEqual((self.book / "nom-1_parallel.tsv").read_text(encoding="utf-8"), "公回。\tÔng về.\n")
+
     def test_existing_submission_is_not_overwritten_from_machine(self) -> None:
         tsv = self.book / "bai_cua_sinh_vien.tsv"
         tsv.write_text("公回。\tÔng về.\n", encoding="utf-8")

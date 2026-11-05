@@ -1,9 +1,10 @@
 import { Button, Image, Slider, Space } from "antd";
-import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode, type UIEvent } from "react";
+import { useMemo, useRef, useState, type Dispatch, type PointerEvent as ReactPointerEvent, type ReactNode, type SetStateAction, type UIEvent } from "react";
 
 import type { KhungTrang } from "@/lib/doiChieuApi";
 
 import { alignToAnchors, draftChars, type DraftChar, type Placed } from "./lopPhu";
+import { boxColor, clampZoom, MAX_ZOOM, MIN_ZOOM, useWheelZoom, ZOOM_STEP } from "./oChu";
 
 export type OverlayMode = "anh" | "keo" | "song" | "dich";
 
@@ -20,8 +21,6 @@ export interface OverlayRow {
 const PAPER = "#ffffff";
 const INK = "#111111";
 const CHANGED = "#d4380d";
-const BOX = "#1677ff";
-const BOX_ESTIMATED = "#d46b08";
 const FLAGGED = "rgba(250, 173, 20, 0.35)";
 const NUMBER = "#0958d9";
 
@@ -32,10 +31,19 @@ interface RowLabel {
   y: number;
 }
 
-const MIN_ZOOM = 1;
-const MAX_ZOOM = 5;
-const ZOOM_STEP = 1.25;
-const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, z));
+export const ZoomBar = ({ zoom, setZoom }: { zoom: number; setZoom: Dispatch<SetStateAction<number>> }) => (
+  <Space.Compact style={{ marginBottom: 8 }}>
+    <Button size="small" aria-label="Thu nhỏ" disabled={zoom <= MIN_ZOOM} onClick={() => setZoom(clampZoom(zoom / ZOOM_STEP))}>
+      −
+    </Button>
+    <Button size="small" title="Về 100%" onClick={() => setZoom(1)}>
+      {Math.round(zoom * 100)}%
+    </Button>
+    <Button size="small" aria-label="Phóng to" disabled={zoom >= MAX_ZOOM} onClick={() => setZoom(clampZoom(zoom * ZOOM_STEP))}>
+      +
+    </Button>
+  </Space.Compact>
+);
 
 const numberSize = (khung: KhungTrang) => khung.rong / 50;
 
@@ -87,7 +95,7 @@ const BoxLayer = ({ khung, labels, flagged }: { khung: KhungTrang; labels: RowLa
     viewBox={`0 0 ${khung.rong} ${khung.cao}`}
     style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }}
   >
-    {khung.chu.map(({ b, u }, i) => (
+    {khung.chu.map(({ b, u, n }, i) => (
       <rect
         key={i}
         data-testid="o-chu"
@@ -97,7 +105,7 @@ const BoxLayer = ({ khung, labels, flagged }: { khung: KhungTrang; labels: RowLa
         height={b[3] - b[1]}
         fill={flagged[i] ? FLAGGED : "none"}
         data-danh-dau={flagged[i] || undefined}
-        stroke={u ? BOX_ESTIMATED : BOX}
+        stroke={boxColor({ u, n })}
         strokeWidth={1}
         strokeDasharray={u ? "3 2" : undefined}
         vectorEffect="non-scaling-stroke"
@@ -128,7 +136,7 @@ const TextPage = ({
     viewBox={`0 0 ${khung.rong} ${khung.cao}`}
     style={{ display: "block", width: "100%", height: "auto", background: PAPER }}
   >
-    {khung.chu.map(({ b, u }, i) => {
+    {khung.chu.map(({ b, u, n }, i) => {
       const p = placed[i];
       if (!p) return null;
       const [x0, y0, x1, y1] = b;
@@ -138,8 +146,8 @@ const TextPage = ({
           data-testid="chu"
           x={(x0 + x1) / 2}
           y={(y0 + y1) / 2}
-          // Khung sát nét nên chữ dẹt như 一 có một chiều rất nhỏ; khung ước lượng thì rộng bằng cả cột.
-          fontSize={(u ? Math.min(x1 - x0, y1 - y0) : Math.max(x1 - x0, y1 - y0)) * 0.95}
+          // Khung sát nét nên chữ dẹt như 一 có một chiều rất nhỏ; khung ước lượng thì rộng bằng cả cột, khung vẽ tay thì không biết sát hay rộng.
+          fontSize={(u || n ? Math.min(x1 - x0, y1 - y0) : Math.max(x1 - x0, y1 - y0)) * 0.95}
           fontFamily='"Noto Serif TC", "Songti TC", "SimSun", serif'
           textAnchor="middle"
           dominantBaseline="central"
@@ -233,17 +241,7 @@ const SoatOverlay = ({
     if (rect?.width) setSplit(Math.min(100, Math.max(0, ((e.clientX - rect.left) / rect.width) * 100)));
   };
 
-  // Giữ Ctrl (hoặc chụm hai ngón trên bàn di chuột) rồi cuộn để phóng to. React gắn wheel ở chế độ không chặn được, nên gắn tay.
-  useEffect(() => {
-    const zoomByWheel = (e: WheelEvent) => {
-      if (!e.ctrlKey) return;
-      e.preventDefault();
-      setZoom((z) => clampZoom(z * Math.exp(-e.deltaY * 0.01)));
-    };
-    const nodes = panes.current.filter((n): n is HTMLDivElement => !!n);
-    nodes.forEach((n) => n.addEventListener("wheel", zoomByWheel, { passive: false }));
-    return () => nodes.forEach((n) => n.removeEventListener("wheel", zoomByWheel));
-  }, [mode]);
+  useWheelZoom(panes, setZoom, mode);
 
   /** Xem song song: cuộn một bên thì bên kia theo, để luôn nhìn cùng một chỗ trên trang. */
   const followScroll = (e: UIEvent<HTMLDivElement>) => {
@@ -272,19 +270,7 @@ const SoatOverlay = ({
     </div>
   );
 
-  const zoomBar = (
-    <Space.Compact style={{ marginBottom: 8 }}>
-      <Button size="small" aria-label="Thu nhỏ" disabled={zoom <= MIN_ZOOM} onClick={() => setZoom(clampZoom(zoom / ZOOM_STEP))}>
-        −
-      </Button>
-      <Button size="small" title="Về 100%" onClick={() => setZoom(1)}>
-        {Math.round(zoom * 100)}%
-      </Button>
-      <Button size="small" aria-label="Phóng to" disabled={zoom >= MAX_ZOOM} onClick={() => setZoom(clampZoom(zoom * ZOOM_STEP))}>
-        +
-      </Button>
-    </Space.Compact>
-  );
+  const zoomBar = <ZoomBar zoom={zoom} setZoom={setZoom} />;
 
   const flagged = useMemo(() => {
     const keys = new Set(rows.filter((r) => r.danh_dau).map((r) => r.key));

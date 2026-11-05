@@ -77,6 +77,20 @@ class SoatDraft(BaseModel):
     ban_tam: dict[_Page, _BanTam] | None = Field(default=None, max_length=5000)
 
 
+class KhungChu(BaseModel):
+    c: str = Field(min_length=1, max_length=4)
+    b: tuple[int, int, int, int]
+    u: int | None = None
+    # Ô do người soát chỉnh ("sua") hoặc thêm ("them"); ô máy thì không có.
+    n: Literal["sua", "them"] | None = None
+
+
+class KhungSua(BaseModel):
+    chu: list[KhungChu] = Field(max_length=20000)
+    ban_tam_chu: list[KhungChu] | None = Field(default=None, max_length=2000)
+    phien_ban: int = Field(ge=0)
+
+
 def _book_dir(student: str, book: str):
     bdir = service.book_dir(_root(), student, book)
     if bdir is None:
@@ -102,6 +116,39 @@ def get_khung(student: str, book: str, page: str, _: AdminUser) -> dict:
     if data is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Trang này chưa có dữ liệu vị trí chữ.")
     return data
+
+
+_NO_POSITIONS = "Trang này chưa có dữ liệu vị trí chữ."
+_BOX_CONFLICT = "Ô chữ trang này đã được lưu ở nơi khác (tab hoặc máy khác). Tải lại trang rồi làm tiếp."
+
+
+@admin_router.put("/{student}/{book}/soat/khung/{page}")
+def put_khung(student: str, book: str, page: str, payload: KhungSua, user: AdminUser) -> dict:
+    chu = [cell.model_dump(exclude_none=True) for cell in payload.chu]
+    gutter = None if payload.ban_tam_chu is None else [cell.model_dump(exclude_none=True) for cell in payload.ban_tam_chu]
+    try:
+        return soat.save_positions(_book_dir(student, book), page, chu, gutter, payload.phien_ban, user.email)
+    except soat.NoPositions as exc:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail=_NO_POSITIONS) from exc
+    except soat.VersionConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, detail=_BOX_CONFLICT) from exc
+    except soat.BoxOutsidePage as exc:
+        raise HTTPException(422, detail="Có ô chữ nằm ngoài ảnh.") from exc
+    except OSError as exc:
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=_NOT_WRITABLE) from exc
+
+
+@admin_router.delete("/{student}/{book}/soat/khung/{page}")
+def delete_khung(student: str, book: str, page: str, phien_ban: int, _: AdminUser) -> dict:
+    """Khôi phục ô máy; bản đã sửa được giữ lại trong lịch sử."""
+    try:
+        return soat.restore_positions(_book_dir(student, book), page, phien_ban)
+    except soat.NoPositions as exc:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail=_NO_POSITIONS) from exc
+    except soat.VersionConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, detail=_BOX_CONFLICT) from exc
+    except OSError as exc:
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=_NOT_WRITABLE) from exc
 
 
 @admin_router.put("/{student}/{book}/soat")
