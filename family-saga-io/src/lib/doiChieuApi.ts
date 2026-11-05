@@ -106,8 +106,12 @@ export interface SoatDraft {
   /** Các trang người soát đã xác nhận; chỉ dòng của các trang này mới được nộp. */
   da_soat: string[];
   phien_ban: number;
-  /** Chữ bản tâm đã sửa theo trang; không vào tệp nộp, không tính vào số cặp. */
+  /** Chữ bản tâm đã sửa theo trang. */
   ban_tam?: Record<string, string>;
+  /** Bản dịch bản tâm đã sửa theo trang; có đủ hai vế thì trang đã xác nhận thêm một cặp khi nộp. */
+  ban_tam_viet?: Record<string, string>;
+  /** Bản tâm của máy và bản dịch soạn sẵn; chỉ có khi đọc nháp, không gửi lại khi lưu. */
+  ban_tam_may?: Record<string, { han: string; viet?: string }>;
   /** Chỉ có khi đọc nháp; không gửi lại khi lưu. */
   goi_y?: Record<string, GoiY>;
 }

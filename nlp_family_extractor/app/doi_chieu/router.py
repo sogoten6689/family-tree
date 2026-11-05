@@ -68,6 +68,7 @@ class SoatRow(BaseModel):
 
 _Page = Annotated[str, StringConstraints(pattern=f"^{service.PAGE_RE.pattern}$")]
 _BanTam = Annotated[str, StringConstraints(max_length=500)]
+_BanTamViet = Annotated[str, StringConstraints(max_length=1000)]
 
 
 class SoatDraft(BaseModel):
@@ -75,6 +76,7 @@ class SoatDraft(BaseModel):
     da_soat: list[str] = Field(max_length=5000)
     phien_ban: int = Field(ge=0)
     ban_tam: dict[_Page, _BanTam] | None = Field(default=None, max_length=5000)
+    ban_tam_viet: dict[_Page, _BanTamViet] | None = Field(default=None, max_length=5000)
 
 
 class KhungChu(BaseModel):
@@ -155,7 +157,9 @@ def delete_khung(student: str, book: str, page: str, phien_ban: int, _: AdminUse
 def put_soat(student: str, book: str, payload: SoatDraft, user: AdminUser) -> dict:
     rows = [row.model_dump(exclude_none=True) for row in payload.rows]
     try:
-        return soat.save(_book_dir(student, book), rows, payload.da_soat, payload.phien_ban, user.email, payload.ban_tam)
+        return soat.save(
+            _book_dir(student, book), rows, payload.da_soat, payload.phien_ban, user.email, payload.ban_tam, payload.ban_tam_viet
+        )
     except soat.VersionConflict as exc:
         detail = "Nháp đã được lưu ở nơi khác (tab hoặc máy khác). Tải lại trang rồi làm tiếp."
         raise HTTPException(status.HTTP_409_CONFLICT, detail=detail) from exc

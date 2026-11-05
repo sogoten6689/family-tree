@@ -166,15 +166,27 @@ const TextPage = ({
 const TranslationList = ({
   rows,
   numbers,
+  banTamViet,
   page,
   onPick,
 }: {
   rows: OverlayRow[];
   numbers: Map<number, number>;
+  banTamViet: string | null;
   page: string;
   onPick: (rowKey: number) => void;
 }) => (
   <div role="region" aria-label={`Bản dịch trang ${page}`} style={{ padding: "8px 12px", color: INK, fontSize: 14, lineHeight: 1.5 }}>
+    {banTamViet !== null && (
+      <div
+        data-testid="dong-dich-ban-tam"
+        style={{ marginBottom: 8, paddingBottom: 8, borderBottom: "1px solid #d9d9d9", cursor: "pointer" }}
+        onClick={() => onPick(BAN_TAM_KEY)}
+      >
+        <strong style={{ color: NUMBER }}>Bản tâm: </strong>
+        <span style={banTamViet.trim() ? undefined : { color: "#8c8c8c", fontStyle: "italic" }}>{banTamViet.trim() || "(chưa có bản dịch)"}</span>
+      </div>
+    )}
     {rows.map((r) => (
       <div
         key={r.key}
@@ -195,6 +207,7 @@ const SoatOverlay = ({
   imageUrl,
   khung: khungGoc,
   banTam,
+  banTamViet = null,
   draft,
   rows,
   marks,
@@ -208,6 +221,8 @@ const SoatOverlay = ({
   khung: KhungTrang | null | undefined;
   /** Chữ bản tâm đang sửa của trang này. */
   banTam: string;
+  /** Bản dịch bản tâm của trang này; null khi trang không có bản tâm. */
+  banTamViet?: string | null;
   draft: DraftChar[];
   /** Các dòng của trang này theo đúng thứ tự, số dòng tính từ đây. */
   rows: OverlayRow[];
@@ -323,7 +338,7 @@ const SoatOverlay = ({
           ) : (
             // Bản dịch đọc ngang nên co theo phần còn lại, thay vì bị cắt mất đầu dòng.
             <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, left: `${split}%`, overflow: "auto", background: PAPER }}>
-              <TranslationList rows={visibleRows} numbers={numbers} page={page} onPick={onPickTranslation} />
+              <TranslationList rows={visibleRows} numbers={numbers} banTamViet={banTamViet} page={page} onPick={onPickTranslation} />
             </div>
           )}
           <div

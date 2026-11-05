@@ -18,6 +18,7 @@ from app.doi_chieu import service
 
 DRAFT_NAME = "soat_nhap.json"
 SUGGESTION_NAME = "goi_y.json"
+GUTTER_TRANSLATION_NAME = "ban_tam_dich.json"
 HISTORY_DIR = "lich_su"
 BOX_EDIT_DIR = "khung_sua"
 BOX_ADDED = "them"
@@ -155,24 +156,57 @@ def _read_suggestions(bdir: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
 
 
+def machine_gutters(bdir: Path) -> dict[str, dict]:
+    """Bản tâm máy đọc theo trang (khung/<trang>.json), kèm bản dịch soạn sẵn ở ban_tam_dich.json nếu có."""
+    path = bdir / GUTTER_TRANSLATION_NAME
+    translations = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    gutters = {}
+    for page_file in sorted((bdir / "khung").glob("*.json")):
+        page = page_file.stem
+        text = (_machine_positions(bdir, page) or {}).get("ban_tam", {}).get("text")
+        if text:
+            gutters[page] = {"han": text, **({"viet": translations[page]} if translations.get(page) else {})}
+    return gutters
+
+
 def load(bdir: Path) -> dict:
     """Nháp hiện có; chưa có thì dựng từ bản máy, mỗi cột chữ một dòng."""
     draft = _read_draft(bdir)
     if draft is not None:
-        return {"ban_tam": {}, **draft, "goi_y": _read_suggestions(bdir)}
+        return {
+            "ban_tam": {},
+            "ban_tam_viet": {},
+            **draft,
+            "ban_tam_may": machine_gutters(bdir),
+            "goi_y": _read_suggestions(bdir),
+        }
     if service.load_book(bdir)["tsv"]:
         raise SubmittedOutsideDraft
     rows = [
         {"trang": r["trang"], "han": r["han"], "viet": r["viet"], "bo": False}
         for r in service.read_machine(bdir / "cap_cau.csv")
     ]
-    return {"rows": rows, "da_soat": [], "phien_ban": 0, "ban_tam": {}, "goi_y": _read_suggestions(bdir)}
+    return {
+        "rows": rows,
+        "da_soat": [],
+        "phien_ban": 0,
+        "ban_tam": {},
+        "ban_tam_viet": {},
+        "ban_tam_may": machine_gutters(bdir),
+        "goi_y": _read_suggestions(bdir),
+    }
 
 
 def save(
-    bdir: Path, rows: list[dict], da_soat: list[str], phien_ban: int, nguoi_soat: str, ban_tam: dict[str, str] | None = None
+    bdir: Path,
+    rows: list[dict],
+    da_soat: list[str],
+    phien_ban: int,
+    nguoi_soat: str,
+    ban_tam: dict[str, str] | None = None,
+    ban_tam_viet: dict[str, str] | None = None,
 ) -> dict:
-    """`ban_tam`: chữ bản tâm đã sửa theo trang, không bao giờ vào TSV. None nghĩa là giữ nguyên (trang web bản cũ)."""
+    """`ban_tam`, `ban_tam_viet`: chữ bản tâm và bản dịch đã sửa theo trang. None nghĩa là giữ nguyên (trang web bản cũ)."""
     with _write_lock:
         current = _read_draft(bdir)
         if (current["phien_ban"] if current else 0) != phien_ban:
@@ -184,6 +218,7 @@ def save(
             "da_soat": sorted(set(da_soat)),
             "phien_ban": phien_ban + 1,
             "ban_tam": ban_tam if ban_tam is not None else (current or {}).get("ban_tam", {}),
+            "ban_tam_viet": ban_tam_viet if ban_tam_viet is not None else (current or {}).get("ban_tam_viet", {}),
             "nguoi_soat": nguoi_soat,
             "luu_luc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         }
@@ -195,14 +230,35 @@ def _clean_cell(text: str) -> str:
     return _CELL_BREAK_RE.sub(" ", text).strip()
 
 
-def build_tsv(draft: dict) -> tuple[list[dict], str]:
-    """Các dòng sẽ nộp (trang đã xác nhận, không bị bỏ, không rỗng) và nội dung TSV của chúng."""
+def _gutter_pair(draft: dict, machine: dict[str, dict], page: str) -> dict | None:
+    """Cặp bản tâm của một trang. Chưa có đủ hai vế thì chưa thành cặp, nên cuốn chưa dịch bản tâm vẫn nộp được."""
+    base = machine.get(page, {})
+    han = _clean_cell(draft.get("ban_tam", {}).get(page, base.get("han", "")))
+    viet = _clean_cell(draft.get("ban_tam_viet", {}).get(page, base.get("viet", "")))
+    return {"trang": page, "han": han, "viet": viet} if han and viet else None
+
+
+def build_tsv(draft: dict, gutters: dict[str, dict] | None = None) -> tuple[list[dict], str]:
+    """Các dòng sẽ nộp (trang đã xác nhận, không bị bỏ, không rỗng) và nội dung TSV của chúng; cặp bản tâm đứng đầu trang."""
     confirmed = set(draft["da_soat"])
+    gutters = gutters or {}
     kept = []
+    seen = set()
+
+    def add_gutter(page: str) -> None:
+        seen.add(page)
+        pair = _gutter_pair(draft, gutters, page)
+        if pair:
+            kept.append(pair)
+
     for row in draft["rows"]:
         han, viet = _clean_cell(row["han"]), _clean_cell(row["viet"])
         if row["trang"] in confirmed and not row["bo"] and (han or viet):
+            if row["trang"] not in seen:
+                add_gutter(row["trang"])
             kept.append({"trang": row["trang"], "han": han, "viet": viet})
+    for page in sorted(confirmed - seen):
+        add_gutter(page)
     return kept, "".join(f"{r['han']}\t{r['viet']}\n" for r in kept)
 
 
@@ -212,7 +268,7 @@ def submit(bdir: Path, book: str) -> dict:
         draft = _read_draft(bdir)
         if draft is None:
             return {"nop": False, "so_cap": 0, "loi": [], "ly_do": "Chưa có nháp đã lưu."}
-        kept, text = build_tsv(draft)
+        kept, text = build_tsv(draft, machine_gutters(bdir))
         if not kept:
             return {"nop": False, "so_cap": 0, "loi": [], "ly_do": "Chưa có trang nào được xác nhận đã soát."}
         errors = [
