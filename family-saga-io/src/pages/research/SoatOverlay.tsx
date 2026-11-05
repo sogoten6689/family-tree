@@ -1,15 +1,14 @@
 import { Button, Image, Slider, Space } from "antd";
-import { useMemo, useRef, useState, type Dispatch, type PointerEvent as ReactPointerEvent, type ReactNode, type SetStateAction, type UIEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type Dispatch, type PointerEvent as ReactPointerEvent, type ReactNode, type SetStateAction, type UIEvent } from "react";
 
 import type { KhungTrang } from "@/lib/doiChieuApi";
 
-import { alignToAnchors, draftChars, type DraftChar, type Placed } from "./lopPhu";
-import { boxColor, clampZoom, MAX_ZOOM, MIN_ZOOM, useWheelZoom, ZOOM_STEP } from "./oChu";
+import { BAN_TAM_KEY, placeOnPage, rowKeysOf, type DraftChar, type Placed } from "./lopPhu";
+import { ACTIVE_FILL, ACTIVE_STROKE, boxColor, clampZoom, MAX_ZOOM, MIN_ZOOM, numberSize, rowLabels, useWheelZoom, ZOOM_STEP, type RowLabel } from "./oChu";
 
 export type OverlayMode = "anh" | "keo" | "song" | "dich";
 
-/** Khóa giả của cột bản tâm: không phải dòng soát nên không có số dòng, bấm vào thì tới ô sửa bản tâm. */
-export const BAN_TAM_KEY = -1;
+export { BAN_TAM_KEY };
 
 export interface OverlayRow {
   key: number;
@@ -23,13 +22,6 @@ const INK = "#111111";
 const CHANGED = "#d4380d";
 const FLAGGED = "rgba(250, 173, 20, 0.35)";
 const NUMBER = "#0958d9";
-
-interface RowLabel {
-  n: number;
-  key: number;
-  x: number;
-  y: number;
-}
 
 export const ZoomBar = ({ zoom, setZoom }: { zoom: number; setZoom: Dispatch<SetStateAction<number>> }) => (
   <Space.Compact style={{ marginBottom: 8 }}>
@@ -45,25 +37,7 @@ export const ZoomBar = ({ zoom, setZoom }: { zoom: number; setZoom: Dispatch<Set
   </Space.Compact>
 );
 
-const numberSize = (khung: KhungTrang) => khung.rong / 50;
-
-/** Số dòng đặt ngay trên chữ đầu tiên của dòng đó. */
-const rowLabels = (khung: KhungTrang, placed: (Placed | null)[], numbers: Map<number, number>): RowLabel[] => {
-  const seen = new Set<number>();
-  const labels: RowLabel[] = [];
-  placed.forEach((p, i) => {
-    const n = p && numbers.get(p.rowKey);
-    if (!p || !n || seen.has(p.rowKey)) return;
-    seen.add(p.rowKey);
-    const [x0, y0, x1] = khung.chu[i].b;
-    const size = numberSize(khung);
-    // Dòng sát mép trên thì giữ số trong khung ảnh, chấp nhận đè lên chữ.
-    labels.push({ n, key: p.rowKey, x: (x0 + x1) / 2, y: Math.max(size, y0 - size * 0.25) });
-  });
-  return labels;
-};
-
-const Numbers = ({ labels, size, onPick }: { labels: RowLabel[]; size: number; onPick?: (key: number) => void }) => (
+export const Numbers = ({ labels, size, onPick }: { labels: RowLabel[]; size: number; onPick?: (key: number) => void }) => (
   <>
     {labels.map((l) => (
       <text
@@ -79,7 +53,7 @@ const Numbers = ({ labels, size, onPick }: { labels: RowLabel[]; size: number; o
         stroke={PAPER}
         strokeWidth={size * 0.25}
         paintOrder="stroke"
-        style={onPick ? { cursor: "pointer" } : undefined}
+        style={onPick ? { cursor: "pointer", pointerEvents: "all" } : { pointerEvents: "none" }}
         onClick={onPick && (() => onPick(l.key))}
       >
         {l.n}
@@ -88,8 +62,22 @@ const Numbers = ({ labels, size, onPick }: { labels: RowLabel[]; size: number; o
   </>
 );
 
-/** Ô quanh từng chữ và số dòng, vẽ đè lên ảnh; không nhận chuột để vẫn phóng to được ảnh. */
-const BoxLayer = ({ khung, labels, flagged }: { khung: KhungTrang; labels: RowLabel[]; flagged: boolean[] }) => (
+/** Ô quanh từng chữ và số dòng, vẽ đè lên ảnh. Chỉ ô và số nhận chuột, chỗ còn lại vẫn bấm được vào ảnh để phóng to. */
+const BoxLayer = ({
+  khung,
+  labels,
+  flagged,
+  active,
+  onPickBox,
+  onPickNumber,
+}: {
+  khung: KhungTrang;
+  labels: RowLabel[];
+  flagged: boolean[];
+  active: boolean[];
+  onPickBox: (index: number) => void;
+  onPickNumber: (rowKey: number) => void;
+}) => (
   <svg
     aria-hidden
     viewBox={`0 0 ${khung.rong} ${khung.cao}`}
@@ -103,15 +91,18 @@ const BoxLayer = ({ khung, labels, flagged }: { khung: KhungTrang; labels: RowLa
         y={b[1]}
         width={b[2] - b[0]}
         height={b[3] - b[1]}
-        fill={flagged[i] ? FLAGGED : "none"}
+        fill={active[i] ? ACTIVE_FILL : flagged[i] ? FLAGGED : "none"}
         data-danh-dau={flagged[i] || undefined}
-        stroke={boxColor({ u, n })}
-        strokeWidth={1}
+        data-dang-chon={active[i] || undefined}
+        stroke={active[i] ? ACTIVE_STROKE : boxColor({ u, n })}
+        strokeWidth={active[i] ? 2 : 1}
         strokeDasharray={u ? "3 2" : undefined}
         vectorEffect="non-scaling-stroke"
+        style={{ pointerEvents: "all", cursor: "pointer" }}
+        onClick={() => onPickBox(i)}
       />
     ))}
-    <Numbers labels={labels} size={numberSize(khung)} />
+    <Numbers labels={labels} size={numberSize(khung.rong)} onPick={onPickNumber} />
   </svg>
 );
 
@@ -120,6 +111,7 @@ const TextPage = ({
   placed,
   labels,
   showNumbers,
+  active,
   page,
   onPick,
 }: {
@@ -127,6 +119,7 @@ const TextPage = ({
   placed: (Placed | null)[];
   labels: RowLabel[];
   showNumbers: boolean;
+  active: boolean[];
   page: string;
   onPick: (rowKey: number) => void;
 }) => (
@@ -136,6 +129,9 @@ const TextPage = ({
     viewBox={`0 0 ${khung.rong} ${khung.cao}`}
     style={{ display: "block", width: "100%", height: "auto", background: PAPER }}
   >
+    {khung.chu.map(({ b }, i) =>
+      active[i] ? <rect key={i} data-dang-chon x={b[0]} y={b[1]} width={b[2] - b[0]} height={b[3] - b[1]} fill={ACTIVE_FILL} /> : null,
+    )}
     {khung.chu.map(({ b, u, n }, i) => {
       const p = placed[i];
       if (!p) return null;
@@ -159,7 +155,7 @@ const TextPage = ({
         </text>
       );
     })}
-    {showNumbers && <Numbers labels={labels} size={numberSize(khung)} onPick={onPick} />}
+    {showNumbers && <Numbers labels={labels} size={numberSize(khung.rong)} onPick={onPick} />}
   </svg>
 );
 
@@ -167,12 +163,14 @@ const TranslationList = ({
   rows,
   numbers,
   banTamViet,
+  activeKey,
   page,
   onPick,
 }: {
   rows: OverlayRow[];
   numbers: Map<number, number>;
   banTamViet: string | null;
+  activeKey: number | null;
   page: string;
   onPick: (rowKey: number) => void;
 }) => (
@@ -180,7 +178,15 @@ const TranslationList = ({
     {banTamViet !== null && (
       <div
         data-testid="dong-dich-ban-tam"
-        style={{ marginBottom: 8, paddingBottom: 8, borderBottom: "1px solid #d9d9d9", cursor: "pointer" }}
+        data-dong-dich
+        data-dang-chon={activeKey === BAN_TAM_KEY || undefined}
+        style={{
+          marginBottom: 8,
+          paddingBottom: 8,
+          borderBottom: "1px solid #d9d9d9",
+          cursor: "pointer",
+          background: activeKey === BAN_TAM_KEY ? ACTIVE_FILL : undefined,
+        }}
         onClick={() => onPick(BAN_TAM_KEY)}
       >
         <strong style={{ color: NUMBER }}>Bản tâm: </strong>
@@ -191,7 +197,9 @@ const TranslationList = ({
       <div
         key={r.key}
         data-testid="dong-dich"
-        style={{ display: "flex", gap: 8, marginBottom: 8, cursor: "pointer" }}
+        data-dong-dich
+        data-dang-chon={activeKey === r.key || undefined}
+        style={{ display: "flex", gap: 8, marginBottom: 8, cursor: "pointer", background: activeKey === r.key ? ACTIVE_FILL : undefined }}
         onClick={() => onPick(r.key)}
       >
         <strong style={{ color: NUMBER, flex: "none", minWidth: 20, textAlign: "right" }}>{numbers.get(r.key)}</strong>
@@ -212,6 +220,7 @@ const SoatOverlay = ({
   rows,
   marks,
   page,
+  activeKey = null,
   onPick,
   onPickTranslation,
 }: {
@@ -228,28 +237,55 @@ const SoatOverlay = ({
   rows: OverlayRow[];
   marks: boolean;
   page: string;
+  /** Dòng đang chọn ở phần soát; các ô và dòng dịch của nó được làm sáng. */
+  activeKey?: number | null;
   onPick: (rowKey: number) => void;
   onPickTranslation: (rowKey: number) => void;
 }) => {
   const [split, setSplit] = useState(50);
   const [zoom, setZoom] = useState(1);
+  const [unplaced, setUnplaced] = useState(false);
   const box = useRef<HTMLDivElement>(null);
+  const translations = useRef<HTMLDivElement>(null);
   const panes = useRef<(HTMLDivElement | null)[]>([]);
 
   const numbers = useMemo(() => new Map(rows.map((r, i) => [r.key, i + 1])), [rows]);
-  const placed = useMemo(() => {
-    if (!khungGoc) return [];
-    const body = alignToAnchors(khungGoc.chu.map((c) => c.c), draft, page);
-    const gutter = khungGoc.ban_tam?.chu ?? [];
-    const gutterDraft = draftChars([{ key: BAN_TAM_KEY, trang: page, han: banTam, viet: "", bo: false }]);
-    return [...body, ...alignToAnchors(gutter.map((c) => c.c), gutterDraft, page)];
-  }, [khungGoc, banTam, draft, page]);
+  const placed = useMemo(
+    () =>
+      khungGoc
+        ? placeOnPage(khungGoc.chu.map((c) => c.c), (khungGoc.ban_tam?.chu ?? []).map((c) => c.c), draft, banTam, page)
+        : [],
+    [khungGoc, banTam, draft, page],
+  );
   // Ô bản tâm đi cùng ô thường; rowLabels bỏ qua chúng vì BAN_TAM_KEY không có số dòng.
   const khung = useMemo(
     () => khungGoc && { ...khungGoc, chu: [...khungGoc.chu, ...(khungGoc.ban_tam?.chu ?? [])] },
     [khungGoc],
   );
-  const labels = useMemo(() => (khung ? rowLabels(khung, placed, numbers) : []), [khung, placed, numbers]);
+  const labels = useMemo(() => (khung ? rowLabels(khung.chu, khung.rong, placed, numbers) : []), [khung, placed, numbers]);
+  const rowKeys = useMemo(() => rowKeysOf(placed, khungGoc?.chu.length ?? 0), [placed, khungGoc]);
+  const active = useMemo(() => rowKeys.map((key) => key !== null && key === activeKey), [rowKeys, activeKey]);
+
+  // Dòng vừa chọn có thể nằm ngoài phần đang nhìn thấy khi phóng to hoặc khi danh sách dịch dài. Chỉ cuộn trong khung, không cuộn cả trang.
+  const zoomed = zoom > 1;
+  useEffect(() => {
+    if (activeKey === null) return;
+    const bring = (frame: Element | null | undefined, target: Element | null | undefined) => {
+      if (!frame || !target) return;
+      const f = frame.getBoundingClientRect();
+      const t = target.getBoundingClientRect();
+      frame.scrollTop += t.top - f.top - f.height / 3;
+      frame.scrollLeft += t.left + t.width / 2 - f.left - f.width / 2;
+    };
+    if (zoomed) panes.current.forEach((pane) => bring(pane, pane?.querySelector("rect[data-dang-chon]")));
+    bring(translations.current, translations.current?.querySelector("[data-dong-dich][data-dang-chon]"));
+  }, [activeKey, zoomed, mode]);
+
+  const pickBox = (index: number) => {
+    const key = rowKeys[index];
+    setUnplaced(key === null);
+    if (key !== null) onPick(key);
+  };
 
   const moveTo = (e: ReactPointerEvent) => {
     const rect = box.current?.getBoundingClientRect();
@@ -285,14 +321,23 @@ const SoatOverlay = ({
     </div>
   );
 
-  const zoomBar = <ZoomBar zoom={zoom} setZoom={setZoom} />;
+  const zoomBar = (
+    <>
+      <ZoomBar zoom={zoom} setZoom={setZoom} />
+      {unplaced && (
+        <span data-testid="o-chua-gan" style={{ marginLeft: 8, color: "#d46b08" }}>
+          Ô này chưa gán được vào dòng nào: chữ của ô chưa khớp với các dòng soát.
+        </span>
+      )}
+    </>
+  );
 
   const flagged = useMemo(() => {
     const keys = new Set(rows.filter((r) => r.danh_dau).map((r) => r.key));
     return placed.map((p) => !!p && keys.has(p.rowKey));
   }, [rows, placed]);
 
-  const layer = marks && khung ? <BoxLayer khung={khung} labels={labels} flagged={flagged} /> : null;
+  const layer = marks && khung ? <BoxLayer khung={khung} labels={labels} flagged={flagged} active={active} onPickBox={pickBox} onPickNumber={onPick} /> : null;
   const framed = (picture: ReactNode) => (
     <div style={{ position: "relative", lineHeight: 0 }}>
       {picture}
@@ -301,7 +346,7 @@ const SoatOverlay = ({
   );
   const image = framed(<img src={imageUrl} alt={`Trang ${page}`} style={{ display: "block", width: "100%", height: "auto" }} />);
   const text = khung && (
-    <TextPage khung={khung} placed={placed} labels={labels} showNumbers={marks} page={page} onPick={onPick} />
+    <TextPage khung={khung} placed={placed} labels={labels} showNumbers={marks} active={active} page={page} onPick={onPick} />
   );
 
   if (mode === "anh") {
@@ -337,8 +382,8 @@ const SoatOverlay = ({
             <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 0 0 ${split}%)` }}>{text}</div>
           ) : (
             // Bản dịch đọc ngang nên co theo phần còn lại, thay vì bị cắt mất đầu dòng.
-            <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, left: `${split}%`, overflow: "auto", background: PAPER }}>
-              <TranslationList rows={visibleRows} numbers={numbers} banTamViet={banTamViet} page={page} onPick={onPickTranslation} />
+            <div ref={translations} style={{ position: "absolute", top: 0, bottom: 0, right: 0, left: `${split}%`, overflow: "auto", background: PAPER }}>
+              <TranslationList rows={visibleRows} numbers={numbers} banTamViet={banTamViet} activeKey={activeKey} page={page} onPick={onPickTranslation} />
             </div>
           )}
           <div

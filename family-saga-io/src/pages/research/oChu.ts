@@ -3,6 +3,8 @@ import { useEffect, type Dispatch, type RefObject, type SetStateAction } from "r
 
 import type { KhungTrang } from "@/lib/doiChieuApi";
 
+import type { Placed } from "./lopPhu";
+
 export type OChu = KhungTrang["chu"][number];
 export type Hop = OChu["b"];
 export type Diem = [number, number];
@@ -10,6 +12,34 @@ export type Diem = [number, number];
 const BOX = "#1677ff";
 const BOX_ESTIMATED = "#d46b08";
 const BOX_HUMAN = "#389e0d";
+
+export const ACTIVE_FILL = "rgba(22, 119, 255, 0.28)";
+export const ACTIVE_STROKE = "#0050b3";
+
+export interface RowLabel {
+  n: number;
+  key: number;
+  x: number;
+  y: number;
+}
+
+export const numberSize = (width: number) => width / 50;
+
+/** Số dòng đặt ngay trên chữ đầu tiên của dòng đó. */
+export const rowLabels = (cells: { b: Hop }[], width: number, placed: (Placed | null)[], numbers: Map<number, number>): RowLabel[] => {
+  const seen = new Set<number>();
+  const labels: RowLabel[] = [];
+  placed.forEach((p, i) => {
+    const n = p && numbers.get(p.rowKey);
+    if (!p || !n || seen.has(p.rowKey)) return;
+    seen.add(p.rowKey);
+    const [x0, y0, x1] = cells[i].b;
+    const size = numberSize(width);
+    // Dòng sát mép trên thì giữ số trong khung ảnh, chấp nhận đè lên chữ.
+    labels.push({ n, key: p.rowKey, x: (x0 + x1) / 2, y: Math.max(size, y0 - size * 0.25) });
+  });
+  return labels;
+};
 
 export const boxColor = ({ u, n }: Pick<OChu, "u" | "n">) => (n ? BOX_HUMAN : u ? BOX_ESTIMATED : BOX);
 

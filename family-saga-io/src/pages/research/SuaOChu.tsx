@@ -3,8 +3,9 @@ import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointer
 
 import type { KhungSua, KhungTrang } from "@/lib/doiChieuApi";
 
-import { boxColor, boxFrom, insertIndex, moveBox, useWheelZoom, type Diem, type Hop, type OChu } from "./oChu";
-import { ZoomBar } from "./SoatOverlay";
+import { BAN_TAM_KEY, placeOnPage, rowKeysOf, type DraftChar } from "./lopPhu";
+import { ACTIVE_FILL, ACTIVE_STROKE, boxColor, boxFrom, insertIndex, moveBox, numberSize, rowLabels, useWheelZoom, type Diem, type Hop, type OChu } from "./oChu";
+import { Numbers, ZoomBar, type OverlayRow } from "./SoatOverlay";
 
 const SELECTED = "#cf1322";
 /** Kéo ngắn hơn chừng này (theo pixel ảnh) thì coi là bấm, không vẽ ô, để bấm nhầm không sinh ô rác. */
@@ -49,6 +50,11 @@ const SuaOChu = ({
   khung,
   imageUrl,
   page,
+  draft,
+  banTam,
+  rows,
+  activeKey = null,
+  onHighlight,
   onSave,
   onRestore,
   onClose,
@@ -56,6 +62,13 @@ const SuaOChu = ({
   khung: KhungTrang;
   imageUrl: string;
   page: string;
+  draft: DraftChar[];
+  banTam: string;
+  /** Các dòng của trang này theo đúng thứ tự, số dòng tính từ đây. */
+  rows: OverlayRow[];
+  activeKey?: number | null;
+  /** Báo dòng của ô vừa chọn để làm sáng dòng đó ở phần soát, không chuyển con trỏ khỏi ô gõ chữ. */
+  onHighlight?: (rowKey: number) => void;
   onSave: (edit: KhungSua) => Promise<KhungTrang>;
   onRestore: (phienBan: number) => Promise<KhungTrang>;
   onClose: () => void;
@@ -86,6 +99,16 @@ const SuaOChu = ({
     const cells = khung.ban_tam?.chu ?? [];
     return cells.length ? [Math.min(...cells.map((c) => c.b[0])), Math.max(...cells.map((c) => c.b[2]))] : null;
   }, [khung]);
+
+  // Dóng chữ tốn thời gian và chỉ phụ thuộc vào chữ, nên kéo ô không phải tính lại.
+  const bodyChars = JSON.stringify(boxes.filter((b) => !b.gutter).map((b) => b.c));
+  const gutterChars = JSON.stringify(boxes.filter((b) => b.gutter).map((b) => b.c));
+  const placed = useMemo(() => {
+    const body: string[] = JSON.parse(bodyChars);
+    return placeOnPage(body, JSON.parse(gutterChars), draft, banTam, page);
+  }, [bodyChars, gutterChars, draft, banTam, page]);
+  const rowKeys = useMemo(() => rowKeysOf(placed, (JSON.parse(bodyChars) as string[]).length), [placed, bodyChars]);
+  const numbers = useMemo(() => new Map(rows.map((r, i) => [r.key, i + 1])), [rows]);
 
   const remember = (before: EditBox[]) => setPast((p) => [...p.slice(1 - MAX_UNDO), before]);
 
@@ -217,6 +240,14 @@ const SuaOChu = ({
     });
 
   const current = selected === null ? null : boxes[selected];
+  const selectedRow = selected === null ? null : rowKeys[selected];
+  const highlightKey = selected === null ? activeKey : selectedRow;
+  const rowText = () => {
+    if (selectedRow === BAN_TAM_KEY) return "Thuộc bản tâm.";
+    if (selectedRow === null) return "Chưa gán được vào dòng nào: chữ của ô chưa khớp với các dòng soát.";
+    const n = numbers.get(selectedRow);
+    return n ? `Thuộc dòng ${n}.` : "Thuộc một dòng ở trang kề.";
+  };
   const handle = width / 110 / zoom;
 
   return (
@@ -272,6 +303,9 @@ const SuaOChu = ({
             <Button size="small" danger onClick={() => removeAt(selected)}>
               Xoá ô
             </Button>
+            <Typography.Text data-testid="dong-cua-o" type={selectedRow === null ? "warning" : "secondary"}>
+              {rowText()}
+            </Typography.Text>
           </Space>
         ) : (
           <Typography.Text type="secondary">Chưa chọn ô nào.</Typography.Text>
@@ -303,22 +337,26 @@ const SuaOChu = ({
                 key={i}
                 data-testid="o-sua"
                 data-chon={i === selected || undefined}
+                data-dang-chon={(rowKeys[i] !== null && rowKeys[i] === highlightKey) || undefined}
                 x={box.b[0]}
                 y={box.b[1]}
                 width={box.b[2] - box.b[0]}
                 height={box.b[3] - box.b[1]}
-                fill={i === selected ? "rgba(207, 19, 34, 0.15)" : "transparent"}
-                stroke={i === selected ? SELECTED : boxColor(box)}
+                fill={i === selected ? "rgba(207, 19, 34, 0.15)" : rowKeys[i] !== null && rowKeys[i] === highlightKey ? ACTIVE_FILL : "transparent"}
+                stroke={i === selected ? SELECTED : rowKeys[i] !== null && rowKeys[i] === highlightKey ? ACTIVE_STROKE : boxColor(box)}
                 strokeWidth={i === selected ? 2 : 1}
                 strokeDasharray={box.u ? "3 2" : undefined}
                 vectorEffect="non-scaling-stroke"
                 style={{ cursor: "move" }}
                 onPointerDown={(e) => {
                   setSelected(i);
+                  const row = rowKeys[i];
+                  if (row !== null) onHighlight?.(row);
                   begin(e, (start) => ({ kind: "di", index: i, start, origin: box.b, before: boxes, moved: false }));
                 }}
               />
             ))}
+            <Numbers labels={rowLabels(boxes, width, placed, numbers)} size={numberSize(width)} />
             {current &&
               selected !== null &&
               corners(current.b).map(([x, y], corner) => (
