@@ -5,7 +5,7 @@ import type { KhungSua, KhungTrang } from "@/lib/doiChieuApi";
 
 import { BAN_TAM_KEY, placeOnPage, rowKeysOf, type DraftChar } from "./lopPhu";
 import { ACTIVE_FILL, ACTIVE_STROKE, boxColor, boxFrom, insertIndex, moveBox, numberSize, rowLabels, useWheelZoom, type Diem, type Hop, type OChu } from "./oChu";
-import { Numbers, ZoomBar, type OverlayRow } from "./SoatOverlay";
+import { BanTamLabel, Numbers, UnassignedMarks, ZoomBar, type OverlayRow } from "./SoatOverlay";
 
 const SELECTED = "#cf1322";
 /** Kéo ngắn hơn chừng này (theo pixel ảnh) thì coi là bấm, không vẽ ô, để bấm nhầm không sinh ô rác. */
@@ -24,12 +24,13 @@ const fromKhung = (k: KhungTrang): EditBox[] => [
   ...(k.ban_tam?.chu ?? []).map((c) => ({ ...c, gutter: true })),
 ];
 
-const toCell = ({ c, b, u, n }: EditBox, width: number, height: number): OChu => ({
+const toCell = ({ c, b, u, n, d }: EditBox, width: number, height: number): OChu => ({
   c: c.trim(),
   // Ô máy có thể chưa qua bước kẹp vào ảnh, lưu lên sẽ bị từ chối cả trang.
   b: boxFrom([b[0], b[1]], [b[2], b[3]], width, height),
   ...(u ? { u } : {}),
   ...(n ? { n } : {}),
+  ...(d !== undefined ? { d } : {}),
 });
 
 const edited = (box: EditBox, change: Partial<EditBox>): EditBox => {
@@ -107,7 +108,11 @@ const SuaOChu = ({
     const body: string[] = JSON.parse(bodyChars);
     return placeOnPage(body, JSON.parse(gutterChars), draft, banTam, page);
   }, [bodyChars, gutterChars, draft, banTam, page]);
-  const rowKeys = useMemo(() => rowKeysOf(placed, (JSON.parse(bodyChars) as string[]).length), [placed, bodyChars]);
+  const pins = JSON.stringify(boxes.map((b) => ({ d: b.d })));
+  const rowKeys = useMemo(
+    () => rowKeysOf(placed, JSON.parse(pins), (JSON.parse(bodyChars) as string[]).length, rows.map((r) => r.key)),
+    [placed, pins, bodyChars, rows],
+  );
   const numbers = useMemo(() => new Map(rows.map((r, i) => [r.key, i + 1])), [rows]);
 
   const remember = (before: EditBox[]) => setPast((p) => [...p.slice(1 - MAX_UNDO), before]);
@@ -129,7 +134,7 @@ const SuaOChu = ({
     if (selected === null) return;
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
-      if ((e.key === "Delete" || e.key === "Backspace") && !target?.closest?.("input, textarea")) {
+      if ((e.key === "Delete" || e.key === "Backspace") && !target?.closest?.("input, textarea, select")) {
         e.preventDefault();
         removeAt(selected);
       }
@@ -193,6 +198,18 @@ const SuaOChu = ({
     else setSelected(null);
   };
 
+  /** Đổi dòng của ô không đổi vị trí và chữ của ô nên ô không thành ô do người chỉnh. */
+  const pinTo = (index: number, value: string) => {
+    remember(boxes);
+    setBoxes(
+      boxes.map((box, i) => {
+        if (i !== index) return box;
+        const { d: _old, ...rest } = box;
+        return value === "" ? rest : { ...rest, d: Number(value) };
+      }),
+    );
+  };
+
   const undo = () => {
     setBoxes(past[past.length - 1]);
     setPast(past.slice(0, -1));
@@ -244,7 +261,9 @@ const SuaOChu = ({
   const highlightKey = selected === null ? activeKey : selectedRow;
   const rowText = () => {
     if (selectedRow === BAN_TAM_KEY) return "Thuộc bản tâm.";
-    if (selectedRow === null) return "Chưa gán được vào dòng nào: chữ của ô chưa khớp với các dòng soát.";
+    if (selectedRow === null) {
+      return current?.d ? `Dòng ${current.d} không còn trên trang này: hãy chọn lại.` : "Chưa gán được vào dòng nào: hãy chọn dòng cho ô này.";
+    }
     const n = numbers.get(selectedRow);
     return n ? `Thuộc dòng ${n}.` : "Thuộc một dòng ở trang kề.";
   };
@@ -280,7 +299,7 @@ const SuaOChu = ({
         </Popconfirm>
       </Space>
       <Typography.Paragraph type="secondary" style={{ margin: "0 0 8px" }}>
-        Bấm vào ô để chọn, kéo ô để dời, kéo chấm ở góc để đổi cỡ, kéo ở chỗ trống để vẽ ô mới. Ô <span style={{ color: boxColor({ n: "sua" }) }}>xanh lá</span> là ô do người chỉnh. Có {boxes.length} ô, đã chỉnh {counts.sua}, đã thêm {counts.them}. Sửa ở đây không đổi chữ ở các dòng soát.
+        Bấm vào ô để chọn, kéo ô để dời, kéo chấm ở góc để đổi cỡ, kéo ở chỗ trống để vẽ ô mới. Ô <span style={{ color: boxColor({ n: "sua" }) }}>xanh lá</span> là ô do người chỉnh. Có {boxes.length} ô, đã chỉnh {counts.sua}, đã thêm {counts.them}. Sửa ở đây, kể cả đổi ô sang dòng khác, không đổi chữ ở các dòng soát và các cặp khi nộp. Ô gán tay ghi theo số dòng: gộp, tách dòng về sau thì nên xem lại.
       </Typography.Paragraph>
       <div style={{ minHeight: 32, marginBottom: 8 }}>
         {current && selected !== null ? (
@@ -303,6 +322,23 @@ const SuaOChu = ({
             <Button size="small" danger onClick={() => removeAt(selected)}>
               Xoá ô
             </Button>
+            <label>
+              Thuộc:{" "}
+              <select
+                aria-label="Ô thuộc dòng"
+                value={current.d ?? ""}
+                onChange={(e) => pinTo(selected, e.target.value)}
+              >
+                <option value="">Theo máy</option>
+                {khung.ban_tam && <option value="0">Bản tâm</option>}
+                {rows.map((r, i) => (
+                  <option key={r.key} value={i + 1}>
+                    Dòng {i + 1}
+                  </option>
+                ))}
+                {!!current.d && current.d > rows.length && <option value={current.d}>Dòng {current.d} (không còn)</option>}
+              </select>
+            </label>
             <Typography.Text data-testid="dong-cua-o" type={selectedRow === null ? "warning" : "secondary"}>
               {rowText()}
             </Typography.Text>
@@ -356,7 +392,9 @@ const SuaOChu = ({
                 }}
               />
             ))}
-            <Numbers labels={rowLabels(boxes, width, placed, numbers)} size={numberSize(width)} />
+            <Numbers labels={rowLabels(boxes, width, rowKeys, numbers)} size={numberSize(width)} />
+            <BanTamLabel cells={boxes.filter((_, i) => rowKeys[i] === BAN_TAM_KEY)} width={width} />
+            <UnassignedMarks cells={boxes.filter((_, i) => rowKeys[i] === null)} width={width} />
             {current &&
               selected !== null &&
               corners(current.b).map(([x, y], corner) => (

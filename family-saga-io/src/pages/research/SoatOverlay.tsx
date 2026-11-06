@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, type Dispatch, type PointerEvent 
 import type { KhungTrang } from "@/lib/doiChieuApi";
 
 import { BAN_TAM_KEY, placeOnPage, rowKeysOf, type DraftChar, type Placed } from "./lopPhu";
-import { ACTIVE_FILL, ACTIVE_STROKE, boxColor, clampZoom, MAX_ZOOM, MIN_ZOOM, numberSize, rowLabels, useWheelZoom, ZOOM_STEP, type RowLabel } from "./oChu";
+import { ACTIVE_FILL, ACTIVE_STROKE, boxColor, clampZoom, gutterLabel, MAX_ZOOM, MIN_ZOOM, numberSize, rowLabels, useWheelZoom, ZOOM_STEP, type RowLabel } from "./oChu";
 
 export type OverlayMode = "anh" | "keo" | "song" | "dich";
 
@@ -22,6 +22,7 @@ const INK = "#111111";
 const CHANGED = "#d4380d";
 const FLAGGED = "rgba(250, 173, 20, 0.35)";
 const NUMBER = "#0958d9";
+const UNASSIGNED = "#d46b08";
 
 export const ZoomBar = ({ zoom, setZoom }: { zoom: number; setZoom: Dispatch<SetStateAction<number>> }) => (
   <Space.Compact style={{ marginBottom: 8 }}>
@@ -62,9 +63,62 @@ export const Numbers = ({ labels, size, onPick }: { labels: RowLabel[]; size: nu
   </>
 );
 
+/** Nhãn của cột bản tâm: bản tâm không phải dòng nội dung nên không mang số dòng. */
+export const BanTamLabel = ({ cells, width, onPick }: { cells: { b: [number, number, number, number] }[]; width: number; onPick?: (key: number) => void }) => {
+  const at = gutterLabel(cells, width);
+  if (!at) return null;
+  const size = numberSize(width);
+  return (
+    <text
+      data-testid="nhan-ban-tam"
+      fontSize={size}
+      fontWeight={700}
+      fontFamily="system-ui, sans-serif"
+      textAnchor="middle"
+      fill={NUMBER}
+      stroke={PAPER}
+      strokeWidth={size * 0.25}
+      paintOrder="stroke"
+      style={onPick ? { cursor: "pointer", pointerEvents: "all" } : { pointerEvents: "none" }}
+      onClick={onPick && (() => onPick(BAN_TAM_KEY))}
+    >
+      <tspan x={at.x} y={at.y - size}>Bản</tspan>
+      <tspan x={at.x} y={at.y}>tâm</tspan>
+    </text>
+  );
+};
+
+/** Dấu "?" trên ô chưa thuộc dòng nào; không nhận chuột để bấm xuyên xuống ô. */
+export const UnassignedMarks = ({ cells, width }: { cells: { b: [number, number, number, number] }[]; width: number }) => (
+  <>
+    {cells.map(({ b }, i) => (
+      <text
+        key={i}
+        data-testid="dau-chua-gan"
+        x={(b[0] + b[2]) / 2}
+        y={(b[1] + b[3]) / 2}
+        fontSize={numberSize(width)}
+        fontWeight={700}
+        fontFamily="system-ui, sans-serif"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fill={UNASSIGNED}
+        stroke={PAPER}
+        strokeWidth={numberSize(width) * 0.25}
+        paintOrder="stroke"
+        style={{ pointerEvents: "none" }}
+      >
+        ?
+      </text>
+    ))}
+  </>
+);
+
 /** Ô quanh từng chữ và số dòng, vẽ đè lên ảnh. Chỉ ô và số nhận chuột, chỗ còn lại vẫn bấm được vào ảnh để phóng to. */
 const BoxLayer = ({
   khung,
+  gutterCells,
+  unassigned,
   labels,
   flagged,
   active,
@@ -72,6 +126,8 @@ const BoxLayer = ({
   onPickNumber,
 }: {
   khung: KhungTrang;
+  gutterCells: { b: [number, number, number, number] }[];
+  unassigned: { b: [number, number, number, number] }[];
   labels: RowLabel[];
   flagged: boolean[];
   active: boolean[];
@@ -103,12 +159,17 @@ const BoxLayer = ({
       />
     ))}
     <Numbers labels={labels} size={numberSize(khung.rong)} onPick={onPickNumber} />
+    <BanTamLabel cells={gutterCells} width={khung.rong} onPick={onPickNumber} />
+    <UnassignedMarks cells={unassigned} width={khung.rong} />
   </svg>
 );
 
 const TextPage = ({
   khung,
+  gutterCells,
+  unassigned,
   placed,
+  rowKeys,
   labels,
   showNumbers,
   active,
@@ -116,7 +177,10 @@ const TextPage = ({
   onPick,
 }: {
   khung: KhungTrang;
+  gutterCells: { b: [number, number, number, number] }[];
+  unassigned: { b: [number, number, number, number] }[];
   placed: (Placed | null)[];
+  rowKeys: (number | null)[];
   labels: RowLabel[];
   showNumbers: boolean;
   active: boolean[];
@@ -149,13 +213,18 @@ const TextPage = ({
           dominantBaseline="central"
           fill={p.changed ? CHANGED : INK}
           style={{ cursor: "pointer" }}
-          onClick={() => onPick(p.rowKey)}
+          onClick={() => {
+            const key = rowKeys[i];
+            if (key !== null) onPick(key);
+          }}
         >
           {p.ch}
         </text>
       );
     })}
     {showNumbers && <Numbers labels={labels} size={numberSize(khung.rong)} onPick={onPick} />}
+    {showNumbers && <BanTamLabel cells={gutterCells} width={khung.rong} onPick={onPick} />}
+    {showNumbers && <UnassignedMarks cells={unassigned} width={khung.rong} />}
   </svg>
 );
 
@@ -257,13 +326,18 @@ const SoatOverlay = ({
         : [],
     [khungGoc, banTam, draft, page],
   );
-  // Ô bản tâm đi cùng ô thường; rowLabels bỏ qua chúng vì BAN_TAM_KEY không có số dòng.
+  // Ô bản tâm đi cùng ô thường; rowLabels bỏ qua ô còn thuộc bản tâm vì BAN_TAM_KEY không có số dòng.
   const khung = useMemo(
     () => khungGoc && { ...khungGoc, chu: [...khungGoc.chu, ...(khungGoc.ban_tam?.chu ?? [])] },
     [khungGoc],
   );
-  const labels = useMemo(() => (khung ? rowLabels(khung.chu, khung.rong, placed, numbers) : []), [khung, placed, numbers]);
-  const rowKeys = useMemo(() => rowKeysOf(placed, khungGoc?.chu.length ?? 0), [placed, khungGoc]);
+  const rowKeys = useMemo(
+    () => rowKeysOf(placed, khung?.chu ?? [], khungGoc?.chu.length ?? 0, rows.map((r) => r.key)),
+    [placed, khung, khungGoc, rows],
+  );
+  const labels = useMemo(() => (khung ? rowLabels(khung.chu, khung.rong, rowKeys, numbers) : []), [khung, rowKeys, numbers]);
+  const gutterCells = useMemo(() => (khung?.chu ?? []).filter((_, i) => rowKeys[i] === BAN_TAM_KEY), [khung, rowKeys]);
+  const unassigned = useMemo(() => (khung?.chu ?? []).filter((_, i) => rowKeys[i] === null), [khung, rowKeys]);
   const active = useMemo(() => rowKeys.map((key) => key !== null && key === activeKey), [rowKeys, activeKey]);
 
   // Dòng vừa chọn có thể nằm ngoài phần đang nhìn thấy khi phóng to hoặc khi danh sách dịch dài. Chỉ cuộn trong khung, không cuộn cả trang.
@@ -326,7 +400,7 @@ const SoatOverlay = ({
       <ZoomBar zoom={zoom} setZoom={setZoom} />
       {unplaced && (
         <span data-testid="o-chua-gan" style={{ marginLeft: 8, color: "#d46b08" }}>
-          Ô này chưa gán được vào dòng nào: chữ của ô chưa khớp với các dòng soát.
+          Ô này chưa thuộc dòng nào. Bấm “Sửa ô chữ”, chọn ô rồi chọn dòng cho nó.
         </span>
       )}
     </>
@@ -334,10 +408,10 @@ const SoatOverlay = ({
 
   const flagged = useMemo(() => {
     const keys = new Set(rows.filter((r) => r.danh_dau).map((r) => r.key));
-    return placed.map((p) => !!p && keys.has(p.rowKey));
-  }, [rows, placed]);
+    return rowKeys.map((key) => key !== null && keys.has(key));
+  }, [rows, rowKeys]);
 
-  const layer = marks && khung ? <BoxLayer khung={khung} labels={labels} flagged={flagged} active={active} onPickBox={pickBox} onPickNumber={onPick} /> : null;
+  const layer = marks && khung ? <BoxLayer khung={khung} gutterCells={gutterCells} unassigned={unassigned} labels={labels} flagged={flagged} active={active} onPickBox={pickBox} onPickNumber={onPick} /> : null;
   const framed = (picture: ReactNode) => (
     <div style={{ position: "relative", lineHeight: 0 }}>
       {picture}
@@ -346,7 +420,7 @@ const SoatOverlay = ({
   );
   const image = framed(<img src={imageUrl} alt={`Trang ${page}`} style={{ display: "block", width: "100%", height: "auto" }} />);
   const text = khung && (
-    <TextPage khung={khung} placed={placed} labels={labels} showNumbers={marks} active={active} page={page} onPick={onPick} />
+    <TextPage khung={khung} gutterCells={gutterCells} unassigned={unassigned} placed={placed} rowKeys={rowKeys} labels={labels} showNumbers={marks} active={active} page={page} onPick={onPick} />
   );
 
   if (mode === "anh") {

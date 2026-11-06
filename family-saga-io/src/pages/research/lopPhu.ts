@@ -84,6 +84,14 @@ export const placeOnPage = (body: string[], gutter: string[], draft: DraftChar[]
   return [...alignToAnchors(body, draft, page), ...alignToAnchors(gutter, gutterDraft, page)];
 };
 
-/** Dòng của từng ô; null là chưa gán được. Ô bản tâm luôn thuộc bản tâm, kể cả khi chữ chưa khớp. */
-export const rowKeysOf = (placed: (Placed | null)[], bodyCount: number): (number | null)[] =>
-  placed.map((p, i) => (i >= bodyCount ? BAN_TAM_KEY : (p?.rowKey ?? null)));
+/**
+ * Dòng của từng ô; null là chưa gán được. Gán tay thắng máy dóng: `d` là dòng thứ d của trang, 0 là bản tâm; dòng đó
+ * không còn thì coi là chưa gán, không đoán. Không gán tay thì ô bản tâm luôn thuộc bản tâm, kể cả khi chữ chưa khớp.
+ */
+export const rowKeysOf = (placed: (Placed | null)[], cells: { d?: number }[], bodyCount: number, rowOrder: number[]): (number | null)[] =>
+  placed.map((p, i) => {
+    const pin = cells[i]?.d;
+    if (pin === 0) return BAN_TAM_KEY;
+    if (pin) return rowOrder[pin - 1] ?? null;
+    return i >= bodyCount ? BAN_TAM_KEY : (p?.rowKey ?? null);
+  });

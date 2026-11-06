@@ -359,6 +359,16 @@ class SoatApiTest(unittest.TestCase):
         self.assertEqual(self.client.get(url).json(), saved)
         self.assertEqual(json.loads((self.book / "khung" / "001.json").read_text(encoding="utf-8")), machine)
 
+    def test_box_keeps_manual_row_and_rejects_negative_row(self) -> None:
+        self.machine_boxes()
+        url = f"{self.URL}/khung/001"
+        box = {"c": "公", "b": [1, 2, 9, 9]}
+
+        self.assertEqual(self.client.put(url, json={"chu": [{**box, "d": -1}], "phien_ban": 0}).status_code, 422)
+        saved = self.client.put(url, json={"chu": [{**box, "d": 2}, {**box, "d": 0}], "phien_ban": 0})
+        self.assertEqual(saved.status_code, 200)
+        self.assertEqual([c["d"] for c in self.client.get(url).json()["chu"]], [2, 0])
+
     def test_restoring_boxes_returns_machine_and_keeps_edit_in_history(self) -> None:
         machine = self.machine_boxes()
         url = f"{self.URL}/khung/001"
