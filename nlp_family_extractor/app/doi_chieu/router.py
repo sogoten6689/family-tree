@@ -85,6 +85,8 @@ class KhungChu(BaseModel):
     u: int | None = None
     # Ô do người soát chỉnh ("sua") hoặc thêm ("them"); ô máy thì không có.
     n: Literal["sua", "them"] | None = None
+    # Người soát gán tay: N là dòng thứ N của trang, 0 là bản tâm; không có thì máy dóng theo chữ.
+    d: int | None = Field(default=None, ge=0, le=100000)
 
 
 class KhungSua(BaseModel):

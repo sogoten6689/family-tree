@@ -132,7 +132,7 @@ export interface KhungTrang {
   rong: number;
   cao: number;
   /** `u`: vị trí ước lượng, không tách được từ nét mực. `n`: ô do người soát chỉnh hoặc thêm. */
-  chu: { c: string; b: [number, number, number, number]; u?: number; n?: "sua" | "them" }[];
+  chu: { c: string; b: [number, number, number, number]; u?: number; n?: "sua" | "them"; d?: number }[];
   /** Số chữ bản máy không định vị được, không có trên lớp phủ. */
   thieu: number;
   /** Cột in giữa ảnh (tên sách, số quyển, số trang), không thuộc các dòng soát. */

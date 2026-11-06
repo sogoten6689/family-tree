@@ -615,7 +615,10 @@ describe("thẻ Soát", () => {
     expect(gutter.value).toBe("鄂氏");
     expect(await screen.findAllByTestId("o-chu")).toHaveLength(4);
     expect(screen.getAllByTestId("so-dong").map((t) => t.textContent)).toEqual(["1"]);
+    fireEvent.click(screen.getByTestId("nhan-ban-tam"));
+    expect(document.activeElement).toBe(gutter);
     fireEvent.click(screen.getByText("Xem song song"));
+    expect(screen.getAllByTestId("nhan-ban-tam").length).toBeGreaterThan(0);
     const glyphs = () => screen.getAllByTestId("chu").map((t) => t.textContent).join("");
     expect(glyphs()).toBe("公回鄂氏");
     fireEvent.change(gutter, { target: { value: "鄂民" } });
@@ -737,6 +740,94 @@ describe("thẻ Soát", () => {
     await screen.findByLabelText("Hán dòng 1");
     expect(screen.queryByTestId("goi-y")).toBeNull();
   }, 20000);
+
+  it("nhãn bản tâm đứng trên ô cao nhất của cột, trong khung ảnh, hiện cả khi sửa ô; tắt ô chữ thì ẩn", async () => {
+    auth.isAdmin = true;
+    open({ text: "鄂氏", chu: [{ c: "氏", b: [50, 30, 70, 50] }, { c: "鄂", b: [50, 1, 70, 20] }], thieu: 0 });
+    fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+    const label = await screen.findByTestId("nhan-ban-tam");
+    expect(label.textContent).toBe("Bảntâm");
+    const lines = label.querySelectorAll("tspan");
+    expect(lines[0].getAttribute("x")).toBe("60");
+    expect(Number(lines[0].getAttribute("y"))).toBeGreaterThan(0);
+    fireEvent.click(screen.getByRole("checkbox", { name: /Hiện ô chữ/ }));
+    expect(screen.queryByTestId("nhan-ban-tam")).toBeNull();
+    fireEvent.click(screen.getByRole("checkbox", { name: /Hiện ô chữ/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Sửa ô chữ/ }));
+    expect((await screen.findByTestId("nhan-ban-tam")).textContent).toBe("Bảntâm");
+  }, 20000);
+
+  describe("đổi ô sang dòng khác", () => {
+    const SLOW = { timeout: 8000 };
+    const openEdit = async (khungExtra: object = {}) => {
+      auth.isAdmin = true;
+      const calls = open(
+        { text: "鄂氏", chu: [{ c: "鄂", b: [50, 10, 70, 30] }, { c: "氏", b: [50, 30, 70, 50] }], thieu: 0 },
+        undefined,
+        "公回",
+        "Ông về",
+        {},
+        khungExtra,
+      );
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      return calls;
+    };
+    const startEditing = async () => {
+      fireEvent.click(await screen.findByRole("button", { name: "Sửa ô chữ" }, SLOW));
+      return screen.findAllByTestId("o-sua");
+    };
+
+    it("gán ô bản tâm vào dòng 1 thì ô có dòng và hết thuộc bản tâm; lưu kèm số dòng, ô không thành ô người chỉnh", async () => {
+      const calls = await openEdit();
+      const boxes = await startEditing();
+      expect(boxes).toHaveLength(4);
+      fireEvent.pointerDown(boxes[2], { clientX: 0, clientY: 0, pointerId: 1 });
+      fireEvent.pointerUp(boxes[2], { pointerId: 1 });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc bản tâm.");
+      fireEvent.change(screen.getByLabelText("Ô thuộc dòng"), { target: { value: "1" } });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc dòng 1.");
+      fireEvent.click(screen.getByRole("button", { name: "Lưu ô chữ" }));
+      await screen.findByRole("button", { name: "Đã lưu ô chữ" }, SLOW);
+      const put = calls.find((c) => c.method === "PUT" && c.url.includes("/soat/khung/"));
+      const cell = JSON.parse(put?.body ?? "{}").ban_tam_chu[0];
+      expect(cell.d).toBe(1);
+      expect(cell.n).toBeUndefined();
+    }, 20000);
+
+    it("chọn lại Theo máy thì bỏ gán tay; ô thường gán sang bản tâm được", async () => {
+      await openEdit();
+      const boxes = await startEditing();
+      fireEvent.pointerDown(boxes[0], { clientX: 0, clientY: 0, pointerId: 1 });
+      fireEvent.pointerUp(boxes[0], { pointerId: 1 });
+      const pick = screen.getByLabelText("Ô thuộc dòng") as HTMLSelectElement;
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc dòng 1.");
+      fireEvent.change(pick, { target: { value: "0" } });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc bản tâm.");
+      fireEvent.change(pick, { target: { value: "" } });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Thuộc dòng 1.");
+    }, 20000);
+
+    it("ô gán vào dòng không còn trên trang thì hiện dấu ? và báo chọn lại, không đoán", async () => {
+      await openEdit({ chu: [{ c: "公", b: [10, 10, 30, 30], d: 9 }, { c: "回", b: [10, 30, 30, 50] }] });
+      expect(await screen.findAllByTestId("dau-chua-gan", {}, SLOW)).toHaveLength(1);
+      fireEvent.click((await screen.findAllByTestId("o-chu"))[0]);
+      expect(screen.getByTestId("o-chua-gan")).toBeTruthy();
+      const boxes = await startEditing();
+      expect(screen.getAllByTestId("dau-chua-gan")).toHaveLength(1);
+      fireEvent.pointerDown(boxes[0], { clientX: 0, clientY: 0, pointerId: 1 });
+      fireEvent.pointerUp(boxes[0], { pointerId: 1 });
+      expect(screen.getByTestId("dong-cua-o").textContent).toBe("Dòng 9 không còn trên trang này: hãy chọn lại.");
+      fireEvent.change(screen.getByLabelText("Ô thuộc dòng"), { target: { value: "1" } });
+      expect(screen.queryByTestId("dau-chua-gan")).toBeNull();
+    }, 20000);
+
+    it("ô gán tay làm sáng theo dòng mới ở lớp phủ, bấm ô tới đúng dòng đó", async () => {
+      await openEdit({ chu: [{ c: "公", b: [10, 10, 30, 30], d: 0 }, { c: "回", b: [10, 30, 30, 50] }] });
+      const cells = await screen.findAllByTestId("o-chu", {}, SLOW);
+      fireEvent.click(cells[0]);
+      expect(document.activeElement).toBe(screen.getByLabelText("Bản tâm"));
+    }, 20000);
+  });
 
   it("trang không có bản tâm thì không có ô sửa bản tâm", async () => {
     auth.isAdmin = true;
