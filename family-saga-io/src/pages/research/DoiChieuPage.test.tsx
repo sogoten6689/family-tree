@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGrading";
 import { alignToAnchors, draftChars } from "./lopPhu";
@@ -667,6 +667,91 @@ describe("thẻ Soát", () => {
     fireEvent.scroll(left);
     expect([right.scrollLeft, right.scrollTop]).toEqual([40, 25]);
   }, 20000);
+
+  describe("bố cục xem song song", () => {
+    const LAYOUT_KEY = "doi-chieu:bo-cuc-song-song";
+    const layout = () => screen.getByTestId("bo-cuc-song-song");
+    const openSideBySide = async () => {
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      await screen.findByLabelText("Hán dòng 1");
+      await screen.findAllByTestId("o-chu");
+      fireEvent.click(screen.getByText("Xem song song"));
+    };
+
+    beforeEach(() => {
+      auth.isAdmin = true;
+      localStorage.removeItem(LAYOUT_KEY);
+    });
+    afterEach(() => localStorage.removeItem(LAYOUT_KEY));
+
+    it("mặc định cùng hàng; chỉ có nút đổi ở chế độ song song", async () => {
+      open();
+      fireEvent.click(await screen.findByRole("tab", { name: "Soát" }));
+      await screen.findByLabelText("Hán dòng 1");
+      expect(screen.queryByText("Cùng cột")).toBeNull();
+      fireEvent.click(screen.getByText("Xem song song"));
+      expect(layout().dataset.boCuc).toBe("hang");
+      expect(layout().style.gridTemplateColumns).toBe("1fr 1fr");
+      fireEvent.click(screen.getByText("Kéo so sánh"));
+      expect(screen.queryByText("Cùng cột")).toBeNull();
+    }, 20000);
+
+    it("cùng cột vẫn phóng to, cuộn cùng nhau và làm sáng hai chiều", async () => {
+      open();
+      await openSideBySide();
+      fireEvent.click(screen.getByText("Cùng cột"));
+      expect(layout().dataset.boCuc).toBe("cot");
+      expect(layout().style.gridTemplateColumns).toBe("1fr");
+
+      fireEvent.click(screen.getByRole("button", { name: "Phóng to" }));
+      expect(screen.getAllByTestId("noi-dung-xem").map((n) => n.style.width)).toEqual(["125%", "125%"]);
+      const [top, bottom] = screen.getAllByTestId("khung-xem");
+      expect([top.style.maxHeight, bottom.style.maxHeight]).toEqual(["40vh", "40vh"]);
+      top.scrollLeft = 40;
+      top.scrollTop = 25;
+      fireEvent.scroll(top);
+      expect([bottom.scrollLeft, bottom.scrollTop]).toEqual([40, 25]);
+
+      const han = screen.getByLabelText("Hán dòng 1");
+      fireEvent.focus(han);
+      expect(document.querySelectorAll("rect[data-dang-chon]").length).toBe(4);
+      (document.activeElement as HTMLElement | null)?.blur();
+      fireEvent.click(screen.getAllByTestId("chu")[0]);
+      expect(document.activeElement).toBe(han);
+    }, 20000);
+
+    it("đổi về cùng hàng thì khung cao như cũ; lựa chọn được nhớ khi mở lại", async () => {
+      open();
+      await openSideBySide();
+      fireEvent.click(screen.getByText("Cùng cột"));
+      expect(localStorage.getItem(LAYOUT_KEY)).toBe("cot");
+      cleanup();
+
+      open();
+      await openSideBySide();
+      expect(layout().dataset.boCuc).toBe("cot");
+      fireEvent.click(screen.getByText("Cùng hàng"));
+      fireEvent.click(screen.getByRole("button", { name: "Phóng to" }));
+      expect(screen.getAllByTestId("khung-xem")[0].style.maxHeight).toBe("80vh");
+      expect(localStorage.getItem(LAYOUT_KEY)).toBe("hang");
+    }, 20000);
+
+    it("giá trị lạ hoặc trình duyệt chặn lưu vẫn dùng được", async () => {
+      localStorage.setItem(LAYOUT_KEY, "khong-hop-le");
+      open();
+      await openSideBySide();
+      expect(layout().dataset.boCuc).toBe("hang");
+      const blocked = vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+        throw new Error("bị chặn");
+      });
+      try {
+        fireEvent.click(screen.getByText("Cùng cột"));
+        expect(layout().dataset.boCuc).toBe("cot");
+      } finally {
+        blocked.mockRestore();
+      }
+    }, 20000);
+  });
 
   it("kéo từ nút giữa làn đỏ cũng di chuyển đường chia", async () => {
     auth.isAdmin = true;
