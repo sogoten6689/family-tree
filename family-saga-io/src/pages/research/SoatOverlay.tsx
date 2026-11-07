@@ -1,4 +1,4 @@
-import { Button, Image, Slider, Space } from "antd";
+import { Button, Image, Segmented, Slider, Space } from "antd";
 import { useEffect, useMemo, useRef, useState, type Dispatch, type PointerEvent as ReactPointerEvent, type ReactNode, type SetStateAction, type UIEvent } from "react";
 
 import type { KhungTrang } from "@/lib/doiChieuApi";
@@ -23,6 +23,27 @@ const CHANGED = "#d4380d";
 const FLAGGED = "rgba(250, 173, 20, 0.35)";
 const NUMBER = "#0958d9";
 const UNASSIGNED = "#d46b08";
+
+/** Bố cục xem song song: ảnh và chữ cùng một hàng, hoặc xếp cùng một cột. */
+type SideLayout = "hang" | "cot";
+
+const SIDE_LAYOUT_KEY = "doi-chieu:bo-cuc-song-song";
+
+const loadSideLayout = (): SideLayout => {
+  try {
+    return localStorage.getItem(SIDE_LAYOUT_KEY) === "cot" ? "cot" : "hang";
+  } catch {
+    return "hang";
+  }
+};
+
+const saveSideLayout = (layout: SideLayout) => {
+  try {
+    localStorage.setItem(SIDE_LAYOUT_KEY, layout);
+  } catch {
+    // trình duyệt chặn lưu thì vẫn đổi được trong phiên, chỉ không nhớ khi tải lại
+  }
+};
 
 export const ZoomBar = ({ zoom, setZoom }: { zoom: number; setZoom: Dispatch<SetStateAction<number>> }) => (
   <Space.Compact style={{ marginBottom: 8 }}>
@@ -314,6 +335,7 @@ const SoatOverlay = ({
   const [split, setSplit] = useState(50);
   const [zoom, setZoom] = useState(1);
   const [unplaced, setUnplaced] = useState(false);
+  const [sideLayout, setSideLayout] = useState<SideLayout>(loadSideLayout);
   const box = useRef<HTMLDivElement>(null);
   const translations = useRef<HTMLDivElement>(null);
   const panes = useRef<(HTMLDivElement | null)[]>([]);
@@ -353,7 +375,7 @@ const SoatOverlay = ({
     };
     if (zoomed) panes.current.forEach((pane) => bring(pane, pane?.querySelector("rect[data-dang-chon]")));
     bring(translations.current, translations.current?.querySelector("[data-dong-dich][data-dang-chon]"));
-  }, [activeKey, zoomed, mode]);
+  }, [activeKey, zoomed, mode, sideLayout]);
 
   const pickBox = (index: number) => {
     const key = rowKeys[index];
@@ -379,6 +401,9 @@ const SoatOverlay = ({
     });
   };
 
+  // Xếp cùng cột thì mỗi khung thấp lại, để khi phóng to vẫn thấy cả ảnh lẫn chữ của cùng một chỗ.
+  const zoomedHeight = mode === "song" && sideLayout === "cot" ? "40vh" : "80vh";
+
   const pane = (index: number, content: ReactNode, sync = false) => (
     <div
       ref={(n) => {
@@ -387,7 +412,7 @@ const SoatOverlay = ({
       data-testid="khung-xem"
       onScroll={sync ? followScroll : undefined}
       // Chưa phóng to thì không tạo thanh cuộn riêng, trang cuộn như cũ.
-      style={zoom > 1 ? { overflow: "auto", maxHeight: "80vh", minWidth: 0 } : { minWidth: 0 }}
+      style={zoom > 1 ? { overflow: "auto", maxHeight: zoomedHeight, minWidth: 0 } : { minWidth: 0 }}
     >
       <div data-testid="noi-dung-xem" style={{ width: `${zoom * 100}%` }}>
         {content}
@@ -398,6 +423,22 @@ const SoatOverlay = ({
   const zoomBar = (
     <>
       <ZoomBar zoom={zoom} setZoom={setZoom} />
+      {mode === "song" && (
+        <Segmented<SideLayout>
+          size="small"
+          aria-label="Bố cục xem song song"
+          style={{ marginLeft: 8 }}
+          value={sideLayout}
+          onChange={(layout) => {
+            setSideLayout(layout);
+            saveSideLayout(layout);
+          }}
+          options={[
+            { value: "hang", label: "Cùng hàng" },
+            { value: "cot", label: "Cùng cột" },
+          ]}
+        />
+      )}
       {unplaced && (
         <span data-testid="o-chua-gan" style={{ marginLeft: 8, color: "#d46b08" }}>
           Ô này chưa thuộc dòng nào. Bấm “Sửa ô chữ”, chọn ô rồi chọn dòng cho nó.
@@ -436,7 +477,7 @@ const SoatOverlay = ({
     return (
       <>
         {zoomBar}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+        <div data-testid="bo-cuc-song-song" data-bo-cuc={sideLayout} style={{ display: "grid", gridTemplateColumns: sideLayout === "cot" ? "1fr" : "1fr 1fr", gap: 8 }}>
           {pane(0, image, true)}
           {pane(1, text, true)}
         </div>
