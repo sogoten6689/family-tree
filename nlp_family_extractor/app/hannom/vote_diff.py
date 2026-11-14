@@ -6,7 +6,7 @@ from rapidfuzz.distance import Levenshtein
 
 # Diff từng chữ cho phần hiển thị vote (VoteDiffLine.tsx) — cùng cách tô màu
 # với `char_diff_spans`/`voted_line_contested_html` trong
-# hannom-bilingual-dataset/scripts/build_dashboard.py, nhưng trả về segment
+# hannom-bilingual-dataset/scripts/build_dashboard.py cũ (đã bỏ 14/11/2026), nhưng trả về segment
 # thay vì HTML. Tính ở Python (code point) thay vì JS (UTF-16) vì nhiều chữ
 # Hán Nôm nằm ngoài BMP — làm ở JS sẽ lệch chỉ số (bài học "Sổ Khảo Dị OCR"
 # 2026-09-15). Frontend chỉ việc nối segment, không tính chỉ số nào.

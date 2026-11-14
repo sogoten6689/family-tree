@@ -78,7 +78,7 @@ Chỉ chạy khi `vote_line()` không rõ ràng (`line_no_majority` hoặc `line
    - ≥2 engine đồng ý khác backbone (backbone chỉ có 1) → override đúng (`line_majority_override`).
    - `rank_by_similarity` chọn đúng engine giống nhau nhất làm backbone trên input đã biết trước đáp án.
    - Số phiếu lẻ ở cấp trang được đảm bảo (`vote_from_results` với 2 hoặc 4 "other engines" giả).
-3. **Thêm stage vào `Jenkinsfile` hiện có** (đang chỉ có `Checkout OK` → `Build Dashboard Image` → `Deploy`, không test gì) — chèn stage mới TRƯỚC `Build Dashboard Image`:
+3. *(Không còn áp dụng: `Jenkinsfile` và dashboard đã bỏ ngày 14/11/2026 cùng trang thongke-giapha.)* **Thêm stage vào `Jenkinsfile` hiện có** (đang chỉ có `Checkout OK` → `Build Dashboard Image` → `Deploy`, không test gì) — chèn stage mới TRƯỚC `Build Dashboard Image`:
    ```groovy
    stage('Unit Test Vote Rule') {
        steps {

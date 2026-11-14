@@ -90,8 +90,7 @@ v = jsonschema.Draft7Validator(schema)
 d = json.load(open('data/track1_hannom_only/<doc_id>.json', encoding='utf-8'))
 print('schema errors:', len(list(v.iter_errors(d))))
 "
-python3 scripts/build_dashboard.py
-git add data/track1_hannom_only/<doc_id>.json dashboard/index.html dashboard/status.json
+git add data/track1_hannom_only/<doc_id>.json
 git commit -m "Hoàn thiện <doc_id>: đủ L1+L2+L3 cho N/N trang"
 git push
 ```
@@ -133,9 +132,6 @@ git push
 - Nếu chạy song song nhiều "thợ" (Cursor, phiên Claude khác, tự tay): **mỗi
   bên nhận trọn 1-2 tài liệu**, không chia nhỏ theo trang — vì mỗi tài liệu
   là 1 file JSON riêng, chia theo tài liệu tránh xung đột Git hoàn toàn.
-- File `dashboard/index.html` + `dashboard/status.json` là **sinh tự động**
-  — nếu `git pull` báo conflict ở 2 file này, không cần merge tay, chạy lại
-  `python3 scripts/build_dashboard.py` rồi commit đè.
 - Luôn `git pull` trước khi bắt đầu 1 tài liệu mới, và trước khi push.
 
 ## Tiêu chí hoàn thành Track 1
@@ -149,5 +145,4 @@ git push
       loại vĩnh viễn
 - [ ] Tính `ma_dinh_danh` cho tài liệu nào đủ điều kiện (đã đọc xong 5 thành
       phần + xác định được ID tăng dần)
-- [ ] `python3 scripts/build_dashboard.py` chạy sạch, dashboard hiện đúng
-      100% tài liệu đủ L1/L2/L3
+- ~~Dashboard hiện đúng 100% tài liệu~~ (dashboard đã bỏ ngày 14/11/2026 cùng trang thongke-giapha)

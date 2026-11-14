@@ -18,11 +18,12 @@ Trang Jenkins cần đăng nhập. Job `family-tree` không tự chạy khi merg
 | Job | Trang Jenkins | Trang web | Nguồn (nhánh · Jenkinsfile) | Cổng host |
 |---|---|---|---|--:|
 | `family-tree` | [job/family-tree](https://cicd.kimtudien.com.vn/job/family-tree/) | [giapha.kimtudien.com.vn](https://giapha.kimtudien.com.vn) | repo này · `master` · `Jenkinsfile` | 87 |
-| `deploy-hannom-dashboard` | [job/deploy-hannom-dashboard](https://cicd.kimtudien.com.vn/job/deploy-hannom-dashboard/) | [thongke-giapha.kimtudien.com.vn](https://thongke-giapha.kimtudien.com.vn) | repo này · `claude/busy-planck-bb0lwd` · `research/hannom-bilingual-dataset/Jenkinsfile` | 89 |
 | `talking-picture` | [job/talking-picture](https://cicd.kimtudien.com.vn/job/talking-picture/) | [taking-picture.kimtudien.com.vn](https://taking-picture.kimtudien.com.vn) | `lananhdl/talking-picture` · `main` | 85 |
 | `vietnet-food` | [job/vietnet-food](https://cicd.kimtudien.com.vn/job/vietnet-food/) | [vietnet-food.kimtudien.com.vn](https://vietnet-food.kimtudien.com.vn) | `PVBHai/VietNet-Food` · `main` | 86 |
 
 `talking-picture` và `vietnet-food` thuộc repo khác, chỉ dùng chung máy Jenkins; ghi ở đây để tra link. Số liệu đọc ngày 14/11/2026.
+
+Job `deploy-hannom-dashboard` (trang `thongke-giapha.kimtudien.com.vn`) đã xoá ngày 14/11/2026.
 
 ## Backup + pull dữ liệu mới (chạy tay)
 
