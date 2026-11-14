@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -7,6 +7,7 @@ import { markChangedChars, sampleLines, summarize, toCsv } from "./doiChieuGradi
 import { alignToAnchors, draftChars } from "./lopPhu";
 import { boxColor, boxFrom, insertIndex, moveBox } from "./oChu";
 import { countSubmittable, mergeWithNext, splitRow, stripKeys, suspectOf, toggleMark, withKeys, type EditRow } from "./soatRows";
+import { buildMessage } from "./nhanXet";
 import SoatOverlay from "./SoatOverlay";
 
 const auth = vi.hoisted(() => ({ isAdmin: false }));
@@ -965,4 +966,83 @@ describe("thẻ Soát", () => {
     expect(writes.map((c) => c.method)).toEqual(["PUT", "POST"]);
     expect(JSON.parse(writes[0].body!)).toMatchObject({ da_soat: ["001"], phien_ban: 0, rows: [{ han: "公回。" }] });
   }, 20000); // nhiều thành phần antd trong jsdom: ~2 giây khi chạy riêng, vượt 5 giây khi cả bộ test chạy song song
+});
+
+describe("nhận xét", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    cleanup();
+    auth.isAdmin = false;
+  });
+  const SLOW = { timeout: 8000 };
+  const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
+  const pair = (line: number, han: string, viet: string) => ({ line, han, viet, errors: [], may_han: "", may_viet: "", coverage: 1, trang: [] });
+  const book = {
+    student: "sv-a",
+    book: "nom-1",
+    ten: null,
+    link: null,
+    tsv: "nom-1_parallel.tsv",
+    pairs: [pair(1, "公回", "Ông về"), pair(2, "阮無名", "Nguyễn vô danh (2)")],
+    missing: [],
+    pages: [],
+    stats: { pairs: 2, valid: 2, format_errors: 0, machine_rows: 0, machine_pages: 0, ocr_coverage: null },
+  };
+  const saved = { trang_thai: "nhap", mo_dau: "Chào A,", muc: [{ dong: 2, loai: "ADDITION", noi_dung: "Bỏ số (2)." }], ket: "Gửi lại nhé.", phien_ban: 1 };
+
+  const open = () => {
+    const calls: { method: string; url: string; body?: string }[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string, init?: RequestInit) => {
+        const method = init?.method ?? "GET";
+        calls.push({ method, url, body: init?.body as string | undefined });
+        if (url.endsWith("/nhan-xet") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: 2 });
+        if (url.endsWith("/nhan-xet")) return json(saved);
+        return json(book);
+      }),
+    );
+    render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <MemoryRouter initialEntries={["/nghien-cuu/doi-chieu?sv=sv-a&cuon=nom-1"]}>
+          <DoiChieuPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    return calls;
+  };
+
+  it("ghép tin nhắn có số dòng, bỏ mục rỗng", () => {
+    expect(
+      buildMessage({ mo_dau: "Chào A,", ket: "Hết.", muc: [{ dong: 3, loai: "khac", noi_dung: "Sửa" }, { loai: "khac", noi_dung: "Chung" }, { loai: "khac", noi_dung: " " }] }),
+    ).toBe("Chào A,\n\nCần sửa:\n1. Dòng 3: Sửa\n2. Chung\n\nHết.");
+  });
+
+  it("người không phải admin không thấy thẻ Nhận xét", async () => {
+    const calls = open();
+    await screen.findByRole("tab", { name: "Cặp song song" }, SLOW);
+    expect(screen.queryByRole("tab", { name: "Nhận xét" })).toBeNull();
+    expect(calls.some((c) => c.url.includes("/nhan-xet"))).toBe(false);
+  });
+
+  it("admin xem cặp của mục, sửa rồi lưu đúng phiên bản", async () => {
+    auth.isAdmin = true;
+    const calls = open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Nhận xét" }, SLOW));
+    expect((await screen.findByTestId("tin-nhan", undefined, SLOW)).textContent).toContain("Dòng 2: Bỏ số (2).");
+    expect(screen.getAllByText("Nguyễn vô danh (2)").length).toBeGreaterThan(0);
+    fireEvent.change(screen.getByLabelText("Nội dung mục 1"), { target: { value: "Bỏ hết số đếm." } });
+    fireEvent.click(screen.getByRole("button", { name: "Lưu nhận xét" }));
+    await waitFor(() => expect(calls.some((c) => c.method === "PUT")).toBe(true));
+    const put = JSON.parse(calls.find((c) => c.method === "PUT")!.body!);
+    expect(put).toMatchObject({ phien_ban: 1, muc: [{ dong: 2, noi_dung: "Bỏ hết số đếm." }] });
+  });
+
+  it("bấm Xem trong bảng thì về thẻ cặp và làm sáng dòng", async () => {
+    auth.isAdmin = true;
+    open();
+    fireEvent.click(await screen.findByRole("tab", { name: "Nhận xét" }, SLOW));
+    fireEvent.click(await screen.findByRole("button", { name: "Xem trong bảng" }, SLOW));
+    await waitFor(() => expect(document.querySelector('[data-dang-xem="1"]')?.getAttribute("data-row-key")).toBe("2"));
+  });
 });

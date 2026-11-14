@@ -411,3 +411,71 @@ class SoatApiTest(unittest.TestCase):
         self.assertEqual(self.client.get(self.URL).status_code, 409)
         self.assertEqual(self.save([self.row("001", "改。", "Đổi.")], ["001"]).status_code, 409)
         self.assertEqual(tsv.read_text(encoding="utf-8"), "公回。\tÔng về.\n")
+
+
+class NhanXetApiTest(unittest.TestCase):
+    URL = "/api/doi-chieu/sv-a/nom-1/nhan-xet"
+
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.book = Path(self.tmp.name) / "sv-a" / "nom-1"
+        self.book.mkdir(parents=True)
+        (self.book / "nom-1_parallel.tsv").write_text(TSV, encoding="utf-8")
+        self.old = os.environ.get("DOI_CHIEU_DIR")
+        os.environ["DOI_CHIEU_DIR"] = self.tmp.name
+        api.app.dependency_overrides[get_db] = lambda: None
+        self.client = TestClient(api.app)
+        user = SimpleNamespace(role=UserRole.ADMIN, email="huong-dan@example.test")
+        api.app.dependency_overrides[get_current_user] = lambda: user
+
+    def tearDown(self) -> None:
+        api.app.dependency_overrides.clear()
+        if self.old is None:
+            os.environ.pop("DOI_CHIEU_DIR", None)
+        else:
+            os.environ["DOI_CHIEU_DIR"] = self.old
+        self.tmp.cleanup()
+
+    BODY = {
+        "trang_thai": "nhap",
+        "mo_dau": "Chào A, anh đã xem bài.",
+        "muc": [{"dong": 2, "loai": "OMISSION", "noi_dung": "Thiếu dịch vế sau."}, {"loai": "bao_cao", "noi_dung": "Ghi rõ người soát."}],
+        "ket": "Sửa xong gửi lại nhé.",
+        "phien_ban": 0,
+    }
+
+    def test_requires_admin(self) -> None:
+        api.app.dependency_overrides.pop(get_current_user)
+        self.assertEqual(self.client.get(self.URL).status_code, 401)
+        api.app.dependency_overrides[get_current_user] = lambda: SimpleNamespace(role=UserRole.USER, email="sv@example.test")
+        self.assertEqual(self.client.get(self.URL).status_code, 403)
+        self.assertEqual(self.client.put(self.URL, json=self.BODY).status_code, 403)
+        self.assertFalse((self.book / "nhan_xet.json").exists())
+
+    def test_empty_then_save_and_reload(self) -> None:
+        first = self.client.get(self.URL).json()
+        self.assertEqual(first["phien_ban"], 0)
+        self.assertEqual(first["muc"], [])
+        saved = self.client.put(self.URL, json=self.BODY).json()
+        self.assertEqual(saved["phien_ban"], 1)
+        self.assertEqual(saved["nguoi_sua"], "huong-dan@example.test")
+        again = self.client.get(self.URL).json()
+        self.assertEqual(again["muc"][0], {"dong": 2, "loai": "OMISSION", "noi_dung": "Thiếu dịch vế sau."})
+        self.assertIsNone(again["muc"][1]["dong"])
+
+    def test_stale_version_is_rejected_and_old_version_kept(self) -> None:
+        self.client.put(self.URL, json=self.BODY)
+        self.assertEqual(self.client.put(self.URL, json=self.BODY).status_code, 409)
+        self.assertEqual(self.client.put(self.URL, json={**self.BODY, "trang_thai": "da_duyet", "phien_ban": 1}).status_code, 200)
+        self.assertEqual(len(list((self.book / "lich_su").glob("nhan_xet_*_v1.json"))), 1)
+
+    def test_bad_input_is_rejected(self) -> None:
+        bad_kind = {**self.BODY, "muc": [{"dong": 1, "loai": "sai", "noi_dung": "x"}]}
+        self.assertEqual(self.client.put(self.URL, json=bad_kind).status_code, 422)
+        self.assertEqual(self.client.put(self.URL, json={**self.BODY, "trang_thai": "xong"}).status_code, 422)
+        self.assertEqual(self.client.get("/api/doi-chieu/sv-a/khong-co/nhan-xet").status_code, 404)
+
+    def test_public_book_does_not_expose_comments(self) -> None:
+        self.client.put(self.URL, json=self.BODY)
+        public = self.client.get("/api/public/doi-chieu/sv-a/nom-1").text
+        self.assertNotIn("Thiếu dịch vế sau", public)

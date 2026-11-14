@@ -170,3 +170,31 @@ export const saveSoat = (student: string, book: string, draft: SoatDraft) =>
 
 export const nopSoat = (student: string, book: string) =>
   apiRequest<NopResult>(`${soatPath(student, book)}/nop`, { method: "POST" });
+
+export type LoaiNhanXet = "OMISSION" | "ADDITION" | "MISSING" | "chu_han" | "ten_rieng" | "dinh_dang" | "bao_cao" | "khac";
+
+export interface MucNhanXet {
+  /** Số dòng trong TSV bài nộp; không có là nhận xét chung. */
+  dong?: number | null;
+  loai: LoaiNhanXet;
+  noi_dung: string;
+}
+
+/** Nhận xét gửi sinh viên cho một cuốn; chỉ admin đọc và ghi. */
+export interface NhanXet {
+  trang_thai: "nhap" | "da_duyet" | "da_gui";
+  mo_dau: string;
+  muc: MucNhanXet[];
+  ket: string;
+  phien_ban: number;
+  nguoi_sua?: string;
+  luu_luc?: string;
+}
+
+const nhanXetPath = (student: string, book: string) =>
+  `/api/doi-chieu/${encodeURIComponent(student)}/${encodeURIComponent(book)}/nhan-xet`;
+
+export const getNhanXet = (student: string, book: string) => apiRequest<NhanXet>(nhanXetPath(student, book));
+
+export const saveNhanXet = (student: string, book: string, data: NhanXet) =>
+  apiRequest<NhanXet>(nhanXetPath(student, book), { method: "PUT", body: JSON.stringify(data) });

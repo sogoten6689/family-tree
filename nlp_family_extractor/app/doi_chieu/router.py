@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, StringConstraints
 
 from app.auth.dependencies import AdminUser
-from app.doi_chieu import service, soat
+from app.doi_chieu import nhan_xet, service, soat
 
 # Công khai, không cần đăng nhập (theo yêu cầu): chỉ đọc. Phần ghi nằm ở admin_router bên dưới.
 # Chưa đặt DOI_CHIEU_DIR (hoặc thư mục không tồn tại) thì trả danh sách rỗng.
@@ -175,5 +175,42 @@ def put_soat(student: str, book: str, payload: SoatDraft, user: AdminUser) -> di
 def post_nop(student: str, book: str, _: AdminUser) -> dict:
     try:
         return soat.submit(_book_dir(student, book), book)
+    except OSError as exc:
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=_NOT_WRITABLE) from exc
+
+
+_LoaiNhanXet = Literal["OMISSION", "ADDITION", "MISSING", "chu_han", "ten_rieng", "dinh_dang", "bao_cao", "khac"]
+
+
+class MucNhanXet(BaseModel):
+    # Số dòng trong tệp TSV của bài nộp; không có thì là nhận xét chung cho cả bài.
+    dong: int | None = Field(default=None, ge=1, le=1000000)
+    loai: _LoaiNhanXet = "khac"
+    noi_dung: str = Field(min_length=1, max_length=4000)
+
+
+class NhanXet(BaseModel):
+    trang_thai: Literal["nhap", "da_duyet", "da_gui"] = "nhap"
+    mo_dau: str = Field(default="", max_length=4000)
+    muc: list[MucNhanXet] = Field(default_factory=list, max_length=500)
+    ket: str = Field(default="", max_length=4000)
+    phien_ban: int = Field(ge=0)
+
+
+_NHAN_XET_CONFLICT = "Nhận xét đã được lưu ở nơi khác (tab hoặc máy khác). Tải lại trang rồi sửa tiếp."
+
+
+@admin_router.get("/{student}/{book}/nhan-xet")
+def get_nhan_xet(student: str, book: str, _: AdminUser) -> dict:
+    return nhan_xet.load(_book_dir(student, book))
+
+
+@admin_router.put("/{student}/{book}/nhan-xet")
+def put_nhan_xet(student: str, book: str, payload: NhanXet, user: AdminUser) -> dict:
+    data = payload.model_dump(exclude={"phien_ban"})
+    try:
+        return nhan_xet.save(_book_dir(student, book), data, payload.phien_ban, user.email)
+    except nhan_xet.VersionConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, detail=_NHAN_XET_CONFLICT) from exc
     except OSError as exc:
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=_NOT_WRITABLE) from exc

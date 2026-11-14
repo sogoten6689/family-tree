@@ -27,6 +27,7 @@ import {
   toCsv,
   type Verdict,
 } from "./doiChieuGrading";
+import NhanXetTab from "./NhanXetTab";
 import SoatTab from "./SoatTab";
 
 const pct = (x: number | null | undefined) => (x == null ? "—" : `${Math.round(x * 100)}%`);
@@ -123,11 +124,26 @@ const bookColumns = (onOpen: (book: string) => void): ColumnsType<BookSummary> =
 
 type PairFilter = "all" | "errors" | "low";
 
-const PairsTab = ({ detail }: { detail: BookDetail }) => {
+const PAIRS_PAGE_SIZE = 50;
+
+/** `focus`: dòng cần nhảy tới (từ thẻ Nhận xét); `n` đổi mỗi lần bấm để bấm lại cùng dòng vẫn cuộn. */
+const PairsTab = ({ detail, focus }: { detail: BookDetail; focus?: { line: number; n: number } }) => {
   const [filter, setFilter] = useState<PairFilter>("all");
+  const [page, setPage] = useState(1);
   const rows = detail.pairs.filter((p) =>
     filter === "errors" ? p.errors.length > 0 : filter === "low" ? p.coverage < 0.5 : true,
   );
+
+  useEffect(() => {
+    if (!focus) return;
+    setFilter("all");
+    const index = detail.pairs.findIndex((p) => p.line === focus.line);
+    if (index >= 0) setPage(Math.floor(index / PAIRS_PAGE_SIZE) + 1);
+    const timer = window.setTimeout(() => {
+      document.querySelector(`[data-row-key="${focus.line}"]`)?.scrollIntoView?.({ block: "center" });
+    }, 50);
+    return () => window.clearTimeout(timer);
+  }, [focus, detail.pairs]);
   const columns: ColumnsType<AlignedPair> = [
     { title: "Dòng", dataIndex: "line", width: 60 },
     {
@@ -177,7 +193,13 @@ const PairsTab = ({ detail }: { detail: BookDetail }) => {
   ];
   return (
     <Space orientation="vertical" style={{ width: "100%" }}>
-      <Radio.Group value={filter} onChange={(e) => setFilter(e.target.value)}>
+      <Radio.Group
+        value={filter}
+        onChange={(e) => {
+          setFilter(e.target.value);
+          setPage(1);
+        }}
+      >
         <Radio.Button value="all">Tất cả ({detail.pairs.length})</Radio.Button>
         <Radio.Button value="errors">Lỗi định dạng ({detail.pairs.filter((p) => p.errors.length).length})</Radio.Button>
         <Radio.Button value="low">Khớp OCR &lt; 50% ({detail.pairs.filter((p) => p.coverage < 0.5).length})</Radio.Button>
@@ -186,7 +208,14 @@ const PairsTab = ({ detail }: { detail: BookDetail }) => {
         Chữ <mark style={{ background: "#ffe58f" }}>tô vàng</mark> không có trong đoạn OCR tương ứng — thường là chữ sinh viên đã sửa so
         với OCR. "Khớp OCR" thấp: cặp không tìm được trong bản máy (sửa nhiều, thêm nội dung, hoặc OCR sai thứ tự cột).
       </Typography.Paragraph>
-      <Table rowKey="line" size="small" columns={columns} dataSource={rows} pagination={{ pageSize: 50, showSizeChanger: false }} />
+      <Table
+        rowKey="line"
+        size="small"
+        columns={columns}
+        dataSource={rows}
+        onRow={(p) => (focus && p.line === focus.line ? { "data-dang-xem": "1", style: { background: "#fff7e6" } } : {}) as object}
+        pagination={{ pageSize: PAIRS_PAGE_SIZE, showSizeChanger: false, current: page, onChange: setPage }}
+      />
     </Space>
   );
 };
@@ -313,6 +342,12 @@ const PagesTab = ({ detail }: { detail: BookDetail }) => {
 const BookView = ({ student, book, threshold, onBack }: { student: string; book: string; threshold: number; onBack: () => void }) => {
   const { data, error, isLoading } = useQuery({ queryKey: ["doi-chieu", student, book], queryFn: () => getBook(student, book) });
   const { isAdmin } = useAuth();
+  const [tab, setTab] = useState("pairs");
+  const [focus, setFocus] = useState<{ line: number; n: number }>();
+  const showLine = (line: number) => {
+    setFocus((f) => ({ line, n: (f?.n ?? 0) + 1 }));
+    setTab("pairs");
+  };
   if (error) return <Alert type="error" showIcon title="Không tải được cuốn" description={String(error)} />;
   return (
     <Card
@@ -342,12 +377,19 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
             <Statistic title="Cột máy chưa phủ" value={data.missing.length} />
           </Space>
           <Tabs
+            activeKey={tab}
+            onChange={setTab}
             items={[
-              { key: "pairs", label: "Cặp song song", children: <PairsTab detail={data} /> },
+              { key: "pairs", label: "Cặp song song", children: <PairsTab detail={data} focus={focus} /> },
               { key: "missing", label: `Bản máy chưa dóng (${data.missing.length})`, children: <MissingTab detail={data} /> },
               { key: "grade", label: "Chấm mẫu lỗi", children: <GradeTab detail={data} threshold={threshold} /> },
               { key: "pages", label: `Ảnh trang (${data.pages.length})`, children: <PagesTab detail={data} /> },
-              ...(isAdmin ? [{ key: "soat", label: "Soát", children: <SoatTab detail={data} /> }] : []),
+              ...(isAdmin
+                ? [
+                    { key: "soat", label: "Soát", children: <SoatTab detail={data} /> },
+                    { key: "nhan-xet", label: "Nhận xét", children: <NhanXetTab detail={data} onShowLine={showLine} /> },
+                  ]
+                : []),
             ]}
           />
         </>
