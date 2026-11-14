@@ -13,7 +13,9 @@ File compose: `infra/docker-compose.yml` (path build/volume vẫn tính từ roo
 
 ## Các job Jenkins (`cicd.kimtudien.com.vn`)
 
-Trang Jenkins cần đăng nhập. Job `family-tree` không tự chạy khi merge (ví dụ PR #68 ngày 14/11/2026 phải bấm **Build Now**).
+Trang Jenkins cần đăng nhập. Job `family-tree` **tự build khi có commit mới trên `master`**: Jenkins hỏi GitHub
+khoảng 2 phút một lần (`pollSCM` trong `Jenkinsfile`), vì webhook GitHub → Jenkins không kết nối được VPS
+(kiểm tra 14/11/2026). Mỗi lần build xong, dòng mô tả của build ghi link web và mã commit.
 
 | Job | Trang Jenkins | Trang web | Nguồn (nhánh · Jenkinsfile) | Cổng host |
 |---|---|---|---|--:|
