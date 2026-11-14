@@ -13,16 +13,6 @@ secrets/
 data/
 runs/
 
-# dashboard/index.html + status.json + data/: sinh tự động từ
-# scripts/build_dashboard.py, XÁC NHẬN 2026-09-21: index.html từng vượt 100MB
-# (giới hạn GitHub) sau khi vote lại 17 tài liệu bằng thuật toán câu/Levenshtein
-# — đã tách kiến trúc (index.html/status.json chỉ còn khung nhẹ, nội dung từng
-# tài liệu nằm ở dashboard/data/<doc_id>.html/.json, tải riêng khi mở) nhưng cả
-# 3 vẫn là dữ liệu SINH RA, không phải nguồn — bỏ khỏi git, Docker build tự chạy
-# lại `python3 scripts/build_dashboard.py` (xem dashboard/Dockerfile).
-dashboard/index.html
-dashboard/status.json
-dashboard/data/
 
 # TOOL_ChatGPT_API / TOOL_Gemini_API: cookie dang nhap va anh chan doan
 cookies.pkl

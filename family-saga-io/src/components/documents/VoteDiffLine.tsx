@@ -86,7 +86,7 @@ function VotedText({ span }: { span: UncertainSpan }) {
  * 1 dòng tranh chấp của bước Vote: dòng thắng (gạch chân chữ bị tranh chấp),
  * phiếu thắng n_agree/n_total, và từng engine bất đồng tô màu theo diff
  * (đỏ = bị thay, vàng = chữ thừa, chấm mờ = chữ thiếu) — cùng cách hiển thị
- * với scripts/build_dashboard.py của repo nghiên cứu.
+ * với scripts/build_dashboard.py cũ của repo nghiên cứu (đã bỏ ngày 14/11/2026 cùng trang thongke-giapha).
  */
 export function VoteDiffLine({ span }: { span: UncertainSpan }) {
   const { t } = useTranslation();

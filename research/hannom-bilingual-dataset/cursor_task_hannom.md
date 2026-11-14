@@ -106,19 +106,12 @@ schema hay tự đoán, báo lại nguyên văn lỗi.
 ## Sau khi xong CẢ NHÓM (tất cả doc_id trong danh sách của mình)
 
 ```bash
-# 1. Cập nhật dashboard
-python3 scripts/build_dashboard.py
-
-# 2. Pull trước khi push (4 nhóm khác cũng đang commit song song)
+# 1. Pull trước khi push (4 nhóm khác cũng đang commit song song)
 git pull
 
-# 3. Nếu dashboard/index.html hoặc dashboard/status.json báo conflict khi pull:
-#    không cần merge tay — chạy lại `python3 scripts/build_dashboard.py` rồi add lại,
-#    vì 2 file này chỉ là dữ liệu SINH RA tự động.
-
-# 4. Commit + push — liệt kê đủ doc_id đã làm trong 1 commit cho cả nhóm
+# 2. Commit + push — liệt kê đủ doc_id đã làm trong 1 commit cho cả nhóm
 # (dùng git add -u để bắt đúng mọi file JSON đã sửa, không cần gõ tay từng path/track)
-git add -u data/track1_hannom_only/ data/track2_bilingual/ dashboard/index.html dashboard/status.json
+git add -u data/track1_hannom_only/ data/track2_bilingual/
 git commit -m "Vote lại L1 theo thuật toán câu/Levenshtein cho <danh sách doc_id nhóm mình>
 
 Co-Authored-By: Cursor <noreply@cursor.com>"

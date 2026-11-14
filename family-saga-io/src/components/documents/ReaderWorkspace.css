@@ -57,7 +57,7 @@
 .pipeline-steps-engine { border: 1px solid var(--ant-color-border-secondary); border-radius: var(--ant-border-radius); padding: 12px; }
 .pipeline-steps-engine-text { font-family: "Noto Serif CJK TC", "Songti SC", "SimSun", serif; font-weight: 600; white-space: pre-wrap; margin-top: 8px !important; }
 
-/* Bước Vote — VoteDiffLine (cùng cách tô màu với build_dashboard.py) */
+/* Bước Vote — VoteDiffLine (cùng cách tô màu với build_dashboard.py cũ, đã bỏ 14/11/2026) */
 .vote-spans { display: flex; flex-direction: column; gap: 12px; }
 .vote-span { border: 1px solid var(--ant-color-border-secondary); border-left-width: 3px; border-radius: var(--ant-border-radius); padding: 10px 12px; }
 .vote-span-override { border-left-color: var(--ant-color-success); }

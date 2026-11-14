@@ -38,7 +38,7 @@ _PARENTS = _THIS_FILE.parents
 # fail trước khi kịp chạy gì — fallback về cấp cha sâu nhất SẴN CÓ khi thiếu,
 # để import không bao giờ crash (giá trị lúc đó chỉ mang tính hình thức, các
 # script chạy trong Docker không thật sự cần FAMILY_TREE_ROOT/DATA_REPO_ROOT
-# đúng — xem build_dashboard.py, ưu tiên data/ COPY sẵn cạnh script trước).
+# đúng). Dashboard và build_dashboard.py đã bỏ ngày 14/11/2026 cùng trang thongke-giapha.
 FAMILY_TREE_ROOT: Path = _PARENTS[3] if len(_PARENTS) > 3 else _PARENTS[-1]
 
 DATA_REPO_ROOT: Path = Path(
