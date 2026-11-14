@@ -7,9 +7,9 @@ set -euo pipefail
 # attach document + sync pipeline 7 bước trong 1 lần gọi, tự skip cây đã có nội
 # dung không đổi nhờ skip_unchanged=true).
 #
-# Chạy trực tiếp trên VPS (gọi localhost, không qua internet) qua Jenkins job
-# "family-tree-vgp-pull-weekly" (infra/jenkins/Jenkinsfile.vgp-pull), hoặc chạy
-# tay: ADMIN_PASSWORD=... ./infra/scripts/vgp_pull_sync.sh
+# Chạy tay trực tiếp trên VPS (gọi localhost, không qua internet):
+# ADMIN_PASSWORD=... ./infra/scripts/vgp_pull_sync.sh
+# (job Jenkins "family-tree-vgp-pull-weekly" gọi script này đã xoá ngày 14/11/2026).
 #
 # Biến môi trường:
 #   BACKEND_URL     mặc định http://localhost:8002 (bypass nginx, gọi thẳng backend)

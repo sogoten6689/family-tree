@@ -5,8 +5,8 @@ set -euo pipefail
 # Chạy trực tiếp trên VPS (không cần chạy trong container) — script tự gọi
 # `docker compose exec`/`docker run` để thao tác với các container đang chạy.
 #
-# Dùng bởi Jenkins job "family-tree-backup-weekly" (infra/jenkins/Jenkinsfile.backup)
-# qua SSH, nhưng cũng chạy tay được: ./infra/scripts/backup.sh
+# Chạy tay trên VPS: MYSQL_ROOT_PASSWORD=... ./infra/scripts/backup.sh
+# (job Jenkins "family-tree-backup-weekly" gọi script này đã xoá ngày 14/11/2026).
 #
 # Không tự đẩy backup đi đâu khác — chỉ lưu trên VPS, dưới BACKUP_DIR (xem dưới).
 # Theo yêu cầu 2026-09: "chỉ cần backup nằm sẵn trên VPS, chưa cần tự động
