@@ -17,6 +17,19 @@ pipeline {
         // (infra/nginx/conf.d/giapha.kimtudien.com.vn.conf). Mặc định trong
         // compose là localhost:9002 → trình duyệt người dùng không tải được ảnh.
         MINIO_PUBLIC_ENDPOINT = 'https://giapha.kimtudien.com.vn'
+        WEB_URL = 'https://giapha.kimtudien.com.vn'
+    }
+    triggers {
+        // Tu build khi co commit moi tren master. Webhook GitHub -> Jenkins co
+        // san nhung GitHub khong ket noi duoc VPS (moi lan goi deu "failed to
+        // connect to host", kiem tra 14/11/2026), nen Jenkins tu hoi GitHub
+        // moi ~2 phut; chieu VPS -> GitHub van thong. Neu webhook thong lai thi
+        // githubPush() build ngay, pollSCM khong build trung vi khong co commit moi.
+        githubPush()
+        pollSCM('H/2 * * * *')
+    }
+    options {
+        disableConcurrentBuilds()
     }
     stages {
         stage('Checkout OK') {
@@ -41,6 +54,17 @@ pipeline {
                 docker exec family-tree-nginx wget -qO- http://127.0.0.1/health
                 '''
             }
+        }
+    }
+    post {
+        success {
+            script {
+                currentBuild.description = "Web: ${env.WEB_URL} · ${env.GIT_COMMIT?.take(7) ?: ''}"
+            }
+            echo "Deploy xong. Truy cap web: ${env.WEB_URL}"
+        }
+        failure {
+            echo "Deploy loi. Web dang chay ban truoc: ${env.WEB_URL}"
         }
     }
 }
