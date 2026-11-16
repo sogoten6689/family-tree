@@ -1,9 +1,25 @@
 import { ApiError, apiRequest, getBackendBaseUrl } from "@/lib/apiClient";
 
-/** Tên đầy đủ và link bản gốc lấy từ danh_muc.json; null khi chưa khai báo. */
+/** Tên đầy đủ, link bản gốc, nguồn cặp câu lấy từ danh_muc.json; null/"anh" khi chưa khai báo. */
 export interface BookInfo {
   ten: string | null;
   link: string | null;
+  /** "ban_dich_san": cặp nhập từ bản dịch có sẵn (Word/PDF đã dịch); "anh": tự dóng từ ảnh. */
+  nguon: "anh" | "ban_dich_san";
+}
+
+/** Tổng hợp chấm mẫu của một cuốn (công khai; nhãn từng dòng chỉ admin đọc). */
+export interface ChamSummary {
+  checked: number;
+  /** Cỡ mẫu cần chấm: 5% số cặp hợp lệ, tối thiểu 20. */
+  sample: number;
+  errors: number;
+  by_type: { OMISSION: number; ADDITION: number; MISSING: number };
+  rate: number | null;
+  /** Đã chấm đủ mẫu. */
+  complete: boolean;
+  /** Chấm đủ mẫu và tỷ lệ lỗi ≤ ngưỡng: cặp hợp lệ của cuốn tính vào chỉ tiêu. */
+  dat: boolean;
 }
 
 export interface BookSummary extends BookInfo {
@@ -18,6 +34,7 @@ export interface BookSummary extends BookInfo {
   ocr_coverage: number | null;
   /** Số ảnh trang có trên máy chủ (xem được cả khi chưa có bản máy). */
   image_pages: number;
+  cham: ChamSummary;
 }
 
 export interface StudentSummary {
@@ -28,6 +45,10 @@ export interface StudentSummary {
   pairs: number;
   format_errors: number;
   submitted: number;
+  /** Chỉ số chính: cặp hợp lệ của các cuốn đã chấm đủ mẫu, tỷ lệ lỗi ≤ ngưỡng. */
+  quality_pairs: number;
+  /** Phần cặp hợp lệ nhập từ bản dịch có sẵn (vẫn tính vào chỉ tiêu, hệ số 1). */
+  valid_ban_dich_san: number;
 }
 
 export interface Overview {
@@ -63,7 +84,8 @@ export interface BookDetail extends BookInfo {
   missing: MissingRow[];
   /** Tên các trang có ảnh, theo thứ tự. */
   pages: string[];
-  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "image_pages">;
+  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "nguon" | "image_pages" | "cham">;
+  cham: ChamSummary;
 }
 
 const BASE = "/api/public/doi-chieu";
@@ -198,3 +220,20 @@ export const getNhanXet = (student: string, book: string) => apiRequest<NhanXet>
 
 export const saveNhanXet = (student: string, book: string, data: NhanXet) =>
   apiRequest<NhanXet>(nhanXetPath(student, book), { method: "PUT", body: JSON.stringify(data) });
+
+export type Verdict = "dung" | "OMISSION" | "ADDITION" | "MISSING";
+
+/** Nhãn chấm mẫu lưu trên máy chủ (chỉ admin). Khoá là số dòng; nhãn của cặp đã đổi nội dung bị bỏ. */
+export interface ChamMau {
+  nhan: Record<string, Verdict>;
+  phien_ban: number;
+  nguoi_sua?: string | null;
+  luu_luc?: string | null;
+}
+
+const chamPath = (student: string, book: string) => `/api/doi-chieu/${encodeURIComponent(student)}/${encodeURIComponent(book)}/cham-mau`;
+
+export const getChamMau = (student: string, book: string) => apiRequest<ChamMau>(chamPath(student, book));
+
+export const saveChamMau = (student: string, book: string, data: Pick<ChamMau, "nhan" | "phien_ban">) =>
+  apiRequest<ChamMau>(chamPath(student, book), { method: "PUT", body: JSON.stringify(data) });

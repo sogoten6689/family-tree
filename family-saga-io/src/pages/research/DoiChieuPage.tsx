@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Alert, Button, Card, Image, Pagination, Popover, Progress, Radio, Select, Space, Statistic, Table, Tabs, Tag, Typography } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useEffect, useMemo, useState } from "react";
@@ -6,11 +6,14 @@ import { Link, useSearchParams } from "react-router-dom";
 
 import {
   getBook,
+  getChamMau,
   getOverview,
+  saveChamMau,
   pageImageUrl,
   type AlignedPair,
   type BookDetail,
   type BookSummary,
+  type ChamSummary,
   type MissingRow,
   type StudentSummary,
 } from "@/lib/doiChieuApi";
@@ -18,11 +21,11 @@ import { useAuth } from "@/contexts/AuthContext";
 
 import {
   VERDICT_LABEL,
-  loadVerdicts,
+  clearLocalVerdicts,
+  loadLocalVerdicts,
   markChangedChars,
+  sampleKey,
   sampleLines,
-  saveVerdicts,
-  storageKey,
   summarize,
   toCsv,
   type Verdict,
@@ -64,11 +67,25 @@ const studentColumns = (target: number): ColumnsType<StudentSummary> => [
   { title: "Sinh viên", dataIndex: "ten" },
   { title: "Cuốn đã nộp", render: (_, s) => `${s.submitted}/${s.books.length}` },
   {
-    title: `Cặp hợp lệ / ${target.toLocaleString("vi-VN")}`,
+    title: `Cặp đạt chất lượng / ${target.toLocaleString("vi-VN")}`,
     render: (_, s) => (
       <Space>
-        <Progress percent={Math.min(100, Math.round((s.valid / target) * 100))} size="small" style={{ width: 140 }} />
+        <Progress percent={Math.min(100, Math.round((s.quality_pairs / target) * 100))} size="small" style={{ width: 140 }} />
+        <span>{s.quality_pairs.toLocaleString("vi-VN")}</span>
+      </Space>
+    ),
+    sorter: (a, b) => a.quality_pairs - b.quality_pairs,
+  },
+  {
+    title: "Đúng định dạng",
+    render: (_, s) => (
+      <Space orientation="vertical" size={0}>
         <span>{s.valid.toLocaleString("vi-VN")}</span>
+        {s.valid_ban_dich_san > 0 && (
+          <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+            {s.valid_ban_dich_san.toLocaleString("vi-VN")} từ bản dịch có sẵn
+          </Typography.Text>
+        )}
       </Space>
     ),
     sorter: (a, b) => a.valid - b.valid,
@@ -89,12 +106,36 @@ const SourceLink = ({ link }: { link: string | null }) =>
     <Typography.Text type="secondary">bản gốc trong gói lab</Typography.Text>
   );
 
-const bookColumns = (onOpen: (book: string) => void): ColumnsType<BookSummary> => [
+const ChamCell = ({ cham, threshold }: { cham: ChamSummary; threshold: number }) => {
+  if (!cham.checked) return <Typography.Text type="secondary">chưa chấm</Typography.Text>;
+  const color = !cham.complete ? "default" : cham.dat ? "green" : "red";
+  const detail = `OMISSION ${cham.by_type.OMISSION} · ADDITION ${cham.by_type.ADDITION} · MISSING ${cham.by_type.MISSING}`;
+  return (
+    <Space orientation="vertical" size={0}>
+      <span title={detail}>
+        <Tag color={color}>{pct(cham.rate)}</Tag>
+        {cham.complete ? (cham.dat ? "đạt" : `vượt ngưỡng ${pct(threshold)}`) : "chưa đủ mẫu"}
+      </span>
+      <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+        đã chấm {cham.checked}/{cham.sample} · lỗi {cham.errors}
+      </Typography.Text>
+      {cham.errors > 0 && (
+        <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+          {detail}
+        </Typography.Text>
+      )}
+    </Space>
+  );
+};
+
+const bookColumns = (onOpen: (book: string) => void, threshold: number): ColumnsType<BookSummary> => [
   {
     title: "Cuốn",
     render: (_, b) => (
       <Space orientation="vertical" size={0}>
-        <span>{b.ten ?? b.id}</span>
+        <span>
+          {b.ten ?? b.id} {b.nguon === "ban_dich_san" && <Tag>nhập từ bản dịch có sẵn</Tag>}
+        </span>
         <Typography.Text type="secondary" style={{ fontSize: 12 }}>
           {b.id} · <SourceLink link={b.link} />
         </Typography.Text>
@@ -103,15 +144,16 @@ const bookColumns = (onOpen: (book: string) => void): ColumnsType<BookSummary> =
   },
   { title: "Tệp nộp", dataIndex: "tsv", render: (t: string | null) => t ?? <Typography.Text type="secondary">chưa nộp</Typography.Text> },
   { title: "Cặp", dataIndex: "pairs" },
-  { title: "Hợp lệ", dataIndex: "valid" },
+  { title: "Đúng định dạng", dataIndex: "valid" },
   { title: "Lỗi định dạng", dataIndex: "format_errors" },
   { title: "Trang có bản máy", dataIndex: "machine_pages" },
   { title: "Ảnh trang", dataIndex: "image_pages" },
   {
-    title: "Độ phủ OCR",
+    title: "Phần sách đã dóng",
     dataIndex: "ocr_coverage",
     render: (c: number | null) => pct(c),
   },
+  { title: "Chấm mẫu · tỷ lệ lỗi", render: (_, b) => <ChamCell cham={b.cham} threshold={threshold} /> },
   {
     title: "",
     render: (_, b) => (
@@ -179,7 +221,7 @@ const PairsTab = ({ detail, focus }: { detail: BookDetail; focus?: { line: numbe
         ),
     },
     {
-      title: "Khớp OCR",
+      title: "Giống OCR",
       dataIndex: "coverage",
       width: 90,
       render: (c: number) => <Tag color={coverageColor(c)}>{pct(c)}</Tag>,
@@ -202,11 +244,12 @@ const PairsTab = ({ detail, focus }: { detail: BookDetail; focus?: { line: numbe
       >
         <Radio.Button value="all">Tất cả ({detail.pairs.length})</Radio.Button>
         <Radio.Button value="errors">Lỗi định dạng ({detail.pairs.filter((p) => p.errors.length).length})</Radio.Button>
-        <Radio.Button value="low">Khớp OCR &lt; 50% ({detail.pairs.filter((p) => p.coverage < 0.5).length})</Radio.Button>
+        <Radio.Button value="low">Giống OCR &lt; 50% ({detail.pairs.filter((p) => p.coverage < 0.5).length})</Radio.Button>
       </Radio.Group>
       <Typography.Paragraph type="secondary" style={{ margin: 0 }}>
         Chữ <mark style={{ background: "#ffe58f" }}>tô vàng</mark> không có trong đoạn OCR tương ứng — thường là chữ sinh viên đã sửa so
-        với OCR. "Khớp OCR" thấp: cặp không tìm được trong bản máy (sửa nhiều, thêm nội dung, hoặc OCR sai thứ tự cột).
+        với OCR. "Giống OCR" thấp: cặp không tìm được trong bản máy (sửa nhiều, thêm nội dung, hoặc OCR sai thứ tự cột) — đó là chỗ cần
+        soát, không phải điểm trừ.
       </Typography.Paragraph>
       <Table
         rowKey="line"
@@ -243,31 +286,64 @@ const MissingTab = ({ detail }: { detail: BookDetail }) => {
 };
 
 const GradeTab = ({ detail, threshold }: { detail: BookDetail; threshold: number }) => {
-  const key = storageKey(detail.student, detail.book);
-  const [verdicts, setVerdicts] = useState<Record<number, Verdict>>(() => loadVerdicts(key));
-  useEffect(() => setVerdicts(loadVerdicts(key)), [key]);
+  const { isAdmin } = useAuth();
+  const { student, book } = detail;
+  const queryClient = useQueryClient();
+  const key = sampleKey(student, book);
+  const server = useQuery({ queryKey: ["cham-mau", student, book], queryFn: () => getChamMau(student, book), enabled: isAdmin });
+  const [draft, setDraft] = useState<Record<number, Verdict> | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [problem, setProblem] = useState<string | null>(null);
 
-  const valid = detail.pairs.filter((p) => p.errors.length === 0);
+  const valid = useMemo(() => detail.pairs.filter((p) => p.errors.length === 0), [detail.pairs]);
   const sample = useMemo(() => {
     const lines = new Set(sampleLines(valid.map((p) => p.line), key));
     return valid.filter((p) => lines.has(p.line));
   }, [valid, key]);
+  const sampleSet = useMemo(() => new Set(sample.map((p) => p.line)), [sample]);
 
-  const setVerdict = (line: number, v: Verdict) => {
-    const next = { ...verdicts, [line]: v };
-    setVerdicts(next);
-    saveVerdicts(key, next);
+  const saved = useMemo(
+    () => Object.fromEntries(Object.entries(server.data?.nhan ?? {}).map(([l, v]) => [Number(l), v])) as Record<number, Verdict>,
+    [server.data],
+  );
+  const verdicts = draft ?? saved;
+  const dirty = draft !== null;
+  const local = useMemo(() => {
+    const all = loadLocalVerdicts(student, book);
+    return Object.fromEntries(Object.entries(all).filter(([l]) => sampleSet.has(Number(l)))) as Record<number, Verdict>;
+  }, [student, book, sampleSet]);
+  const localCount = Object.keys(local).length;
+
+  const setVerdict = (line: number, v: Verdict) => setDraft({ ...verdicts, [line]: v });
+
+  const save = async () => {
+    if (!server.data) return;
+    setSaving(true);
+    setProblem(null);
+    try {
+      const nhan = Object.fromEntries(Object.entries(verdicts).filter(([l]) => sampleSet.has(Number(l))));
+      const result = await saveChamMau(student, book, { nhan, phien_ban: server.data.phien_ban });
+      queryClient.setQueryData(["cham-mau", student, book], result);
+      setDraft(null);
+      if (localCount) clearLocalVerdicts(student, book);
+      void queryClient.invalidateQueries({ queryKey: ["doi-chieu"] });
+    } catch (e) {
+      setProblem(e instanceof Error ? e.message : String(e));
+    } finally {
+      setSaving(false);
+    }
   };
 
-  const inSample = Object.fromEntries(Object.entries(verdicts).filter(([l]) => sample.some((p) => p.line === Number(l))));
-  const sum = summarize(inSample);
+  const sum = isAdmin
+    ? summarize(Object.fromEntries(Object.entries(verdicts).filter(([l]) => sampleSet.has(Number(l)))))
+    : { checked: detail.cham.checked, errors: detail.cham.errors, rate: detail.cham.rate, byType: detail.cham.by_type };
 
   const download = () => {
     const csv = toCsv(sample.map((p) => ({ line: p.line, han: p.han, viet: p.viet, verdict: verdicts[p.line] })));
     const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = `cham_${detail.student}_${detail.book}.csv`;
+    a.download = `cham_${student}_${book}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -277,20 +353,25 @@ const GradeTab = ({ detail, threshold }: { detail: BookDetail; threshold: number
     { title: "Hán", dataIndex: "han", render: (h: string) => <span lang="zh-Hant">{h}</span> },
     { title: "Việt", dataIndex: "viet" },
     { title: "Dịch máy (tham khảo)", dataIndex: "may_viet", render: (v: string) => <Typography.Text type="secondary">{v}</Typography.Text> },
-    {
-      title: "Nhãn",
-      width: 200,
-      render: (_, p) => (
-        <Select<Verdict>
-          aria-label={`Nhãn dòng ${p.line}`}
-          placeholder="Chưa chấm"
-          value={verdicts[p.line]}
-          onChange={(v) => setVerdict(p.line, v)}
-          style={{ width: 190 }}
-          options={(Object.keys(VERDICT_LABEL) as Verdict[]).map((v) => ({ value: v, label: VERDICT_LABEL[v] }))}
-        />
-      ),
-    },
+    ...(isAdmin
+      ? [
+          {
+            title: "Nhãn",
+            width: 200,
+            render: (_: unknown, p: AlignedPair) => (
+              <Select<Verdict>
+                aria-label={`Nhãn dòng ${p.line}`}
+                placeholder="Chưa chấm"
+                value={verdicts[p.line]}
+                onChange={(v) => setVerdict(p.line, v)}
+                disabled={!server.data}
+                style={{ width: 190 }}
+                options={(Object.keys(VERDICT_LABEL) as Verdict[]).map((v) => ({ value: v, label: VERDICT_LABEL[v] }))}
+              />
+            ),
+          },
+        ]
+      : []),
   ];
 
   const failed = sum.rate != null && sum.rate > threshold;
@@ -305,14 +386,43 @@ const GradeTab = ({ detail, threshold }: { detail: BookDetail; threshold: number
           value={pct(sum.rate)}
           styles={{ content: { color: sum.rate == null ? undefined : failed ? "#cf1322" : "#389e0d" } }}
         />
-        <Button onClick={download} disabled={!sample.length}>
-          Tải kết quả chấm (CSV)
-        </Button>
+        {isAdmin && (
+          <>
+            <Button type="primary" onClick={save} loading={saving} disabled={!dirty}>
+              Lưu kết quả chấm
+            </Button>
+            <Button onClick={download} disabled={!sample.length}>
+              Tải kết quả chấm (CSV)
+            </Button>
+            {dirty && <Typography.Text type="warning">Chưa lưu</Typography.Text>}
+            {!dirty && server.data?.luu_luc && (
+              <Typography.Text type="secondary">
+                Lưu lúc {new Date(server.data.luu_luc).toLocaleString("vi-VN")}
+                {server.data.nguoi_sua ? ` · ${server.data.nguoi_sua}` : ""}
+              </Typography.Text>
+            )}
+          </>
+        )}
       </Space>
+      {server.error && <Alert type="error" showIcon title="Không tải được kết quả chấm" description={String(server.error)} />}
+      {problem && <Alert type="error" showIcon title={problem} />}
+      {isAdmin && localCount > 0 && server.data && Object.keys(server.data.nhan).length === 0 && !dirty && (
+        <Alert
+          type="info"
+          showIcon
+          title={`Trình duyệt này còn ${localCount} nhãn chấm ở bản cũ (chưa lên máy chủ).`}
+          action={
+            <Button size="small" onClick={() => setDraft(local)}>
+              Đưa vào bảng chấm
+            </Button>
+          }
+        />
+      )}
       <Typography.Paragraph type="secondary" style={{ margin: 0 }}>
-        Mẫu ngẫu nhiên 5% số cặp hợp lệ (tối thiểu 20), cố định theo sinh viên và cuốn. Nhãn chỉ lưu trong trình duyệt này — trang không cần
-        đăng nhập nên không ghi lên máy chủ; tải CSV để lưu lại. OMISSION {sum.byType.OMISSION} · ADDITION {sum.byType.ADDITION} · MISSING{" "}
-        {sum.byType.MISSING}.
+        Mẫu ngẫu nhiên 5% số cặp hợp lệ (tối thiểu 20), cố định theo sinh viên và cuốn. Kết quả chấm lưu trên máy chủ, chỉ người hướng dẫn
+        chấm được; ai cũng xem được tỷ lệ lỗi. Sinh viên nộp lại mà cặp đã chấm đổi nội dung thì nhãn đó bị bỏ, cần chấm lại. Chấm đủ mẫu và
+        tỷ lệ lỗi ≤ {pct(threshold)} thì các cặp hợp lệ của cuốn được tính là cặp đạt chất lượng. OMISSION {sum.byType.OMISSION} · ADDITION{" "}
+        {sum.byType.ADDITION} · MISSING {sum.byType.MISSING}.
       </Typography.Paragraph>
       <Table rowKey="line" size="small" columns={columns} dataSource={sample} pagination={false} />
     </Space>
@@ -371,9 +481,10 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
         <>
           <Space wrap size="large" style={{ marginBottom: 12 }}>
             <Statistic title="Cặp" value={data.stats.pairs} />
-            <Statistic title="Hợp lệ" value={data.stats.valid} />
+            <Statistic title="Đúng định dạng" value={data.stats.valid} />
             <Statistic title="Lỗi định dạng" value={data.stats.format_errors} />
-            <Statistic title="Độ phủ OCR" value={pct(data.stats.ocr_coverage)} />
+            <Statistic title="Phần sách đã dóng" value={pct(data.stats.ocr_coverage)} />
+            <Statistic title="Tỷ lệ lỗi (chấm mẫu)" value={data.cham.checked ? pct(data.cham.rate) : "chưa chấm"} />
             <Statistic title="Cột máy chưa phủ" value={data.missing.length} />
           </Space>
           <Tabs
@@ -403,15 +514,17 @@ const DoiChieuPage = () => {
   const student = params.get("sv");
   const book = params.get("cuon");
   const { data, error, isLoading } = useQuery({ queryKey: ["doi-chieu"], queryFn: getOverview });
-  const threshold = data?.error_threshold ?? 0.3;
+  const threshold = data?.error_threshold ?? 0.15;
   const target = data?.target ?? 2000;
 
   return (
     <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
       <Typography.Title level={2}>Đối chiếu dóng hàng Hán – Việt</Typography.Title>
       <Typography.Paragraph type="secondary">
-        Kết quả dóng hàng sinh viên nộp, đặt cạnh bản máy của lab (OCR + dịch máy, ghép theo chữ Hán). Chỉ tiêu và ngưỡng lỗi theo Guideline
-        CV. <Link to="/nghien-cuu/quan-ly">← Thông tin nghiên cứu</Link>
+        Kết quả dóng hàng sinh viên nộp, đặt cạnh bản máy của lab (OCR + dịch máy, ghép theo chữ Hán). Chỉ tiêu {target.toLocaleString("vi-VN")}{" "}
+        cặp đạt chất lượng: cặp đúng định dạng của các cuốn đã chấm mẫu đủ, tỷ lệ lỗi ≤ {pct(threshold)} (Guideline CV để 30%; hạ xuống cho
+        dữ liệu huấn luyện). Cặp nhập từ bản dịch có sẵn tính như cặp tự dóng. "Phần sách đã dóng" và "Giống OCR" thấp là chỗ cần soát,
+        không phải điểm trừ. <Link to="/nghien-cuu/quan-ly">← Thông tin nghiên cứu</Link>
       </Typography.Paragraph>
       {student && book ? (
         <BookView student={student} book={book} threshold={threshold} onBack={() => setParams({})} />
@@ -434,7 +547,7 @@ const DoiChieuPage = () => {
                     rowKey="id"
                     size="small"
                     pagination={false}
-                    columns={bookColumns((b) => setParams({ sv: s.id, cuon: b }))}
+                    columns={bookColumns((b) => setParams({ sv: s.id, cuon: b }), threshold)}
                     dataSource={s.books}
                   />
                 ),

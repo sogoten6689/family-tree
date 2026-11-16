@@ -1,6 +1,8 @@
 /** Chấm mẫu lỗi theo Guideline CV mục 7–8: lấy mẫu cặp, gắn nhãn, tính tỷ lệ lỗi. */
 
-export type Verdict = "dung" | "OMISSION" | "ADDITION" | "MISSING";
+import type { Verdict } from "@/lib/doiChieuApi";
+
+export type { Verdict };
 
 export const VERDICT_LABEL: Record<Verdict, string> = {
   dung: "Đúng",
@@ -9,6 +11,7 @@ export const VERDICT_LABEL: Record<Verdict, string> = {
   MISSING: "MISSING – thiếu vế/cặp",
 };
 
+/** Khớp cham_mau.py phía máy chủ (cỡ mẫu dùng để xét "đã chấm đủ"). */
 export const SAMPLE_RATE = 0.05;
 export const SAMPLE_MIN = 20;
 
@@ -71,21 +74,23 @@ export const markChangedChars = (han: string, ocr: string): { ch: string; change
   return Array.from(han).map((ch) => ({ ch, changed: isHan.test(ch) && !seen.has(ch) }));
 };
 
-export const storageKey = (student: string, book: string) => `doi-chieu:cham:${student}/${book}`;
+/** Hạt giống của mẫu ngẫu nhiên; giữ nguyên chuỗi cũ để mẫu không đổi so với lúc còn chấm trong trình duyệt. */
+export const sampleKey = (student: string, book: string) => `doi-chieu:cham:${student}/${book}`;
 
-export const loadVerdicts = (key: string): Record<number, Verdict> => {
+/** Nhãn chấm ở bản cũ (lưu trong trình duyệt) — chỉ đọc, để người hướng dẫn đưa lên máy chủ một lần. */
+export const loadLocalVerdicts = (student: string, book: string): Record<number, Verdict> => {
   try {
-    const raw = localStorage.getItem(key);
+    const raw = localStorage.getItem(sampleKey(student, book));
     return raw ? (JSON.parse(raw) as Record<number, Verdict>) : {};
   } catch {
     return {};
   }
 };
 
-export const saveVerdicts = (key: string, v: Record<number, Verdict>) => {
+export const clearLocalVerdicts = (student: string, book: string) => {
   try {
-    localStorage.setItem(key, JSON.stringify(v));
+    localStorage.removeItem(sampleKey(student, book));
   } catch {
-    // trình duyệt chặn lưu thì vẫn chấm được trong phiên, chỉ không nhớ khi tải lại
+    // không xoá được thì nút "đưa lên máy chủ" vẫn hiện, bấm lại không hại gì
   }
 };

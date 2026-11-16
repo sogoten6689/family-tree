@@ -22,8 +22,12 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from threading import Lock
 
+from app.doi_chieu import cham_mau
+
 TARGET_PAIRS = 2000
-ERROR_THRESHOLD = 0.30
+# Ngưỡng lỗi cho dữ liệu huấn luyện: anh Lâm hạ từ 30% (Guideline CV) xuống 15% ngày 16/11/2026.
+ERROR_THRESHOLD = 0.15
+SOURCES = ("anh", "ban_dich_san")
 MIN_BLOCK = 3
 
 SLUG_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$")
@@ -215,9 +219,12 @@ def _student_name(student_dir: Path) -> str:
     return student_dir.name
 
 
+NO_INFO = {"ten": None, "link": None, "nguon": "anh"}
+
+
 def catalogue(root: Path) -> dict[str, dict]:
-    """Tên đầy đủ và link bản gốc của từng cuốn, đọc từ <root>/danh_muc.json:
-    {"<ma-cuon>": {"ten": "...", "link": "https://..."}}. Thiếu tệp hoặc hỏng → {}."""
+    """Tên đầy đủ, link bản gốc và nguồn cặp câu của từng cuốn, đọc từ <root>/danh_muc.json:
+    {"<ma-cuon>": {"ten": "...", "link": "https://...", "nguon": "anh" | "ban_dich_san"}}. Thiếu tệp hoặc hỏng → {}."""
     path = root / "danh_muc.json"
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -233,12 +240,14 @@ def catalogue(root: Path) -> dict[str, dict]:
         out[key] = {
             "ten": item.get("ten") if isinstance(item.get("ten"), str) else None,
             "link": link if isinstance(link, str) and link.startswith("https://") else None,
+            # "ban_dich_san": cặp nhập từ bản dịch có sẵn (Word/PDF đã dịch); mặc định "anh": tự dóng từ ảnh.
+            "nguon": item.get("nguon") if item.get("nguon") in SOURCES else "anh",
         }
     return out
 
 
 def book_info(root: Path, book: str) -> dict:
-    return catalogue(root).get(book, {"ten": None, "link": None})
+    return catalogue(root).get(book, dict(NO_INFO))
 
 
 def overview(root: Path) -> dict:
@@ -248,9 +257,16 @@ def overview(root: Path) -> dict:
         books = []
         for bdir in sorted(p for p in sdir.iterdir() if p.is_dir() and is_slug(p.name)):
             book = load_book(bdir)
-            info = names.get(bdir.name, {"ten": None, "link": None})
+            info = names.get(bdir.name, dict(NO_INFO))
             books.append(
-                {"id": bdir.name, **info, "tsv": book["tsv"], **book["stats"], "image_pages": len(page_names(bdir))}
+                {
+                    "id": bdir.name,
+                    **info,
+                    "tsv": book["tsv"],
+                    **book["stats"],
+                    "image_pages": len(page_names(bdir)),
+                    "cham": cham_mau.summary(bdir, book["pairs"], ERROR_THRESHOLD),
+                }
             )
         valid = sum(b["valid"] for b in books)
         students.append(
@@ -262,6 +278,10 @@ def overview(root: Path) -> dict:
                 "pairs": sum(b["pairs"] for b in books),
                 "format_errors": sum(b["format_errors"] for b in books),
                 "submitted": sum(1 for b in books if b["tsv"]),
+                # Chỉ số chính: cặp hợp lệ của các cuốn đã chấm đủ mẫu và có tỷ lệ lỗi ≤ ngưỡng.
+                "quality_pairs": sum(b["valid"] for b in books if b["cham"]["dat"]),
+                # Cặp nhập từ bản dịch có sẵn vẫn tính vào chỉ tiêu như cặp tự dóng (hệ số 1, anh Lâm chốt 16/11/2026).
+                "valid_ban_dich_san": sum(b["valid"] for b in books if b["nguon"] == "ban_dich_san"),
             }
         )
     return {"target": TARGET_PAIRS, "error_threshold": ERROR_THRESHOLD, "students": students}

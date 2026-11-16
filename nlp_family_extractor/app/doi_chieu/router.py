@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, StringConstraints
 
 from app.auth.dependencies import AdminUser
-from app.doi_chieu import nhan_xet, service, soat
+from app.doi_chieu import cham_mau, nhan_xet, service, soat
 
 # Công khai, không cần đăng nhập (theo yêu cầu): chỉ đọc. Phần ghi nằm ở admin_router bên dưới.
 # Chưa đặt DOI_CHIEU_DIR (hoặc thư mục không tồn tại) thì trả danh sách rỗng.
@@ -35,11 +35,15 @@ def get_book(student: str, book: str) -> dict:
     bdir = service.book_dir(root, student, book)
     if bdir is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Không tìm thấy cuốn.")
+    detail = service.load_book(bdir)
     return {
         "student": student,
         "book": book,
-        **service.book_info(root, book), **service.load_book(bdir),
+        **service.book_info(root, book),
+        **detail,
         "pages": service.page_names(bdir),
+        # Chỉ phần tổng hợp; nhãn từng dòng chỉ admin đọc (GET .../cham-mau).
+        "cham": cham_mau.summary(bdir, detail["pairs"], service.ERROR_THRESHOLD),
     }
 
 
@@ -214,3 +218,49 @@ def put_nhan_xet(student: str, book: str, payload: NhanXet, user: AdminUser) -> 
         raise HTTPException(status.HTTP_409_CONFLICT, detail=_NHAN_XET_CONFLICT) from exc
     except OSError as exc:
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=_NOT_WRITABLE) from exc
+
+
+_Verdict = Literal["dung", "OMISSION", "ADDITION", "MISSING"]
+
+
+class ChamMau(BaseModel):
+    # Khoá là số dòng trong TSV của bài nộp (JSON chỉ cho khoá chuỗi; pydantic đổi sang int).
+    nhan: dict[int, _Verdict] = Field(max_length=5000)
+    phien_ban: int = Field(ge=0)
+
+
+_CHAM_CONFLICT = "Kết quả chấm đã được lưu ở nơi khác (tab hoặc máy khác). Tải lại trang rồi chấm tiếp."
+
+
+@admin_router.get("/{student}/{book}/cham-mau")
+def get_cham_mau(student: str, book: str, _: AdminUser) -> dict:
+    """Nhãn còn khớp bài nộp hiện tại, kèm phiên bản để lưu tiếp."""
+    bdir = _book_dir(student, book)
+    data = cham_mau.load(bdir)
+    pairs = service.load_book(bdir)["pairs"]
+    return {
+        "nhan": cham_mau.current_verdicts(data, pairs),
+        "phien_ban": data.get("phien_ban", 0),
+        "nguoi_sua": data.get("nguoi_sua"),
+        "luu_luc": data.get("luu_luc"),
+    }
+
+
+@admin_router.put("/{student}/{book}/cham-mau")
+def put_cham_mau(student: str, book: str, payload: ChamMau, user: AdminUser) -> dict:
+    bdir = _book_dir(student, book)
+    pairs = service.load_book(bdir)["pairs"]
+    try:
+        saved = cham_mau.save(bdir, dict(payload.nhan), pairs, payload.phien_ban, user.email)
+    except cham_mau.UnknownLine as exc:
+        raise HTTPException(422, detail=f"Dòng {exc.args[0]} không phải cặp hợp lệ của bài nộp hiện tại.") from exc
+    except cham_mau.luu_tru.VersionConflict as exc:
+        raise HTTPException(status.HTTP_409_CONFLICT, detail=_CHAM_CONFLICT) from exc
+    except OSError as exc:
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail=_NOT_WRITABLE) from exc
+    return {
+        "nhan": cham_mau.current_verdicts(saved, pairs),
+        "phien_ban": saved["phien_ban"],
+        "nguoi_sua": saved["nguoi_sua"],
+        "luu_luc": saved["luu_luc"],
+    }

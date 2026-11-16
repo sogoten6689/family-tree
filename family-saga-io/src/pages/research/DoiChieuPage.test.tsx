@@ -71,7 +71,7 @@ describe("trang đối chiếu", () => {
       new Response(
         JSON.stringify({
           target: 2000,
-          error_threshold: 0.3,
+          error_threshold: 0.15,
           students: [
             {
               id: "sv-a",
@@ -89,12 +89,16 @@ describe("trang đối chiếu", () => {
                   machine_pages: 2,
                   ocr_coverage: 0.5,
                   image_pages: 2,
+                  nguon: "ban_dich_san",
+                  cham: { checked: 20, sample: 20, errors: 2, by_type: { OMISSION: 2, ADDITION: 0, MISSING: 0 }, rate: 0.1, complete: true, dat: true },
                 },
               ],
               valid: 1500,
               pairs: 1600,
               format_errors: 3,
               submitted: 2,
+              quality_pairs: 900,
+              valid_ban_dich_san: 9,
             },
           ],
         }),
@@ -105,11 +109,16 @@ describe("trang đối chiếu", () => {
     renderPage();
     expect(await screen.findByText("Sinh viên A")).toBeTruthy();
     expect(screen.getByText("1.500")).toBeTruthy();
+    expect(screen.getByText("900")).toBeTruthy();
+    expect(screen.getByText("9 từ bản dịch có sẵn")).toBeTruthy();
     const headers = new Headers(fetchMock.mock.calls[0][1].headers);
     expect(headers.has("Authorization")).toBe(false);
     fireEvent.click(screen.getByRole("button", { name: /expand row/i }));
     expect(await screen.findByText("Đoàn tộc phả")).toBeTruthy();
     expect(screen.getByRole("link", { name: /Bản gốc/ }).getAttribute("href")).toBe("https://drive.google.com/file/d/x/view");
+    expect(screen.getByText("nhập từ bản dịch có sẵn")).toBeTruthy();
+    expect(screen.getByText("10%")).toBeTruthy();
+    expect(screen.getByText("đã chấm 20/20 · lỗi 2")).toBeTruthy();
   });
 
   it("cuốn chưa có bản máy thì xem lần lượt ảnh trang", async () => {
@@ -288,6 +297,7 @@ describe("thẻ Soát", () => {
     missing: [],
     pages: ["001"],
     stats: { pairs: 0, valid: 0, format_errors: 0, machine_rows: 1, machine_pages: 1, ocr_coverage: 0 },
+    cham: { checked: 0, sample: 0, errors: 0, by_type: { OMISSION: 0, ADDITION: 0, MISSING: 0 }, rate: null, complete: false, dat: false },
   };
   const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
 
@@ -987,6 +997,7 @@ describe("nhận xét", () => {
     missing: [],
     pages: [],
     stats: { pairs: 2, valid: 2, format_errors: 0, machine_rows: 0, machine_pages: 0, ocr_coverage: null },
+    cham: { checked: 0, sample: 0, errors: 0, by_type: { OMISSION: 0, ADDITION: 0, MISSING: 0 }, rate: null, complete: false, dat: false },
   };
   const saved = { trang_thai: "nhap", mo_dau: "Chào A,", muc: [{ dong: 2, loai: "ADDITION", noi_dung: "Bỏ số (2)." }], ket: "Gửi lại nhé.", phien_ban: 1 };
 
@@ -1044,5 +1055,74 @@ describe("nhận xét", () => {
     fireEvent.click(await screen.findByRole("tab", { name: "Nhận xét" }, SLOW));
     fireEvent.click(await screen.findByRole("button", { name: "Xem trong bảng" }, SLOW));
     await waitFor(() => expect(document.querySelector('[data-dang-xem="1"]')?.getAttribute("data-row-key")).toBe("2"));
+  });
+});
+
+describe("chấm mẫu lưu trên máy chủ", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    cleanup();
+    auth.isAdmin = false;
+    localStorage.clear();
+  });
+  const SLOW = { timeout: 8000 };
+  const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
+  const pair = (line: number) => ({ line, han: `公回${line}`, viet: `Ông về ${line}`, errors: [], may_han: "", may_viet: "", coverage: 1, trang: [] });
+  const book = {
+    student: "sv-a",
+    book: "nom-1",
+    ten: null,
+    link: null,
+    nguon: "anh",
+    tsv: "nom-1_parallel.tsv",
+    pairs: [pair(1), pair(2)],
+    missing: [],
+    pages: [],
+    stats: { pairs: 2, valid: 2, format_errors: 0, machine_rows: 0, machine_pages: 0, ocr_coverage: null },
+    cham: { checked: 1, sample: 2, errors: 1, by_type: { OMISSION: 1, ADDITION: 0, MISSING: 0 }, rate: 1, complete: false, dat: false },
+  };
+
+  const open = (server: { nhan: Record<string, string>; phien_ban: number }) => {
+    const calls: { method: string; url: string; body?: string }[] = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string, init?: RequestInit) => {
+        const method = init?.method ?? "GET";
+        calls.push({ method, url, body: init?.body as string | undefined });
+        if (url.endsWith("/cham-mau") && method === "PUT") return json({ ...JSON.parse(init?.body as string), phien_ban: server.phien_ban + 1 });
+        if (url.endsWith("/cham-mau")) return json(server);
+        return json(book);
+      }),
+    );
+    render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <MemoryRouter initialEntries={["/nghien-cuu/doi-chieu?sv=sv-a&cuon=nom-1"]}>
+          <DoiChieuPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    return calls;
+  };
+
+  it("người xem thường thấy tỷ lệ lỗi, không có ô chấm, không gọi API chấm", async () => {
+    const calls = open({ nhan: {}, phien_ban: 0 });
+    fireEvent.click(await screen.findByRole("tab", { name: "Chấm mẫu lỗi" }, SLOW));
+    expect(await screen.findByText("Tỷ lệ lỗi (ngưỡng 15%)", {}, SLOW)).toBeTruthy();
+    expect(screen.queryByLabelText("Nhãn dòng 1")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Lưu kết quả chấm" })).toBeNull();
+    expect(calls.some((c) => c.url.includes("/cham-mau"))).toBe(false);
+  });
+
+  it("admin đưa nhãn cũ trong trình duyệt vào bảng rồi lưu lên máy chủ đúng phiên bản", async () => {
+    auth.isAdmin = true;
+    localStorage.setItem("doi-chieu:cham:sv-a/nom-1", JSON.stringify({ 1: "dung", 2: "OMISSION" }));
+    const calls = open({ nhan: {}, phien_ban: 0 });
+    fireEvent.click(await screen.findByRole("tab", { name: "Chấm mẫu lỗi" }, SLOW));
+    fireEvent.click(await screen.findByRole("button", { name: "Đưa vào bảng chấm" }, SLOW));
+    fireEvent.click(screen.getByRole("button", { name: "Lưu kết quả chấm" }));
+    await waitFor(() => expect(calls.some((c) => c.method === "PUT")).toBe(true), SLOW);
+    const put = calls.find((c) => c.method === "PUT")!;
+    expect(JSON.parse(put.body!)).toEqual({ nhan: { 1: "dung", 2: "OMISSION" }, phien_ban: 0 });
+    await waitFor(() => expect(localStorage.getItem("doi-chieu:cham:sv-a/nom-1")).toBeNull(), SLOW);
   });
 });
