@@ -80,7 +80,7 @@ class DoiChieuApiTest(unittest.TestCase):
     def test_catalogue_drops_non_https_links(self) -> None:
         cat = service.catalogue(Path(os.environ["DOI_CHIEU_DIR"]))
         self.assertIsNone(cat["nom-2"]["link"])
-        self.assertEqual(service.book_info(Path(os.environ["DOI_CHIEU_DIR"]), "khong-co"), {"ten": None, "link": None})
+        self.assertEqual(service.book_info(Path(os.environ["DOI_CHIEU_DIR"]), "khong-co"), {"ten": None, "link": None, "nguon": "anh"})
 
     def test_book_links_machine_rows_by_han(self) -> None:
         body = self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()
@@ -479,3 +479,85 @@ class NhanXetApiTest(unittest.TestCase):
         self.client.put(self.URL, json=self.BODY)
         public = self.client.get("/api/public/doi-chieu/sv-a/nom-1").text
         self.assertNotIn("Thiếu dịch vế sau", public)
+
+
+class ChamMauApiTest(unittest.TestCase):
+    URL = "/api/doi-chieu/sv-a/nom-1/cham-mau"
+
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.book = root / "sv-a" / "nom-1"
+        self.book.mkdir(parents=True)
+        self.tsv = self.book / "nom-1_parallel.tsv"
+        self.tsv.write_text(TSV, encoding="utf-8")
+        (root / "danh_muc.json").write_text(json.dumps({"nom-1": {"nguon": "ban_dich_san"}}), encoding="utf-8")
+        self.old = os.environ.get("DOI_CHIEU_DIR")
+        os.environ["DOI_CHIEU_DIR"] = self.tmp.name
+        api.app.dependency_overrides[get_db] = lambda: None
+        self.client = TestClient(api.app)
+        user = SimpleNamespace(role=UserRole.ADMIN, email="huong-dan@example.test")
+        api.app.dependency_overrides[get_current_user] = lambda: user
+
+    def tearDown(self) -> None:
+        api.app.dependency_overrides.clear()
+        if self.old is None:
+            os.environ.pop("DOI_CHIEU_DIR", None)
+        else:
+            os.environ["DOI_CHIEU_DIR"] = self.old
+        self.tmp.cleanup()
+
+    def _book_summary(self) -> dict:
+        (student,) = self.client.get("/api/public/doi-chieu").json()["students"]
+        return student
+
+    def test_requires_admin_to_read_and_write(self) -> None:
+        api.app.dependency_overrides[get_current_user] = lambda: SimpleNamespace(role=UserRole.USER, email="sv@example.test")
+        self.assertEqual(self.client.get(self.URL).status_code, 403)
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {"1": "dung"}, "phien_ban": 0}).status_code, 403)
+        self.assertFalse((self.book / "cham_mau.json").exists())
+
+    def test_threshold_is_15_percent(self) -> None:
+        self.assertEqual(self.client.get("/api/public/doi-chieu").json()["error_threshold"], 0.15)
+
+    def test_quality_pairs_count_only_fully_graded_books_under_threshold(self) -> None:
+        # 2 cặp hợp lệ (dòng 1, 2) → mẫu 2 cặp.
+        student = self._book_summary()
+        self.assertEqual(student["books"][0]["cham"]["sample"], 2)
+        self.assertEqual(student["quality_pairs"], 0)
+        self.assertEqual(student["valid_ban_dich_san"], 2)
+        self.assertEqual(student["books"][0]["nguon"], "ban_dich_san")
+
+        saved = self.client.put(self.URL, json={"nhan": {"1": "dung"}, "phien_ban": 0}).json()
+        self.assertEqual((saved["phien_ban"], saved["nhan"]), (1, {"1": "dung"}))
+        self.assertFalse(self._book_summary()["books"][0]["cham"]["complete"])
+
+        self.client.put(self.URL, json={"nhan": {"1": "dung", "2": "dung"}, "phien_ban": 1})
+        student = self._book_summary()
+        self.assertEqual(student["books"][0]["cham"]["rate"], 0)
+        self.assertTrue(student["books"][0]["cham"]["dat"])
+        self.assertEqual(student["quality_pairs"], 2)
+
+        self.client.put(self.URL, json={"nhan": {"1": "dung", "2": "OMISSION"}, "phien_ban": 2})
+        cham = self._book_summary()["books"][0]["cham"]
+        self.assertEqual((cham["rate"], cham["by_type"]["OMISSION"], cham["dat"]), (0.5, 1, False))
+        public = self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()
+        self.assertEqual(public["cham"]["errors"], 1)
+        self.assertNotIn("nhan", public["cham"])
+
+    def test_verdict_dropped_when_pair_changes(self) -> None:
+        self.client.put(self.URL, json={"nhan": {"1": "dung", "2": "dung"}, "phien_ban": 0})
+        self.tsv.write_text(TSV.replace("đổi họ tên", "đổi tên họ", 1), encoding="utf-8")
+        self.assertEqual(self.client.get(self.URL).json()["nhan"], {"2": "dung"})
+        self.assertEqual(self._book_summary()["books"][0]["cham"]["checked"], 1)
+
+    def test_bad_input_and_conflict(self) -> None:
+        # Dòng 3 lỗi định dạng, dòng 9 không có: không chấm được.
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {"3": "dung"}, "phien_ban": 0}).status_code, 422)
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {"9": "dung"}, "phien_ban": 0}).status_code, 422)
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {"1": "sai"}, "phien_ban": 0}).status_code, 422)
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {"1": "dung"}, "phien_ban": 0}).status_code, 200)
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {"1": "dung"}, "phien_ban": 0}).status_code, 409)
+        self.assertEqual(len(list((self.book / "lich_su").glob("cham_mau_*_v1.json"))), 0)
+        self.assertEqual(self.client.put(self.URL, json={"nhan": {}, "phien_ban": 1}).status_code, 200)
+        self.assertEqual(len(list((self.book / "lich_su").glob("cham_mau_*_v1.json"))), 1)
