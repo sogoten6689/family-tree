@@ -16,6 +16,7 @@ import {
   type ChamSummary,
   type MissingRow,
   type StudentSummary,
+  type VoteSummary,
 } from "@/lib/doiChieuApi";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -32,6 +33,7 @@ import {
 } from "./doiChieuGrading";
 import NhanXetTab from "./NhanXetTab";
 import SoatTab from "./SoatTab";
+import VoteTab from "./VoteTab";
 
 const pct = (x: number | null | undefined) => (x == null ? "—" : `${Math.round(x * 100)}%`);
 
@@ -128,6 +130,21 @@ const ChamCell = ({ cham, threshold }: { cham: ChamSummary; threshold: number })
   );
 };
 
+const VoteCell = ({ vote }: { vote: VoteSummary | null }) =>
+  vote ? (
+    <Space orientation="vertical" size={0}>
+      <span>
+        {vote.de_xuat_sua > 0 && <Tag color="red">{vote.de_xuat_sua} đề xuất sửa</Tag>}
+        {vote.can_soat + vote.soat_tay_dong_ngan > 0 && <Tag color="gold">{vote.can_soat + vote.soat_tay_dong_ngan} cần soát</Tag>}
+      </span>
+      <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+        đồng ý {pct(vote.agree_rate)} · {vote.pages} trang{vote.pages_review ? ` · ${vote.pages_review} soát tay` : ""}
+      </Typography.Text>
+    </Space>
+  ) : (
+    <Typography.Text type="secondary">—</Typography.Text>
+  );
+
 const bookColumns = (onOpen: (book: string) => void, threshold: number): ColumnsType<BookSummary> => [
   {
     title: "Cuốn",
@@ -154,6 +171,7 @@ const bookColumns = (onOpen: (book: string) => void, threshold: number): Columns
     render: (c: number | null) => pct(c),
   },
   { title: "Chấm mẫu · tỷ lệ lỗi", render: (_, b) => <ChamCell cham={b.cham} threshold={threshold} /> },
+  { title: "Vote OCR", render: (_, b) => <VoteCell vote={b.vote} /> },
   {
     title: "",
     render: (_, b) => (
@@ -474,8 +492,13 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
     >
       {data && !data.tsv && !data.stats.machine_rows ? (
         <>
-          <Typography.Paragraph type="secondary">Cuốn này chưa có bản máy và chưa có bài nộp; dưới đây là ảnh trang.</Typography.Paragraph>
-          <PagesTab detail={data} />
+          <Typography.Paragraph type="secondary">Cuốn này chưa có bản máy và chưa có bài nộp.</Typography.Paragraph>
+          <Tabs
+            items={[
+              ...(data.vote ? [{ key: "vote", label: "Kết quả vote OCR", children: <VoteTab detail={data} /> }] : []),
+              { key: "pages", label: `Ảnh trang (${data.pages.length})`, children: <PagesTab detail={data} /> },
+            ]}
+          />
         </>
       ) : data ? (
         <>
@@ -495,6 +518,7 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
               { key: "missing", label: `Bản máy chưa dóng (${data.missing.length})`, children: <MissingTab detail={data} /> },
               { key: "grade", label: "Chấm mẫu lỗi", children: <GradeTab detail={data} threshold={threshold} /> },
               { key: "pages", label: `Ảnh trang (${data.pages.length})`, children: <PagesTab detail={data} /> },
+              ...(data.vote ? [{ key: "vote", label: "Kết quả vote OCR", children: <VoteTab detail={data} /> }] : []),
               ...(isAdmin
                 ? [
                     { key: "soat", label: "Soát", children: <SoatTab detail={data} /> },

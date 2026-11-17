@@ -22,7 +22,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from threading import Lock
 
-from app.doi_chieu import cham_mau
+from app.doi_chieu import cham_mau, vote
 
 TARGET_PAIRS = 2000
 # Ngưỡng lỗi cho dữ liệu huấn luyện: anh Lâm hạ từ 30% (Guideline CV) xuống 15% ngày 16/11/2026.
@@ -266,6 +266,7 @@ def overview(root: Path) -> dict:
                     **book["stats"],
                     "image_pages": len(page_names(bdir)),
                     "cham": cham_mau.summary(bdir, book["pairs"], ERROR_THRESHOLD),
+                    "vote": vote.summary(bdir),
                 }
             )
         valid = sum(b["valid"] for b in books)

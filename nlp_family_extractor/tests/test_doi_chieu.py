@@ -561,3 +561,59 @@ class ChamMauApiTest(unittest.TestCase):
         self.assertEqual(len(list((self.book / "lich_su").glob("cham_mau_*_v1.json"))), 0)
         self.assertEqual(self.client.put(self.URL, json={"nhan": {}, "phien_ban": 1}).status_code, 200)
         self.assertEqual(len(list((self.book / "lich_su").glob("cham_mau_*_v1.json"))), 1)
+
+
+VOTE = [
+    {
+        "page_id": "001",
+        "nen": "gemini",
+        "so_phieu": 3,
+        "paddle_khop": 0.9,
+        "dong": [
+            {"nen": "鄂氏宗譜", "chu": []},
+            {"nen": "卷之十", "chu": [{"vi_tri": 2, "nen": "十", "phieu": {"十": 1, "千": 2}, "kq": "de_xuat_sua"}]},
+            {"nen": "序", "kq": "soat_tay_dong_ngan"},
+        ],
+    },
+    {"page_id": "002", "nen": "gemini", "so_phieu": 1, "trang_soat_tay": True,
+     "dong": [{"nen": "公回改", "chu": [{"vi_tri": i, "nen": c, "phieu": {c: 1}, "kq": "mot_phieu"} for i, c in enumerate("公回改")]}]},
+]
+
+
+class VoteApiTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.book = Path(self.tmp.name) / "chua-giao" / "tq-1"
+        self.book.mkdir(parents=True)
+        self.old = os.environ.get("DOI_CHIEU_DIR")
+        os.environ["DOI_CHIEU_DIR"] = self.tmp.name
+        self.client = TestClient(api.app)
+
+    def tearDown(self) -> None:
+        if self.old is None:
+            os.environ.pop("DOI_CHIEU_DIR", None)
+        else:
+            os.environ["DOI_CHIEU_DIR"] = self.old
+        self.tmp.cleanup()
+
+    def test_no_vote_file(self) -> None:
+        self.assertIsNone(self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["vote"])
+        self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/vote").status_code, 404)
+
+    def test_summary_and_pages(self) -> None:
+        (self.book / "vote.json").write_text(json.dumps(VOTE, ensure_ascii=False), encoding="utf-8")
+        summary = self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["vote"]
+        self.assertEqual(
+            summary,
+            {"pages": 2, "pages_review": 1, "chars": 11, "dong_y": 6, "de_xuat_sua": 1, "can_soat": 0,
+             "soat_tay_dong_ngan": 1, "mot_phieu": 3, "agree_rate": 0.75},
+        )
+        (student,) = self.client.get("/api/public/doi-chieu").json()["students"]
+        self.assertEqual(student["books"][0]["vote"]["de_xuat_sua"], 1)
+        body = self.client.get("/api/public/doi-chieu/chua-giao/tq-1/vote").json()
+        self.assertEqual([p["page_id"] for p in body["pages"]], ["001", "002"])
+
+    def test_broken_file_is_ignored(self) -> None:
+        (self.book / "vote.json").write_text("{không phải json", encoding="utf-8")
+        self.assertIsNone(self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["vote"])
+        self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/vote").status_code, 404)

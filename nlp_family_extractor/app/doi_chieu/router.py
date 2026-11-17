@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, StringConstraints
 
 from app.auth.dependencies import AdminUser
-from app.doi_chieu import cham_mau, nhan_xet, service, soat
+from app.doi_chieu import cham_mau, nhan_xet, service, soat, vote
 
 # Công khai, không cần đăng nhập (theo yêu cầu): chỉ đọc. Phần ghi nằm ở admin_router bên dưới.
 # Chưa đặt DOI_CHIEU_DIR (hoặc thư mục không tồn tại) thì trả danh sách rỗng.
@@ -44,7 +44,18 @@ def get_book(student: str, book: str) -> dict:
         "pages": service.page_names(bdir),
         # Chỉ phần tổng hợp; nhãn từng dòng chỉ admin đọc (GET .../cham-mau).
         "cham": cham_mau.summary(bdir, detail["pairs"], service.ERROR_THRESHOLD),
+        "vote": vote.summary(bdir),
     }
+
+
+@router.get("/{student}/{book}/vote")
+def get_vote(student: str, book: str) -> dict:
+    """Kết quả vote OCR từng trang (nặng, tải riêng khi mở tab)."""
+    bdir = service.book_dir(_root(), student, book)
+    pages = vote.pages(bdir) if bdir else None
+    if pages is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Cuốn này chưa có kết quả vote.")
+    return {"summary": vote.summary(bdir), "pages": pages}
 
 
 @router.get("/{student}/{book}/anh/{page}")
