@@ -5,12 +5,14 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 import {
+  cleanTsvUrl,
   getBook,
   getChamMau,
   getOverview,
   saveChamMau,
   pageImageUrl,
   type AlignedPair,
+  type BoSummary,
   type BookDetail,
   type BookSummary,
   type ChamSummary,
@@ -145,7 +147,40 @@ const VoteCell = ({ vote }: { vote: VoteSummary | null }) =>
     <Typography.Text type="secondary">—</Typography.Text>
   );
 
-const bookColumns = (onOpen: (book: string) => void, threshold: number): ColumnsType<BookSummary> => [
+const n = (x: number) => x.toLocaleString("vi-VN");
+
+const BoCell = ({ student, book, bo }: { student: string; book: string; bo: BoSummary }) => {
+  const dropped = bo.bo.thieu_ve + bo.bo.han_khong_co_chu_han + bo.bo.viet_lan_chu_han + bo.bo.trung;
+  return (
+    <Space orientation="vertical" size={0}>
+      <span>
+        <Tag color={bo.da_soat ? "green" : "default"}>{n(bo.da_soat)} đã soát</Tag>
+        {bo.da_soat > 0 && (
+          <a href={cleanTsvUrl(student, book, "da-soat")} download>
+            TSV ⬇
+          </a>
+        )}
+      </span>
+      <span>
+        <Tag>{n(bo.may)} máy, chưa soát</Tag>
+        {bo.may > 0 && (
+          <a href={cleanTsvUrl(student, book, "may")} download>
+            TSV ⬇
+          </a>
+        )}
+      </span>
+      <Typography.Text
+        type="secondary"
+        style={{ fontSize: 12 }}
+        title={`trùng ${bo.bo.trung} · thiếu vế ${bo.bo.thieu_ve} · vế Hán không có chữ Hán ${bo.bo.han_khong_co_chu_han} · vế Việt lẫn chữ Hán ${bo.bo.viet_lan_chu_han}`}
+      >
+        soát {bo.trang_da_soat}/{bo.trang} trang · loại {n(dropped)} cặp
+      </Typography.Text>
+    </Space>
+  );
+};
+
+const bookColumns = (student: string, onOpen: (book: string) => void, threshold: number): ColumnsType<BookSummary> => [
   {
     title: "Cuốn",
     render: (_, b) => (
@@ -172,6 +207,9 @@ const bookColumns = (onOpen: (book: string) => void, threshold: number): Columns
   },
   { title: "Chấm mẫu · tỷ lệ lỗi", render: (_, b) => <ChamCell cham={b.cham} threshold={threshold} /> },
   { title: "Vote OCR", render: (_, b) => <VoteCell vote={b.vote} /> },
+  ...(student === "chua-giao"
+    ? [{ title: "Bộ song song sạch", render: (_: unknown, b: BookSummary) => (b.bo ? <BoCell student={student} book={b.id} bo={b.bo} /> : "—") }]
+    : []),
   {
     title: "",
     render: (_, b) => (
@@ -510,6 +548,12 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
             <Statistic title="Tỷ lệ lỗi (chấm mẫu)" value={data.cham.checked ? pct(data.cham.rate) : "chưa chấm"} />
             <Statistic title="Cột máy chưa phủ" value={data.missing.length} />
           </Space>
+          {data.bo && (
+            <Space style={{ marginBottom: 12 }}>
+              <Typography.Text strong>Bộ song song sạch:</Typography.Text>
+              <BoCell student={data.student} book={data.book} bo={data.bo} />
+            </Space>
+          )}
           <Tabs
             activeKey={tab}
             onChange={setTab}
@@ -571,7 +615,7 @@ const DoiChieuPage = () => {
                     rowKey="id"
                     size="small"
                     pagination={false}
-                    columns={bookColumns((b) => setParams({ sv: s.id, cuon: b }), threshold)}
+                    columns={bookColumns(s.id, (b) => setParams({ sv: s.id, cuon: b }), threshold)}
                     dataSource={s.books}
                   />
                 ),

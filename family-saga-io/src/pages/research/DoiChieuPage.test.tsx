@@ -1182,4 +1182,29 @@ describe("kết quả vote OCR", () => {
     expect(await screen.findByText(/十 → 千×2 · 十×1/, {}, SLOW)).toBeTruthy();
     expect(urls.some((u) => u.endsWith("/chua-giao/tq-1/vote"))).toBe(true);
   });
+
+  it("nhóm chưa giao có cột bộ song song sạch, tách đã soát và máy, có link tải", async () => {
+    const bo = { da_soat: 3, may: 5, trang: 4, trang_da_soat: 1, bo: { thieu_ve: 1, han_khong_co_chu_han: 0, viet_lan_chu_han: 0, trung: 2 } };
+    const bookRow = { id: "tq-1", ten: null, link: null, nguon: "anh", tsv: null, pairs: 0, valid: 0, format_errors: 0, machine_rows: 9, machine_pages: 4,
+      ocr_coverage: null, image_pages: 4, cham: { checked: 0, sample: 0, errors: 0, by_type: { OMISSION: 0, ADDITION: 0, MISSING: 0 }, rate: null, complete: false, dat: false },
+      vote: summary, bo };
+    const overview = { target: 2000, error_threshold: 0.15, students: [{ id: "chua-giao", ten: "Chưa giao", books: [bookRow], valid: 0, pairs: 0, format_errors: 0,
+      submitted: 0, quality_pairs: 0, valid_ban_dich_san: 0 }] };
+    vi.stubGlobal("fetch", vi.fn(async () => json(overview)));
+    render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <MemoryRouter initialEntries={["/nghien-cuu/doi-chieu"]}>
+          <DoiChieuPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    fireEvent.click(await screen.findByRole("button", { name: /expand row|mở rộng|Expand/i }, SLOW));
+    expect(await screen.findByText("Bộ song song sạch", {}, SLOW)).toBeTruthy();
+    expect(screen.getByText("3 đã soát")).toBeTruthy();
+    expect(screen.getByText("5 máy, chưa soát")).toBeTruthy();
+    const links = screen.getAllByRole("link", { name: "TSV ⬇" }).map((a) => a.getAttribute("href"));
+    expect(links.some((h) => h?.endsWith("/chua-giao/tq-1/bo-du-lieu/da-soat.tsv"))).toBe(true);
+    expect(links.some((h) => h?.endsWith("/chua-giao/tq-1/bo-du-lieu/may.tsv"))).toBe(true);
+    expect(screen.getByText("đồng ý 75% · 2 trang · 1 soát tay")).toBeTruthy();
+  });
 });

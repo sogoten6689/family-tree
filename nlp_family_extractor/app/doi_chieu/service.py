@@ -251,6 +251,8 @@ def book_info(root: Path, book: str) -> dict:
 
 
 def overview(root: Path) -> dict:
+    from app.doi_chieu import bo_du_lieu  # tránh vòng import (bo_du_lieu → soat → service)
+
     students = []
     names = catalogue(root)
     for sdir in sorted(p for p in root.iterdir() if p.is_dir() and is_slug(p.name)):
@@ -267,6 +269,7 @@ def overview(root: Path) -> dict:
                     "image_pages": len(page_names(bdir)),
                     "cham": cham_mau.summary(bdir, book["pairs"], ERROR_THRESHOLD),
                     "vote": vote.summary(bdir),
+                    "bo": bo_du_lieu.summary(bdir),
                 }
             )
         valid = sum(b["valid"] for b in books)

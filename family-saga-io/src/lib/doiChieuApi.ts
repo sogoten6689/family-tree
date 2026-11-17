@@ -67,6 +67,16 @@ export interface VoteResult {
   pages: VotePage[];
 }
 
+/** Bộ song song sạch (chỉ nhóm chưa giao): phần người soát đã xác nhận và phần máy chưa soát, tách riêng. */
+export interface BoSummary {
+  da_soat: number;
+  may: number;
+  trang: number;
+  trang_da_soat: number;
+  /** Số cặp bị loại khi làm sạch, theo lý do. */
+  bo: { thieu_ve: number; han_khong_co_chu_han: number; viet_lan_chu_han: number; trung: number };
+}
+
 export interface BookSummary extends BookInfo {
   id: string;
   tsv: string | null;
@@ -81,6 +91,7 @@ export interface BookSummary extends BookInfo {
   image_pages: number;
   cham: ChamSummary;
   vote: VoteSummary | null;
+  bo: BoSummary | null;
 }
 
 export interface StudentSummary {
@@ -130,9 +141,10 @@ export interface BookDetail extends BookInfo {
   missing: MissingRow[];
   /** Tên các trang có ảnh, theo thứ tự. */
   pages: string[];
-  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "nguon" | "image_pages" | "cham" | "vote">;
+  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "nguon" | "image_pages" | "cham" | "vote" | "bo">;
   cham: ChamSummary;
   vote: VoteSummary | null;
+  bo: BoSummary | null;
 }
 
 const BASE = "/api/public/doi-chieu";
@@ -144,6 +156,9 @@ export const getBook = (student: string, book: string) =>
 
 export const getVote = (student: string, book: string) =>
   apiRequest<VoteResult>(`${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/vote`, {}, null);
+
+export const cleanTsvUrl = (student: string, book: string, kind: "da-soat" | "may") =>
+  `${getBackendBaseUrl()}${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/bo-du-lieu/${kind}.tsv`;
 
 export const pageImageUrl = (student: string, book: string, page: string) =>
   `${getBackendBaseUrl()}${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/anh/${encodeURIComponent(page)}`;

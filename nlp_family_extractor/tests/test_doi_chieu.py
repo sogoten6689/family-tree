@@ -617,3 +617,64 @@ class VoteApiTest(unittest.TestCase):
         (self.book / "vote.json").write_text("{không phải json", encoding="utf-8")
         self.assertIsNone(self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["vote"])
         self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/vote").status_code, 404)
+
+
+CAP_CAU = """id,trang,dong,han,viet_may,viet_sua,trang_thai,ghi_chu,align_method,confidence
+a:001:001,001,1,公回改,ông về đổi,,,,,
+a:002:001,002,1,設立學校,lập trường (學) học,,,,,
+a:002:002,002,2,設立學校,lập trường học,,,,,
+a:002:003,002,3,,thiếu Hán,,,,,
+a:003:001,003,1,其後,về sau 明,,,,,
+"""
+
+
+class BoDuLieuTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.book = root / "chua-giao" / "tq-1"
+        self.book.mkdir(parents=True)
+        (self.book / "cap_cau.csv").write_text(CAP_CAU, encoding="utf-8")
+        other = root / "sv-a" / "nom-1"
+        other.mkdir(parents=True)
+        (other / "cap_cau.csv").write_text(CAP_CAU, encoding="utf-8")
+        self.old = os.environ.get("DOI_CHIEU_DIR")
+        os.environ["DOI_CHIEU_DIR"] = self.tmp.name
+        self.client = TestClient(api.app)
+
+    def tearDown(self) -> None:
+        if self.old is None:
+            os.environ.pop("DOI_CHIEU_DIR", None)
+        else:
+            os.environ["DOI_CHIEU_DIR"] = self.old
+        self.tmp.cleanup()
+
+    def test_machine_only_is_cleaned(self) -> None:
+        bo = self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["bo"]
+        self.assertEqual(bo["da_soat"], 0)
+        self.assertEqual(bo["may"], 2)
+        self.assertEqual(bo["bo"], {"thieu_ve": 1, "han_khong_co_chu_han": 0, "viet_lan_chu_han": 1, "trung": 1})
+        res = self.client.get("/api/public/doi-chieu/chua-giao/tq-1/bo-du-lieu/may.tsv")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.text, "公回改\tông về đổi\n設立學校\tlập trường học\n")
+        self.assertIn("tq-1_may.tsv", res.headers["content-disposition"])
+
+    def test_confirmed_pages_go_to_reviewed_part(self) -> None:
+        draft = {
+            "rows": [
+                {"trang": "001", "han": "公回改", "viet": "ông trở về đổi", "bo": False},
+                {"trang": "002", "han": "設立學校", "viet": "lập trường học", "bo": False},
+                {"trang": "002", "han": "其後", "viet": "bỏ dòng này", "bo": True},
+            ],
+            "da_soat": ["001"],
+            "phien_ban": 1,
+        }
+        (self.book / "soat_nhap.json").write_text(json.dumps(draft, ensure_ascii=False), encoding="utf-8")
+        bo = self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["bo"]
+        self.assertEqual((bo["da_soat"], bo["may"], bo["trang"], bo["trang_da_soat"]), (1, 1, 2, 1))
+        self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/bo-du-lieu/da-soat.tsv").text, "公回改\tông trở về đổi\n")
+
+    def test_only_unassigned_group(self) -> None:
+        self.assertIsNone(self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()["bo"])
+        self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1/bo-du-lieu/may.tsv").status_code, 404)
+        self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/bo-du-lieu/khac.tsv").status_code, 404)
