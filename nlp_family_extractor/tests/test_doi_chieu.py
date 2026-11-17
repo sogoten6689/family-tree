@@ -678,3 +678,22 @@ class BoDuLieuTest(unittest.TestCase):
         self.assertIsNone(self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()["bo"])
         self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1/bo-du-lieu/may.tsv").status_code, 404)
         self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/bo-du-lieu/khac.tsv").status_code, 404)
+
+
+class GhiChuDichMayTest(unittest.TestCase):
+    def test_drops_translator_notes_keeps_glosses(self) -> None:
+        from app.doi_chieu.bo_du_lieu import _drop_notes, _has_note
+
+        cases = {
+            "Cưới Đái thị, Đào thị (không chắc)": "Cưới Đái thị, Đào thị",
+            "năm Canh Thìn (nguyên văn chép Giáp Ngọ) ngày 15 (không chắc)": "năm Canh Thìn ngày 15",
+            "đỗ Tiến sĩ thứ 17 (hoặc đỗ thứ 17 Tiến sĩ)": "đỗ Tiến sĩ thứ 17",
+            "con trai của ông; [cùng cột xen chữ: con thứ... [?], không chắc]": "con trai của ông",
+            "kế tự sáu chi - không chắc); Thừa Niên.": "kế tự sáu chi; Thừa Niên.",
+            "Tỷ (mẹ) mất năm Đạo Quang thứ 24 (Giáp Thìn)": "Tỷ (mẹ) mất năm Đạo Quang thứ 24 (Giáp Thìn)",
+            "Tiên Phát (chết yểu)": "Tiên Phát (chết yểu)",
+        }
+        for raw, want in cases.items():
+            self.assertEqual(_drop_notes(raw), want, raw)
+        self.assertTrue(_has_note("a (không chắc)"))
+        self.assertFalse(_has_note("Tiên Phát (chết yểu)"))

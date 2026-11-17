@@ -75,6 +75,8 @@ export interface BoSummary {
   trang_da_soat: number;
   /** Số cặp bị loại khi làm sạch, theo lý do. */
   bo: { thieu_ve: number; han_khong_co_chu_han: number; viet_lan_chu_han: number; trung: number };
+  /** Số cặp phần máy đã bỏ ghi chú của người dịch máy ("(không chắc)", "(bản gốc ghi …)"…). */
+  bo_ghi_chu: number;
 }
 
 export interface BookSummary extends BookInfo {
