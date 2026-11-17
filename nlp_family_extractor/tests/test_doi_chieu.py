@@ -794,3 +794,31 @@ class DichLaiTest(unittest.TestCase):
         bo = self.client.get(self.url).json()["bo"]
         self.assertEqual((bo["dich_lai"], bo["dich_lai_con"]), (1, 0))
         self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至則\tlòng thịnh của triều đình chăng, đến thì\n")
+
+
+class XemTrangTest(DichLaiTest):
+    """Xem một trang của bộ sạch: cặp kèm âm Hán Việt và khung chữ."""
+
+    def test_page_lists_clean_pairs_with_readings_and_flags(self) -> None:
+        (Path(self.tmp.name) / "han_viet.json").write_text(json.dumps({"朝": ["triều", "triêu"], "廷": ["đình"]}), encoding="utf-8")
+        (self.book / "xac_nhan_vote.json").write_text(json.dumps({"001|朝廷之盛心手至則|5": "乎"}), encoding="utf-8")
+        (self.book / "dich_lai.json").write_text(json.dumps({"朝廷之盛心乎至則": "lòng thịnh của triều đình"}), encoding="utf-8")
+        body = self.client.get(self.url + "/trang/001").json()
+        self.assertIsNone(body["khung"])
+        [pair] = body["cap"]
+        self.assertEqual((pair["han"], pair["viet"], pair["nguon"]), ("朝廷之盛心乎至則", "lòng thịnh của triều đình", "may"))
+        self.assertTrue(pair["sua_chu"] and pair["dich_lai"])
+        self.assertEqual(pair["am"][:3], [{"c": "朝", "a": "triều", "k": ["triêu"]}, {"c": "廷", "a": "đình"}, {"c": "之"}])
+        self.assertEqual(self.client.get(self.url + "/trang/002").json()["cap"], [])
+
+    def test_page_returns_boxes_when_present(self) -> None:
+        (self.book / "khung").mkdir()
+        (self.book / "khung" / "001.json").write_text(json.dumps({"rong": 10, "cao": 20, "chu": [{"c": "朝", "b": [0, 0, 5, 5]}], "thieu": 7}), encoding="utf-8")
+        self.assertEqual(self.client.get(self.url + "/trang/001").json()["khung"]["chu"][0]["c"], "朝")
+
+    def test_page_view_only_for_unassigned_group(self) -> None:
+        other = Path(self.tmp.name) / "sv-a" / "nom-1"
+        other.mkdir(parents=True)
+        (other / "cap_cau.csv").write_text((self.book / "cap_cau.csv").read_text(encoding="utf-8"), encoding="utf-8")
+        self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1/trang/001").status_code, 404)
+        self.assertEqual(self.client.get(self.url + "/trang/..%2F..").status_code, 404)

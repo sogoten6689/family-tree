@@ -22,7 +22,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
-from app.doi_chieu import service, soat, vote
+from app.doi_chieu import am_han_viet, service, soat, vote
 
 GROUP = "chua-giao"
 KINDS = ("da-soat", "may")
@@ -219,7 +219,7 @@ def _build(bdir_str: str, signature: tuple) -> dict:
     dropped = {"thieu_ve": 0, "han_khong_co_chu_han": 0, "viet_lan_chu_han": 0, "trung": 0}
     notes_removed = 0
 
-    def clean(rows: list[dict], fix_viet: bool) -> list[tuple[str, str]]:
+    def clean(rows: list[dict], fix_viet: bool) -> list[dict]:
         out = []
         for r in rows:
             han, viet = soat._clean_cell(r.get("han") or ""), soat._clean_cell(r.get("viet") or "")
@@ -239,7 +239,16 @@ def _build(bdir_str: str, signature: tuple) -> dict:
                 dropped["trung"] += 1
             else:
                 seen.add((han, viet))
-                out.append((han, viet))
+                out.append(
+                    {
+                        "trang": r.get("trang") or "",
+                        "han": han,
+                        "viet": viet,
+                        "nguon": "may" if fix_viet else "da_soat",
+                        "sua_chu": bool(r.get("_sua_chu")),
+                        "dich_lai": bool(r.get("_dich_lai")),
+                    }
+                )
         return out
 
     # Phần đã soát giữ nguyên chữ người soát, chỉ bỏ dòng sai định dạng/trùng.
@@ -248,9 +257,12 @@ def _build(bdir_str: str, signature: tuple) -> dict:
     retranslated = _retranslations(bdir)
     used = 0
     for before, after in zip(rest, fixed):
-        if after["han"] != before["han"] and after["han"] in retranslated:
-            after["viet"] = retranslated[after["han"]]
-            used += 1
+        if after["han"] != before["han"]:
+            after["_sua_chu"] = True
+            if after["han"] in retranslated:
+                after["viet"] = retranslated[after["han"]]
+                after["_dich_lai"] = True
+                used += 1
     pending = sum(1 for b, a in zip(rest, fixed) if a["han"] != b["han"]) - used
     rest = fixed
     machine = clean(rest, fix_viet=True)
@@ -271,8 +283,9 @@ def _build(bdir_str: str, signature: tuple) -> dict:
             "dich_lai": used,
             "dich_lai_con": pending,
         },
-        "da-soat": "".join(f"{h}\t{v}\n" for h, v in reviewed),
-        "may": "".join(f"{h}\t{v}\n" for h, v in machine),
+        "da-soat": "".join(f"{r['han']}\t{r['viet']}\n" for r in reviewed),
+        "may": "".join(f"{r['han']}\t{r['viet']}\n" for r in machine),
+        "rows": reviewed + machine,
     }
 
 
@@ -290,3 +303,13 @@ def summary(bdir: Path) -> dict | None:
 def tsv(bdir: Path, kind: str) -> str | None:
     built = build(bdir)
     return built[kind] if built and kind in KINDS else None
+
+
+def page_rows(bdir: Path, page: str) -> list[dict] | None:
+    """Các cặp của bộ sạch thuộc một trang, theo thứ tự trong bộ; kèm âm Hán Việt từng chữ. Cuốn không thuộc nhóm thì None.
+
+    Phần đã soát lấy từ TSV đã nộp (không có nháp) thì không biết trang, nên không hiện ở đây."""
+    built = build(bdir)
+    if built is None:
+        return None
+    return [{**r, "am": am_han_viet.phien_am(r["han"])} for r in built["rows"] if r["trang"] == page]
