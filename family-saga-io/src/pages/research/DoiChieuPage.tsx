@@ -175,6 +175,7 @@ const BoCell = ({ student, book, bo }: { student: string; book: string; bo: BoSu
         title={`trùng ${bo.bo.trung} · thiếu vế ${bo.bo.thieu_ve} · vế Hán không có chữ Hán ${bo.bo.han_khong_co_chu_han} · vế Việt lẫn chữ Hán ${bo.bo.viet_lan_chu_han}`}
       >
         soát {bo.trang_da_soat}/{bo.trang} trang · loại {n(dropped)} cặp
+        {bo.bo_ghi_chu ? ` · bỏ ghi chú dịch máy ở ${n(bo.bo_ghi_chu)} cặp` : ""}
       </Typography.Text>
     </Space>
   );
