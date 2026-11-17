@@ -10,7 +10,7 @@ export const VOTE_LABEL: Record<VoteKind, string> = {
   de_xuat_sua: "Đề xuất sửa",
   can_soat: "Cần soát",
   soat_tay_dong_ngan: "Dòng ngắn cần soát",
-  mot_phieu: "Chỉ một phiếu",
+  mot_phieu: "Chỉ bản nền (máy khác không đọc được chữ này)",
 };
 
 const KIND_STYLE: Record<VoteKind, { background?: string; color?: string }> = {
@@ -119,7 +119,7 @@ export const VoteStats = ({ s }: { s: VoteSummary }) => (
     <Statistic title="Đề xuất sửa" value={s.de_xuat_sua} />
     <Statistic title="Cần soát" value={s.can_soat + s.soat_tay_dong_ngan} />
     <Statistic title="Trang soát tay" value={s.pages_review} />
-    <Statistic title="Chữ chỉ một phiếu" value={s.mot_phieu} />
+    <Statistic title="Chữ chỉ có bản nền" value={s.mot_phieu} />
   </Space>
 );
 
@@ -175,7 +175,7 @@ const VoteTab = ({ detail }: { detail: BookDetail }) => {
       <Typography.Paragraph type="secondary" style={{ margin: 0 }}>
         Chữ nền là bản OCR đang dùng; các engine OCR khác (kể cả PaddleOCR chạy trên máy lab) bỏ phiếu từng chữ, so sau khi quy dị thể.{" "}
         <mark style={{ background: "#ffccc7", padding: 0 }}>Đỏ</mark>: đa số phiếu (≥ 2, trên tổng ≥ 3) chọn chữ khác chữ nền.{" "}
-        <mark style={{ background: "#ffe58f", padding: 0 }}>Vàng</mark>: phiếu bất đồng, cần xem ảnh. Xám: chỉ có một phiếu. Trang Paddle khớp
+        <mark style={{ background: "#ffe58f", padding: 0 }}>Vàng</mark>: phiếu bất đồng, cần xem ảnh. Máy nào không ghép được chữ ở vị trí đó thì tính phiếu trắng, không tính là bất đồng; xám: không máy nào khác đọc được chữ đó, chỉ có bản nền. Trang Paddle khớp
         dưới 50% (sơ đồ cây, chữ viết tay) không lấy phiếu Paddle và cần soát tay. Đây là gợi ý để soát, chưa sửa vào dữ liệu.
       </Typography.Paragraph>
       <Radio.Group
