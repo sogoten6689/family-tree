@@ -22,6 +22,61 @@ export interface ChamSummary {
   dat: boolean;
 }
 
+/** Tổng hợp vote OCR của một cuốn (nhiều engine bỏ phiếu theo dòng nền); null khi chưa có vote.json. */
+export interface VoteSummary {
+  pages: number;
+  /** Trang Paddle khớp kém (sơ đồ cây / viết tay): bỏ phiếu Paddle, cần soát tay. */
+  pages_review: number;
+  chars: number;
+  dong_y: number;
+  de_xuat_sua: number;
+  can_soat: number;
+  soat_tay_dong_ngan: number;
+  mot_phieu: number;
+  /** Tỷ lệ chữ mọi phiếu đồng ý, trên các chữ có ≥ 2 phiếu. */
+  agree_rate: number | null;
+}
+
+export type VoteKind = "dong_y" | "de_xuat_sua" | "can_soat" | "soat_tay_dong_ngan" | "mot_phieu";
+
+export interface VoteChar {
+  vi_tri: number;
+  nen: string;
+  phieu: Record<string, number>;
+  kq: VoteKind;
+}
+
+/** Dòng ≥ 3 chữ có `chu` (chỉ chữ khác "dong_y"); dòng ngắn có `kq`. */
+export interface VoteLine {
+  nen: string;
+  chu?: VoteChar[];
+  kq?: VoteKind;
+}
+
+export interface VotePage {
+  page_id: string;
+  nen: string | null;
+  so_phieu: number;
+  paddle_khop?: number;
+  trang_soat_tay?: boolean;
+  dong: VoteLine[];
+}
+
+export interface VoteResult {
+  summary: VoteSummary;
+  pages: VotePage[];
+}
+
+/** Bộ song song sạch (chỉ nhóm chưa giao): phần người soát đã xác nhận và phần máy chưa soát, tách riêng. */
+export interface BoSummary {
+  da_soat: number;
+  may: number;
+  trang: number;
+  trang_da_soat: number;
+  /** Số cặp bị loại khi làm sạch, theo lý do. */
+  bo: { thieu_ve: number; han_khong_co_chu_han: number; viet_lan_chu_han: number; trung: number };
+}
+
 export interface BookSummary extends BookInfo {
   id: string;
   tsv: string | null;
@@ -35,6 +90,8 @@ export interface BookSummary extends BookInfo {
   /** Số ảnh trang có trên máy chủ (xem được cả khi chưa có bản máy). */
   image_pages: number;
   cham: ChamSummary;
+  vote: VoteSummary | null;
+  bo: BoSummary | null;
 }
 
 export interface StudentSummary {
@@ -84,8 +141,10 @@ export interface BookDetail extends BookInfo {
   missing: MissingRow[];
   /** Tên các trang có ảnh, theo thứ tự. */
   pages: string[];
-  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "nguon" | "image_pages" | "cham">;
+  stats: Omit<BookSummary, "id" | "tsv" | "ten" | "link" | "nguon" | "image_pages" | "cham" | "vote" | "bo">;
   cham: ChamSummary;
+  vote: VoteSummary | null;
+  bo: BoSummary | null;
 }
 
 const BASE = "/api/public/doi-chieu";
@@ -94,6 +153,12 @@ export const getOverview = () => apiRequest<Overview>(BASE, {}, null);
 
 export const getBook = (student: string, book: string) =>
   apiRequest<BookDetail>(`${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}`, {}, null);
+
+export const getVote = (student: string, book: string) =>
+  apiRequest<VoteResult>(`${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/vote`, {}, null);
+
+export const cleanTsvUrl = (student: string, book: string, kind: "da-soat" | "may") =>
+  `${getBackendBaseUrl()}${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/bo-du-lieu/${kind}.tsv`;
 
 export const pageImageUrl = (student: string, book: string, page: string) =>
   `${getBackendBaseUrl()}${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/anh/${encodeURIComponent(page)}`;

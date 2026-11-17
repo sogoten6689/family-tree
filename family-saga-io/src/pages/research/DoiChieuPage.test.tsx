@@ -1126,3 +1126,85 @@ describe("chấm mẫu lưu trên máy chủ", () => {
     await waitFor(() => expect(localStorage.getItem("doi-chieu:cham:sv-a/nom-1")).toBeNull(), SLOW);
   });
 });
+
+describe("kết quả vote OCR", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    cleanup();
+  });
+  const SLOW = { timeout: 8000 };
+  const json = (body: unknown) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } });
+  const summary = { pages: 2, pages_review: 1, chars: 11, dong_y: 6, de_xuat_sua: 1, can_soat: 0, soat_tay_dong_ngan: 1, mot_phieu: 3, agree_rate: 0.75 };
+  const pages = [
+    {
+      page_id: "001",
+      nen: "gemini",
+      so_phieu: 3,
+      paddle_khop: 0.9,
+      dong: [
+        { nen: "鄂氏宗譜", chu: [] },
+        { nen: "卷之十", chu: [{ vi_tri: 2, nen: "十", phieu: { 十: 1, 千: 2 }, kq: "de_xuat_sua" }] },
+        { nen: "序", kq: "soat_tay_dong_ngan" },
+      ],
+    },
+    { page_id: "002", nen: "gemini", so_phieu: 1, trang_soat_tay: true, dong: [{ nen: "公回", kq: "mot_phieu" }] },
+  ];
+
+  it("làm phẳng dòng và lọc theo loại", async () => {
+    const { filterVote, flattenVote } = await import("./VoteTab");
+    const rows = flattenVote(pages as never);
+    expect(rows.map((r) => r.key)).toEqual(["001:0", "001:1", "001:2", "002:0"]);
+    expect(filterVote(rows, "de_xuat_sua").map((r) => r.text)).toEqual(["卷之十"]);
+    expect(filterVote(rows, "can_soat").map((r) => r.text)).toEqual(["序"]);
+    expect(filterVote(rows, "issues")).toHaveLength(2);
+    expect(filterVote(rows, "page_review").map((r) => r.page)).toEqual(["002"]);
+    expect(rows[2].marks.get(0)?.kq).toBe("soat_tay_dong_ngan");
+  });
+
+  it("cuốn chưa giao chỉ có ảnh vẫn hiện thẻ vote và đề xuất sửa", async () => {
+    const book = { student: "chua-giao", book: "tq-1", ten: null, link: null, nguon: "anh", tsv: null, pairs: [], missing: [], pages: ["001"],
+      stats: { pairs: 0, valid: 0, format_errors: 0, machine_rows: 0, machine_pages: 0, ocr_coverage: null },
+      cham: { checked: 0, sample: 0, errors: 0, by_type: { OMISSION: 0, ADDITION: 0, MISSING: 0 }, rate: null, complete: false, dat: false },
+      vote: summary };
+    const urls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      urls.push(url);
+      return url.endsWith("/vote") ? json({ summary, pages }) : json(book);
+    }));
+    render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <MemoryRouter initialEntries={["/nghien-cuu/doi-chieu?sv=chua-giao&cuon=tq-1"]}>
+          <DoiChieuPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    expect(await screen.findByRole("tab", { name: "Kết quả vote OCR" }, SLOW)).toBeTruthy();
+    expect(await screen.findByText(/十 → 千×2 · 十×1/, {}, SLOW)).toBeTruthy();
+    expect(urls.some((u) => u.endsWith("/chua-giao/tq-1/vote"))).toBe(true);
+  });
+
+  it("nhóm chưa giao có cột bộ song song sạch, tách đã soát và máy, có link tải", async () => {
+    const bo = { da_soat: 3, may: 5, trang: 4, trang_da_soat: 1, bo: { thieu_ve: 1, han_khong_co_chu_han: 0, viet_lan_chu_han: 0, trung: 2 } };
+    const bookRow = { id: "tq-1", ten: null, link: null, nguon: "anh", tsv: null, pairs: 0, valid: 0, format_errors: 0, machine_rows: 9, machine_pages: 4,
+      ocr_coverage: null, image_pages: 4, cham: { checked: 0, sample: 0, errors: 0, by_type: { OMISSION: 0, ADDITION: 0, MISSING: 0 }, rate: null, complete: false, dat: false },
+      vote: summary, bo };
+    const overview = { target: 2000, error_threshold: 0.15, students: [{ id: "chua-giao", ten: "Chưa giao", books: [bookRow], valid: 0, pairs: 0, format_errors: 0,
+      submitted: 0, quality_pairs: 0, valid_ban_dich_san: 0 }] };
+    vi.stubGlobal("fetch", vi.fn(async () => json(overview)));
+    render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <MemoryRouter initialEntries={["/nghien-cuu/doi-chieu"]}>
+          <DoiChieuPage />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+    fireEvent.click(await screen.findByRole("button", { name: /expand row|mở rộng|Expand/i }, SLOW));
+    expect(await screen.findByText("Bộ song song sạch", {}, SLOW)).toBeTruthy();
+    expect(screen.getByText("3 đã soát")).toBeTruthy();
+    expect(screen.getByText("5 máy, chưa soát")).toBeTruthy();
+    const links = screen.getAllByRole("link", { name: "TSV ⬇" }).map((a) => a.getAttribute("href"));
+    expect(links.some((h) => h?.endsWith("/chua-giao/tq-1/bo-du-lieu/da-soat.tsv"))).toBe(true);
+    expect(links.some((h) => h?.endsWith("/chua-giao/tq-1/bo-du-lieu/may.tsv"))).toBe(true);
+    expect(screen.getByText("đồng ý 75% · 2 trang · 1 soát tay")).toBeTruthy();
+  });
+});
