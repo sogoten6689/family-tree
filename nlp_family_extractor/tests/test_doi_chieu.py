@@ -697,3 +697,43 @@ class GhiChuDichMayTest(unittest.TestCase):
             self.assertEqual(_drop_notes(raw), want, raw)
         self.assertTrue(_has_note("a (không chắc)"))
         self.assertFalse(_has_note("Tiên Phát (chết yểu)"))
+
+
+class ApDeXuatSuaTest(unittest.TestCase):
+    def _sug(self, line: str, i: int, new: str, n: int = 2) -> dict:
+        return {"vi_tri": i, "nen": line[i], "phieu": {line[i]: 1, new: n}, "kq": "de_xuat_sua"}
+
+    def test_applies_majority_and_guards(self) -> None:
+        from app.doi_chieu.bo_du_lieu import _apply_votes
+
+        rows = [
+            {"trang": "001", "han": "朝廷之盛心手，至則詢下情", "viet": "v1"},
+            {"trang": "001", "han": "楚鑾公次子", "viet": "v2"},
+            {"trang": "001", "han": "官以事累謫戍潯州", "viet": "v3"},
+            {"trang": "002", "han": "朝廷之盛心手至則", "viet": "v4"},
+        ]
+        pages = [
+            {"page_id": "001", "dong": [
+                {"nen": "朝廷之盛心手至則詢下情", "chu": [self._sug("朝廷之盛心手至則詢下情", 5, "乎")]},
+                {"nen": "楚鑾公次子", "chu": [self._sug("楚鑾公次子", 0, "公")]},          # dòng ngắn: chặn
+                {"nen": "官以事累謫戍潯州", "chu": [self._sug("官以事累謫戍潯州", 5, "戌")]},  # dễ nhầm hình: chặn
+                {"nen": "不在trang", "chu": [{"vi_tri": 0, "nen": "不", "phieu": {"不": 1, "下": 2}, "kq": "de_xuat_sua"}]},
+            ]},
+            {"page_id": "009", "dong": [{"nen": "朝廷之盛心手至則", "chu": [self._sug("朝廷之盛心手至則", 5, "乎")]}]},
+        ]
+        new, applied, missed, skipped = _apply_votes(rows, pages)
+        self.assertEqual(new[0]["han"], "朝廷之盛心乎，至則詢下情")  # giữ dấu câu, đúng vị trí
+        self.assertEqual(new[1]["han"], "楚鑾公次子")
+        self.assertEqual(new[2]["han"], "官以事累謫戍潯州")
+        self.assertEqual(new[3]["han"], "朝廷之盛心手至則")  # trang khác không bị đụng
+        self.assertEqual((applied, missed, skipped), (1, 1, 2))
+        self.assertEqual(rows[0]["han"], "朝廷之盛心手，至則詢下情")  # không sửa danh sách gốc
+
+    def test_tie_is_not_applied(self) -> None:
+        from app.doi_chieu.bo_du_lieu import _apply_votes
+
+        line = "朝廷之盛心手至則"
+        rows = [{"trang": "001", "han": line, "viet": "v"}]
+        pages = [{"page_id": "001", "dong": [{"nen": line, "chu": [
+            {"vi_tri": 5, "nen": "手", "phieu": {"手": 1, "乎": 2, "平": 2}, "kq": "de_xuat_sua"}]}]}]
+        self.assertEqual(_apply_votes(rows, pages)[1:], (0, 1, 0))

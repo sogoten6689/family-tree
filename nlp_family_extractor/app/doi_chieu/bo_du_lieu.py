@@ -7,7 +7,9 @@ Tách hai phần, không trộn:
 
 Làm sạch: phần máy bỏ ghi chú của người dịch máy trong ngoặc ("(không chắc)", "(bản gốc ghi …)"…); gộp xuống dòng/tab trong ô, bỏ cặp thiếu vế, vế Hán không có chữ Hán, vế Việt lẫn chữ Hán
 (sau khi thử bỏ chữ Hán trong ngoặc), và cặp trùng (kể cả trùng với phần đã soát).
-Không sửa chữ nào theo vote: vote chỉ là gợi ý để soát (thẻ Kết quả vote OCR).
+Phần máy áp chữ "đề xuất sửa" của vote (đa số ≥ 2 phiếu trên tổng ≥ 3 chọn chữ khác chữ nền; anh Lâm chốt
+18/11/2026). Chỉ áp khi tìm được đúng một chỗ của dòng nền (hoặc đoạn quanh chữ) trong các cặp cùng trang.
+Phần đã soát không áp: chữ người soát được giữ nguyên.
 """
 from __future__ import annotations
 
@@ -15,7 +17,7 @@ import re
 from functools import lru_cache
 from pathlib import Path
 
-from app.doi_chieu import service, soat
+from app.doi_chieu import service, soat, vote
 
 GROUP = "chua-giao"
 KINDS = ("da-soat", "may")
@@ -54,8 +56,87 @@ def _clean_viet(viet: str) -> str:
     return _HAN_IN_PARENS.sub("", viet).strip() if service.HAN_RE.search(viet) else viet
 
 
+def _choice(c: dict) -> str | None:
+    """Chữ thay: chữ khác chữ nền có nhiều phiếu nhất; hoà thì bỏ qua."""
+    ranked = sorted(((n, ch) for ch, n in (c.get("phieu") or {}).items() if ch != c.get("nen")), reverse=True)
+    if not ranked or (len(ranked) > 1 and ranked[0][0] == ranked[1][0]):
+        return None
+    return ranked[0][1]
+
+
+def _han_positions(text: str) -> list[int]:
+    """Vị trí trong chuỗi gốc của từng chữ Hán (bỏ dấu câu, khoảng trắng)."""
+    return [i for i, ch in enumerate(text) if service.HAN_RE.fullmatch(ch)]
+
+
+MIN_LINE = 6
+# Nhóm chữ dễ nhầm hình mà chữ nào cũng thông dụng: máy hay đồng loạt đọc nhầm sang nhau, chữ nền thường
+# đúng theo ngữ cảnh (毋叨/母, 謫戍/戌, 不得已/己, 壬戌/七). Không tự áp, để người soát xem ảnh.
+_CONFUSABLE = [set(g) for g in ("已己巳", "戍戌戊", "毋母", "日曰", "未末", "土士", "人入八", "大太犬", "千干于午", "壬七王", "子孑", "刀力")]
+
+
+def _confusable(a: str, b: str) -> bool:
+    return any(a in g and b in g for g in _CONFUSABLE)
+
+
+def _apply_votes(rows: list[dict], pages: list[dict] | None) -> tuple[list[dict], int, int, int]:
+    """Áp chữ đề xuất sửa vào các cặp máy. Trả về (cặp mới, đã áp, không tìm được chỗ, bỏ vì nghi ghép lệch)."""
+    if not pages:
+        return rows, 0, 0, 0
+    orig = [r.get("han") or "" for r in rows]  # tìm chỗ trên bản gốc; thay 1 chữ nên vị trí không lệch
+    rows = [dict(r) for r in rows]
+    by_page: dict[str, list[int]] = {}
+    for idx, r in enumerate(rows):
+        by_page.setdefault(r.get("trang", ""), []).append(idx)
+    applied = missed = skipped = 0
+    for page in pages:
+        idxs = by_page.get(page.get("page_id", ""), [])
+        if not idxs:
+            continue  # trang đã soát (hoặc không có cặp máy): không áp, không tính là không khớp
+        for line in page.get("dong") or []:
+            for c in line.get("chu") or []:
+                if c.get("kq") != "de_xuat_sua":
+                    continue
+                new = _choice(c)
+                text, i = line.get("nen") or "", c.get("vi_tri", -1)
+                if new is None or not (0 <= i < len(text)) or text[i] != c.get("nen"):
+                    missed += 1
+                    continue
+                # Dòng ngắn (sơ đồ cây, tên lặp "…公次子") hay ghép lệch một vị trí: chữ đề xuất là chữ bên cạnh;
+                # cặp dễ nhầm hình cũng không tự áp.
+                if len(text) < MIN_LINE or new in text[max(0, i - 2) : i + 3] or _confusable(c["nen"], new):
+                    skipped += 1
+                    continue
+                target = None
+                for lo, hi in ((0, len(text)), (max(0, i - 3), i + 4)):
+                    probe = text[lo:hi]
+                    hits = []
+                    for idx in idxs:
+                        han = service.han_only(orig[idx])
+                        start = han.find(probe)
+                        if start >= 0 and han.find(probe, start + 1) < 0:
+                            hits.append((idx, start + i - lo))
+                        elif start >= 0:
+                            hits.append((idx, -1))  # nhiều chỗ trong một cặp: không chắc chỗ nào
+                    if len(hits) == 1 and hits[0][1] >= 0:
+                        target = hits[0]
+                        break
+                if target is None:
+                    missed += 1
+                    continue
+                idx, k = target
+                pos = _han_positions(orig[idx])[k]
+                raw = rows[idx]["han"]
+                if orig[idx][pos] != c["nen"]:
+                    missed += 1
+                    continue
+                rows[idx]["han"] = raw[:pos] + new + raw[pos + 1 :]
+                applied += 1
+    return rows, applied, missed, skipped
+
+
 def _signature(bdir: Path) -> tuple:
-    files = [bdir / "cap_cau.csv", bdir / soat.DRAFT_NAME, *sorted(bdir.glob("*.tsv"))]
+    files = [bdir / "cap_cau.csv", bdir / soat.DRAFT_NAME, bdir / vote.FILE_NAME, *sorted(bdir.glob("*.tsv"))]
     return tuple((f.name, f.stat().st_mtime_ns, f.stat().st_size) for f in files if f.is_file())
 
 
@@ -106,6 +187,7 @@ def _build(bdir_str: str, signature: tuple) -> dict:
 
     # Phần đã soát giữ nguyên chữ người soát, chỉ bỏ dòng sai định dạng/trùng.
     reviewed = clean(reviewed_rows, fix_viet=False)
+    rest, vote_applied, vote_missed, vote_skipped = _apply_votes(rest, vote.pages(bdir))
     machine = clean(rest, fix_viet=True)
     pages = {r["trang"] for r in (draft["rows"] if draft else service.read_machine(bdir / "cap_cau.csv"))}
     return {
@@ -116,6 +198,9 @@ def _build(bdir_str: str, signature: tuple) -> dict:
             "trang_da_soat": len(confirmed & pages),
             "bo": dropped,
             "bo_ghi_chu": notes_removed,
+            "sua_vote": vote_applied,
+            "sua_vote_khong_khop": vote_missed,
+            "sua_vote_nghi_lech": vote_skipped,
         },
         "da-soat": "".join(f"{h}\t{v}\n" for h, v in reviewed),
         "may": "".join(f"{h}\t{v}\n" for h, v in machine),

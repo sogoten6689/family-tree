@@ -77,6 +77,10 @@ export interface BoSummary {
   bo: { thieu_ve: number; han_khong_co_chu_han: number; viet_lan_chu_han: number; trung: number };
   /** Số cặp phần máy đã bỏ ghi chú của người dịch máy ("(không chắc)", "(bản gốc ghi …)"…). */
   bo_ghi_chu: number;
+  /** Phần máy: số chữ đã sửa theo đề xuất của vote; số chữ không tìm được chỗ; số chữ không tự áp (dòng ngắn, nghi ghép lệch, dễ nhầm hình). */
+  sua_vote: number;
+  sua_vote_khong_khop: number;
+  sua_vote_nghi_lech: number;
 }
 
 export interface BookSummary extends BookInfo {
