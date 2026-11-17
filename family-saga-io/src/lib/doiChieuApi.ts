@@ -77,10 +77,16 @@ export interface BoSummary {
   bo: { thieu_ve: number; han_khong_co_chu_han: number; viet_lan_chu_han: number; trung: number };
   /** Số cặp phần máy đã bỏ ghi chú của người dịch máy ("(không chắc)", "(bản gốc ghi …)"…). */
   bo_ghi_chu: number;
-  /** Phần máy: số chữ đã sửa theo đề xuất của vote; số chữ không tìm được chỗ; số chữ không tự áp (dòng ngắn, nghi ghép lệch, dễ nhầm hình). */
+  /** Phần máy: chữ đề xuất sửa của vote đã đối chiếu ảnh và áp; đang chờ đối chiếu; đối chiếu xong giữ chữ nền;
+   * không tìm được chỗ; không đưa đi đối chiếu (dòng ngắn, nghi ghép lệch, dễ nhầm hình, ngày giờ/can chi). */
   sua_vote: number;
+  sua_vote_cho: number;
+  sua_vote_giu_nen: number;
   sua_vote_khong_khop: number;
   sua_vote_nghi_lech: number;
+  /** Cặp đã sửa chữ có vế Việt dịch lại / còn dùng bản dịch máy cũ. */
+  dich_lai: number;
+  dich_lai_con: number;
 }
 
 export interface BookSummary extends BookInfo {

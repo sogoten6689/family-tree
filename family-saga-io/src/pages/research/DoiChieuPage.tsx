@@ -176,7 +176,10 @@ const BoCell = ({ student, book, bo }: { student: string; book: string; bo: BoSu
       >
         soát {bo.trang_da_soat}/{bo.trang} trang · loại {n(dropped)} cặp
         {bo.bo_ghi_chu ? ` · bỏ ghi chú dịch máy ở ${n(bo.bo_ghi_chu)} cặp` : ""}
-        {bo.sua_vote ? ` · sửa ${n(bo.sua_vote)} chữ theo vote` : ""}
+        {bo.sua_vote ? ` · sửa ${n(bo.sua_vote)} chữ theo vote (đã đối chiếu ảnh)` : ""}
+        {bo.sua_vote_giu_nen ? ` · ${n(bo.sua_vote_giu_nen)} đề xuất bị bác sau khi xem ảnh` : ""}
+        {bo.sua_vote_cho ? ` · ${n(bo.sua_vote_cho)} đề xuất chờ đối chiếu` : ""}
+        {bo.dich_lai + bo.dich_lai_con ? ` · dịch lại ${n(bo.dich_lai)}/${n(bo.dich_lai + bo.dich_lai_con)} cặp đã sửa chữ` : ""}
       </Typography.Text>
     </Space>
   );

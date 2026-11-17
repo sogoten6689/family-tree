@@ -721,13 +721,31 @@ class ApDeXuatSuaTest(unittest.TestCase):
             ]},
             {"page_id": "009", "dong": [{"nen": "朝廷之盛心手至則", "chu": [self._sug("朝廷之盛心手至則", 5, "乎")]}]},
         ]
-        new, applied, missed, skipped = _apply_votes(rows, pages)
+        new, n = _apply_votes(rows, pages)
         self.assertEqual(new[0]["han"], "朝廷之盛心乎，至則詢下情")  # giữ dấu câu, đúng vị trí
         self.assertEqual(new[1]["han"], "楚鑾公次子")
         self.assertEqual(new[2]["han"], "官以事累謫戍潯州")
         self.assertEqual(new[3]["han"], "朝廷之盛心手至則")  # trang khác không bị đụng
-        self.assertEqual((applied, missed, skipped), (1, 1, 2))
+        self.assertEqual((n["ap"], n["khong_khop"], n["nghi_lech"]), (1, 1, 2))
         self.assertEqual(rows[0]["han"], "朝廷之盛心手，至則詢下情")  # không sửa danh sách gốc
+
+    def test_confirmed_only(self) -> None:
+        from app.doi_chieu.bo_du_lieu import _apply_votes, vote_key
+
+        line = "朝廷之盛心手至則詢下情"
+        rows = [{"trang": "001", "han": line, "viet": "v"}, {"trang": "001", "han": "官以事累謫戍潯州", "viet": "v"}]
+        pages = [{"page_id": "001", "dong": [
+            {"nen": line, "chu": [self._sug(line, 5, "乎"), self._sug(line, 9, "上")]},
+            {"nen": "官以事累謫戍潯州", "chu": [self._sug("官以事累謫戍潯州", 5, "戌")]},
+        ]}]
+        confirmed = {vote_key("001", line, 5): "乎", vote_key("001", line, 9): "", vote_key("001", "官以事累謫戍潯州", 5): "戍"}
+        del confirmed[vote_key("001", "官以事累謫戍潯州", 5)]
+        new, n = _apply_votes(rows, pages, confirmed)
+        self.assertEqual(new[0]["han"], "朝廷之盛心乎至則詢下情")
+        self.assertEqual((n["ap"], n["giu_nen"], n["cho"], n["nghi_lech"]), (1, 1, 0, 1))
+        new, n = _apply_votes(rows, pages, {})
+        self.assertEqual(new[0]["han"], line)
+        self.assertEqual((n["ap"], n["cho"]), (0, 2))
 
     def test_tie_is_not_applied(self) -> None:
         from app.doi_chieu.bo_du_lieu import _apply_votes
@@ -736,4 +754,43 @@ class ApDeXuatSuaTest(unittest.TestCase):
         rows = [{"trang": "001", "han": line, "viet": "v"}]
         pages = [{"page_id": "001", "dong": [{"nen": line, "chu": [
             {"vi_tri": 5, "nen": "手", "phieu": {"手": 1, "乎": 2, "平": 2}, "kq": "de_xuat_sua"}]}]}]
-        self.assertEqual(_apply_votes(rows, pages)[1:], (0, 1, 0))
+        self.assertEqual(_apply_votes(rows, pages)[1]["khong_khop"], 1)
+
+
+class DichLaiTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.book = Path(self.tmp.name) / "chua-giao" / "tq-1"
+        self.book.mkdir(parents=True)
+        (self.book / "cap_cau.csv").write_text(
+            "id,trang,dong,han,viet_may,viet_sua,trang_thai,ghi_chu,align_method,confidence\n"
+            "a:001:001,001,1,朝廷之盛心手至則,triều đình thịnh tâm tay đến thì,,,,,\n",
+            encoding="utf-8",
+        )
+        line = "朝廷之盛心手至則"
+        (self.book / "vote.json").write_text(json.dumps([{"page_id": "001", "so_phieu": 3, "dong": [
+            {"nen": line, "chu": [{"vi_tri": 5, "nen": "手", "phieu": {"手": 1, "乎": 2}, "kq": "de_xuat_sua"}]}]}]), encoding="utf-8")
+        self.old = os.environ.get("DOI_CHIEU_DIR")
+        os.environ["DOI_CHIEU_DIR"] = self.tmp.name
+        self.client = TestClient(api.app)
+        self.url = "/api/public/doi-chieu/chua-giao/tq-1"
+
+    def tearDown(self) -> None:
+        if self.old is None:
+            os.environ.pop("DOI_CHIEU_DIR", None)
+        else:
+            os.environ["DOI_CHIEU_DIR"] = self.old
+        self.tmp.cleanup()
+
+    def test_fixed_pair_uses_retranslation_when_present(self) -> None:
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["sua_vote"], bo["sua_vote_cho"]), (0, 1))  # chưa đối chiếu ảnh: không áp
+        self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心手至則\ttriều đình thịnh tâm tay đến thì\n")
+        (self.book / "xac_nhan_vote.json").write_text(json.dumps({"001|朝廷之盛心手至則|5": "乎"}), encoding="utf-8")
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["sua_vote"], bo["dich_lai"], bo["dich_lai_con"]), (1, 0, 1))
+        self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至則\ttriều đình thịnh tâm tay đến thì\n")
+        (self.book / "dich_lai.json").write_text(json.dumps({"朝廷之盛心乎至則": "lòng thịnh của triều đình chăng, đến thì"}), encoding="utf-8")
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["dich_lai"], bo["dich_lai_con"]), (1, 0))
+        self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至則\tlòng thịnh của triều đình chăng, đến thì\n")

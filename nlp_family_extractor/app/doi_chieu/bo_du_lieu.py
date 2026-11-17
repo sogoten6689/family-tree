@@ -8,11 +8,16 @@ Tách hai phần, không trộn:
 Làm sạch: phần máy bỏ ghi chú của người dịch máy trong ngoặc ("(không chắc)", "(bản gốc ghi …)"…); gộp xuống dòng/tab trong ô, bỏ cặp thiếu vế, vế Hán không có chữ Hán, vế Việt lẫn chữ Hán
 (sau khi thử bỏ chữ Hán trong ngoặc), và cặp trùng (kể cả trùng với phần đã soát).
 Phần máy áp chữ "đề xuất sửa" của vote (đa số ≥ 2 phiếu trên tổng ≥ 3 chọn chữ khác chữ nền; anh Lâm chốt
-18/11/2026). Chỉ áp khi tìm được đúng một chỗ của dòng nền (hoặc đoạn quanh chữ) trong các cặp cùng trang.
+18/11/2026) — CHỈ những chữ đã đối chiếu ảnh và ghi trong <cuon>/xac_nhan_vote.json
+({"<trang>|<dòng nền>|<vị trí>": "<chữ đúng>" hoặc "" = giữ chữ nền}). Tự áp không cần xác nhận chỉ đúng
+khoảng một nửa (xem tay 18/11/2026), nên chữ chưa xác nhận không áp.
+Chỉ áp khi tìm được đúng một chỗ của dòng nền (hoặc đoạn quanh chữ) trong các cặp cùng trang.
 Phần đã soát không áp: chữ người soát được giữ nguyên.
+Cặp đã sửa chữ dùng vế Việt dịch lại ở <cuon>/dich_lai.json ({"<vế Hán đã sửa>": "<vế Việt>"}) nếu có.
 """
 from __future__ import annotations
 
+import json
 import re
 from functools import lru_cache
 from pathlib import Path
@@ -72,23 +77,41 @@ def _han_positions(text: str) -> list[int]:
 MIN_LINE = 6
 # Nhóm chữ dễ nhầm hình mà chữ nào cũng thông dụng: máy hay đồng loạt đọc nhầm sang nhau, chữ nền thường
 # đúng theo ngữ cảnh (毋叨/母, 謫戍/戌, 不得已/己, 壬戌/七). Không tự áp, để người soát xem ảnh.
-_CONFUSABLE = [set(g) for g in ("已己巳", "戍戌戊", "毋母", "日曰", "未末", "土士", "人入八", "大太犬", "千干于午", "壬七王", "子孑", "刀力")]
+_CONFUSABLE = [set(g) for g in ("已己巳", "戍戌戊", "毋母", "日曰", "未末", "土士", "人入八", "大太犬", "千干于午", "壬七王", "子孑", "刀力",
+    # Chữ dị thể / phồn–giản: giữ chữ nền theo quy ước giữ dị thể; 凤/风 dễ nhầm.
+    "淸清", "青靑", "鑪爐", "凤风鳳", "騏麒")]
+
+
+# Chữ không tự thay (cả chữ nền lẫn chữ đề xuất): ngày giờ, số, can chi đổi là đổi nghĩa mà không kiểm chứng được;
+# 妣, 殁/歿, 卒 rất hay gặp trong gia phả và chữ nền gần như luôn đúng (máy hay đọc nhầm 妣→姚, 殁→園/殿/國).
+# Rút ra khi xem 539 chữ đã áp ngày 18/11/2026.
+_PROTECTED = set("一二三四五六七八九十廿卅百千零〇甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥妣殁歿卒")
 
 
 def _confusable(a: str, b: str) -> bool:
-    return any(a in g and b in g for g in _CONFUSABLE)
+    return a in _PROTECTED or b in _PROTECTED or any(a in g and b in g for g in _CONFUSABLE)
 
 
-def _apply_votes(rows: list[dict], pages: list[dict] | None) -> tuple[list[dict], int, int, int]:
-    """Áp chữ đề xuất sửa vào các cặp máy. Trả về (cặp mới, đã áp, không tìm được chỗ, bỏ vì nghi ghép lệch)."""
+def vote_key(page: str, line: str, i: int) -> str:
+    return f"{page}|{line}|{i}"
+
+
+def _apply_votes(
+    rows: list[dict], pages: list[dict] | None, confirmed: dict[str, str] | None = None
+) -> tuple[list[dict], dict[str, int]]:
+    """Áp chữ đề xuất sửa vào các cặp máy.
+
+    confirmed=None: áp theo đa số phiếu (chỉ dùng để liệt kê chữ cần đối chiếu ảnh).
+    confirmed=dict: chỉ áp chữ đã xác nhận; "" = giữ chữ nền; chưa có khoá = chờ xác nhận.
+    Trả về (cặp mới, đếm: ap, khong_khop, nghi_lech, cho, giu_nen)."""
+    counts = dict.fromkeys(("ap", "khong_khop", "nghi_lech", "cho", "giu_nen"), 0)
     if not pages:
-        return rows, 0, 0, 0
+        return rows, counts
     orig = [r.get("han") or "" for r in rows]  # tìm chỗ trên bản gốc; thay 1 chữ nên vị trí không lệch
     rows = [dict(r) for r in rows]
     by_page: dict[str, list[int]] = {}
     for idx, r in enumerate(rows):
         by_page.setdefault(r.get("trang", ""), []).append(idx)
-    applied = missed = skipped = 0
     for page in pages:
         idxs = by_page.get(page.get("page_id", ""), [])
         if not idxs:
@@ -97,16 +120,24 @@ def _apply_votes(rows: list[dict], pages: list[dict] | None) -> tuple[list[dict]
             for c in line.get("chu") or []:
                 if c.get("kq") != "de_xuat_sua":
                     continue
-                new = _choice(c)
                 text, i = line.get("nen") or "", c.get("vi_tri", -1)
+                key = vote_key(page.get("page_id", ""), text, i)
+                if confirmed is not None and key in confirmed:
+                    new = confirmed[key] or None
+                    if new is None:
+                        counts["giu_nen"] += 1
+                        continue
+                else:
+                    new = _choice(c)
                 if new is None or not (0 <= i < len(text)) or text[i] != c.get("nen"):
-                    missed += 1
+                    counts["khong_khop"] += 1
                     continue
-                # Dòng ngắn (sơ đồ cây, tên lặp "…公次子") hay ghép lệch một vị trí: chữ đề xuất là chữ bên cạnh;
-                # cặp dễ nhầm hình cũng không tự áp.
-                if len(text) < MIN_LINE or new in text[max(0, i - 2) : i + 3] or _confusable(c["nen"], new):
-                    skipped += 1
-                    continue
+                if confirmed is None or key not in confirmed:
+                    # Dòng ngắn (sơ đồ cây, tên lặp "…公次子") hay ghép lệch một vị trí: chữ đề xuất là chữ bên cạnh;
+                    # cặp dễ nhầm hình / chữ được bảo vệ cũng không đưa đi đối chiếu.
+                    if len(text) < MIN_LINE or new in text[max(0, i - 2) : i + 3] or _confusable(c["nen"], new):
+                        counts["nghi_lech"] += 1
+                        continue
                 target = None
                 for lo, hi in ((0, len(text)), (max(0, i - 3), i + 4)):
                     probe = text[lo:hi]
@@ -122,21 +153,47 @@ def _apply_votes(rows: list[dict], pages: list[dict] | None) -> tuple[list[dict]
                         target = hits[0]
                         break
                 if target is None:
-                    missed += 1
+                    counts["khong_khop"] += 1
                     continue
                 idx, k = target
                 pos = _han_positions(orig[idx])[k]
-                raw = rows[idx]["han"]
                 if orig[idx][pos] != c["nen"]:
-                    missed += 1
+                    counts["khong_khop"] += 1
                     continue
+                if confirmed is not None and key not in confirmed:
+                    counts["cho"] += 1
+                    continue
+                raw = rows[idx]["han"]
                 rows[idx]["han"] = raw[:pos] + new + raw[pos + 1 :]
-                applied += 1
-    return rows, applied, missed, skipped
+                counts["ap"] += 1
+    return rows, counts
+
+
+RETRANSLATION_NAME = "dich_lai.json"
+CONFIRMED_NAME = "xac_nhan_vote.json"
+
+
+def _read_dict(path: Path) -> dict[str, str]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    except (OSError, ValueError):
+        return {}
+    return {k: v for k, v in data.items() if isinstance(k, str) and isinstance(v, str)} if isinstance(data, dict) else {}
+
+
+def _retranslations(bdir: Path) -> dict[str, str]:
+    return {k: v for k, v in _read_dict(bdir / RETRANSLATION_NAME).items() if v.strip()}
 
 
 def _signature(bdir: Path) -> tuple:
-    files = [bdir / "cap_cau.csv", bdir / soat.DRAFT_NAME, bdir / vote.FILE_NAME, *sorted(bdir.glob("*.tsv"))]
+    files = [
+        bdir / "cap_cau.csv",
+        bdir / soat.DRAFT_NAME,
+        bdir / vote.FILE_NAME,
+        bdir / RETRANSLATION_NAME,
+        bdir / CONFIRMED_NAME,
+        *sorted(bdir.glob("*.tsv")),
+    ]
     return tuple((f.name, f.stat().st_mtime_ns, f.stat().st_size) for f in files if f.is_file())
 
 
@@ -187,7 +244,15 @@ def _build(bdir_str: str, signature: tuple) -> dict:
 
     # Phần đã soát giữ nguyên chữ người soát, chỉ bỏ dòng sai định dạng/trùng.
     reviewed = clean(reviewed_rows, fix_viet=False)
-    rest, vote_applied, vote_missed, vote_skipped = _apply_votes(rest, vote.pages(bdir))
+    fixed, vc = _apply_votes(rest, vote.pages(bdir), _read_dict(bdir / CONFIRMED_NAME))
+    retranslated = _retranslations(bdir)
+    used = 0
+    for before, after in zip(rest, fixed):
+        if after["han"] != before["han"] and after["han"] in retranslated:
+            after["viet"] = retranslated[after["han"]]
+            used += 1
+    pending = sum(1 for b, a in zip(rest, fixed) if a["han"] != b["han"]) - used
+    rest = fixed
     machine = clean(rest, fix_viet=True)
     pages = {r["trang"] for r in (draft["rows"] if draft else service.read_machine(bdir / "cap_cau.csv"))}
     return {
@@ -198,9 +263,13 @@ def _build(bdir_str: str, signature: tuple) -> dict:
             "trang_da_soat": len(confirmed & pages),
             "bo": dropped,
             "bo_ghi_chu": notes_removed,
-            "sua_vote": vote_applied,
-            "sua_vote_khong_khop": vote_missed,
-            "sua_vote_nghi_lech": vote_skipped,
+            "sua_vote": vc["ap"],
+            "sua_vote_cho": vc["cho"],
+            "sua_vote_giu_nen": vc["giu_nen"],
+            "sua_vote_khong_khop": vc["khong_khop"],
+            "sua_vote_nghi_lech": vc["nghi_lech"],
+            "dich_lai": used,
+            "dich_lai_con": pending,
         },
         "da-soat": "".join(f"{h}\t{v}\n" for h, v in reviewed),
         "may": "".join(f"{h}\t{v}\n" for h, v in machine),
