@@ -73,6 +73,16 @@ def get_clean_tsv(student: str, book: str, kind: str) -> PlainTextResponse:
     )
 
 
+@router.get("/{student}/{book}/trang/{page}")
+def get_page_view(student: str, book: str, page: str) -> dict:
+    """Xem một trang của bộ sạch: các cặp Hán–Việt kèm âm Hán Việt, và vị trí từng chữ trên ảnh (nếu đã tạo)."""
+    bdir = service.book_dir(_root(), student, book)
+    rows = bo_du_lieu.page_rows(bdir, page) if bdir and service.PAGE_RE.fullmatch(page) else None
+    if rows is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Cuốn này chưa có bộ song song để xem theo trang.")
+    return {"trang": page, "cap": rows, "khung": soat.positions(bdir, page)}
+
+
 @router.get("/{student}/{book}/anh/{page}")
 def get_page_image(student: str, book: str, page: str) -> FileResponse:
     path = service.page_image(_root(), student, book, page)

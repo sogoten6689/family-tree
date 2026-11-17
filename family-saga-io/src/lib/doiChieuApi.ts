@@ -175,6 +175,37 @@ export const cleanTsvUrl = (student: string, book: string, kind: "da-soat" | "ma
 export const pageImageUrl = (student: string, book: string, page: string) =>
   `${getBackendBaseUrl()}${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/anh/${encodeURIComponent(page)}`;
 
+/** Âm Hán Việt của một ký tự: `a` âm chọn, `k` các âm khác; không phải chữ Hán hoặc chưa có trong từ điển thì chỉ có `c`. */
+export interface AmChu {
+  c: string;
+  a?: string;
+  k?: string[];
+}
+
+/** Một cặp của bộ song song sạch, xem theo trang. */
+export interface CapTrang {
+  trang: string;
+  han: string;
+  viet: string;
+  /** "da_soat": người soát đã xác nhận; "may": bản máy đã làm sạch. */
+  nguon: "da_soat" | "may";
+  /** Vế Hán đã sửa chữ theo vote OCR (đã đối chiếu ảnh). */
+  sua_chu: boolean;
+  /** Vế Việt đã dịch lại theo vế Hán đã sửa. */
+  dich_lai: boolean;
+  am: AmChu[];
+}
+
+export interface XemTrang {
+  trang: string;
+  cap: CapTrang[];
+  /** Vị trí từng chữ trên ảnh; null khi trang chưa tạo khung. */
+  khung: KhungTrang | null;
+}
+
+export const getXemTrang = (student: string, book: string, page: string) =>
+  apiRequest<XemTrang>(`${BASE}/${encodeURIComponent(student)}/${encodeURIComponent(book)}/trang/${encodeURIComponent(page)}`, {}, null);
+
 export interface SoatRow {
   trang: string;
   han: string;

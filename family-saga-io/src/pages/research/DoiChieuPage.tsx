@@ -36,6 +36,7 @@ import {
 import NhanXetTab from "./NhanXetTab";
 import SoatTab from "./SoatTab";
 import VoteTab from "./VoteTab";
+import XemTrangTab from "./XemTrangTab";
 
 const pct = (x: number | null | undefined) => (x == null ? "—" : `${Math.round(x * 100)}%`);
 
@@ -564,6 +565,7 @@ const BookView = ({ student, book, threshold, onBack }: { student: string; book:
             onChange={setTab}
             items={[
               { key: "pairs", label: "Cặp song song", children: <PairsTab detail={data} focus={focus} /> },
+              ...(data.bo ? [{ key: "xem-trang", label: "Xem trang song song", children: <XemTrangTab detail={data} /> }] : []),
               { key: "missing", label: `Bản máy chưa dóng (${data.missing.length})`, children: <MissingTab detail={data} /> },
               { key: "grade", label: "Chấm mẫu lỗi", children: <GradeTab detail={data} threshold={threshold} /> },
               { key: "pages", label: `Ảnh trang (${data.pages.length})`, children: <PagesTab detail={data} /> },
