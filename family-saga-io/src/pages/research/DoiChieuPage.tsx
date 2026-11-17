@@ -176,6 +176,7 @@ const BoCell = ({ student, book, bo }: { student: string; book: string; bo: BoSu
       >
         soát {bo.trang_da_soat}/{bo.trang} trang · loại {n(dropped)} cặp
         {bo.bo_ghi_chu ? ` · bỏ ghi chú dịch máy ở ${n(bo.bo_ghi_chu)} cặp` : ""}
+        {bo.sua_vote ? ` · sửa ${n(bo.sua_vote)} chữ theo vote` : ""}
       </Typography.Text>
     </Space>
   );
