@@ -811,6 +811,25 @@ class DichLaiTest(unittest.TestCase):
         self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至則\tlòng thịnh của triều đình chăng, đến thì\n")
 
 
+class SuaTayTest(DichLaiTest):
+    def test_manual_fix_replaces_both_sides_after_votes(self) -> None:
+        (self.book / "xac_nhan_vote.json").write_text(json.dumps({"001|朝廷之盛心手至則|5": "乎"}), encoding="utf-8")
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["sua_tay"], bo["dich_lai_con"]), (0, 1))
+        (self.book / "sua_tay.json").write_text(
+            json.dumps({"001|朝廷之盛心乎至則": {"han": "朝廷之盛心乎至住", "viet": "đã sửa tay"}}), encoding="utf-8"
+        )
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["sua_tay"], bo["dich_lai_con"]), (1, 0))
+        self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至住\tđã sửa tay\n")
+        [pair] = self.client.get(self.url + "/trang/001").json()["cap"]
+        self.assertTrue(pair["sua_chu"] and pair["dich_lai"])
+
+    def test_bad_manual_file_is_ignored(self) -> None:
+        (self.book / "sua_tay.json").write_text("{không phải json", encoding="utf-8")
+        self.assertEqual(self.client.get(self.url).json()["bo"]["sua_tay"], 0)
+
+
 class XemTrangTest(DichLaiTest):
     """Xem một trang của bộ sạch: cặp kèm âm Hán Việt và khung chữ."""
 
