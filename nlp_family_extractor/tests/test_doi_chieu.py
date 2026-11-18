@@ -836,6 +836,12 @@ class XemTrangTest(DichLaiTest):
         self.assertEqual(am("長子", "con trưởng, Trường")[0]["a"], "trưởng")  # có âm đầu thì giữ âm đầu
         self.assertEqual(am("長冲", "Trường Xung")[0]["a"], "trường")
         self.assertEqual(am("辰")[0]["a"], "thần")
+        (Path(self.tmp.name) / "han_viet.json").write_text(
+            json.dumps({"卒": ["tốt", "tuất"], "戌": ["tuất"], "丙": ["bính"], "辰": ["thần", "thìn"]}), encoding="utf-8"
+        )
+        self.assertEqual(am("丙戌卒", "năm Bính Tuất mất")[2]["a"], "tốt")
+        self.assertEqual(am("卒", "giờ Tuất")[0]["a"], "tốt")  # khoá
+        self.assertEqual(am("戌辰", "Tuất, Thìn")[1]["a"], "thìn")
 
     def test_page_returns_boxes_when_present(self) -> None:
         (self.book / "khung").mkdir()

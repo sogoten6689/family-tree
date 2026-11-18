@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import re
+from collections import Counter
 from functools import lru_cache
 from pathlib import Path
 
@@ -43,6 +44,9 @@ def dictionary() -> dict[str, list[str]]:
 
 
 _WORD_RE = re.compile(r"[^\W\d_]+")
+# Chữ luôn đọc âm đầu, không đổi theo vế Việt: trong gia phả 卒 hầu như luôn là "tốt" (mất); kiểm thử 18/11/2026
+# thấy 13 cặp vẫn đổi sai sang "tuất" vì vế Việt có "Tuất" mà vế Hán không có 戌 (cặp dóng lệch).
+LOCKED = {"卒"}
 
 
 def phien_am(han: str, viet: str = "") -> list[dict]:
@@ -52,15 +56,18 @@ def phien_am(han: str, viet: str = "") -> list[dict]:
     Chữ nhiều âm: nếu vế Việt của cặp có một âm của chữ mà không có âm đầu từ điển thì chọn âm đó
     (戊辰 trong cặp "năm Mậu Thìn" đọc "thìn", 長 trong "Trường Xung" đọc "trường")."""
     table = dictionary()
-    words = set(_WORD_RE.findall(viet.lower()))
+    words = Counter(_WORD_RE.findall(viet.lower()))
+    # Từ trong vế Việt đã có chữ khác của cặp nhận làm âm chính (戌 → "Tuất") thì không dùng để đổi âm chữ này,
+    # tránh 卒 thành "tuất" trong cặp "…năm Bính Tuất… 卒".
+    claimed = Counter(table[c][0] for c in han if table.get(c))
     out = []
     for ch in han:
         readings = table.get(ch) if service.HAN_RE.fullmatch(ch) else None
         if not readings:
             out.append({"c": ch})
             continue
-        if len(readings) > 1 and readings[0] not in words:
-            hit = next((r for r in readings[1:] if r in words), None)
+        if len(readings) > 1 and readings[0] not in words and ch not in LOCKED:
+            hit = next((r for r in readings[1:] if words[r] > claimed[r]), None)
             if hit:
                 readings = [hit, *(r for r in readings if r != hit)]
         out.append({"c": ch, "a": readings[0], **({"k": readings[1:]} if len(readings) > 1 else {})})
