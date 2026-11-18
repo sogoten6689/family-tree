@@ -35,6 +35,7 @@ MAX_BOX_OVERLAP = 0.3
 MIN_GLYPH_RATIO = 0.5
 MIN_PAGE_MATCH = 0.2
 MAX_CELL_EXCESS = 1.5
+MAX_WIDTH_RATIO = 2.5
 MIN_SECOND_MATCH = 0.6
 DETECT_CACHE = "nhan_dang_paddle.json"
 FULL_GLYPH_RATIO = 0.8
@@ -380,6 +381,7 @@ def locate_rows(
     second_boxes = {seq[r][0] for r in second.values()}
 
     typical_glyph = sorted(_glyph_length(box) for box in ordered)[len(ordered) // 2]
+    typical_width = sorted(min(b["box"][2] - b["box"][0], b["box"][3] - b["box"][1]) for b in ordered)[len(ordered) // 2]
     per_box: dict[int, list[int]] = {}
     for t in sorted(where):
         per_box.setdefault(seq[where[t]][0], []).append(t)
@@ -399,6 +401,10 @@ def locate_rows(
                 continue
         else:
             positions, exact = _positions(box, read_at, cells)
+            # Khung rộng gấp mấy lần một cột (tiêu đề in ở gáy sách, cụm nhiều cột) mà phải nhận thêm chữ Paddle không
+            # đọc và không tách được ô mực: chia đều khung thì chữ rơi lên chỗ khác (kiểm thử vòng 18, tq-678 tr.015).
+            if crowded and not exact and min(y1 - y0, x1 - x0) > MAX_WIDTH_RATIO * typical_width:
+                continue
         for t, position in zip(members, positions):
             chars.append((t, {"c": text[t], "b": position} if exact else {"c": text[t], "b": position, "u": 1}))
     chars.sort(key=lambda c: c[0])
