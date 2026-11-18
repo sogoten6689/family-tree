@@ -422,3 +422,23 @@ def test_text_on_coloured_cover_label_is_not_a_seal():
     ink = rgb.mean(axis=2) < 128
     label = {"box": [5, 5, 55, 55], "text": "譜"}
     assert drop_seal_boxes([label], ink, red) == [label]
+
+
+
+def test_wide_box_does_not_take_extra_chars_by_even_division():
+    # Kiểm thử vòng 18, tq-678 tr.015: khung rộng ở gáy sách nhận cả đoạn chữ Paddle không đọc, chia đều lên tiêu đề.
+    right = [box("甲乙丙", x0=300, x1=320), box("丁戊己", x0=260, x1=280)]
+    left = box("庚辛壬", x0=60, x1=80)
+    wide = {"box": [120, 0, 220, 300], "text": "之坤"}
+    chars, missing = locate_rows(["甲乙丙丁戊己之生於康熙坤庚辛壬"], [*right, wide, left])
+    assert all(c["b"][0] != 120 for c in chars)
+    assert missing == 6
+
+
+def test_column_wide_box_still_estimates_extra_chars():
+    right = [box("甲乙丙", x0=300, x1=320), box("丁戊己", x0=260, x1=280)]
+    left = box("庚辛壬", x0=60, x1=80)
+    normal = {"box": [160, 0, 180, 300], "text": "之坤"}
+    chars, missing = locate_rows(["甲乙丙丁戊己之生於康熙坤庚辛壬"], [*right, normal, left])
+    assert [c["c"] for c in chars if c["b"][0] == 160] == list("之生於康熙坤")
+    assert missing == 0
