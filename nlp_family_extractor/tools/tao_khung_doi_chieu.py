@@ -726,7 +726,8 @@ def main() -> None:
         boxes = merge_boxes(*detected[page], han_only("".join(page_rows)))
         ink = page_ink(gray, boxes)
         boxes = drop_seal_boxes(boxes, ink, red)
-        ink &= ~red
+        # Không xoá điểm son khỏi ma trận mực: nét chữ in nhạt sát hoặc đè lên dấu cũng bị xoá theo (kiểm thử vòng 15:
+        # 141 chữ trên dấu của tq-859 mất ô). Bỏ khung đọc lên dấu ở trên là đủ.
         columns = read_gemini_columns(args.o_cot, page) if args.o_cot else []
         chars, missing, source = best_source(page_rows, boxes, columns, width, height, gutter, ink)
         payload = {"rong": width, "cao": height, "chu": chars, "thieu": missing, "nguon": source}
