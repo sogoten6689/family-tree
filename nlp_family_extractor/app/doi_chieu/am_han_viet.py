@@ -64,34 +64,56 @@ _SON_BEFORE = set("長长次嗣之幼諸诸男孫孙庶養养繼继")
 _SON_AFTER = set("一二三四五六七八九十女孫孙")
 
 
-def _branch_reading(han: str, i: int, readings: list[str]) -> str | None:
+_NUMERALS = set("一二三四五六七八九十")
+# Chữ báo phía trước là ngày tháng: 初十子 (mùng 10, giờ Tý), 月二十六日辰 (giờ Thìn).
+_DATE_MARKS = set("初月日")
+
+
+def _branch_name(ch: str, readings: list[str]) -> str | None:
+    return next((r for r in BRANCH_NAMES[ch] if r in readings), None)
+
+
+def _in_direction(han: str, i: int) -> bool:
+    """Địa chi trong cụm hướng: phía sau (cách tối đa 4 chữ hướng) là 向 (戌山辰向), ngay trước là 兼, hoặc ngay trước
+    là một chi khác cũng đứng trong cụm hướng (兼午子)."""
+    before = han[i - 1] if i > 0 else ""
+    if before == "兼" or (before in BRANCH_NAMES and before != han[i] and i > 1 and han[i - 2] in _DIRECTION_RUN):
+        return True
+    j = i + 1
+    while j < len(han) and j <= i + 4 and han[j] in _DIRECTION_RUN:
+        j += 1
+    return j < len(han) and han[j] == "向"
+
+
+def _is_son(han: str, i: int) -> bool:
+    """子 nghĩa "con": 長子, 子一, 子孫, 三子 (con thứ ba; không tính 初十子 là ngày giờ, 十子時 là giờ)."""
+    before = han[i - 1] if i > 0 else ""
+    after = han[i + 1] if i + 1 < len(han) else ""
+    if before in _SON_BEFORE or after in _SON_AFTER:
+        return True
+    return before in _NUMERALS and after not in TIME_MARKS and not _DATE_MARKS & set(han[max(0, i - 4):i])
+
+
+def _fixed_reading(han: str, i: int, readings: list[str]) -> str | None:
+    """Âm quyết định được từ chính vế Hán, không cần nhìn vế Việt; None là để vế Việt quyết định.
+
+    Thứ tự: khoá → chi sau thiên can (丙子八月 vẫn là Bính Tý) → 子 nghĩa con → chi trước chữ giờ, sau chữ ngày, trong
+    cụm hướng."""
     ch = han[i]
+    if len(readings) == 1 or ch in LOCKED:
+        return readings[0]
     if ch not in BRANCH_NAMES:
         return None
     before = han[i - 1] if i > 0 else ""
     after = han[i + 1] if i + 1 < len(han) else ""
-    is_branch = before in STEMS or after in TIME_MARKS
-    if not is_branch:
-        j = i + 1
-        while j < len(han) and j <= i + 4 and han[j] in _DIRECTION_RUN:
-            j += 1
-        is_branch = j < len(han) and han[j] == "向"
-    if not is_branch:
-        return None
-    return next((r for r in BRANCH_NAMES[ch] if r in readings), None)
-
-
-def _fixed_reading(han: str, i: int, readings: list[str]) -> str | None:
-    """Âm quyết định được từ chính vế Hán, không cần nhìn vế Việt; None là để vế Việt quyết định."""
-    ch = han[i]
-    if len(readings) == 1 or ch in LOCKED:
-        return readings[0]
-    if ch == "子" and "tử" in readings:
-        before = han[i - 1] if i > 0 else ""
-        after = han[i + 1] if i + 1 < len(han) else ""
-        if before in _SON_BEFORE or after in _SON_AFTER:
-            return "tử"
-    return _branch_reading(han, i, readings)
+    if before in STEMS:
+        return _branch_name(ch, readings)
+    if ch == "子" and "tử" in readings and _is_son(han, i):
+        return "tử"
+    after_date = (before == "日" and not service.HAN_RE.fullmatch(after or "x")) or (before in _NUMERALS and bool(_DATE_MARKS & set(han[max(0, i - 4):i])))
+    if after in TIME_MARKS or after_date or _in_direction(han, i):
+        return _branch_name(ch, readings)
+    return None
 
 
 def phien_am(han: str, viet: str = "") -> list[dict]:
