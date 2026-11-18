@@ -612,6 +612,35 @@ def detect(image: Path, ocr) -> list[dict]:
     return boxes
 
 
+def otsu_threshold(values) -> int:
+    """Ngưỡng Otsu cho một dãy độ xám 0–255: chia hai nhóm mực/giấy sao cho phương sai giữa hai nhóm lớn nhất."""
+    import numpy as np
+
+    hist = np.bincount(np.asarray(values, dtype=np.uint8).ravel(), minlength=256).astype(float)
+    total = hist.sum()
+    if not total:
+        return INK_THRESHOLD
+    levels = np.arange(256)
+    weight = np.cumsum(hist)
+    mass = np.cumsum(hist * levels)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        between = (mass[-1] * weight / total - mass) ** 2 / (weight * (total - weight))
+    return int(np.nanargmax(between[:-1])) + 1
+
+
+def page_ink(gray, boxes: list[dict]):
+    """Ma trận mực của trang. Ngưỡng cố định INK_THRESHOLD bỏ mất chữ in nhạt (tq-859: mực xám, chỉ còn chấm nhỏ
+    trong nét, kiểm thử 18/11/2026), nên nâng ngưỡng lên Otsu tính trong vùng các khung chữ khi Otsu cao hơn."""
+    import numpy as np
+
+    mask = np.zeros(gray.shape, dtype=bool)
+    for box in boxes:
+        x0, y0, x1, y1 = box["box"]
+        mask[max(y0, 0):max(y1, 0), max(x0, 0):max(x1, 0)] = True
+    threshold = max(INK_THRESHOLD, otsu_threshold(gray[mask])) if mask.any() else INK_THRESHOLD
+    return gray < threshold
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("book_dir", type=Path)
@@ -664,9 +693,10 @@ def main() -> None:
     for page, page_rows in sorted(rows.items()):
         with Image.open(images[page]) as img:
             width, height = img.size
-            ink = np.array(img.convert("L")) < INK_THRESHOLD
+            gray = np.array(img.convert("L"))
         gutter = gutters[page]
         boxes = merge_boxes(*detected[page], han_only("".join(page_rows)))
+        ink = page_ink(gray, boxes)
         columns = read_gemini_columns(args.o_cot, page) if args.o_cot else []
         chars, missing, source = best_source(page_rows, boxes, columns, width, height, gutter, ink)
         payload = {"rong": width, "cao": height, "chu": chars, "thieu": missing, "nguon": source}

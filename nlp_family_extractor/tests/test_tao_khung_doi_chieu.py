@@ -372,3 +372,28 @@ def test_unused_box_does_not_count_spaces_paddle_read_in_gaps():
     chars, missing = locate_rows(["保泰五年甲辰", "子一厚杰", "改名公寮"], [title, right, left], ink=ink)
     assert "".join(c["c"] for c in chars) == "保泰五年甲辰改名公寮"
     assert missing == 4
+
+
+def test_otsu_threshold_splits_pale_ink_from_paper():
+    from tools.tao_khung_doi_chieu import otsu_threshold
+
+    values = [150] * 300 + [220] * 700  # mực xám nhạt 150, giấy 220
+    assert 150 < otsu_threshold(values) <= 220
+
+
+def test_page_ink_keeps_pale_strokes_that_fixed_threshold_drops():
+    from tools.tao_khung_doi_chieu import page_ink
+
+    gray = np.full((100, 100), 220, dtype=np.uint8)
+    gray[20:40, 20:40] = 150  # chữ in nhạt, sáng hơn INK_THRESHOLD
+    ink = page_ink(gray, [{"box": [10, 10, 50, 50], "text": "公"}])
+    assert ink[30, 30] and not ink[80, 80]
+
+
+def test_page_ink_never_lowers_the_fixed_threshold():
+    from tools.tao_khung_doi_chieu import INK_THRESHOLD, page_ink
+
+    gray = np.full((50, 50), 60, dtype=np.uint8)
+    gray[10:20, 10:20] = 10
+    ink = page_ink(gray, [{"box": [0, 0, 50, 50], "text": "公"}])
+    assert ink[30, 30] == (60 < INK_THRESHOLD)
