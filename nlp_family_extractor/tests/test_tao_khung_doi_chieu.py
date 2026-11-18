@@ -311,3 +311,64 @@ def test_box_with_many_non_glyph_cells_places_nothing_rather_than_guess():
     ink = tree_column([10, 70, 130, 190], [30, 90, 150])
     chars, missing = locate_rows(["昌麟"], [{"box": [90, 0, 130, 220], "text": "昌麟"}], ink=ink)
     assert chars == [] and missing == 2
+
+
+def test_title_read_out_of_order_still_gets_its_box():
+    # Tiêu đề chữ to nằm cao hơn mọi cột nên thành tầng riêng, đọc trước; bản máy đặt nó ở dòng giữa (pham-kinh-vy 001).
+    ink = page_with_glyphs([0, 30, 60, 90, 120], x0=150, size=20, height=400)
+    title = {"box": [145, 0, 175, 145], "text": "范經偉年譜"}
+    right = box("保泰五年甲辰", x0=200, y0=200, x1=220)
+    left = box("改名公寮", x0=100, y0=200, x1=120)
+    chars, missing = locate_rows(["保泰五年甲辰", "范經偉年譜一", "改名公寮"], [title, right, left], ink=ink)
+    assert "".join(c["c"] for c in chars) == "保泰五年甲辰范經偉年譜改名公寮"
+    assert [c["b"] for c in chars[6:11]] == [[150, y, 170, y + 20] for y in (0, 30, 60, 90, 120)]
+    assert all("u" not in c for c in chars[6:11])
+    assert missing == 1
+
+
+def test_title_read_out_of_order_without_ink_cells_is_not_guessed():
+    title = box("范經偉年譜", x0=150, y0=0, x1=170)
+    right = box("保泰五年甲辰", x0=200, y0=100, x1=220)
+    left = box("改名公寮", x0=100, y0=100, x1=120)
+    chars, missing = locate_rows(["保泰五年甲辰", "范經偉年譜一", "改名公寮"], [title, right, left])
+    assert "".join(c["c"] for c in chars) == "保泰五年甲辰改名公寮"
+    assert missing == 6
+
+
+def test_unused_box_with_few_matching_chars_gets_nothing():
+    chars, missing = locate_rows(["公回改姓名", "甲乙丙"], [box("丁戊", x0=50, x1=70, y0=0), box("公回改姓名", y0=100)])
+    assert [c["c"] for c in chars] == list("公回改姓名")
+    assert missing == 3
+
+
+def test_title_with_small_speck_below_keeps_full_size_glyphs():
+    ink = page_with_glyphs([0, 30, 60, 90, 120], x0=150, size=20, height=400)
+    ink[150:154, 158:162] = True  # chấm mực nhỏ dưới tiêu đề
+    title = {"box": [145, 0, 175, 160], "text": "范經偉年譜"}
+    right = box("保泰五年甲辰", x0=200, y0=200, x1=220)
+    left = box("改名公寮", x0=100, y0=200, x1=120)
+    chars, _ = locate_rows(["保泰五年甲辰", "范經偉年譜", "改名公寮"], [title, right, left], ink=ink)
+    assert [c["b"][1] for c in chars[6:11]] == [0, 30, 60, 90, 120]
+
+
+def test_unused_box_skips_char_paddle_missed_and_short_glyph_inside():
+    # 一 thấp ở giữa cột là chữ thật: bỏ nó đi thì số ô khớp số chữ đọc chỉ là trùng hợp, các chữ sau lệch một ô.
+    ink = page_with_glyphs([0, 60, 90], x0=150, size=20, height=400)
+    ink[33:37, 150:170] = True
+    title = {"box": [145, 0, 175, 145], "text": "子厚杰"}
+    right = box("保泰五年甲辰", x0=200, y0=200, x1=220)
+    left = box("改名公寮", x0=100, y0=200, x1=120)
+    chars, missing = locate_rows(["保泰五年甲辰", "子一厚杰", "改名公寮"], [title, right, left], ink=ink)
+    assert "".join(c["c"] for c in chars) == "保泰五年甲辰改名公寮"
+    assert missing == 4
+
+
+def test_unused_box_does_not_count_spaces_paddle_read_in_gaps():
+    # Paddle đọc khoảng hở thành dấu cách và sót một chữ: số ký tự trùng số ô mực nhưng các chữ sau lệch một ô.
+    ink = page_with_glyphs([0, 30, 60, 90], x0=150, size=20, height=400)
+    title = {"box": [145, 0, 175, 115], "text": "子厚杰", "raw": "子 厚杰"}
+    right = box("保泰五年甲辰", x0=200, y0=200, x1=220)
+    left = box("改名公寮", x0=100, y0=200, x1=120)
+    chars, missing = locate_rows(["保泰五年甲辰", "子一厚杰", "改名公寮"], [title, right, left], ink=ink)
+    assert "".join(c["c"] for c in chars) == "保泰五年甲辰改名公寮"
+    assert missing == 4

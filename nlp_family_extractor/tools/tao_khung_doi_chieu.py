@@ -35,6 +35,7 @@ MAX_BOX_OVERLAP = 0.3
 MIN_GLYPH_RATIO = 0.5
 MIN_PAGE_MATCH = 0.2
 MAX_CELL_EXCESS = 1.5
+MIN_SECOND_MATCH = 0.6
 DETECT_CACHE = "nhan_dang_paddle.json"
 FULL_GLYPH_RATIO = 0.8
 # Dải mực phải có mặt ở ít nhất từng này phần hàng của ô; đường kẻ ngang chỉ chiếm vài hàng nên không tạo dải.
@@ -257,6 +258,38 @@ def _fill_gap(gap: list[int], read: list[int], seq: list[tuple[int, int]], boxes
     return out
 
 
+def _place_unused_boxes(text: str, where: dict[int, int], seq: list[tuple[int, int]], boxes: list[dict]) -> dict[int, int]:
+    """Lượt dóng thứ hai cho khung không nhận chữ nào ở lượt chính, thường vì thứ tự đọc sai: tiêu đề chữ to nằm cao
+    hơn mọi cột nên thành một tầng riêng và được đọc trước (pham-kinh-vy trang 001). Mỗi khung chỉ được dóng vào một đoạn
+    chữ liền nhau còn chưa có vị trí, và phải khớp phần lớn chữ đọc được; không thì bỏ, không đoán."""
+    used = {seq[r][0] for r in where.values()}
+    index = {s: r for r, s in enumerate(seq)}
+    out: dict[int, int] = {}
+    for b, box in enumerate(boxes):
+        if b in used:
+            continue
+        free = [t for t in range(len(text)) if t not in where and t not in out]
+        # Tách thành các đoạn liền nhau theo vị trí trong bản máy.
+        runs = []
+        for t in free:
+            if runs and t == runs[-1][-1] + 1:
+                runs[-1].append(t)
+            else:
+                runs.append([t])
+        best: list[tuple[int, int]] = []
+        best_run: list[int] = []
+        for run in runs:
+            pairs = _common_subsequence("".join(text[t] for t in run), list(box["text"]))
+            if len(pairs) > len(best):
+                best, best_run = pairs, run
+        if len(best) < max(2, MIN_SECOND_MATCH * len(box["text"])):
+            continue
+        # Chỉ chữ khớp chữ đọc được: chữ Paddle đọc sót không biết nằm ô nào (tq-696 trang 018).
+        for k, j in best:
+            out[best_run[k]] = index[(b, j)]
+    return out
+
+
 def _full_size(cells: list[list[int]]) -> list[list[int]]:
     """Ô đủ cỡ một chữ dọc cột: vòng ○, đường nối và chú nhỏ thấp hơn hẳn chữ chính."""
     if not cells:
@@ -264,6 +297,22 @@ def _full_size(cells: list[list[int]]) -> list[list[int]]:
     heights = sorted(c[3] - c[1] for c in cells)
     full = heights[len(heights) * 3 // 4]
     return [c for c in cells if c[3] - c[1] >= FULL_GLYPH_RATIO * full]
+
+
+def _second_pass_positions(box: dict, read_at: list[int], cells: list[list[int]]) -> list[list[int]]:
+    """Vị trí chữ của khung dóng ở lượt hai; rỗng nếu không chắc. Chỉ nhận khi mỗi chữ Paddle đọc ứng đúng một ô mực.
+
+    Không chia đều (chữ lệch một hai ô, tq-696 trang 043) và không đếm dấu cách trong chữ đọc: khoảng hở Paddle đọc
+    thành dấu cách có thể trùng số với chữ nó đọc sót (tq-696 trang 018). Được bỏ chấm, nét nhỏ ở đầu hoặc cuối khung
+    (như "(1691-" dưới tiêu đề pham-kinh-vy 001); ô nhỏ giữa khung có thể là chữ thật như 一, không bỏ.
+    """
+    glyphs = cells
+    if len(cells) != len(box["text"]):
+        glyphs = _full_size(cells)
+        start = cells.index(glyphs[0]) if glyphs else 0
+        if len(glyphs) != len(box["text"]) or cells[start : start + len(glyphs)] != glyphs:
+            return []
+    return [glyphs[j] for j in read_at]
 
 
 def _positions(box: dict, read_at: list[int], cells: list[list[int]]) -> tuple[list[list[int]], bool]:
@@ -321,6 +370,9 @@ def locate_rows(
             right = seq[r][0] if r < len(seq) else None
             where.update(_fill_gap(gap, list(range(prev_r + 1, r)), seq, ordered, left, right))
         prev_t, prev_r = t, r
+    second = _place_unused_boxes(text, where, seq, ordered)
+    where.update(second)
+    second_boxes = {seq[r][0] for r in second.values()}
 
     typical_glyph = sorted(_glyph_length(box) for box in ordered)[len(ordered) // 2]
     per_box: dict[int, list[int]] = {}
@@ -335,7 +387,13 @@ def locate_rows(
         if crowded and max(y1 - y0, x1 - x0) / len(members) < MIN_GLYPH_RATIO * typical_glyph:
             continue
         cells = box_cells(box, ink) if ink is not None else []
-        positions, exact = _positions(box, [seq[where[t]][1] for t in members], cells)
+        read_at = [seq[where[t]][1] for t in members]
+        if b in second_boxes:
+            positions, exact = _second_pass_positions(box, read_at, cells), True
+            if not positions:
+                continue
+        else:
+            positions, exact = _positions(box, read_at, cells)
         for t, position in zip(members, positions):
             chars.append((t, {"c": text[t], "b": position} if exact else {"c": text[t], "b": position, "u": 1}))
     chars.sort(key=lambda c: c[0])
