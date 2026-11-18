@@ -871,6 +871,17 @@ class XemTrangTest(DichLaiTest):
         self.assertEqual(am("長子", "giờ Tý")[1]["a"], "tử")
         self.assertEqual(am("戌山辰向", "")[2]["a"], "thìn")  # hướng
         self.assertEqual([x["a"] for x in am("子子", "Tý")], ["tý", "tử"])  # một chữ "Tý" chỉ dùng cho một chữ
+        (Path(self.tmp.name) / "han_viet.json").write_text(
+            json.dumps({"子": ["tử", "tý"], "時": ["thời", "thì"], "八": ["bát"], "三": ["tam"], "丙": ["bính"], "月": ["nguyệt"],
+                        "辰": ["thần", "thìn"], "日": ["nhật"], "初": ["sơ"], "十": ["thập"], "午": ["ngọ"], "兼": ["kiêm"]}),
+            encoding="utf-8",
+        )
+        self.assertEqual(am("丙子八月", "")[1]["a"], "tý")  # can chi đi trước số tháng
+        self.assertEqual(am("三子", "")[1]["a"], "tử")  # con thứ ba
+        self.assertEqual(am("初十子", "")[2]["a"], "tý")  # ngày mùng 10, giờ Tý
+        self.assertEqual(am("十子時", "")[1]["a"], "tý")
+        self.assertEqual(am("六日辰", "")[2]["a"], "thìn")
+        self.assertEqual(am("兼午子", "")[2]["a"], "tý")
         self.assertEqual(am("庚辰年", "năm ấy")[1]["a"], "thìn")  # sau thiên can
         self.assertEqual(am("辰時", "")[0]["a"], "thìn")  # trước chữ giờ
         self.assertEqual(am("移辰", "chốc lát")[1]["a"], "thần")  # không phải can chi
