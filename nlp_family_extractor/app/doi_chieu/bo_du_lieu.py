@@ -312,4 +312,4 @@ def page_rows(bdir: Path, page: str) -> list[dict] | None:
     built = build(bdir)
     if built is None:
         return None
-    return [{**r, "am": am_han_viet.phien_am(r["han"])} for r in built["rows"] if r["trang"] == page]
+    return [{**r, "am": am_han_viet.phien_am(r["han"], r["viet"])} for r in built["rows"] if r["trang"] == page]

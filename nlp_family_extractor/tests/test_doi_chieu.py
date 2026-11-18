@@ -809,7 +809,18 @@ class XemTrangTest(DichLaiTest):
         self.assertEqual((pair["han"], pair["viet"], pair["nguon"]), ("朝廷之盛心乎至則", "lòng thịnh của triều đình", "may"))
         self.assertTrue(pair["sua_chu"] and pair["dich_lai"])
         self.assertEqual(pair["am"][:3], [{"c": "朝", "a": "triều", "k": ["triêu"]}, {"c": "廷", "a": "đình"}, {"c": "之"}])
-        self.assertEqual(self.client.get(self.url + "/trang/002").json()["cap"], [])
+        self.assertEqual(self.client.get(self.url + "/trang/002").status_code, 404)  # không có cặp, không có ảnh
+        (self.book / "anh").mkdir()
+        (self.book / "anh" / "002.jpg").write_bytes(b"x")
+        self.assertEqual(self.client.get(self.url + "/trang/002").json()["cap"], [])  # trang ảnh trống
+
+    def test_reading_follows_the_pair_translation(self) -> None:
+        (Path(self.tmp.name) / "han_viet.json").write_text(json.dumps({"辰": ["thần", "thìn"], "長": ["trưởng", "trường"]}), encoding="utf-8")
+        am = __import__("app.doi_chieu.am_han_viet", fromlist=["x"]).phien_am
+        self.assertEqual(am("戊辰", "năm Mậu Thìn")[1], {"c": "辰", "a": "thìn", "k": ["thần"]})
+        self.assertEqual(am("長子", "con trưởng, Trường")[0]["a"], "trưởng")  # có âm đầu thì giữ âm đầu
+        self.assertEqual(am("長冲", "Trường Xung")[0]["a"], "trường")
+        self.assertEqual(am("辰")[0]["a"], "thần")
 
     def test_page_returns_boxes_when_present(self) -> None:
         (self.book / "khung").mkdir()
