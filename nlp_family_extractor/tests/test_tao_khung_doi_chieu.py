@@ -397,3 +397,28 @@ def test_page_ink_never_lowers_the_fixed_threshold():
     gray[10:20, 10:20] = 10
     ink = page_ink(gray, [{"box": [0, 0, 50, 50], "text": "公"}])
     assert ink[30, 30] == (60 < INK_THRESHOLD)
+
+
+def test_seal_box_is_dropped_but_text_over_seal_is_kept():
+    from tools.tao_khung_doi_chieu import drop_seal_boxes, red_mask
+
+    rgb = np.full((100, 100, 3), 230, dtype=np.uint8)
+    rgb[10:40, 10:40] = [230, 150, 150]  # con dấu son, không có mực
+    rgb[50:90, 10:40] = [230, 150, 150]
+    rgb[55:85, 15:35] = [60, 60, 60]  # chữ in đè lên dấu
+    red = red_mask(rgb)
+    ink = rgb.mean(axis=2) < 128
+    seal = {"box": [0, 0, 50, 50], "text": "吧"}  # dấu chỉ chiếm một phần khung
+    text = {"box": [10, 50, 40, 90], "text": "勅"}
+    assert drop_seal_boxes([seal, text], ink, red) == [text]
+
+
+def test_text_on_coloured_cover_label_is_not_a_seal():
+    from tools.tao_khung_doi_chieu import drop_seal_boxes, red_mask
+
+    rgb = np.full((60, 60, 3), [200, 110, 40], dtype=np.uint8)  # nhãn bìa màu cam
+    rgb[20:24, 10:50] = [40, 30, 20]
+    red = red_mask(rgb)
+    ink = rgb.mean(axis=2) < 128
+    label = {"box": [5, 5, 55, 55], "text": "譜"}
+    assert drop_seal_boxes([label], ink, red) == [label]

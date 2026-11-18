@@ -38,6 +38,11 @@ MAX_CELL_EXCESS = 1.5
 MIN_SECOND_MATCH = 0.6
 DETECT_CACHE = "nhan_dang_paddle.json"
 FULL_GLYPH_RATIO = 0.8
+# Con dấu son: độ đỏ (R - max(G, B)) trên ngưỡng; khung có hơn 10% điểm son mà dưới 8% mực là khung đọc lên dấu.
+SEAL_REDNESS = 25
+SEAL_MIN_SHARE = 0.1
+SEAL_MAX_SHARE = 0.6
+SEAL_MAX_INK_SHARE = 0.08
 # Dải mực phải có mặt ở ít nhất từng này phần hàng của ô; đường kẻ ngang chỉ chiếm vài hàng nên không tạo dải.
 MIN_BAND_INK = 0.04
 MIN_BAND_RATIO, MAX_BAND_RATIO = 0.35, 1.7
@@ -641,6 +646,28 @@ def page_ink(gray, boxes: list[dict]):
     return gray < threshold
 
 
+def red_mask(rgb):
+    """Điểm ảnh màu son của con dấu: kênh đỏ cao hơn hẳn xanh lá và xanh dương. Mực đen, xám thì ba kênh gần bằng nhau."""
+    import numpy as np
+
+    channels = np.asarray(rgb, dtype=np.int16)
+    return channels[..., 0] - np.maximum(channels[..., 1], channels[..., 2]) > SEAL_REDNESS
+
+
+def drop_seal_boxes(boxes: list[dict], ink, red) -> list[dict]:
+    """Bỏ khung Paddle đọc lên con dấu: nhiều màu son mà gần như không có mực (tq-859, kiểm thử vòng 14)."""
+    kept = []
+    for box in boxes:
+        x0, y0, x1, y1 = (max(v, 0) for v in box["box"])
+        area = max((x1 - x0) * (y1 - y0), 1)
+        seal = red[y0:y1, x0:x1].sum() / area
+        dark = (ink[y0:y1, x0:x1] & ~red[y0:y1, x0:x1]).sum() / area
+        # Nền cả khung đỏ (nhãn bìa giấy màu) là chữ in trên giấy màu, không phải dấu.
+        if not (SEAL_MIN_SHARE < seal < SEAL_MAX_SHARE and dark < SEAL_MAX_INK_SHARE):
+            kept.append(box)
+    return kept
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("book_dir", type=Path)
@@ -694,9 +721,12 @@ def main() -> None:
         with Image.open(images[page]) as img:
             width, height = img.size
             gray = np.array(img.convert("L"))
+            red = red_mask(img.convert("RGB"))
         gutter = gutters[page]
         boxes = merge_boxes(*detected[page], han_only("".join(page_rows)))
         ink = page_ink(gray, boxes)
+        boxes = drop_seal_boxes(boxes, ink, red)
+        ink &= ~red
         columns = read_gemini_columns(args.o_cot, page) if args.o_cot else []
         chars, missing, source = best_source(page_rows, boxes, columns, width, height, gutter, ink)
         payload = {"rong": width, "cao": height, "chu": chars, "thieu": missing, "nguon": source}
