@@ -674,6 +674,21 @@ class BoDuLieuTest(unittest.TestCase):
         self.assertEqual((bo["da_soat"], bo["may"], bo["trang"], bo["trang_da_soat"]), (1, 1, 2, 1))
         self.assertEqual(self.client.get("/api/public/doi-chieu/chua-giao/tq-1/bo-du-lieu/da-soat.tsv").text, "公回改\tông trở về đổi\n")
 
+    def test_reviewed_part_drops_only_unsure_notes(self) -> None:
+        draft = {
+            "rows": [
+                {"trang": "001", "han": "公回改", "viet": "ông trở về (không chắc) đổi (tức họ Trần)", "bo": False},
+                {"trang": "001", "han": "設立", "viet": "lập [không chắc] trường", "bo": False},
+            ],
+            "da_soat": ["001"],
+            "phien_ban": 1,
+        }
+        (self.book / "soat_nhap.json").write_text(json.dumps(draft, ensure_ascii=False), encoding="utf-8")
+        bo = self.client.get("/api/public/doi-chieu/chua-giao/tq-1").json()["bo"]
+        self.assertEqual(bo["bo_khong_chac_da_soat"], 2)
+        tsv = self.client.get("/api/public/doi-chieu/chua-giao/tq-1/bo-du-lieu/da-soat.tsv").text
+        self.assertEqual(tsv, "公回改\tông trở về đổi (tức họ Trần)\n設立\tlập trường\n")
+
     def test_only_unassigned_group(self) -> None:
         self.assertIsNone(self.client.get("/api/public/doi-chieu/sv-a/nom-1").json()["bo"])
         self.assertEqual(self.client.get("/api/public/doi-chieu/sv-a/nom-1/bo-du-lieu/may.tsv").status_code, 404)
