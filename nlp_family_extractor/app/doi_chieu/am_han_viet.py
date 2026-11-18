@@ -57,40 +57,80 @@ BRANCH_NAMES = {
 }
 
 
+# Chữ đi trong cụm chỉ hướng phong thuỷ (戌山辰向, 子午向, 乙辛兼卯酉向): địa chi ở đây cũng là tên chi.
+_DIRECTION_RUN = set("乾坤艮巽山兼") | STEMS | set(BRANCH_NAMES)
+# 子 nghĩa "con": sau các chữ này hoặc trước số đếm, 女, 孫 (長子, 次子, 子一, 子女, 子孫).
+_SON_BEFORE = set("長长次嗣之幼諸诸男孫孙庶養养繼继")
+_SON_AFTER = set("一二三四五六七八九十女孫孙")
+
+
 def _branch_reading(han: str, i: int, readings: list[str]) -> str | None:
     ch = han[i]
     if ch not in BRANCH_NAMES:
         return None
     before = han[i - 1] if i > 0 else ""
     after = han[i + 1] if i + 1 < len(han) else ""
-    if before not in STEMS and after not in TIME_MARKS:
+    is_branch = before in STEMS or after in TIME_MARKS
+    if not is_branch:
+        j = i + 1
+        while j < len(han) and j <= i + 4 and han[j] in _DIRECTION_RUN:
+            j += 1
+        is_branch = j < len(han) and han[j] == "向"
+    if not is_branch:
         return None
     return next((r for r in BRANCH_NAMES[ch] if r in readings), None)
+
+
+def _fixed_reading(han: str, i: int, readings: list[str]) -> str | None:
+    """Âm quyết định được từ chính vế Hán, không cần nhìn vế Việt; None là để vế Việt quyết định."""
+    ch = han[i]
+    if len(readings) == 1 or ch in LOCKED:
+        return readings[0]
+    if ch == "子" and "tử" in readings:
+        before = han[i - 1] if i > 0 else ""
+        after = han[i + 1] if i + 1 < len(han) else ""
+        if before in _SON_BEFORE or after in _SON_AFTER:
+            return "tử"
+    return _branch_reading(han, i, readings)
 
 
 def phien_am(han: str, viet: str = "") -> list[dict]:
     """Từng ký tự của vế Hán: {"c": chữ, "a": âm chọn, "k": [âm khác]}; ký tự không phải chữ Hán hoặc chưa có
     trong từ điển thì chỉ có "c".
 
-    Chữ nhiều âm: nếu vế Việt của cặp có một âm của chữ mà không có âm đầu từ điển thì chọn âm đó
-    (戊辰 trong cặp "năm Mậu Thìn" đọc "thìn", 長 trong "Trường Xung" đọc "trường")."""
+    Thứ tự quyết định âm của chữ nhiều âm:
+    1. Ngữ cảnh trong vế Hán: khoá (卒), 子 nghĩa "con" (長子, 子一), địa chi trong can chi/giờ/hướng (庚辰, 辰時, 辰向).
+    2. Vế Việt của cặp: âm đầu có trong vế Việt thì giữ; không thì lấy âm khác có trong vế Việt (戊辰 "Mậu Thìn" → thìn,
+       長冲 "Trường Xung" → trường). Mỗi lần xuất hiện của một từ trong vế Việt chỉ dùng cho một chữ, và từ đã thuộc
+       về chữ khác của cặp (戌 → "Tuất") thì không dùng lại.
+    3. Còn lại: âm đầu từ điển."""
     table = dictionary()
     words = Counter(_WORD_RE.findall(viet.lower()))
-    # Từ trong vế Việt đã có chữ khác của cặp nhận làm âm chính (戌 → "Tuất") thì không dùng để đổi âm chữ này,
-    # tránh 卒 thành "tuất" trong cặp "…năm Bính Tuất… 卒".
-    claimed = Counter(table[c][0] for c in han if table.get(c))
+    cells = [table.get(ch) if service.HAN_RE.fullmatch(ch) else None for ch in han]
+    chosen: list[str | None] = [None] * len(han)
+    claimed: Counter = Counter()
+    for i, readings in enumerate(cells):
+        if not readings:
+            continue
+        fixed = _fixed_reading(han, i, readings)
+        if fixed:
+            chosen[i] = fixed
+            claimed[fixed] += 1
+        elif readings[0] in words:
+            chosen[i] = readings[0]
+            claimed[readings[0]] += 1
+    for i, readings in enumerate(cells):
+        if not readings or chosen[i]:
+            continue
+        hit = next((r for r in readings[1:] if words[r] > claimed[r]), None)
+        if hit:
+            claimed[hit] += 1
+        chosen[i] = hit or readings[0]
     out = []
-    for i, ch in enumerate(han):
-        readings = table.get(ch) if service.HAN_RE.fullmatch(ch) else None
+    for ch, readings, a in zip(han, cells, chosen):
         if not readings:
             out.append({"c": ch})
             continue
-        branch = _branch_reading(han, i, readings) if len(readings) > 1 else None
-        if branch:
-            readings = [branch, *(r for r in readings if r != branch)]
-        elif len(readings) > 1 and readings[0] not in words and ch not in LOCKED:
-            hit = next((r for r in readings[1:] if words[r] > claimed[r]), None)
-            if hit:
-                readings = [hit, *(r for r in readings if r != hit)]
-        out.append({"c": ch, "a": readings[0], **({"k": readings[1:]} if len(readings) > 1 else {})})
+        rest = [r for r in readings if r != a]
+        out.append({"c": ch, "a": a, **({"k": rest} if rest else {})})
     return out
