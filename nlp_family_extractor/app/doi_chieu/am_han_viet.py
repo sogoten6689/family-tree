@@ -2,13 +2,15 @@
 
 Từ điển nằm ở <DOI_CHIEU_DIR>/han_viet.json, dạng {"chữ": ["âm chọn", "âm khác", ...]}, do
 tools/tao_tu_dien_han_viet.py tạo. Nguồn là âm đầu mục của Hán Việt tự điển (Thiều Chửu); chữ có nhiều âm
-được xếp theo tần suất âm đó xuất hiện trong vế Việt của kho đối chiếu. Tra từng chữ nên không phân biệt
-được âm theo ngữ cảnh (行 hành/hàng): chữ có nhiều âm trả kèm các âm khác để người xem tự chọn.
+được xếp theo tần suất âm đó xuất hiện trong vế Việt của kho đối chiếu (không đếm tên can chi). Khi tra, âm có
+trong vế Việt của chính cặp được chọn trước; ngoài ra không phân biệt được âm theo ngữ cảnh (行 hành/hàng), nên chữ
+nhiều âm trả kèm các âm khác để người xem tự chọn.
 Chưa có tệp từ điển thì mọi chữ đều không có âm.
 """
 from __future__ import annotations
 
 import json
+import re
 from functools import lru_cache
 from pathlib import Path
 
@@ -40,17 +42,26 @@ def dictionary() -> dict[str, list[str]]:
     return _load(str(path), path.stat().st_mtime_ns)
 
 
-def phien_am(han: str) -> list[dict]:
+_WORD_RE = re.compile(r"[^\W\d_]+")
+
+
+def phien_am(han: str, viet: str = "") -> list[dict]:
     """Từng ký tự của vế Hán: {"c": chữ, "a": âm chọn, "k": [âm khác]}; ký tự không phải chữ Hán hoặc chưa có
-    trong từ điển thì chỉ có "c"."""
+    trong từ điển thì chỉ có "c".
+
+    Chữ nhiều âm: nếu vế Việt của cặp có một âm của chữ mà không có âm đầu từ điển thì chọn âm đó
+    (戊辰 trong cặp "năm Mậu Thìn" đọc "thìn", 長 trong "Trường Xung" đọc "trường")."""
     table = dictionary()
+    words = set(_WORD_RE.findall(viet.lower()))
     out = []
     for ch in han:
         readings = table.get(ch) if service.HAN_RE.fullmatch(ch) else None
         if not readings:
             out.append({"c": ch})
-        elif len(readings) == 1:
-            out.append({"c": ch, "a": readings[0]})
-        else:
-            out.append({"c": ch, "a": readings[0], "k": readings[1:]})
+            continue
+        if len(readings) > 1 and readings[0] not in words:
+            hit = next((r for r in readings[1:] if r in words), None)
+            if hit:
+                readings = [hit, *(r for r in readings if r != hit)]
+        out.append({"c": ch, "a": readings[0], **({"k": readings[1:]} if len(readings) > 1 else {})})
     return out

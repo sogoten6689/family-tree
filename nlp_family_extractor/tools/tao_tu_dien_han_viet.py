@@ -6,7 +6,8 @@ Nguồn (tải về máy, không đưa vào repo):
 - Unihan_Variants.txt: https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip, để tra âm qua chữ dị thể/giản/phồn.
 
 Chữ có nhiều âm được xếp lại theo số cặp trong kho đối chiếu mà vế Việt có âm đó (ví dụ 生: "sinh" trước "sanh"),
-hoà thì giữ thứ tự của từ điển. Đây vẫn là tra từng chữ, không phải phiên âm theo ngữ cảnh.
+không đếm tên can chi; hoà thì giữ thứ tự của từ điển; vài chữ đặt âm trước theo PREFERRED. Khi hiển thị, âm có trong
+vế Việt của chính cặp được chọn trước (am_han_viet.phien_am), ngoài ra vẫn là tra từng chữ, không theo ngữ cảnh.
 
     python nlp_family_extractor/tools/tao_tu_dien_han_viet.py --thieu-chuu thieuchuu.txt --phien-am phienam.txt \\
         --unihan Unihan_Variants.txt --kho <DOI_CHIEU_DIR> [--ra <DOI_CHIEU_DIR>/han_viet.json]
@@ -30,6 +31,13 @@ EXTRA_VARIANTS = {
 }
 
 
+# Vế Việt ghi năm/giờ theo can chi ("năm Mậu Tuất", "giờ Tý") nên đếm các âm này sẽ kéo 子 thành "tý", 卒 thành "tuất".
+# Bỏ khỏi phần đếm; khi hiển thị, âm can chi vẫn được chọn nếu vế Việt của chính cặp đó có (xem app/doi_chieu/am_han_viet.py).
+CYCLICAL = set("giáp ất bính đinh mậu kỷ kỉ canh tân nhâm quý quí tý tí sửu dần mão mẹo thìn tỵ tị ngọ mùi thân dậu tuất hợi".split())
+# Âm đặt trước sau khi xếp, cho chữ hay gặp mà đếm theo kho vẫn chọn sai (soát 18/11/2026).
+PREFERRED = {"行": "hành", "妻": "thê", "的": "đích", "食": "thực", "适": "thích", "子": "tử", "卒": "tốt"}
+
+
 def _norm(reading: str) -> str:
     # Bản số hoá Thiều Chửu dùng Ð (U+00D0, chữ Iceland) thay cho Đ.
     return reading.replace("Ð", "Đ").replace("ð", "đ").strip().lower()
@@ -44,7 +52,8 @@ def read_thieu_chuu(path: Path) -> dict[str, list[str]]:
         head = rest.split("[")[0].split("\\n")[0]
         readings = [r for r in (_norm(x) for x in head.split(",")) if r and WORD_RE.fullmatch(r)]
         if readings:
-            out.setdefault(ch, list(dict.fromkeys(readings)))
+            # Có chữ có hai mục (适 = quát; 适 = thích, đích): gộp âm, giữ thứ tự gặp.
+            out[ch] = list(dict.fromkeys([*out.get(ch, []), *readings]))
     return out
 
 
@@ -98,10 +107,13 @@ def build(base: dict[str, list[str]], extra: dict[str, list[str]], variants: dic
             readings = table.get(ch)
             if readings and len(readings) > 1:
                 counter = votes.setdefault(ch, Counter())
-                counter.update(r for r in readings if r in words)
+                counter.update(r for r in readings if r in words and r not in CYCLICAL)
     for ch, counter in votes.items():
         order = table[ch]
         table[ch] = sorted(order, key=lambda r: (-counter[r], order.index(r)))
+    for ch, first in PREFERRED.items():
+        if ch in table and first in table[ch]:
+            table[ch] = [first, *(r for r in table[ch] if r != first)]
     # Dị thể không có trong kho thì theo thứ tự đã xếp của chữ gốc.
     for ch, hit in borrowed.items():
         if not votes.get(ch):

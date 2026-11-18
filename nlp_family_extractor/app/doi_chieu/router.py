@@ -80,6 +80,8 @@ def get_page_view(student: str, book: str, page: str) -> dict:
     rows = bo_du_lieu.page_rows(bdir, page) if bdir and service.PAGE_RE.fullmatch(page) else None
     if rows is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Cuốn này chưa có bộ song song để xem theo trang.")
+    if not rows and page not in service.page_names(bdir):
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Không có trang này.")
     return {"trang": page, "cap": rows, "khung": soat.positions(bdir, page)}
 
 

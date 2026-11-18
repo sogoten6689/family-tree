@@ -77,6 +77,8 @@ export interface BoSummary {
   bo: { thieu_ve: number; han_khong_co_chu_han: number; viet_lan_chu_han: number; trung: number };
   /** Số cặp phần máy đã bỏ ghi chú của người dịch máy ("(không chắc)", "(bản gốc ghi …)"…). */
   bo_ghi_chu: number;
+  /** Cặp đã soát được bỏ ghi chú "(không chắc)". */
+  bo_khong_chac_da_soat?: number;
   /** Phần máy: chữ đề xuất sửa của vote đã đối chiếu ảnh và áp; đang chờ đối chiếu; đối chiếu xong giữ chữ nền;
    * không tìm được chỗ; không đưa đi đối chiếu (dòng ngắn, nghi ghép lệch, dễ nhầm hình, ngày giờ/can chi). */
   sua_vote: number;

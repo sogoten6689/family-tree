@@ -12,7 +12,7 @@ Phần máy áp chữ "đề xuất sửa" của vote (đa số ≥ 2 phiếu tr
 ({"<trang>|<dòng nền>|<vị trí>": "<chữ đúng>" hoặc "" = giữ chữ nền}). Tự áp không cần xác nhận chỉ đúng
 khoảng một nửa (xem tay 18/11/2026), nên chữ chưa xác nhận không áp.
 Chỉ áp khi tìm được đúng một chỗ của dòng nền (hoặc đoạn quanh chữ) trong các cặp cùng trang.
-Phần đã soát không áp: chữ người soát được giữ nguyên.
+Phần đã soát không áp: chữ người soát được giữ nguyên; vế Việt chỉ bỏ ghi chú "(không chắc)".
 Cặp đã sửa chữ dùng vế Việt dịch lại ở <cuon>/dich_lai.json ({"<vế Hán đã sửa>": "<vế Việt>"}) nếu có.
 """
 from __future__ import annotations
@@ -54,6 +54,19 @@ def _drop_notes(viet: str) -> str:
     out = _SPACE_BEFORE_PUNCT.sub(r"\1", out)
     out = _DOUBLE_PUNCT.sub("", out)
     return " ".join(out.split()).strip(" ,;:")
+
+
+_UNSURE = re.compile(r"không chắc", re.IGNORECASE)
+
+
+def _drop_unsure(viet: str) -> tuple[str, bool]:
+    """Phần đã soát: chỉ bỏ ghi chú "(không chắc)" (anh Lâm chốt 18/11/2026); các chú thích khác của người soát giữ nguyên."""
+    drop = lambda m: "" if _UNSURE.search(m.group(1)) else m.group(0)  # noqa: E731
+    out = _DANGLING.sub("", _BRACKET.sub(drop, _PAREN.sub(drop, viet)))
+    if out == viet:
+        return viet, False
+    out = _DOUBLE_PUNCT.sub("", _SPACE_BEFORE_PUNCT.sub(r"\1", out))
+    return " ".join(out.split()).strip(" ,;:"), True
 
 
 def _clean_viet(viet: str) -> str:
@@ -218,6 +231,7 @@ def _build(bdir_str: str, signature: tuple) -> dict:
     seen: set[tuple[str, str]] = set()
     dropped = {"thieu_ve": 0, "han_khong_co_chu_han": 0, "viet_lan_chu_han": 0, "trung": 0}
     notes_removed = 0
+    unsure_removed = 0
 
     def clean(rows: list[dict], fix_viet: bool) -> list[dict]:
         out = []
@@ -229,6 +243,11 @@ def _build(bdir_str: str, signature: tuple) -> dict:
                     nonlocal notes_removed
                     notes_removed += 1
                 viet = cleaned
+            else:
+                viet, changed = _drop_unsure(viet)
+                if changed:
+                    nonlocal unsure_removed
+                    unsure_removed += 1
             if not han or not viet:
                 dropped["thieu_ve"] += 1
             elif not service.HAN_RE.search(han):
@@ -251,7 +270,7 @@ def _build(bdir_str: str, signature: tuple) -> dict:
                 )
         return out
 
-    # Phần đã soát giữ nguyên chữ người soát, chỉ bỏ dòng sai định dạng/trùng.
+    # Phần đã soát giữ nguyên chữ người soát, chỉ bỏ dòng sai định dạng/trùng và ghi chú "(không chắc)".
     reviewed = clean(reviewed_rows, fix_viet=False)
     fixed, vc = _apply_votes(rest, vote.pages(bdir), _read_dict(bdir / CONFIRMED_NAME))
     retranslated = _retranslations(bdir)
@@ -275,6 +294,7 @@ def _build(bdir_str: str, signature: tuple) -> dict:
             "trang_da_soat": len(confirmed & pages),
             "bo": dropped,
             "bo_ghi_chu": notes_removed,
+            "bo_khong_chac_da_soat": unsure_removed,
             "sua_vote": vc["ap"],
             "sua_vote_cho": vc["cho"],
             "sua_vote_giu_nen": vc["giu_nen"],
@@ -312,4 +332,4 @@ def page_rows(bdir: Path, page: str) -> list[dict] | None:
     built = build(bdir)
     if built is None:
         return None
-    return [{**r, "am": am_han_viet.phien_am(r["han"])} for r in built["rows"] if r["trang"] == page]
+    return [{**r, "am": am_han_viet.phien_am(r["han"], r["viet"])} for r in built["rows"] if r["trang"] == page]

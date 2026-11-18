@@ -16,3 +16,13 @@ class TuDienHanVietTest(unittest.TestCase):
         self.assertEqual(table["生"], ["sinh", "sanh"])
         self.assertEqual(table["甡"], ["sinh", "sanh"])  # dị thể không có trong kho: theo thứ tự đã xếp của chữ gốc
         self.assertEqual(table["乙"], ["ất"])
+
+    def test_cyclical_words_do_not_vote_and_duplicate_entries_merge(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / "tc.txt"
+            src.write_text("子=tử, tý [zi3]\\n\\t1. Con.\n适=quát [kuo4]\n适=thích, đích [shi4]\n", encoding="utf-8")
+            base = T.read_thieu_chuu(src)
+        self.assertEqual(base["适"], ["quát", "thích", "đích"])
+        table = T.build(base, {}, {}, [("甲子", "năm Giáp Tý"), ("庚子", "giờ Tý")])
+        self.assertEqual(table["子"][0], "tử")
+        self.assertEqual(table["适"][0], "thích")  # PREFERRED

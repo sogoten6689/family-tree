@@ -167,9 +167,9 @@ const XemTrangTab = ({ detail }: { detail: BookDetail }) => {
       </Row>
       <Typography.Paragraph type="secondary" style={{ margin: 0 }}>
         Khung chữ do PaddleOCR định vị trên máy của lab: nét liền là tách được từ nét mực, nét đứt là ước lượng. Số xanh trên ảnh là số dòng
-        trong bảng; bấm khung hoặc dòng để làm sáng phần tương ứng. Âm Hán Việt tra từng chữ theo Hán Việt tự điển (Thiều Chửu), chữ nhiều âm
-        chọn âm hay gặp trong bản dịch của kho; chữ gạch chấm là còn âm khác, rê chuột để xem. Đây là tra từ điển, chưa phải phiên âm theo
-        ngữ cảnh.
+        trong bảng; bấm khung hoặc dòng để làm sáng phần tương ứng. Âm Hán Việt tra từng chữ theo Hán Việt tự điển (Thiều Chửu). Chữ nhiều âm:
+        nếu vế Việt của cặp có một âm của chữ thì lấy âm đó (辰 trong "Mậu Thìn" đọc "thìn"), không thì lấy âm thường dùng; chữ gạch chấm
+        là còn âm khác, rê chuột để xem. Đây là tra từ điển, chưa phải phiên âm theo ngữ cảnh đầy đủ.
       </Typography.Paragraph>
     </Space>
   );
