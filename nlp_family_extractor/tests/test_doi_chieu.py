@@ -811,6 +811,25 @@ class DichLaiTest(unittest.TestCase):
         self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至則\tlòng thịnh của triều đình chăng, đến thì\n")
 
 
+class SuaTayTest(DichLaiTest):
+    def test_manual_fix_replaces_both_sides_after_votes(self) -> None:
+        (self.book / "xac_nhan_vote.json").write_text(json.dumps({"001|朝廷之盛心手至則|5": "乎"}), encoding="utf-8")
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["sua_tay"], bo["dich_lai_con"]), (0, 1))
+        (self.book / "sua_tay.json").write_text(
+            json.dumps({"001|朝廷之盛心乎至則": {"han": "朝廷之盛心乎至住", "viet": "đã sửa tay"}}), encoding="utf-8"
+        )
+        bo = self.client.get(self.url).json()["bo"]
+        self.assertEqual((bo["sua_tay"], bo["dich_lai_con"]), (1, 0))
+        self.assertEqual(self.client.get(self.url + "/bo-du-lieu/may.tsv").text, "朝廷之盛心乎至住\tđã sửa tay\n")
+        [pair] = self.client.get(self.url + "/trang/001").json()["cap"]
+        self.assertTrue(pair["sua_chu"] and pair["dich_lai"])
+
+    def test_bad_manual_file_is_ignored(self) -> None:
+        (self.book / "sua_tay.json").write_text("{không phải json", encoding="utf-8")
+        self.assertEqual(self.client.get(self.url).json()["bo"]["sua_tay"], 0)
+
+
 class XemTrangTest(DichLaiTest):
     """Xem một trang của bộ sạch: cặp kèm âm Hán Việt và khung chữ."""
 
@@ -837,11 +856,14 @@ class XemTrangTest(DichLaiTest):
         self.assertEqual(am("長冲", "Trường Xung")[0]["a"], "trường")
         self.assertEqual(am("辰")[0]["a"], "thần")
         (Path(self.tmp.name) / "han_viet.json").write_text(
-            json.dumps({"卒": ["tốt", "tuất"], "戌": ["tuất"], "丙": ["bính"], "辰": ["thần", "thìn"]}), encoding="utf-8"
+            json.dumps({"卒": ["tốt", "tuất"], "戌": ["tuất"], "丙": ["bính"], "辰": ["thần", "thìn"], "庚": ["canh"]}), encoding="utf-8"
         )
         self.assertEqual(am("丙戌卒", "năm Bính Tuất mất")[2]["a"], "tốt")
         self.assertEqual(am("卒", "giờ Tuất")[0]["a"], "tốt")  # khoá
         self.assertEqual(am("戌辰", "Tuất, Thìn")[1]["a"], "thìn")
+        self.assertEqual(am("庚辰年", "năm ấy")[1]["a"], "thìn")  # sau thiên can
+        self.assertEqual(am("辰時", "")[0]["a"], "thìn")  # trước chữ giờ
+        self.assertEqual(am("移辰", "chốc lát")[1]["a"], "thần")  # không phải can chi
 
     def test_page_returns_boxes_when_present(self) -> None:
         (self.book / "khung").mkdir()

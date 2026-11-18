@@ -14,6 +14,7 @@ khoảng một nửa (xem tay 18/11/2026), nên chữ chưa xác nhận không �
 Chỉ áp khi tìm được đúng một chỗ của dòng nền (hoặc đoạn quanh chữ) trong các cặp cùng trang.
 Phần đã soát không áp: chữ người soát được giữ nguyên; vế Việt chỉ bỏ ghi chú "(không chắc)".
 Cặp đã sửa chữ dùng vế Việt dịch lại ở <cuon>/dich_lai.json ({"<vế Hán đã sửa>": "<vế Việt>"}) nếu có.
+Sau cùng áp sửa tay đã đối chiếu ảnh ở <cuon>/sua_tay.json (xem _manual_fixes).
 """
 from __future__ import annotations
 
@@ -194,6 +195,26 @@ def _read_dict(path: Path) -> dict[str, str]:
     return {k: v for k, v in data.items() if isinstance(k, str) and isinstance(v, str)} if isinstance(data, dict) else {}
 
 
+MANUAL_NAME = "sua_tay.json"
+
+
+def _manual_fixes(bdir: Path) -> dict[str, dict]:
+    """<cuon>/sua_tay.json: {"<trang>|<vế Hán sau vote>": {"han": "<vế Hán đúng>", "viet": "<vế Việt>"}} — sửa tay đã đối chiếu
+    ảnh cho phần máy, khi lỗi không nằm trong đề xuất của vote (vd 任屋/在屋 → 住屋 ở tq-693, tq-696; 18/11/2026)."""
+    path = bdir / MANUAL_NAME
+    try:
+        data = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
+    except (OSError, ValueError):
+        return {}
+    if not isinstance(data, dict):
+        return {}
+    return {
+        k: {f: v[f] for f in ("han", "viet") if isinstance(v.get(f), str) and v[f].strip()}
+        for k, v in data.items()
+        if isinstance(k, str) and isinstance(v, dict)
+    }
+
+
 def _retranslations(bdir: Path) -> dict[str, str]:
     return {k: v for k, v in _read_dict(bdir / RETRANSLATION_NAME).items() if v.strip()}
 
@@ -205,6 +226,7 @@ def _signature(bdir: Path) -> tuple:
         bdir / vote.FILE_NAME,
         bdir / RETRANSLATION_NAME,
         bdir / CONFIRMED_NAME,
+        bdir / MANUAL_NAME,
         *sorted(bdir.glob("*.tsv")),
     ]
     return tuple((f.name, f.stat().st_mtime_ns, f.stat().st_size) for f in files if f.is_file())
@@ -282,8 +304,21 @@ def _build(bdir_str: str, signature: tuple) -> dict:
                 after["viet"] = retranslated[after["han"]]
                 after["_dich_lai"] = True
                 used += 1
-    pending = sum(1 for b, a in zip(rest, fixed) if a["han"] != b["han"]) - used
-    rest = fixed
+    rest = [dict(r) for r in fixed]
+    manual = _manual_fixes(bdir)
+    manual_used = 0
+    for r in rest:
+        fix = manual.get(f"{r.get('trang', '')}|{r.get('han', '')}")
+        if not fix:
+            continue
+        manual_used += 1
+        if fix.get("han") and fix["han"] != r["han"]:
+            r["han"] = fix["han"]
+            r["_sua_chu"] = True
+        if fix.get("viet"):
+            r["viet"] = fix["viet"]
+            r["_dich_lai"] = True
+    pending = sum(1 for r in rest if r.get("_sua_chu") and not r.get("_dich_lai"))
     machine = clean(rest, fix_viet=True)
     pages = {r["trang"] for r in (draft["rows"] if draft else service.read_machine(bdir / "cap_cau.csv"))}
     return {
@@ -302,6 +337,7 @@ def _build(bdir_str: str, signature: tuple) -> dict:
             "sua_vote_nghi_lech": vc["nghi_lech"],
             "dich_lai": used,
             "dich_lai_con": pending,
+            "sua_tay": manual_used,
         },
         "da-soat": "".join(f"{r['han']}\t{r['viet']}\n" for r in reviewed),
         "may": "".join(f"{r['han']}\t{r['viet']}\n" for r in machine),
