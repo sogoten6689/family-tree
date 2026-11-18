@@ -861,6 +861,16 @@ class XemTrangTest(DichLaiTest):
         self.assertEqual(am("丙戌卒", "năm Bính Tuất mất")[2]["a"], "tốt")
         self.assertEqual(am("卒", "giờ Tuất")[0]["a"], "tốt")  # khoá
         self.assertEqual(am("戌辰", "Tuất, Thìn")[1]["a"], "thìn")
+        (Path(self.tmp.name) / "han_viet.json").write_text(
+            json.dumps({"子": ["tử", "tý"], "時": ["thời", "thì"], "四": ["tứ"], "長": ["trưởng", "trường"], "辰": ["thần", "thìn"],
+                        "戌": ["tuất"], "山": ["sơn", "san"], "向": ["hướng"]}),
+            encoding="utf-8",
+        )
+        got = [x.get("a") for x in am("子時子四", "giờ Tý; bốn con trai")]
+        self.assertEqual(got, ["tý", "thời", "tử", "tứ"])  # 子時 là chi, 子四 là con
+        self.assertEqual(am("長子", "giờ Tý")[1]["a"], "tử")
+        self.assertEqual(am("戌山辰向", "")[2]["a"], "thìn")  # hướng
+        self.assertEqual([x["a"] for x in am("子子", "Tý")], ["tý", "tử"])  # một chữ "Tý" chỉ dùng cho một chữ
         self.assertEqual(am("庚辰年", "năm ấy")[1]["a"], "thìn")  # sau thiên can
         self.assertEqual(am("辰時", "")[0]["a"], "thìn")  # trước chữ giờ
         self.assertEqual(am("移辰", "chốc lát")[1]["a"], "thần")  # không phải can chi
