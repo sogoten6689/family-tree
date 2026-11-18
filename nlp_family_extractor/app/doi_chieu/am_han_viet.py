@@ -47,6 +47,25 @@ _WORD_RE = re.compile(r"[^\W\d_]+")
 # Chữ luôn đọc âm đầu, không đổi theo vế Việt: trong gia phả 卒 hầu như luôn là "tốt" (mất); kiểm thử 18/11/2026
 # thấy 13 cặp vẫn đổi sai sang "tuất" vì vế Việt có "Tuất" mà vế Hán không có 戌 (cặp dóng lệch).
 LOCKED = {"卒"}
+# Địa chi đứng sau thiên can (庚辰) hoặc trước chữ giờ (辰時) là tên chi, đọc theo tên chi dù vế Việt không ghi
+# (kiểm thử 18/11/2026: 辰 còn "thần" 44 chỗ vì vế Việt bỏ phần ngày giờ).
+STEMS = set("甲乙丙丁戊己庚辛壬癸")
+TIME_MARKS = set("時时")
+BRANCH_NAMES = {
+    "子": ("tý", "tí"), "丑": ("sửu",), "寅": ("dần",), "卯": ("mão", "mẹo"), "辰": ("thìn",), "巳": ("tỵ", "tị"),
+    "午": ("ngọ",), "未": ("mùi",), "申": ("thân",), "酉": ("dậu",), "戌": ("tuất",), "亥": ("hợi",),
+}
+
+
+def _branch_reading(han: str, i: int, readings: list[str]) -> str | None:
+    ch = han[i]
+    if ch not in BRANCH_NAMES:
+        return None
+    before = han[i - 1] if i > 0 else ""
+    after = han[i + 1] if i + 1 < len(han) else ""
+    if before not in STEMS and after not in TIME_MARKS:
+        return None
+    return next((r for r in BRANCH_NAMES[ch] if r in readings), None)
 
 
 def phien_am(han: str, viet: str = "") -> list[dict]:
@@ -61,12 +80,15 @@ def phien_am(han: str, viet: str = "") -> list[dict]:
     # tránh 卒 thành "tuất" trong cặp "…năm Bính Tuất… 卒".
     claimed = Counter(table[c][0] for c in han if table.get(c))
     out = []
-    for ch in han:
+    for i, ch in enumerate(han):
         readings = table.get(ch) if service.HAN_RE.fullmatch(ch) else None
         if not readings:
             out.append({"c": ch})
             continue
-        if len(readings) > 1 and readings[0] not in words and ch not in LOCKED:
+        branch = _branch_reading(han, i, readings) if len(readings) > 1 else None
+        if branch:
+            readings = [branch, *(r for r in readings if r != branch)]
+        elif len(readings) > 1 and readings[0] not in words and ch not in LOCKED:
             hit = next((r for r in readings[1:] if words[r] > claimed[r]), None)
             if hit:
                 readings = [hit, *(r for r in readings if r != hit)]
