@@ -290,3 +290,24 @@ def test_read_gutter_text_skips_empty_and_absent(tmp_path):
     (tmp_path / "002.json").write_text('{"ban_tam": "鄂氏 卷十"}', encoding="utf-8")
     (tmp_path / "001.json").write_text('{"ban_tam": ""}', encoding="utf-8")
     assert read_gutter_text(tmp_path, ["001", "002", "003"]) == {"002": "鄂氏 卷十"}
+
+
+def tree_column(nodes, glyphs):
+    """Cột sơ đồ thế hệ: vòng ○ nhỏ (10 px) đặt ở `nodes`, chữ đủ cỡ (20 px) ở `glyphs`."""
+    ink = page_with_glyphs(glyphs)
+    for top in nodes:
+        ink[top : top + 10, 105:115] = True
+    return ink
+
+
+def test_tree_node_circles_are_skipped_when_full_size_cells_match():
+    ink = tree_column([10, 70], [30, 90])
+    chars, missing = locate_rows(["昌麟"], [{"box": [90, 0, 130, 120], "text": "昌麟"}], ink=ink)
+    assert missing == 0
+    assert [c["b"][1] for c in chars] == [30, 90]
+
+
+def test_box_with_many_non_glyph_cells_places_nothing_rather_than_guess():
+    ink = tree_column([10, 70, 130, 190], [30, 90, 150])
+    chars, missing = locate_rows(["昌麟"], [{"box": [90, 0, 130, 220], "text": "昌麟"}], ink=ink)
+    assert chars == [] and missing == 2

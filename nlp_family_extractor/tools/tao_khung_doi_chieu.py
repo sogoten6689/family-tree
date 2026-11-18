@@ -34,6 +34,9 @@ COARSE_SIDE = 1600
 MAX_BOX_OVERLAP = 0.3
 MIN_GLYPH_RATIO = 0.5
 MIN_PAGE_MATCH = 0.2
+MAX_CELL_EXCESS = 1.5
+DETECT_CACHE = "nhan_dang_paddle.json"
+FULL_GLYPH_RATIO = 0.8
 # Dải mực phải có mặt ở ít nhất từng này phần hàng của ô; đường kẻ ngang chỉ chiếm vài hàng nên không tạo dải.
 MIN_BAND_INK = 0.04
 MIN_BAND_RATIO, MAX_BAND_RATIO = 0.35, 1.7
@@ -254,6 +257,15 @@ def _fill_gap(gap: list[int], read: list[int], seq: list[tuple[int, int]], boxes
     return out
 
 
+def _full_size(cells: list[list[int]]) -> list[list[int]]:
+    """Ô đủ cỡ một chữ dọc cột: vòng ○, đường nối và chú nhỏ thấp hơn hẳn chữ chính."""
+    if not cells:
+        return []
+    heights = sorted(c[3] - c[1] for c in cells)
+    full = heights[len(heights) * 3 // 4]
+    return [c for c in cells if c[3] - c[1] >= FULL_GLYPH_RATIO * full]
+
+
 def _positions(box: dict, read_at: list[int], cells: list[list[int]]) -> tuple[list[list[int]], bool]:
     """Vị trí các chữ được gán vào khung, và vị trí đó có phải tách từ nét mực không."""
     n, m, read = len(read_at), len(cells), len(box["text"])
@@ -266,6 +278,14 @@ def _positions(box: dict, read_at: list[int], cells: list[list[int]]) -> tuple[l
     if raw and m == len(raw):
         slots = [i for i, ch in enumerate(raw) if HAN_RE.match(ch)]
         return [cells[slots[j]] for j in read_at], True
+    if m >= MAX_CELL_EXCESS * read:
+        glyphs = _full_size(cells)
+        if len(glyphs) == read:
+            return [glyphs[j] for j in read_at], False
+        # Ô mực nhiều hơn hẳn số chữ Paddle đọc: khung gồm cả nét không phải chữ (vòng ○ và đường nối của sơ đồ thế
+        # hệ, chú nhỏ hai hàng). Chọn ô nào cũng là đoán, chữ rơi lên vòng ○ hay nửa chữ (kiểm thử 18/11/2026, tq-693),
+        # nên bỏ, tính vào số thiếu.
+        return [], False
     if m > n:
         return [cells[k * m // n] for k in range(n)], False
     if n >= MIN_EVEN_SHARE * read:
@@ -566,7 +586,15 @@ def main() -> None:
         page: next(p for p in (args.book_dir / "anh" / f"{page}{e}" for e in (".jpg", ".jpeg", ".png")) if p.is_file())
         for page in rows
     }
-    detected = {page: (detect(images[page], ocr), detect(images[page], ocr_coarse)) for page in sorted(rows)}
+    # Nhận dạng là phần chậm (khoảng một phút một trang); lưu lại để sửa cách dóng chữ thì chạy lại không phải nhận dạng.
+    cache_path = args.book_dir / DETECT_CACHE
+    cache = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.is_file() else {}
+    detected = {}
+    for page in sorted(rows):
+        if page not in cache:
+            cache[page] = [detect(images[page], ocr), detect(images[page], ocr_coarse)]
+            cache_path.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+        detected[page] = tuple(cache[page])
     gutters = {}
     for page, image in images.items():
         with Image.open(image) as img:
