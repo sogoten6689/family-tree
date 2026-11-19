@@ -442,3 +442,41 @@ def test_column_wide_box_still_estimates_extra_chars():
     chars, missing = locate_rows(["甲乙丙丁戊己之生於康熙坤庚辛壬"], [*right, normal, left])
     assert [c["c"] for c in chars if c["b"][0] == 160] == list("之生於康熙坤")
     assert missing == 0
+
+
+def crowded_table(tail_ink):
+    """Bảng phả hệ: bản máy chép 林杏 ở cuối, thứ tự đọc đặt khung 林杏 giữa 公回 và 改姓名; lượt chính dồn cả đoạn
+    甲…辛 vào khung đó nên khung bị bỏ vì nhồi quá chật (tq-1035 trang 012)."""
+    ink = page_with_glyphs([0, 30], x0=150, size=20, height=300)
+    tail_ink(ink)
+    right = {"box": [300, 0, 320, 80], "text": "公回"}
+    middle = {"box": [145, 0, 175, 75], "text": "林杏"}
+    left = {"box": [50, 0, 70, 120], "text": "改姓名"}
+    return locate_rows(["公回甲乙丙丁戊己庚辛改姓名林杏"], [right, middle, left], ink=ink)
+
+
+def test_third_pass_places_crowded_box_on_its_own_text():
+    chars, missing = crowded_table(lambda ink: None)
+    placed = {c["c"]: c for c in chars}
+    assert placed["林"]["b"] == [150, 0, 170, 20] and placed["杏"]["b"] == [150, 30, 170, 50]
+    assert "u" not in placed["林"] and "u" not in placed["杏"]
+    assert not set("甲乙丙丁戊己庚辛") & set(placed)
+    assert missing == 8
+
+
+def test_third_pass_keeps_speck_at_box_end_out():
+    def speck(ink):
+        ink[62:65, 158:161] = True
+
+    chars, _ = crowded_table(speck)
+    assert {c["c"]: c["b"] for c in chars}["杏"] == [150, 30, 170, 50]
+
+
+def test_third_pass_skips_box_with_short_real_glyph_paddle_missed():
+    # Ô cuối thấp hơn một chút vẫn là chữ thật: bỏ nó đi thì đặt đúng là may, nên lượt ba không đặt cả khung.
+    def short_glyph(ink):
+        ink[58:72, 150:170] = True
+
+    chars, missing = crowded_table(short_glyph)
+    assert not {"林", "杏"} & {c["c"] for c in chars}
+    assert missing == 10
