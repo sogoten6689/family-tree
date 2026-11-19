@@ -3,10 +3,12 @@ import { Alert, Badge, Card, Col, Progress, Row, Statistic, Table, Tag, Typograp
 import type { ColumnsType } from "antd/es/table";
 import { Link } from "react-router-dom";
 
-import { getTienDo, type TienDoCuon, type TrangThai } from "@/lib/doiChieuApi";
+import { getOverview, getTienDo, type BookSummary, type StudentSummary, type TienDoCuon, type TrangThai } from "@/lib/doiChieuApi";
 
 /** Trang tự gọi lại máy chủ sau ngần này mili giây. */
 export const REFRESH_MS = 5000;
+/** Số liệu dóng hàng đổi chậm hơn khung (soát tay, nộp bài) nên làm mới thưa hơn. */
+export const ALIGN_REFRESH_MS = 15000;
 /** Cuốn có trang khung mới trong khoảng này được đánh dấu "đang chạy". */
 const LIVE_MS = 3 * 60 * 1000;
 
@@ -27,7 +29,7 @@ const columns = (now: number): ColumnsType<TienDoCuon> => [
     title: "Cuốn",
     key: "book",
     render: (_, r) => (
-      <Link to={`/nghien-cuu/doi-chieu?sv=${encodeURIComponent(r.student)}&cuon=${encodeURIComponent(r.book)}`}>
+      <Link to={xemCuon(r.student, r.book)}>
         {r.ten ? `${r.ten} (${r.book})` : r.book}
       </Link>
     ),
@@ -61,6 +63,105 @@ const columns = (now: number): ColumnsType<TienDoCuon> => [
       ),
   },
 ];
+
+const xemCuon = (student: string, book: string) =>
+  `/nghien-cuu/doi-chieu?sv=${encodeURIComponent(student)}&cuon=${encodeURIComponent(book)}`;
+
+type CuonDongHang = BookSummary & { student: string };
+
+const dongHangColumns: ColumnsType<CuonDongHang> = [
+  {
+    title: "Cuốn",
+    key: "book",
+    render: (_, b) => <Link to={xemCuon(b.student, b.id)}>{b.ten ? `${b.ten} (${b.id})` : b.id}</Link>,
+  },
+  { title: "Cặp đã soát", key: "da_soat", align: "right", render: (_, b) => num(b.bo?.da_soat ?? 0) },
+  { title: "Cặp máy, chưa soát", key: "may", align: "right", render: (_, b) => num(b.bo?.may ?? 0) },
+  {
+    title: "Trang đã soát",
+    key: "trang",
+    width: 170,
+    render: (_, b) => (
+      <>
+        {num(b.bo?.trang_da_soat ?? 0)} / {num(b.bo?.trang ?? 0)}
+        <Progress percent={pct(b.bo?.trang_da_soat ?? 0, b.bo?.trang ?? 0)} size="small" />
+      </>
+    ),
+  },
+  {
+    title: "Chấm mẫu",
+    key: "cham",
+    render: (_, b) =>
+      b.cham.checked === 0 ? (
+        <Typography.Text type="secondary">chưa chấm</Typography.Text>
+      ) : (
+        <>
+          {num(b.cham.checked)}/{num(b.cham.sample)} cặp · lỗi {b.cham.rate === null ? "—" : `${Math.round(b.cham.rate * 1000) / 10}%`}{" "}
+          {b.cham.dat && <Tag color="green">đạt</Tag>}
+        </>
+      ),
+  },
+  { title: "", key: "xem", render: (_, b) => <Link to={xemCuon(b.student, b.id)}>Xem kết quả →</Link> },
+];
+
+const svColumns = (target: number): ColumnsType<StudentSummary> => [
+  { title: "Sinh viên", dataIndex: "ten" },
+  { title: "Cuốn đã nộp", key: "nop", render: (_, s) => `${s.submitted} / ${s.books.length}` },
+  { title: "Cặp hợp lệ", dataIndex: "valid", align: "right", render: num },
+  {
+    title: `Cặp đạt chất lượng / chỉ tiêu ${num(target)}`,
+    key: "dat",
+    width: 260,
+    render: (_, s) => (
+      <>
+        {num(s.quality_pairs)}
+        <Progress percent={pct(s.quality_pairs, target)} size="small" />
+      </>
+    ),
+  },
+];
+
+/** Dóng hàng Hán–Việt: bộ song song của nhóm chưa giao (cặp đã soát / máy chưa soát) và bài nộp của từng sinh viên. */
+const DongHang = () => {
+  const { data, error } = useQuery({ queryKey: ["doi-chieu"], queryFn: getOverview, refetchInterval: ALIGN_REFRESH_MS });
+  if (error && !data) return <Alert type="error" showIcon title="Không tải được số liệu dóng hàng" description={String(error)} />;
+  const students = data?.students ?? [];
+  // Bộ song song sạch chỉ có ở nhóm chưa giao; nhóm đó xem theo từng cuốn, sinh viên xem theo người.
+  const books: CuonDongHang[] = students.flatMap((s) => s.books.filter((b) => b.bo).map((b) => ({ ...b, student: s.id })));
+  const svs = students.filter((s) => !s.books.some((b) => b.bo));
+  const total = (k: "da_soat" | "may" | "trang_da_soat" | "trang") => books.reduce((a, b) => a + (b.bo?.[k] ?? 0), 0);
+  return (
+    <Card title="Dóng hàng Hán – Việt" loading={!data} style={{ marginTop: 16 }}>
+      <Typography.Paragraph type="secondary">
+        Mỗi câu chữ Hán được ghép với câu dịch tiếng Việt thành một "cặp". Cặp đã soát là cặp người đã đối chiếu ảnh và xác nhận; cặp
+        máy là bản OCR + dịch máy, chưa ai soát. Tự làm mới mỗi {ALIGN_REFRESH_MS / 1000} giây.
+      </Typography.Paragraph>
+      <Row gutter={16} style={{ marginBottom: 16 }}>
+        <Col xs={12} md={6}>
+          <Statistic title="Cặp đã soát" value={num(total("da_soat"))} />
+        </Col>
+        <Col xs={12} md={6}>
+          <Statistic title="Cặp máy, chưa soát" value={num(total("may"))} />
+        </Col>
+        <Col xs={12} md={6}>
+          <Statistic title="Trang đã soát" value={`${num(total("trang_da_soat"))} / ${num(total("trang"))}`} />
+        </Col>
+        <Col xs={12} md={6}>
+          <Statistic title="Tổng cặp" value={num(total("da_soat") + total("may"))} />
+        </Col>
+      </Row>
+      <Table rowKey={(b) => `${b.student}/${b.id}`} size="small" pagination={false} scroll={{ x: true }} columns={dongHangColumns} dataSource={books} />
+      {svs.length > 0 && (
+        <>
+          <Typography.Title level={5} style={{ marginTop: 24 }}>
+            Bài nộp của sinh viên
+          </Typography.Title>
+          <Table rowKey="id" size="small" pagination={false} scroll={{ x: true }} columns={svColumns(data?.target ?? 2000)} dataSource={svs} />
+        </>
+      )}
+    </Card>
+  );
+};
 
 const Muc = ({ title, items, color }: { title: string; items: string[]; color: string }) => (
   <Card size="small" title={<span style={{ color }}>{title}</span>} style={{ height: "100%" }}>
@@ -110,7 +211,7 @@ const TienDoPage = () => {
 
   return (
     <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
-      <Typography.Title level={2}>Tiến độ khung chữ</Typography.Title>
+      <Typography.Title level={2}>Tiến độ khung chữ và dóng hàng</Typography.Title>
       <Typography.Paragraph type="secondary">
         <Badge status={error ? "error" : "processing"} text={error ? "Mất kết nối, đang thử lại" : "Trực tiếp"} /> · tự làm mới mỗi{" "}
         {REFRESH_MS / 1000} giây · lần cuối {dataUpdatedAt ? new Date(dataUpdatedAt).toLocaleTimeString("vi-VN") : "—"}. "Khung" là ô bao
@@ -120,7 +221,7 @@ const TienDoPage = () => {
       {error && !data && <Alert type="error" showIcon title="Không tải được tiến độ" description={String(error)} />}
       {data?.trang_thai && <TrangThaiCard s={data.trang_thai} />}
 
-      <Card loading={isLoading && !data} style={{ marginTop: 16 }}>
+      <Card title="Khung chữ trên ảnh" loading={isLoading && !data} style={{ marginTop: 16 }}>
         <Row gutter={16} style={{ marginBottom: 16 }}>
           <Col xs={12} md={6}>
             <Statistic title="Số cuốn có khung" value={books.length} />
@@ -135,8 +236,9 @@ const TienDoPage = () => {
             <Statistic title="Đủ khung" value={pct(sum("chu"), sum("chu") + sum("thieu"))} suffix="%" />
           </Col>
         </Row>
-        <Table rowKey={(r) => `${r.student}/${r.book}`} size="small" pagination={false} columns={columns(now)} dataSource={books} />
+        <Table rowKey={(r) => `${r.student}/${r.book}`} size="small" pagination={false} scroll={{ x: true }} columns={columns(now)} dataSource={books} />
       </Card>
+      <DongHang />
     </div>
   );
 };
