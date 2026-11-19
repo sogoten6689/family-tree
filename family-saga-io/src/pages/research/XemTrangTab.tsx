@@ -57,6 +57,8 @@ const XemTrangTab = ({ detail }: { detail: BookDetail }) => {
     queryKey: ["doi-chieu", detail.student, detail.book, "trang", page],
     queryFn: () => getXemTrang(detail.student, detail.book, page),
     enabled: Boolean(page),
+    // Khung được đẩy lên theo từng trang (tools/dong_bo_khung.py): trang đang mở tự hiện khung mới, không cần tải lại.
+    refetchInterval: 15000,
   });
 
   const rows: Cap[] = useMemo(() => (data?.cap ?? []).map((r, i) => ({ ...r, key: i })), [data]);
