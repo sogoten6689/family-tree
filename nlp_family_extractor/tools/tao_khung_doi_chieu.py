@@ -37,6 +37,8 @@ MIN_PAGE_MATCH = 0.2
 MAX_CELL_EXCESS = 1.5
 MAX_WIDTH_RATIO = 2.5
 MIN_SECOND_MATCH = 0.6
+MAX_SPREAD_EXTRA = 2
+SPECK_RATIO = 0.5
 DETECT_CACHE = "nhan_dang_paddle.json"
 FULL_GLYPH_RATIO = 0.8
 # Con dấu son: độ đỏ (R - max(G, B)) trên ngưỡng; khung có hơn 10% điểm son mà dưới 8% mực là khung đọc lên dấu.
@@ -264,7 +266,9 @@ def _fill_gap(gap: list[int], read: list[int], seq: list[tuple[int, int]], boxes
     return out
 
 
-def _place_unused_boxes(text: str, where: dict[int, int], seq: list[tuple[int, int]], boxes: list[dict]) -> dict[int, int]:
+def _place_unused_boxes(
+    text: str, where: dict[int, int], seq: list[tuple[int, int]], boxes: list[dict], only: set[int] | None = None, compact: bool = False
+) -> dict[int, int]:
     """Lượt dóng thứ hai cho khung không nhận chữ nào ở lượt chính, thường vì thứ tự đọc sai: tiêu đề chữ to nằm cao
     hơn mọi cột nên thành một tầng riêng và được đọc trước (pham-kinh-vy trang 001). Mỗi khung chỉ được dóng vào một đoạn
     chữ liền nhau còn chưa có vị trí, và phải khớp phần lớn chữ đọc được; không thì bỏ, không đoán."""
@@ -272,7 +276,7 @@ def _place_unused_boxes(text: str, where: dict[int, int], seq: list[tuple[int, i
     index = {s: r for r, s in enumerate(seq)}
     out: dict[int, int] = {}
     for b, box in enumerate(boxes):
-        if b in used:
+        if b in used or (only is not None and b not in only):
             continue
         free = [t for t in range(len(text)) if t not in where and t not in out]
         # Tách thành các đoạn liền nhau theo vị trí trong bản máy.
@@ -286,6 +290,9 @@ def _place_unused_boxes(text: str, where: dict[int, int], seq: list[tuple[int, i
         best_run: list[int] = []
         for run in runs:
             pairs = _common_subsequence("".join(text[t] for t in run), list(box["text"]))
+            # `compact`: chữ khớp phải nằm gọn trong bản máy, không rải khắp một đoạn dài (林, 氏, 子 gặp ở đâu cũng khớp).
+            if compact and pairs and pairs[-1][0] - pairs[0][0] + 1 > len(box["text"]) + MAX_SPREAD_EXTRA:
+                pairs = []
             if len(pairs) > len(best):
                 best, best_run = pairs, run
         if len(best) < max(2, MIN_SECOND_MATCH * len(box["text"])):
@@ -318,6 +325,29 @@ def _second_pass_positions(box: dict, read_at: list[int], cells: list[list[int]]
         start = cells.index(glyphs[0]) if glyphs else 0
         if len(glyphs) != len(box["text"]) or cells[start : start + len(glyphs)] != glyphs:
             return []
+    return [glyphs[j] for j in read_at]
+
+
+def _third_pass_positions(box: dict, read_at: list[int], cells: list[list[int]]) -> list[list[int]]:
+    """Vị trí chữ của khung dóng ở lượt ba; rỗng nếu không chắc. Như lượt hai nhưng chặt hơn về ô bỏ đi.
+
+    Chỉ được bỏ chấm ở đầu hoặc cuối khung: ô có cả hai chiều dưới nửa cỡ ô thường của khung. Ô thấp hơn một chút vẫn có
+    thể là chữ thật Paddle đọc sót, bỏ đi thì các chữ sau lệch một ô (tq-678 trang 042, 073). Chấm nằm giữa khung làm số
+    ô khớp số chữ chỉ là trùng hợp (tq-859 trang 117).
+    """
+    if not cells:
+        return []
+    sizes = sorted(max(c[2] - c[0], c[3] - c[1]) for c in cells)
+    speck = SPECK_RATIO * sizes[len(sizes) // 2]
+    small = [max(c[2] - c[0], c[3] - c[1]) < speck for c in cells]
+    start, end = 0, len(cells)
+    while start < end and small[start]:
+        start += 1
+    while end > start and small[end - 1]:
+        end -= 1
+    glyphs = cells[start:end]
+    if any(small[start:end]) or len(glyphs) != len(box["text"]):
+        return []
     return [glyphs[j] for j in read_at]
 
 
@@ -386,6 +416,7 @@ def locate_rows(
     for t in sorted(where):
         per_box.setdefault(seq[where[t]][0], []).append(t)
     chars = []
+    placed_by: set[int] = set()
     for b, members in per_box.items():
         box = ordered[b]
         # Nhồi đến mức mỗi chữ nhỏ hơn hẳn cỡ chữ thường của trang thì vị trí không còn ý nghĩa.
@@ -407,6 +438,19 @@ def locate_rows(
                 continue
         for t, position in zip(members, positions):
             chars.append((t, {"c": text[t], "b": position} if exact else {"c": text[t], "b": position, "u": 1}))
+            placed_by.add(b)
+    # Lượt ba: khung rốt cuộc không đặt được chữ nào (nhồi quá chật, dư ô mực…) thường vì bảng phả hệ chép theo từng
+    # người còn thứ tự đọc theo tầng, cột: LCS lệch nhịp, dồn cả đoạn chữ vào một khung (tq-1035 trang 012). Dóng lại
+    # khung đó vào đoạn chữ còn thiếu như lượt hai, thêm điều kiện chữ khớp nằm gọn và chỉ bỏ chấm. Chữ đã đặt không đổi.
+    placed = {t: where[t] for t, _ in chars}
+    third = _place_unused_boxes(text, placed, seq, ordered, only=set(range(len(ordered))) - placed_by, compact=True)
+    per_third: dict[int, list[int]] = {}
+    for t in sorted(third):
+        per_third.setdefault(seq[third[t]][0], []).append(t)
+    for b, members in per_third.items():
+        cells = box_cells(ordered[b], ink) if ink is not None else []
+        positions = _third_pass_positions(ordered[b], [seq[third[t]][1] for t in members], cells)
+        chars += [(t, {"c": text[t], "b": position}) for t, position in zip(members, positions)]
     chars.sort(key=lambda c: c[0])
     return [c for _, c in chars], len(text) - len(chars)
 
