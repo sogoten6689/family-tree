@@ -77,6 +77,43 @@ class DoiChieuApiTest(unittest.TestCase):
         self.assertEqual(student["books"][0]["ten"], "Cuốn một")
         self.assertTrue(student["books"][0]["link"].startswith("https://drive.google.com/"))
 
+    def test_progress_counts_boxes_and_sees_new_pages_at_once(self) -> None:
+        root = Path(os.environ["DOI_CHIEU_DIR"])
+        khung = root / "sv-a" / "nom-1" / "khung"
+        url = "/api/public/doi-chieu/tien-do"
+        body = self.client.get(url).json()
+        self.assertEqual((body["cuon"], body["trang_thai"]), ([], None))
+
+        khung.mkdir()
+        page = {"rong": 10, "cao": 10, "chu": [{"c": "公", "b": [0, 0, 1, 1]}, {"c": "回", "b": [0, 1, 1, 2], "u": 1}], "thieu": 3}
+        (khung / "001.json").write_text(json.dumps(page), encoding="utf-8")
+        (khung / "._001.json").write_bytes(b"\x00rac")
+        (book,) = self.client.get(url).json()["cuon"]
+        self.assertEqual(
+            {k: book[k] for k in ("book", "ten", "trang_anh", "trang_khung", "chu", "uoc", "thieu")},
+            {"book": "nom-1", "ten": "Cuốn một", "trang_anh": 1, "trang_khung": 1, "chu": 2, "uoc": 1, "thieu": 3},
+        )
+
+        # Trang mới đẩy lên và trang cũ ghi lại đều thấy ngay ở lần gọi kế tiếp.
+        gutter = {**page, "chu": [], "thieu": 0, "ban_tam": {"chu": [{"c": "鄂", "b": [0, 0, 1, 1]}], "thieu": 1}}
+        (khung / "002.json").write_text(json.dumps(gutter), encoding="utf-8")
+        (khung / "001.json").write_text(json.dumps({**page, "thieu": 0}), encoding="utf-8")
+        (book,) = self.client.get(url).json()["cuon"]
+        self.assertEqual((book["trang_khung"], book["chu"], book["thieu"]), (2, 3, 1))
+
+        # Tệp đang ghi dở bị bỏ qua, không làm hỏng cả trang tiến độ.
+        (khung / "003.json").write_text('{"chu": [', encoding="utf-8")
+        self.assertEqual(self.client.get(url).json()["cuon"][0]["trang_khung"], 2)
+
+    def test_progress_status_note(self) -> None:
+        root = Path(os.environ["DOI_CHIEU_DIR"])
+        note = {"cap_nhat": "19/11 10:00", "xong": ["9 cuốn có khung"], "dang_lam": ["Vòng 21"], "cho_quyet": [], "khac": "bỏ"}
+        (root / "tien_do.json").write_text(json.dumps(note), encoding="utf-8")
+        status = self.client.get("/api/public/doi-chieu/tien-do").json()["trang_thai"]
+        self.assertEqual(status, {"cap_nhat": "19/11 10:00", "xong": ["9 cuốn có khung"], "dang_lam": ["Vòng 21"], "cho_quyet": []})
+        (root / "tien_do.json").write_text("[1]", encoding="utf-8")
+        self.assertIsNone(self.client.get("/api/public/doi-chieu/tien-do").json()["trang_thai"])
+
     def test_catalogue_drops_non_https_links(self) -> None:
         cat = service.catalogue(Path(os.environ["DOI_CHIEU_DIR"]))
         self.assertIsNone(cat["nom-2"]["link"])

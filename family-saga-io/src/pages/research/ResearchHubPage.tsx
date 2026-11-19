@@ -291,6 +291,7 @@ const CHILD_PAGES = [
   { href: "/nghien-cuu/slide-hoi-nghi.html", label: "Slide hội nghị", desc: "20 slide trình chiếu" },
   { href: "/nghien-cuu/goi-viec.html", label: "Gói việc sinh viên", desc: "Phân công dữ liệu cho sinh viên" },
   { href: "/nghien-cuu/doi-chieu", label: "Đối chiếu dóng hàng", desc: "Bài nộp sinh viên so với bản máy, chấm mẫu lỗi", spa: true },
+  { href: "/nghien-cuu/tien-do", label: "Tiến độ khung chữ", desc: "Xong / đang làm / chờ quyết, số khung từng cuốn, tự làm mới", spa: true },
 ];
 
 const ResearchHubPage = () => {

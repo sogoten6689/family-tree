@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse, PlainTextResponse
 from pydantic import BaseModel, Field, StringConstraints
 
 from app.auth.dependencies import AdminUser
-from app.doi_chieu import bo_du_lieu, cham_mau, nhan_xet, service, soat, vote
+from app.doi_chieu import bo_du_lieu, cham_mau, nhan_xet, service, soat, tien_do, vote
 
 # Công khai, không cần đăng nhập (theo yêu cầu): chỉ đọc. Phần ghi nằm ở admin_router bên dưới.
 # Chưa đặt DOI_CHIEU_DIR (hoặc thư mục không tồn tại) thì trả danh sách rỗng.
@@ -27,6 +27,12 @@ def get_overview() -> dict:
     if root is None:
         return {"target": service.TARGET_PAIRS, "error_threshold": service.ERROR_THRESHOLD, "students": []}
     return service.overview(root)
+
+
+@router.get("/tien-do")
+def get_progress() -> dict:
+    """Tiến độ khung chữ từng cuốn và ghi chú Xong / Đang làm / Chờ quyết; web gọi lại vài giây một lần."""
+    return tien_do.overview(service.data_dir())
 
 
 @router.get("/{student}/{book}")

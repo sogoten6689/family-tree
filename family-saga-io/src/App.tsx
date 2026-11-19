@@ -30,6 +30,7 @@ import NotFound from "./pages/NotFound";
 import DefenseReviewPage from "./pages/research/DefenseReviewPage";
 import ResearchHubPage from "./pages/research/ResearchHubPage";
 import DoiChieuPage from "./pages/research/DoiChieuPage";
+import TienDoPage from "./pages/research/TienDoPage";
 import ForbiddenPage from "./pages/ForbiddenPage";
 import HannomConfigPage from "./pages/developer/HannomConfigPage";
 import SettingsPage from "./pages/developer/SettingsPage";
@@ -82,6 +83,7 @@ const AppContent = () => (
               <Route path="/nghien-cuu/on-tap" element={<DefenseReviewPage />} />
               <Route path="/nghien-cuu/quan-ly" element={<ResearchHubPage />} />
               <Route path="/nghien-cuu/doi-chieu" element={<DoiChieuPage />} />
+              <Route path="/nghien-cuu/tien-do" element={<TienDoPage />} />
 
               {/* ── User (đã đăng nhập) ── */}
               <Route

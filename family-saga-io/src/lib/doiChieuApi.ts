@@ -349,3 +349,36 @@ export const getChamMau = (student: string, book: string) => apiRequest<ChamMau>
 
 export const saveChamMau = (student: string, book: string, data: Pick<ChamMau, "nhan" | "phien_ban">) =>
   apiRequest<ChamMau>(chamPath(student, book), { method: "PUT", body: JSON.stringify(data) });
+
+/** Tiến độ khung chữ một cuốn: đếm thẳng từ khung/<trang>.json trên máy chủ. */
+export interface TienDoCuon {
+  student: string;
+  book: string;
+  ten: string | null;
+  trang_anh: number;
+  trang_khung: number;
+  /** Chữ có khung (gồm cả ô ước lượng). */
+  chu: number;
+  /** Ô ước lượng (chia đều trong cột), chưa chắc đúng chỗ. */
+  uoc: number;
+  /** Chữ chưa có khung. */
+  thieu: number;
+  /** Lúc trang khung mới nhất được tạo (ISO, UTC). */
+  cap_nhat: string | null;
+}
+
+/** Ghi chú người làm: Xong / Đang làm / Chờ anh Lâm quyết. */
+export interface TrangThai {
+  cap_nhat: string | null;
+  xong: string[];
+  dang_lam: string[];
+  cho_quyet: string[];
+}
+
+export interface TienDo {
+  luc: string;
+  trang_thai: TrangThai | null;
+  cuon: TienDoCuon[];
+}
+
+export const getTienDo = () => apiRequest<TienDo>(`${BASE}/tien-do`, {}, null);
