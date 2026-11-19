@@ -101,6 +101,11 @@ class DoiChieuApiTest(unittest.TestCase):
         (book,) = self.client.get(url).json()["cuon"]
         self.assertEqual((book["trang_khung"], book["chu"], book["thieu"]), (2, 3, 1))
 
+        # Trang có tệp khung mà không có ô nào thì chưa tính là trang có khung, nhưng chữ thiếu vẫn được đếm.
+        (khung / "004.json").write_text(json.dumps({**page, "chu": [], "thieu": 5}), encoding="utf-8")
+        (book,) = self.client.get(url).json()["cuon"]
+        self.assertEqual((book["trang_khung"], book["chu"], book["thieu"]), (2, 3, 6))
+
         # Tệp đang ghi dở bị bỏ qua, không làm hỏng cả trang tiến độ.
         (khung / "003.json").write_text('{"chu": [', encoding="utf-8")
         self.assertEqual(self.client.get(url).json()["cuon"][0]["trang_khung"], 2)

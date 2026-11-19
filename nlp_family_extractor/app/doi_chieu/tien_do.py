@@ -59,7 +59,8 @@ def book_progress(bdir: Path) -> dict | None:
         stats = _count(path)
         if stats is None:
             continue
-        pages += 1
+        # Trang có tệp khung nhưng không có ô nào (trang bút chì mờ, trang trắng) không tính là trang có khung.
+        pages += stats["chu"] > 0
         chu += stats["chu"]
         uoc += stats["uoc"]
         thieu += stats["thieu"]
