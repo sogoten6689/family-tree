@@ -5,6 +5,7 @@
  * developerRoutes.ts — config không chứa JSX).
  */
 import { getDeveloperNavItem } from "@/config/developerRoutes";
+import { RESEARCH_HOME, researchMode } from "@/config/researchMode";
 
 export type CoreNavKey = "upload" | "gia-pha" | "genealogy" | "guide";
 
@@ -39,6 +40,7 @@ export function isCoreNavKey(key: string): key is CoreNavKey {
 /** Trang chủ theo vai trò — "Trang chủ"/"/" không được đưa người đã đăng
  * nhập về giao diện Guest, cũng không đưa Admin về dashboard của User. */
 export function roleHomePath(role: NavRole): string {
+  if (researchMode()) return RESEARCH_HOME;
   if (role === "admin") return "/admin/dashboard";
   if (role === "user") return "/user/dashboard";
   return "/";
