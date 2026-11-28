@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AdminRoute } from "@/components/AdminRoute";
+import { ResearchGate } from "@/components/ResearchGate";
 import RoleLayout from "@/layouts/RoleLayout";
 import { roleHomePath } from "@/config/coreNav";
 import DocumentReaderPage from "./pages/DocumentReaderPage";
@@ -70,6 +71,7 @@ const AppContent = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ResearchGate>
           <Routes>
             {/* Mọi trang dùng chung 1 RoleLayout — menu theo vai trò người đang
                 đăng nhập, không theo tiền tố URL. Quyền truy cập kiểm tra theo
@@ -157,6 +159,7 @@ const AppContent = () => (
 
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </ResearchGate>
         </BrowserRouter>
       </TooltipProvider>
 );

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
+import { researchMode } from "@/config/researchMode";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/apiClient";
 
@@ -86,12 +87,14 @@ const LoginPage = () => {
             </Button>
           </Form>
 
-          <Typography.Paragraph className="!mt-4 !mb-2 text-center text-muted-foreground">
-            {t("auth.noAccount", { defaultValue: "Chưa có tài khoản?" })}{" "}
-            <Link to="/register" className="text-primary hover:underline">
-              {t("auth.registerLink", { defaultValue: "Đăng ký" })}
-            </Link>
-          </Typography.Paragraph>
+          {!researchMode() && (
+            <Typography.Paragraph className="!mt-4 !mb-2 text-center text-muted-foreground">
+              {t("auth.noAccount", { defaultValue: "Chưa có tài khoản?" })}{" "}
+              <Link to="/register" className="text-primary hover:underline">
+                {t("auth.registerLink", { defaultValue: "Đăng ký" })}
+              </Link>
+            </Typography.Paragraph>
+          )}
           <Typography.Paragraph className="!mb-0 text-center">
             <Link to="/" className="text-muted-foreground hover:text-foreground hover:underline">
               {t("auth.homeLink", { defaultValue: "Trang chủ" })}

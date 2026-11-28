@@ -2,9 +2,11 @@ import {
   CodeOutlined,
   DashboardOutlined,
   DatabaseOutlined,
+  ExperimentOutlined,
   HomeOutlined,
   LoginOutlined,
   LogoutOutlined,
+  PartitionOutlined,
   SettingOutlined,
   TeamOutlined,
   UnorderedListOutlined,
@@ -23,6 +25,7 @@ import { CORE_NAV_PATHS, isCoreNavKey, resolveMenuKey, roleHomePath, type NavRol
 import { DEVELOPER_NAV_ITEMS, getDeveloperNavItem, isDeveloperPath } from "@/config/developerRoutes";
 import { buildBreadcrumb } from "@/config/breadcrumbs";
 import { getPageTitleKey } from "@/config/pages";
+import { RESEARCH_NAV, researchMode } from "@/config/researchMode";
 import { useAuth } from "@/contexts/AuthContext";
 
 const DEVELOPER_ICON_MAP: Record<string, React.ReactNode> = {
@@ -48,15 +51,27 @@ const RoleLayout = () => {
   const [menuOpenKeys, setMenuOpenKeys] = useState<string[]>([]);
 
   const role: NavRole = isAdmin ? "admin" : isAuthenticated ? "user" : "guest";
+  const research = researchMode();
 
   useEffect(() => {
+    if (research) {
+      setMenuOpenKeys(RESEARCH_NAV.map((group) => group.key));
+      return;
+    }
     setMenuOpenKeys(isDeveloperPath(location.pathname) ? ["developer"] : []);
-  }, [location.pathname]);
+  }, [location.pathname, research]);
 
   const coreNavItems = useCoreNavItems();
   const developerItem = getDeveloperNavItem(location.pathname);
 
-  const menuItems = useMemo(() => {
+  const menuItems = useMemo((): MenuProps["items"] => {
+    // Chế độ nghiên cứu: một menu chung cho mọi vai trò.
+    if (research) {
+      return RESEARCH_NAV.map((group) => ({
+        ...group,
+        icon: group.key === "research-pipeline" ? <PartitionOutlined /> : <ExperimentOutlined />,
+      }));
+    }
     if (role === "guest") return coreNavItems;
     const items: MenuProps["items"] = [
       {
@@ -87,9 +102,10 @@ const RoleLayout = () => {
       );
     }
     return items;
-  }, [role, coreNavItems, t]);
+  }, [research, role, coreNavItems, t]);
 
   const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
+    if (research) return navigate(key);
     if (isCoreNavKey(key)) return navigate(CORE_NAV_PATHS[role][key]);
     if (key === "dashboard") return navigate(roleHomePath(role));
     if (key === "profile") return navigate("/user/profile");
@@ -134,8 +150,16 @@ const RoleLayout = () => {
     },
   }[role];
 
-  const accountSlot =
-    role === "guest" ? (
+  // Chế độ nghiên cứu không mời đăng nhập/đăng ký; ai đã đăng nhập (để soát) chỉ cần nút đăng xuất.
+  const researchAccountSlot = isAuthenticated ? (
+    <Button block icon={<LogoutOutlined />} danger onClick={logout}>
+      {t("auth.logout", { defaultValue: "Đăng xuất" })}
+    </Button>
+  ) : null;
+
+  const accountSlot = research ? (
+    researchAccountSlot
+  ) : role === "guest" ? (
       <>
         <Button block type="primary" icon={<LoginOutlined />} onClick={() => navigate("/login")}>
           {t("auth.loginBtn", { defaultValue: "Đăng nhập" })}
@@ -172,7 +196,7 @@ const RoleLayout = () => {
       panelTitle={panel.title}
       panelSubtitle={panel.subtitle}
       menuItems={menuItems}
-      selectedKeys={[resolveMenuKey(location.pathname)]}
+      selectedKeys={[research ? location.pathname : resolveMenuKey(location.pathname)]}
       openKeys={menuOpenKeys}
       onOpenChange={setMenuOpenKeys}
       onMenuClick={handleMenuClick}
