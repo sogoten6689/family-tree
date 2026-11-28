@@ -39,16 +39,18 @@ class ResearchModeTest(unittest.TestCase):
             self.assertFalse(is_blocked(method, path), f"{method} {path}")
 
     def test_every_write_route_is_closed_except_login_and_review(self) -> None:
-        opened = sorted(
-            f"{method} {route.path}"
-            for route in api.app.routes
-            for method in getattr(route, "methods", set()) or set()
-            if method not in {"GET", "HEAD", "OPTIONS"} and not is_blocked(method, route.path)
-        )
-        self.assertTrue(opened)
-        for entry in opened:
-            path = entry.split(" ", 1)[1]
-            self.assertTrue(path == "/api/login" or path.startswith("/api/doi-chieu/"), entry)
+        # Lấy route từ OpenAPI: bản FastAPI mới không còn trải route của router con vào app.routes.
+        writes = [
+            (method.upper(), path)
+            for path, operations in api.app.openapi()["paths"].items()
+            for method in operations
+            if method.upper() in {"POST", "PUT", "PATCH", "DELETE"}
+        ]
+        opened = [(method, path) for method, path in writes if not is_blocked(method, path)]
+        self.assertIn(("POST", "/api/login"), opened)
+        self.assertGreater(len(writes), len(opened))
+        for method, path in opened:
+            self.assertTrue(path == "/api/login" or path.startswith("/api/doi-chieu/"), f"{method} {path}")
 
     def test_middleware_rejects_closed_write(self) -> None:
         client = TestClient(api.app)
