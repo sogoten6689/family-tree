@@ -31,6 +31,7 @@ from app.hannom.pipeline import run_hannom_pipeline
 from app.hannom.router import router as hannom_developer_router
 from app.pipeline.bootstrap import bootstrap_pipeline
 from app.pipeline.router import create_pipeline_router
+from app.research_mode import BLOCKED_MESSAGE, is_blocked, research_mode
 from app.settings.bootstrap import bootstrap_settings
 from app.settings.router import gemini_usage_router, ocr_engines_router, router as settings_router, text_engines_router
 from app.vgp.bootstrap import bootstrap_vgp
@@ -469,6 +470,16 @@ async def _database_unavailable(_request, _exc):
     from fastapi.responses import JSONResponse
 
     return JSONResponse(status_code=503, content={"detail": "Database chưa được cấu hình. Thiết lập biến môi trường MYSQL_*."})
+
+
+@app.middleware("http")
+async def _research_mode_guard(request, call_next):
+    """RESEARCH_MODE=1 → từ chối mọi request ghi ngoài đăng nhập và soát đối chiếu (app/research_mode.py)."""
+    if research_mode() and is_blocked(request.method, request.url.path):
+        from fastapi.responses import JSONResponse
+
+        return JSONResponse(status_code=403, content={"detail": BLOCKED_MESSAGE})
+    return await call_next(request)
 
 
 @app.middleware("http")

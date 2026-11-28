@@ -5,6 +5,8 @@ WORKDIR /app
 
 ARG VITE_BACKEND_URL=
 ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
+ARG VITE_RESEARCH_MODE=
+ENV VITE_RESEARCH_MODE=${VITE_RESEARCH_MODE}
 
 COPY package.json bun.lockb* package-lock.json* yarn.lock* ./
 RUN npm install --frozen-lockfile 2>/dev/null || npm install

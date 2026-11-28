@@ -22,6 +22,8 @@ services:
       dockerfile: Dockerfile
       args:
         VITE_BACKEND_URL: ""
+        # Chế độ nghiên cứu: web gọn, chỉ xem (đặt RESEARCH_MODE=0 để mở lại)
+        VITE_RESEARCH_MODE: ${RESEARCH_MODE:-1}
     container_name: family-tree-frontend
     ports:
       - "5174:80"
@@ -41,6 +43,7 @@ services:
       # Model NER đã huấn luyện (ONNX int8) — không nằm trong git; xem docs/planning/NER_WORK_LOG.md
       - ./models:/app/models:ro
     environment:
+      RESEARCH_MODE: ${RESEARCH_MODE:-1}
       NER_MODEL_DIR_VI: ${NER_MODEL_DIR_VI:-/app/models/ner_vi}
       NER_THREADS: ${NER_THREADS:-4}
       MYSQL_HOST: mysql
