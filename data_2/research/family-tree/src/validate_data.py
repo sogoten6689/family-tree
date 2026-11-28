@@ -3,6 +3,7 @@
 Cách dùng:
     python src/validate_data.py                       # kiểm tra cả train và test mặc định
     python src/validate_data.py data_train/x.jsonl    # kiểm tra file chỉ định
+    python src/validate_data.py --real --quiet-warn <vgp>/train.jsonl <vgp>/test.jsonl   # dữ liệu thật
 
 Lỗi (ERROR) làm mẫu bị tính là không hợp lệ; cảnh báo (WARN) chỉ in ra.
 Mã thoát = 1 nếu có ít nhất một mẫu lỗi.
@@ -42,13 +43,13 @@ def is_year(v):
     return v is None or (isinstance(v, int) and not isinstance(v, bool) and 1000 <= v <= 2100)
 
 
-def check_answer(ans, inp):
+def check_answer(ans, inp, strict=True):
     errors, warns = [], []
     if not isinstance(ans, dict) or set(ans) != {"persons", "relations"}:
         return [f"Response phải là object có đúng 2 khóa persons, relations (đang có {list(ans) if isinstance(ans, dict) else type(ans).__name__})"], warns
     persons, rels = ans["persons"], ans["relations"]
-    if not isinstance(persons, list) or not persons:
-        errors.append("persons phải là list không rỗng")
+    if not isinstance(persons, list) or (strict and not persons):
+        errors.append("persons phải là list" + (" không rỗng" if strict else ""))
         persons = []
     if not isinstance(rels, list):
         errors.append("relations phải là list")
@@ -78,13 +79,16 @@ def check_answer(ans, inp):
         if isinstance(b, int) and isinstance(d, int) and d < b:
             errors.append(f"{tag} '{name}' mất ({d}) trước khi sinh ({b})")
         g = p.get("generation")
-        if not isinstance(g, int) or isinstance(g, bool) or g < 1:
-            errors.append(f"{tag} generation phải là số nguyên >= 1: {g!r}")
-        if p.get("gender") not in ("male", "female"):
-            errors.append(f"{tag} gender phải là male/female: {p.get('gender')!r}")
+        if g is not None and (not isinstance(g, int) or isinstance(g, bool) or g < 1):
+            errors.append(f"{tag} generation phải là số nguyên >= 1 hoặc null: {g!r}")
+        if p.get("gender") not in ("male", "female", None):
+            errors.append(f"{tag} gender phải là male/female hoặc null: {p.get('gender')!r}")
         gender.setdefault(name, set()).add(p.get("gender"))
-    if persons and not any(isinstance(p, dict) and p.get("generation") == 1 for p in persons):
+    if strict and persons and not any(isinstance(p, dict) and p.get("generation") == 1 for p in persons):
         errors.append("không có người nào ở generation 1 (cụ tổ)")
+    n_null = sum(1 for p in persons if isinstance(p, dict) and (p.get("generation") is None or p.get("gender") is None))
+    if strict and n_null:
+        errors.append(f"{n_null} người thiếu generation/gender (dữ liệu tổng hợp phải đủ)")
 
     def gset(n):
         return gender.get(n, set())
@@ -124,21 +128,22 @@ def check_answer(ans, inp):
         fa = par.get("father")
         if fa and "mother" not in par and len(spouses.get(fa, set())) == 1:
             wife = next(iter(spouses[fa]))
-            errors.append(f"'{fa}' father của '{child}' nhưng thiếu '{wife}' (vợ duy nhất) mother của '{child}'")
+            (errors if strict else warns).append(f"'{fa}' father của '{child}' nhưng thiếu '{wife}' (vợ duy nhất) mother của '{child}'")
         for t, p in par.items():
             inv = "son" if "male" in gset(child) else "daughter"
             if (child, p, inv) not in rel_set:
                 warns.append(f"thiếu quan hệ ngược '{child}' -> '{p}' ({inv})")
 
     n_sent = len([s for s in re.split(r"[.!?]\s+|[.!?]$", inp) if s.strip()])
-    if not 3 <= n_sent <= 6:
+    if strict and not 3 <= n_sent <= 6:
         warns.append(f"Input có {n_sent} câu (yêu cầu 3-6)")
     return errors, warns
 
 
-def validate_file(path):
+def validate_file(path, strict=True, quiet_warn=False):
     ok, bad, inputs = 0, 0, []
-    print(f"\n=== {path} ===")
+    n_warn_total = [0]
+    print(f"\n=== {path} ===" + ("" if strict else " (chế độ dữ liệu thật: cho phép null, quy tắc cha-mẹ chỉ cảnh báo)"))
     if not path.exists():
         print(f"ERROR: không tìm thấy file")
         return 0, 1, inputs
@@ -161,20 +166,21 @@ def validate_file(path):
                 elif not isinstance(rec["text"], str):
                     errors.append("'text' phải là chuỗi")
                 else:
-                    if set(rec) != {"text"}:
-                        warns.append(f"có field thừa ngoài 'text': {sorted(set(rec) - {'text'})}")
+                    if set(rec) - {"text", "meta"}:
+                        warns.append(f"có field thừa ngoài 'text'/'meta': {sorted(set(rec) - {'text', 'meta'})}")
                     try:
                         _, inp, resp = split_text(rec["text"])
                         try:
                             ans = json.loads(resp)
-                            e2, w2 = check_answer(ans, inp)
+                            e2, w2 = check_answer(ans, inp, strict)
                             errors += e2
                             warns += w2
                         except json.JSONDecodeError as e:
                             errors.append(f"Response không phải JSON hợp lệ: {e}")
                     except ValueError as e:
                         errors.append(str(e))
-            for w in warns:
+            n_warn_total[0] += len(warns)
+            for w in ([] if quiet_warn else warns):
                 print(f"[dòng {lineno}] WARN: {w}")
             for e in errors:
                 print(f"[dòng {lineno}] ERROR: {e}")
@@ -189,17 +195,20 @@ def validate_file(path):
         if inp in seen:
             print(f"[dòng {lineno}] WARN: Input trùng với dòng {seen[inp]}")
         seen.setdefault(inp, lineno)
-    print(f"--> hợp lệ: {ok} | lỗi: {bad} | tổng: {ok + bad}")
+    print(f"--> hợp lệ: {ok} | lỗi: {bad} | tổng: {ok + bad} | cảnh báo: {n_warn_total[0]}")
     return ok, bad, inputs
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("files", nargs="*", type=Path, default=DEFAULT_FILES)
+    ap.add_argument("--real", action="store_true",
+                    help="dữ liệu thật (VGP): cho phép generation/gender null, persons rỗng; quy tắc cha-mẹ chỉ cảnh báo")
+    ap.add_argument("--quiet-warn", action="store_true", help="không in từng cảnh báo, chỉ in tổng")
     args = ap.parse_args()
     total_bad, all_inputs = 0, {}
     for f in args.files:
-        _, bad, inputs = validate_file(f)
+        _, bad, inputs = validate_file(f, strict=not args.real, quiet_warn=args.quiet_warn)
         total_bad += bad
         all_inputs[f] = {inp for _, inp in inputs}
     if len(args.files) >= 2:

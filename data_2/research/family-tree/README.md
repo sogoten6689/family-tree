@@ -10,7 +10,43 @@ src/generate_data.py             sinh lại 2 file dữ liệu trên (seed cố 
 src/validate_data.py             kiểm tra dữ liệu
 src/train.py                     train LoRA
 src/test.py                      thử adapter với một đoạn gia phả mới
+src/build_vgp_dataset.py         dựng bộ thật từ corpus VGP (văn xuôi) -> data/03_derived/llm_sft/v3_persons/
+web/                             trang Next.js để xem và soát sửa nhãn
 ```
+
+## Bộ thật từ VGP (văn xuôi)
+
+```bash
+python src/build_vgp_dataset.py          # ~40 giây, tự tìm thư mục data/ của repo
+python src/validate_data.py --real --quiet-warn \
+  ../../../data/03_derived/llm_sft/v3_persons/train.jsonl ../../../data/03_derived/llm_sft/v3_persons/test.jsonl
+```
+
+- Input = `pha_ky.txt` cắt theo dòng thành đoạn ≤ 1.800 ký tự; email, URL, số điện thoại được thay bằng
+  `[email]`, `[url]`, `[số điện thoại]`.
+- Người = tên trong **sơ đồ gốc** (`pha_he.json`) hoặc trong nhãn silver Gemini, **xuất hiện nguyên văn** trong đoạn.
+- Đời, vợ chồng, cha/mẹ – con lấy từ sơ đồ gốc khi tên khớp đúng một người. Quan hệ Gemini được giữ nếu
+  không mâu thuẫn với sơ đồ. Năm sinh/mất chỉ lấy khi đứng ngay sau tên, ví dụ "X (1890 - 1960)" hoặc "X sinh năm 1890".
+- Không có thông tin thì để `null` (đời, giới tính, năm), không suy đoán. Nguồn của từng nhãn ghi trong `meta`.
+- Chia theo cây: test = 5 cây test cũ của v2 và 20% số cây có quan hệ; đoạn trùng chữ với test bị loại khỏi train.
+- Dữ liệu này nằm trong repo dữ liệu `data/`, **không** commit vào repo này.
+
+## Trang soát dữ liệu (web/)
+
+```bash
+cd web
+npm install          # lần đầu; cần Node >= 18.18
+npm run dev          # http://localhost:3100
+```
+
+- Tự tìm mọi file `.jsonl` dạng Instruction/Input/Response trong `data_train/` và `data/03_derived/llm_sft/`
+  (quét 2 cấp). Thêm, sinh lại hay sửa file thì trang tự cập nhật trong vòng 3 giây.
+  Muốn chỉ định thư mục khác: `DATA_DIRS=/a:/b npm run dev`.
+- Trang chi tiết: tên trong đoạn văn được tô màu, cây vẽ theo đời, dòng sơ đồ gốc có nhắc các tên đó,
+  cảnh báo giống `validate_data.py`, bảng sửa người và quan hệ.
+- Kết quả soát lưu ở `<file>.reviews.json` cạnh file gốc (khoá theo nội dung đoạn, sinh lại file vẫn giữ).
+  File gốc không bị sửa. Nút "Xuất bản đã soát" ghi `<file>.reviewed.jsonl` (nhãn đã sửa + trạng thái trong `meta`).
+- Phím tắt: `Ctrl/⌘ S` lưu · `Ctrl/⌘ Enter` đã soát và sang mẫu sau · `Alt ←/→` mẫu trước/sau.
 
 ## Định dạng dữ liệu
 
