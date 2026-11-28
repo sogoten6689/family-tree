@@ -46,7 +46,7 @@ describe("chế độ nghiên cứu", { timeout: 15000 }, () => {
     },
   );
 
-  it.each(["/login", "/gia-pha", "/gia-pha/abc", "/nghien-cuu/tien-do", "/nghien-cuu/quan-ly/"])("giữ %s", (path) => {
+  it.each(["/login", "/gia-pha", "/gia-pha/abc", "/nghien-cuu/tien-do", "/nghien-cuu/quan-ly/", "/nghien-cuu/soat-llm"])("giữ %s", (path) => {
     expect(isResearchPath(path)).toBe(true);
   });
 
@@ -72,6 +72,8 @@ describe("chế độ nghiên cứu", { timeout: 15000 }, () => {
       "OCR · Dịch · Dóng",
       "Đối chiếu & soát",
       "Tiến độ",
+      "Trích xuất LLM",
+      "Soát nhãn LLM",
       "Thông tin nghiên cứu",
       "Quản lý nghiên cứu",
       "Ôn tập bảo vệ",

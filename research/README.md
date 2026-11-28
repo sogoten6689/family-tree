@@ -4,6 +4,7 @@
 |---------|------|
 | `label_studio_pipeline/` | Gán nhãn NER/RE, gold |
 | `source_discovery/` | Firecrawl tìm nguồn |
+| `llm_extraction/` | LoRA Qwen2.5-7B trích `persons`/`relations` (JSON); dữ liệu tổng hợp + bộ VGP; soát ở `/nghien-cuu/soat-llm` |
 
 Chạy **từ root repo** (path `data/…` tính từ gốc):
 

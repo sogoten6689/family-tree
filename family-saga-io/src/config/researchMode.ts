@@ -34,6 +34,11 @@ export const RESEARCH_NAV: ResearchNavGroup[] = [
     ],
   },
   {
+    key: "research-llm",
+    label: "Trích xuất LLM",
+    children: [{ key: "/nghien-cuu/soat-llm", label: "Soát nhãn LLM" }],
+  },
+  {
     key: "research-info",
     label: "Thông tin nghiên cứu",
     children: [

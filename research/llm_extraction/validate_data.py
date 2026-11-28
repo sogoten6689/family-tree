@@ -1,9 +1,9 @@
 """Kiểm tra file JSONL dữ liệu gia phả (format Alpaca: Instruction / Input / Response).
 
 Cách dùng:
-    python src/validate_data.py                       # kiểm tra cả train và test mặc định
-    python src/validate_data.py data_train/x.jsonl    # kiểm tra file chỉ định
-    python src/validate_data.py --real --quiet-warn <vgp>/train.jsonl <vgp>/test.jsonl   # dữ liệu thật
+    python research/llm_extraction/validate_data.py            # train + test tổng hợp mặc định
+    python research/llm_extraction/validate_data.py a.jsonl    # kiểm tra file chỉ định
+    python research/llm_extraction/validate_data.py --real --quiet-warn <vgp>/train.jsonl <vgp>/test.jsonl
 
 Lỗi (ERROR) làm mẫu bị tính là không hợp lệ; cảnh báo (WARN) chỉ in ra.
 Mã thoát = 1 nếu có ít nhất một mẫu lỗi.
@@ -14,8 +14,9 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_FILES = [ROOT / "data_train" / "giapha_train.jsonl", ROOT / "data_train" / "giapha_test.jsonl"]
+from _paths import SYNTH_DIR
+
+DEFAULT_FILES = [SYNTH_DIR / "giapha_train.jsonl", SYNTH_DIR / "giapha_test.jsonl"]
 
 MARK_INSTR, MARK_INPUT, MARK_RESP = "### Instruction:\n", "### Input:\n", "### Response:\n"
 REL_TYPES = {"spouse", "father", "mother", "son", "daughter"}

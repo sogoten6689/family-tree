@@ -19,6 +19,7 @@ from app.auth.bootstrap import bootstrap_auth
 from app.auth.dependencies import AdminUser, CurrentUser, OptionalUser
 from app.auth.router import router as auth_router
 from app.database import DatabaseUnavailable, database_enabled, database_init_error, get_db, init_database, session_scope
+from app.doi_chieu.llm_soat import router as llm_soat_router
 from app.doi_chieu.router import admin_router as doi_chieu_admin_router
 from app.doi_chieu.router import router as doi_chieu_router
 from app.documents.bootstrap import bootstrap_documents
@@ -553,6 +554,8 @@ app.include_router(ocr_engines_router)
 app.include_router(text_engines_router)
 app.include_router(gemini_usage_router)
 app.include_router(doi_chieu_router)
+# trước admin_router đối chiếu: /api/doi-chieu/llm/... không được rơi vào /{student}/{book}/...
+app.include_router(llm_soat_router)
 app.include_router(doi_chieu_admin_router)
 
 

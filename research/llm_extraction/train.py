@@ -1,8 +1,8 @@
 """Fine-tune LoRA cho Qwen2.5-7B-Instruct bằng Unsloth để trích xuất gia phả.
 
 Chạy trên GPU (ví dụ Vast.ai RTX 4090, 24 GB):
-    python src/train.py
-    python src/train.py --data data_train/giapha_train.jsonl --out giapha_lora_adapter
+    python research/llm_extraction/train.py
+    python research/llm_extraction/train.py --data a.jsonl --data b.jsonl --out giapha_lora_adapter
 """
 import argparse
 from pathlib import Path
@@ -12,15 +12,17 @@ from unsloth import FastLanguageModel, is_bfloat16_supported  # noqa: I001
 from datasets import load_dataset
 from trl import SFTTrainer
 
-ROOT = Path(__file__).resolve().parent.parent
+from _paths import ADAPTER_DIR, RUNS_DIR, SYNTH_DIR
+
 MODEL_NAME = "Qwen/Qwen2.5-7B-Instruct"
 MAX_SEQ_LENGTH = 2048
 
 
 def parse_args():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data", type=Path, default=ROOT / "data_train" / "giapha_train.jsonl")
-    ap.add_argument("--out", type=Path, default=ROOT / "giapha_lora_adapter")
+    ap.add_argument("--data", type=Path, action="append",
+                    help="file .jsonl; lặp lại để trộn nhiều bộ (mặc định: train tổng hợp)")
+    ap.add_argument("--out", type=Path, default=ADAPTER_DIR)
     ap.add_argument("--model", default=MODEL_NAME)
     ap.add_argument("--seed", type=int, default=3407)
     return ap.parse_args()
@@ -28,6 +30,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    args.data = args.data or [SYNTH_DIR / "giapha_train.jsonl"]
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name=args.model,
@@ -51,7 +54,9 @@ def main():
     # Mỗi mẫu đã là prompt hoàn chỉnh "### Instruction ... ### Response: {json}".
     # Thêm EOS để mô hình học cách dừng sau JSON.
     eos = tokenizer.eos_token
-    dataset = load_dataset("json", data_files=str(args.data), split="train")
+    # chỉ lấy cột text (bộ VGP có thêm cột meta khác kiểu giữa các file)
+    dataset = load_dataset("json", data_files=[str(p) for p in args.data], split="train")
+    dataset = dataset.select_columns(["text"]).shuffle(seed=args.seed)
     dataset = dataset.map(lambda b: {"text": [t + eos for t in b["text"]]}, batched=True)
 
     n_tok = [len(tokenizer(t).input_ids) for t in dataset["text"]]
@@ -72,7 +77,7 @@ def main():
         bf16=is_bfloat16_supported(),
         logging_steps=5,
         save_strategy="no",
-        output_dir=str(ROOT / "outputs"),
+        output_dir=str(RUNS_DIR),
         seed=args.seed,
         report_to="none",
     )

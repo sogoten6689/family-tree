@@ -1,7 +1,7 @@
 """Load adapter LoRA đã train và thử trích xuất một đoạn gia phả mới.
 
-    python src/test.py
-    python src/test.py --adapter giapha_lora_adapter --text "Cụ tổ đời thứ nhất là ..."
+    python research/llm_extraction/test.py
+    python research/llm_extraction/test.py --adapter giapha_lora_adapter --text "Cụ tổ đời thứ nhất là ..."
 """
 import argparse
 import json
@@ -9,7 +9,8 @@ from pathlib import Path
 
 from unsloth import FastLanguageModel
 
-ROOT = Path(__file__).resolve().parent.parent
+from _paths import ADAPTER_DIR
+
 MAX_SEQ_LENGTH = 2048
 INSTRUCTION = "Trích xuất thực thể và quan hệ gia phả từ văn bản sau. Trả về dạng JSON."
 
@@ -30,7 +31,7 @@ def build_prompt(text):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--adapter", type=Path, default=ROOT / "giapha_lora_adapter")
+    ap.add_argument("--adapter", type=Path, default=ADAPTER_DIR)
     ap.add_argument("--text", default=SAMPLE_TEXT)
     ap.add_argument("--max-new-tokens", type=int, default=1536)
     args = ap.parse_args()

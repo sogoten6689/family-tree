@@ -1,8 +1,8 @@
 """Sinh dữ liệu gia phả tổng hợp (train 300 / test 50) theo format Alpaca.
 
-Chạy (từ thư mục family-tree):
-    python src/generate_data.py                 # ghi đè data_train/giapha_train.jsonl và giapha_test.jsonl
-    python src/generate_data.py <thư mục khác>  # ghi ra thư mục khác
+Chạy từ gốc repo:
+    python research/llm_extraction/generate_synthetic.py          # ghi đè data/01_interim/llm_synthetic/giapha_{train,test}.jsonl
+    python research/llm_extraction/generate_synthetic.py <thư mục> # ghi ra thư mục khác
 Seed cố định: chạy lại cho ra đúng hai file như cũ.
 """
 import json
@@ -436,4 +436,5 @@ def main(outdir):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent / "data_train")
+    from _paths import SYNTH_DIR
+    main(sys.argv[1] if len(sys.argv) > 1 else SYNTH_DIR)

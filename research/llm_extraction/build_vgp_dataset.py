@@ -10,8 +10,8 @@ Nguyên tắc: chỉ ghi người được nhắc **nguyên văn** trong đoạn
 thì để null (birth, death, generation, gender). Không suy đoán.
 
 Chạy:
-    python src/build_vgp_dataset.py                      # tự tìm thư mục data/
-    python src/build_vgp_dataset.py --data-root /path/to/data --out /path/out
+    python research/llm_extraction/build_vgp_dataset.py                 # tự tìm thư mục data/
+    python research/llm_extraction/build_vgp_dataset.py --data-root /path/to/data --out /path/out
 
 Kết quả (mặc định data/03_derived/llm_sft/v3_persons/):
     train.jsonl, test.jsonl      {"text": ..., "meta": {...}}
@@ -45,13 +45,6 @@ PII = [
 
 def nfc(s):
     return unicodedata.normalize("NFC", s)
-
-
-def find_data_root(start):
-    for p in [start, *start.parents]:
-        if (p / "data" / "03_derived" / "gia_pha").is_dir():
-            return p / "data"
-    raise SystemExit("Không tìm thấy data/03_derived/gia_pha — truyền --data-root")
 
 
 # ---------------- sơ đồ pha_he ----------------
@@ -328,13 +321,15 @@ def scrub(text):
 
 
 def main():
-    here = Path(__file__).resolve()
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-root", type=Path)
     ap.add_argument("--out", type=Path)
     args = ap.parse_args()
-    root = args.data_root or find_data_root(here.parent)
-    out = args.out or root / "03_derived" / "llm_sft" / "v3_persons"
+    from _paths import DATA, VGP_DIR
+    root = args.data_root or DATA
+    if not (root / "03_derived" / "gia_pha").is_dir():
+        raise SystemExit(f"Không thấy {root}/03_derived/gia_pha — truyền --data-root hoặc đặt LLM_DATA_ROOT")
+    out = args.out or (VGP_DIR if root == DATA else root / "03_derived" / "llm_sft" / "v3_persons")
     out.mkdir(parents=True, exist_ok=True)
     rng = random.Random(SEED)
     stat = Counter()
